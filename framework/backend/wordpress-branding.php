@@ -10,7 +10,7 @@ use Roots\Sage\Assets;
 function custom_login_logo() {
   $logo = get_field('website_logo', 'option');
   if ($logo):
-    $logo = $logo["url"];
+    $logo = $logo;
   else:
     $logo = Utilities::resources_path('images/logo.png');
   endif;
@@ -22,7 +22,7 @@ function custom_login_logo() {
     if ($select_you_design == 'background-image' ) {
       $background_image = get_field('upload_you_image', 'option');
       ?>
-      background-image:url('<?=$background_image['url']; ?>');
+      background-image:url('<?= $background_image; ?>');
       <?php
     }elseif ($select_you_design == 'background-color' ){
       ?>
@@ -34,9 +34,16 @@ function custom_login_logo() {
   }
   .login h1 a {
     background-image: url('<?= $logo; ?>') !important;
-    background-size: contain;
+    background-size: auto;
     width: auto;
     height: 100px;
+    background-position: center center;
+  }
+  #login p#nav, #login p#backtoblog {
+      background-color: #fff;
+      padding: 10px !important;
+      border-radius: 3px;
+      box-shadow: 1px 1px 1px #333;
   }
   </style>
   <?php

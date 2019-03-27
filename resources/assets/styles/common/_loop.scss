@@ -51,6 +51,12 @@
   }
 }
 
+@for $heights from 1 through 10 {
+  .height-vh-#{$heights * 10} {
+    height: #{($heights * 10)}vh !important;
+  }
+}
+
 // ========== Display positions =======
 $positions: ( position "right")( position "left")( position "top")( position "bottom");
 

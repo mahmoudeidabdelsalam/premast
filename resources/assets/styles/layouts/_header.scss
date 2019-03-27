@@ -13,4 +13,12 @@ header {
   .nav-link {
     font-size: 13px;
   }
+
+  .navbar-nav {
+    .dropdown-menu {
+      li {
+        width: 100%;
+      }
+    }
+  }
 }

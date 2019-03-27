@@ -76,17 +76,17 @@
     "yargs": "~11.0.0"
   },
   "dependencies": {
+    "animate.css": "^3.7.0",
     "bootstrap": "v4.3.1",
-    "jquery": "^3.3.1",
-    "popper.js": "^1.14.7",
-    "animate.css": "^3.6.1",
     "devbridge-autocomplete": "^1.4.7",
     "font-awesome": "v4.7",
+    "jquery": "^3.3.1",
     "jquery.nicescroll": "^3.7.6",
     "lightgallery": "^1.6.8",
     "lightslider": "^1.1.6",
     "magnific-popup": "^1.1.0",
-    "slick-carousel": "^1.8.1"
-
+    "popper.js": "^1.14.7",
+    "slick-carousel": "^1.8.1",
+    "wow.js": "^1.2.2"
   }
 }
