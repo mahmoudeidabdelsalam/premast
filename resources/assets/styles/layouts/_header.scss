@@ -1,0 +1,16 @@
+.banner .nav li {
+  @extend .nav-item;
+}
+
+.banner .nav a {
+  @extend .nav-link;
+}
+
+header {
+  box-shadow: 0 0 13px 0 rgba(0, 0, 0, 0.06);
+  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+
+  .nav-link {
+    font-size: 13px;
+  }
+}

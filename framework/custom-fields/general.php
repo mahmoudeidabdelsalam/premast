@@ -1,0 +1,211 @@
+<?php
+if( function_exists('acf_add_options_page') ) {
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'General Settings',
+		'menu_title'	=> 'General Settings',
+		'menu_slug' 	=> 'general-settings',
+		'parent_slug'	=> 'index.php',
+		'icon_url' 		=> 'dashicons-welcome-widgets-menus',
+		'position' => 1,
+		'redirect'		=> false
+	));
+}
+
+if( function_exists('acf_add_local_field_group') ):
+	acf_add_local_field_group(array (
+		'key' => 'group_584e713b4c10f',
+		'title' => 'General Settings',
+		'fields' => array (
+
+			array(
+				'key' => 'field_5a925d2d30880',
+				'label' => 'Header',
+				'name' => '',
+				'type' => 'tab',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'placement' => 'left',
+				'endpoint' => 0,
+			),
+
+			array (
+				'return_format' => 'url',
+				'preview_size' => 'thumbnail',
+				'library' => 'all',
+				'min_width' => '',
+				'min_height' => '',
+				'min_size' => '',
+				'max_width' => '',
+				'max_height' => '',
+				'max_size' => '',
+				'mime_types' => '',
+				'key' => 'field_584e7155a3f1a',
+				'label' => 'Main Website Logo',
+				'name' => 'website_logo',
+				'type' => 'image',
+				'instructions' => 'this image we will used it in all website',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array (
+					'width' => '50',
+					'class' => '',
+					'id' => '',
+				),
+			),
+			array (
+				'return_format' => 'url',
+				'preview_size' => 'thumbnail',
+				'library' => 'all',
+				'min_width' => '',
+				'min_height' => '',
+				'min_size' => '',
+				'max_width' => '',
+				'max_height' => '',
+				'max_size' => '',
+				'mime_types' => '',
+				'key' => 'field_584fd6f054958',
+				'label' => 'icon',
+				'name' => 'favicon',
+				'type' => 'image',
+				'instructions' => 'icon menu  used Header Fixed top',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array (
+					'width' => '50',
+					'class' => '',
+					'id' => '',
+				),
+			),
+			array (
+				'default_value' => '',
+				'new_lines' => '',
+				'maxlength' => '',
+				'placeholder' => '',
+				'rows' => '',
+				'key' => 'field_584fd7f8e09d5',
+				'label' => 'Header Scripts',
+				'name' => 'header_scripts',
+				'type' => 'textarea',
+				'instructions' => 'Add any script you need show it in website header',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array (
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+			),
+
+		array(
+				'key' => 'field_fdsfsdfwererwe5a931c668284d',
+				'label' => 'Welcome',
+				'name' => '',
+				'type' => 'tab',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'placement' => 'left',
+				'endpoint' => 0,
+			),
+
+			array (
+				'return_format' => 'url',
+				'preview_size' => 'thumbnail',
+				'library' => 'all',
+				'min_width' => '',
+				'min_height' => '',
+				'min_size' => '',
+				'max_width' => '',
+				'max_height' => '',
+				'max_size' => '',
+				'mime_types' => '',
+				'key' => 'field_584fwerwasdasd00ewksdaerew123sf43434',
+				'label' => 'Welcome Banner',
+				'name' => 'image_welcome_banner',
+				'type' => 'image',
+				'instructions' => 'we can used for welcome image background ( 1440px * 735px',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array (
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+			),
+
+			array (
+				'key' => 'field_58ad83ssefasfe7qwewqeqweqweqwbds8d7b',
+				'label' => 'Headline Welcome banner',
+				'name' => 'headline_welcome_banner',
+				'type' => 'text',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array (
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+			),
+
+			array (
+				'key' => 'field_58ad83ssefwrewrewrvvvasfe7qwewqeqweqweqwbds8d7b',
+				'label' => 'Sub title Welcome banner',
+				'name' => 'sub_headline_welcome_banner',
+				'type' => 'text',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array (
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+			),
+
+			array (
+				'key' => 'field_58adsafasfasfasf83ssefasfe7bds8d7b',
+				'label' => '@link Welcome banner',
+				'name' => 'link_welcome_banner',
+				'type' => 'text',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array (
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'options_page',
+					'operator' => '==',
+					'value' => 'general-settings',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => 1,
+		'description' => '',
+	));
+
+endif;
