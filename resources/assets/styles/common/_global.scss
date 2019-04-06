@@ -1,5 +1,6 @@
 body {
   font-family: $font-Roboto;
+  font-weight: 300;
 }
 
 .background-overlay {
@@ -17,13 +18,20 @@ body {
   transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
 }
 
-.welcome {
-  height: 80vh;
-  position: relative;
-}
-
 .btn {
   border-radius: 25px 25px 25px 25px;
   padding: 10px 20px;
   box-shadow: 0 6px 11px 0 rgba(0, 46, 123, 0.58);
+}
+
+.font-weight-300 {
+  font-weight: 300;
+}
+
+.font-weight-400 {
+  font-weight: 400;
+}
+
+.font-weight-600 {
+  font-weight: 600;
 }

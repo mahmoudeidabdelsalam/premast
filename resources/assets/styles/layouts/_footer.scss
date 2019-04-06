@@ -1,0 +1,21 @@
+section.copyright {
+  color: rgba(255, 255, 255, 0.26);
+  padding: 20px;
+
+  ul.social-icons-ql {
+    li {
+      a {
+        background-color: rgb(101, 109, 122);
+        width: 40px;
+        display: flex;
+        height: 40px;
+        justify-content: center;
+        align-items: center;
+
+        i {
+          font-size: 15px !important;
+        }
+      }
+    }
+  }
+}

@@ -3,7 +3,7 @@
 @section('content')
 
 @if ($welcome_home)
-<section>
+<section class="welcome-home">
   <div class="welcome background-center" style="background-image:url('{{$welcome_home['background']}}');">
     <div class="background-overlay"></div>
     <div class="container">
@@ -21,6 +21,8 @@
   </div>
 </section>
 @endif
+
+@php dynamic_sidebar('sidebar-home') @endphp
 
 
 @endsection

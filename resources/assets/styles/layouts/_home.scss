@@ -1,0 +1,171 @@
+.welcome {
+  height: 80vh;
+  position: relative;
+}
+
+.tab-slider {
+  &--nav {
+    width: 100%;
+    float: left;
+    margin-bottom: 12px;
+  }
+
+  &-container {
+    background-color: rgb(239, 246, 250);
+    border-radius: 27px;
+    padding: 10px 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 768px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: -75px;
+    position: relative;
+    z-index: 99;
+
+    p {
+      color: rgba(61, 69, 82, 0.63);
+      font-size: 20px;
+    }
+  }
+
+  &--tabs {
+    width: 80px;
+    height: 30px;
+    background-color: #dee6eb;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3) inset;
+    position: relative;
+    display: flex;
+    padding: 0 !important;
+    border-radius: 25px;
+    margin: 0;
+
+    &::after {
+      content: "";
+      width: 50%;
+      background: $brand-blue;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: all 250ms ease-in-out;
+      border-radius: 35px;
+    }
+
+    &.slide::after {
+      left: 50%;
+    }
+  }
+
+  &--trigger {
+    font-size: 12px;
+    line-height: 1;
+    font-weight: bold;
+    color: $brand-blue;
+    text-transform: uppercase;
+    text-align: center;
+    width: 40px;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    display: inline-block;
+    transition: color 250ms ease-in-out;
+    user-select: none;
+
+    &.active {
+      color: $brand-white;
+    }
+  }
+
+  &--body {
+    margin-bottom: 12px;
+  }
+}
+
+section.services-home {
+  min-height: 500px;
+}
+
+.cd-image-container {
+  position: relative;
+  width: 100%;
+  margin: 30px auto;
+  height: 600px;
+  overflow: hidden;
+  border-radius: 14px 14px 14px 14px;
+  box-shadow: 0 0 35px 0 rgba(2, 50, 180, 0.59);
+
+  img {
+    display: block;
+  }
+}
+
+.cd-image-label {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: $brand-white;
+  padding: 1em;
+  opacity: 0;
+
+  &.is-hidden {
+    visibility: hidden;
+  }
+
+  .is-visible & {
+    opacity: 1;
+  }
+}
+
+.cd-resize-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    height: 100%;
+    width: auto;
+    max-width: none;
+  }
+
+  .cd-image-label {
+    right: auto;
+    left: 0;
+  }
+
+  .is-visible & {
+    width: 50%;
+  }
+}
+
+.cd-handle {
+  position: absolute;
+  height: 44px;
+  width: 44px;
+  left: 50%;
+  top: 50%;
+  margin-left: -22px;
+  margin-top: -22px;
+  border-radius: 50%;
+  background: $brand-blue url("../images/cd-arrows.svg") no-repeat center center;
+  cursor: move;
+  box-shadow: 0 0 0 6px rgba(#000, 0.2), 0 0 10px rgba(#000, 0.6), inset 0 1px 0 rgba(#fff, 0.3);
+  opacity: 0;
+
+  &.draggable {
+    background-color: $brand-blue;
+  }
+
+  .is-visible & {
+    opacity: 1;
+  }
+}
