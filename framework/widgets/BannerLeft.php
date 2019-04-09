@@ -54,7 +54,7 @@ class BannerLeft extends WP_Widget {
           <div class="container pt-4 pb-5">
             <div class="row align-items-center">
               <div class="col-md-6 col-sm-12 wow bounceInUp">
-                <img class="img-fluid" src="<?= $image_banner_about; ?>" alt="$headline_about">
+                <img class="img-fluid" src="<?= $image_banner_about; ?>" alt="<?= $headline_about; ?>">
               </div>
               <div class="col-md-6 col-sm-12 wow bounceInUp">
                 <h2 class="text-gray-dark font-weight-300"><?= $headline_about; ?></h2>

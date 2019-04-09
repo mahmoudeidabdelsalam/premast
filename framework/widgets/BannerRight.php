@@ -51,7 +51,7 @@ class BannerRight extends WP_Widget {
         ?>
      
         <section class="about-tow-column" style="background-image:url('<?= $background_image_about; ?>');background-color:<?= $background_color_about; ?>;">
-          <div class="container pt-4 pb-5">
+          <div class="container pt-5 pb-5">
             <div class="row align-items-center">
               <div class="col-md-6 col-sm-12 wow bounceInUp">
                 <h2 class="text-gray-dark font-weight-300"><?= $headline_about; ?></h2>
@@ -61,7 +61,7 @@ class BannerRight extends WP_Widget {
                 <?php endif; ?>
               </div>
               <div class="col-md-6 col-sm-12 wow bounceInUp">
-                <img class="img-fluid" src="<?= $image_banner_about; ?>" alt="$headline_about">
+                <img class="img-fluid" src="<?= $image_banner_about; ?>" alt="<?= $headline_about; ?>">
               </div>
             </div>
           </div>
