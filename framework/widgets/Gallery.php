@@ -44,8 +44,7 @@ class Gallery extends WP_Widget {
         $background_color_about = get_field('background_color_gallery', 'widget_' . $widget_id);
 
         ?>
-     
-        <section class="gallery-column" style="background-image:url('<?= $background_image_about; ?>'); background-color:<?= $background_color_about; ?>;">
+        <div class="gallery-column" style="background-image:url('<?= $background_image_about; ?>'); background-color:<?= $background_color_about; ?>;">
           <div class="container pt-4 pb-5">
             <div class="row align-items-center">
               <h2><?= $title; ?></h2>
@@ -62,7 +61,7 @@ class Gallery extends WP_Widget {
               <?php endif; ?>
             </div>
           </div>
-        </section>
+        </div>
 
       <?php  
 

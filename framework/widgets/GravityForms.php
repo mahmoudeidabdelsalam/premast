@@ -45,8 +45,7 @@ class GravityForms extends WP_Widget {
         $instructions_form = get_field('instructions_froms', 'widget_' . $widget_id);
         $select_from = get_field('select_from', 'widget_' . $widget_id);
         ?>
-     
-        <section class="gravity-column" style="background-image:url('<?= $background_image; ?>'); background-color:<?= $background_color; ?>;">
+        <div class="gravity-column" style="background-image:url('<?= $background_image; ?>'); background-color:<?= $background_color; ?>;">
           <div class="container pt-5 pb-5">
             <div class="row align-items-center">
               <div class="col-md-6 col-sm-12 wow bounceInUp">
@@ -62,7 +61,7 @@ class GravityForms extends WP_Widget {
 
             </div>
           </div>
-        </section>
+        </div>
 
       <?php  
 

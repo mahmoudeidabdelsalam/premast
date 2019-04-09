@@ -82,7 +82,7 @@
   }
 }
 
-section.services-home {
+.services-home {
   min-height: 500px;
 }
 
@@ -340,5 +340,68 @@ section.services-home {
         margin: 5px;
       }
     }
+  }
+}
+
+.blog-column {
+  .card {
+    border-radius: 3px;
+    -webkit-transition: all 0.25s;
+    -o-transition: all 0.25s;
+    transition: all 0.25s;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+
+    &:hover {
+      box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    span.text-secondary {
+      position: absolute;
+      top: 0;
+      font-size: 12px;
+      padding: 0.6em 1.2em;
+      line-height: 1;
+      border-radius: 999px;
+      font-weight: 500;
+      background-color: rgb(29, 209, 161);
+      margin: 20px;
+      right: 0;
+    }
+  }
+
+  h2.headline {
+    color: rgb(61, 69, 82);
+    font-size: 25px;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+  }
+
+  p.elementor-text {
+    color: rgba(61, 69, 82, 0.73);
+    font-size: 15px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  p.card-time {
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    left: 0;
+    right: 0;
+    padding: 15px 30px;
+    border-top: 1px solid #eaeaea;
+    font-size: 12px;
+    line-height: 12px;
+  }
+
+  .read-more {
+    margin-bottom: 20px;
+    display: inline-block;
+    color: #1e6dfb;
+    font-size: 12px;
+    font-weight: 500;
   }
 }

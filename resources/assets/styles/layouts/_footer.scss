@@ -1,3 +1,24 @@
+footer {
+  .gform_widget {
+    h3 {
+      color: rgba(255, 255, 255, 0.52);
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .gform_wrapper {
+      h3.gform_title,
+      span.gform_description {
+        display: none;
+      }
+
+      label.gfield_label {
+        display: none !important;
+      }
+    }
+  }
+}
+
 section.copyright {
   color: rgba(255, 255, 255, 0.26);
   padding: 20px;

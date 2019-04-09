@@ -35,3 +35,9 @@ body {
 .font-weight-600 {
   font-weight: blod;
 }
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}

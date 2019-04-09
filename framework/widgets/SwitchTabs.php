@@ -50,8 +50,9 @@ class SwitchTabs extends WP_Widget {
         $studio_before = get_field('tab_studio_before', 'widget_' . $widget_id);
 
         ?>
-     
-          <section class="services-home">
+          <div class="services-home">
+            <h3 class="sr-only"><?=  _e('I need someone help me', 'premast') ?></h3>
+            <h3 class="sr-only"><?=  _e('I need to create it by myself', 'premast') ?></h3>
             <div class="container">
               <div class="tab-slider--nav">
                 <div class="tab-slider-container">
@@ -114,7 +115,7 @@ class SwitchTabs extends WP_Widget {
               </div>
 
             </div>
-          </section>
+          </div>
 
       <?php  
 

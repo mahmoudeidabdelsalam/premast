@@ -49,8 +49,8 @@ class BannerLeft extends WP_Widget {
         $image_banner_about = get_field('image_banner_about', 'widget_' . $widget_id);
 
         ?>
-     
-        <section class="about-tow-column" style="background-image:url('<?= $background_image_about; ?>');background-color:<?= $background_color_about; ?>;">
+        <h3 class="sr-only"><?= $headline_about; ?></h3>
+        <div class="about-tow-column" style="background-image:url('<?= $background_image_about; ?>');background-color:<?= $background_color_about; ?>;">
           <div class="container pt-4 pb-5">
             <div class="row align-items-center">
               <div class="col-md-6 col-sm-12 wow bounceInUp">
@@ -65,7 +65,7 @@ class BannerLeft extends WP_Widget {
               </div>
             </div>
           </div>
-        </section>
+        </div>
 
       <?php  
 

@@ -24,7 +24,7 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <h3 class="sr-only">{{ _e('Breadcrumb navigation', 'premast') }}</h3>
+        <h2 class="sr-only">{{ _e('Breadcrumb navigation', 'premast') }}</h2>
         @if (has_nav_menu('primary_navigation'))
           {!! wp_nav_menu(['theme_location' => 'primary_navigation', 'container' => false, 'menu_class' => 'navbar-nav ml-auto', 'walker' => new NavWalker()]) !!}
         @endif
