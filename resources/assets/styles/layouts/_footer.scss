@@ -17,13 +17,51 @@ footer {
       }
     }
   }
+
+  .navbar-footer {
+    .navbar {
+      align-items: self-end;
+
+      .menu-item {
+        .nav-link {
+          &[data-toggle="dropdown"] {
+            color: $brand-white;
+            font-size: 14px;
+            font-weight: 500;
+          }
+
+          span {
+            display: none;
+          }
+        }
+
+        ul.dropdown-menu {
+          display: flex !important;
+          padding: 0;
+          left: 0 !important;
+          background: transparent;
+          border: none;
+          position: relative;
+          flex-flow: column;
+
+          .menu-item {
+            .nav-link {
+              color: rgb(163, 166, 171);
+              font-size: 12px;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 section.copyright {
   color: rgba(255, 255, 255, 0.26);
   padding: 20px;
 
-  ul.social-icons-ql {
+  .social-icons-ql {
     li {
       a {
         background-color: rgb(101, 109, 122);

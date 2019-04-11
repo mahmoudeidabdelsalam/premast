@@ -8,8 +8,8 @@
       "./scripts/customizer.js"
     ]
   },
-  "publicPath": "/themes/premast",
-  "devUrl": "http://premast.loc",
+  "publicPath": "/wp-content/themes/premast",
+  "devUrl": "http://dev.premast.com",
   "proxyUrl": "http://localhost:3000",
   "cacheBusting": "[name]_[hash:8]",
   "watch": [
