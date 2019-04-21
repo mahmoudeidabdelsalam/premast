@@ -1,6 +1,8 @@
 // import external dependencies
 import 'jquery';
 import 'slick-carousel/slick/slick.js';
+import 'devbridge-autocomplete/dist/jquery.autocomplete.min';
+import 'masonry-layout/dist/masonry.pkgd'
 
 // Import everything from autoload
 import './autoload/**/*'

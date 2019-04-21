@@ -11,6 +11,7 @@
    glob(__DIR__.'/post-type/*.php'),
    glob(__DIR__.'/taxonomies/*.php'),
    glob(__DIR__.'/backend/*.php'),
+   glob(__DIR__.'/ajax/*.php'),
    glob(__DIR__.'/widgets/*.php')
  );
  

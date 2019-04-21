@@ -70,12 +70,12 @@ class SwitchTabs extends WP_Widget {
                 <div id="tab1" class="tab-slider--body pt-5">
                   <div class="container">
                     <div class="row align-items-center col-12">
-                      <div class="col-md-6 col-sm-12 wow bounceInUp">
+                      <div class="col-md-5 col-sm-12 wow bounceInUp">
                         <img class="mb-5" src="<?=  get_theme_file_uri().'/dist/images/premast-studio.png' ?>" alt="Premast studio">
                         <p class="text-gray-dark text-medium"><?= $studio_instructions; ?></p>
                         <a class="btn btn-primary text-small mt-5" href="<?= $studio_link; ?>"><?=  _e('Get started', 'premast') ?> <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
                       </div>
-                      <div class="col-md-6 col-sm-12 wow bounceInUp">
+                      <div class="col-md-7 col-sm-12 wow bounceInUp">
                         <figure class="cd-image-container">
                           <img src="<?= $studio_before; ?>" alt="Original Image">
                           <span class="cd-image-label" data-type="original"><?php _e('Before', 'premast'); ?></span>

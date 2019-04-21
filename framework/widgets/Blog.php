@@ -68,7 +68,7 @@ class Blog extends WP_Widget {
                     $link = get_the_permalink($post->ID);
                     $time = get_the_date('F j, Y', $post->ID);
                     $headline = get_the_title($post->ID);
-                    $content = wp_trim_words(get_the_content($post->ID), '20', ' ...');
+                    $content = wp_trim_words(get_the_content($post->ID), '15', ' ...');
                     $categories = wp_get_post_terms($post->ID, 'category', 'hide_empty=0');
                 ?>
                 <div class="card wow bounceInUp">

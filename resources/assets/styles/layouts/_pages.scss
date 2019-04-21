@@ -1,0 +1,7 @@
+.card-columns {
+  .card {
+    @include media-breakpoint-up(md) {
+      flex: 0 0 30%;
+    }
+  }
+}

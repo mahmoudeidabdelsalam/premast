@@ -36,6 +36,21 @@ export default {
       ],
     });
 
+    $('.grid').masonry({
+      // options...
+      itemSelector: '.grid-item',
+    });
+
+
+    $(window).scroll(function () {
+      if ($(window).scrollTop() >= 65) {
+        $('.fixed-top-header').addClass('fixed-header');
+      }
+      else {
+        $('.fixed-top-header').removeClass('fixed-header');
+      }
+    });
+    
     $('.gallery-widgets').slick({
       dots: true,
       infinite: false,
