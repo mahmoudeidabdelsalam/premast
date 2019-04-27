@@ -5,3 +5,25 @@
     }
   }
 }
+
+.review-and-download {
+  display: flex;
+  justify-content: space-between;
+  color: rgb(61, 69, 82);
+  font-size: 14px;
+
+  .star-rating {
+    float: left !important;
+    margin: 3px 3px 0 0;
+
+    span {
+      &::before {
+        color: rgb(237, 138, 26);
+      }
+    }
+  }
+
+  .download {
+    color: rgb(30, 109, 251);
+  }
+}

@@ -1,25 +1,5 @@
+
 @php
-/**
- * The template for displaying product content in the single-product.php template
- *
- * This template can be overridden by copying it to yourtheme/woocommerce/content-single-product.php.
- *
- * HOWEVER, on occasion WooCommerce will need to update template files and you
- * (the theme developer) will need to copy the new files to your theme to
- * maintain compatibility. We try to do this as little as possible, but it does
- * happen. When this occurs the version of the template file will be bumped and
- * the readme will list any important changes.
- *
- * @see     https://docs.woocommerce.com/document/template-structure/
- * @package WooCommerce/Templates
- * @version 3.4.0
- */
-defined( 'ABSPATH' ) || exit;
-/**
- * Hook: woocommerce_before_single_product.
- *
- * @hooked wc_print_notices - 10
- */
 do_action( 'woocommerce_before_single_product' );
 if ( post_password_required() ) {
 	echo get_the_password_form(); // WPCS: XSS ok.
@@ -27,34 +7,41 @@ if ( post_password_required() ) {
 }
 @endphp
 
-<div class="container">
-  <div class="row justify-content-center m-0">
+<div id="product-{{ the_ID() }}" {!! wc_product_class() !!}>
+  <div class="container mt-5 mb-5">
+    <div class="row justify-content-center m-0">
+      
+      <div class="col-md-8 col-12">
+        <div class="row ml-0 mr-0 mb-5 content-single">
+          <div class="col-12">
+            <?php woocommerce_breadcrumb(); ?>
+            <h2 class="product-title">{{ the_title() }}</h2>
+            
+            @php
+              do_action( 'woocommerce_before_single_product_summary' );
+            @endphp
+          </div>
+          @include('partials/incloud/comments')
+        </div>
+      </div>
+      
+      <div class="summary entry-summary col-md-4 col-12 sidebar-shop">
+        <div class="download-product">
+          @php  
+            do_action( 'woocommerce_single_product_summary' );
+          @endphp
+        </div>
+        
+        @php dynamic_sidebar('sidebar-shop') @endphp
 
-    <div id="product-{{ the_ID() }}" {!! wc_product_class() !!}>
-
-      @php
-        do_action( 'woocommerce_before_single_product_summary' );
-      @endphp
-
-      <div class="summary entry-summary">
-        @php  
-          do_action( 'woocommerce_single_product_summary' );
-        @endphp
+      </div>
+    
+      <div class="col-12">
+          @php
+            do_action( 'woocommerce_after_single_product_summary' );
+          @endphp
       </div>
 
-      @php
-        /**
-        * Hook: woocommerce_after_single_product_summary.
-        *
-        * @hooked woocommerce_output_product_data_tabs - 10
-        * @hooked woocommerce_upsell_display - 15
-        * @hooked woocommerce_output_related_products - 20
-        */
-        do_action( 'woocommerce_after_single_product_summary' );
-      @endphp
     </div>
-
-    {!! do_action( 'woocommerce_after_single_product' ) !!}
-
   </div>
 </div>

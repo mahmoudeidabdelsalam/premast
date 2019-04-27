@@ -1,6 +1,10 @@
 body {
   font-family: $font-Roboto;
   font-weight: 300;
+
+  &.single-product {
+    background: rgb(239, 246, 250);
+  }
 }
 
 .background-overlay {

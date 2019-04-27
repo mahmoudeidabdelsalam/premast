@@ -39,6 +39,7 @@ form#searchform {
     background: transparent;
     border: none;
     color: rgb(151, 151, 151);
+    height: 35px;
 
     &:focus {
       border: none;
@@ -53,10 +54,12 @@ form#searchform {
     color: rgba(255, 255, 255, 0.42);
     font-size: 15px;
     text-transform: capitalize;
-    padding: 13px 20px;
+    padding: 5px 20px;
 
     &.active {
       color: $brand-white !important;
+      border: 1px solid rgb(29, 108, 253);
+      border-radius: 3px;
     }
   }
 }
@@ -74,6 +77,7 @@ form#searchform {
 
 section.banner-items {
   position: relative;
+  padding: 70px 0 60px;
 }
 
 .item-card {
@@ -81,25 +85,34 @@ section.banner-items {
     position: relative;
     box-shadow: none;
     border: none;
+    background-color: transparent;
 
     .bg-white {
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 1px 0 5px rgba(57, 69, 84, 0.4);
+      position: relative;
+    }
+
+    h5.card-title {
+      font-size: 16px;
+      color: rgb(61, 69, 82);
+      font-weight: 500;
+      margin-bottom: 5px;
     }
   }
 
   .card-overlay {
     position: absolute;
     width: 100%;
-    height: 83%;
+    height: 100%;
     display: flex;
     border-radius: 10px;
     justify-content: center;
     align-items: center;
     text-align: center;
     background-color: rgba(3, 28, 64, 0.6);
-    top: 100%;
+    top: 0;
     transition: all 0.5s;
     opacity: 0;
 
@@ -107,7 +120,6 @@ section.banner-items {
       p {
         background-color: rgb(0, 106, 255);
         padding: 10px 10px 6px 10px;
-        width: 100px;
         margin: 10px auto;
         border-radius: 3px;
         color: rgb(255, 255, 255);
@@ -133,40 +145,55 @@ section.banner-items {
 }
 
 .product-child {
-  padding: 15px 20px 0;
+  padding: 0;
   border-radius: 5px;
   background-color: rgb(61, 69, 82);
   transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+  overflow: hidden;
 
   h2 {
-    color: $brand-white;
-    font-size: 14px;
     font-weight: 300;
     border-bottom: 1px solid rgba(255, 255, 255, 0.22);
-    padding-bottom: 10px;
+    padding: 20px;
+    background: #282f39;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 16px;
+    letter-spacing: 0.15px;
+    line-height: 19px;
   }
 
   ul {
+    margin: 10px;
+
     .list-group-item {
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: none;
       background-color: transparent;
       border-radius: 3px;
       margin-bottom: 5px !important;
-      padding: 10px !important;
+      padding: 0 !important;
 
       .text-term {
         background: transparent;
-        padding: 10px 0 !important;
+        padding: 10px 30px !important;
         border-top: 0;
         border-right: 0;
         border-left: 0;
         font-size: 14px;
+        display: flex;
+        justify-content: space-between;
 
         &.active {
           color: $brand-white !important;
         }
       }
     }
+  }
+
+  &.sticky {
+    position: fixed;
+    top: 97px;
+    width: 23%;
+    max-width: 23%;
   }
 }
 
@@ -192,11 +219,11 @@ section.banner-items {
 
 .product-list,
 .product-grid {
-  width: 34px;
+  width: 27px;
   display: inline-block;
-  height: 34px;
+  height: 27px;
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: contain;
   background-position: center;
   position: relative;
   top: 3px;
@@ -216,8 +243,9 @@ section.banner-items {
     background-color: rgb(57, 69, 84);
     padding: 5px 15px 5px 10px;
     border-radius: 5px;
+    font-size: 14px;
 
-    .fixed-top-header .dropdown i {
+    i {
       font-size: 30px;
       line-height: 10px;
       position: relative;

@@ -1,0 +1,96 @@
+.single-product {
+  .content-single {
+    background-color: white;
+    border: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 35px 20px;
+
+    .woocommerce-product-gallery {
+      width: 100% !important;
+    }
+
+    #review_form {
+      #respond {
+        .form-submit {
+          input {
+            left: auto;
+            background-color: rgb(30, 109, 251);
+            border-color: rgb(30, 109, 251);
+            float: right;
+          }
+        }
+      }
+    }
+  }
+
+  .product-title {
+    font-size: 26px;
+    line-height: 32px;
+    font-weight: 400;
+  }
+
+  .breadcrumb {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    color: #1e69f3;
+
+    .woocommerce-breadcrumb {
+      color: #1e6af4;
+
+      a {
+        color: #1e6af4;
+      }
+    }
+  }
+
+  .product-term {
+    padding: 15px;
+    text-align: center;
+  }
+}
+
+.download-product {
+  border-top: solid 7px rgb(25, 122, 247) !important;
+  background-color: $brand-white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  margin-top: 20px;
+  padding: 30px;
+
+  h1,
+  .product_meta {
+    display: none;
+  }
+
+  p.price {
+    font-size: 30px !important;
+    color: rgb(25, 122, 247) !important;
+  }
+
+  button#somdn-form-submit-button {
+    background-color: rgb(30, 109, 251);
+    width: 100% !important;
+    color: $brand-white;
+    text-align: center;
+    padding: 15px;
+    display: block;
+    border-radius: 6px;
+    margin-top: 20px;
+    font-weight: 400;
+    font-size: 17px;
+  }
+
+  .somdn-download-count-wrap {
+    p {
+      font-size: 14px;
+      background: rgb(32, 36, 40);
+      width: auto;
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 5px;
+      color: $brand-white;
+    }
+  }
+}

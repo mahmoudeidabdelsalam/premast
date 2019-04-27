@@ -50,7 +50,21 @@ export default {
         $('.fixed-top-header').removeClass('fixed-header');
       }
     });
-    
+
+    $(window).scroll(function () {
+      if ($(window).scrollTop() >= 200) {
+        $('.product-child').addClass('sticky');
+      }
+      else {
+        $('.product-child').removeClass('sticky');
+      }
+
+      if ($(window).scrollTop() >= 2000) {
+        $('.product-child').removeClass('sticky');
+      }
+
+    });
+
     $('.gallery-widgets').slick({
       dots: true,
       infinite: false,
