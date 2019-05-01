@@ -168,6 +168,28 @@ if( function_exists('acf_add_local_field_group') ):
 				),
       ),
       
+      array(
+        'key' => 'field_5cbaeads9231434324324f7e6af47',
+        'label' => 'link Page Sign in',
+        'name' => 'link_page_login',
+        'type' => 'page_link',
+        'instructions' => '',
+        'required' => 0,
+        'conditional_logic' => 0,
+        'wrapper' => array(
+          'width' => '',
+          'class' => '',
+          'id' => '',
+        ),
+        'post_type' => array(
+          0 => 'page',
+        ),
+        'taxonomy' => '',
+        'allow_null' => 0,
+        'allow_archives' => 1,
+        'multiple' => 0,
+      ),
+      
 		  array(
 				'key' => 'field_fdsfsdfwererwe5a931c668284d',
 				'label' => 'Welcome',
@@ -417,7 +439,50 @@ if( function_exists('acf_add_local_field_group') ):
 					'class' => '',
 					'id' => '',
 				),
-			),
+      ),
+      
+      array(
+				'key' => 'field_5aewqe3449254343asddsd2fafasfad30880',
+				'label' => 'Sections',
+				'name' => '',
+				'type' => 'tab',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'placement' => 'left',
+				'endpoint' => 0,
+      ),
+      
+      array (
+				'return_format' => 'url',
+				'preview_size' => 'thumbnail',
+				'library' => 'all',
+				'min_width' => '',
+				'min_height' => '',
+				'min_size' => '',
+				'max_width' => '',
+				'max_height' => '',
+				'max_size' => '',
+				'mime_types' => '',
+				'key' => 'field_584fd6sadsadsads8654956',
+				'label' => 'Header Section Image',
+				'name' => 'header_section_image',
+				'type' => 'image',
+				'instructions' => 'we can used this Image for the any Header pages',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array (
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+      ),
+
 
 		),
 		'location' => array (

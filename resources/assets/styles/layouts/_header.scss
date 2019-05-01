@@ -6,7 +6,7 @@
   @extend .nav-link;
 }
 
-header {
+header.banner {
   box-shadow: 0 0 13px 0 rgba(0, 0, 0, 0.06);
   transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
 
@@ -60,6 +60,12 @@ form#searchform {
       color: $brand-white !important;
       border: 1px solid rgb(29, 108, 253);
       border-radius: 3px;
+    }
+
+    &:hover {
+      color: $brand-white;
+      border-radius: 3px;
+      background-color: rgba(0, 0, 0, 0.21);
     }
   }
 }
@@ -251,5 +257,114 @@ section.banner-items {
       position: relative;
       top: 6px;
     }
+  }
+}
+
+.custom-header {
+  position: relative;
+  padding: 70px 0 60px;
+  background-image: linear-gradient(150deg, #56ecf2 0%, #4242e3 100%);
+
+  h1 {
+    text-align: center;
+    font-weight: 300;
+    color: $brand-white;
+  }
+}
+
+.profile-dropdown {
+  display: inline-block;
+  position: relative;
+  margin: 10px;
+  font-size: 1.3rem;
+  border-radius: 3px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+
+  * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  input[type="checkbox"] {
+    display: none;
+
+    &:checked {
+      & ~ ul {
+        display: block;
+        animation: pulse 0.5s;
+      }
+
+      & ~ label {
+        i {
+          color: #f2f2f2;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 100%;
+          right: calc(50% - 10px);
+          display: block;
+          border-style: solid;
+          border-width: 7px 10px 0 10px;
+          width: 0;
+          height: 0;
+        }
+      }
+    }
+  }
+
+  .link-dropdown {
+    display: none;
+    list-style: none;
+    padding: 0;
+    background: #fff;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    border-radius: 3px;
+    z-index: 99;
+    min-width: 200px;
+
+    .item-dropdown {
+      a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: darken(#f2f2f2, 50%);
+        font-size: 14px;
+
+        .fa {
+          font-size: 1.3rem;
+          vertical-align: middle;
+          margin: 0 0.75rem 0 -0.25rem;
+        }
+
+        &:hover {
+          background: darken(#f2f2f2, 5%);
+        }
+      }
+
+      &:first-child a:hover {
+        border-radius: 3px 3px 0 0;
+      }
+
+      &:last-child a:hover {
+        border-radius: 0 0 3px 3px;
+      }
+    }
+  }
+
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
   }
 }

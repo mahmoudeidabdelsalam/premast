@@ -1,0 +1,191 @@
+.woocommerce,
+.woocommerce-page {
+  .col2-set {
+    .col-1,
+    .col-2 {
+      flex: 0 0 48% !important;
+      max-width: 48%;
+    }
+  }
+
+  form {
+    .form-row {
+      span.woocommerce-input-wrapper {
+        display: block;
+        width: 100%;
+        min-height: 40px;
+      }
+
+      input.input-text,
+      textarea {
+        min-height: 40px;
+        padding: 10px;
+      }
+    }
+  }
+}
+
+.woocommerce-account {
+  .woocommerce-MyAccount-navigation {
+    width: 20%;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 0 4px #ccc;
+  }
+
+  .woocommerce {
+    width: 100%;
+    padding: 50px 0;
+  }
+
+  .woocommerce-MyAccount-content {
+    float: left;
+    margin-left: 5%;
+    width: 75%;
+  }
+
+  .woocommerce-MyAccount-navigation ul {
+    padding: 0;
+    margin: 0;
+
+    li {
+      list-style: none;
+      padding: 0 10px;
+
+      a {
+        padding: 10px 5px;
+        display: block;
+
+        &::before {
+          margin-right: 20px;
+          opacity: 0.25;
+        }
+
+        &:hover::before {
+          opacity: 1;
+        }
+      }
+
+      &.is-active {
+        background-color: #000;
+
+        a {
+          color: $brand-white;
+
+          &::before {
+            opacity: 1;
+          }
+        }
+      }
+
+      &.woocommerce-MyAccount-navigation-link--dashboard a::before {
+        font-family: $font-aswsome;
+        content: "\f0e4";
+      }
+
+      &.woocommerce-MyAccount-navigation-link--orders a::before {
+        font-family: $font-aswsome;
+        content: "\f291";
+      }
+
+      &.woocommerce-MyAccount-navigation-link--downloads a::before {
+        font-family: $font-aswsome;
+        content: "\f1c6";
+      }
+
+      &.woocommerce-MyAccount-navigation-link--edit-address a::before {
+        font-family: $font-aswsome;
+        content: "\f015";
+      }
+
+      &.woocommerce-MyAccount-navigation-link--payment-methods a::before {
+        font-family: $font-aswsome;
+        content: "\f09d";
+      }
+
+      &.woocommerce-MyAccount-navigation-link--edit-account a::before {
+        font-family: $font-aswsome;
+        content: "\f007";
+      }
+
+      &.woocommerce-MyAccount-navigation-link--customer-logout a::before {
+        font-family: $font-aswsome;
+        content: "\f08b";
+      }
+    }
+  }
+
+  .woocommerce-MyAccount-content h2 {
+    font-size: 25px;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  p.order-again {
+    text-align: right;
+  }
+
+  .woocommerce-EditAccountForm input[type="submit"] {
+    margin-top: 50px;
+    float: right;
+  }
+}
+
+.iump-register-form,
+.ihc-login-form-wrap {
+  width: 100%;
+  padding: 0;
+
+  form {
+    label.iump-labels-register {
+      display: block;
+      width: 100%;
+      text-align: left;
+    }
+
+    input {
+      width: 100%;
+      min-height: 40px;
+
+      &[type=checkbox] {
+        width: auto;
+      }
+    }
+
+    .iump-submit-form,
+    .impu-form-submit {
+      box-shadow: 0 10px 11px -7px #0060ffc9;
+      border-radius: 50px !important;
+      padding: 0 !important;
+      background-image: linear-gradient(to bottom right, rgb(107, 115, 255), rgb(0, 13, 255));
+      max-width: 80%;
+      max-height: 43px;
+      margin: 30px auto;
+      overflow: hidden;
+
+      input {
+        background: transparent !important;
+        border: none !important;
+        color: #fff;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+.ihc-login-form-wrap {
+  width: 100%;
+  margin: 30px auto 0;
+}
+
+.ihc-pass-form-wrap {
+  width: 100%;
+}
+
+.ihc-sm-item.ihc-goo {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+  border-radius: 3px;
+}

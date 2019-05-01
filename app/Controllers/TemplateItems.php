@@ -62,6 +62,17 @@ class TemplateItems extends Controller
     }
 
     $loop = new \WP_Query( $args );
+          
+    while($loop->have_posts()): 
+      $loop->the_post();
+
+      
+      $download_count = get_post_meta(get_the_ID(), 'pageview', true);
+
+      // dd($download_count);
+      
+    endwhile;
+
 
     return  $loop;
   }
