@@ -39,6 +39,7 @@
                           $rating_count = method_exists($product, 'get_rating_count')   ? $product->get_rating_count()   : 1;
                           $review_count = method_exists($product, 'get_review_count')   ? $product->get_review_count()   : 1;
                           $average      = method_exists($product, 'get_average_rating') ? $product->get_average_rating() : 0;
+                          $counter_download = get_post_meta( get_the_ID(), 'counterdownload', true );
                         ?>
                         @if ($rating_count > 0)
                           {!! wc_get_rating_html($average, $rating_count) !!}
@@ -50,7 +51,7 @@
                       @endif
                     </div>
                     <div class="download">
-                      <span>{{ _e('Downloads', 'premast') }}</span>
+                      <span>{{ ($counter_download)? $counter_download:'0' }} {{ _e('Downloads', 'premast') }}</span>
                     </div>
                   </div>
                 </div>

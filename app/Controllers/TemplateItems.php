@@ -27,10 +27,10 @@ class TemplateItems extends Controller
     $orderby = 'meta_value_num';
     $order = 'DESC';
     $meta_key = 'c95_post_views_count';
-  elseif ( $sort == 'download' ):
-    $orderby = 'meta_value';
+  elseif( $sort == 'download') :
+    $orderby = 'meta_value_num';
     $order = 'DESC';
-    $meta_key = '';
+    $meta_key = 'counterdownload';
   else :
     $orderby = 'date';
     $order = 'DESC';
@@ -62,18 +62,7 @@ class TemplateItems extends Controller
     }
 
     $loop = new \WP_Query( $args );
-          
-    while($loop->have_posts()): 
-      $loop->the_post();
-
-      
-      $download_count = get_post_meta(get_the_ID(), 'pageview', true);
-
-      // dd($download_count);
-      
-    endwhile;
-
-
+        
     return  $loop;
   }
 

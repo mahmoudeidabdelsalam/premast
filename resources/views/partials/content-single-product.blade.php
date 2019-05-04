@@ -16,10 +16,14 @@ if ( post_password_required() ) {
           <div class="col-12">
             <?php woocommerce_breadcrumb(); ?>
             <h2 class="product-title">{{ the_title() }}</h2>
-            
             @php
               do_action( 'woocommerce_before_single_product_summary' );
             @endphp
+            @if (get_field('slide_gallery'))
+              <div class="embed-container">
+                {{ the_field('slide_gallery') }}
+              </div>
+            @endif
           </div>
           @include('partials/incloud/comments')
         </div>
@@ -31,17 +35,14 @@ if ( post_password_required() ) {
             do_action( 'woocommerce_single_product_summary' );
           @endphp
         </div>
-        
+        @include('partials/incloud/sharemeta')
         @php dynamic_sidebar('sidebar-shop') @endphp
-
       </div>
-    
       <div class="col-12">
           @php
             do_action( 'woocommerce_after_single_product_summary' );
           @endphp
       </div>
-
     </div>
   </div>
 </div>

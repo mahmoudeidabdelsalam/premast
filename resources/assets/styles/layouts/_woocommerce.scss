@@ -23,6 +23,20 @@
       }
     }
   }
+
+  .quantity {
+    .qty {
+      height: 35px;
+    }
+  }
+
+  div.product {
+    form.cart {
+      .button {
+        background-color: rgb(23, 122, 247);
+      }
+    }
+  }
 }
 
 .woocommerce-account {
@@ -188,4 +202,17 @@
   text-align: center;
   padding: 5px;
   border-radius: 3px;
+}
+
+.woocommerce-cart,
+.woocommerce-checkout {
+  .woocommerce {
+    width: 100%;
+    margin: 30px auto;
+
+    form.woocommerce-cart-form {
+      width: 100%;
+      display: inline-block;
+    }
+  }
 }

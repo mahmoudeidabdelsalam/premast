@@ -18,6 +18,14 @@ header.banner {
     .dropdown-menu {
       li {
         width: 100%;
+
+        .nav-link {
+          color: rgba(0, 0, 0, 0.5) !important;
+
+          &:hover {
+            color: rgba(0, 0, 0, 0.7) !important;
+          }
+        }
       }
     }
   }
@@ -323,8 +331,8 @@ section.banner-items {
   .link-dropdown {
     display: none;
     list-style: none;
-    padding: 0;
-    background: #fff;
+    padding: 10px 0;
+    background: $brand-white;
     position: absolute;
     top: 100%;
     right: 0;
