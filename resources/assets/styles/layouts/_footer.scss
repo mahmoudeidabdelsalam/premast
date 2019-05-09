@@ -15,6 +15,39 @@ footer {
       label.gfield_label {
         display: none !important;
       }
+
+      form {
+        display: flex;
+        align-items: center;
+
+        input {
+          background-color: rgb(61, 69, 82);
+          border-color: rgba(30, 109, 251, 0.52);
+          border-width: 0;
+          border-radius: 50px 50px 50px 50px;
+          padding: 20px !important;
+          height: 45px !important;
+        }
+
+        .gform_heading {
+          display: none;
+        }
+
+        .gform_footer {
+          padding: 0;
+          width: auto;
+          white-space: nowrap;
+
+          button {
+            height: 45px !important;
+            line-height: 41px !important;
+            padding: 0 20px !important;
+            border: 2px solid !important;
+            border-radius: 50px !important;
+            font-size: 14px;
+          }
+        }
+      }
     }
   }
 
@@ -24,6 +57,10 @@ footer {
 
       .menu-item {
         .nav-link {
+          color: $brand-white;
+          font-size: 14px;
+          font-weight: 500;
+
           &[data-toggle="dropdown"] {
             color: $brand-white;
             font-size: 14px;
