@@ -21,3 +21,9 @@
   @extend .btn;
   @extend .btn-secondary;
 }
+
+.custom-container {
+  @include media-breakpoint-up(lg) {
+    max-width: 1170px;
+  }
+}

@@ -2,7 +2,9 @@
 import 'jquery';
 import 'slick-carousel/slick/slick.js';
 import 'devbridge-autocomplete/dist/jquery.autocomplete.min';
-import 'masonry-layout/dist/masonry.pkgd'
+import 'masonry-layout/dist/masonry.pkgd';
+import 'lightgallery/dist/js/lightgallery-all.min';
+import 'lightslider/dist/js/lightslider.min';
 
 // Import everything from autoload
 import './autoload/**/*'

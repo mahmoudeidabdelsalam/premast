@@ -27,3 +27,10 @@ function thenga_price_override( $price, $product ) {
    return $price;
 }
 add_filter( 'woocommerce_get_price_html', 'thenga_price_override', 100, 2 );
+
+function remove_gallery_and_product_images() {
+if ( is_product() ) {
+    remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20 );
+    }
+}
+add_action('loop_start', 'remove_gallery_and_product_images');

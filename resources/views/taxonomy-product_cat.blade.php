@@ -93,7 +93,7 @@
 
             <div class="item-card col-md-4 col-sm-4 col-sx-6 col-12 grid-item pl-4 pr-4">
               <div class="card">
-                <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}'); height: 300px;">
+                <div class="bg-white" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');">
                   <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
                   <div class="card-overlay">
                     <a class="card-link" href="{{ the_permalink() }}">

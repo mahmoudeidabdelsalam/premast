@@ -14,9 +14,9 @@
 
 @endphp
 
-<header class="bg-gray banner">
+<header class="bg-gray-dark banner">
   <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-gray">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-gray-dark">
       <h2 class="logos">
         <a class="navbar-brand p-0 align-self-center col" href="{{ home_url('/') }}" title="{{ get_bloginfo('name') }}">
             <img class="img-fluid" src="@if(get_field('website_logo', 'option')) {{ the_field('website_logo','option') }} @else {{ get_theme_file_uri().'/dist/images/premast-templates.png' }} @endif" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
@@ -35,7 +35,7 @@
       <div class="half">
         <label for="profile" class="profile-dropdown">
           <input type="checkbox" id="profile">
-          <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+          <i class="fa fa-user-circle-o text-white" aria-hidden="true"></i>
           @if ( is_user_logged_in() ) 
             <ul class="link-dropdown">
               <li class="item-dropdown"><a href="{{ $account_url }}"><i class="fa fa-tachometer"></i>{{ _e('Dashborad', 'premast') }}</a></li>
