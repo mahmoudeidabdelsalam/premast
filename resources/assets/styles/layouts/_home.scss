@@ -1,6 +1,19 @@
 .welcome {
   height: 80vh;
   position: relative;
+
+  @include media-breakpoint-down(sm) {
+    height: 100vh;
+    padding: 20px 0;
+
+    img {
+      margin: 20px auto;
+    }
+
+    .col-md-6 {
+      text-align: center;
+    }
+  }
 }
 
 .tab-slider {
@@ -23,9 +36,18 @@
     position: relative;
     z-index: 99;
 
+    @include media-breakpoint-down(sm) {
+      padding: 10px;
+    }
+
     p {
       color: rgba(61, 69, 82, 0.63);
       font-size: 20px;
+
+      @include media-breakpoint-down(sm) {
+        font-size: 12px;
+        text-align: center;
+      }
     }
   }
 
@@ -97,6 +119,14 @@
 
   img {
     display: block;
+  }
+
+  @include media-breakpoint-down(sm) {
+    height: 165px;
+
+    img {
+      max-width: 100%;
+    }
   }
 }
 

@@ -92,11 +92,25 @@ footer {
       }
     }
   }
+
+  @include media-breakpoint-down(sm) {
+    &.content-info {
+      display: none;
+    }
+  }
 }
 
 section.copyright {
   color: rgba(255, 255, 255, 0.26);
   padding: 20px;
+
+  @include media-breakpoint-down(sm) {
+    padding: 20px 0;
+
+    .col-md-6 {
+      margin: 10px auto;
+    }
+  }
 
   .social-icons-ql {
     li {

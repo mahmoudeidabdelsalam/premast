@@ -27,6 +27,25 @@ header.banner {
           }
         }
       }
+
+      @include media-breakpoint-down(sm) {
+        border: none;
+        background: transparent;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .half {
+      order: 1;
+    }
+
+    .navbar-toggler {
+      order: 2;
+    }
+
+    .navbar-collapse {
+      order: 3;
     }
   }
 }
@@ -74,6 +93,15 @@ form#searchform {
       color: $brand-white;
       border-radius: 3px;
       background-color: rgba(0, 0, 0, 0.21);
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    text-align: center;
+    padding: 10px;
+
+    .text-term {
+      padding: 5px;
     }
   }
 }

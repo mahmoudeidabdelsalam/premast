@@ -18,7 +18,7 @@
           <a class="btn btn-green text-small" href="{{$welcome_home['link']}}">{{ _e('Get started', 'premast') }} <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
         </div>
         <div class="col-md-6 col-sm-12 wow bounceInUp"  data-wow-duration="1s" data-wow-delay="1s">
-          <img src="{{$welcome_home['image']}}" alt="{{ get_bloginfo('name') }}" title="{{ get_bloginfo('name') }}">
+          <img class="img-fluid" src="{{$welcome_home['image']}}" alt="{{ get_bloginfo('name') }}" title="{{ get_bloginfo('name') }}">
         </div>
       </div>
     </div>
