@@ -68,7 +68,7 @@ global $product;
           gallery: true,
           item: 1,
           loop: true,
-          thumbItem: 10,
+          thumbItem: 6,
           slideMargin: 0,
           enableDrag: false,
           currentPagerPosition: 'left',
@@ -87,6 +87,5 @@ global $product;
             },
           }],
         });
-
     });
 </script>

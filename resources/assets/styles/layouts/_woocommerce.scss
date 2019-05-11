@@ -226,22 +226,4 @@
       justify-content: center;
     }
   }
-
-  ul.lSPager {
-    display: flex;
-    width: 100% !important;
-    flex-wrap: wrap;
-
-    li {
-      width: 22% !important;
-      flex: 0 0 22%;
-      height: 110px !important;
-      margin: 10px;
-
-      img {
-        height: 100% !important;
-        width: auto !important;
-      }
-    }
-  }
 }
