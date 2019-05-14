@@ -54,6 +54,10 @@ global $product;
           @php  
             do_action( 'woocommerce_single_product_summary' );
           @endphp
+        
+          @if ( !is_user_logged_in() )
+            <a class="mt-2 login" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Log In', 'premast') }}</a>
+          @endif
         </div>
         @include('partials/incloud/sharemeta')
         @php dynamic_sidebar('sidebar-shop') @endphp

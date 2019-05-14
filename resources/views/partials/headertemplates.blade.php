@@ -60,7 +60,7 @@
           @endforeach
         </ul>
       </div>
-      @if ( !is_singular('product') ) 
+      @if ( !is_singular('product') || !is_page_template( 'template-custom-header.php' ) ) 
       <div class="col-md-3 col-sm-12 col-12 m-0 row justify-content-md-end justify-content-center align-items-center p-0">
         <ul class="list-inline m-0 product-term">
           <li class="list-inline-item"><a class="product-grid text-silver" href="javascript:void(0);"></a></li>

@@ -69,7 +69,8 @@
     color: rgb(25, 122, 247) !important;
   }
 
-  button#somdn-form-submit-button {
+  button#somdn-form-submit-button,
+  .login {
     background-color: rgb(30, 109, 251);
     width: 100% !important;
     color: $brand-white;
