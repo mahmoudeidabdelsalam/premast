@@ -20,7 +20,6 @@ global $product;
             @php
               do_action( 'woocommerce_before_single_product_summary' );
             @endphp
-
              @php  
               $attachment_ids = $product->get_gallery_image_ids();
             @endphp                         
@@ -31,14 +30,20 @@ global $product;
                   <img src="{{ wp_get_attachment_url( $attachment_id )}}" />
                 </li>
               @endforeach
-            </ul> 
+            </ul>
+            @else 
+              <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}"> 
             @endif
-
             @if (get_field('slide_gallery'))
               <div class="embed-container">
                 {{ the_field('slide_gallery') }}
               </div>
             @endif
+
+            <div class="product-infomation">
+              <h3>{{ _e('Description', 'premast') }}</h3>
+              <div id="tab-description">{{ the_content() }}</div>
+            </div>
           </div>
           @include('partials/incloud/comments')
         </div>

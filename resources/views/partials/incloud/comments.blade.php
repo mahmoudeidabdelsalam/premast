@@ -23,20 +23,20 @@ if ( ! comments_open() ) {
 	return;
 }
 ?>
-<div id="reviews" class="woocommerce-Reviews col-12">
+<div id="reviews" class="woocommerce-Reviews col-12 mt-5 product-infomation">
 	<div id="comments">
-		<h2 class="woocommerce-Reviews-title">
+		<h3 class="woocommerce-Reviews-title">
 			<?php
 			$count = $product->get_review_count();
 			if ( $count && wc_review_ratings_enabled() ) {
 				/* translators: 1: reviews count 2: product name */
-				$reviews_title = sprintf( esc_html( _n( '%1$s review for %2$s', '%1$s reviews for %2$s', $count, 'woocommerce' ) ), esc_html( $count ), '<span>' . get_the_title() . '</span>' );
+				$reviews_title = sprintf( esc_html( _n( 'review (%1$s)', 'reviews (%1$s)', $count, 'woocommerce' ) ), esc_html( $count ), '<span>' . get_the_title() . '</span>' );
 				echo apply_filters( 'woocommerce_reviews_title', $reviews_title, $count, $product ); // WPCS: XSS ok.
 			} else {
 				esc_html_e( 'Reviews', 'woocommerce' );
 			}
 			?>
-		</h2>
+		</h3>
 
 		<?php if ( have_comments() ) : ?>
 			<ol class="commentlist">
@@ -71,9 +71,9 @@ if ( ! comments_open() ) {
 				$commenter = wp_get_current_commenter();
 				$comment_form = array(
 					/* translators: %s is product title */
-					'title_reply'         => have_comments() ? __( 'Add a review', 'woocommerce' ) : sprintf( __( 'Be the first to review &ldquo;%s&rdquo;', 'woocommerce' ), get_the_title() ),
+					/* 'title_reply'         => have_comments() ? __( 'Add a review', 'woocommerce' ) : sprintf( __( 'Be the first to review &ldquo;%s&rdquo;', 'woocommerce' ), get_the_title() ), */
 					/* translators: %s is product title */
-					'title_reply_to'      => __( 'Leave a Reply to %s', 'woocommerce' ),
+					/* 'title_reply_to'      => __( 'Leave a Reply to %s', 'woocommerce' ),*/
 					'title_reply_before'  => '<span id="reply-title" class="comment-reply-title">',
 					'title_reply_after'   => '</span>',
 					'comment_notes_after' => '',

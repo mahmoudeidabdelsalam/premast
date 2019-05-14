@@ -1,4 +1,10 @@
 footer {
+  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+  padding: 0 50px;
+  min-height: 265px;
+  display: flex;
+  align-items: center;
+
   .gform_widget {
     h3 {
       color: rgba(255, 255, 255, 0.52);
@@ -103,6 +109,7 @@ footer {
 section.copyright {
   color: rgba(255, 255, 255, 0.26);
   padding: 20px;
+  background-color: rgb(61, 69, 82);
 
   @include media-breakpoint-down(sm) {
     padding: 20px 0;
@@ -116,16 +123,82 @@ section.copyright {
     li {
       a {
         background-color: rgb(101, 109, 122);
-        width: 40px;
+        width: 35px;
         display: flex;
-        height: 40px;
+        height: 35px;
         justify-content: center;
         align-items: center;
+        border-radius: 7px;
 
         i {
           font-size: 15px !important;
         }
       }
     }
+  }
+}
+
+div#LoginUser {
+  form#loginform {
+    p {
+      input[type="text"],
+      input[type="password"] {
+        display: inline-block;
+        width: 100%;
+        height: 40px;
+        border-radius: 5px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        font-size: 16px;
+        font-weight: 100;
+        padding: 0 10px;
+      }
+
+      &.login-remember {
+        display: inline-block;
+        font-weight: 400;
+        font-size: 14px;
+        padding-left: 3px;
+        color: rgb(119, 119, 119);
+
+        input {
+          border-radius: 0;
+          height: 20px;
+          width: 20px;
+          margin: 0 5px 0;
+          border: 2px solid rgb(221, 221, 221);
+          background: $brand-white;
+          position: relative;
+          vertical-align: middle;
+        }
+      }
+
+      &.login-submit {
+        margin: 0;
+
+        input#wp-submit {
+          padding: 6px 20px;
+          border-radius: 20px;
+          background: none;
+          border: 2px solid rgb(37, 49, 107);
+          color: rgb(39, 45, 57);
+          font-weight: bold;
+          transition: all 0.5s;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .modal-footer {
+    background-color: rgb(40, 46, 57);
+
+    a {
+      color: rgb(43, 183, 227);
+      font-size: 14px;
+    }
+  }
+
+  .modal-content {
+    border-radius: 10px;
   }
 }

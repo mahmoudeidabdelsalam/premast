@@ -363,32 +363,43 @@ section.banner-items {
   .link-dropdown {
     display: none;
     list-style: none;
-    padding: 10px 0;
-    background: $brand-white;
+    padding: 0;
+    background: rgb(61, 69, 82);
     position: absolute;
-    top: 100%;
+    top: 40px;
     right: 0;
     width: 100%;
     border-radius: 3px;
     z-index: 99;
     min-width: 200px;
+    box-shadow: 0 14px 36px 0 rgba(61, 69, 82, 0.47);
+
+    &::before {
+      content: "";
+      border: 8px solid transparent;
+      border-bottom-color: rgb(61, 69, 82);
+      height: 0;
+      left: 91%;
+      position: absolute;
+      top: -16px;
+      width: 1px;
+    }
 
     .item-dropdown {
-      a {
+      a,
+      .item-user {
         display: block;
         padding: 10px;
         text-decoration: none;
-        color: darken(#f2f2f2, 50%);
         font-size: 14px;
-
-        .fa {
-          font-size: 1.3rem;
-          vertical-align: middle;
-          margin: 0 0.75rem 0 -0.25rem;
-        }
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.88);
+        background-color: transparent;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        text-align: center;
 
         &:hover {
-          background: darken(#f2f2f2, 5%);
+          background-color: rgb(40, 47, 57);
         }
       }
 
@@ -406,5 +417,49 @@ section.banner-items {
     content: "";
     display: table;
     clear: both;
+  }
+}
+
+.premast-social-icons {
+  margin: 21px 0 0;
+  padding: 20px 0 10px;
+  background-color: rgb(40, 47, 57);
+  border-radius: 0 0 8px 8px;
+  text-align: center;
+
+  .premast-icon {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: $brand-white;
+    font-size: 12px;
+    margin: 0;
+    padding: 5px;
+    width: 30px !important;
+    display: inline-block;
+    height: 30px;
+    border-radius: 100%;
+
+    &.icon-facebook {
+      &:hover {
+        background-color: rgb(59, 89, 152);
+      }
+    }
+
+    &.icon-twitter {
+      &:hover {
+        background-color: rgb(29, 161, 242);
+      }
+    }
+
+    &.icon-behance {
+      &:hover {
+        background-color: rgb(23, 105, 255);
+      }
+    }
+
+    &.icon-youtube {
+      &:hover {
+        background-color: rgb(205, 32, 31);
+      }
+    }
   }
 }

@@ -398,6 +398,28 @@
       margin: 20px;
       right: 0;
     }
+
+    .link-title {
+      font-size: 19px;
+      font-weight: 400;
+      color: rgb(61, 69, 82);
+    }
+
+    .card-text {
+      color: rgba(61, 69, 82, 0.64);
+      font-size: 14px;
+      font-weight: 400;
+      margin: 0;
+      line-height: 1.5em;
+    }
+
+    .card-body {
+      padding-bottom: 40px;
+
+      p {
+        margin: 0;
+      }
+    }
   }
 
   h2.headline {
@@ -408,7 +430,7 @@
     text-align: center;
   }
 
-  p.elementor-text {
+  .elementor-text {
     color: rgba(61, 69, 82, 0.73);
     font-size: 15px;
     text-align: center;
@@ -416,23 +438,25 @@
     margin-bottom: 40px;
   }
 
-  p.card-time {
+  .card-time {
     position: absolute;
     bottom: 0;
     margin: 0;
     left: 0;
     right: 0;
     padding: 15px 30px;
-    border-top: 1px solid #eaeaea;
+    border-top: 1px solid rgb(234, 234, 234);
     font-size: 12px;
     line-height: 12px;
   }
 
   .read-more {
-    margin-bottom: 20px;
     display: inline-block;
-    color: #1e6dfb;
     font-size: 12px;
     font-weight: 500;
+    color: rgb(30, 109, 251);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    margin-top: 10px;
   }
 }

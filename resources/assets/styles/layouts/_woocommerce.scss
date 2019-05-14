@@ -37,6 +37,12 @@
       }
     }
   }
+
+  .star-rating {
+    span {
+      color: rgb(255, 195, 0);
+    }
+  }
 }
 
 .woocommerce-account {
@@ -225,5 +231,21 @@
       align-items: center;
       justify-content: center;
     }
+  }
+}
+
+.product-infomation {
+  h3 {
+    font-size: 20px;
+    text-transform: capitalize !important;
+    color: rgb(62, 69, 81);
+    font-weight: 700;
+    margin-top: 48px !important;
+  }
+
+  div#tab-description {
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(90, 94, 101, 0.639);
   }
 }
