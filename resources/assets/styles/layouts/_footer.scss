@@ -108,8 +108,9 @@ footer {
 
 section.copyright {
   color: rgba(255, 255, 255, 0.26);
-  padding: 20px;
+  padding: 15px;
   background-color: rgb(61, 69, 82);
+  font-size: 14px;
 
   @include media-breakpoint-down(sm) {
     padding: 20px 0;

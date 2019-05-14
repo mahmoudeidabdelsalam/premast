@@ -6,7 +6,7 @@
 
   if ( $account_id ) {
     $account_url = get_permalink( $account_id );
-    $logout_url = wp_logout_url( home_url(/) );
+    $logout_url = wp_logout_url( home_url('/') );
   }
 @endphp
 
