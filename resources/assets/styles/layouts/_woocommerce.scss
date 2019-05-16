@@ -249,3 +249,42 @@
     color: rgba(90, 94, 101, 0.639);
   }
 }
+
+.information-slide {
+  .tag-post,
+  .slide-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgb(216, 214, 214);
+    margin-bottom: 0;
+
+    span {
+      font-weight: 400;
+    }
+  }
+
+  .tag-post {
+    ul {
+      padding-left: 30px;
+      text-align: right;
+      margin-bottom: 0;
+
+      li {
+        color: $brand-secondary;
+        font-weight: 400;
+
+        &::after {
+          content: ",";
+          padding-left: 1px;
+        }
+
+        &:last-child {
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

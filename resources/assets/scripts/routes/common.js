@@ -36,11 +36,32 @@ export default {
       ],
     });
 
-    $('.grid').masonry({
-      // options...
-      itemSelector: '.grid-item',
+    $(window).load(function () {
+      $('.grid').masonry({
+        // options...
+        itemSelector: '.grid-item',
+      });
     });
 
+    $('.product-grid').click(function () {
+      $('.item-card').show(300);
+      $('.item-card .bg-white').css('height', '300px');
+      $('.item-card .bg-white').addClass('bg-images');
+
+      $('.grid').masonry({
+        itemSelector: '.grid-item',
+      });
+    });
+
+    $('.product-list').click(function () {
+      $('.item-card').show(300);
+      $('.item-card .bg-white').css('height', 'auto');
+      $('.item-card .bg-white').removeClass('bg-images');
+
+      $('.grid').masonry({
+        itemSelector: '.grid-item',
+      });
+    });
 
     $(window).scroll(function () {
       if ($(window).scrollTop() >= 65) {

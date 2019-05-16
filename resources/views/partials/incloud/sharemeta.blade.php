@@ -5,30 +5,52 @@
     $counter = get_post_meta( $post->ID, 'counter', true );
     $counter_download = get_post_meta( $post->ID, 'counterdownload', true );
 
-
     $slide_colors = get_post_meta( $post->ID, 'slide_colors', true );
     $slide_number = get_post_meta( $post->ID, 'slide_number', true );
     $slide_pages = get_post_meta( $post->ID, 'slide_pages', true );
     $slide_date = get_post_meta( $post->ID, 'slide_date', true );
 
+    $slide_type = get_post_meta( $post->ID, 'slide_type', true );
+    $slide_format = get_post_meta( $post->ID, 'slide_format', true );
     
     global $product;
     $rating_count = method_exists($product, 'get_rating_count')   ? $product->get_rating_count()   : 1;
     $review_count = method_exists($product, 'get_review_count')   ? $product->get_review_count()   : 1;
     $average      = method_exists($product, 'get_average_rating') ? $product->get_average_rating() : 0;
 
+    $tags = wp_get_post_terms( get_the_id(), 'product_tag' );
+
 @endphp
 
 <div class="box-counter">
   <div class="downloader">
     @if ($rating_count > 0)
-      {!! wc_get_rating_html($average, $rating_count) !!}
-      <span itemprop="reviewCount">{{ $review_count }} {{ _e('review', 'premast') }}</span>
+      <div class="rating-item"> {!! wc_get_rating_html($average, $rating_count) !!} <span itemprop="reviewCount">{{ $review_count }} {{ _e('review', 'premast') }}</span></div>
     @else 
       {!! wc_get_rating_html('1', '5') !!}
-      <span itemprop="reviewCount">{{ _e('0 review', 'premast') }}</span>
+      <div class="rating-item"><span itemprop="reviewCount">{{ _e('0 review', 'premast') }}</span></div>
     @endif
-    <span class="counter-download"><strong>{{ empty($counter_download) ? 0 : $counter_download}}</strong> {{ _e('Download', 'premast') }}</span>
+    <div class="downloader-item"><span class="counter-download"><strong>{{ empty($counter_download) ? 0 : $counter_download}}</strong> {{ _e('Download', 'premast') }}</span></div>
+  </div>
+  
+  <div class="information-slide">
+    @if($slide_type)
+      <p class="slide-info">{{ _e('Type', 'premast') }} <span>{{ $slide_type }}</span></p>
+    @endif
+    @if($slide_format)
+      <p class="slide-info">{{ _e('File Format', 'premast') }} <span>{{ $slide_format }}</span></p>
+    @endif
+
+    @if ($tags) 
+      <div class="tag-post">
+      {{ _e('Tags', 'premast') }}
+        <ul class="list-inline">
+          @foreach( $tags as $tag ) 
+            <li class="list-inline-item">{{ $tag->name }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
   </div>
   <div class="sharing-posts">
     <ul class="list-inline social-sharer m-0 p-1 pull-left">
