@@ -5,6 +5,40 @@ acf_add_local_field_group(array(
 	'key' => 'group_5ccca4739fc39',
 	'title' => 'Information Slide',
 	'fields' => array(
+    array(
+			'key' => 'field_5cr243sfsfcca58d1e19b',
+			'label' => 'Type Slide',
+			'name' => 'slide_type',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'width' => '',
+			'height' => '',
+    ),
+
+    array(
+			'key' => 'field_5cr24wqtwe434343sfsfcca58d1e19b',
+			'label' => 'Format Slide',
+			'name' => 'slide_format',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'width' => '',
+			'height' => '',
+    ),
+
 		array(
 			'key' => 'field_5ccca58d1e19b',
 			'label' => 'Slide Gallery',
