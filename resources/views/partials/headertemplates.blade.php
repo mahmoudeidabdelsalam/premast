@@ -2,6 +2,8 @@
   $refine   = isset($_GET['refine']) ? $_GET['refine'] : '0';
   $sort   = isset($_GET['sort']) ? $_GET['sort'] : '0';
   $taxonomy_query = get_queried_object();
+
+  global $wp;
 @endphp
 
 <header class="bg-gray-dark banner">
