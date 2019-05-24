@@ -106,7 +106,7 @@
         <?php else : ?>
           <div class="container">
             <div class="row">
-              <div class="woocommerce-Message woocommerce-Message--info woocommerce-info">
+              <div class="woocommerce-Message woocommerce-Message--info woocommerce-info col-12 pt-5 pb-5 mb-5 mt-5">
                 <a class="woocommerce-Button button" href="<?php echo esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ); ?>">
                   <?php esc_html_e( 'Go shop', 'woocommerce' ); ?>
                 </a>
