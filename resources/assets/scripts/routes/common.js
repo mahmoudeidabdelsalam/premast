@@ -36,6 +36,32 @@ export default {
       ],
     });
 
+    $('.profile-dropdown').on('mouseenter', function () {
+      // make sure it is not shown:
+      if (!$(this).parent().hasClass('show')) {
+        $(this).parent().addClass('show');
+      }
+    });
+
+    $('body').click(function () {
+      if ($('.profile-dropdown').parent().hasClass('show')) {
+        $('.profile-dropdown').parent().removeClass('show');
+      }
+    });
+
+    $('li.dropdown a').click(function (e) {
+      e.preventDefault();
+      var $this = $(this);
+      var href = $this.attr('href');
+      
+      if (href === 'undefined') {
+        return false;
+      } else {
+        window.location.href = href;
+      }
+    });
+
+
     $(window).load(function () {
       $('.grid').masonry({
         // options...

@@ -8,7 +8,7 @@
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-dark bg-gray-dark">
       <h2 class="logos">
-        <a class="navbar-brand p-0 align-self-center col" href="{{ home_url('/') }}" title="{{ get_bloginfo('name') }}">
+        <a class="navbar-brand p-0 align-self-center col" href="{{ the_field('link_page_login','option') }}" title="{{ get_bloginfo('name') }}">
             <img class="img-fluid" src="@if(get_field('templates_logo', 'option')) {{ the_field('templates_logo','option') }} @else {{ get_theme_file_uri().'/dist/images/premast-templates.png' }} @endif" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
             <span class="sr-only"> {{ get_bloginfo('name') }} </span>
         </a>

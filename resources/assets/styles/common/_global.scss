@@ -6,6 +6,7 @@ html {
 body {
   font-family: $font-Roboto;
   font-weight: 300;
+  background-color: rgba(61, 69, 82, 0.01);
 
   &.single-product {
     background: rgb(239, 246, 250);

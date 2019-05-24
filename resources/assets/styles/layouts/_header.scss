@@ -12,10 +12,16 @@ header.banner {
 
   .nav-link {
     font-size: 13px;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   .navbar-nav {
     .dropdown-menu {
+      top: 30px;
+
       li {
         width: 100%;
 
@@ -31,6 +37,16 @@ header.banner {
       @include media-breakpoint-down(sm) {
         border: none;
         background: transparent;
+      }
+    }
+
+    li.dropdown {
+      &:hover {
+        & > {
+          .dropdown-menu {
+            display: block;
+          }
+        }
       }
     }
   }
@@ -309,6 +325,12 @@ section.banner-items {
     text-align: center;
     font-weight: 300;
     color: $brand-white;
+  }
+}
+
+.show {
+  .link-dropdown {
+    display: block !important;
   }
 }
 

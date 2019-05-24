@@ -112,7 +112,7 @@
   position: relative;
   width: 100%;
   margin: 30px auto;
-  height: 400px;
+  height: 329px;
   overflow: hidden;
   border-radius: 14px 14px 14px 14px;
   box-shadow: 0 0 35px 0 rgba(2, 50, 180, 0.59);
@@ -138,6 +138,7 @@
   color: $brand-white;
   padding: 1em;
   opacity: 0;
+  background-color: rgb(29, 108, 252);
 
   &.is-hidden {
     visibility: hidden;

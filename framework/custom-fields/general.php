@@ -168,16 +168,82 @@ if( function_exists('acf_add_local_field_group') ):
 				),
       ),
       
+			array(
+				'key' => 'field_5a8bdbe963211048163',
+				'label' => 'Admin Dashborad page',
+				'name' => 'admin_dashborad_page',
+				'type' => 'page_link',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '50',
+					'class' => '',
+					'id' => '',
+				),
+				'post_type' => array(
+					0 => 'page',
+				),
+				'taxonomy' => array(
+				),
+				'allow_null' => 0,
+				'allow_archives' => 0,
+				'multiple' => 0,
+			),
+			array(
+				'key' => 'field_5a8bdbe9631021048163',
+				'label' => 'Dashborad Page',
+				'name' => 'dashborad_page',
+				'type' => 'page_link',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '50',
+					'class' => '',
+					'id' => '',
+				),
+				'post_type' => array(
+					0 => 'page',
+				),
+				'taxonomy' => array(
+				),
+				'allow_null' => 0,
+				'allow_archives' => 0,
+				'multiple' => 0,
+			),
+			array(
+				'key' => 'field_5a8bdbe9102f211048163',
+				'label' => 'Download Page',
+				'name' => 'download_page',
+				'type' => 'page_link',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '50',
+					'class' => '',
+					'id' => '',
+				),
+				'post_type' => array(
+					0 => 'page',
+				),
+				'taxonomy' => array(
+				),
+				'allow_null' => 0,
+				'allow_archives' => 0,
+				'multiple' => 0,
+			),
       array(
         'key' => 'field_5cbaeads9231434324324f7e6af47',
-        'label' => 'link Page Sign in',
+        'label' => 'link Page items',
         'name' => 'link_page_login',
         'type' => 'page_link',
         'instructions' => '',
         'required' => 0,
         'conditional_logic' => 0,
         'wrapper' => array(
-          'width' => '',
+          'width' => '50',
           'class' => '',
           'id' => '',
         ),
@@ -189,7 +255,7 @@ if( function_exists('acf_add_local_field_group') ):
         'allow_archives' => 1,
         'multiple' => 0,
       ),
-      
+
 		  array(
 				'key' => 'field_fdsfsdfwererwe5a931c668284d',
 				'label' => 'Welcome',

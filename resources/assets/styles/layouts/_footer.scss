@@ -140,10 +140,13 @@ section.copyright {
 }
 
 div#LoginUser {
+  .register,
+  .lost_reset_password,
   form#loginform {
     p {
       input[type="text"],
-      input[type="password"] {
+      input[type="password"],
+      input[type="email"] {
         display: inline-block;
         width: 100%;
         height: 40px;
@@ -188,6 +191,17 @@ div#LoginUser {
         }
       }
     }
+
+    .woocommerce-Button {
+      padding: 6px 20px;
+      border-radius: 20px;
+      background: none;
+      border: 2px solid rgb(37, 49, 107);
+      color: rgb(39, 45, 57);
+      font-weight: bold;
+      transition: all 0.5s;
+      width: 100%;
+    }
   }
 
   .modal-footer {
@@ -196,6 +210,46 @@ div#LoginUser {
     a {
       color: rgb(43, 183, 227);
       font-size: 14px;
+      border: none !important;
+
+      &:hover,
+      &.active,
+      &:focus {
+        background: transparent !important;
+        border: none;
+        color: $brand-white !important;
+        box-shadow: none;
+        outline: none;
+      }
+    }
+
+    .nav {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      border: none;
+
+      li.nav-item {
+        position: relative;
+        padding: 0 20px;
+
+        &::after {
+          content: "";
+          background: #fff;
+          float: right;
+          width: 1px;
+          height: 100%;
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+
+        &:last-child {
+          &::after {
+            display: none;
+          }
+        }
+      }
     }
   }
 

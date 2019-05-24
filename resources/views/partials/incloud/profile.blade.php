@@ -1,13 +1,6 @@
 @php 
   global $wp;
 
-  $account_id = get_option( 'woocommerce_myaccount_page_id' );
-  $link_login = get_field('link_page_login', 'option');
-
-  if ( $account_id ) {
-    $account_url = get_permalink( $account_id );
-    $logout_url = wp_logout_url( home_url('/') );
-  }
 @endphp
 
 
@@ -18,11 +11,11 @@
   @endphp
   <ul class="link-dropdown">
     <li class="item-dropdown"><span class="item-user mt-2">{!! $current_user->display_name !!}</span></li>
-    <li class="item-dropdown"><a href="{{ $account_url }}">{{ _e('admin Dashborad', 'premast') }}</a></li>
-    <li class="item-dropdown"><a href="{{ $account_url }}">{{ _e('Dashborad', 'premast') }}</a></li>
-    <li class="item-dropdown"><a href="{{ $account_url }}/downloads">{{ _e('Downloads', 'premast') }}</a></li>
+    <li class="item-dropdown"><a href="{{ the_field('admin_dashborad_page','option') }}">{{ _e('admin Dashborad', 'premast') }}</a></li>
+    <li class="item-dropdown"><a href="{{ the_field('dashborad_page','option') }}">{{ _e('Dashborad', 'premast') }}</a></li>
+    <li class="item-dropdown"><a href="{{ the_field('download_page','option') }}">{{ _e('Downloads', 'premast') }}</a></li>
     <li class="item-dropdown"><a href="{{ home_url('/') }}/faq">{{ _e('Support', 'premast') }}</a></li>
-    <li class="item-dropdown"><a href="{{ $logout_url }}">{{ _e('Logout', 'premast') }}</a></li>
+    <li class="item-dropdown">{{ wp_loginout() }}</li>
 
     <div class="premast-social-icons"> 
       <a class="premast-icon icon-facebook" href="http://facebook.com/premast.co/" target="_blank" rel="nofollow"> <span class="sr-only">Facebook</span> <i class="fa fa-facebook"></i> </a> 

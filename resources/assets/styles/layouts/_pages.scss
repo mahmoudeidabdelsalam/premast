@@ -27,3 +27,11 @@
     color: rgb(30, 109, 251);
   }
 }
+
+.user-not-login {
+  height: 71vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
