@@ -45,8 +45,6 @@
           $product_ids[] = $ids;
         }
         
-        
-
         $args = array(
           'post_type' => 'product',
           'posts_per_page' => 20,
@@ -59,48 +57,28 @@
 
         <?php if ( $has_downloads ) : ?>
 
-          <div class="container-fiuld woocommerce customer-download">
+          <div class="container woocommerce customer-download">
             <div class="row justify-content-center m-0 pt-5 pb-5">
               <div class="col-md-12 col-sm-12">
-                <div class="item-columns grid row m-0">
-                  @if($loop->have_posts())
-                    @while($loop->have_posts()) @php($loop->the_post())
-                      <div class="item-card col-md-2 col-sm-3 col-sx-6 col-12 grid-item pl-4 pr-4">
-                        <div class="card">
-                          <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');height:204px;">
-                            <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
-                          </div>
-                          <div class="card-body pt-2 pl-0 pr-0">
-                            <a class="card-link" href="{{ the_permalink() }}">
-                              <h5 class="card-title font-weight-400">{{ wp_trim_words(get_the_title(), '5', ' ...') }}</h5>
-                            </a>
-                            <div class="review-and-download">
-                              <div class="review">
-                                <a class="card-link" href="{{ the_permalink() }}">
-                                  <i class="fa fa-star" aria-hidden="true"></i>
-                                  <span itemprop="reviewCount">{{ _e('Rate it', 'premast') }}</span>
-                                </a>
-                              </div>
-                              <div class="download">
-                                <a class="card-link" href="{{ the_permalink() }}">
-                                  {{ _e('Download', 'premast') }}
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>              
-                      </div>
-                    @endwhile
-                    @php (wp_reset_postdata())
-                  @endif
-                </div>
-
-                <div class="col-12">
-                  <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $loop_items) }}</nav>
-                </div>
-
+                <table class="woocommerce-MyAccount-downloads shop_table shop_table_responsive"> 
+                  <thead> 
+                      <tr> 
+                        <th><span class="nobr">{{ _e('Product', 'premast') }}</span></th> 
+                        <th><span class="nobr">{{ _e('File', 'premast') }}</span></th> 
+                      </tr> 
+                  </thead> 
+                  <?php foreach ( $downloads as $download ) : ?> 
+                    <tr> 
+                      <td>
+                        <a href="<?php echo esc_url( get_permalink( $download['product_id'] ) ); ?>"> <?php echo esc_html( $download['product_name'] ); ?> </a> 
+                      </td>
+                      <td>
+                        <a href="<?php echo esc_url( $download['download_url'] ); ?>" class="woocommerce-MyAccount-downloads-file"> <?php echo esc_html( $download['file']['name'] ); ?> </a> 
+                      </td>
+                    </tr> 
+                  <?php endforeach; ?> 
+                </table> 
               </div>
-
             </div>
           </div>
         <?php else : ?>

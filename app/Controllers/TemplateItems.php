@@ -42,6 +42,12 @@ class TemplateItems extends Controller
       'post_type' => 'product',
       'posts_per_page' => 20,
       'paged' => $paged,
+    );
+
+    $orders = array(
+      'post_type' => 'product',
+      'posts_per_page' => 20,
+      'paged' => $paged,
       'meta_key' => $meta_key,
       'orderby' => $orderby,
       'order' => $order,
@@ -52,7 +58,7 @@ class TemplateItems extends Controller
     }
     
     if( $sort == 'featured') {
-      $args['tax_query'] = array(
+      $orders['tax_query'] = array(
         array(
           'taxonomy' => 'product_visibility',
           'field'    => 'name',
@@ -61,9 +67,13 @@ class TemplateItems extends Controller
       );
     }
 
-    $loop = new \WP_Query( $args );
+    $my_query = new \WP_Query( $args );
+
+    $more_query = new \WP_Query( $orders );
         
-    return  $loop;
+    $my_query->posts = array_merge( $more_query->posts, $my_query->posts);
+
+    return  $my_query;
   }
 
 }

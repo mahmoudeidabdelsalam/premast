@@ -68,6 +68,19 @@
             'post_type' => 'product',
             'posts_per_page' => 20,
             'paged' => $paged,
+            'tax_query' => array(
+              array(
+                'taxonomy' => 'product_cat',
+                'field' => 'term_id',
+                'terms' => $taxonomy_query->term_id
+              )
+            )
+          );
+
+          $orders = array(
+            'post_type' => 'product',
+            'posts_per_page' => 20,
+            'paged' => $paged,
             'meta_key' => $meta_key,
             'orderby' => $orderby,
             'order' => $order,
@@ -84,12 +97,32 @@
             $args['s'] = $Name;
           }
           
-          $loop = new WP_Query( $args );
+          if( $sort == 'featured') {
+            $orders['tax_query'] = array(
+              'relation' => 'AND',
+              array(
+                'taxonomy' => 'product_visibility',
+                'field'    => 'name',
+                'terms'    => 'featured',
+              ),
+              array(
+                'taxonomy' => 'product_cat',
+                'field' => 'term_id',
+                'terms' => $taxonomy_query->term_id
+              )
+            );
+          }
+
+          $my_query = new \WP_Query( $args );
+
+          $more_query = new \WP_Query( $orders );
+              
+          $my_query->posts = array_merge( $more_query->posts, $my_query->posts);
 
         @endphp
 
-        @if($loop->have_posts())
-          @while($loop->have_posts()) @php($loop->the_post())
+        @if($my_query->have_posts())
+          @while($my_query->have_posts()) @php($my_query->the_post())
 
             <div class="item-card col-md-4 col-sm-4 col-sx-6 col-12 grid-item pl-4 pr-4">
               <div class="card">
