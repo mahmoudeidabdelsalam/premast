@@ -26,9 +26,9 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
   wp_update_user( array( 'ID' => $current_user->ID, 'user_url' => esc_url( $_POST['url'] ) ) );
   if ( !empty( $_POST['email'] ) ){
     if (!is_email(esc_attr( $_POST['email'] )))
-    $error[] = __('The Email you entered is not valid.  please try again.', 'profile');
+      $error[] = __('The Email you entered is not valid.  please try again.', 'profile');
     elseif(email_exists(esc_attr( $_POST['email'] )) != $current_user->id )
-    $error[] = __('This email is already used by another user.  try a different one.', 'profile');
+      $error[] = __('This email is already used by another user.  try a different one.', 'profile');
     else{
       wp_update_user( array ('ID' => $current_user->ID, 'user_email' => esc_attr( $_POST['email'] )));
     }
@@ -42,9 +42,9 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
   update_user_meta( $current_user->ID, 'description', esc_attr( $_POST['description'] ) );
 
 
-
+// dd($_POST['acf']['field_5a9fb97bf63963d5'] );
   // ACF updates
-  if ( !empty( $_POST['acf']['field_5a9ba9912563267c8b1'] ) )
+  if ( !empty( $_POST['acf']['field_5a9ba9963267c8b1'] ) )
   update_user_meta( $current_user->ID, 'owner_city', esc_attr( $_POST['acf']['field_5a9ba9963267c8b1'] ) );
   if ( !empty( $_POST['acf']['field_5a9fb97bf63963d5'] ) )
   update_user_meta( $current_user->ID, 'owner_phone', esc_attr( $_POST['acf']['field_5a9fb97bf63963d5'] ) );
