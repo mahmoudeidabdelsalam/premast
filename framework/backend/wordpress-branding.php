@@ -69,7 +69,7 @@ add_action('admin_bar_menu', 'remove_wp_logo', 999);
 * Change the Footer in WordPress Admin Panel
 */
 function change_footer_admin() {
-  echo '<span id="footer-thankyou">Crafted by Egypt Web Technologies <a href="http://code95.com/" target="_blank">Code95</a>.</span>';
+  echo '<span id="footer-thankyou">Crafted by Egypt Web Technologies <a href="http://premast.com/" target="_blank">Premast</a>.</span>';
 }
 add_filter('admin_footer_text', 'change_footer_admin');
 

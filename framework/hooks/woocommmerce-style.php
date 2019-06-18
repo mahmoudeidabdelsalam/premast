@@ -34,3 +34,13 @@ if ( is_product() ) {
     }
 }
 add_action('loop_start', 'remove_gallery_and_product_images');
+
+add_filter('acf/update_value/name=featured_image', function ($value, $post_id, $field) {
+if ($value != '') {
+    update_post_meta($post_id, '_thumbnail_id', $value);
+} else {
+    delete_post_thumbnail($post_id);
+}
+
+return $value;
+}, 10, 3);

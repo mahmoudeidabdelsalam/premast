@@ -17,3 +17,11 @@
   @extend .btn;
   @extend .btn-secondary;
 }
+
+form#publish_product {
+  input {
+    min-height: 40px;
+    border: 1px solid rgb(238, 238, 238);
+    margin: 10px 0;
+  }
+}

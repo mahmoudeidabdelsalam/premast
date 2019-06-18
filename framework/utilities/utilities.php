@@ -4,11 +4,11 @@ use Roots\Sage\Assets;
 * This is the description for the Utilities class.
 *
 * @package    Utilities
-* @author     Code95 (Superheroes Team)
+* @author     Premast (Superheroes Team)
 * @version    1.0.0
 * @since      1.0.0 First time this was introduced.
-* @copyright  All right reseved Code95 - 2017
-* @link       http://ecode95.com.
+* @copyright  All right reseved Premast - 2017
+* @link       http://premast.com.
 */
 class Utilities{
   /**

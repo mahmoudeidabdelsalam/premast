@@ -21,7 +21,7 @@
   <meta name="msapplication-TileColor" content="#1E6CFC">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#1E6CFC">
-
+  <meta name="robots" content="index, follow" />
     
   <!-- Head Scripts -->
   @if(get_field('header_scripts', 'option'))

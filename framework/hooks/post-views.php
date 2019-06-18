@@ -92,7 +92,7 @@ function c95_admin_bar_post_views($wp_admin_bar) {
         $post_id = $post->ID;
 
         $args = array(
-            'id' => 'code95-views',
+            'id' => 'premast-views',
             'title' => '<span class="ab-icon dashicons-visibility"></span> ' . c95_get_post_views($post_id) . ' ' . __('Views', 'C95'),
             'href' => get_edit_post_link($post_id),
             'meta' => array(
