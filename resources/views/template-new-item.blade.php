@@ -177,7 +177,7 @@
                 <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
               </div>
               <div class="custom-file">
-                <input type="file" id="upload_file" class="custom-file-input files-download"  name="files[]" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, text/plain, application/pdf, image/*" multiple required/>
+                <input type="file" id="upload_file" class="custom-file-input files-download"  name="files[]"  multiple required/>
                 <label class="custom-file-label" for="upload_file">Choose file</label>
               </div>
             </div>

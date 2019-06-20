@@ -6,7 +6,7 @@ function cvf_upload_files(){
     
     $parent_post_id = isset( $_POST['post_id'] ) ? $_POST['post_id'] : 0;  // The parent ID of our attachments
     $valid_formats = array("jpg", "png", "gif", "bmp", "jpeg", "svg", "pdf", "pptx", "ppt"); // Supported file types
-    $max_file_size = 1024 * 500; // in kb
+    $max_file_size = 102400 * 50000; // in kb
     $max_image_upload = 1000000; // Define how many images can be uploaded to the current post
     $wp_upload_dir = wp_upload_dir();
     $path = $wp_upload_dir['path'] . '/';
@@ -102,7 +102,7 @@ function cvf_upload_thumbnail(){
     
     $parent_post_id = isset( $_POST['post_id'] ) ? $_POST['post_id'] : 0;  // The parent ID of our attachments
     $valid_formats = array("jpg", "png", "gif", "bmp", "jpeg", "svg", "pdf", "pptx", "ppt"); // Supported file types
-    $max_file_size = 1024 * 500; // in kb
+    $max_file_size = 102400 * 50000; // in kb
     $max_image_upload = 1000000; // Define how many images can be uploaded to the current post
     $wp_upload_dir = wp_upload_dir();
     $path = $wp_upload_dir['path'] . '/';
