@@ -68,10 +68,12 @@ class TemplateItems extends Controller
     }
 
     $my_query = new \WP_Query( $args );
+      
+    if ($sort != '0') {
+      $more_query = new \WP_Query( $orders ); 
+      $my_query->posts = array_merge( $more_query->posts, $my_query->posts);
+    }
 
-    $more_query = new \WP_Query( $orders );
-        
-    $my_query->posts = array_merge( $more_query->posts, $my_query->posts);
 
     return  $my_query;
   }

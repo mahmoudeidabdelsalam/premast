@@ -120,10 +120,11 @@
 
           $my_query = new \WP_Query( $args );
 
-          $more_query = new \WP_Query( $orders );
-              
-          $my_query->posts = array_merge( $more_query->posts, $my_query->posts);
-
+          if ($sort != '0') {
+            $more_query = new \WP_Query( $orders ); 
+            $my_query->posts = array_merge( $more_query->posts, $my_query->posts);
+          }
+    
         @endphp
 
         @if($my_query->have_posts())
