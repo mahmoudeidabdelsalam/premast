@@ -31,7 +31,7 @@
                       <p>{{ _e('Download Now', 'premast') }}</p>                      
                     </a>
 
-                    @if(current_user_can( 'edit_post', get_the_ID() ) && (get_the_author_meta('ID') == $current_user->ID))
+                    @if(current_user_can( 'edit_post', get_the_ID() ) && (get_the_author_meta('ID') == $current_user->ID) || is_super_admin())
                       {{ edit_post_link('Edit Product', '<p>', '</p>') }}
                     @endif
                   </div>
