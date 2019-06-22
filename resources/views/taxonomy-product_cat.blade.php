@@ -29,6 +29,11 @@
 
 @section('content')
 
+@php 
+  global $current_user;
+  wp_get_current_user();
+@endphp
+
 
 <div class="container-fiuld">
   <div class="row justify-content-center m-0">
@@ -132,6 +137,10 @@
                     <a class="card-link" href="{{ the_permalink() }}">
                       <p>{{ _e('Download Now', 'premast') }}</p>
                     </a>
+
+                    @if(current_user_can( 'edit_post', get_the_ID() ) && (get_the_author_meta('ID') == $current_user->ID))
+                      {{ edit_post_link('Edit Product', '<p>', '</p>') }}
+                    @endif
                   </div>
                 </div>
                 <div class="card-body pt-2 pl-0 pr-0">

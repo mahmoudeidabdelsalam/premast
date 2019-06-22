@@ -32,8 +32,6 @@
 </section>
 @endif
 
-
-
 <div class="container single-product">
   @if(!is_user_logged_in())
     <div class="row justify-content-center m-0">
@@ -47,14 +45,13 @@
     </div>
   @else
 
-<?php
+@php
 
   if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POST['action'] == "new_post") {
 
     $title = $_POST["title"];
     $description = $_POST["description"];
     $file_name = $_POST["file_name"];
-
 
     $slide_gallery = $_POST["slide_gallery"];
     $prices = $_POST["prices"];
@@ -67,15 +64,11 @@
     $slide_pages = $_POST["slide_pages"];
     $slide_date = $_POST["slide_date"];
     
-
-
     $product = wp_insert_post(array (
       'post_type' => 'product',
       'post_title' => $title,
       'post_content' => $description,
       'post_status' => 'pending',
-      'comment_status' => 'closed',
-      'ping_status' => 'closed',
       'post_author' => $current_user->ID,
       'tax_input' => array( 'product_cat' => $cat )
     ));
@@ -98,15 +91,15 @@
       update_field( 'field_5ccca5a81e19d', $slide_number, $product );
       update_field( 'field_5ccca5b61e19e', $slide_pages, $product );
       update_field( 'field_5ccca5b81e19f', $slide_date, $product );
-
-
-      if ( isset( $tags) && is_object_in_taxonomy( $post_type, 'product_tag' ) ) {
-          wp_set_post_tags( $post_ID, $tags );
-      }
+      
+      wp_set_object_terms($product, array($tags), 'product_tag');
       update_post_meta($product, '_regular_price', $prices);
+      update_post_meta($product, '_price', $prices);
       update_post_meta($product, '_downloadable', 'yes');
       update_post_meta($product, '_downloadable_files', $downloads);
       set_post_thumbnail($product, $image_id);
+      update_post_meta($product, '_stock_status', 'instock', true);
+      update_post_meta($product, '_visibility', 'visible', true);
 
       $link = get_permalink($product);
       wp_redirect($link);
@@ -114,13 +107,11 @@
   } 
 
  do_action('wp_insert_post', 'wp_insert_post');
-?>
 
-
+@endphp
 
 
     <form id="publish_product" name="new_post" method="post" action="" enctype="multipart/form-data">
-      
       <div class="row justify-content-center m-0">
         <div class="col-md-8 col-12">
           <div class="row ml-0 mr-0 mb-5 content-single">
@@ -131,7 +122,7 @@
               <div class="input-group mb-3">
                 <input type="text" name="title" class="form-control"  placeholder="Enter Headline" required>
                 <div class="input-group-append">
-                  <span class="input-group-text" id="basic-addon2">premast powerpoint templates</span>
+                  <span class="input-group-text" id="basic-addon2">{{ _e('premast powerpoint templates', 'premast') }}</span>
                 </div>
               </div>
               <label for="upload_img" class="label-upload">
@@ -144,7 +135,7 @@
                     <input type="file" id="upload_img"  name="thumbnail[]" accept="image/*" class="files-thumbnail form-control" multiple />
                   </div>
               </div>  
-              <label for="basic-url">Your Slid Or Video URL</label>
+              <label for="basic-url">{{ _e('Your Slid Or Video URL', 'premast') }}</label>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon3">http://youtube.com/video</span>
@@ -152,7 +143,7 @@
                 <input type="text" class="form-control" name="slide_gallery" id="basic-url" aria-describedby="basic-addon3">
               </div>
               <div class="product-infomation">
-                <h3>Description</h3>
+                <h3>{{ _e('Description', 'premast') }}</h3>
                 <div id="tab-description">
                   <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
@@ -163,10 +154,10 @@
 
         <div class="summary entry-summary col-md-4 col-12 sidebar-shop">
           <div class="download-product">
-            <p class="price">Files Download</p>
+            <p class="price">{{ _e('Files Download', 'premast') }}</p>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
-                <span class="input-group-text">Enter title File</span>
+                <span class="input-group-text">{{ _e('Enter title File', 'premast') }}</span>
               </div>
               <input type="text" name="file_name" class="form-control"  placeholder="" required>
             </div>
@@ -174,11 +165,11 @@
             
             <div class="input-group mb-3">
               <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                <span class="input-group-text" id="inputGroupFileAddon01">{{ _e('Upload', 'premast') }}</span>
               </div>
               <div class="custom-file">
                 <input type="file" id="upload_file" class="custom-file-input files-download"  name="files[]"  multiple required/>
-                <label class="custom-file-label" for="upload_file">Choose file</label>
+                <label class="custom-file-label" for="upload_file">{{ _e('Choose file', 'premast') }}</label>
               </div>
             </div>
             
@@ -261,31 +252,19 @@
               <input type="text" class="form-control" name="slide_date" placeholder="Icons">
             </div>                                
           </div>
-
-
-
           <p class="mt-t col-12">
             <input type="submit" value="publish" tabindex="6" id="submit" name="submit" />
           </p>
         </div><!-- End Sidebar -->
-
       </div>  <!-- End row -->
-      
-      
-		  
 		  <input type="hidden" name="action" value="new_post" />
-      
       <?php wp_nonce_field( 'new-post' ); ?>
-
     </form>
-
-
   @endif
 </div>
 
 <script type = "text/javascript">
   jQuery(function($) {
-    
     // Add New Images
     $('body').on('click', '#submit', function(e){
         e.preventDefault;
@@ -310,7 +289,6 @@
             }
         });
     });
-
     // When the Upload button is clicked...
     $('body').on('click', '#submit', function(e){
         e.preventDefault;
@@ -335,8 +313,6 @@
             }
         });
     });
-
-
   });  
   
   jQuery(function($) {
@@ -349,11 +325,9 @@
         reader.readAsDataURL(input.files[0]);
       }
     }
-    
     $("#upload_img").on('change', function(){
       readURL(this);
     });
-
     $(".upload-button").on('click', function() {
         $("#").click();
     });
@@ -361,7 +335,3 @@
 </script>
 
 @endsection
-
-
-
-

@@ -178,6 +178,7 @@ section.banner-items {
     top: 0;
     transition: all 0.5s;
     opacity: 0;
+    flex-flow: column;
 
     .card-link {
       p {
@@ -188,6 +189,18 @@ section.banner-items {
         color: rgb(255, 255, 255);
         box-shadow: 1px 1px 1px rgb(51, 51, 51);
       }
+    }
+
+    .post-edit-link {
+      background-color: rgb(40, 47, 57);
+      padding: 5px 10px;
+      margin: 10px auto;
+      border-radius: 3px;
+      color: white;
+      box-shadow: 1px 1px 1px rgb(51, 51, 51);
+      min-width: 100px !important;
+      display: inline-block;
+      font-size: 20px;
     }
   }
 
