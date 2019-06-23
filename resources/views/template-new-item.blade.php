@@ -75,6 +75,11 @@
 
     $image_id = cvf_upload_thumbnail();
     $attach_id = cvf_upload_files();
+
+    $gallery_id = cvf_upload_gallery();
+
+
+
     $file_url = wp_get_attachment_url($attach_id);
 
     $downloads[] = array(
@@ -97,6 +102,10 @@
       update_post_meta($product, '_price', $prices);
       update_post_meta($product, '_downloadable', 'yes');
       update_post_meta($product, '_downloadable_files', $downloads);
+
+      update_post_meta( $product, '_product_image_gallery', implode(',',$gallery_id));
+
+
       set_post_thumbnail($product, $image_id);
       update_post_meta($product, '_stock_status', 'instock', true);
       update_post_meta($product, '_visibility', 'visible', true);
@@ -134,7 +143,21 @@
                   <div class="form-group">
                     <input type="file" id="upload_img"  name="thumbnail[]" accept="image/*" class="files-thumbnail form-control" multiple />
                   </div>
-              </div>  
+              </div> 
+              <div class="upload-gallery">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                  </div>
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input files-gallery" name="gallery[]" accept="image/*" id="file-input" multiple />
+                    <label class="custom-file-label" for="upload_file">Choose file</label>
+                  </div>
+                </div>                 
+                <div id="thumb-output"></div>
+                <input type="button" value="Remove All Image" class="remove">
+              </div> 
+
               <label for="basic-url">{{ _e('Your Slid Or Video URL', 'premast') }}</label>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -289,7 +312,7 @@
             }
         });
     });
-    // When the Upload button is clicked...
+    // Add New File Download
     $('body').on('click', '#submit', function(e){
         e.preventDefault;
         var fd = new FormData();
@@ -313,6 +336,30 @@
             }
         });
     });
+    // Add New Gallery
+    $('body').on('click', '#submit', function(e){
+        e.preventDefault;
+        var fd = new FormData();
+        var files_data = $('.files-gallery'); // The <input type="file" /> field
+        // Loop through each data and create an array file[] containing our files data.
+        $.each($(files_data), function(i, obj) {
+            $.each(obj.files,function(j,file){
+                fd.append('gallery[' + j + ']', file);
+            })
+        });
+        fd.append('action', 'cvf_upload_gallery');  
+        fd.append('post_id', <?php echo $post->ID; ?>); 
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
+            data: fd,
+            contentType: false,
+            processData: false,
+            success: function(response){
+              $('.upload-response').html(response); // Append Server Response
+            }
+        });
+    });    
   });  
   
   jQuery(function($) {
@@ -331,6 +378,36 @@
     $(".upload-button").on('click', function() {
         $("#").click();
     });
+
+
+    $('#file-input').on('change', function(){ //on file input change
+      if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
+      {
+        var data = $(this)[0].files; //this file data
+        $.each(data, function(index, file){ //loop though each file
+          if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){ //check supported file type
+            var fRead = new FileReader(); //new filereader
+              fRead.onload = (function(file){ //trigger function on successful read
+                return function(e) {
+                  var img = $('<img/>').addClass('thumb').attr('src', e.target.result); //create image element 
+                  $('#thumb-output').append(img); //append image to output element
+                };
+              })(file);
+            fRead.readAsDataURL(file); //URL representing the file's data.
+          }
+        });
+            
+      } else {
+        alert("Your browser doesn't support File API!"); //if File API is absent
+      }
+    });
+    
+    $(".remove").click(function (e) {
+      e.preventDefault();
+      $('#file-input').val('');
+      $('#thumb-output img').remove();
+    });
+
   });               
 </script>
 

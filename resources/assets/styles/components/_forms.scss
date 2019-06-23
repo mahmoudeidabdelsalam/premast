@@ -63,4 +63,26 @@ form#publish_product {
     background-color: #fff;
     margin-bottom: 15px;
   }
+
+  .upload-gallery {
+    margin-bottom: 30px;
+
+    div#thumb-output {
+      min-height: 100px;
+      margin-bottom: 15px;
+
+      img.thumb {
+        height: 100px;
+        margin: 2px;
+        border: 1px solid #333;
+      }
+    }
+
+    input.remove {
+      background-color: #e8ecef;
+      min-height: 1px !important;
+      border-radius: 3px !important;
+      box-shadow: 0 0 4px -1px #333;
+    }
+  }
 }
