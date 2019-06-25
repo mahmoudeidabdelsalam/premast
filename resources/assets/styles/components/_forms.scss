@@ -18,10 +18,25 @@
   @extend .btn-secondary;
 }
 
+body.template-new-item {
+  background: rgb(239, 246, 250) !important;
+}
+
 form#publish_product {
   input {
     min-height: 40px;
-    border: 1px solid rgb(232, 236, 239);
+    background: rgb(230, 237, 242);
+    border: 1px solid rgba(61, 69, 82, 0.15);
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+
+  textarea.form-control {
+    background: rgb(242, 245, 248);
+    border: 1px solid rgba(61, 69, 82, 0.15);
+    box-sizing: border-box;
+    border-radius: 5px;
+    min-height: 320px;
   }
 
   img.profile-pic {
@@ -31,6 +46,16 @@ form#publish_product {
 
   label.label-upload {
     position: relative;
+    background: rgb(230, 237, 242);
+    border: 1px dashed rgba(61, 69, 82, 0.36);
+    box-sizing: border-box;
+    border-radius: 11px;
+    width: 100%;
+    min-height: 628px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
   }
 
   .upload-form {
@@ -57,13 +82,6 @@ form#publish_product {
     text-transform: uppercase;
   }
 
-  select#cat {
-    width: 100%;
-    height: 40px;
-    background-color: #fff;
-    margin-bottom: 15px;
-  }
-
   .upload-gallery {
     margin-bottom: 30px;
 
@@ -72,17 +90,133 @@ form#publish_product {
       margin-bottom: 15px;
 
       img.thumb {
-        height: 100px;
-        margin: 2px;
-        border: 1px solid #333;
+        height: auto;
+        margin: 5px 11px;
+        border: 1px solid rgb(51, 51, 51);
+        max-width: 61px;
+        border-radius: 5px;
       }
     }
 
     input.remove {
-      background-color: #e8ecef;
-      min-height: 1px !important;
-      border-radius: 3px !important;
-      box-shadow: 0 0 4px -1px #333;
+      box-shadow: 0 0 4px -1px rgb(51, 51, 51);
+      background: rgb(230, 237, 242);
+      border: 1px solid rgba(61, 69, 82, 0.15);
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 10px;
+      line-height: 9px;
+      text-align: center;
+      color: rgb(252, 107, 107);
+      height: 20px;
+      min-height: 1px;
+      float: right;
+    }
+
+    span {
+      font-size: 16px;
+      line-height: 19px;
+      color: rgb(146, 153, 160);
+    }
+  }
+
+  nav.woocommerce-breadcrumb {
+    font-size: 14px;
+    line-height: 16px;
+    color: rgba(40, 47, 57, 0.66);
+  }
+
+  .price-input {
+    .input-group {
+      border: 1px solid rgb(30, 109, 251);
+      box-sizing: border-box;
+      border-radius: 5px;
+
+      .input-group-prepend span,
+      input,
+      .input-group-prepend {
+        background: rgb(255, 255, 255) !important;
+        border: none !important;
+        margin-right: 1px !important;
+        margin-left: 1px !important;
+        color: rgb(23, 122, 247);
+      }
+    }
+
+    .form-control {
+      background: rgb(241, 244, 247);
+      border: 1px solid rgba(61, 69, 82, 0.15);
+      box-sizing: border-box;
+      border-radius: 5px;
+      min-height: 1px;
+    }
+  }
+
+  .summary {
+    label.custom-download-label {
+      display: flex;
+      flex-flow: column;
+      justify-content: start;
+      align-items: end;
+      padding: 10px;
+      background: rgb(242, 245, 248);
+      border: 1px dotted rgba(61, 69, 82, 0.36);
+      box-sizing: border-box;
+      border-radius: 11px;
+      width: 100%;
+
+      img.profile-download {
+        position: absolute;
+        right: 15px;
+      }
+    }
+  }
+
+  .box-information,
+  .box-taxonomy {
+    .form-control,
+    select {
+      background: rgb(242, 245, 248) !important;
+      border: 1px solid rgba(61, 69, 82, 0.15) !important;
+      box-sizing: border-box !important;
+      border-radius: 5px !important;
+      width: 100%;
+      height: 40px;
+    }
+  }
+
+  .arrows {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      top: 10px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    &.left {
+      &::after {
+        right: -30px;
+        background-image: url("../images/arrow-left.png");
+      }
+    }
+
+    &.right {
+      &::after {
+        left: -30px;
+        background-image: url("../images/arrow-right.png");
+      }
+
+      &.label-upload,
+      &.upload-gallery {
+        &::after {
+          left: -45px !important;
+        }
+      }
     }
   }
 }

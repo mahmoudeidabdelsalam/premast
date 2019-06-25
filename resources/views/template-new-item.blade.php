@@ -11,13 +11,10 @@
   $args = array(
     'post_type' => 'product',
   );
-
   $loop = new WP_Query( $args );
   $count = $loop->found_posts;
-
   global $current_user;
   wp_get_current_user();
-
 @endphp
 
 @if (get_field('banner_items_headline', 'option'))
@@ -31,7 +28,6 @@
   </div>
 </section>
 @endif
-
 <div class="container single-product">
   @if(!is_user_logged_in())
     <div class="row justify-content-center m-0">
@@ -44,99 +40,78 @@
       </div>
     </div>
   @else
-
-@php
-
-  if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POST['action'] == "new_post") {
-
-    $title = $_POST["title"];
-    $description = $_POST["description"];
-    $file_name = $_POST["file_name"];
-
-    $slide_gallery = $_POST["slide_gallery"];
-    $prices = $_POST["prices"];
-    $slide_type = $_POST["slide_type"];
-    $slide_format = $_POST["slide_format"];
-    $tags = $_POST["tags"];
-    $cat = $_POST["cat"];
-    $slide_colors = $_POST["slide_colors"];
-    $slide_number = $_POST["slide_number"];
-    $slide_pages = $_POST["slide_pages"];
-    $slide_date = $_POST["slide_date"];
-    
-    $product = wp_insert_post(array (
-      'post_type' => 'product',
-      'post_title' => $title,
-      'post_content' => $description,
-      'post_status' => 'pending',
-      'post_author' => $current_user->ID,
-      'tax_input' => array( 'product_cat' => $cat )
-    ));
-
-    $image_id = cvf_upload_thumbnail();
-    $attach_id = cvf_upload_files();
-
-    $gallery_id = cvf_upload_gallery();
-
-
-
-    $file_url = wp_get_attachment_url($attach_id);
-
-    $downloads[] = array(
-        'name' => $file_name,
-        'file' => $file_url
-    );
-    
-    if ($product) {
-      
-      update_field( 'field_5cr243sfsfcca58d1e19b', $slide_type, $product );
-      update_field( 'field_5cr24wqtwe434343sfsfcca58d1e19b', $slide_format, $product );
-      update_field( 'field_5ccca58d1e19b', $slide_gallery, $product );
-      update_field( 'field_5ccca59b1e19c', $slide_colors, $product );
-      update_field( 'field_5ccca5a81e19d', $slide_number, $product );
-      update_field( 'field_5ccca5b61e19e', $slide_pages, $product );
-      update_field( 'field_5ccca5b81e19f', $slide_date, $product );
-      
-      wp_set_object_terms($product, array($tags), 'product_tag');
-      update_post_meta($product, '_regular_price', $prices);
-      update_post_meta($product, '_price', $prices);
-      update_post_meta($product, '_downloadable', 'yes');
-      update_post_meta($product, '_downloadable_files', $downloads);
-
-      update_post_meta( $product, '_product_image_gallery', implode(',',$gallery_id));
-
-
-      set_post_thumbnail($product, $image_id);
-      update_post_meta($product, '_stock_status', 'instock', true);
-      update_post_meta($product, '_visibility', 'visible', true);
-
-      $link = get_permalink($product);
-      wp_redirect($link);
-    }
-  } 
-
- do_action('wp_insert_post', 'wp_insert_post');
-
-@endphp
-
+    @php
+      if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POST['action'] == "new_post") {
+        $title = $_POST["title"];
+        $description = $_POST["description"];
+        $short_description = $_POST["short_description"];
+        $slide_gallery = $_POST["slide_gallery"];
+        $prices = $_POST["prices"];
+        $slide_type = $_POST["slide_type"];
+        $slide_format = $_POST["slide_format"];
+        $tags = $_POST["tags"];
+        $cat = $_POST["cat"];
+        $slide_colors = $_POST["slide_colors"];
+        $slide_number = $_POST["slide_number"];
+        $slide_pages = $_POST["slide_pages"];
+        $slide_date = $_POST["slide_date"];
+        $product = wp_insert_post(array (
+          'post_type' => 'product',
+          'post_title' => $title,
+          'post_content' => $description,
+          'post_excerpt' => $short_description,
+          'post_status' => 'pending',
+          'post_author' => $current_user->ID,
+          'tax_input' => array( 'product_cat' => $cat )
+        ));
+        $image_id = cvf_upload_thumbnail();
+        $attach_id = cvf_upload_files();
+        $gallery_id = cvf_upload_gallery();
+        $file_url = wp_get_attachment_url($attach_id);
+        $downloads[] = array(
+            'name' => $title,
+            'file' => $file_url
+        );
+        if ($product) {
+          update_field( 'field_5cr243sfsfcca58d1e19b', $slide_type, $product );
+          update_field( 'field_5cr24wqtwe434343sfsfcca58d1e19b', $slide_format, $product );
+          update_field( 'field_5ccca58d1e19b', $slide_gallery, $product );
+          update_field( 'field_5ccca59b1e19c', $slide_colors, $product );
+          update_field( 'field_5ccca5a81e19d', $slide_number, $product );
+          update_field( 'field_5ccca5b61e19e', $slide_pages, $product );
+          update_field( 'field_5ccca5b81e19f', $slide_date, $product );
+          wp_set_object_terms($product, array($tags), 'product_tag');
+          update_post_meta($product, '_regular_price', $prices);
+          update_post_meta($product, '_price', $prices);
+          update_post_meta($product, '_downloadable', 'yes');
+          update_post_meta($product, '_downloadable_files', $downloads);
+          update_post_meta( $product, '_product_image_gallery', implode(',',$gallery_id));
+          set_post_thumbnail($product, $image_id);
+          update_post_meta($product, '_stock_status', 'instock', true);
+          update_post_meta($product, '_visibility', 'visible', true);
+          $link = get_permalink($product);
+          wp_redirect($link);
+        }
+      } 
+    do_action('wp_insert_post', 'wp_insert_post');
+    @endphp
 
     <form id="publish_product" name="new_post" method="post" action="" enctype="multipart/form-data">
       <div class="row justify-content-center m-0">
+        
         <div class="col-md-8 col-12">
-          <div class="row ml-0 mr-0 mb-5 content-single">
+          <?php woocommerce_breadcrumb(); ?>
+          <div class="input-group mb-5 mt-2 arrows right">
+            <input type="text" name="title" class="form-control"  placeholder="Enter headline" required>
+          </div>
+
+          <div class="row ml-0 mr-0 mb-5 content-single pl-0 pr-0 pt-3">
             <div class="col-12">
-              <?php woocommerce_breadcrumb(); ?>
               
-              <h2 class="product-title mt-3">{{ _e('Headline', 'premast') }}</h2>
-              <div class="input-group mb-3">
-                <input type="text" name="title" class="form-control"  placeholder="Enter Headline" required>
-                <div class="input-group-append">
-                  <span class="input-group-text" id="basic-addon2">{{ _e('premast powerpoint templates', 'premast') }}</span>
-                </div>
-              </div>
-              <label for="upload_img" class="label-upload">
-                <img class="profile-pic" src="{{ get_theme_file_uri().'/dist/images/upload-file.gif' }}">
-                <i class="fa fa-cloud-upload upload-button"></i>
+              <label for="upload_img" class="label-upload arrows right">
+                <img class="profile-pic" src="{{ get_theme_file_uri().'/dist/images/upload-image.png' }}">
+                <span>{{ _e('upload your cover image here', 'premast') }}</span>
+                <span>{{ _e('1104 × 944 pixels', 'premast') }}</span>
               </label>
               <div class="upload-form">
                 <div class="upload-response"></div>
@@ -144,140 +119,134 @@
                     <input type="file" id="upload_img"  name="thumbnail[]" accept="image/*" class="files-thumbnail form-control" multiple />
                   </div>
               </div> 
-              <div class="upload-gallery">
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-                  </div>
+
+              <div class="upload-gallery mt-5 mb-0 arrows right">
+                <span>{{ _e('upload your gallery images here', 'premast') }}</span>
+                <input type="button" value="Remove All Image" class="remove">
+                <div class="input-group mb-3 mt-3">
+                  <label class="label-gallery" for="file-input">
+                    <img class="profile-gallery" src="{{ get_theme_file_uri().'/dist/images/upload-gallery.png' }}">
+                  </label>
+                  <div id="thumb-output"></div>   
                   <div class="custom-file">
                     <input type="file" class="custom-file-input files-gallery" name="gallery[]" accept="image/*" id="file-input" multiple />
-                    <label class="custom-file-label" for="upload_file">Choose file</label>
                   </div>
-                </div>                 
-                <div id="thumb-output"></div>
-                <input type="button" value="Remove All Image" class="remove">
+                </div>    
               </div> 
 
-              <label for="basic-url">{{ _e('Your Slid Or Video URL', 'premast') }}</label>
               <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon3">http://youtube.com/video</span>
-                </div>
-                <input type="text" class="form-control" name="slide_gallery" id="basic-url" aria-describedby="basic-addon3">
+                <input type="text" class="form-control" name="slide_gallery" placeholder="Embed Youtube or Slideshare URL">
               </div>
+
               <div class="product-infomation">
-                <h3>{{ _e('Description', 'premast') }}</h3>
                 <div id="tab-description">
-                  <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <textarea class="form-control" name="description" placeholder="Add description" rows="5"></textarea>
                 </div>
-              </div>                                                                
+              </div> 
+                                                               
             </div>
           </div>
         </div>
 
+
+
         <div class="summary entry-summary col-md-4 col-12 sidebar-shop">
-          <div class="download-product">
-            <p class="price">{{ _e('Files Download', 'premast') }}</p>
+          
+          <div class="download-product price-input arrows left">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
-                <span class="input-group-text">{{ _e('Enter title File', 'premast') }}</span>
-              </div>
-              <input type="text" name="file_name" class="form-control"  placeholder="" required>
-            </div>
-            
-            
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroupFileAddon01">{{ _e('Upload', 'premast') }}</span>
-              </div>
-              <div class="custom-file">
-                <input type="file" id="upload_file" class="custom-file-input files-download"  name="files[]"  multiple required/>
-                <label class="custom-file-label" for="upload_file">{{ _e('Choose file', 'premast') }}</label>
-              </div>
-            </div>
-            
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">$</span>
-                <span class="input-group-text">0.00</span>
+                <span class="input-group-text">{{ _e('Price', 'premast') }}</span>
               </div>
               <input type="number" name="prices" class="form-control" placeholder="$ 00.00">
+              <div class="input-group-prepend">
+                <span class="input-group-text">{{ _e('$', 'premast') }}</span>
+              </div>
             </div>
+            <textarea class="form-control" name="short_description" placeholder="Short description" rows="3"></textarea>
           </div>
 
-          <div class="box-counter">
-            <div class="input-group mb-3 slide-info">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">#</span>
-              </div>
-              <input type="text" name="slide_type" class="form-control" placeholder="Type Slide">
-            </div>
-            <div class="input-group mb-3 slide-info">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">#</span>
-              </div>
-              <input type="text" name="slide_format" class="form-control" placeholder="Format Slide">
-            </div>
-            <div class="input-group mb-3 slide-info">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">#</span>
-              </div>
-              <input type="text" name="tags" class="form-control" placeholder="Tags, tag, premast">
-            </div>
 
-            <?php $args = array(
-              'show_option_all'    => 'All Catagories',
-              'show_option_none'   => '',
-              'orderby'            => 'ID',
-              'order'              => 'ASC',
-              'show_count'         => 1,
-              'hide_empty'         => 0,
-              'child_of'           => 0,
-              'exclude'            => '1,5',
-              'echo'               => 1,
-              'selected'           => 0,
-              'hierarchical'       => 0,
-              'name'               => 'cat',
-              'id'                 => '',
-              'class'              => 'postform',
-              'depth'              => 1,
-              'tab_index'          => 0,
-              'taxonomy'           => 'product_cat',
-              'hide_if_empty'      => false,
-            ); ?>
-            <?php wp_dropdown_categories( $args ); ?>
 
-          </div> 
+            <div class="input-group mb-3 mt-3">
+              <label class="custom-download-label arrows left" for="upload_file">
+                <img class="profile-download" src="{{ get_theme_file_uri().'/dist/images/upload.png' }}">
+                <span class="name-files">{{ _e('upload your download file here', 'premast') }}</span>
+                <span>{{ _e('Max size 1GB') }}</span>
+              </label>
+              <div class="custom-file d-none">
+                <input type="file" id="upload_file" class="custom-file-input files-download"  name="files[]"  multiple required/>                
+              </div>
+            </div>
+          
 
-          <div class="box-counter">
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">#</span>
+            <div class="box-taxonomy arrows left">
+              <?php $args = array(
+                'show_option_all'    => 'All Catagories',
+                'show_option_none'   => '',
+                'orderby'            => 'ID',
+                'order'              => 'ASC',
+                'show_count'         => 1,
+                'hide_empty'         => 0,
+                'child_of'           => 0,
+                'exclude'            => '1,5',
+                'echo'               => 1,
+                'selected'           => 0,
+                'hierarchical'       => 0,
+                'name'               => 'cat',
+                'id'                 => '',
+                'class'              => 'postform',
+                'depth'              => 1,
+                'tab_index'          => 0,
+                'taxonomy'           => 'product_cat',
+                'hide_if_empty'      => false,
+              ); ?>
+              <?php wp_dropdown_categories( $args ); ?>
+
+              <div class="input-group mb-3 mt-3 slide-info arrows left">
+                <input type="text" name="tags" class="form-control" placeholder="Type tags and press enter">
               </div>
-              <input type="text" class="form-control" name="slide_colors" placeholder="Unique Slides">
+            </div> 
+
+          <div class="box-information mt-5">
+            <label for="">{{ _e('Other Information', 'premast') }}</label>
+
+            <div class="input-group mb-3 slide-info">
+              <input type="text" name="slide_type" class="form-control" placeholder="Enter no of slides">
+            </div>
+            <div class="input-group mb-3 slide-info">
+              <input type="text" name="slide_format" class="form-control" placeholder="Enter Format of Slides">
             </div>
             <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">#</span>
-              </div>
-              <input type="text" class="form-control" name="slide_number" placeholder="Animation">
+              <input type="text" class="form-control" name="slide_colors" placeholder="Enter Unique of Slides">
             </div>
             <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">#</span>
-              </div>
-              <input type="text" class="form-control" name="slide_pages" placeholder="Vector">
+              <select name="slide_number" id="">
+                <option value="0" selected="selected">Animation</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
             </div>
             <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">#</span>
-              </div>
-              <input type="text" class="form-control" name="slide_date" placeholder="Icons">
+              <select name="slide_pages" id="">
+                <option value="0" selected="selected">Vector</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+            <div class="input-group mb-3">
+              <select name="slide_date" id="">
+                <option value="0" selected="selected">Icons</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
             </div>                                
           </div>
+
+
           <p class="mt-t col-12">
             <input type="submit" value="publish" tabindex="6" id="submit" name="submit" />
           </p>
+
         </div><!-- End Sidebar -->
       </div>  <!-- End row -->
 		  <input type="hidden" name="action" value="new_post" />
@@ -361,7 +330,6 @@
         });
     });    
   });  
-  
   jQuery(function($) {
     var readURL = function(input) {
       if (input.files && input.files[0]) {
@@ -375,11 +343,18 @@
     $("#upload_img").on('change', function(){
       readURL(this);
     });
-    $(".upload-button").on('click', function() {
-        $("#").click();
+    var fileURL = function(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('.name-files').html('success upload File');
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    $("#upload_file").on('change', function(){
+      fileURL(this);
     });
-
-
     $('#file-input').on('change', function(){ //on file input change
       if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
       {
@@ -401,13 +376,11 @@
         alert("Your browser doesn't support File API!"); //if File API is absent
       }
     });
-    
     $(".remove").click(function (e) {
       e.preventDefault();
       $('#file-input').val('');
       $('#thumb-output img').remove();
     });
-
   });               
 </script>
 

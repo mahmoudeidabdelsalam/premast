@@ -74,7 +74,6 @@ class TemplateItems extends Controller
       $my_query->posts = array_merge( $more_query->posts, $my_query->posts);
     }
 
-
     return  $my_query;
   }
 
