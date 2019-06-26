@@ -181,7 +181,7 @@
       </div>
 
       <div class="col-12">
-        <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $loop) }}</nav>
+        <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $my_query) }}</nav>
       </div>
 
     </div>
