@@ -38,11 +38,24 @@ class TemplateItems extends Controller
   endif;
 
 
-    $args = array(
-      'post_type' => 'product',
-      'posts_per_page' => 20,
-      'paged' => $paged,
-    );
+
+    if ($sort != '0') {
+      // second query
+      $second_ids = get_posts( array(
+        'post_type' => 'product',
+        'posts_per_page' => 20,
+        'fields'         => 'ids',
+        'paged' => $paged,
+        'meta_key' => $meta_key,
+        'orderby' => $orderby,
+        'order' => $order,
+      ));
+
+      $per_page = 20 - count($second_ids);
+    } else {
+      $second_ids = [];
+      $per_page = 20;
+    }
 
     $orders = array(
       'post_type' => 'product',
@@ -53,12 +66,26 @@ class TemplateItems extends Controller
       'order' => $order,
     );
 
+    $args = array(
+      'post_type' => 'product',
+      'posts_per_page' => $per_page,
+      'paged' => $paged,
+      'post__not_in' => $second_ids,
+    );
+
     if($Name != '0') {
       $args['s'] = $Name;
     }
     
     if( $sort == 'featured') {
       $orders['tax_query'] = array(
+        array(
+          'taxonomy' => 'product_visibility',
+          'field'    => 'name',
+          'terms'    => 'featured',
+        ),
+      );
+      $second_ids['tax_query'] = array(
         array(
           'taxonomy' => 'product_visibility',
           'field'    => 'name',

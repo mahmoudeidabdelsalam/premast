@@ -4,7 +4,7 @@
     border: none;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     border-radius: 6px;
-    padding: 35px 20px;
+    padding: 15px 5px;
 
     .woocommerce-product-gallery {
       width: 100% !important;
@@ -25,9 +25,12 @@
   }
 
   .product-title {
-    font-size: 26px;
-    line-height: 32px;
-    font-weight: 400;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 29px;
+    color: rgb(40, 47, 57);
+    margin-bottom: 45px;
   }
 
   .breadcrumb {
@@ -69,18 +72,45 @@
     color: rgb(25, 122, 247) !important;
   }
 
-  button#somdn-form-submit-button,
-  .login {
-    background-color: rgb(30, 109, 251);
-    width: 100% !important;
-    color: $brand-white;
+  p.form-probelm {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 14px;
     text-align: center;
-    padding: 15px;
+    color: rgb(61, 69, 82);
+    margin-top: 15px;
+
+    .modal-forms {
+      color: rgb(24, 39, 255) !important;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+
+  button#somdn-form-submit-button {
+    background: linear-gradient(170.96deg, rgb(107, 115, 255) -0.5%, rgb(0, 13, 255) 100%);
+    box-shadow: 0 5px 8px rgba(0, 123, 255, 0.59);
+    border-radius: 20px;
+    min-width: 255px;
+    margin: auto;
+    height: 40px;
     display: block;
-    border-radius: 6px;
-    margin-top: 20px;
-    font-weight: 400;
-    font-size: 17px;
+    float: none !important;
+    color: $brand-white !important;
+  }
+
+  .login {
+    background: linear-gradient(170.96deg, #6b73ff -0.5%, #000dff 100%);
+    box-shadow: 0 5px 8px rgba(0, 123, 255, 0.59);
+    border-radius: 20px;
+    color: #fff;
+    font-size: 18px;
+    height: 40px;
+    display: block;
+    width: 255px;
+    text-align: center;
+    line-height: 40px;
+    margin: auto;
   }
 
   .somdn-download-count-wrap {

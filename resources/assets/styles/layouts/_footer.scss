@@ -205,8 +205,6 @@ div#LoginUser {
   }
 
   .modal-footer {
-    background-color: rgb(40, 46, 57);
-
     a {
       color: rgb(43, 183, 227);
       font-size: 14px;
@@ -217,7 +215,7 @@ div#LoginUser {
       &:focus {
         background: transparent !important;
         border: none;
-        color: $brand-white !important;
+        color: rgb(13, 29, 128) !important;
         box-shadow: none;
         outline: none;
       }

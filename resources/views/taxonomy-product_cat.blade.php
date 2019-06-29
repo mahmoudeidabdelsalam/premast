@@ -69,10 +69,37 @@
     <div class="col-md-9 col-sm-12">
       <div class="item-columns grid row m-0">
         @php
-          $args = array(
+          if ($sort != '0') {
+            // second query
+            $second_ids = get_posts( array(
+              'post_type' => 'product',
+              'posts_per_page' => 20,
+              'fields'         => 'ids',
+              'paged' => $paged,
+              'meta_key' => $meta_key,
+              'orderby' => $orderby,
+              'order' => $order,
+              'tax_query' => array(
+                array(
+                  'taxonomy' => 'product_cat',
+                  'field' => 'term_id',
+                  'terms' => $taxonomy_query->term_id
+                )
+              )
+            ));
+            $per_page = 20 - count($second_ids);
+          } else {
+            $second_ids = [];
+            $per_page = 20;
+          }
+
+          $orders = array(
             'post_type' => 'product',
             'posts_per_page' => 20,
             'paged' => $paged,
+            'meta_key' => $meta_key,
+            'orderby' => $orderby,
+            'order' => $order,
             'tax_query' => array(
               array(
                 'taxonomy' => 'product_cat',
@@ -82,13 +109,11 @@
             )
           );
 
-          $orders = array(
+          $args = array(
             'post_type' => 'product',
-            'posts_per_page' => 20,
+            'posts_per_page' => $per_page,
+            'post__not_in' => $second_ids,
             'paged' => $paged,
-            'meta_key' => $meta_key,
-            'orderby' => $orderby,
-            'order' => $order,
             'tax_query' => array(
               array(
                 'taxonomy' => 'product_cat',
@@ -123,6 +148,10 @@
           if ($sort != '0') {
             $more_query = new \WP_Query( $orders ); 
             $my_query->posts = array_merge( $more_query->posts, $my_query->posts);
+
+            $my_query->post_count = count( $my_query->posts );
+
+            //dd($my_query->post_count);
           }
     
         @endphp

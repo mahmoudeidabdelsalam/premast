@@ -299,6 +299,22 @@ if( function_exists('acf_add_local_field_group') ):
         'allow_archives' => 1,
         'multiple' => 0,
       ),
+      array(
+        'key' => 'field_5d17d1d0cf372',
+        'label' => 'froms problem with download',
+        'name' => 'froms_problem_with_download',
+        'type' => 'gravity_forms_field',
+        'instructions' => '',
+        'required' => 0,
+        'conditional_logic' => 0,
+        'wrapper' => array(
+          'width' => '',
+          'class' => '',
+          'id' => '',
+        ),
+        'allow_null' => 0,
+        'allow_multiple' => 0,
+      ),
 
 		  array(
 				'key' => 'field_fdsfsdfwererwe5a931c668284d',

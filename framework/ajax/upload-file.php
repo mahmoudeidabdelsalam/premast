@@ -302,22 +302,3 @@ function cvf_td_generate_random_code($length=10) {
    return $string;
 }
 
-
-function custom_remove_all_quantity_fields( $return, $product ) {return true;}
-add_filter( 'woocommerce_is_sold_individually','custom_remove_all_quantity_fields', 10, 2 );
-
-add_filter( 'add_to_cart_text', 'woo_custom_single_add_to_cart_text' );                // < 2.1
-add_filter( 'woocommerce_product_single_add_to_cart_text', 'woo_custom_single_add_to_cart_text' );  // 2.1 +
-  
-function woo_custom_single_add_to_cart_text() {
-  
-    return __( 'Buy', 'woocommerce' );
-}
-
-/**
- * Enables the Excerpt meta box in Page edit screen.
- */
-function wpcodex_add_excerpt_support_for_pages() {
-	add_post_type_support( 'product', 'author' );
-}
-add_action( 'init', 'wpcodex_add_excerpt_support_for_pages' );

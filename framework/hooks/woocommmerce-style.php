@@ -20,7 +20,7 @@ function thenga_price_override( $price, $product ) {
       /*
        * Replace the word "Free" with whatever text you would like. Also
        * remember to update the textdomain for translation if required.
-       */
+      */
       $price = __( 'Free version', 'premast' );
    }
  
@@ -35,12 +35,21 @@ if ( is_product() ) {
 }
 add_action('loop_start', 'remove_gallery_and_product_images');
 
-add_filter('acf/update_value/name=featured_image', function ($value, $post_id, $field) {
-if ($value != '') {
-    update_post_meta($post_id, '_thumbnail_id', $value);
-} else {
-    delete_post_thumbnail($post_id);
+function custom_remove_all_quantity_fields( $return, $product ) {return true;}
+add_filter( 'woocommerce_is_sold_individually','custom_remove_all_quantity_fields', 10, 2 );
+
+add_filter( 'add_to_cart_text', 'woo_custom_single_add_to_cart_text' );                // < 2.1
+add_filter( 'woocommerce_product_single_add_to_cart_text', 'woo_custom_single_add_to_cart_text' );  // 2.1 +
+  
+function woo_custom_single_add_to_cart_text() {
+  
+    return __( 'Get It Now', 'woocommerce' );
 }
 
-return $value;
-}, 10, 3);
+/**
+ * Enables the Excerpt meta box in Page edit screen.
+ */
+function wpcodex_add_excerpt_support_for_pages() {
+	add_post_type_support( 'product', 'author' );
+}
+add_action( 'init', 'wpcodex_add_excerpt_support_for_pages' );

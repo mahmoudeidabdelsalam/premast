@@ -30,9 +30,14 @@ body {
 }
 
 .btn {
-  border-radius: 25px 25px 25px 25px;
-  padding: 10px 20px;
-  box-shadow: 0 6px 11px 0 rgba(0, 46, 123, 0.58);
+  background: linear-gradient(170.96deg, rgb(107, 115, 255) -0.5%, rgb(0, 13, 255) 100%);
+  box-shadow: 0 5px 8px rgba(0, 123, 255, 0.59);
+  border-radius: 20px;
+  height: 40px;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.0877093px;
 }
 
 .font-weight-300 {
@@ -56,5 +61,50 @@ a {
 @include media-breakpoint-up(lg) {
   .container {
     max-width: 1140px;
+  }
+}
+
+.pagination {
+  li.page-item {
+    .page-numbers {
+      position: relative;
+      display: block;
+      padding: 0.5rem 0.75rem;
+      margin-left: -1px;
+      line-height: 1.25;
+      color: rgb(0, 0, 0);
+      background-color: rgb(255, 255, 255);
+      border: 1px solid rgb(222, 226, 230);
+
+      &.current {
+        color: rgb(252, 252, 252);
+        background-color: rgb(30, 108, 251);
+        border: 1px solid rgb(30, 108, 251);
+      }
+    }
+  }
+}
+
+.modal-content {
+  background: rgb(239, 246, 250);
+  box-shadow: 0 3px 2px rgba(0, 0, 0, 0.269107);
+  border-radius: 14px;
+}
+
+.lSSlideOuter {
+  .lSPager.lSGallery {
+    li {
+      height: 61px;
+      border: 1px solid rgb(51, 51, 51);
+      border-radius: 5px;
+
+      &.active {
+        height: 91px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(51, 51, 51);
+      }
+    }
   }
 }

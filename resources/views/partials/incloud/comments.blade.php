@@ -111,5 +111,37 @@ if ( ! comments_open() ) {
 		<p class="woocommerce-verification-required"><?php esc_html_e( 'Only logged in customers who have purchased this product may leave a review.', 'woocommerce' ); ?></p>
 	<?php endif; ?>
 
+<?php
+global $post;
+$recent_comments = get_comments( array( 
+    'number'      => 5, // number of comments to retrieve.
+    'status'      => 'approve', // we only want approved comments.
+    'post_status' => 'publish', // limit to published comments.
+    'post_id' => $post->ID,
+) );
+
+
+?>
+
+<?php if($recent_comments) : ?>  
+    <?php foreach((array) $recent_comments as $comment) : ?>  
+
+    <?php //dd($comment); ?>
+    <div class="media authcomment mb-4">
+      <?php echo get_avatar($comment->comment_author_email, 48); ?>
+      <div class="media-body">
+        <?php if ($comment->comment_approved == '0') : ?>  
+            <p>Your comment is awaiting approval</p>  
+        <?php endif; ?> 
+        <h5 class="mt-0"><?= $comment->comment_author; ?></h5>
+        <p class="mb-0"><time><small><?= $comment->comment_date; ?></small></time></p>
+        <p class="mb-0"><?= $comment->comment_content; ?></p>        
+      </div>
+    </div>
+
+         
+  <?php endforeach; ?>  
+<?php endif; ?> 
+
 	<div class="clear"></div>
 </div>

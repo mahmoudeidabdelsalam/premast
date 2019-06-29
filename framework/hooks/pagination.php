@@ -33,7 +33,7 @@ function premast_base_pagination($args = array(), $query_object = 'wp_query') {
 
           <ul class="pagination col-12 row justify-content-center ml-0 mr-0 mt-5 mb-5">
               <?php foreach ($paginate_links as $link): ?>
-                  <li class="page-item"><span class="page-link"><?php echo $link; ?></span></li>
+                  <li class="page-item"><?php echo $link; ?></li>
               <?php endforeach; ?>
           </ul>
 
