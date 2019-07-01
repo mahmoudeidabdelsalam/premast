@@ -32,8 +32,8 @@
 <div class="container-fiuld woocommerce">
   <div class="row justify-content-center m-0">
     <div class="col-md-12 col-sm-12">
-      <div class="item-columns grid row m-0">
-        @if($my_query->have_posts())
+      @if($my_query->have_posts())
+        <div class="item-columns grid row m-0">        
           @while($my_query->have_posts()) @php($my_query->the_post())
             <div class="item-card col-md-3 col-sm-4 col-sx-6 col-12 grid-item pl-4 pr-4">
               <div class="card">
@@ -81,19 +81,18 @@
             </div>
           @endwhile
           @php (wp_reset_postdata())
+        </div>
         @else
           <div class="alert alert-warning">
             {{ __('Sorry, but the page you were trying to view does not exist.', 'sage') }}
           </div>
         @endif
-      </div>
 
       <div class="col-12">
         <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $my_query) }}</nav>
       </div>
 
     </div>
-
   </div>
 </div>
 
