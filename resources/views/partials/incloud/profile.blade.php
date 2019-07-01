@@ -10,7 +10,7 @@
     wp_get_current_user();
   @endphp
   <ul class="link-dropdown">
-    <li class="item-dropdown"><span class="item-user mt-2">{!! $current_user->display_name !!}</span></li>
+    <li class="item-dropdown"><a href="{{ get_author_posts_url( $current_user->ID) }}">{!! $current_user->display_name !!}</a></li>
     <li class="item-dropdown"><a href="{{ the_field('admin_dashborad_page','option') }}">{{ _e('admin Dashborad', 'premast') }}</a></li>
     <li class="item-dropdown"><a href="{{ the_field('dashborad_page','option') }}">{{ _e('Dashborad', 'premast') }}</a></li>
     <li class="item-dropdown"><a href="{{ the_field('download_page','option') }}">{{ _e('Downloads', 'premast') }}</a></li>
