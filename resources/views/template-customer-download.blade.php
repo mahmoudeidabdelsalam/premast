@@ -196,7 +196,7 @@
                       </div>                
                     </div>
                   @endif
-                  @if($loop_paid->have_posts())
+                  @if($has_downloads)
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                       <div class="item-columns row m-0">
                         @while($loop_paid->have_posts()) @php($loop_paid->the_post())
