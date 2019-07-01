@@ -66,7 +66,6 @@ export default {
       $('.grid').masonry({
         // options...
         itemSelector: '.grid-item',
-        gutter: 10,
       });
     });
 
@@ -77,7 +76,6 @@ export default {
 
       $('.grid').masonry({
         itemSelector: '.grid-item',
-        gutter: 10,
       });
     });
 
@@ -88,7 +86,6 @@ export default {
 
       $('.grid').masonry({
         itemSelector: '.grid-item',
-        gutter: 10,
       });
     });
 

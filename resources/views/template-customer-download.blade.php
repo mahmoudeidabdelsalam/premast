@@ -32,73 +32,227 @@
 
   <section class="template-users">
         <?php
+        
+        $sort   = isset($_GET['sort']) ? $_GET['sort'] : 'DESC';
+
         if ( ! defined( 'ABSPATH' ) ) {
           exit;
         }
         $downloads     = WC()->customer->get_downloadable_products();
         $has_downloads = (bool) $downloads;
+        
         $product_ids = [];
         foreach ($downloads as $download) {
           $ids = $download['product_id'];
           $product_ids[] = $ids;
         }
+             
         
-        
-        $args = array(
+        $somdn_download_history = get_posts(
+          array(
+            'fields' => 'ids',
+            'posts_per_page' => -1,
+            'post_type' => 'somdn_tracked',
+            'meta_key' => 'somdn_user_id',
+            'meta_value' => get_current_user_id(),
+          )
+        );
+
+        $somdn_download_ids = array();
+        foreach( $somdn_download_history as $somdn_history ) {
+          $somdn_product = get_post_meta( $somdn_history, 'somdn_product_id', true);
+          if ( ! in_array( $somdn_product, $somdn_download_ids ) ) {
+            $somdn_download_ids[] = $somdn_product;
+          }
+        }
+
+
+        $all_ids = array_merge($somdn_download_ids, $product_ids);
+        $All = array(
           'post_type' => 'product',
-          'posts_per_page' => 20,
-          'post__in' => $product_ids,
+          'posts_per_page' => -1,
+          'post__in' => $all_ids,
+          'order'   => $sort,
         );
         
-        $loop = new WP_Query( $args );
-        do_action( 'woocommerce_before_account_downloads', $has_downloads ); ?>
+
+        $Free = array(
+          'post_type' => 'product',
+          'posts_per_page' => -1,
+          'post__in' => $somdn_download_ids,
+          'order'   => $sort,
+        );
+
+        $Paid = array(
+          'post_type' => 'product',
+          'posts_per_page' => -1,
+          'post__in' => $product_ids,
+          'order'   => $sort,
+        );
+
+
+        $loop_all = new WP_Query( $All );
+        $loop_free = new WP_Query( $Free );
+        $loop_paid = new WP_Query( $Paid );
+        
+        ?>
 
         <?php if ( $has_downloads ) : ?>
 
           <div class="container-fiuld woocommerce customer-download">
             <div class="row justify-content-center m-0 pt-5 pb-5">
               <div class="col-md-12 col-sm-12">
-                <div class="item-columns grid row m-0">
-                  @if($loop->have_posts())
-                    @while($loop->have_posts()) @php($loop->the_post())
-                      <div class="item-card col-md-2 col-sm-3 col-sx-6 col-12 grid-item pl-4 pr-4">
-                        <div class="card">
-                          <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');height:204px;">
-                            <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
-                          </div>
-                          <div class="card-body pt-2 pl-0 pr-0">
-                            <a class="card-link" href="{{ the_permalink() }}">
-                              <h5 class="card-title font-weight-400">{{ wp_trim_words(get_the_title(), '5', ' ...') }}</h5>
-                            </a>
-                            <div class="review-and-download">
-                              <div class="review">
-                                <a class="card-link" href="{{ the_permalink() }}">
-                                  <i class="fa fa-star" aria-hidden="true"></i>
-                                  <span itemprop="reviewCount">{{ _e('Rate it', 'premast') }}</span>
-                                </a>
-                              </div>
-                              <div class="download">
-                                <a class="card-link" href="{{ the_permalink() }}">
-                                  {{ _e('Download', 'premast') }}
-                                </a>
+             
+             <div class="row justify-content-between">
+                <ul class="nav-downloads mb-5 list-inline nav nav-tabs border-0" id="myTab" role="tablist">
+                  <li class="show-tabs list-inline-item">{{ _e('Show', 'premast') }}</li>
+                  <li class="nav-item list-inline-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">All</a>
+                  </li>
+                  <li class="nav-item list-inline-item">
+                    <a class="nav-link" id="free-tab" data-toggle="tab" href="#free" role="tab" aria-controls="free" aria-selected="false">Free</a>
+                  </li>
+                  <li class="nav-item list-inline-item">
+                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Paid</a>
+                  </li>
+                </ul>
+                
+                @while(have_posts()) @php(the_post())
+                  <div class="dropdown mr-1">
+                    <button type="button" class="dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+                      @if ($sort == 'DESC') {{ _e('Newest to oldest', 'premast')}} @else {{ _e('oldest to Newest', 'premast')}} @endif
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                      <a class="dropdown-item" href="{{ the_permalink() }}?sort=DESC">Newest to oldest</a>
+                      <a class="dropdown-item" href="{{ the_permalink() }}?sort=ASC">oldest to Newest</a>
+                    </div>
+                  </div>
+                @endwhile
+              </div>
+
+
+
+              <div class="tab-content" id="myTabContent">
+                
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <div class="item-columns row m-0">
+                    @if($loop_all->have_posts())
+                      @while($loop_all->have_posts()) @php($loop_all->the_post())
+                        <div class="item-card col-md-2 col-sm-3 col-sx-6 col-12 grid-item">
+                          <div class="card">
+                            <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');height:204px;">
+                              <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
+                            </div>
+                            <div class="card-body pt-2 pl-0 pr-0">
+                              <a class="card-link" href="{{ the_permalink() }}">
+                                <h5 class="card-title font-weight-400">{{ wp_trim_words(get_the_title(), '5', ' ...') }}</h5>
+                              </a>
+                              <div class="review-and-download">
+                                <div class="review">
+                                  <a class="card-link" href="{{ the_permalink() }}">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <span itemprop="reviewCount">{{ _e('Rate it', 'premast') }}</span>
+                                  </a>
+                                </div>
+                                <div class="download">
+                                  <a class="card-link" href="{{ the_permalink() }}">
+                                    {{ _e('Download', 'premast') }}
+                                  </a>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </div>              
-                      </div>
-                    @endwhile
-                    @php (wp_reset_postdata())
-                  @endif
+                          </div>              
+                        </div>
+                      @endwhile
+                      @php (wp_reset_postdata())
+                    @endif
+                  </div>
                 </div>
 
-                <div class="col-12">
-                  <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $loop) }}</nav>
+                <div class="tab-pane fade" id="free" role="tabpanel" aria-labelledby="free-tab">
+                  <div class="item-columns row m-0">
+                    @if($loop_free->have_posts())
+                      @while($loop_free->have_posts()) @php($loop_free->the_post())
+                        <div class="item-card col-md-2 col-sm-3 col-sx-6 col-12 grid-item">
+                          <div class="card">
+                            <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');height:204px;">
+                              <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
+                            </div>
+                            <div class="card-body pt-2 pl-0 pr-0">
+                              <a class="card-link" href="{{ the_permalink() }}">
+                                <h5 class="card-title font-weight-400">{{ wp_trim_words(get_the_title(), '5', ' ...') }}</h5>
+                              </a>
+                              <div class="review-and-download">
+                                <div class="review">
+                                  <a class="card-link" href="{{ the_permalink() }}">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <span itemprop="reviewCount">{{ _e('Rate it', 'premast') }}</span>
+                                  </a>
+                                </div>
+                                <div class="download">
+                                  <a class="card-link" href="{{ the_permalink() }}">
+                                    {{ _e('Download', 'premast') }}
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>              
+                        </div>
+                      @endwhile
+                      @php (wp_reset_postdata())
+                    @endif
+                  </div>                
                 </div>
+
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                  <div class="item-columns row m-0">
+                    @if($loop_paid->have_posts())
+                      @while($loop_paid->have_posts()) @php($loop_paid->the_post())
+                        <div class="item-card col-md-2 col-sm-3 col-sx-6 col-12 grid-item">
+                          <div class="card">
+                            <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');height:204px;">
+                              <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
+                            </div>
+                            <div class="card-body pt-2 pl-0 pr-0">
+                              <a class="card-link" href="{{ the_permalink() }}">
+                                <h5 class="card-title font-weight-400">{{ wp_trim_words(get_the_title(), '5', ' ...') }}</h5>
+                              </a>
+                              <div class="review-and-download">
+                                <div class="review">
+                                  <a class="card-link" href="{{ the_permalink() }}">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <span itemprop="reviewCount">{{ _e('Rate it', 'premast') }}</span>
+                                  </a>
+                                </div>
+                                <div class="download">
+                                  <a class="card-link" href="{{ the_permalink() }}">
+                                    {{ _e('Download', 'premast') }}
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>              
+                        </div>
+                      @endwhile
+                      @php (wp_reset_postdata())
+                    @endif
+                  </div>                  
+                </div>
+
+              </div>
+
+
+
+
+
+
 
               </div>
 
             </div>
           </div>
+
+
         <?php else : ?>
           <div class="container">
             <div class="row">
@@ -111,7 +265,7 @@
             </div>
           </div>
         <?php endif; ?>
-        <?php do_action( 'woocommerce_after_account_downloads', $has_downloads ); ?>
+
 
   </section>
 

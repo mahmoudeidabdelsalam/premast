@@ -415,3 +415,50 @@
     color: #ccc;
   }
 }
+
+.nav-downloads {
+  .list-inline-item {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 33px;
+    letter-spacing: 0.114083px;
+    text-transform: capitalize;
+    color: rgb(0, 0, 0);
+
+    .nav-link {
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+      letter-spacing: 0.114083px;
+      text-transform: capitalize;
+      color: rgb(0, 0, 0);
+      border: 1px solid rgba(61, 69, 82, 0.22);
+      box-sizing: border-box;
+      border-radius: 5px;
+
+      &.active {
+        background: rgb(30, 109, 251);
+        border-radius: 5px;
+        color: $brand-white;
+      }
+    }
+
+    &.show-tabs {
+      margin-left: 25px;
+    }
+  }
+}
+
+button#dropdownMenuOffset {
+  border: 1px solid rgba(0, 0, 0, 0.22);
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-color: transparent;
+  margin-right: 20px;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.114083px;
+  color: $brand-black;
+  height: 30px;
+}
