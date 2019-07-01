@@ -107,7 +107,7 @@
                         <a class="nav-link" id="free-tab" data-toggle="tab" href="#free" role="tab" aria-controls="free" aria-selected="false">Free</a>
                       </li>
                     @endif
-                    @if($loop_paid->have_posts())
+                    @if($has_downloads)
                       <li class="nav-item list-inline-item">
                         <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Paid</a>
                       </li>
