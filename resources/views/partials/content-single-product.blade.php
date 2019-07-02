@@ -59,9 +59,11 @@ global $product;
       
       <div class="summary entry-summary col-md-4 col-12 sidebar-shop">
         <div class="download-product">
-          @php  
-            do_action( 'woocommerce_single_product_summary' );
-          @endphp
+          @if ( !is_user_logged_in() )
+            @php  
+              do_action( 'woocommerce_single_product_summary' );
+            @endphp
+          @endif
         
           @if(current_user_can( 'edit_post', get_the_ID() ) && (get_the_author_meta('ID') == $current_user->ID) || is_super_admin())
             {{ edit_post_link('Edit Product', '<p class="mb-0 mb-0 border border-primary text-primary text-center p-2">', '</p>') }}

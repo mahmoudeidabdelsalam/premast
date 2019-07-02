@@ -13,6 +13,7 @@
     'post_type' => 'product',
     'posts_per_page' => 20,
     'author' => $author->ID,
+    'post_status' => 'any',
     'paged' => $paged,
   );
   $my_query = new \WP_Query( $args );
