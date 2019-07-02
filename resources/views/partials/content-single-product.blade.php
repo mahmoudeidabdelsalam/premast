@@ -59,7 +59,7 @@ global $product;
       
       <div class="summary entry-summary col-md-4 col-12 sidebar-shop">
         <div class="download-product">
-          @if ( !is_user_logged_in() )
+          @if ( is_user_logged_in() )
             @php  
               do_action( 'woocommerce_single_product_summary' );
             @endphp
