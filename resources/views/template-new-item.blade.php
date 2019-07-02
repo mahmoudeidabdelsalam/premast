@@ -15,6 +15,8 @@
   $count = $loop->found_posts;
   global $current_user;
   wp_get_current_user();
+  $user = wp_get_current_user();
+  $allowed_roles = array('vendor', 'administrator');
 @endphp
 
 @if (get_field('banner_items_headline', 'option'))
@@ -34,12 +36,12 @@
       <div class="publish">
         <div class="user-not-login">
           <h2>{{ _e('See what’s happening in the world right now', 'premast') }}</h2>
-          <p>{{ _e('Join Twitter today.', 'premast') }}</p>
+          <p>{{ _e('Join Pre Vendor today.', 'premast') }}</p>
           <a class="mt-2 login btn btn-blue" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Log In', 'premast') }}</a>
         </div>
       </div>
     </div>
-  @else
+  @elseif (array_intersect($allowed_roles, $user->roles))
     @php
       if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POST['action'] == "new_post") {
         $title = $_POST["title"];
@@ -252,136 +254,148 @@
 		  <input type="hidden" name="action" value="new_post" />
       <?php wp_nonce_field( 'new-post' ); ?>
     </form>
+  @else 
+    <div class="row justify-content-center m-0">
+      <div class="publish">
+        <div class="user-not-login">
+          <h2>{{ _e('See what’s happening in the world right now', 'premast') }}</h2>
+          <p>{{ _e('Join Pre Vendor today.', 'premast') }}</p>
+          <a class="mt-2 login btn btn-blue" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Log In', 'premast') }}</a>
+        </div>
+      </div>
+    </div>
   @endif
 </div>
 
-<script type = "text/javascript">
-  jQuery(function($) {
-    // Add New Images
-    $('body').on('click', '#submit', function(e){
-        e.preventDefault;
-        var fd = new FormData();
-        var files_data = $('.files-thumbnail'); // The <input type="file" /> field
-        // Loop through each data and create an array file[] containing our files data.
-        $.each($(files_data), function(i, obj) {
-            $.each(obj.files,function(j,file){
-                fd.append('thumbnail[' + j + ']', file);
-            })
-        });
-        fd.append('action', 'cvf_upload_thumbnail');  
-        fd.append('post_id', <?php echo $post->ID; ?>); 
-        $.ajax({
-            type: 'POST',
-            url: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
-            data: fd,
-            contentType: false,
-            processData: false,
-            success: function(response){
-              $('.upload-response').html(response); // Append Server Response
-            }
-        });
-    });
-    // Add New File Download
-    $('body').on('click', '#submit', function(e){
-        e.preventDefault;
-        var fd = new FormData();
-        var files_data = $('.files-download'); // The <input type="file" /> field
-        // Loop through each data and create an array file[] containing our files data.
-        $.each($(files_data), function(i, obj) {
-            $.each(obj.files,function(j,file){
-                fd.append('files[' + j + ']', file);
-            })
-        });
-        fd.append('action', 'cvf_upload_files');  
-        fd.append('post_id', <?php echo $post->ID; ?>); 
-        $.ajax({
-            type: 'POST',
-            url: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
-            data: fd,
-            contentType: false,
-            processData: false,
-            success: function(response){
-              $('.upload-response').html(response); // Append Server Response
-            }
-        });
-    });
-    // Add New Gallery
-    $('body').on('click', '#submit', function(e){
-        e.preventDefault;
-        var fd = new FormData();
-        var files_data = $('.files-gallery'); // The <input type="file" /> field
-        // Loop through each data and create an array file[] containing our files data.
-        $.each($(files_data), function(i, obj) {
-            $.each(obj.files,function(j,file){
-                fd.append('gallery[' + j + ']', file);
-            })
-        });
-        fd.append('action', 'cvf_upload_gallery');  
-        fd.append('post_id', <?php echo $post->ID; ?>); 
-        $.ajax({
-            type: 'POST',
-            url: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
-            data: fd,
-            contentType: false,
-            processData: false,
-            success: function(response){
-              $('.upload-response').html(response); // Append Server Response
-            }
-        });
-    });    
-  });  
-  jQuery(function($) {
-    var readURL = function(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $('.profile-pic').attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
-    $("#upload_img").on('change', function(){
-      readURL(this);
-    });
-    var fileURL = function(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $('.name-files').html('success upload File');
-        }
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
-    $("#upload_file").on('change', function(){
-      fileURL(this);
-    });
-    $('#file-input').on('change', function(){ //on file input change
-      if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
-      {
-        var data = $(this)[0].files; //this file data
-        $.each(data, function(index, file){ //loop though each file
-          if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){ //check supported file type
-            var fRead = new FileReader(); //new filereader
-              fRead.onload = (function(file){ //trigger function on successful read
-                return function(e) {
-                  var img = $('<img/>').addClass('thumb').attr('src', e.target.result); //create image element 
-                  $('#thumb-output').append(img); //append image to output element
-                };
-              })(file);
-            fRead.readAsDataURL(file); //URL representing the file's data.
+@if (array_intersect($allowed_roles, $user->roles))
+  <script type = "text/javascript">
+    jQuery(function($) {
+      // Add New Images
+      $('body').on('click', '#submit', function(e){
+          e.preventDefault;
+          var fd = new FormData();
+          var files_data = $('.files-thumbnail'); // The <input type="file" /> field
+          // Loop through each data and create an array file[] containing our files data.
+          $.each($(files_data), function(i, obj) {
+              $.each(obj.files,function(j,file){
+                  fd.append('thumbnail[' + j + ']', file);
+              })
+          });
+          fd.append('action', 'cvf_upload_thumbnail');  
+          fd.append('post_id', <?php echo $post->ID; ?>); 
+          $.ajax({
+              type: 'POST',
+              url: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
+              data: fd,
+              contentType: false,
+              processData: false,
+              success: function(response){
+                $('.upload-response').html(response); // Append Server Response
+              }
+          });
+      });
+      // Add New File Download
+      $('body').on('click', '#submit', function(e){
+          e.preventDefault;
+          var fd = new FormData();
+          var files_data = $('.files-download'); // The <input type="file" /> field
+          // Loop through each data and create an array file[] containing our files data.
+          $.each($(files_data), function(i, obj) {
+              $.each(obj.files,function(j,file){
+                  fd.append('files[' + j + ']', file);
+              })
+          });
+          fd.append('action', 'cvf_upload_files');  
+          fd.append('post_id', <?php echo $post->ID; ?>); 
+          $.ajax({
+              type: 'POST',
+              url: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
+              data: fd,
+              contentType: false,
+              processData: false,
+              success: function(response){
+                $('.upload-response').html(response); // Append Server Response
+              }
+          });
+      });
+      // Add New Gallery
+      $('body').on('click', '#submit', function(e){
+          e.preventDefault;
+          var fd = new FormData();
+          var files_data = $('.files-gallery'); // The <input type="file" /> field
+          // Loop through each data and create an array file[] containing our files data.
+          $.each($(files_data), function(i, obj) {
+              $.each(obj.files,function(j,file){
+                  fd.append('gallery[' + j + ']', file);
+              })
+          });
+          fd.append('action', 'cvf_upload_gallery');  
+          fd.append('post_id', <?php echo $post->ID; ?>); 
+          $.ajax({
+              type: 'POST',
+              url: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
+              data: fd,
+              contentType: false,
+              processData: false,
+              success: function(response){
+                $('.upload-response').html(response); // Append Server Response
+              }
+          });
+      });    
+    });  
+    jQuery(function($) {
+      var readURL = function(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+              $('.profile-pic').attr('src', e.target.result);
           }
-        });
-            
-      } else {
-        alert("Your browser doesn't support File API!"); //if File API is absent
+          reader.readAsDataURL(input.files[0]);
+        }
       }
-    });
-    $(".remove").click(function (e) {
-      e.preventDefault();
-      $('#file-input').val('');
-      $('#thumb-output img').remove();
-    });
-  });               
-</script>
+      $("#upload_img").on('change', function(){
+        readURL(this);
+      });
+      var fileURL = function(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+              $('.name-files').html('success upload File');
+          }
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+      $("#upload_file").on('change', function(){
+        fileURL(this);
+      });
+      $('#file-input').on('change', function(){ //on file input change
+        if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
+        {
+          var data = $(this)[0].files; //this file data
+          $.each(data, function(index, file){ //loop though each file
+            if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){ //check supported file type
+              var fRead = new FileReader(); //new filereader
+                fRead.onload = (function(file){ //trigger function on successful read
+                  return function(e) {
+                    var img = $('<img/>').addClass('thumb').attr('src', e.target.result); //create image element 
+                    $('#thumb-output').append(img); //append image to output element
+                  };
+                })(file);
+              fRead.readAsDataURL(file); //URL representing the file's data.
+            }
+          });
+              
+        } else {
+          alert("Your browser doesn't support File API!"); //if File API is absent
+        }
+      });
+      $(".remove").click(function (e) {
+        e.preventDefault();
+        $('#file-input').val('');
+        $('#thumb-output img').remove();
+      });
+    });               
+  </script>
+@endif
 
 @endsection

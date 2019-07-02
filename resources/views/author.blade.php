@@ -7,16 +7,6 @@
   wp_get_current_user();
   
   $author = get_user_by( 'slug', get_query_var( 'author_name' ) );
-  $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
-
-  $args = array(
-    'post_type' => 'product',
-    'posts_per_page' => 20,
-    'author' => $author->ID,
-    'post_status' => 'any',
-    'paged' => $paged,
-  );
-  $my_query = new \WP_Query( $args );
 @endphp
 
 <section class="header-users mb-5">
@@ -33,9 +23,9 @@
 <div class="container-fiuld woocommerce">
   <div class="row justify-content-center m-0">
     <div class="col-md-12 col-sm-12">
-      @if($my_query->have_posts())
+      @if(have_posts())
         <div class="item-columns grid row m-0">        
-          @while($my_query->have_posts()) @php($my_query->the_post())
+          @while(have_posts()) @php(the_post())
             <div class="item-card col-md-3 col-sm-4 col-sx-6 col-12 grid-item pl-4 pr-4">
               <div class="card">
                 <div class="bg-white" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');">
@@ -90,7 +80,7 @@
         @endif
 
       <div class="col-12">
-        <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $my_query) }}</nav>
+        <nav aria-label="Page navigation example">{{ premast_base_pagination() }}</nav>
       </div>
 
     </div>
