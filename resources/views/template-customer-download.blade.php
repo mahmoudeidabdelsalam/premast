@@ -61,6 +61,7 @@
           }
         }
 
+
         $all_ids = array_merge($somdn_download_ids, $product_ids);
         $All = array(
           'post_type' => 'product',
@@ -90,7 +91,7 @@
         
         ?>
 
-        @if($loop_all->have_posts())
+        @if($all_ids)
 
           <div class="container-fiuld woocommerce customer-download">
             <div class="row justify-content-center m-0 pt-5 pb-5">
@@ -102,7 +103,7 @@
                     <li class="nav-item list-inline-item">
                       <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">All</a>
                     </li>
-                    @if($loop_free->have_posts())
+                    @if($somdn_download_ids)
                       <li class="nav-item list-inline-item">
                         <a class="nav-link" id="free-tab" data-toggle="tab" href="#free" role="tab" aria-controls="free" aria-selected="false">Free</a>
                       </li>
@@ -162,7 +163,7 @@
                       @endif
                     </div>
                   </div>
-                  @if($loop_free->have_posts())
+                  @if($somdn_download_ids)
                     <div class="tab-pane fade" id="free" role="tabpanel" aria-labelledby="free-tab">
                       <div class="item-columns row m-0">
                         @while($loop_free->have_posts()) @php($loop_free->the_post())
@@ -237,8 +238,8 @@
         @else
           <div class="container">
             <div class="row">
-              <div class="woocommerce-Message woocommerce-Message--info woocommerce-info col-12 pt-5 pb-5 mb-5 mt-5">
-                <a class="woocommerce-Button button" href="<?php echo esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ); ?>">
+              <div class="woocommerce-Message woocommerce-Message--info text-center col-12 pt-5 pb-5 mb-5 mt-5">
+                <a class="woocommerce-Button button" href="{{ the_field('link_page_login','option') }}">
                   <?php esc_html_e( 'Go shop', 'woocommerce' ); ?>
                 </a>
                 <?php esc_html_e( 'No downloads available yet.', 'woocommerce' ); ?>
