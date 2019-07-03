@@ -51,7 +51,8 @@
         $prices = $_POST["prices"];
         $slide_type = $_POST["slide_type"];
         $slide_format = $_POST["slide_format"];
-        $tags = $_POST["tags"];
+        $tags = $_POST['tags'];
+
         $cat = $_POST["cat"];
         $slide_colors = $_POST["slide_colors"];
         $slide_number = $_POST["slide_number"];
@@ -111,6 +112,16 @@
             <div class="col-12">
               
               <label for="upload_img" class="label-upload arrows right">
+                <span class="images-files"></span>
+                <div id="loading-image" style="display:none;">
+                  <div class="spinner">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                  </div>
+                </div>
                 <img class="profile-pic" src="{{ get_theme_file_uri().'/dist/images/upload-image.png' }}">
                 <span>{{ _e('upload your cover image here', 'premast') }}</span>
                 <span>{{ _e('1104 × 944 pixels', 'premast') }}</span>
@@ -118,22 +129,33 @@
               <div class="upload-form">
                 <div class="upload-response"></div>
                   <div class="form-group">
-                    <input type="file" id="upload_img"  name="thumbnail[]" accept="image/*" class="files-thumbnail form-control" multiple />
+                    <input type="file" id="upload_img"  name="thumbnail[]" accept="image/*" class="files-thumbnail form-control" multiple required/>
                   </div>
               </div> 
 
-              <div class="upload-gallery mt-5 mb-0 arrows right">
+              <div class="upload-gallery mt-5 mb-0">                
+                <div id="loading-gallery" style="display:none;">
+                  <div class="spinner">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                  </div>
+                </div>
+
                 <span>{{ _e('upload your gallery images here', 'premast') }}</span>
                 <input type="button" value="Remove All Image" class="remove">
                 <div class="input-group mb-3 mt-3">
                   <label class="label-gallery" for="file-input">
                     <img class="profile-gallery" src="{{ get_theme_file_uri().'/dist/images/upload-gallery.png' }}">
                   </label>
-                  <div id="thumb-output"></div>   
+                  <div id="thumb-output"></div>  
+                  <span class="gallery-files d-block"></span> 
                   <div class="custom-file">
                     <input type="file" class="custom-file-input files-gallery" name="gallery[]" accept="image/*" id="file-input" multiple />
                   </div>
-                </div>    
+                </div>                    
               </div> 
 
               <div class="input-group mb-3">
@@ -164,50 +186,48 @@
                 <span class="input-group-text">{{ _e('$', 'premast') }}</span>
               </div>
             </div>
-            <textarea class="form-control" name="short_description" placeholder="Short description" rows="3"></textarea>
+            <textarea class="form-control" name="short_description" placeholder="Short description" rows="3" required></textarea>
           </div>
 
-
-
-            <div class="input-group mb-3 mt-3">
-              <label class="custom-download-label arrows left" for="upload_file">
-                <img class="profile-download" src="{{ get_theme_file_uri().'/dist/images/upload.png' }}">
-                <span class="name-files">{{ _e('upload your download file here', 'premast') }}</span>
-                <span>{{ _e('Max size 1GB') }}</span>
-              </label>
-              <div class="custom-file d-none">
-                <input type="file" id="upload_file" class="custom-file-input files-download"  name="files[]"  multiple required/>                
+          <div class="input-group mb-4 mt-4">
+            <div id="loading-download" style="display:none;">
+              <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
               </div>
             </div>
-          
+            <label class="custom-download-label arrows left mb-0" for="upload_file">
+              <div class="upload-response"></div>
+              <img class="profile-download" src="{{ get_theme_file_uri().'/dist/images/upload.png' }}">
+              <span class="name-files">{{ _e('upload your download file here', 'premast') }}</span>
+              <span>{{ _e('Max size 1GB') }}</span>
+            </label>
+            <div class="custom-file d-none">
+              <input type="file" id="upload_file" class="custom-file-input files-download"  name="files[]"  multiple required/>                
+            </div>
+          </div>
+        
 
-            <div class="box-taxonomy arrows left">
-              <?php $args = array(
-                'show_option_all'    => 'All Catagories',
-                'show_option_none'   => '',
-                'orderby'            => 'ID',
-                'order'              => 'ASC',
-                'show_count'         => 1,
-                'hide_empty'         => 0,
-                'child_of'           => 0,
-                'exclude'            => '1,5',
-                'echo'               => 1,
-                'selected'           => 0,
-                'hierarchical'       => 0,
-                'name'               => 'cat',
-                'id'                 => '',
-                'class'              => 'postform',
-                'depth'              => 1,
-                'tab_index'          => 0,
-                'taxonomy'           => 'product_cat',
-                'hide_if_empty'      => false,
-              ); ?>
-              <?php wp_dropdown_categories( $args ); ?>
+          <div class="box-taxonomy arrows left">
+            <?php 
+            $args = array(
+              'show_option_none'   => __( 'All Category', 'premast' ),
+              'option_none_value'  => NULL,
+              'taxonomy'           => 'product_cat',
+              'id'                 => 'cat',
+              'required'           => true,
+              'hide_if_empty'      => false,
+            ); ?>
+            <?php wp_dropdown_categories( $args ); ?>
 
-              <div class="input-group mb-3 mt-3 slide-info arrows left">
-                <input type="text" name="tags" class="form-control" placeholder="Type tags and press enter">
-              </div>
-            </div> 
+
+            <div class="input-group mb-3 mt-3 slide-info arrows left">
+              <input id="tags" size="50" type="text" name="tags" class="form-control" id="autotags" autocomplete="on" autocorrect="off" autocapitalize="on" spellcheck="false"  placeholder="Type tags and press enter" required>
+            </div>
+          </div> 
 
           <div class="box-information mt-5">
             <label for="">{{ _e('Other Information', 'premast') }}</label>
@@ -249,6 +269,15 @@
             <input type="submit" value="publish" tabindex="6" id="submit" name="submit" />
           </p>
 
+          <p class="error-field">
+            <span id="error-headline" class="alert alert-danger" style="display:none;">{{ _e('Alert headline field input required (kindly check!)', 'premast') }}</span>
+            <span id="error-thumb" class="alert alert-danger" style="display:none;">{{ _e('Alert image field input required (kindly check!)', 'premast') }}</span>
+            <span id="error-description" class="alert alert-danger" style="display:none;">{{ _e('Alert description field input required (kindly check!)', 'premast') }}</span>
+            <span id="error-file" class="alert alert-danger" style="display:none;">{{ _e('Alert file field input required (kindly check!)', 'premast') }}</span>
+            <span id="error-category" class="alert alert-danger" style="display:none;">{{ _e('Alert category field input required (kindly check!)', 'premast') }}</span>
+            <span id="error-tags" class="alert alert-danger" style="display:none;">{{ _e('Alert tags field input required (kindly check!)', 'premast') }}</span>
+          </p>
+
         </div><!-- End Sidebar -->
       </div>  <!-- End row -->
 		  <input type="hidden" name="action" value="new_post" />
@@ -271,7 +300,8 @@
   <script type = "text/javascript">
     jQuery(function($) {
       // Add New Images
-      $('body').on('click', '#submit', function(e){
+      
+      $('#upload_img').on('change', function(e){
           e.preventDefault;
           var fd = new FormData();
           var files_data = $('.files-thumbnail'); // The <input type="file" /> field
@@ -289,13 +319,28 @@
               data: fd,
               contentType: false,
               processData: false,
+              beforeSend: function() {
+                $("#loading-image").show();
+                $('#submit').attr('disabled', 'disabled');
+              },
+              error: function (errormessage) {
+                $('.images-files').html('Error Message: "Upload Error. File could not be uploaded" try again & check size file');
+                $('.images-files').addClass('errormessage');
+                $('#submit').attr('disabled', 'disabled');
+                $("#loading-image").hide();
+              },
               success: function(response){
                 $('.upload-response').html(response); // Append Server Response
+                $('.images-files').html('success upload File');
+                $('.images-files').removeClass('errormessage');
+                $("#loading-image").hide();
+                $('#submit').removeAttr("disabled");
               }
           });
       });
+
       // Add New File Download
-      $('body').on('click', '#submit', function(e){
+      $('#upload_file').on('change', function(e){
           e.preventDefault;
           var fd = new FormData();
           var files_data = $('.files-download'); // The <input type="file" /> field
@@ -313,13 +358,28 @@
               data: fd,
               contentType: false,
               processData: false,
+              beforeSend: function() {
+                $("#loading-download").show();
+                $('#submit').attr('disabled', 'disabled');
+              },
+              error: function (errormessage) {
+                $('.name-files').html('Error Message: "Upload Error. File could not be uploaded" try again & check size file');
+                $('.name-files').addClass('errormessage');
+                $('#submit').attr('disabled', 'disabled');
+                $("#loading-download").hide();
+              },
               success: function(response){
                 $('.upload-response').html(response); // Append Server Response
-              }
+                $("#loading-download").hide();
+                $('.name-files').removeClass('errormessage');
+                $('.name-files').html('success upload File');
+                $('#submit').removeAttr("disabled");
+              },
           });
       });
+
       // Add New Gallery
-      $('body').on('click', '#submit', function(e){
+      $('#file-input').on('change', function(e){
           e.preventDefault;
           var fd = new FormData();
           var files_data = $('.files-gallery'); // The <input type="file" /> field
@@ -337,12 +397,63 @@
               data: fd,
               contentType: false,
               processData: false,
+              beforeSend: function() {
+                $("#loading-gallery").show();
+                $('#submit').attr('disabled', 'disabled');
+              },
+              error: function (errormessage) {
+                $('.gallery-files').html('Error Message: "Upload Error. File could not be uploaded" try again & check size file');
+                $('.gallery-files').addClass('errormessage');
+                $('#submit').attr('disabled', 'disabled');
+                $("#loading-gallery").hide();
+              },
               success: function(response){
                 $('.upload-response').html(response); // Append Server Response
-              }
+                $("#loading-gallery").hide();
+                $('.gallery-files').removeClass('errormessage');
+                $('.gallery-files').html('success upload File');
+                $('#submit').removeAttr("disabled");
+              },
           });
-      });    
+      });   
+
+
+
+      $('#submit').on('click', function(){
+        if($('input[name="title"]').val() === ""){
+          $("#error-headline").show();
+        } else {
+          $("#error-headline").hide();
+        }
+        if($('#upload_img').val() === ""){
+          $("#error-thumb").show();
+        } else {
+          $("#error-thumb").hide();
+        }
+        if($('textarea[name="short_description"]').val() === ""){
+          $("#error-description").show();
+        } else {
+          $("#error-description").hide();
+        }
+        if($('#upload_file').val() === ""){
+          $("#error-file").show();
+        } else {
+          $("#error-file").hide();
+        }
+        if($('#cat').val() === ""){
+          $("#error-category").show();
+        } else {
+          $("#error-category").hide();
+        }
+        if($('input[name="tags"]').val() === ""){
+          $("#error-tags").show();
+        } else {
+          $("#error-tags").hide();
+        }                                     
+      }); 
+
     });  
+
     jQuery(function($) {
       var readURL = function(input) {
         if (input.files && input.files[0]) {
@@ -356,18 +467,7 @@
       $("#upload_img").on('change', function(){
         readURL(this);
       });
-      var fileURL = function(input) {
-        if (input.files && input.files[0]) {
-          var reader = new FileReader();
-          reader.onload = function (e) {
-              $('.name-files').html('success upload File');
-          }
-          reader.readAsDataURL(input.files[0]);
-        }
-      }
-      $("#upload_file").on('change', function(){
-        fileURL(this);
-      });
+      
       $('#file-input').on('change', function(){ //on file input change
         if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
         {
@@ -394,7 +494,62 @@
         $('#file-input').val('');
         $('#thumb-output img').remove();
       });
-    });               
+    });  
+  
+    <?php 
+      $terms = get_terms( 'product_tag', array('orderby' => 'slug', 'hide_empty' => false ) ); 
+      $titles = array();
+      foreach( $terms as $result )
+        $titles[] = $result->name;
+      if(count($titles) == 0 ){
+        $titles[] =  __('No results found - Please change keyword ', 'premast');
+      }
+    ?>
+    jQuery(function($) {
+      $( function() {
+        var availableTags = [
+          "<?= implode('", "', $titles); ?>"
+        ];
+        function split( val ) {
+          return val.split( /,\s*/ );
+        }
+        function extractLast( term ) {
+          return split( term ).pop();
+        }
+
+      $( "#tags" )
+        // don't navigate away from the field on tab when selecting an item
+        .on( "keydown", function( event ) {
+          if ( event.keyCode === $.ui.keyCode.TAB &&
+              $( this ).autocomplete( "instance" ).menu.active ) {
+            event.preventDefault();
+          }
+        })
+        .autocomplete({
+          minLength: 0,
+          source: function( request, response ) {
+            // delegate back to autocomplete, but extract the last term
+            response( $.ui.autocomplete.filter(
+              availableTags, extractLast( request.term ) ) );
+          },
+          focus: function() {
+            // prevent value inserted on focus
+            return false;
+          },
+          select: function( event, ui ) {
+            var terms = split( this.value );
+            // remove the current input
+            terms.pop();
+            // add the selected item
+            terms.push( ui.item.value );
+            // add placeholder to get the comma-and-space at the end
+            terms.push( "" );
+            this.value = terms.join( ", " );
+            return false;
+          }
+        });
+      });
+    });
   </script>
 @endif
 

@@ -5159,12 +5159,27 @@ jpegtran-bin@^3.0.0:
     bin-wrapper "^3.0.0"
     logalot "^2.0.0"
 
+jquery-ui@^1.12.1:
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/jquery-ui/-/jquery-ui-1.12.1.tgz#bcb4045c8dd0539c134bc1488cdd3e768a7a9e51"
+  integrity sha1-vLQEXI3QU5wTS8FIjN0+dop6nlE=
+
+jquery-ui_1.12@^1.12.0:
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/jquery-ui_1.12/-/jquery-ui_1.12-1.12.0.tgz#ef3ab472548e2f79666d35428ad2f0e000369e37"
+  integrity sha1-7zq0clSOL3lmbTVCitLw4AA2njc=
+
 jquery.nicescroll@^3.7.6:
   version "3.7.6"
   resolved "https://registry.yarnpkg.com/jquery.nicescroll/-/jquery.nicescroll-3.7.6.tgz#afeff3e80658dabe4f78d2d2e84250060fea0852"
   integrity sha1-r+/z6AZY2r5PeNLS6EJQBg/qCFI=
   dependencies:
     jquery ">=1.8.3"
+
+jquery.ui.layout@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/jquery.ui.layout/-/jquery.ui.layout-1.0.0.tgz#8245458fce9790f226e83b33a1b146406d7f4ecf"
+  integrity sha512-tUFiJwUL9+2dTvA4HAOvx7+JvK4mGw6XjShRjeL+Tpr2i8IDMhxddRj6lKN5CqfkVXOBQK38F0nFZ7GX0ah5NA==
 
 "jquery@>= 1.7.0", jquery@>=1.7, jquery@>=1.7.0, jquery@>=1.8.3, jquery@^3.3.1:
   version "3.3.1"

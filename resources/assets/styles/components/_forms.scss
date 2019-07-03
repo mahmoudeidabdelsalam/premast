@@ -80,10 +80,15 @@ form#publish_product {
     border-radius: 40px;
     min-height: 50px !important;
     text-transform: uppercase;
+
+    &:disabled {
+      background-color: #ccc !important;
+    }
   }
 
   .upload-gallery {
     margin-bottom: 30px;
+    position: relative;
 
     div#thumb-output {
       min-height: 100px;
@@ -164,6 +169,7 @@ form#publish_product {
       box-sizing: border-box;
       border-radius: 11px;
       width: 100%;
+      padding-right: 50px !important;
 
       img.profile-download {
         position: absolute;
@@ -218,5 +224,89 @@ form#publish_product {
         }
       }
     }
+  }
+
+  .spinner {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 10px;
+    position: absolute;
+    z-index: 99;
+    background-color: rgba(23, 122, 247, 0.64);
+    border-radius: 10px;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .spinner > div {
+    background-color: #fff;
+    height: 100px;
+    width: 6px;
+    display: inline-block;
+    -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+    animation: sk-stretchdelay 1.2s infinite ease-in-out;
+    margin: 0 2px;
+  }
+
+  .spinner .rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+  }
+
+  .spinner .rect3 {
+    -webkit-animation-delay: -1s;
+    animation-delay: -1s;
+  }
+
+  .spinner .rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+  }
+
+  .spinner .rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+  }
+
+  @-webkit-keyframes sk-stretchdelay {
+    0%,
+    40%,
+    100% { -webkit-transform: scaleY(0.4); }
+    20% { -webkit-transform: scaleY(1); }
+  }
+
+  @keyframes sk-stretchdelay {
+    0%,
+    40%,
+    100% {
+      transform: scaleY(0.4);
+      -webkit-transform: scaleY(0.4);
+    }
+
+    20% {
+      transform: scaleY(1);
+      -webkit-transform: scaleY(1);
+    }
+  }
+
+  span.name-files.errormessage {
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  p.error-field .alert {
+    display: block;
+    font-size: 14px;
+    padding: 6px;
+    margin: 5px auto;
+  }
+
+  .upload-response {
+    display: none !important;
   }
 }

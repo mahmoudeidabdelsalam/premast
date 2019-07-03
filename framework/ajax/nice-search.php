@@ -26,7 +26,7 @@ function ajax_refineblog() {
     foreach( $results as $result )
       $titles[] = ['value' => addslashes( $result->post_title )];
     if(count($titles) == 0 ){
-      $titles[] = ['value' => __('No results found - Please change keyword ', 'magrabi')];
+      $titles[] = ['value' => __('No results found - Please change keyword ', 'premast')];
     }
     
     $titles = ['suggestions' => $titles];

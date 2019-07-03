@@ -5,6 +5,7 @@ import 'devbridge-autocomplete/dist/jquery.autocomplete.min';
 import 'masonry-layout/dist/masonry.pkgd';
 import 'lightgallery/dist/js/lightgallery-all.min';
 import 'lightslider/dist/js/lightslider.min';
+import 'jquery-ui_1.12/jquery-ui';
 
 // Import everything from autoload
 import './autoload/**/*'
