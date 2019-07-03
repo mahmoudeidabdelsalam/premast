@@ -35,8 +35,8 @@
     <div class="row justify-content-center m-0">
       <div class="publish">
         <div class="user-not-login">
-          <h2>{{ _e('See what’s happening in the world right now', 'premast') }}</h2>
-          <p>{{ _e('Join Pre Vendor today.', 'premast') }}</p>
+          <h2>{{ _e('See what’s happening in the Premast right now', 'premast') }}</h2>
+          <p>{{ _e('Join Pre Vendors today.', 'premast') }}</p>
           <a class="mt-2 login btn btn-blue" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Log In', 'premast') }}</a>
         </div>
       </div>
@@ -287,8 +287,8 @@
     <div class="row justify-content-center m-0">
       <div class="publish">
         <div class="user-not-login">
-          <h2>{{ _e('See what’s happening in the world right now', 'premast') }}</h2>
-          <p>{{ _e('Join Pre Vendor today.', 'premast') }}</p>
+          <h2>{{ _e('See what’s happening in the Premast right now', 'premast') }}</h2>
+          <p>{{ _e('Join Pre Vendors today.', 'premast') }}</p>
           <a class="mt-2 login btn btn-blue" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Log In', 'premast') }}</a>
         </div>
       </div>
