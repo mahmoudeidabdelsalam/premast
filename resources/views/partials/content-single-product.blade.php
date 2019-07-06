@@ -70,7 +70,7 @@ global $product;
           @endif
 
           @if ( !is_user_logged_in() )
-            <a class="mt-2 login" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Log In', 'premast') }}</a>
+            <a class="mt-2 login" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Download Now', 'premast') }}</a>
           @endif
 
           @php $form_id = get_field('froms_problem_with_download', 'option' );@endphp
