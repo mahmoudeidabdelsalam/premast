@@ -67,14 +67,16 @@
           'post_author' => $current_user->ID,
           'tax_input' => array( 'product_cat' => $cat )
         ));
-        $image_id = cvf_upload_thumbnail();
-        $attach_id = cvf_upload_files();
-        $gallery_id = cvf_upload_gallery();
-        $file_url = wp_get_attachment_url($attach_id);
+               
+        $image_id = $_POST["thumbnail"];
+        $gallery_id = $_POST["galler"];
+        $file_url = $_POST["file_url"];
+        $file_name = $_POST["file_name"];
         $downloads[] = array(
-            'name' => $title,
+            'name' => $file_name,
             'file' => $file_url
         );
+
         if ($product) {
           update_field( 'field_5cr243sfsfcca58d1e19b', $slide_type, $product );
           update_field( 'field_5cr24wqtwe434343sfsfcca58d1e19b', $slide_format, $product );
@@ -88,7 +90,7 @@
           update_post_meta($product, '_price', $prices);
           update_post_meta($product, '_downloadable', 'yes');
           update_post_meta($product, '_downloadable_files', $downloads);
-          update_post_meta( $product, '_product_image_gallery', implode(',',$gallery_id));
+          update_post_meta( $product, '_product_image_gallery', $gallery_id);
           set_post_thumbnail($product, $image_id);
           update_post_meta($product, '_stock_status', 'instock', true);
           update_post_meta($product, '_visibility', 'visible', true);
@@ -111,52 +113,35 @@
           <div class="row ml-0 mr-0 mb-5 content-single pl-0 pr-0 pt-3">
             <div class="col-12">
               
-              <label for="upload_img" class="label-upload arrows right">
+              <label for="frontend-button" class="label-upload arrows right">
                 <span class="images-files"></span>
-                <div id="loading-image" style="display:none;">
-                  <div class="spinner">
-                    <div class="rect1"></div>
-                    <div class="rect2"></div>
-                    <div class="rect3"></div>
-                    <div class="rect4"></div>
-                    <div class="rect5"></div>
-                  </div>
-                </div>
                 <img class="profile-pic" src="{{ get_theme_file_uri().'/dist/images/upload-image.png' }}">
                 <span>{{ _e('upload your cover image here', 'premast') }}</span>
                 <span>{{ _e('1104 × 944 pixels', 'premast') }}</span>
               </label>
               <div class="upload-form">
-                <div class="upload-response"></div>
-                  <div class="form-group">
-                    <input type="file" id="upload_img"  name="thumbnail[]" accept="image/*" class="files-thumbnail form-control" multiple required/>
-                  </div>
-              </div> 
+                <div class="form-group">
+                  <input type="file" id="frontend-button"  class="files-thumbnail form-control"/>
+                  <input name="thumbnail" value="" id="thumbnails" hidden required/>
+                </div>
+              </div>
 
               <div class="upload-gallery mt-5 mb-0">                
-                <div id="loading-gallery" style="display:none;">
-                  <div class="spinner">
-                    <div class="rect1"></div>
-                    <div class="rect2"></div>
-                    <div class="rect3"></div>
-                    <div class="rect4"></div>
-                    <div class="rect5"></div>
-                  </div>
-                </div>
-
                 <span>{{ _e('upload your gallery images here', 'premast') }}</span>
                 <input type="button" value="Remove All Image" class="remove">
                 <div class="input-group mb-3 mt-3">
-                  <label class="label-gallery" for="file-input">
+                  <label class="frontend-gallery" for="frontend-gallery">
                     <img class="profile-gallery" src="{{ get_theme_file_uri().'/dist/images/upload-gallery.png' }}">
                   </label>
                   <div id="thumb-output"></div>  
                   <span class="gallery-files d-block"></span> 
                   <div class="custom-file">
-                    <input type="file" class="custom-file-input files-gallery" name="gallery[]" accept="image/*" id="file-input" multiple />
+                    <input type="text" id="frontend-gallery" hidden>
+                    <input name="galler" value="" id="gallers" hidden/>
                   </div>
                 </div>                    
               </div> 
+
 
               <div class="input-group mb-3">
                 <input type="text" class="form-control" name="slide_gallery" placeholder="Embed Youtube or Slideshare URL">
@@ -190,15 +175,6 @@
           </div>
 
           <div class="input-group mb-4 mt-4">
-            <div id="loading-download" style="display:none;">
-              <div class="spinner">
-                <div class="rect1"></div>
-                <div class="rect2"></div>
-                <div class="rect3"></div>
-                <div class="rect4"></div>
-                <div class="rect5"></div>
-              </div>
-            </div>
             <label class="custom-download-label arrows left mb-0" for="upload_file">
               <div class="upload-response"></div>
               <img class="profile-download" src="{{ get_theme_file_uri().'/dist/images/upload.png' }}">
@@ -206,10 +182,11 @@
               <span>{{ _e('Max size 1GB') }}</span>
             </label>
             <div class="custom-file d-none">
-              <input type="file" id="upload_file" class="custom-file-input files-download"  name="files[]"  multiple required/>                
+              <input type="file" id="upload_file" class="custom-file-input files-download"/>                
+              <input name="file_url" value="" id="files_url" hidden required/>
+              <input name="file_name" value="" id="files_name" hidden required/>
             </div>
           </div>
-        
 
           <div class="box-taxonomy arrows left">
             <?php 
@@ -296,136 +273,18 @@
   @endif
 </div>
 
+
 @if (array_intersect($allowed_roles, $user->roles))
   <script type = "text/javascript">
     jQuery(function($) {
-      // Add New Images
-      
-      $('#upload_img').on('change', function(e){
-          e.preventDefault;
-          var fd = new FormData();
-          var files_data = $('.files-thumbnail'); // The <input type="file" /> field
-          // Loop through each data and create an array file[] containing our files data.
-          $.each($(files_data), function(i, obj) {
-              $.each(obj.files,function(j,file){
-                  fd.append('thumbnail[' + j + ']', file);
-              })
-          });
-          fd.append('action', 'cvf_upload_thumbnail');  
-          fd.append('post_id', <?php echo $post->ID; ?>); 
-          $.ajax({
-              type: 'POST',
-              url: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
-              data: fd,
-              contentType: false,
-              processData: false,
-              beforeSend: function() {
-                $("#loading-image").show();
-                $('#submit').attr('disabled', 'disabled');
-              },
-              error: function (errormessage) {
-                $('.images-files').html('Error Message: "Upload Error. File could not be uploaded" try again & check size file');
-                $('.images-files').addClass('errormessage');
-                $('#submit').attr('disabled', 'disabled');
-                $("#loading-image").hide();
-              },
-              success: function(response){
-                $('.upload-response').html(response); // Append Server Response
-                $('.images-files').html('success upload File');
-                $('.images-files').removeClass('errormessage');
-                $("#loading-image").hide();
-                $('#submit').removeAttr("disabled");
-              }
-          });
-      });
-
-      // Add New File Download
-      $('#upload_file').on('change', function(e){
-          e.preventDefault;
-          var fd = new FormData();
-          var files_data = $('.files-download'); // The <input type="file" /> field
-          // Loop through each data and create an array file[] containing our files data.
-          $.each($(files_data), function(i, obj) {
-              $.each(obj.files,function(j,file){
-                  fd.append('files[' + j + ']', file);
-              })
-          });
-          fd.append('action', 'cvf_upload_files');  
-          fd.append('post_id', <?php echo $post->ID; ?>); 
-          $.ajax({
-              type: 'POST',
-              url: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
-              data: fd,
-              contentType: false,
-              processData: false,
-              beforeSend: function() {
-                $("#loading-download").show();
-                $('#submit').attr('disabled', 'disabled');
-              },
-              error: function (errormessage) {
-                $('.name-files').html('Error Message: "Upload Error. File could not be uploaded" try again & check size file');
-                $('.name-files').addClass('errormessage');
-                $('#submit').attr('disabled', 'disabled');
-                $("#loading-download").hide();
-              },
-              success: function(response){
-                $('.upload-response').html(response); // Append Server Response
-                $("#loading-download").hide();
-                $('.name-files').removeClass('errormessage');
-                $('.name-files').html('success upload File');
-                $('#submit').removeAttr("disabled");
-              },
-          });
-      });
-
-      // Add New Gallery
-      $('#file-input').on('change', function(e){
-          e.preventDefault;
-          var fd = new FormData();
-          var files_data = $('.files-gallery'); // The <input type="file" /> field
-          // Loop through each data and create an array file[] containing our files data.
-          $.each($(files_data), function(i, obj) {
-              $.each(obj.files,function(j,file){
-                  fd.append('gallery[' + j + ']', file);
-              })
-          });
-          fd.append('action', 'cvf_upload_gallery');  
-          fd.append('post_id', <?php echo $post->ID; ?>); 
-          $.ajax({
-              type: 'POST',
-              url: '<?php echo admin_url( 'admin-ajax.php' ); ?>',
-              data: fd,
-              contentType: false,
-              processData: false,
-              beforeSend: function() {
-                $("#loading-gallery").show();
-                $('#submit').attr('disabled', 'disabled');
-              },
-              error: function (errormessage) {
-                $('.gallery-files').html('Error Message: "Upload Error. File could not be uploaded" try again & check size file');
-                $('.gallery-files').addClass('errormessage');
-                $('#submit').attr('disabled', 'disabled');
-                $("#loading-gallery").hide();
-              },
-              success: function(response){
-                $('.upload-response').html(response); // Append Server Response
-                $("#loading-gallery").hide();
-                $('.gallery-files').removeClass('errormessage');
-                $('.gallery-files').html('success upload File');
-                $('#submit').removeAttr("disabled");
-              },
-          });
-      });   
-
-
-
+      // Errors
       $('#submit').on('click', function(){
         if($('input[name="title"]').val() === ""){
           $("#error-headline").show();
         } else {
           $("#error-headline").hide();
         }
-        if($('#upload_img').val() === ""){
+        if($('#thumbnails').val() === ""){
           $("#error-thumb").show();
         } else {
           $("#error-thumb").hide();
@@ -435,7 +294,7 @@
         } else {
           $("#error-description").hide();
         }
-        if($('#upload_file').val() === ""){
+        if($('#files_url').val() === ""){
           $("#error-file").show();
         } else {
           $("#error-file").hide();
@@ -452,50 +311,14 @@
         }                                     
       }); 
 
-    });  
-
-    jQuery(function($) {
-      var readURL = function(input) {
-        if (input.files && input.files[0]) {
-          var reader = new FileReader();
-          reader.onload = function (e) {
-              $('.profile-pic').attr('src', e.target.result);
-          }
-          reader.readAsDataURL(input.files[0]);
-        }
-      }
-      $("#upload_img").on('change', function(){
-        readURL(this);
-      });
-      
-      $('#file-input').on('change', function(){ //on file input change
-        if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
-        {
-          var data = $(this)[0].files; //this file data
-          $.each(data, function(index, file){ //loop though each file
-            if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){ //check supported file type
-              var fRead = new FileReader(); //new filereader
-                fRead.onload = (function(file){ //trigger function on successful read
-                  return function(e) {
-                    var img = $('<img/>').addClass('thumb').attr('src', e.target.result); //create image element 
-                    $('#thumb-output').append(img); //append image to output element
-                  };
-                })(file);
-              fRead.readAsDataURL(file); //URL representing the file's data.
-            }
-          });
-              
-        } else {
-          alert("Your browser doesn't support File API!"); //if File API is absent
-        }
-      });
       $(".remove").click(function (e) {
         e.preventDefault();
-        $('#file-input').val('');
+        $('#gallers').val('');
         $('#thumb-output img').remove();
       });
     });  
-  
+
+
     <?php 
       $terms = get_terms( 'product_tag', array('orderby' => 'slug', 'hide_empty' => false ) ); 
       $titles = array();

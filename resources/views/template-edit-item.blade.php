@@ -97,7 +97,7 @@
           update_post_meta($product, '_price', $prices);
           update_post_meta($product, '_downloadable', 'yes');
           update_post_meta($product, '_downloadable_files', $downloads);
-          update_post_meta( $product, '_product_image_gallery', implode(',',$gallery_id));
+          update_post_meta( $product, '_product_image_gallery', $gallery_id);
           set_post_thumbnail($product, $image_id);
           update_post_meta($product, '_stock_status', 'instock', true);
           update_post_meta($product, '_visibility', 'visible', true);
@@ -215,7 +215,7 @@
             </label>
             <div class="custom-file d-none">
               <input type="file" id="upload_file" class="custom-file-input files-download"/>                
-              <input name="file_url" id="upload_files" value="{{ $download['file'] }}" id="files_url" hidden required/>
+              <input name="file_url"  value="{{ $download['file'] }}" id="files_url" hidden required/>
               <input name="file_name" value="{{ $download['name'] }}" id="files_name" hidden required/>
             </div>
           </div>
@@ -343,7 +343,7 @@
         } else {
           $("#error-description").hide();
         }
-        if($('#upload_files').val() === ""){
+        if($('#files_url').val() === ""){
           $("#error-file").show();
         } else {
           $("#error-file").hide();
