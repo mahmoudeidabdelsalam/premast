@@ -299,6 +299,29 @@ if( function_exists('acf_add_local_field_group') ):
         'allow_archives' => 1,
         'multiple' => 0,
       ),
+
+      array(
+        'key' => 'field_5cbaeweqqwewewqef7e6af47',
+        'label' => 'link Edit item ',
+        'name' => 'link_edit_item',
+        'type' => 'page_link',
+        'instructions' => '',
+        'required' => 0,
+        'conditional_logic' => 0,
+        'wrapper' => array(
+          'width' => '50',
+          'class' => '',
+          'id' => '',
+        ),
+        'post_type' => array(
+          0 => 'page',
+        ),
+        'taxonomy' => '',
+        'allow_null' => 0,
+        'allow_archives' => 1,
+        'multiple' => 0,
+      ),
+
       array(
         'key' => 'field_5d17d1d0cf372',
         'label' => 'froms problem with download',
@@ -308,7 +331,7 @@ if( function_exists('acf_add_local_field_group') ):
         'required' => 0,
         'conditional_logic' => 0,
         'wrapper' => array(
-          'width' => '',
+          'width' => '50',
           'class' => '',
           'id' => '',
         ),
