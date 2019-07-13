@@ -52,12 +52,18 @@
         $slide_type = $_POST["slide_type"];
         $slide_format = $_POST["slide_format"];
         $tags = $_POST['tags'];
+        $tags = array_map( 'intval', $tags );
+        $tags = array_unique( $tags );
 
-        $cat = $_POST["cat"];
+        $cat = $_POST["main_scat"];
+        $child = $_POST["sub_scat"];
+        $children = $_POST["sub_child"];
+
         $slide_colors = $_POST["slide_colors"];
         $slide_number = $_POST["slide_number"];
         $slide_pages = $_POST["slide_pages"];
         $slide_date = $_POST["slide_date"];
+
         $product = wp_insert_post(array (
           'post_type' => 'product',
           'post_title' => $title,
@@ -65,7 +71,7 @@
           'post_excerpt' => $short_description,
           'post_status' => 'pending',
           'post_author' => $current_user->ID,
-          'tax_input' => array( 'product_cat' => $cat )
+          'tax_input' => array( 'product_cat' => array($cat, $child, $children))
         ));
                
         $image_id = $_POST["thumbnail"];
@@ -85,7 +91,7 @@
           update_field( 'field_5ccca5a81e19d', $slide_number, $product );
           update_field( 'field_5ccca5b61e19e', $slide_pages, $product );
           update_field( 'field_5ccca5b81e19f', $slide_date, $product );
-          wp_set_object_terms($product, array($tags), 'product_tag');
+          wp_set_object_terms($product, $tags, 'product_tag');
           update_post_meta($product, '_regular_price', $prices);
           update_post_meta($product, '_price', $prices);
           update_post_meta($product, '_downloadable', 'yes');
@@ -157,10 +163,7 @@
           </div>
         </div>
 
-
-
         <div class="summary entry-summary col-md-4 col-12 sidebar-shop">
-          
           <div class="download-product price-input arrows left">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
@@ -173,7 +176,6 @@
             </div>
             <textarea class="form-control" name="short_description" placeholder="Short description" rows="3" required></textarea>
           </div>
-
           <div class="input-group mb-4 mt-4">
             <label class="custom-download-label arrows left mb-0" for="upload_file">
               <div class="upload-response"></div>
@@ -187,28 +189,42 @@
               <input name="file_name" value="" id="files_name" hidden required/>
             </div>
           </div>
-
           <div class="box-taxonomy arrows left">
-            <?php 
-            $args = array(
-              'show_option_none'   => __( 'All Category', 'premast' ),
-              'option_none_value'  => NULL,
-              'taxonomy'           => 'product_cat',
-              'id'                 => 'cat',
-              'required'           => true,
-              'hide_if_empty'      => false,
-            ); ?>
-            <?php wp_dropdown_categories( $args ); ?>
-
-
-            <div class="input-group mb-3 mt-3 slide-info arrows left">
-              <input id="tags" size="50" type="text" name="tags" class="form-control" id="autotags" autocomplete="on" autocorrect="off" autocapitalize="on" spellcheck="false"  placeholder="Type tags and press enter" required>
+            <div class="loading small text-center" style="display:none;">
+              <i class="fa fa-spinner fa-pulse"></i>
             </div>
+            <?php
+            $args = array(
+              'taxonomy' => 'product_cat', 
+              'name'=>'main_scat', 
+              'hide_empty'=>1,
+              'depth'=>1,
+              'hierarchical'=> 1, 
+              'show_count' => 0,
+              'show_option_all'=>'Select Category'
+            );
+            wp_dropdown_categories( $args ); 
+            ?>
+            <select name="sub_scat" id="sub_scat" disabled="disabled" multiple>
+              <option value="0" selected="selected">Sub Select</option>
+            </select>
+            <select name="sub_child" id="sub_child" disabled="disabled" multiple>
+              <option value="0" selected="selected">Sub Select</option>
+            </select>
+            <?php 
+              wp_dropdown_categories( array(
+                'taxonomy'   => 'product_tag',
+                'name'=>'tags', 
+                'multiple'   => true,
+                'walker'     => new Willy_Walker_CategoryDropdown(),
+                'show_option_all'=>'selected tag...',
+                'hide_empty' => false,
+              ));
+            ?>
           </div> 
 
           <div class="box-information mt-5">
             <label for="">{{ _e('Other Information', 'premast') }}</label>
-
             <div class="input-group mb-3 slide-info">
               <input type="text" name="slide_type" class="form-control" placeholder="Enter no of slides">
             </div>
@@ -240,12 +256,9 @@
               </select>
             </div>                                
           </div>
-
-
           <p class="mt-t col-12">
             <input type="submit" value="publish" tabindex="6" id="submit" name="submit" />
           </p>
-
           <p class="error-field">
             <span id="error-headline" class="alert alert-danger" style="display:none;">{{ _e('Alert headline field input required (kindly check!)', 'premast') }}</span>
             <span id="error-thumb" class="alert alert-danger" style="display:none;">{{ _e('Alert image field input required (kindly check!)', 'premast') }}</span>
@@ -254,7 +267,6 @@
             <span id="error-category" class="alert alert-danger" style="display:none;">{{ _e('Alert category field input required (kindly check!)', 'premast') }}</span>
             <span id="error-tags" class="alert alert-danger" style="display:none;">{{ _e('Alert tags field input required (kindly check!)', 'premast') }}</span>
           </p>
-
         </div><!-- End Sidebar -->
       </div>  <!-- End row -->
 		  <input type="hidden" name="action" value="new_post" />
@@ -272,7 +284,6 @@
     </div>
   @endif
 </div>
-
 
 @if (array_intersect($allowed_roles, $user->roles))
   <script type = "text/javascript">
@@ -299,12 +310,12 @@
         } else {
           $("#error-file").hide();
         }
-        if($('#cat').val() === ""){
+        if($('#main_scat').val() === ""){
           $("#error-category").show();
         } else {
           $("#error-category").hide();
         }
-        if($('input[name="tags"]').val() === ""){
+        if($('#tags').val() === ""){
           $("#error-tags").show();
         } else {
           $("#error-tags").hide();
@@ -316,63 +327,48 @@
         $('#gallers').val('');
         $('#thumb-output img').remove();
       });
-    });  
 
-
-    <?php 
-      $terms = get_terms( 'product_tag', array('orderby' => 'slug', 'hide_empty' => false ) ); 
-      $titles = array();
-      foreach( $terms as $result )
-        $titles[] = $result->name;
-      if(count($titles) == 0 ){
-        $titles[] =  __('No results found - Please change keyword ', 'premast');
-      }
-    ?>
-    jQuery(function($) {
-      $( function() {
-        var availableTags = [
-          "<?= implode('", "', $titles); ?>"
-        ];
-        function split( val ) {
-          return val.split( /,\s*/ );
-        }
-        function extractLast( term ) {
-          return split( term ).pop();
-        }
-
-      $( "#tags" )
-        // don't navigate away from the field on tab when selecting an item
-        .on( "keydown", function( event ) {
-          if ( event.keyCode === $.ui.keyCode.TAB &&
-              $( this ).autocomplete( "instance" ).menu.active ) {
-            event.preventDefault();
-          }
-        })
-        .autocomplete({
-          minLength: 0,
-          source: function( request, response ) {
-            // delegate back to autocomplete, but extract the last term
-            response( $.ui.autocomplete.filter(
-              availableTags, extractLast( request.term ) ) );
-          },
-          focus: function() {
-            // prevent value inserted on focus
-            return false;
-          },
-          select: function( event, ui ) {
-            var terms = split( this.value );
-            // remove the current input
-            terms.pop();
-            // add the selected item
-            terms.push( ui.item.value );
-            // add placeholder to get the comma-and-space at the end
-            terms.push( "" );
-            this.value = terms.join( ", " );
-            return false;
-          }
+      $('#main_scat').change(function(){
+        var $mainsCat = $('#main_scat').val();
+        $("#sub_scat").empty();
+        $.ajax({
+            url:"<?= admin_url( 'admin-ajax.php' ); ?>",       
+            type:'POST',
+            data:'action=get_sub_category&main_catids=' + $mainsCat,
+            beforeSend: function () {
+              $('.loading').show();
+            },
+            success:function(results){
+              $("#sub_scat").removeAttr("disabled");      
+              $("#sub_scat").append(results);
+              $('.loading').hide();
+            }
         });
+    });
+
+    $('#sub_scat').change(function(){
+      var $sub_scat = $('#sub_scat').val();
+      $("#sub_child").empty();
+      $.ajax({
+          url:"<?= admin_url( 'admin-ajax.php' ); ?>",       
+          type:'POST',
+          data:'action=get_sub_child&sub_scat=' + $sub_scat,
+          beforeSend: function () {
+            $('.loading').show();
+          },
+          success:function(results){
+            $("#sub_child").removeAttr("disabled");      
+            $("#sub_child").append(results);
+            $('.loading').hide();
+          }
       });
     });
+    
+    $('select').select2({
+      theme: 'bootstrap4',
+    });
+    
+  });
   </script>
 @endif
 

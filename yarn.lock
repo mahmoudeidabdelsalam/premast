@@ -20,6 +20,11 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
   integrity sha512-ONhaKPIufzzrlNbqtWFFd+jlnemX6lJAgq9ZeiZtS7I1PIf/la7CW4m83rTXRnVnsMbW2k56pGYu7AUFJD9Pow==
 
+"@ttskch/select2-bootstrap4-theme@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@ttskch/select2-bootstrap4-theme/-/select2-bootstrap4-theme-1.2.3.tgz#499d5362a4432dc2ff574adef4c4e387c0879c25"
+  integrity sha512-cVH3yrBBmkNrkqKPvHbt8dzP7NysAQfzJULxXlzkdf7NicoSUWbpjDjDGqMtUIIldDByrf2uC1HKKFRelWunQQ==
+
 "@types/jquery@^2.0.32":
   version "2.0.53"
   resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-2.0.53.tgz#89c53bc83d820e50c3b667ae2fdf4276df8b3aba"
@@ -185,6 +190,11 @@
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
+
+Select2@^3.5.7:
+  version "3.5.7"
+  resolved "https://registry.yarnpkg.com/Select2/-/Select2-3.5.7.tgz#7825b352637655d61ffecdf7416979166163787a"
+  integrity sha1-eCWzUmN2VdYf/s33QWl5FmFjeHo=
 
 abbrev@1:
   version "1.1.1"
@@ -8481,6 +8491,11 @@ seek-bzip@^1.0.3, seek-bzip@^1.0.5:
   integrity sha1-z+kXyz0nS8/6x5J1ivUxc+sfq9w=
   dependencies:
     commander "~2.8.1"
+
+select2@^4.0.7:
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/select2/-/select2-4.0.7.tgz#7b80473ef7900f4dc2b988623275fe569204ae8d"
+  integrity sha512-t46Z2nkEEYnBYdRpLNw5dj9qqO+YTiTlWKnpJ/B5e1Q3hPND00JRgcLJxYRzqpeLZd+ZkszkHEMagLKIfbTjVA==
 
 semver-regex@^1.0.0:
   version "1.0.0"

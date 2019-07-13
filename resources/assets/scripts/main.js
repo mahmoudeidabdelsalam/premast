@@ -6,6 +6,8 @@ import 'masonry-layout/dist/masonry.pkgd';
 import 'lightgallery/dist/js/lightgallery-all.min';
 import 'lightslider/dist/js/lightslider.min';
 import 'jquery-ui_1.12/jquery-ui';
+import 'select2/dist/js/select2.min';
+import 'select2/dist/js/select2.full.min';
 
 // Import everything from autoload
 import './autoload/**/*'

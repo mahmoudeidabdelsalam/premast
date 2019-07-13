@@ -309,4 +309,30 @@ form#publish_product {
   .upload-response {
     display: none !important;
   }
+
+  .loading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    font-size: 25px;
+    color: rgb(127, 200, 253);
+  }
+}
+
+.select2-container {
+  margin-bottom: 20px !important;
+
+  .select2-search--inline {
+    .select2-search__field {
+      background-color: rgb(239, 246, 250) !important;
+      min-height: 1px !important;
+      margin-top: 5px !important;
+      border: none !important;
+    }
+  }
+}
+
+.select2-container--disabled {
+  display: none !important;
 }

@@ -56,7 +56,14 @@
         $slide_type = $_POST["slide_type"];
         $slide_format = $_POST["slide_format"];
         $tags = $_POST['tags'];
-        $cat = $_POST["cat"];
+
+        $tags = array_map( 'intval', $tags );
+        $tags = array_unique( $tags );
+
+        $cat = $_POST["main_scat"];
+        $child = $_POST["sub_scat"];
+        $children = $_POST["sub_child"];
+
         $slide_colors = $_POST["slide_colors"];
         $slide_number = $_POST["slide_number"];
         $slide_pages = $_POST["slide_pages"];
@@ -70,7 +77,7 @@
           'post_excerpt' => $short_description,
           'post_status' => 'pending',
           'post_author' => $current_user->ID,
-          'tax_input' => array( 'product_cat' => $cat )
+          'tax_input' => array( 'product_cat' => array($cat, $child, $children)),
         ));
 
         $image_id = $_POST["thumbnail"];
@@ -92,7 +99,7 @@
           update_field( 'field_5ccca5a81e19d', $slide_number, $product );
           update_field( 'field_5ccca5b61e19e', $slide_pages, $product );
           update_field( 'field_5ccca5b81e19f', $slide_date, $product );
-          wp_set_object_terms($product, array($tags), 'product_tag');
+          wp_set_object_terms($product, $tags, 'product_tag');
           update_post_meta($product, '_regular_price', $prices);
           update_post_meta($product, '_price', $prices);
           update_post_meta($product, '_downloadable', 'yes');
@@ -179,7 +186,11 @@
                 </div>                    
               </div> 
               <div class="input-group mb-3">
-                <input type="text" value="{{ $youtube['0'] }}" class="form-control" name="slide_gallery" placeholder="Embed Youtube or Slideshare URL">
+                @if ($youtube)
+                  <input type="text" value="{{ $youtube['0'] }}" class="form-control" name="slide_gallery" placeholder="Embed Youtube or Slideshare URL">
+                @else 
+                  <input type="text" value="" class="form-control" name="slide_gallery" placeholder="Embed Youtube or Slideshare URL">
+                @endif
               </div>
               <div class="product-infomation">
                 <div id="tab-description">
@@ -222,7 +233,10 @@
         
 
           <div class="box-taxonomy arrows left">
-            <?php 
+            <div class="loading small text-center" style="display:none;">
+              <i class="fa fa-spinner fa-pulse"></i>
+            </div>
+            <?php
               $terms = get_the_terms( $post->ID, 'product_cat' );
               if ( $terms && ! is_wp_error( $terms ) ) : 
                 $draught_terms= array();
@@ -231,29 +245,46 @@
                 }
                 $on_term = join( ", ", $draught_terms );
               endif;
-            $args = array(
-              'taxonomy'           => 'product_cat',
-              'selected'           => (int) $on_term,
-              'id'                 => 'cat',
-              'required'           => true,
-              'hide_if_empty'      => false,
-            ); ?>
-            <?php wp_dropdown_categories( $args ); ?>
+              $args = array(
+                'taxonomy' => 'product_cat', 
+                'name'=>'main_scat', 
+                'selected'  => (int) $on_term,
+                'hide_empty'=>1,
+                'depth'=>1,
+                'hierarchical'=> 1, 
+                'show_count' => 0,
+              );
+              wp_dropdown_categories( $args ); 
+            ?>
+            <select name="sub_scat" id="sub_scat" disabled="disabled" multiple>
+              <option value="0" selected="selected">Sub Select</option>
+            </select>
+            <select name="sub_child" id="sub_child" disabled="disabled" multiple>
+              <option value="0" selected="selected">Sub Select</option>
+            </select>
 
-
-            <div class="input-group mb-3 mt-3 slide-info arrows left">
               @php 
                 $tags = wp_get_post_terms( $post->ID, 'product_tag' );
                 $draught_tags = array();
                 if ( $tags && ! is_wp_error( $tags ) ) : 
                   foreach ( $tags as $tag ) {
-                      $draught_tags[] = $tag->name;
+                      $draught_tags[] = $tag->term_id;
                   }
                 endif;
-                $on_tag = join( ", ", $draught_tags );
               @endphp
-              <input id="tags" size="50" value="{{ $on_tag }}" type="text" name="tags" class="form-control" id="autotags" autocomplete="on" autocorrect="off" autocapitalize="on" spellcheck="false"  placeholder="Type tags and press enter" required>
-            </div>
+
+            <?php 
+              wp_dropdown_categories( array(
+                'taxonomy'   => 'product_tag',
+                'name'       =>'tags', 
+                'multiple'   => true,
+                'walker'     => new Willy_Walker_CategoryDropdown(),
+                'selected'   => $draught_tags,
+                'hide_empty' => false,
+              ));
+
+             
+            ?>
           </div> 
 
           <div class="box-information mt-5">
@@ -348,12 +379,12 @@
         } else {
           $("#error-file").hide();
         }
-        if($('#cat').val() === ""){
+        if($('#main_scat').val() === ""){
           $("#error-category").show();
         } else {
           $("#error-category").hide();
         }
-        if($('input[name="tags"]').val() === ""){
+        if($('#tags').val() === ""){
           $("#error-tags").show();
         } else {
           $("#error-tags").hide();
@@ -365,63 +396,48 @@
         $('#gallers').val('');
         $('#thumb-output img').remove();
       });
-    });  
-
-
-    <?php 
-      $terms = get_terms( 'product_tag', array('orderby' => 'slug', 'hide_empty' => false ) ); 
-      $titles = array();
-      foreach( $terms as $result )
-        $titles[] = $result->name;
-      if(count($titles) == 0 ){
-        $titles[] =  __('No results found - Please change keyword ', 'premast');
-      }
-    ?>
-    jQuery(function($) {
-      $( function() {
-        var availableTags = [
-          "<?= implode('", "', $titles); ?>"
-        ];
-        function split( val ) {
-          return val.split( /,\s*/ );
-        }
-        function extractLast( term ) {
-          return split( term ).pop();
-        }
-
-      $( "#tags" )
-        // don't navigate away from the field on tab when selecting an item
-        .on( "keydown", function( event ) {
-          if ( event.keyCode === $.ui.keyCode.TAB &&
-              $( this ).autocomplete( "instance" ).menu.active ) {
-            event.preventDefault();
-          }
-        })
-        .autocomplete({
-          minLength: 0,
-          source: function( request, response ) {
-            // delegate back to autocomplete, but extract the last term
-            response( $.ui.autocomplete.filter(
-              availableTags, extractLast( request.term ) ) );
-          },
-          focus: function() {
-            // prevent value inserted on focus
-            return false;
-          },
-          select: function( event, ui ) {
-            var terms = split( this.value );
-            // remove the current input
-            terms.pop();
-            // add the selected item
-            terms.push( ui.item.value );
-            // add placeholder to get the comma-and-space at the end
-            terms.push( "" );
-            this.value = terms.join( ", " );
-            return false;
-          }
+      
+      $('#main_scat').change(function(){
+        var $mainsCat = $('#main_scat').val();
+        $("#sub_scat").empty();
+        $.ajax({
+            url:"<?= admin_url( 'admin-ajax.php' ); ?>",       
+            type:'POST',
+            data:'action=get_sub_category&main_catids=' + $mainsCat,
+            beforeSend: function () {
+              $('.loading').show();
+            },
+            success:function(results){
+              $("#sub_scat").removeAttr("disabled");      
+              $("#sub_scat").append(results);
+              $('.loading').hide();
+            }
         });
+    });
+
+    $('#sub_scat').change(function(){
+      var $sub_scat = $('#sub_scat').val();
+      $("#sub_child").empty();
+      $.ajax({
+          url:"<?= admin_url( 'admin-ajax.php' ); ?>",       
+          type:'POST',
+          data:'action=get_sub_child&sub_scat=' + $sub_scat,
+          beforeSend: function () {
+            $('.loading').show();
+          },
+          success:function(results){
+            $("#sub_child").removeAttr("disabled");      
+            $("#sub_child").append(results);
+            $('.loading').hide();
+          }
       });
     });
+    
+    $('select').select2({
+      theme: 'bootstrap4',
+    });
+    
+  });
   </script>
 @endif
 
