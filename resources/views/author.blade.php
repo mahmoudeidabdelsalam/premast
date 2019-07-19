@@ -7,84 +7,271 @@
   wp_get_current_user();
   
   $author = get_user_by( 'slug', get_query_var( 'author_name' ) );
+  $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
+  
+  // Top Products 
+  $top = array(
+    'post_type'       => array('product'),
+    'author'          =>  $author->ID,
+    'posts_per_page'  => 4,
+  );
+  $top_posts = new WP_Query( $top );
+
+  // All Products
+  $args = array(
+    'post_type'       => array('product'),
+    'author'          =>  $author->ID,
+    'post_status'     => 'any',
+    'posts_per_page' => 20,
+    'paged' => $paged,
+  );
+  $all = new WP_Query( $args );
+
+  // All Drafts
+  $drafts = array(
+    'post_type'       => array('product'),
+    'author'          =>  $author->ID,
+    'post_status'     => 'draft',
+    'posts_per_page'  => -1,
+  );
+  $all_drafts = new WP_Query( $drafts );
+
+  // All Pending
+  $pending = array(
+    'post_type'       => array('product'),
+    'author'          =>  $author->ID,
+    'post_status'     => 'pending',
+    'posts_per_page'  => -1,
+  );
+  $all_pending = new WP_Query( $pending );
+
+  // All Live
+  $live = array(
+    'post_type'       => array('product'),
+    'author'          =>  $author->ID,
+    'post_status'     => 'publish',
+    'posts_per_page'  => -1,
+  );
+  $all_live = new WP_Query( $live );
+
+  // All rejected
+  $rejected = array(
+    'post_type'       => array('product'),
+    'author'          =>  $author->ID,
+    'post_status'     => 'rejected',
+    'posts_per_page'  => -1,
+  );
+  $all_rejected = new WP_Query( $rejected );
+
+  $dashboard   = isset($_GET['dashboard']) ? $_GET['dashboard'] : 'true';
+  $items   = isset($_GET['items']) ? $_GET['items'] : 'false';
+  $statistics   = isset($_GET['statistics']) ? $_GET['statistics'] : 'false';
+  $support   = isset($_GET['support']) ? $_GET['support'] : 'false';
+
 @endphp
 
-<section class="header-users mb-5">
-    <div class="custom-header">
-    <div class="elementor-background-overlay" style="background-image:url('{{ the_field('header_section_image', 'option') }}')"></div>
-    <div class="page-header">
-  <h1>{!! $author->display_name !!}</h1>
-</div>
-  
-    
-    </div>     
+<section class="bg-gray-dark nav-vandor">
+  <div class="container-fiuld woocommerce">
+    <div class="row">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link @if($dashboard == 'true' && $items != 'true' && $statistics != 'true' && $support != 'true') active @endif" id="dashboard-tab" data-tab="dashboard" data-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard" aria-selected="true">{{ _e('dashboard', 'premast') }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link @if($items == 'true') active @endif" id="myitems-tab" data-tab="items" data-toggle="tab" href="#myitems" role="tab" aria-controls="myitems" aria-selected="false">{{ _e('my items', 'premast') }}</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link @if($statistics == 'true') active @endif" id="statistics-tab" data-tab="statistics" data-toggle="tab" href="#statistics" role="tab" aria-controls="statistics" aria-selected="false">{{ _e('statistics', 'premast') }}</a>
+        </li> -->
+        <!-- <li class="nav-item">
+          <a class="nav-link @if($support == 'true') active @endif" id="support-tab" data-tab="support" data-toggle="tab" href="#support" role="tab" aria-controls="support" aria-selected="false">{{ _e('guides and support', 'premast') }}</a>
+        </li> -->
+      </ul>
+    </div>
+  </div>    
 </section>
 
-<div class="container-fiuld woocommerce">
-  <div class="row justify-content-center m-0">
-    <div class="col-md-12 col-sm-12">
-      @if(have_posts())
-        <div class="item-columns grid row m-0">        
-          @while(have_posts()) @php(the_post())
-            <div class="item-card col-md-3 col-sm-4 col-sx-6 col-12 grid-item pl-4 pr-4">
-              <div class="card">
-                <div class="bg-white" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');">
-                  <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
-                  <div class="card-overlay">
-                    <a class="card-link" href="{{ the_permalink() }}">
-                      <p>{{ _e('Download Now', 'premast') }}</p>                      
-                    </a>
 
-                    @if(current_user_can( 'edit_post', get_the_ID() ) && (get_the_author_meta('ID') == $current_user->ID) || is_super_admin())
-                      <p><a class="post-edit-link" href="{{ the_field('link_edit_item', 'option') }}?post_id={{ the_ID() }}">{{ _e('edit Product') }}</a></p>
-                    @endif
-                  </div>
-                </div>
-                <div class="card-body pt-2 pl-0 pr-0">
-                  <a class="card-link" href="{{ the_permalink() }}">
-                    <h5 class="card-title font-weight-400">{{ wp_trim_words(get_the_title(), '4', ' ...') }}</h5>
-                  </a>
-                  <div class="review-and-download">
-                    <div class="review">
-                      @if (get_option('woocommerce_enable_review_rating' ) == 'yes') 
-                        <?php 
-                          global $product;
-                          $rating_count = method_exists($product, 'get_rating_count')   ? $product->get_rating_count()   : 1;
-                          $review_count = method_exists($product, 'get_review_count')   ? $product->get_review_count()   : 1;
-                          $average      = method_exists($product, 'get_average_rating') ? $product->get_average_rating() : 0;
-                          $counter_download = get_post_meta( get_the_ID(), 'counterdownload', true );
-                        ?>
-                        @if ($rating_count > 0)
-                          {!! wc_get_rating_html($average, $rating_count) !!}
-                          <span itemprop="reviewCount">{{ $review_count }} {{ _e('review', 'premast') }}</span>
-                        @else 
-                          {!! wc_get_rating_html('1', '5') !!}
-                          <span itemprop="reviewCount">{{ _e('0 review', 'premast') }}</span>
-                        @endif
-                      @endif
-                    </div>
-                    <div class="download">
-                      <span>{{ ($counter_download)? $counter_download:'0' }} {{ _e('Downloads', 'premast') }}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>              
-            </div>
-          @endwhile
-          @php (wp_reset_postdata())
+<div class="tab-content" id="myTabContent">
+  
+  <!-- Items -->
+  <div class="tab-pane fade @if($dashboard == 'true' && $items != 'true' && $statistics != 'true' && $support != 'true') show active @endif" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+    <div class="container-fiuld woocommerce">
+
+      <div class="row justify-content-center m-0">
+        <div class="col-12 p-4">
+          <h2 class="overview-head">analytics overview</h2>
         </div>
-        @else
-          <div class="alert alert-warning">
-            {{ __('Sorry, but the page you were trying to view does not exist.', 'sage') }}
-          </div>
-        @endif
 
-      <div class="col-12">
-        <nav aria-label="Page navigation example">{{ premast_base_pagination() }}</nav>
-      </div>
+        <div class="status-card col-md-3 col-sm-4 col-sx-6 col-12 pl-4 pr-4">
+          <div class="card">
+            <img src="{{ get_theme_file_uri().'/dist/images/dollar.svg' }}" alt="{{ _e('earnings', 'premast') }}">
+            <h4 class="lg-head">{{ _e('300$', 'premast') }}</h4>
+            <h3 class="line-head">{{ _e('earnings', 'premast') }}</h3>
+            <time>{{ _e('Last month: 312$', 'premast') }}</time>
+          </div>
+        </div>
+
+        <div class="status-card col-md-3 col-sm-4 col-sx-6 col-12 pl-4 pr-4">
+          <div class="card">
+            <img src="{{ get_theme_file_uri().'/dist/images/downloads.svg' }}" alt="{{ _e('earnings', 'premast') }}">
+            <h4 class="lg-head">{{ _e('520', 'premast') }}</h4>
+            <h3 class="line-head">{{ _e('downloads', 'premast') }}</h3>
+            <time>{{ _e('Last month: 300', 'premast') }}</time>
+          </div>
+        </div>
+
+        <div class="status-card col-md-3 col-sm-4 col-sx-6 col-12 pl-4 pr-4">
+          <div class="card">
+            <img src="{{ get_theme_file_uri().'/dist/images/likes.svg' }}" alt="{{ _e('earnings', 'premast') }}">
+            <h4 class="lg-head">{{ _e('300$', 'premast') }}</h4>
+            <h3 class="line-head">{{ _e('likes', 'premast') }}</h3>
+            <time>{{ _e('Last month: 312', 'premast') }}</time>
+          </div>
+        </div>
+
+        <div class="status-card col-md-3 col-sm-4 col-sx-6 col-12 pl-4 pr-4">
+          <div class="card">
+            <img src="{{ get_theme_file_uri().'/dist/images/views.svg' }}" alt="{{ _e('earnings', 'premast') }}">
+            <h4 class="lg-head">{{ _e('300$', 'premast') }}</h4>
+            <h3 class="line-head">{{ _e('views', 'premast') }}</h3>
+            <time>{{ _e('Last month: 312$', 'premast') }}</time>
+          </div>
+        </div>
+
+        <div class="col-12 p-4">
+          <h2 class="overview-head">top items</h2>
+        </div>
+          @if($top_posts->have_posts() ) 
+            <div class="item-columns row m-0 col-12">        
+              
+              @while ( $top_posts->have_posts() ) @php($top_posts->the_post())
+                @include('partials/incloud/item-card')
+              @endwhile
+              @php (wp_reset_postdata())
+            </div>
+            @else
+              <div class="alert alert-warning">
+                {{ __('Sorry, but the page you were trying to view does not exist.', 'sage') }}
+              </div>
+            @endif
+          </div>
 
     </div>
   </div>
+
+
+  
+  <div class="tab-pane fade @if($items == 'true') show active @endif" id="myitems" role="tabpanel" aria-labelledby="myitems-tab">
+    <div class="container-fiuld woocommerce">
+      <div class="row justify-content-center m-0">
+        <div class="col-md-12 col-sm-12">
+         
+        <div class="mt-4 mb-4 col-12">
+          <ul class="nav nav-tabs" id="myshow" role="tablist">
+            <li class="nav-item">
+              <span>show</span>
+            </li>
+            @if($all->have_posts())
+            <li class="nav-item">
+              <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">{{ _e('all', 'premast') }}</a>
+            </li>
+            @endif
+            @if($all_drafts->have_posts())
+              <li class="nav-item">
+                <a class="nav-link drafts" id="drafts-tab" data-toggle="tab" href="#drafts" role="tab" aria-controls="drafts" aria-selected="false">{{ _e('drafts', 'premast') }}</a>
+              </li>
+            @endif
+            @if($all_pending->have_posts())
+              <li class="nav-item">
+                <a class="nav-link pending" id="pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pending" aria-selected="false">{{ _e('pending', 'premast') }}</a>
+              </li>
+            @endif
+            @if($all_live->have_posts())
+              <li class="nav-item">
+                <a class="nav-link live" id="live-tab" data-toggle="tab" href="#live" role="tab" aria-controls="live" aria-selected="false">{{ _e('live', 'premast') }}</a>
+              </li>
+            @endif
+            @if($all_rejected->have_posts())
+              <li class="nav-item">
+                <a class="nav-link rejected" id="rejected-tab" data-toggle="tab" href="#rejected" role="tab" aria-controls="rejected" aria-selected="false">{{ _e('rejected', 'premast') }}</a>
+              </li> 
+            @endif           
+          </ul>
+        </div>
+
+
+        <div class="tab-content col-12 p-0" id="myTabitems">
+          <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+            <div class="item-columns row m-0 col-12 p-0"> 
+              @while($all->have_posts() ) @php($all->the_post())
+                @include('partials/incloud/item-card')
+              @endwhile
+              <div class="col-12">
+                <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $all) }}</nav>
+              </div>
+              @php (wp_reset_postdata())
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="drafts" role="tabpanel" aria-labelledby="drafts-tab">
+            <div class="item-columns row m-0 col-12 p-0"> 
+              @while($all_drafts->have_posts() ) @php($all_drafts->the_post())
+                @include('partials/incloud/item-card')
+              @endwhile
+              @php (wp_reset_postdata()) 
+            </div>           
+          </div>
+
+          <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+            <div class="item-columns row m-0 col-12 p-0"> 
+              @while($all_pending->have_posts() ) @php($all_pending->the_post())
+                @include('partials/incloud/item-card')
+              @endwhile
+              @php (wp_reset_postdata()) 
+            </div>           
+          </div>
+
+          <div class="tab-pane fade" id="live" role="tabpanel" aria-labelledby="live-tab">
+            <div class="item-columns row m-0 col-12 p-0"> 
+              @while($all_live->have_posts() ) @php($all_live->the_post())
+                @include('partials/incloud/item-card')
+              @endwhile
+              @php (wp_reset_postdata()) 
+            </div>           
+          </div>
+
+          <div class="tab-pane fade" id="rejected" role="tabpanel" aria-labelledby="rejected-tab">
+            <div class="item-columns row m-0 col-12 p-0"> 
+              @while($all_rejected->have_posts() ) @php($all_rejected->the_post())
+                @include('partials/incloud/item-card')
+              @endwhile
+              @php (wp_reset_postdata())    
+            </div>        
+          </div>
+        </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane fade @if($statistics == 'true') show active @endif" id="statistics" role="tabpanel" aria-labelledby="statistics-tab">...</div>
+  <div class="tab-pane fade @if($support == 'true') show active @endif" id="support" role="tabpanel" aria-labelledby="support-tab">...</div>
+
 </div>
+
+
+<script>
+  jQuery(function($) {
+    $('#myTab a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+      var $current_tab = $(e.target);
+      var tab = $current_tab.attr('data-tab');
+      var $location = location.origin + location.pathname;
+      var new_url = $location + "?" +tab+"=true" ;
+      history.pushState(null, null, new_url); // = "?type=" + type + "&tab=";
+    });
+  });
+</script>
 
 @endsection

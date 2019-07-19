@@ -53,3 +53,45 @@ function wpcodex_add_excerpt_support_for_pages() {
 	add_post_type_support( 'product', 'author' );
 }
 add_action( 'init', 'wpcodex_add_excerpt_support_for_pages' );
+
+
+/**
+ * Add Cart icon and count to header if WC is active
+ */
+function my_wc_cart_count() {
+ 
+    if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+ 
+        $count = WC()->cart->cart_contents_count;
+        ?><a class="cart-contents" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>"><?php
+        if ( $count > 0 ) {
+            ?>
+            <span class="cart-contents-count"><?php echo esc_html( $count ); ?></span>
+            <?php
+        }
+                ?></a><?php
+    }
+ 
+}
+add_action( 'your_theme_header_top', 'my_wc_cart_count' );
+
+/**
+ * Ensure cart contents update when products are added to the cart via AJAX
+ */
+function my_header_add_to_cart_fragment( $fragments ) {
+ 
+    ob_start();
+    $count = WC()->cart->cart_contents_count;
+    ?><a class="cart-contents" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>"><?php
+    if ( $count > 0 ) {
+        ?>
+        <span class="cart-contents-count"><?php echo esc_html( $count ); ?></span>
+        <?php            
+    }
+        ?></a><?php
+ 
+    $fragments['a.cart-contents'] = ob_get_clean();
+     
+    return $fragments;
+}
+add_filter( 'woocommerce_add_to_cart_fragments', 'my_header_add_to_cart_fragment' );

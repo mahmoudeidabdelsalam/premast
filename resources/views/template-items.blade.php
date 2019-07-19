@@ -16,19 +16,19 @@
   <div class="row justify-content-center m-0">
 
     <div class="col-md-12 col-sm-12">
-      <div class="item-columns grid row m-0">
+      <div class="item-columns grid row m-0 container-ajax">
 
         @if($loop_items->have_posts())
           @while($loop_items->have_posts()) @php($loop_items->the_post())
 
 
-            <div class="item-card col-md-3 col-sm-4 col-sx-6 col-12 grid-item pl-4 pr-4">
+            <div class="item-card col-md-3 col-sm-4 col-sx-6 col-12 grid-item pl-4 pr-4 post-ajax">
               <div class="card">
-                <div class="bg-white" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');">
+                <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}'); height: 300px;">
                   <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
                   <div class="card-overlay">
                     <a class="card-link" href="{{ the_permalink() }}">
-                      <p>{{ _e('Download Now', 'premast') }}</p>                      
+                      <p>{{ _e('Download', 'premast') }}</p>                      
                     </a>
 
                     @if(current_user_can( 'edit_post', get_the_ID() ) && (get_the_author_meta('ID') == $current_user->ID) || is_super_admin())
@@ -49,18 +49,27 @@
                           $review_count = method_exists($product, 'get_review_count')   ? $product->get_review_count()   : 1;
                           $average      = method_exists($product, 'get_average_rating') ? $product->get_average_rating() : 0;
                           $counter_download = get_post_meta( get_the_ID(), 'counterdownload', true );
+                          $counter_view = get_post_meta( get_the_ID(), 'c95_post_views_count', true );
+                          $price = get_post_meta( get_the_ID(), '_regular_price', true);
                         ?>
                         @if ($rating_count > 0)
                           {!! wc_get_rating_html($average, $rating_count) !!}
-                          <span itemprop="reviewCount">{{ $review_count }} {{ _e('review', 'premast') }}</span>
+                          <span class="icon-review icon-meta" itemprop="reviewCount">{{ $average }}</span>
                         @else 
                           {!! wc_get_rating_html('1', '5') !!}
-                          <span itemprop="reviewCount">{{ _e('0 review', 'premast') }}</span>
+                          <span class="icon-review icon-meta" itemprop="reviewCount">{{ _e('0', 'premast') }}</span>
                         @endif
                       @endif
+
+                      <span class="icon-download icon-meta"> <img class="img-meta" src="{{ get_theme_file_uri().'/dist/images/icon-download.svg' }}" alt="Download"> {{ ($counter_download)? $counter_download:'0' }}</span>
+                      <span class="icon-download icon-meta"> <img class="img-meta" src="{{ get_theme_file_uri().'/dist/images/icon-view.svg' }}" alt="Download"> {{ ($counter_view)? $counter_view:'0' }}</span>
                     </div>
                     <div class="download">
-                      <span>{{ ($counter_download)? $counter_download:'0' }} {{ _e('Downloads', 'premast') }}</span>
+                      @if($price)
+                        <span>{{ _e('premium', 'premast') }}</span>
+                      @else 
+                        <span>{{ _e('free', 'premast') }}</span>
+                      @endif
                     </div>
                   </div>
                 </div>
@@ -71,7 +80,7 @@
         @endif
       </div>
 
-      <div class="col-12">
+      <div class="col-12 pt-5 pb-5">
         <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $loop_items) }}</nav>
       </div>
 

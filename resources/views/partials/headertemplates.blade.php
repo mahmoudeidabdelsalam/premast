@@ -2,7 +2,8 @@
   $refine   = isset($_GET['refine']) ? $_GET['refine'] : '0';
   $sort   = isset($_GET['sort']) ? $_GET['sort'] : '0';
   $taxonomy_query = get_queried_object();
-
+  global $current_user;
+  wp_get_current_user();
   global $wp;
 @endphp
 
@@ -24,12 +25,31 @@
           {!! wp_nav_menu(['theme_location' => 'templates_navigation', 'container' => false, 'menu_class' => 'navbar-nav ml-auto', 'walker' => new NavWalker()]) !!}
         @endif
       </div>
+      <?php if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+ 
+    $count = WC()->cart->cart_contents_count;
+    ?><a class="cart-contents" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>"><?php 
+    if ( $count > 0 ) {
+        ?>
+        <span class="cart-contents-count"><?php echo esc_html( $count ); ?></span>
+        <?php
+    }
+        ?></a>
+ 
+<?php } ?>
       <div class="half">
-        <label for="profile" class="profile-dropdown">
-          <input type="checkbox" id="profile">
-          <i class="fa fa-user-circle-o text-white" aria-hidden="true"></i>
-          @include('partials/incloud/profile')
-        </label>
+        @if( is_user_logged_in() ) 
+          <label for="profile" class="profile-dropdown">
+            <input type="checkbox" id="profile">
+            <i class="fa fa-user-circle fa-lg" aria-hidden="true"></i>
+            {!! get_the_author_meta('display_name', $current_user->ID) !!}
+            <i class="fa fa-chevron-down text-primary" aria-hidden="true"></i>
+            @include('partials/incloud/profile')
+          </label>
+        @else 
+          <a class="mt-2 login text-primary" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Log In', 'premast') }}</a>
+          <a class="mt-2 signup btn-primary" href="#" data-toggle="modal" data-target="#SignupUser">{{ _e('Sign Up', 'premast') }}</a>
+        @endif
       </div>
     </nav>
   </div>

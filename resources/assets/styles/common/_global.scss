@@ -11,6 +11,10 @@ body {
   &.single-product {
     background: rgb(239, 246, 250);
   }
+
+  &.author {
+    background: rgb(239, 246, 250);
+  }
 }
 
 .background-overlay {
@@ -68,17 +72,20 @@ a {
     .page-numbers {
       position: relative;
       display: block;
-      padding: 0.5rem 0.75rem;
-      margin-left: -1px;
-      line-height: 1.25;
-      color: rgb(0, 0, 0);
-      background-color: rgb(255, 255, 255);
-      border: 1px solid rgb(222, 226, 230);
+      padding: 0;
+      font-size: 16px;
+      line-height: 31px;
+      text-align: center;
+      letter-spacing: 0.132987px;
+      color: $brand-black;
+      width: 32px;
+      height: 32px;
+      border-radius: 100%;
+      margin: 0 10px;
 
       &.current {
         color: rgb(252, 252, 252);
         background-color: rgb(30, 108, 251);
-        border: 1px solid rgb(30, 108, 251);
       }
     }
   }
@@ -105,5 +112,15 @@ a {
         background-color: rgb(51, 51, 51);
       }
     }
+  }
+}
+
+.malinky-ajax-pagination-loading img {
+  animation: spinner-border 0.75s linear infinite;
+}
+
+@keyframes spinner-border {
+  to {
+    transform: rotate(360deg);
   }
 }

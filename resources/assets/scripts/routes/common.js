@@ -62,13 +62,6 @@ export default {
     });
 
 
-    $(window).load(function () {
-      $('.grid').masonry({
-        // options...
-        itemSelector: '.grid-item',
-      });
-    });
-
     $('.product-grid').click(function () {
       $('.item-card').show(300);
       $('.item-card .bg-white').css('height', '300px');
