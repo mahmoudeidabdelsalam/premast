@@ -8,7 +8,7 @@
   
   $author = get_user_by( 'slug', get_query_var( 'author_name' ) );
 
-  if( ( (get_the_author_meta('ID') != $current_user->ID) || !is_super_admin()):
+  if( ( ($author->ID != $current_user->ID) || !is_super_admin()):
     $news_link = get_field('link_page_login', 'option');
       wp_redirect( $news_link);
     die();
