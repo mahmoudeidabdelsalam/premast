@@ -7,6 +7,15 @@
   wp_get_current_user();
   
   $author = get_user_by( 'slug', get_query_var( 'author_name' ) );
+
+  if( ( (get_the_author_meta('ID') != $current_user->ID) || !is_super_admin()):
+    $news_link = get_field('link_page_login', 'option');
+      wp_redirect( $news_link);
+    die();
+  endif;
+
+
+  
   $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
   
   // Top Products 
@@ -68,6 +77,38 @@
   $statistics   = isset($_GET['statistics']) ? $_GET['statistics'] : 'false';
   $support   = isset($_GET['support']) ? $_GET['support'] : 'false';
 
+
+
+
+
+
+  // vandor Products
+  $vandor = array(
+    'post_type'       => array('product'),
+    'author'          =>  $author->ID,
+    'post_status'     => 'publish',
+    'posts_per_page'  => -1,
+  );
+  $vandors = new WP_Query( $vandor );
+
+    $views = [];
+    $downloads = [];
+    
+
+    if($vandors->have_posts()):
+      while ( $vandors->have_posts() ): $vandors->the_post();
+        $view = get_post_meta( get_the_ID(), 'c95_post_views_count', true);
+        $download = get_post_meta( get_the_ID(), 'counterdownload', true);
+
+        $views[] = $view;
+        $downloads[] = $download;
+
+
+      endwhile;
+    endif;
+
+
+
 @endphp
 
 <section class="bg-gray-dark nav-vandor">
@@ -106,36 +147,36 @@
         <div class="status-card col-md-3 col-sm-4 col-sx-6 col-12 pl-4 pr-4">
           <div class="card">
             <img src="{{ get_theme_file_uri().'/dist/images/dollar.svg' }}" alt="{{ _e('earnings', 'premast') }}">
-            <h4 class="lg-head">{{ _e('300$', 'premast') }}</h4>
+            <h4 class="lg-head">{{ _e('soon', 'premast') }}</h4>
             <h3 class="line-head">{{ _e('earnings', 'premast') }}</h3>
-            <time>{{ _e('Last month: 312$', 'premast') }}</time>
+            <time>{{ _e('Last month: soon', 'premast') }}</time>
           </div>
         </div>
 
         <div class="status-card col-md-3 col-sm-4 col-sx-6 col-12 pl-4 pr-4">
           <div class="card">
             <img src="{{ get_theme_file_uri().'/dist/images/downloads.svg' }}" alt="{{ _e('earnings', 'premast') }}">
-            <h4 class="lg-head">{{ _e('520', 'premast') }}</h4>
+            <h4 class="lg-head">{{ array_sum($downloads) }}</h4>
             <h3 class="line-head">{{ _e('downloads', 'premast') }}</h3>
-            <time>{{ _e('Last month: 300', 'premast') }}</time>
+            <time>{{ _e('Last month:', 'premast') }} {{ array_sum($downloads) }}</time>
           </div>
         </div>
 
         <div class="status-card col-md-3 col-sm-4 col-sx-6 col-12 pl-4 pr-4">
           <div class="card">
             <img src="{{ get_theme_file_uri().'/dist/images/likes.svg' }}" alt="{{ _e('earnings', 'premast') }}">
-            <h4 class="lg-head">{{ _e('300$', 'premast') }}</h4>
+            <h4 class="lg-head">{{ _e('soon', 'premast') }}</h4>
             <h3 class="line-head">{{ _e('likes', 'premast') }}</h3>
-            <time>{{ _e('Last month: 312', 'premast') }}</time>
+            <time>{{ _e('Last month: soon', 'premast') }}</time>
           </div>
         </div>
 
         <div class="status-card col-md-3 col-sm-4 col-sx-6 col-12 pl-4 pr-4">
           <div class="card">
             <img src="{{ get_theme_file_uri().'/dist/images/views.svg' }}" alt="{{ _e('earnings', 'premast') }}">
-            <h4 class="lg-head">{{ _e('300$', 'premast') }}</h4>
+            <h4 class="lg-head">{{ array_sum($views) }}</h4>
             <h3 class="line-head">{{ _e('views', 'premast') }}</h3>
-            <time>{{ _e('Last month: 312$', 'premast') }}</time>
+            <time>{{ _e('Last month:', 'premast') }} {{ array_sum($views) }}</time>
           </div>
         </div>
 

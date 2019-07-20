@@ -48,6 +48,14 @@
 
       if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POST['action'] == "update_post" && $post_id != 'false') {
         
+        $post = get_post($post_id);
+
+        if(is_super_admin()):
+          $status = 'publish';
+        else: 
+          $status = 'pending';
+        endif;
+        
         $title = $_POST["title"];
         $description = $_POST["description"];
         $short_description = $_POST["short_description"];
@@ -75,8 +83,8 @@
           'post_title' => $title,
           'post_content' => $description,
           'post_excerpt' => $short_description,
-          'post_status' => 'pending',
-          'post_author' => $current_user->ID,
+          'post_status' => $status,
+          'post_author' => $post->post_author,
           'tax_input' => array( 'product_cat' => array($cat, $child, $children)),
         ));
 
@@ -114,8 +122,6 @@
       } 
     do_action('wp_update_post', 'wp_update_post');
 
-    $post = get_post($post_id);
-      
       // Data Products
       $gallery_images = get_post_meta( $post->ID, '_product_image_gallery', true);
       $price = get_post_meta( $post->ID, '_regular_price', true);
@@ -238,13 +244,13 @@
             </div>
             <?php
               $terms = get_the_terms( $post->ID, 'product_cat' );
+              $draught_terms= array();
               if ( $terms && ! is_wp_error( $terms ) ) : 
-                $draught_terms= array();
                 foreach ( $terms as $term ) {
                     $draught_terms[] = $term->term_id;
                 }
-                $on_term = join( ", ", $draught_terms );
               endif;
+              $on_term = join( ", ", $draught_terms );
               $args = array(
                 'taxonomy' => 'product_cat', 
                 'name'=>'main_scat', 

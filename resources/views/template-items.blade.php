@@ -27,10 +27,10 @@
                 <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}'); height: 300px;">
                   <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
                   <div class="card-overlay">
+                    <a class="the_permalink" href="{{ the_permalink() }}"></a>
                     <a class="card-link" href="{{ the_permalink() }}">
                       <p>{{ _e('Download', 'premast') }}</p>                      
                     </a>
-
                     @if(current_user_can( 'edit_post', get_the_ID() ) && (get_the_author_meta('ID') == $current_user->ID) || is_super_admin())
                       <p><a class="post-edit-link" href="{{ the_field('link_edit_item', 'option') }}?post_id={{ the_ID() }}">{{ _e('edit Product') }}</a></p>
                     @endif

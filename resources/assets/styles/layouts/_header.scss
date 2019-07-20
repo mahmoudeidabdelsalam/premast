@@ -188,6 +188,8 @@ section.banner-items {
 }
 
 .item-card {
+  margin-bottom: 50px;
+
   .card {
     position: relative;
     box-shadow: none;
@@ -207,8 +209,7 @@ section.banner-items {
       font-size: 16px;
       color: rgb(61, 69, 82);
       font-weight: 500;
-      margin-bottom: 5px;
-      min-height: 40px;
+      margin-bottom: 14px;
     }
   }
 
@@ -254,6 +255,17 @@ section.banner-items {
       text-align: center;
       text-transform: capitalize;
       color: $brand-white;
+      position: relative;
+      z-index: 3;
+    }
+
+    .the_permalink {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      z-index: 2;
     }
   }
 
