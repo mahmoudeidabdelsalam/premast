@@ -297,13 +297,13 @@
             <label for="">{{ _e('Other Information', 'premast') }}</label>
 
             <div class="input-group mb-3 slide-info">
-              <input value="{{ $slide_type }}" type="text" name="slide_type" class="form-control" placeholder="Enter no of slides">
+              <input value="{{ $slide_type }}" type="text" name="slide_type" class="form-control" placeholder="Compatible with">
             </div>
             <div class="input-group mb-3 slide-info">
               <input value="{{ $slide_format }}" type="text" name="slide_format" class="form-control" placeholder="Enter Format of Slides">
             </div>
             <div class="input-group mb-3">
-              <input value="{{ $slide_colors }}" type="text" class="form-control" name="slide_colors" placeholder="Enter Unique of Slides">
+              <input value="{{ $slide_colors }}" type="text" class="form-control" name="slide_colors" placeholder="Number of Slides">
             </div>
             <div class="input-group mb-3">
               <select name="slide_number" id="">

@@ -226,13 +226,13 @@
           <div class="box-information mt-5">
             <label for="">{{ _e('Other Information', 'premast') }}</label>
             <div class="input-group mb-3 slide-info">
-              <input type="text" name="slide_type" class="form-control" placeholder="Enter no of slides">
+              <input type="text" name="slide_type" class="form-control" placeholder="Compatible with">
             </div>
             <div class="input-group mb-3 slide-info">
               <input type="text" name="slide_format" class="form-control" placeholder="Enter Format of Slides">
             </div>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" name="slide_colors" placeholder="Enter Unique of Slides">
+              <input type="text" class="form-control" name="slide_colors" placeholder="Number of Slides">
             </div>
             <div class="input-group mb-3">
               <select name="slide_number" id="">
