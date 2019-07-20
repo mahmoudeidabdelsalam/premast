@@ -8,11 +8,11 @@
   
   $author = get_user_by( 'slug', get_query_var( 'author_name' ) );
 
-  if( ( ($author->ID != $current_user->ID) || !is_super_admin()):
-    $news_link = get_field('link_page_login', 'option');
-      wp_redirect( $news_link);
-    exit();
-  endif;
+  //if( ( ($author->ID != $current_user->ID) || !is_super_admin()):
+    //$news_link = get_field('link_page_login', 'option');
+      //wp_redirect( $news_link);
+    //exit();
+  //endif;
 
   $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
   
