@@ -122,6 +122,7 @@
       } 
     do_action('wp_update_post', 'wp_update_post');
 
+      $post = get_post($post_id);
       // Data Products
       $gallery_images = get_post_meta( $post->ID, '_product_image_gallery', true);
       $price = get_post_meta( $post->ID, '_regular_price', true);
