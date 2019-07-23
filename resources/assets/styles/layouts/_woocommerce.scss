@@ -33,14 +33,15 @@
   div.product {
     form.cart {
       .button {
-        background: linear-gradient(170.96deg, rgb(107, 115, 255) -0.5%, rgb(0, 13, 255) 100%);
-        box-shadow: 0 5px 8px rgba(0, 123, 255, 0.59);
-        border-radius: 20px;
         min-width: 255px;
-        margin: auto;
         height: 40px;
         display: block;
         float: none !important;
+        background: linear-gradient(170.96deg, rgb(26, 219, 114) -0.5%, rgb(16, 177, 81) 100%);
+        box-shadow: 0 5px 8px rgba(0, 255, 102, 0.59);
+        border-radius: 20px;
+        margin: 15px auto 0;
+        width: 100%;
       }
     }
   }
@@ -462,3 +463,184 @@ button#dropdownMenuOffset {
   color: $brand-black;
   height: 30px;
 }
+
+.short-description {
+  .text-description {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: rgb(61, 69, 82);
+  }
+}
+
+/* stylelint-disable */
+.xoo-cp-success {
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: 0.116946px;
+  color: #3D4552;
+  background: transparent;
+  font-weight: bold;
+}
+
+.xoo-cp-container {
+  background: #FFFFFF;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  min-height: 400px;
+  padding-top: 100px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.xoo-cp-container:after {
+  content: "cart";
+  position: absolute;
+  top: 25px;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: 0.132987px;
+  text-transform: capitalize;
+  color: #282F39;
+  left: 30px;
+}
+
+.xoo-cp-ptotal {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  border: 1px solid #E8E8E8;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.xoo-cp-container:before {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 93px;
+  left: 0;
+}
+
+td.xoo-cp-pqty {
+  display: none;
+}
+
+table.xoo-cp-pdetails {
+  background: rgb(239, 246, 250);
+  width: 100%;
+  display: inline-block !important;
+  padding: 15px;
+}
+
+td.xoo-cp-pimg {
+  width: 100px;
+
+  img {
+    border-radius: 5px;
+    width: 100px !important;
+    height: 100px;
+    max-width: 100px !important;
+  }
+}
+
+span.xoo-cp-icon-check {
+  display: none;
+}
+
+.added_to_cart.wc-forward {
+  display: none;
+}
+
+table.xoo-cp-pdetails tr {
+  display: flex !important;
+  position: relative;
+}
+
+td.xoo-cp-pprice span {
+  color: $brand-primary;
+}
+
+.custom-summary {
+  .price {
+    display: none;
+  }
+
+  .woocommerce-product-details__short-description {
+    display: none;
+  }
+}
+
+a.xoo-cp-btn-ch.xcp-btn {
+  background: linear-gradient(168.58deg, #6B73FF -0.5%, #000DFF 100%);
+  box-shadow: 0px 8px 11px rgba(0, 123, 255, 0.7);
+  border-radius: 20px;
+  display: block !important;
+  margin: 30px auto;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 18px;
+  text-transform: capitalize;
+  padding: 10px;
+}
+
+.xcp-btn {
+  display: block;
+  margin: auto;
+}
+
+a.xoo-cp-close.xcp-btn {
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.116946px;
+  text-transform: capitalize;
+  color: #1E6DFB;
+  background: transparent;
+  border: none;
+  margin-bottom: 10px;
+}
+
+td.xoo-cp-remove {
+  display: none;
+}
+
+td.xoo-cp-ptitle a {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.151985px;
+  color: #3D4552;
+}
+
+td.xoo-cp-pprice {
+  position: absolute;
+  left: 120px;
+  bottom: -10px;
+  margin: 0;
+}
+
+.secure-payment {
+  margin-top: 27px;
+
+  p {
+    font-size: 12px;
+    line-height: 35px;
+    text-align: center;
+    letter-spacing: 0.116946px;
+    text-transform: capitalize;
+    color: #3D4552;
+    text-align: right;
+  }
+}
+
+.bottun-edit {
+  border: 1px solid #E8E8E8;
+  border-radius: 20px;
+}
+
+/* stylelint-enable */

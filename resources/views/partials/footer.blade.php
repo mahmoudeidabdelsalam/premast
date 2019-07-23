@@ -1,7 +1,7 @@
 <footer class="content-info bg-gray-dark">
   <div class="container-fluid p-0">
     <div class="row">
-      <div class="col-md-8 col-sm-12">
+      <div class="col-md-8 col-sm-12 col-12">
         <div class="navbar-footer">
           <h3 class="sr-only">{{ _e('Footer navigation', 'premast') }}</h3>
           @if (has_nav_menu('footer_navigation'))
@@ -9,7 +9,7 @@
           @endif
         </div>
       </div>
-      <div class="col-md-4 col-sm-12">
+      <div class="col-md-3 col-sm-12 col-12 pl-md-5 pr-md-5">
         @php dynamic_sidebar('sidebar-footer') @endphp
       </div>
     </div>
@@ -40,150 +40,203 @@
 
 @if ( !is_user_logged_in() )
 
-  <!-- Modal -->
-  <div class="modal fade" id="LoginUser" tabindex="-1" role="dialog" aria-labelledby="LoginUserLabel" aria-hidden="true" style="background-image: linear-gradient(150deg, #56ecf2 0%, #4242e3 100%);">
-    <div class="elementor-background-overlay" style="background-image: url('{{ the_field('header_section_image', 'option') }}');"></div>
-    <div class="modal-dialog modal-dialog-centered" role="document">
+  <!-- Modal Login -->
+  <div class="modal fade" id="LoginUser" tabindex="-1" role="dialog" aria-labelledby="LoginUserLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="LoginUserLabel">{{ _e('Your Accounts', 'premast') }}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        <div class="row m-0">
+          <div class="col-md-5 col-12 row m-0 align-items-center"  style="background-image: linear-gradient(150deg, #56ecf2 0%, #4242e3 100%);">
+            <div class="elementor-background-overlay" style="background-image: url('{{ the_field('header_section_image', 'option') }}');"></div>
+            <div class="col-12 description">
+              <h4 class="text-white title-description">{{ _e('Welcome Back to premast', 'premast') }}</h4>
+              <p class="text-white text-description">{{ _e('Download your preferred design from huge collection of professionally, creative designed powerpoint templates for all your needs.', 'premast') }}</p>
+            </div>
+          </div>
+          <div class="col-md-7 col-12">
+            <div class="modal-header">
+              <a class="navbar-brand" href="{{ home_url('/') }}" title="{{ get_bloginfo('name') }}">
+                <img class="img-fluid" src="@if(get_field('website_logo', 'option')) {{ the_field('website_logo','option') }} @else {{ get_theme_file_uri().'/dist/images/logo-en.png' }} @endif" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
+                <span class="sr-only"> {{ get_bloginfo('name') }} </span>
+              </a>
+              <h5 class="modal-title" id="LoginUserLabel">{{ _e('Sign Into Your Account', 'premast') }}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="WP_login">
+                  @php 
+                    $args = array(
+                      'echo'           => true,
+                      'remember'       => true,
+                      'redirect'       => ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
+                      'form_id'        => 'loginform',
+                      'id_username'    => 'user_login',
+                      'id_password'    => 'user_pass',
+                      'id_submit'      => 'wp-submit',
+                      'label_username' => __( 'Email' ),
+                      'label_password' => __( 'Password' ),
+                      'label_log_in'   => __( 'Sign in' ),
+                      'value_username' => '',
+                      'value_remember' => false
+                    ); 
+                  @endphp
+                  
+                  {{ wp_login_form($args) }}
+                  <span class="switch-link switch-to-lost" data-tab="lost_password">{{ _e('Lost your password?', 'premast') }}</span>
+                </div>
+
+                <div class="tab-pane fade" id="lost_password">
+                  <?php
+                    defined( 'ABSPATH' ) || exit;
+                    do_action( 'woocommerce_before_lost_password_form' );
+                    ?>
+                    <form method="post" class="woocommerce-ResetPassword lost_reset_password">
+                      <p><?php echo apply_filters( 'woocommerce_lost_password_message', esc_html__( 'Lost your password? Please enter your username or email address. You will receive a link to create a new password via email.', 'woocommerce' ) ); ?></p><?php // @codingStandardsIgnoreLine ?>
+                      <p class="woocommerce-form-row woocommerce-form-row--first form-row">
+                        <label for="user_login"><?php esc_html_e( 'Username or email', 'woocommerce' ); ?></label>
+                        <input class="woocommerce-Input woocommerce-Input--text input-text" type="text" name="user_login" id="user_login" autocomplete="username" />
+                      </p>
+                      <div class="clear"></div>
+                      <?php do_action( 'woocommerce_lostpassword_form' ); ?>
+                      <p class="woocommerce-form-row form-row">
+                        <input type="hidden" name="wc_reset_password" value="true" />
+                        <button type="submit" class="woocommerce-Button button" value="<?php esc_attr_e( 'Reset password', 'woocommerce' ); ?>"><?php esc_html_e( 'Reset password', 'woocommerce' ); ?></button>
+                      </p>
+                      <?php wp_nonce_field( 'lost_password', 'woocommerce-lost-password-nonce' ); ?>
+                    </form>
+                    <?php do_action( 'woocommerce_after_lost_password_form' ); ?>
+                    
+                    <span class="switch-link switch-to-login" data-tab="WP_login">{{ _e('Sign in', 'premast') }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              {{ _e('Dont have an account?', 'premast') }} <a class="signup" href="#" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#SignupUser">{{ _e('Sign Up', 'premast') }}</a>
+            </div>
+          </div>
         </div>
-        <div class="modal-body">
-          <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="WP_login" role="tabpanel" aria-labelledby="WP_login-tab">
-              @php 
-                $args = array(
-                  'echo'           => true,
-                  'remember'       => true,
-                  'redirect'       => ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
-                  'form_id'        => 'loginform',
-                  'id_username'    => 'user_login',
-                  'id_password'    => 'user_pass',
-                  'id_submit'      => 'wp-submit',
-                  'label_username' => __( 'Email' ),
-                  'label_password' => __( 'Password' ),
-                  'label_log_in'   => __( 'Login' ),
-                  'value_username' => '',
-                  'value_remember' => false
-                ); 
-              @endphp
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="SignupUser" tabindex="-1" role="dialog" aria-labelledby="SignupUserLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="row m-0">
+          <div class="col-md-5 col-12 row m-0 align-items-center"  style="background-image: linear-gradient(150deg, #56ecf2 0%, #4242e3 100%);">
+            <div class="elementor-background-overlay" style="background-image: url('{{ the_field('header_section_image', 'option') }}');"></div>
+            <div class="col-12 description">
+              <h4 class="text-white title-description">{{ _e('Welcome to premast', 'premast') }}</h4>
+              <p class="text-white text-description mb-3">{{ _e('Join us and enjoy with this benefits', 'premast') }}</p> 
+              <p class="text-white min-description">{{ _e('* Recieve a 20% off discount in your E-mail', 'premast') }}</p>
+              <p class="text-white min-description">{{ _e('* Downloads hunderds of powerpoint slides and graphics for free', 'premast') }}</p>
+              <p class="text-white min-description">{{ _e('* Discover amazing new products daily', 'premast') }}</p>
+            </div>
+          </div>
+          <div class="col-md-7 col-12">
+            <div class="modal-header">
+              <a class="navbar-brand" href="{{ home_url('/') }}" title="{{ get_bloginfo('name') }}">
+                <img class="img-fluid" src="@if(get_field('website_logo', 'option')) {{ the_field('website_logo','option') }} @else {{ get_theme_file_uri().'/dist/images/logo-en.png' }} @endif" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
+                <span class="sr-only"> {{ get_bloginfo('name') }} </span>
+              </a>
+              <h5 class="modal-title" id="SignupUserLabel">{{ _e('Create a New Premast Account', 'premast') }}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p class="register-message m-0" style="display:none"></p>
+              <form action="#" method="POST" name="register-form" class="register-form register">
+                <p class="form-row form-row-first">
+                  <input class="form-control" type="text"  name="first_name" placeholder="First Name" id="firstname">
+                </p>
+                <p class="form-row form-row-last">
+                  <input type="text" name="last_name" placeholder="Last Name" id="lastname">
+                </p>
+                <p>
+                  <input type="email" name="user_email" placeholder="Email" id="useremail">
+                </p>
+                <p>
+                  <input type="password" name="user_password" placeholder="Password" id="password">
+                </p>
+                <p>
+                  <input type="password" name="re-pwd" placeholder="Confirm Password" id="confirm_password">
+                  <span id="message"></span>
+                </p>  
+                <p class="Conditions">
+                  <input type="checkbox" id="Conditions"> <label class="d-inline-block mb-0 label-Conditions" for="Conditions">{{ _e('Accept our Terms&Conditions', 'premast') }}</label>
+                </p>
+                <button type="submit" id="register-button" class="woocommerce-Button button" name="register" value="Register">{{ _e('Register', 'premast') }}</button>
+              </form> 
               
-              {{ wp_login_form($args) }}
+
+              <script type="text/javascript">
+                jQuery(function($) {
+                  $('#password, #confirm_password').on('keyup', function () {
+                    if ($('#password').val() == $('#confirm_password').val()) {
+                      $('#message').html('Matching').css('color', 'green');
+                    } else 
+                      $('#message').html('Not Matching').css('color', 'red');
+                  });
+                  $('#register-button').on('click',function(e){
+                    e.preventDefault();
+                    var firstname = $('#firstname').val();
+                    var useremail = $('#useremail').val();
+                    var password = $('#password').val();
+                    var lastname = $('#lastname').val();
+                    $.ajax({
+                      type:"POST",
+                      url:"<?php echo admin_url('admin-ajax.php'); ?>",
+                      data: {
+                        action: "register_user_front_end",
+                        first_name : firstname,
+                        last_name : lastname,
+                        user_email : useremail,
+                        user_password : password
+                      },
+                      success: function(results){
+                        $('.register-message').html(results).show();
+                      },
+                      error: function(results) {
+                        $('.register-message').html('plz try again later').show();
+                      }
+                    });
+                  });
+                });
+              </script>
+
+              <?php // echo do_shortcode('[wc_reg_form_bbloomer]') ?>
             </div>
-
-            <div class="tab-pane fade" id="lost_password" role="tabpanel" aria-labelledby="lost_password-tab">
-              <?php
-                defined( 'ABSPATH' ) || exit;
-                do_action( 'woocommerce_before_lost_password_form' );
-                ?>
-
-                <form method="post" class="woocommerce-ResetPassword lost_reset_password">
-
-                  <p><?php echo apply_filters( 'woocommerce_lost_password_message', esc_html__( 'Lost your password? Please enter your username or email address. You will receive a link to create a new password via email.', 'woocommerce' ) ); ?></p><?php // @codingStandardsIgnoreLine ?>
-
-                  <p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
-                    <label for="user_login"><?php esc_html_e( 'Username or email', 'woocommerce' ); ?></label>
-                    <input class="woocommerce-Input woocommerce-Input--text input-text" type="text" name="user_login" id="user_login" autocomplete="username" />
-                  </p>
-
-                  <div class="clear"></div>
-
-                  <?php do_action( 'woocommerce_lostpassword_form' ); ?>
-
-                  <p class="woocommerce-form-row form-row">
-                    <input type="hidden" name="wc_reset_password" value="true" />
-                    <button type="submit" class="woocommerce-Button button" value="<?php esc_attr_e( 'Reset password', 'woocommerce' ); ?>"><?php esc_html_e( 'Reset password', 'woocommerce' ); ?></button>
-                  </p>
-
-                  <?php wp_nonce_field( 'lost_password', 'woocommerce-lost-password-nonce' ); ?>
-
-                </form>
-              <?php
-                do_action( 'woocommerce_after_lost_password_form' );
-                ?>
-            </div>
-          </div>
-        </div>
-
-        <div class="modal-footer">
-          <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" id="WP_login-tab" data-toggle="tab" href="#WP_login" role="tab" aria-controls="WP_login" aria-selected="true">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="lost_password-tab" data-toggle="tab" href="#lost_password" role="tab" aria-controls="lost_password" aria-selected="false">lost password</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal -->
-  <div class="modal fade" id="SignupUser" tabindex="-1" role="dialog" aria-labelledby="SignupUserLabel" aria-hidden="true" style="background-image: linear-gradient(150deg, #56ecf2 0%, #4242e3 100%);">
-    <div class="elementor-background-overlay" style="background-image: url('{{ the_field('header_section_image', 'option') }}');"></div>
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="SignupUserLabel">{{ _e('Your Accounts', 'premast') }}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="registration" role="tabpanel" aria-labelledby="registration-tab">
-              <?php echo do_shortcode('[wc_reg_form_bbloomer]') ?>
-            </div>
-
-            <div class="tab-pane fade" id="lost_password_2" role="tabpanel" aria-labelledby="lost_password_2-tab">
-              <?php
-                defined( 'ABSPATH' ) || exit;
-                do_action( 'woocommerce_before_lost_password_form' );
-                ?>
-
-                <form method="post" class="woocommerce-ResetPassword lost_reset_password">
-
-                  <p><?php echo apply_filters( 'woocommerce_lost_password_message', esc_html__( 'Lost your password? Please enter your username or email address. You will receive a link to create a new password via email.', 'woocommerce' ) ); ?></p><?php // @codingStandardsIgnoreLine ?>
-
-                  <p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
-                    <label for="user_login"><?php esc_html_e( 'Username or email', 'woocommerce' ); ?></label>
-                    <input class="woocommerce-Input woocommerce-Input--text input-text" type="text" name="user_login" id="user_login" autocomplete="username" />
-                  </p>
-
-                  <div class="clear"></div>
-
-                  <?php do_action( 'woocommerce_lostpassword_form' ); ?>
-
-                  <p class="woocommerce-form-row form-row">
-                    <input type="hidden" name="wc_reset_password" value="true" />
-                    <button type="submit" class="woocommerce-Button button" value="<?php esc_attr_e( 'Reset password', 'woocommerce' ); ?>"><?php esc_html_e( 'Reset password', 'woocommerce' ); ?></button>
-                  </p>
-
-                  <?php wp_nonce_field( 'lost_password', 'woocommerce-lost-password-nonce' ); ?>
-
-                </form>
-              <?php
-                do_action( 'woocommerce_after_lost_password_form' );
-                ?>
+            <div class="modal-footer">
+              {{ _e('You have an account?', 'premast') }} <a class="login" href="#" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#LoginUser">{{ _e('Sign in', 'premast') }}</a>
             </div>
           </div>
         </div>
 
-        <div class="modal-footer">
-          <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link" id="registration-tab" data-toggle="tab" href="#registration" role="tab" aria-controls="registration" aria-selected="false">Registration</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="lost_password_2-tab" data-toggle="tab" href="#lost_password_2" role="tab" aria-controls="lost_password_2" aria-selected="false">lost password</a>
-            </li>
-          </ul>
-        </div>
       </div>
     </div>
   </div>
+
+  <script>
+    jQuery(function($) {
+      // placeholder Login
+      $('input#user_login').attr('placeholder', 'Email');
+      $('input#user_pass').attr('placeholder', 'Password');
+
+      // Tabs Custom
+      $('.switch-link').click(function(){
+        var tab_id = $(this).attr('data-tab');
+        $('.tab-content .tab-pane').removeClass('show');
+        $('.tab-content .tab-pane').removeClass('active');
+        $("#"+tab_id).addClass('active');
+        $("#"+tab_id).addClass('show');
+      });
+
+    });
+  </script>
 @endif

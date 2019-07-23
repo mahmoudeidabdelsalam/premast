@@ -78,25 +78,38 @@
     line-height: 14px;
     text-align: center;
     color: rgb(61, 69, 82);
-    margin-top: 15px;
+    margin-top: 40px;
+    margin-bottom: -10px;
+    position: relative;
 
     .modal-forms {
       color: rgb(24, 39, 255) !important;
       font-weight: bold;
       cursor: pointer;
     }
+
+    &::after {
+      content: "";
+      position: absolute;
+      height: 1px;
+      width: 121%;
+      left: -30px;
+      background-color: rgb(221, 221, 221);
+      top: -10px;
+    }
   }
 
   button#somdn-form-submit-button {
-    background: linear-gradient(170.96deg, rgb(107, 115, 255) -0.5%, rgb(0, 13, 255) 100%);
-    box-shadow: 0 5px 8px rgba(0, 123, 255, 0.59);
-    border-radius: 20px;
     min-width: 255px;
-    margin: auto;
     height: 40px;
     display: block;
     float: none !important;
-    color: $brand-white !important;
+    background: linear-gradient(170.96deg, rgb(26, 219, 114) -0.5%, rgb(16, 177, 81) 100%);
+    box-shadow: 0 5px 8px rgba(0, 255, 102, 0.59);
+    border-radius: 20px;
+    margin: 15px auto 0;
+    width: 100%;
+    color: $brand-white;
   }
 
   .login {

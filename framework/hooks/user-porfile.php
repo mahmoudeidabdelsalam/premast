@@ -135,3 +135,46 @@ if ( is_user_logged_in() ) {
   return ob_get_clean();
 }
 
+
+
+add_action('wp_ajax_register_user_front_end', 'register_user_front_end', 0);
+add_action('wp_ajax_nopriv_register_user_front_end', 'register_user_front_end');
+function register_user_front_end() {
+    $first_name = stripcslashes($_POST['first_name']);
+	  $last_name = stripcslashes($_POST['last_name']);
+	  $new_user_email = stripcslashes($_POST['user_email']);
+	  $new_user_password = $_POST['user_password'];
+	  $user_nice_name = strtolower($_POST['user_email']);
+	  $user_data = array(
+        'first_name' => $first_name,
+        'last_name' => $last_name,
+	      'user_login' => $user_nice_name,
+	      'user_email' => $new_user_email,
+	      'user_pass' => $new_user_password,
+	      'user_nicename' => $user_nice_name,
+	      'display_name' => $new_user_first_name,
+	      'role' => 'subscriber'
+	  	);
+	  $user_id = wp_insert_user($user_data);
+	  	if (!is_wp_error($user_id)) {
+        $output .= '<span class="user-created alert alert-success">we have Created an account for you.</span>';
+        $output .= '<script>';
+        $output .= 'jQuery(function(){';
+        $output .= 'jQuery(".login").click();';
+        $output .= 'jQuery("#user_login").val("'.$user_nice_name.'");';
+        $output .= 'jQuery("#user_pass").val("'.$new_user_password.'");';
+        $output .=  '});';
+        $output .='</script>';
+        echo $output;
+	  	} else {
+	    	if (isset($user_id->errors['empty_user_login'])) {
+	          $notice_key = '<span class="user-errors alert alert-danger">User Name and Email are mandatory</span>';
+	          echo $notice_key;
+	      	} elseif (isset($user_id->errors['existing_user_login'])) {
+	          echo'<span class="user-errors alert alert-danger">User Email already exixts.</span>';
+	      	} else {
+	          echo'<span class="user-errors alert alert-danger">Error Occured please fill up the sign up form carefully.</span>';
+	      	}
+	  	}
+	die;
+}

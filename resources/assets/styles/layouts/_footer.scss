@@ -8,8 +8,9 @@ footer {
   .gform_widget {
     h3 {
       color: rgba(255, 255, 255, 0.52);
-      font-size: 14px;
-      font-weight: 400;
+      font-size: 12px;
+      font-weight: normal;
+      letter-spacing: 0.11px;
     }
 
     .gform_wrapper {
@@ -23,8 +24,7 @@ footer {
       }
 
       form {
-        display: flex;
-        align-items: center;
+        position: relative;
 
         input {
           background-color: rgb(61, 69, 82);
@@ -43,16 +43,42 @@ footer {
           padding: 0;
           width: auto;
           white-space: nowrap;
+          position: absolute;
+          top: 0;
+          right: 0;
+          margin: 0 !important;
 
           button {
             height: 45px !important;
             line-height: 41px !important;
             padding: 0 20px !important;
-            border: 2px solid !important;
-            border-radius: 50px !important;
             font-size: 14px;
+            background: $brand-primary;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            box-sizing: border-box !important;
+            border-radius: 25px !important;
+            box-shadow: none !important;
           }
         }
+      }
+
+      .validation_error {
+        display: none;
+      }
+
+      .gfield_error {
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+        background: transparent !important;
+      }
+
+      .validation_message {
+        position: absolute;
+      }
+
+      div.ginput_container {
+        margin: 0;
       }
     }
   }
@@ -175,6 +201,10 @@ div#SignupUser {
           position: relative;
           vertical-align: middle;
         }
+
+        label {
+          display: block !important;
+        }
       }
 
       &.login-submit {
@@ -182,34 +212,53 @@ div#SignupUser {
 
         input#wp-submit {
           padding: 6px 20px;
-          border-radius: 20px;
-          background: none;
-          border: 2px solid rgb(37, 49, 107);
-          color: rgb(39, 45, 57);
-          font-weight: bold;
-          transition: all 0.5s;
-          width: 100%;
+          background: linear-gradient(165.74deg, rgb(107, 115, 255) -0.5%, rgb(0, 13, 255) 100%);
+          box-shadow: 0 7px 11px rgba(0, 96, 255, 0.64);
+          border-radius: 27.5px;
+          font-weight: normal;
+          font-size: 15px;
+          line-height: 18px;
+          color: $brand-white;
+          min-width: 155px;
+          height: 39px;
+          margin: auto;
+          display: block;
         }
       }
     }
 
     .woocommerce-Button {
       padding: 6px 20px;
-      border-radius: 20px;
-      background: none;
-      border: 2px solid rgb(37, 49, 107);
-      color: rgb(39, 45, 57);
-      font-weight: bold;
-      transition: all 0.5s;
-      width: 100%;
+      background: linear-gradient(165.74deg, rgb(107, 115, 255) -0.5%, rgb(0, 13, 255) 100%);
+      box-shadow: 0 7px 11px rgba(0, 96, 255, 0.64);
+      border-radius: 27.5px;
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 18px;
+      color: $brand-white;
+      min-width: 155px;
+      height: 39px;
+      margin: auto;
+      display: block;
     }
   }
 
   .modal-footer {
+    border: none;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 21px;
+    color: rgb(129, 137, 144);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+
     a {
-      color: rgb(43, 183, 227);
-      font-size: 14px;
+      color: $brand-primary;
       border: none !important;
+      font-weight: bold;
+      margin: 0 10px;
 
       &:hover,
       &.active,
@@ -252,7 +301,118 @@ div#SignupUser {
     }
   }
 
+  .modal-header {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    border: none;
+    position: relative;
+
+    .close {
+      position: absolute;
+      top: -20px;
+      right: 0;
+    }
+
+    .modal-title {
+      font-weight: normal;
+      font-size: 20px;
+      line-height: 23px;
+      color: rgba(61, 69, 82, 0.8);
+      mix-blend-mode: normal;
+      margin-top: 15px;
+    }
+  }
+
   .modal-content {
     border-radius: 10px;
+    overflow: hidden;
+    border: none;
+    box-shadow: none;
+
+    .description {
+      .title-description {
+        font-size: 33px;
+        line-height: 39px;
+        letter-spacing: 0.04px;
+        color: rgba(249, 250, 251, 0.82);
+        font-weight: 300;
+      }
+
+      .text-description {
+        font-size: 20px;
+        line-height: 29px;
+        letter-spacing: 0.04px;
+        color: $brand-white;
+        margin-top: 30px;
+      }
+
+      .min-description {
+        margin: 0;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .switch-to-lost {
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+    color: rgba(30, 109, 251, 0.88);
+    position: absolute;
+    bottom: 80px;
+    right: 18px;
+    cursor: pointer;
+  }
+
+  .switch-to-login {
+    cursor: pointer;
+    color: $brand-primary;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+  }
+  /* stylelint-disable */
+  label {
+    display: none;
+  }
+
+  .register-message {
+    span {
+      width: 100%;
+      display: inline-block;
+      margin: 0;
+      text-transform: lowercase;
+      font-size: 14px;
+      padding: 5px 10px;
+    }
+  }
+
+  .Conditions {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    label {
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 18px;
+      color: rgb(156, 164, 172);
+      margin: 2px 8px;
+    }
+  }
+  /* stylelint-enable */
+
+  .form-row-first {
+    padding: 0 2% 0 0;
+  }
+
+  .form-row-last,
+  .form-row-first {
+    width: 50%;
+    float: left;
+    margin: 20px 0;
   }
 }
