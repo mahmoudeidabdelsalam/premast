@@ -248,14 +248,16 @@
               $draught_terms= array();
               if ( $terms && ! is_wp_error( $terms ) ) : 
                 foreach ( $terms as $term ) {
+                  if( $term->parent == 0 ) {
                     $draught_terms[] = $term->term_id;
+                  }
                 }
               endif;
               $on_term = join( ", ", $draught_terms );
               $args = array(
                 'taxonomy' => 'product_cat', 
                 'name'=>'main_scat', 
-                'selected'  => (int) $on_term,
+                'selected'  => $on_term,
                 'hide_empty'=>1,
                 'depth'=>1,
                 'hierarchical'=> 1, 
@@ -442,6 +444,7 @@
     
     $('select').select2({
       theme: 'bootstrap4',
+      tags: true,
     });
     
   });
