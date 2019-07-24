@@ -21,7 +21,7 @@
       <li class="item-dropdown"><a class="border-0" href="{{ get_author_posts_url( $current_user->ID) }}?items=true">{{ _e('My items', 'premast') }}</a></li>
       <li class="item-dropdown"><a class="border-0" href="{{ the_field('link_add_new','option') }}">{{ _e('Upload item', 'premast') }}</a></li>
       <hr class="m-0">
-      <li class="item-dropdown"><a class="border-0" href="{{ home_url('/') }}/faq">{{ _e('Help Center', 'premast') }}</a></li>
+      <li class="item-dropdown"><a class="border-0" href="{{ home_url('/') }}/help-center/">{{ _e('Help Center', 'premast') }}</a></li>
       <li class="item-dropdown" class="border-0">{{ wp_loginout() }}</li>
     @else
       <li class="item-dropdown"><a class="border-0" href="#">{{ _e('become a contributor', 'premast') }}</a></li>
