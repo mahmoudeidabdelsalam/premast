@@ -366,6 +366,10 @@
     
     $('select').select2({
       theme: 'bootstrap4',
+    });
+
+    $('#tags').select2({
+      theme: 'bootstrap4',
       tags: true,
     });
     

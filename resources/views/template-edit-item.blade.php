@@ -444,9 +444,13 @@
     
     $('select').select2({
       theme: 'bootstrap4',
-      tags: true,
     });
     
+    $('#tags').select2({
+      theme: 'bootstrap4',
+      tags: true,
+    });
+
   });
   </script>
 @endif
