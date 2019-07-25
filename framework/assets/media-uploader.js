@@ -27,6 +27,30 @@
     });
 
 
+    var ads_upload; // variable for the wp.media file_frame
+
+    // attach a click event (or whatever you want) to some element on your page
+    $('#ads-button').on('click', function (event) {
+      event.preventDefault();
+      if (ads_upload) {
+        ads_upload.open();
+        return;
+      }
+      ads_upload = wp.media.frames.ads_upload = wp.media({
+        title: $(this).data('uploader_title'),
+        button: {
+          text: $(this).data('uploader_button_text'),
+        },
+        multiple: false // set this to true for multiple file selection
+      });
+      ads_upload.on('select', function () {
+        attachment = ads_upload.state().get('selection').first().toJSON();
+        $('#ads').attr('value', attachment.id);
+        $('.ads-pic').attr('src', attachment.url);
+      });
+
+      thumbnail_upload.open();
+    });
 
 
 

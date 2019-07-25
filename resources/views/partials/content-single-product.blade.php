@@ -53,8 +53,9 @@ global $product;
               <div id="tab-description">{!! get_the_content() !!}</div>
             </div>
           </div>
-          @include('partials/incloud/comments')
         </div>
+
+        @include('partials/incloud/comments')
       </div>
       
       <div class="summary entry-summary col-md-4 col-12 sidebar-shop">
@@ -133,21 +134,32 @@ global $product;
           @endif
         </div>
 
+        @if(get_field('ads_image'))
+          <div class="ads-block">
+            <a href="{{ the_field('ads_link') }}"><img src="{{ the_field('ads_image') }}" alt="{{ _e('Ads Block', 'premast') }}"></a>
+          </div>
+        @endif
 
-
-
+        @php dynamic_sidebar('sidebar-shop') @endphp
 
         @include('partials/incloud/sharemeta')
-        @php dynamic_sidebar('sidebar-shop') @endphp
-      </div>
-      <div class="col-12">
-          @php
-            do_action( 'woocommerce_after_single_product_summary' );
-          @endphp
       </div>
     </div>
   </div>
 </div>
+
+<section class="bg-white pt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        @php
+          do_action( 'woocommerce_after_single_product_summary' );
+        @endphp
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <script type="text/javascript">
     jQuery(function($) {
@@ -162,7 +174,7 @@ global $product;
           onSliderLoad: function (el) {
             $('.lightSlider').removeClass('cS-hidden');
             el.lightGallery({
-              selector: '[rel="lightSliderGallery"] .lslide',
+              selector: '#imageGallery .lslide',
             });
           },
           responsive: [{

@@ -30,7 +30,7 @@ if ( ! comments_open() ) {
 			$count = $product->get_review_count();
 			if ( $count && wc_review_ratings_enabled() ) {
 				/* translators: 1: reviews count 2: product name */
-				$reviews_title = sprintf( esc_html( _n( 'review (%1$s)', 'reviews (%1$s)', $count, 'woocommerce' ) ), esc_html( $count ), '<span>' . get_the_title() . '</span>' );
+				$reviews_title = sprintf( esc_html( _n( '%1$s review', '%1$s reviews', $count, 'woocommerce' ) ), esc_html( $count ) );
 				echo apply_filters( 'woocommerce_reviews_title', $reviews_title, $count, $product ); // WPCS: XSS ok.
 			} else {
 				esc_html_e( 'Reviews', 'woocommerce' );
@@ -59,21 +59,23 @@ if ( ! comments_open() ) {
 				echo '</nav>';
 			endif;
 			?>
-		<?php else : ?>
-			<p class="woocommerce-noreviews"><?php esc_html_e( 'There are no reviews yet.', 'woocommerce' ); ?></p>
 		<?php endif; ?>
 	</div>
 
 	<?php if ( get_option( 'woocommerce_review_rating_verification_required' ) === 'no' || wc_customer_bought_product( '', get_current_user_id(), $product->get_id() ) ) : ?>
 		<div id="review_form_wrapper">
 			<div id="review_form">
+
+      <?php 
+        global $current_user;
+        wp_get_current_user();
+
+        echo get_avatar( $current_user->ID, 64 ); 
+      
+      ?>
 				<?php
 				$commenter = wp_get_current_commenter();
 				$comment_form = array(
-					/* translators: %s is product title */
-					/* 'title_reply'         => have_comments() ? __( 'Add a review', 'woocommerce' ) : sprintf( __( 'Be the first to review &ldquo;%s&rdquo;', 'woocommerce' ), get_the_title() ), */
-					/* translators: %s is product title */
-					/* 'title_reply_to'      => __( 'Leave a Reply to %s', 'woocommerce' ),*/
 					'title_reply_before'  => '<span id="reply-title" class="comment-reply-title">',
 					'title_reply_after'   => '</span>',
 					'comment_notes_after' => '',
@@ -89,20 +91,19 @@ if ( ! comments_open() ) {
 				);
 				$account_page_url = wc_get_page_permalink( 'myaccount' );
 				if ( $account_page_url ) {
-					/* translators: %s opening and closing link tags respectively */
 					$comment_form['must_log_in'] = '<p class="must-log-in">' . sprintf( esc_html__( 'You must be %1$slogged in%2$s to post a review.', 'woocommerce' ), '<a href="' . esc_url( $account_page_url ) . '">', '</a>' ) . '</p>';
 				}
 				if ( wc_review_ratings_enabled() ) {
-					$comment_form['comment_field'] = '<div class="comment-form-rating"><label for="rating">' . esc_html__( 'Your rating', 'woocommerce' ) . '</label><select name="rating" id="rating" required>
+					$comment_form['comment_field'] = '<div class="comment-form-rating"><select name="rating" id="rating" required>
 						<option value="">' . esc_html__( 'Rate&hellip;', 'woocommerce' ) . '</option>
 						<option value="5">' . esc_html__( 'Perfect', 'woocommerce' ) . '</option>
 						<option value="4">' . esc_html__( 'Good', 'woocommerce' ) . '</option>
 						<option value="3">' . esc_html__( 'Average', 'woocommerce' ) . '</option>
 						<option value="2">' . esc_html__( 'Not that bad', 'woocommerce' ) . '</option>
 						<option value="1">' . esc_html__( 'Very poor', 'woocommerce' ) . '</option>
-					</select></div>';
+					</select> <span class="rate-text"> ' . esc_html__( 'rate this item!', 'woocommerce' ) . ' </span></div>';
 				}
-				$comment_form['comment_field'] .= '<p class="comment-form-comment"><label for="comment">' . esc_html__( 'Your review', 'woocommerce' ) . '&nbsp;<span class="required">*</span></label><textarea id="comment" name="comment" cols="45" rows="8" required></textarea></p>';
+				$comment_form['comment_field'] .= '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="25" rows="4" required>write your comment.....</textarea></p>';
 				comment_form( apply_filters( 'woocommerce_product_review_comment_form_args', $comment_form ) );
 				?>
 			</div>
@@ -119,22 +120,22 @@ $recent_comments = get_comments( array(
     'post_status' => 'publish', // limit to published comments.
     'post_id' => $post->ID,
 ) );
-
-
 ?>
 
 <?php if($recent_comments) : ?>  
-    <?php foreach((array) $recent_comments as $comment) : ?>  
+    <?php 
+    foreach((array) $recent_comments as $comment) :
+    $time = date_i18n('d M Y', strtotime($comment->comment_date));
+    ?>  
 
     <?php //dd($comment); ?>
-    <div class="media authcomment mb-4">
+    <div class="media authcomment mt-3">
       <?php echo get_avatar($comment->comment_author_email, 48); ?>
       <div class="media-body">
         <?php if ($comment->comment_approved == '0') : ?>  
             <p>Your comment is awaiting approval</p>  
         <?php endif; ?> 
-        <h5 class="mt-0"><?= $comment->comment_author; ?></h5>
-        <p class="mb-0"><time><small><?= $comment->comment_date; ?></small></time></p>
+        <h5 class="mt-0"><?= $comment->comment_author; ?> <time><small><?= $time ?></small></time></h5>
         <p class="mb-0"><?= $comment->comment_content; ?></p>        
       </div>
     </div>

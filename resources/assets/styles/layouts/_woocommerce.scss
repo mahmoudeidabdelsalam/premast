@@ -250,6 +250,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
     }
   }
 }
@@ -398,7 +399,6 @@
 
 .authcomment {
   padding: 0 0 20px;
-  border-bottom: 1px solid #ccc;
 
   .avatar {
     border-radius: 100%;
@@ -406,14 +406,29 @@
   }
 
   h5 {
-    text-decoration: underline;
-    margin: 0;
-    color: rgb(77, 68, 68);
-    font-size: 18px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.132987px;
+    text-transform: capitalize;
+    color: $brand-primary;
   }
 
   time {
-    color: #ccc;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.132987px;
+    text-transform: capitalize;
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .media-body {
+    background: $brand-white;
+    box-shadow: 0 2px 4px rgb(213, 237, 250);
+    border-radius: 8px;
+    padding: 30px;
   }
 }
 
@@ -645,4 +660,71 @@ td.xoo-cp-pprice {
   border-radius: 20px;
 }
 
+h3.woocommerce-Reviews-title {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.132987px;
+  color: #3D4552;
+  text-transform: lowercase !important;
+}
+
+span#reply-title {
+  display: none;
+}
+
+.woocommerce p.stars a {
+  height: 29px !important;
+  width: 29px !important;
+  margin-top: 20px
+}
+
+.woocommerce p.stars a::before {
+  color: rgba(61, 69, 82, 0.21);
+  font-size: 29px;
+}
+
+.woocommerce #review_form #respond .form-submit input#submit {
+  background-color: $brand-primary;
+  font-weight: 300;
+  float: right;
+}
+
+div#review_form .avatar {
+  border-radius: 100%;
+  margin: 30px 0;
+}
+
+div#review_form {
+  display: flex;
+  align-items: end;
+  margin: 30px 0 30px;
+}
+
+div#review_form #respond {
+  width: 100%;
+  flex: 0 100%;
+  margin: 0 0 0 10px !important;
+}
+
+.comment-form-rating {
+  display: flex;
+  align-items: center;
+}
+
+.comment-form-rating span.rate-text {
+  margin: 10px 0 0 10px;
+  display: inline-block;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.132987px;
+  text-transform: capitalize;
+  color: #3D4552;
+  opacity: 0.4;
+}
 /* stylelint-enable */

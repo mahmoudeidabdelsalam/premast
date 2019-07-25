@@ -63,6 +63,8 @@
         $slide_number = $_POST["slide_number"];
         $slide_pages = $_POST["slide_pages"];
         $slide_date = $_POST["slide_date"];
+        $ads_image = $_POST["ads_image"];
+        $ads_link = $_POST["ads_link"];
 
         $product = wp_insert_post(array (
           'post_type' => 'product',
@@ -91,6 +93,10 @@
           update_field( 'field_5ccca5a81e19d', $slide_number, $product );
           update_field( 'field_5ccca5b61e19e', $slide_pages, $product );
           update_field( 'field_5ccca5b81e19f', $slide_date, $product );
+          update_field( 'field_5d38deb18e564', $ads_image, $product );
+          update_field( 'field_5d38dee58e565', $ads_link, $product );
+
+
           wp_set_object_terms($product, $tags, 'product_tag');
           update_post_meta($product, '_regular_price', $prices);
           update_post_meta($product, '_price', $prices);
@@ -176,6 +182,25 @@
             </div>
             <textarea class="form-control" name="short_description" placeholder="Short description" rows="3" required></textarea>
           </div>
+          
+          <div class="ads-block">
+            <div class="alert alert-light m-0 pt-2 pb-2 pl-0" role="alert">{{ _e('Add Ads Items', 'premast') }}</div>
+            <label for="ads-button" class="label-ads">
+              <span class="images-files"></span>
+              <img class="ads-pic" src="{{ get_theme_file_uri().'/dist/images/upload-gallery.png' }}">
+            </label>
+            <div class="upload-form">
+              <div class="form-group">
+                <input type="file" id="ads-button"  class="files-ads form-control"/>
+                <input name="ads_image" value="" id="ads" hidden/>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <input type="text" name="ads_link" class="form-control" placeholder="@">
+            </div>
+          </div>
+
           <div class="input-group mb-4 mt-4">
             <label class="custom-download-label arrows left mb-0" for="upload_file">
               <div class="upload-response"></div>
