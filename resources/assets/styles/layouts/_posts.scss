@@ -129,17 +129,18 @@
   }
 
   .login {
-    background: linear-gradient(170.96deg, #6b73ff -0.5%, #000dff 100%);
-    box-shadow: 0 5px 8px rgba(0, 123, 255, 0.59);
-    border-radius: 20px;
     color: #fff;
     font-size: 18px;
     height: 40px;
     display: block;
-    width: 255px;
+    width: 100%;
     text-align: center;
     line-height: 40px;
     margin: auto;
+    background: linear-gradient(170.96deg, rgb(26, 219, 114) -0.5%, rgb(16, 177, 81) 100%);
+    box-shadow: 0 5px 8px rgba(0, 255, 102, 0.59);
+    border-radius: 20px;
+    font-weight: bold;
   }
 
   .somdn-download-count-wrap {

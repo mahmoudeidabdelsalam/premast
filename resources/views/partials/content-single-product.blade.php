@@ -106,7 +106,7 @@ global $product;
           @endif
 
           @if ( !is_user_logged_in() && $price == 0)
-            <a class="mt-2 login" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Login', 'premast') }}</a>
+            <a class="mt-3 login" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Login to Download Now', 'premast') }}</a>
           @endif
 
           @if($price != 0)
@@ -197,8 +197,8 @@ global $product;
 
 <section class="download-footer">
   <div class="container">
-    <div class="row">
-      <div class="col-md-7 col-12">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-12">
         <div class="media">
           <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="align-self-center mr-3" alt="{{ the_title() }}"> 
           <div class="media-body pt-4">
@@ -207,17 +207,40 @@ global $product;
           </div>
         </div>
       </div>
-      <div class="col-md-5 col-12">
-        <div class="custom-summary">
-         
+      <div class="col-md-4 col-12 d-flex">
+        <div class="bottom-summary col align-self-center">
+          @if ( !is_user_logged_in() && $price == 0)
+            <a class="login" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Login to Download Now', 'premast') }}</a>
+          @else
+          <a class="click-downloads" href="#">
+             
+            @if($sale)
+              {{ _e('Bye Now for', 'premast') }}
+              <span class="price">
+                <del>
+                  <span class="woocommerce-Price-amount amount">{{ $price }}<span class="woocommerce-Price-currencySymbol">{!! $symbol !!}</span></span>
+                </del> 
+                <span>
+                  <span class="woocommerce-Price-amount amount">{{ $sale }}<span class="woocommerce-Price-currencySymbol">{!! $symbol !!}</span></span>
+                </span>
+              </span>
+            @elseif($price)
+              {{ _e('Bye Now for', 'premast') }}
+              <span class="price">
+                <span>
+                  <span class="woocommerce-Price-amount amount">{{ $price }}<span class="woocommerce-Price-currencySymbol">{!! $symbol !!}</span></span>
+                </span> 
+              </span>
+            @else 
+              <span class="price">{{ _e('Download Now', 'premast') }}</span>
+            @endif
+          </a>
+          @endif
         </div>
       </div>
     </div>
   </div>
 </section>
-
-
-
 
 <script type="text/javascript">
     jQuery(function($) {
@@ -244,5 +267,34 @@ global $product;
             },
           }],
         });
+
+        <?php if($price): ?>
+          $('.click-downloads').click(function () {
+            $('.woocommerce div.product form.cart .button').click();
+          });
+        <?php else: ?>
+          $('.click-downloads').click(function () {
+            $('.download-product button#somdn-form-submit-button').click();
+          });
+        <?php endif; ?>
+
+        // if ($('.download-footer').length != 0) {
+        //   // Side bar fixed in blog
+        //   var bottom = $('footer').offset().top + $('footer').outerHeight(true);
+        //   console.log(bottom);
+          
+        //   var stickyTop = $('.download-footer').offset().top;
+
+        //   $(window).on('scroll', function () {
+        //     if ($(window).scrollTop() >= bottom - 1000) {
+        //       $('.download-footer').removeClass('fixed-content');
+        //     } else if ($(window).scrollTop() >= stickyTop - 200) {
+        //       $('.download-footer').addClass('fixed-content');
+        //     } else {
+        //     $('.download-footer').removeClass('fixed-content');
+        //     }
+        //   });
+        // }
+
     });
 </script>
