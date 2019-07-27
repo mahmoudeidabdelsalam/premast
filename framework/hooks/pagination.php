@@ -85,8 +85,6 @@ function premast_for_pagination($args = array(), $query_object = 'wp_query') {
     }
 }
 
-
-
 function author_cpt_filter($query) {
     if ( !is_admin() && $query->is_main_query() ) {
       if ($query->is_author()) {

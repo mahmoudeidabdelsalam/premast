@@ -1,20 +1,4 @@
-
 <?php
-/**
- * Display single product reviews (comments)
- *
- * This template can be overridden by copying it to yourtheme/woocommerce/single-product-reviews.php.
- *
- * HOWEVER, on occasion WooCommerce will need to update template files and you
- * (the theme developer) will need to copy the new files to your theme to
- * maintain compatibility. We try to do this as little as possible, but it does
- * happen. When this occurs the version of the template file will be bumped and
- * the readme will list any important changes.
- *
- * @see     https://docs.woocommerce.com/document/template-structure/
- * @package WooCommerce/Templates
- * @version 3.6.0
- */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
@@ -23,7 +7,7 @@ if ( ! comments_open() ) {
 	return;
 }
 ?>
-<div id="reviews" class="woocommerce-Reviews col-12 mt-5 product-infomation">
+<div id="reviews" class="woocommerce-Reviews col-12 mt-5 product-infomation p-0">
 	<div id="comments">
 		<h3 class="woocommerce-Reviews-title">
 			<?php
@@ -32,52 +16,22 @@ if ( ! comments_open() ) {
 				/* translators: 1: reviews count 2: product name */
 				$reviews_title = sprintf( esc_html( _n( '%1$s review', '%1$s reviews', $count, 'woocommerce' ) ), esc_html( $count ) );
 				echo apply_filters( 'woocommerce_reviews_title', $reviews_title, $count, $product ); // WPCS: XSS ok.
-			} else {
-				esc_html_e( 'Reviews', 'woocommerce' );
 			}
 			?>
 		</h3>
-
-		<?php if ( have_comments() ) : ?>
-			<ol class="commentlist">
-				<?php wp_list_comments( apply_filters( 'woocommerce_product_review_list_args', array( 'callback' => 'woocommerce_comments' ) ) ); ?>
-			</ol>
-
-			<?php
-			if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
-				echo '<nav class="woocommerce-pagination">';
-				paginate_comments_links(
-					apply_filters(
-						'woocommerce_comment_pagination_args',
-						array(
-							'prev_text' => '&larr;',
-							'next_text' => '&rarr;',
-							'type'      => 'list',
-						)
-					)
-				);
-				echo '</nav>';
-			endif;
-			?>
-		<?php endif; ?>
 	</div>
 
 	<?php if ( get_option( 'woocommerce_review_rating_verification_required' ) === 'no' || wc_customer_bought_product( '', get_current_user_id(), $product->get_id() ) ) : ?>
 		<div id="review_form_wrapper">
 			<div id="review_form">
-
-      <?php 
+        
+				<?php
+        $commenter = wp_get_current_commenter(); 
         global $current_user;
         wp_get_current_user();
-
-        echo get_avatar( $current_user->ID, 64 ); 
-      
-      ?>
-				<?php
-				$commenter = wp_get_current_commenter();
 				$comment_form = array(
-					'title_reply_before'  => '<span id="reply-title" class="comment-reply-title">',
-					'title_reply_after'   => '</span>',
+					'title_reply_before'  => '<div class="avatar-comments">' . get_avatar( $current_user->ID, 64 ) . '<span id="reply-title" class="comment-reply-title">',
+					'title_reply_after'   => '</span></div>',
 					'comment_notes_after' => '',
 					'fields'              => array(
 						'author' => '<p class="comment-form-author"><label for="author">' . esc_html__( 'Name', 'woocommerce' ) . '&nbsp;<span class="required">*</span></label> ' .
@@ -112,37 +66,142 @@ if ( ! comments_open() ) {
 		<p class="woocommerce-verification-required"><?php esc_html_e( 'Only logged in customers who have purchased this product may leave a review.', 'woocommerce' ); ?></p>
 	<?php endif; ?>
 
+
+  
 <?php
 global $post;
 $recent_comments = get_comments( array( 
-    'number'      => 5, // number of comments to retrieve.
     'status'      => 'approve', // we only want approved comments.
     'post_status' => 'publish', // limit to published comments.
     'post_id' => $post->ID,
+    'callback' => 'woocommerce_comments',
+    'parent' => 0,
 ) );
-?>
 
+$counter_lg = get_comments( array(
+  'post_id' => $post->ID, 
+  'parent' => 0,
+  'count' => true
+));
+
+?>
 <?php if($recent_comments) : ?>  
     <?php 
-    foreach((array) $recent_comments as $comment) :
-    $time = date_i18n('d M Y', strtotime($comment->comment_date));
+      foreach((array) $recent_comments as $comment) :
+      $time = date_i18n('d M Y', strtotime($comment->comment_date));
+      $rating = get_comment_meta($comment->comment_ID, 'rating', true);
     ?>  
-
-    <?php //dd($comment); ?>
-    <div class="media authcomment mt-3">
-      <?php echo get_avatar($comment->comment_author_email, 48); ?>
-      <div class="media-body">
-        <?php if ($comment->comment_approved == '0') : ?>  
-            <p>Your comment is awaiting approval</p>  
-        <?php endif; ?> 
-        <h5 class="mt-0"><?= $comment->comment_author; ?> <time><small><?= $time ?></small></time></h5>
-        <p class="mb-0"><?= $comment->comment_content; ?></p>        
+    <div class="commentlist lg-comments">
+      <div id="comment-<?= $comment->comment_ID; ?>">
+        <article id="div-comment-<?= $comment->comment_ID; ?>">
+          <div class="media authcomment mt-3">
+            <?php echo get_avatar($comment->comment_author_email, 48); ?>
+            <div class="media-body">
+              <div class="d-flex mb-3">{!! wc_get_rating_html($rating, '5') !!}</div>
+              <?php if ($comment->comment_approved == '0') : ?>  
+                  <p>Your comment is awaiting approval</p>  
+              <?php endif; ?> 
+              <h5 class="mt-0"><?= $comment->comment_author; ?> <time><small><?= $time ?></small></time></h5>
+              <p class="mb-3"><?= $comment->comment_content; ?></p>        
+                <div class="d-flex">
+                  {!! get_comment_likes_button( $comment->comment_ID ) !!}
+                  <div class="reply">
+                    <?php 
+                    $max_depth = get_option('thread_comments_depth');
+                    $default = array(
+                        'add_below'  => 'comment',
+                        'respond_id' => 'respond',
+                        'reply_text' => __('Reply'),
+                        'login_text' => __('Log in to Reply'),
+                        'depth'      => 1,
+                        'before'     => '',
+                        'after'      => '',
+                        'max_depth'  => $max_depth
+                        );
+                    comment_reply_link($default, $comment->comment_ID, $post->ID); ?>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
-
          
+    <?php 
+    $childcomments = get_comments(array(
+      'post_id'   => $post->ID,
+      'status'    => 'approve',
+      'order'     => 'DESC',
+      'parent'    => $comment->comment_ID,
+    )); 
+    $counter_sm = get_comments( array(
+      'post_id' => $post->ID, 
+      'parent' => $comment->comment_ID,
+      'count' => true
+    ));
+    ?>
+    <?php if($childcomments) : ?>  
+        <?php 
+          foreach((array) $childcomments as $comment) :
+          $time = date_i18n('d M Y', strtotime($comment->comment_date));
+          $rating = get_comment_meta($comment->comment_ID, 'rating', true);
+        ?>  
+        <div class="commentlist ml-5 similar-comments">
+          <div id="comment-<?= $comment->comment_ID; ?>">
+            <article id="div-comment-<?= $comment->comment_ID; ?>">
+              <div class="media authcomment mt-3">
+                <?php echo get_avatar($comment->comment_author_email, 48); ?>
+                <div class="media-body">
+                  <div class="d-flex mb-3">{!! wc_get_rating_html($rating, '5') !!}</div>
+                  <?php if ($comment->comment_approved == '0') : ?>  
+                      <p>Your comment is awaiting approval</p>  
+                  <?php endif; ?> 
+                  <h5 class="mt-0"><?= $comment->comment_author; ?> <time><small><?= $time ?></small></time></h5>
+                  <p class="mb-3"><?= $comment->comment_content; ?></p>        
+                  {!! get_comment_likes_button( $comment->comment_ID ) !!}
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+                
+      <?php endforeach; ?>  
+    <?php endif; ?> 
+    @if($counter_sm  >= 2)
+      <a href="#" id="loadMoreSimilar" class="related-loadMore">{{ _e('load more', 'premast') }}</a>
+    @endif
+
   <?php endforeach; ?>  
 <?php endif; ?> 
 
+  @if ($counter_lg >= 2)
+    <a href="#" id="loadMore" class="related-loadMore">{{ _e('load more', 'premast') }}</a>
+  @endif
+
 	<div class="clear"></div>
 </div>
+
+<script>
+  jQuery(function($) {
+    $(document).ready(function(){
+      $(".lg-comments").slice(0, 2).show();
+      $("#loadMore").on("click", function(e){
+        e.preventDefault();
+        $(".lg-comments:hidden").slice(0, 2).slideDown();
+        if($(".lg-comments:hidden").length == 0) {
+          $("#loadMore").fadeOut("slow");
+        }
+      });
+    });
+    $(document).ready(function(){
+      $(".similar-comments").slice(0, 2).show();
+      $("#loadMoreSimilar").on("click", function(e){
+        e.preventDefault();
+        $(".similar-comments:hidden").slice(0, 2).slideDown();
+        if($(".similar-comments:hidden").length == 0) {
+          $("#loadMoreSimilar").fadeOut("slow");
+        }
+      });
+    });
+  });
+</script>

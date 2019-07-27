@@ -74,3 +74,12 @@ span.status {
     background: rgb(255, 0, 0);
   }
 }
+
+.comment-reply-link {
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.132987px;
+  text-transform: capitalize;
+  color: $brand-primary;
+}

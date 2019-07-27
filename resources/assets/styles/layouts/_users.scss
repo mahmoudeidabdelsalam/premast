@@ -348,23 +348,25 @@ input#updateuser {
     }
   }
 }
-
+/* stylelint-disable */
 .woocommerce {
-  .star-rating {
-    width: 19px !important;
-    margin: 0;
+  .card {
+    .star-rating {
+      width: 19px !important;
+      margin: 0;
 
-    &::before {
-      content: "\73" !important;
-    }
-
-    span {
       &::before {
-        content: "\53" !important;
+        content: "\73" !important;
+      }
+
+      span {
+        &::before {
+          content: "\53" !important;
+        }
       }
     }
   }
-
+/* stylelint-enable */
   span.icon-meta {
     font-size: 13px;
     line-height: 15px;
@@ -462,4 +464,76 @@ ul#myshow {
     top: -2px;
     right: 10px;
   }
+}
+
+.author-media {
+  z-index: 999;
+
+  .avatar {
+    border-radius: 100%;
+    border: 3px solid transparent;
+    box-shadow: 0 0 0 3px $brand-white;
+    height: 64px;
+    width: 64px;
+    overflow: hidden;
+  }
+
+  h5 {
+    font-style: normal;
+    font-size: 16px;
+    line-height: 19px;
+    text-transform: capitalize;
+    color: rgb(61, 69, 82);
+
+    .follow {
+      float: right;
+      background: rgb(30, 109, 251);
+      border-radius: 25px;
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 18px;
+      letter-spacing: 0.132987px;
+      text-transform: capitalize;
+      color: rgb(255, 255, 255);
+      padding: 5px 20px;
+      margin-right: -15px;
+      position: relative;
+      margin-top: 5px;
+    }
+  }
+
+  p {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 0.132987px;
+    color: rgba(0, 0, 0, 0.4);
+  }
+}
+
+.box-author {
+  h3 {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.132987px;
+    text-transform: capitalize;
+    color: rgb(61, 69, 82);
+  }
+}
+
+span.sl-text {
+  margin: 0 5px;
+}
+
+span.sl-count {
+  margin: 0 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 15px;
+  text-transform: capitalize;
+  color: rgba(0, 0, 0, 0.4);
 }

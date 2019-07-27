@@ -11,6 +11,8 @@ global $product;
 @php 
   global $current_user;
   wp_get_current_user();
+
+  $author = get_the_author_meta('ID');
 @endphp
 
 <div id="product-{{ the_ID() }}" {!! wc_product_class() !!}>
@@ -143,22 +145,78 @@ global $product;
         @php dynamic_sidebar('sidebar-shop') @endphp
 
         @include('partials/incloud/sharemeta')
+
+        <div class="box-author box-counter">
+
+          <h3>{{ _e('published by', 'premast') }}</h3>
+
+          @php 
+            $avatar = get_field('owner_picture', 'user_'. $author );
+            $user_post_count = count_user_posts( $author , 'product' );
+          @endphp
+          <div class="media author-media">
+            @if($avatar)
+              <div class="avatar align-self-center mr-3">
+                <img src="{{ $avatar['url'] }}" alt="{!! get_the_author_meta('display_name', $author) !!}">
+              </div>
+            @else 
+              {!! get_avatar( get_the_author_meta('ID', $author), '94', null, null, array( 'class' => array( 'align-self-start', 'mr-3' ) ) ) !!}
+            @endif
+            <div class="media-body pt-3">
+              <h5 class="mt-0 text-black">
+                <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ), get_the_author_meta( 'user_nicename' ) ); ?>"><?php the_author(); ?></a>
+                <a class="follow" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ), get_the_author_meta( 'user_nicename' ) ); ?>">{{ _e('follow', 'premast') }}</a>
+              </h5>
+              <p>{{ _e('Total uploads:', 'premast') }} {{ $user_post_count }}</p>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<section class="bg-white pt-5">
+@php
+  $related = related_posts();
+@endphp
+
+@if($related->have_posts())
+  <section class="bg-white pt-5 related">
+    <div class="container">
+      <h3>{{ _e('related Items', 'premast') }}</h3>
+      <div class="item-columns row m-0 col-12 p-0"> 
+        @while($related->have_posts() ) @php($related->the_post())
+          @include('partials/incloud/card-user')
+        @endwhile
+        @php (wp_reset_postdata())
+      </div>
+    </div>
+  </section>
+@endif
+
+<section class="download-footer">
   <div class="container">
     <div class="row">
-      <div class="col-12">
-        @php
-          do_action( 'woocommerce_after_single_product_summary' );
-        @endphp
+      <div class="col-md-7 col-12">
+        <div class="media">
+          <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="align-self-center mr-3" alt="{{ the_title() }}"> 
+          <div class="media-body pt-4">
+            <h5 class="mt-0">{{ the_title() }}</h5>
+            <p class="text-description">{!! $excerpt !!}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 col-12">
+        <div class="custom-summary">
+         
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+
 
 
 <script type="text/javascript">

@@ -8,12 +8,6 @@
   
   $author = get_user_by( 'slug', get_query_var( 'author_name' ) );
 
-  //if( ( ($author->ID != $current_user->ID) || !is_super_admin()):
-    //$news_link = get_field('link_page_login', 'option');
-      //wp_redirect( $news_link);
-    //exit();
-  //endif;
-
   $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
   
   // Top Products 
@@ -75,11 +69,6 @@
   $statistics   = isset($_GET['statistics']) ? $_GET['statistics'] : 'false';
   $support   = isset($_GET['support']) ? $_GET['support'] : 'false';
 
-
-
-
-
-
   // vandor Products
   $vandor = array(
     'post_type'       => array('product'),
@@ -91,7 +80,6 @@
 
     $views = [];
     $downloads = [];
-    
 
     if($vandors->have_posts()):
       while ( $vandors->have_posts() ): $vandors->the_post();
@@ -105,9 +93,9 @@
       endwhile;
     endif;
 
-
-
 @endphp
+
+@if (($author->ID == $current_user->ID))
 
 <section class="bg-gray-dark nav-vandor">
   <div class="container-fiuld woocommerce">
@@ -312,5 +300,45 @@
     });
   });
 </script>
+@else 
+
+@if (get_field('banner_items_headline', 'option'))
+<section class="banner-items mb-5" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
+  <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="media author-media">
+        {!! get_avatar( $author->ID, '94', null, null, array( 'class' => array( 'align-self-start', 'mr-3' ) ) ) !!}
+        <div class="media-body">
+          <h5 class="mt-0 text-white">{!! get_the_author_meta('display_name', $author->ID) !!}</h5>
+          <p class="icons-socail">
+            <a class="premast-icon icon-facebook text-white" href="http://facebook.com/premast.co/" target="_blank" rel="nofollow"> <span class="sr-only">Facebook</span> <i class="fa fa-facebook-square fa-lg"></i> </a> 
+            <a class="premast-icon icon-twitter text-white" href="https://twitter.com/Premast_co" target="_blank" rel="nofollow"> <span class="sr-only">Twitter</span> <i class="fa fa-twitter-square fa-lg"></i> </a> 
+            <a class="premast-icon icon-instagram text-white" href="https://www.instagram.com/premast.co/" target="_blank" rel="nofollow"> <span class="sr-only">instagram</span> <i class="fa fa-instagram fa-lg"></i> </a>
+            <a class="premast-icon icon-behance text-white" href="http://behance.net/Premast" target="_blank" rel="nofollow"> <span class="sr-only">Behance</span> <i class="fa fa-behance-square fa-lg"></i> </a>       
+          </p>
+          <p class="text-white">{!! get_the_author_meta('description', $author->ID) !!}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+@endif
+
+<section class="card-author">
+  <div class="container-fluid woocommerce">
+    <div class="item-columns row m-0 col-12 p-0"> 
+      @while($all_live->have_posts() ) @php($all_live->the_post())
+        @include('partials/incloud/card-user')
+      @endwhile
+      <div class="col-12">
+        <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $all) }}</nav>
+      </div>
+      @php (wp_reset_postdata())
+    </div>
+  </div>
+</section>
+
+@endif
 
 @endsection
