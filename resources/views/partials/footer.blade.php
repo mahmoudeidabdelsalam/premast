@@ -151,7 +151,7 @@
             </div>
             <div class="modal-body">
               <p class="register-message m-0" style="display:none"></p>
-              <form action="#" method="POST" name="register-form" class="register-form register">
+              <form action="#" method="POST" name="register-form" class="register-form register-user">
                 <p class="form-row form-row-first">
                   <input class="form-control" type="text"  name="first_name" placeholder="First Name" id="firstname">
                 </p>

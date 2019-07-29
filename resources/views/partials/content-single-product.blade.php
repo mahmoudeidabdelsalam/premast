@@ -278,23 +278,29 @@ global $product;
           });
         <?php endif; ?>
 
-        // if ($('.download-footer').length != 0) {
-        //   // Side bar fixed in blog
-        //   var bottom = $('footer').offset().top + $('footer').outerHeight(true);
-        //   console.log(bottom);
-          
-        //   var stickyTop = $('.download-footer').offset().top;
+        if ($('.download-footer').length != 0) {
+          // Side bar fixed in blog
+          var bottom = $('footer').offset().top;
+          var top = $('.download-product').offset().top;
 
-        //   $(window).on('scroll', function () {
-        //     if ($(window).scrollTop() >= bottom - 1000) {
-        //       $('.download-footer').removeClass('fixed-content');
-        //     } else if ($(window).scrollTop() >= stickyTop - 200) {
-        //       $('.download-footer').addClass('fixed-content');
-        //     } else {
-        //     $('.download-footer').removeClass('fixed-content');
-        //     }
-        //   });
-        // }
+          
+          var stickyTop = $('.download-footer').offset().top;
+
+          $(window).on('scroll', function () {
+          
+          console.log(bottom - 1000);
+          console.log($(window).scrollTop());
+          
+            if ($(window).scrollTop() >= bottom - 1000)  {
+              $('.download-footer').removeClass('fixed-content');
+              
+            } else if ($(window).scrollTop() >= top + 100 ) {
+              $('.download-footer').addClass('fixed-content');
+            } else {
+            $('.download-footer').removeClass('fixed-content');
+            }
+          });
+        }
 
     });
 </script>
