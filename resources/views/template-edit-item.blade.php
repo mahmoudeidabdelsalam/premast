@@ -50,7 +50,7 @@
         
         $post = get_post($post_id);
 
-        if(is_super_admin()):
+        if(is_admin()):
           $status = 'publish';
         else: 
           $status = 'pending';
