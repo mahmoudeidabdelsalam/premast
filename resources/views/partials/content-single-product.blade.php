@@ -34,7 +34,7 @@ global $product;
               $attachment_ids = $product->get_gallery_image_ids();
             @endphp                         
             @if ($attachment_ids)
-            <ul id="imageGallery">
+            <ul id="imageGallery" class="cS-hidden">
               @foreach( $attachment_ids as $attachment_id ) 
                 <li data-thumb="{{ wp_get_attachment_url( $attachment_id ) }}" data-src="{{ wp_get_attachment_url( $attachment_id ) }}">
                   <img src="{{ wp_get_attachment_url( $attachment_id )}}" />
@@ -243,64 +243,15 @@ global $product;
 </section>
 
 <script type="text/javascript">
-    jQuery(function($) {
-        $('#imageGallery').lightSlider({
-          gallery: true,
-          item: 1,
-          loop: true,
-          thumbItem: 6,
-          slideMargin: 0,
-          enableDrag: false,
-          currentPagerPosition: 'left',
-          onSliderLoad: function (el) {
-            $('.lightSlider').removeClass('cS-hidden');
-            el.lightGallery({
-              selector: '#imageGallery .lslide',
-            });
-          },
-          responsive: [{
-            breakpoint: 480,
-            settings: {
-              enableDrag: true,
-              controls: false,
-              thumbItem: 4,
-            },
-          }],
-        });
-
-        <?php if($price): ?>
-          $('.click-downloads').click(function () {
-            $('.woocommerce div.product form.cart .button').click();
-          });
-        <?php else: ?>
-          $('.click-downloads').click(function () {
-            $('.download-product button#somdn-form-submit-button').click();
-          });
-        <?php endif; ?>
-
-        if ($('.download-footer').length != 0) {
-          // Side bar fixed in blog
-          var bottom = $('footer').offset().top;
-          var top = $('.download-product').offset().top;
-
-          
-          var stickyTop = $('.download-footer').offset().top;
-
-          $(window).on('scroll', function () {
-          
-          console.log(bottom - 1000);
-          console.log($(window).scrollTop());
-          
-            if ($(window).scrollTop() >= bottom - 1000)  {
-              $('.download-footer').removeClass('fixed-content');
-              
-            } else if ($(window).scrollTop() >= top + 100 ) {
-              $('.download-footer').addClass('fixed-content');
-            } else {
-            $('.download-footer').removeClass('fixed-content');
-            }
-          });
-        }
-
-    });
+  jQuery(function($) {
+    <?php if($price): ?>
+      $('.click-downloads').click(function () {
+        $('.woocommerce div.product form.cart .button').click();
+      });
+    <?php else: ?>
+      $('.click-downloads').click(function () {
+        $('.download-product button#somdn-form-submit-button').click();
+      });
+    <?php endif; ?>
+  });
 </script>
