@@ -31,6 +31,8 @@
   <section class="template-users">
         <?php
         $sort   = isset($_GET['sort']) ? $_GET['sort'] : 'DESC';
+        $tabs   = isset($_GET['tabs']) ? $_GET['tabs'] : 'all';
+
         if ( ! defined( 'ABSPATH' ) ) {
           exit;
         }
@@ -101,16 +103,16 @@
                   <ul class="nav-downloads mb-5 list-inline nav nav-tabs border-0" id="myTab" role="tablist">
                     <li class="show-tabs list-inline-item">{{ _e('Show', 'premast') }}</li>
                     <li class="nav-item list-inline-item">
-                      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">All</a>
+                      <a class="nav-link @if($tabs == 'all') active @endif" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">All</a>
                     </li>
                     @if($somdn_download_ids)
                       <li class="nav-item list-inline-item">
-                        <a class="nav-link" id="free-tab" data-toggle="tab" href="#free" role="tab" aria-controls="free" aria-selected="false">Free</a>
+                        <a class="nav-link @if($tabs == 'free') active @endif" id="free-tab" data-toggle="tab" href="#free" role="tab" aria-controls="free" aria-selected="false">Free</a>
                       </li>
                     @endif
                     @if($has_downloads)
                       <li class="nav-item list-inline-item">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Paid</a>
+                        <a class="nav-link @if($tabs == 'paid') active @endif" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Paid</a>
                       </li>
                     @endif
                   </ul>
@@ -129,7 +131,7 @@
                 </div>
 
                 <div class="tab-content" id="myTabContent">
-                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <div class="tab-pane fade @if($tabs == 'all') active show @endif" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <div class="item-columns row m-0">
                       @if($loop_all->have_posts())
                         @while($loop_all->have_posts()) @php($loop_all->the_post())
@@ -164,7 +166,7 @@
                     </div>
                   </div>
                   @if($somdn_download_ids)
-                    <div class="tab-pane fade" id="free" role="tabpanel" aria-labelledby="free-tab">
+                    <div class="tab-pane fade @if($tabs == 'free') active show @endif" id="free" role="tabpanel" aria-labelledby="free-tab">
                       <div class="item-columns row m-0">
                         @while($loop_free->have_posts()) @php($loop_free->the_post())
                           <div class="item-card col-md-2 col-sm-3 col-sx-6 col-12 grid-item">
@@ -198,7 +200,7 @@
                     </div>
                   @endif
                   @if($has_downloads)
-                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    <div class="tab-pane fade @if($tabs == 'paid') active show @endif" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                       <div class="item-columns row m-0">
                         @while($loop_paid->have_posts()) @php($loop_paid->the_post())
                           <div class="item-card col-md-2 col-sm-3 col-sx-6 col-12 grid-item">
