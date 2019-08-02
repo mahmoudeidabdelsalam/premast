@@ -35,7 +35,9 @@ do_action( 'woocommerce_before_cart' );
     </div>
 
 
-    <?php if ( wc_get_page_id( 'shop' ) < 0 ): ?>
+    <?php 
+    $count = WC()->cart->cart_contents_count;
+    if (  $count == 0 ): ?>
     <div class="container-fluid pt-5 pb-5 form-cart-woocommerce mt-5">
       <div class="row justify-content-center">
         <p class="return-to-shop">
