@@ -46,16 +46,17 @@
       
       $post_id = isset($_GET['post_id']) ? $_GET['post_id'] : 'false';
 
+
       if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POST['action'] == "update_post" && $post_id != 'false') {
         
         $post = get_post($post_id);
 
-        if(is_admin()):
+        if(is_super_admin() || is_admn()):
           $status = 'publish';
         else: 
           $status = 'pending';
         endif;
-        
+
         $title = $_POST["title"];
         $description = $_POST["description"];
         $short_description = $_POST["short_description"];
