@@ -22,8 +22,9 @@ function all_graphics($data){
         $post->Category= $terms[0]->name;
       }
       $post->Id           = $post->ID;
-      $post->Name         = htmlspecialchars_decode( get_the_title($post->id) );
-      $post->PreviewImage = get_field('file_graphics' , $post->ID);
+      $post->Name         = htmlspecialchars_decode( get_the_title($post->ID) );
+      $post->Content = get_field('file_graphics' , $post->ID);
+      $post->PreviewImage = get_the_post_thumbnail_url($post->ID, 'full' );
       unset($post->ID, $post->post_name, $post->post_type, $post->post_excerpt);
       formatPost($post);
     endforeach;
