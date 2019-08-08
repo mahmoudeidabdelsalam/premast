@@ -215,7 +215,7 @@ global $product;
           <a class="click-downloads" href="#">
              
             @if($sale)
-              {{ _e('Bye Now for', 'premast') }}
+              {{ _e('buy Now for', 'premast') }}
               <span class="price">
                 <del>
                   <span class="woocommerce-Price-amount amount">{{ $price }}<span class="woocommerce-Price-currencySymbol">{!! $symbol !!}</span></span>
@@ -225,7 +225,7 @@ global $product;
                 </span>
               </span>
             @elseif($price)
-              {{ _e('Bye Now for', 'premast') }}
+              {{ _e('buy Now for', 'premast') }}
               <span class="price">
                 <span>
                   <span class="woocommerce-Price-amount amount">{{ $price }}<span class="woocommerce-Price-currencySymbol">{!! $symbol !!}</span></span>
