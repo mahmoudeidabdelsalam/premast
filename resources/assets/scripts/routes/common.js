@@ -102,8 +102,8 @@ export default {
 
     $('.product-grid').click(function () {
       $('.item-card').show(300);
-      $('.item-card .bg-white').css('height', '300px');
-      $('.item-card .bg-white').css('min-height', '248px');
+      $('.item-card .bg-white').css('height', '230px');
+      $('.item-card .bg-white').css('min-height', '230px');
       $('.item-card .bg-white').addClass('bg-images');
 
       $('.grid').masonry({
