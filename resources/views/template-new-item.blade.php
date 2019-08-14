@@ -101,6 +101,7 @@
           update_post_meta($product, '_regular_price', $prices);
           update_post_meta($product, '_price', $prices);
           update_post_meta($product, '_downloadable', 'yes');
+          update_post_meta($product, '_virtual', 'yes');
           update_post_meta($product, '_downloadable_files', $downloads);
           update_post_meta( $product, '_product_image_gallery', $gallery_id);
           set_post_thumbnail($product, $image_id);

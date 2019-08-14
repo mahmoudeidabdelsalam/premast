@@ -51,12 +51,6 @@
         
         $post = get_post($post_id);
 
-        if(is_super_admin() || is_admn()):
-          $status = 'publish';
-        else: 
-          $status = 'pending';
-        endif;
-
         $title = $_POST["title"];
         $description = $_POST["description"];
         $short_description = $_POST["short_description"];
@@ -86,7 +80,7 @@
           'post_title' => $title,
           'post_content' => $description,
           'post_excerpt' => $short_description,
-          'post_status' => $status,
+          'post_status' => 'publish',
           'post_author' => $post->post_author,
           'tax_input' => array( 'product_cat' => array($cat, $child, $children)),
         ));
@@ -117,6 +111,7 @@
           update_post_meta($product, '_regular_price', $prices);
           update_post_meta($product, '_price', $prices);
           update_post_meta($product, '_downloadable', 'yes');
+          update_post_meta($product, '_virtual', 'yes');
           update_post_meta($product, '_downloadable_files', $downloads);
           update_post_meta( $product, '_product_image_gallery', $gallery_id);
           set_post_thumbnail($product, $image_id);
