@@ -61,7 +61,7 @@
                         {{ the_sub_field('date_access') }}
                       </span>
                       <span class="number-pricing">
-                        {{ the_sub_field('pricing_number') }}
+                        {{ the_sub_field('pricing_number') }}$
                       </span>
                       <span class="date-pricing">
                         {{ the_sub_field('pricing_date') }}
