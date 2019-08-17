@@ -60,15 +60,24 @@
     <div class="row justify-content-center align-items-center m-0">
       <div class="col-md-6 col-sm-12 col-12">
         @php 
+          $ids_to_exclude = array();
+          $get_terms_to_exclude =  get_terms(
+            array(
+              'fields'  => 'ids',
+              'slug'    => array( 'plans' ),
+              'taxonomy' => 'product_cat',
+            )
+          );
+          if( !is_wp_error( $get_terms_to_exclude ) && count($get_terms_to_exclude) > 0){
+              $ids_to_exclude = $get_terms_to_exclude; 
+          }
           $product_terms = get_terms( 'product_cat', array(
               'hide_empty' =>  1,
+              'exclude' => $ids_to_exclude,
               'parent' =>0
           ) );
         @endphp
         <ul class="list-inline m-0 product-term">
-          <li class="list-inline-item">
-            <a class="text-term" href="{{ the_field('link_page_items', 'option') }}">{{ _e('All', 'premast') }}</a>
-          </li>
           @foreach($product_terms as $product_term) 
           @php 
             $term_link = get_term_link( $product_term );

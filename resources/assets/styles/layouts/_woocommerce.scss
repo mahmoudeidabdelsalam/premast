@@ -1078,4 +1078,162 @@ tr.woocommerce-cart-form__cart-item.cart_item:last-child {
   bottom: 0;
   z-index: 999;
 }
+
+section.banner {
+  min-height: 600px;
+  background-size: cover;
+  display: flex;
+  align-items: center !important;
+}
+
+section.banner h2 {
+  font-size: 50px;
+  line-height: 59px;
+  color: #FFFFFF;
+}
+
+section.banner p {
+  font-size: 21px;
+  line-height: 27px;
+  letter-spacing: 0.132987px;
+  color: #FFFFFF;
+  margin-top: 16px;
+  margin-bottom: 40px;
+}
+
+section.banner p.time-back {
+  font-size: 30px !important;
+  font-weight: 400;
+}
+
+section.banner p.time-back span {
+  background: #EFF6FA;
+  border-radius: 5px;
+  color: #1872f5;
+  padding: 10px 20px;
+}
+
+.box-pricing {
+  background: #1E6DFB;
+  box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding-bottom: 8px;
+  margin-top: -100px;
+}
+
+section.pricing-table {
+  margin-bottom: 30px;
+}
+
+section.pricing-table .headline-pricing {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 26px;
+  /* identical to box height */
+  text-align: center;
+  letter-spacing: 0.132987px;
+  color: #EFF6FA;
+  padding: 18px 0;
+}
+
+section.pricing-table .box-in-pricing {
+  background: #FFFFFF;
+  border-radius: 8px;
+  min-height: 480px;
+  display: flex;
+  flex-flow: column;
+}
+
+section.pricing-table span.number-pricing {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 47px;
+  text-align: center;
+  letter-spacing: 0.132987px;
+  color: #3C46FF;
+  display: block;
+  padding-top: 15px;
+}
+
+section.pricing-table span.free-pricing {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: 0.132987px;
+  color: #282F39;
+  opacity: 0.6;
+  display: block;
+  padding: 10px 30px 0;
+}
+
+section.pricing-table span.date-access {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.132987px;
+  color: #4A4A4A;
+  display: block;
+}
+
+section.pricing-table span.date-pricing {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: 0.132987px;
+  color: #282F39;
+  display: block;
+}
+
+section.pricing-table .list-items {
+  padding: 20px;
+}
+
+section.pricing-table .list-items span {
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.132987px;
+  color: #000000;
+  text-align: left !important;
+  display: block;
+  margin: 16px 0;
+  font-weight: 400;
+}
+
+section.pricing-table .list-items span:before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  background-image: url('../images/list-items.svg');
+}
+
+section.pricing-table .head-box-pricing {
+  min-height: 150px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+section.pricing-table .choose.plan a {
+  background: linear-gradient(167.68deg, #6B73FF -0.5%, #000DFF 100%);
+  box-shadow: 0px 5px 8px rgba(0, 123, 255, 0.59);
+  border-radius: 25px;
+  padding: 10px 50px;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.132987px;
+  text-transform: capitalize;
+  color: #FFFFFF;
+}
+
+section.pricing-table .choose.plan {
+  margin-bottom: 30px;
+  margin-top: auto;
+}
 /* stylelint-enable */
