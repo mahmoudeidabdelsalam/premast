@@ -1236,4 +1236,96 @@ section.pricing-table .choose.plan {
   margin-bottom: 30px;
   margin-top: auto;
 }
+
+p.best-plane {
+  font-size: 19px;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: 0.132987px;
+  color: rgb(239, 246, 250);
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.box-featured h3 {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  color: #3D4552;
+}
+
+.box-featured p {
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  color: #000000;
+  mix-blend-mode: normal;
+  opacity: 0.4;
+}
+
+section.faq-item {
+  background: #EFF6FA;
+}
+
+h3.headline-faq {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 47px;
+  letter-spacing: 0.132987px;
+  text-transform: capitalize;
+  color: #3D4552;
+  width: 100%;
+  text-align: center;
+}
+
+p.tag-faq {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+  text-align: center;
+  letter-spacing: 0.132987px;
+  color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  margin: 25px 0 60px;
+}
+
+p.copy-faq {
+  font-size: 15px;
+  line-height: 18px;
+  letter-spacing: 0.132987px;
+  color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  margin: 20px 0;
+  text-align: end;
+}
+
+p.copy-faq span {
+  color: #1e6cfb;
+}
+
+.accordion .card-header {
+  background: #FFFFFF !important;
+  border-radius: 8px;
+  padding: 0;
+}
+
+.accordion .card {
+  margin-bottom: 20px;
+  border: 1px solid transparent !important;
+  border-radius: 8px !important;
+}
+
+.accordion .card-header i {
+  float: right;
+  font-size: 20px;
+  color: #1e6cfb;
+}
+
+.card-header a {
+  width: 100%;
+  display: inline-block;
+  padding: 15px !important;
+  cursor: pointer;
+}
 /* stylelint-enable */
