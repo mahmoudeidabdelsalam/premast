@@ -339,6 +339,52 @@ if( function_exists('acf_add_local_field_group') ):
         'allow_multiple' => 0,
       ),
 
+
+      array(
+        'key' => 'field_5c23444657657f47',
+        'label' => 'link Sing In Page',
+        'name' => 'link_signin',
+        'type' => 'page_link',
+        'instructions' => '',
+        'required' => 0,
+        'conditional_logic' => 0,
+        'wrapper' => array(
+          'width' => '50',
+          'class' => '',
+          'id' => '',
+        ),
+        'post_type' => array(
+          0 => 'page',
+        ),
+        'taxonomy' => '',
+        'allow_null' => 0,
+        'allow_archives' => 1,
+        'multiple' => 0,
+      ),
+
+
+      array(
+        'key' => 'field_532r234ds23e6af47',
+        'label' => 'link Sing up Page ',
+        'name' => 'link_signup',
+        'type' => 'page_link',
+        'instructions' => '',
+        'required' => 0,
+        'conditional_logic' => 0,
+        'wrapper' => array(
+          'width' => '50',
+          'class' => '',
+          'id' => '',
+        ),
+        'post_type' => array(
+          0 => 'page',
+        ),
+        'taxonomy' => '',
+        'allow_null' => 0,
+        'allow_archives' => 1,
+        'multiple' => 0,
+      ),
+
 		  array(
 				'key' => 'field_fdsfsdfwererwe5a931c668284d',
 				'label' => 'Welcome',

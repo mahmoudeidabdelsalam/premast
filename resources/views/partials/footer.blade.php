@@ -38,7 +38,7 @@
   </div>
 </section>
 
-@if ( !is_user_logged_in() )
+@if ( !is_user_logged_in() && !is_page_template( 'views/template-signup.blade.php' ) && !is_page_template( 'views/template-signin.blade.php' ) )
 
   <!-- Modal Login -->
   <div class="modal fade" id="LoginUser" tabindex="-1" role="dialog" aria-labelledby="LoginUserLabel" aria-hidden="true">
@@ -172,6 +172,7 @@
                   <input type="checkbox" id="Conditions"> <label class="d-inline-block mb-0 label-Conditions" for="Conditions">{{ _e('Accept our Terms&Conditions', 'premast') }}</label>
                 </p>
                 <button type="submit" id="register-button" class="woocommerce-Button button" name="register" value="Register">{{ _e('Register', 'premast') }}</button>
+                <span id="register-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span>
               </form> 
               
 
@@ -199,11 +200,16 @@
                         user_email : useremail,
                         user_password : password
                       },
+                      beforeSend: function(results) {
+                        $('#register-loader').show();
+                      },                   
                       success: function(results){
                         $('.register-message').html(results).show();
+                        $('#register-loader').hide();
                       },
                       error: function(results) {
                         $('.register-message').html('plz try again later').show();
+                        $('#register-loader').hide();
                       }
                     });
                   });

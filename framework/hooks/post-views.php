@@ -55,21 +55,6 @@ function c95_get_post_views($postID) {
     return intval($count);
 }
 
-function scrap_facebook_url($postID) {
-    $permalink = get_the_permalink($postID);
-    echo "
-    <script>
-        jQuery(document).ready(function ($) {
-            var fb_scrape_url = 'http://graph.facebook.com/?id=' + encodeURIComponent('$permalink') + '&scrape=true';
-            var scrapping = $.post(fb_scrape_url);
-            scrapping.done(function (data) {
-                console.log(data.url + ' scraped with ID ' + data.id);
-            });
-        });
-    </script>
-    ";
-}
-
 function c95_track_post_views($post_id) {
     if (!is_single())
         return;

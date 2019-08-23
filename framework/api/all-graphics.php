@@ -6,6 +6,7 @@ function all_graphics($data){
 
   $per_page = !empty($per_page) ? $per_page : 10;
   $page = !empty($page) ? $page : true;
+  $searchText = !empty($searchText) ? $searchText : false;
   
   $args = array(
     'post_type'        => 'graphics',
@@ -13,6 +14,10 @@ function all_graphics($data){
     'paged'            => $page ,
     'post_status'      => 'publish',
   );
+
+  if($searchText != false) {
+    $args['s'] = $searchText;
+  }
 
   $posts = new WP_Query( $args );
   if ( !empty($posts) ) {
@@ -61,6 +66,11 @@ add_action('rest_api_init' , function(){
       'page' => array(
         'validate_callback' => function($param,$request,$key){
           return is_numeric($param);
+        }
+      ),
+      'searchText'  => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
         }
       ),
     )
