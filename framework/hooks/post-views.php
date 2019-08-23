@@ -35,9 +35,6 @@ function c95_set_post_views($postID) {
             update_post_meta($postID, $count_key, $count);
         }
     }
-    if ($count < 30 && get_post_status($postID) == 'publish'):
-        scrap_facebook_url($postID);
-    endif;
 }
 
 //To keep the count accurate, lets get rid of prefetching
