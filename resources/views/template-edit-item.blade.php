@@ -17,6 +17,7 @@
   wp_get_current_user();
   $user = wp_get_current_user();
   $allowed_roles = array('vendor', 'administrator');
+  $administrator = array('administrator');
 @endphp
 
 @if (get_field('banner_items_headline', 'option'))
@@ -46,6 +47,11 @@
       
       $post_id = isset($_GET['post_id']) ? $_GET['post_id'] : 'false';
 
+      if ( array_intersect($administrator, $user->roles)) {
+          $status = 'publish';
+      } else {
+          $status = 'pending';
+      }
 
       if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POST['action'] == "update_post" && $post_id != 'false') {
         
@@ -80,7 +86,7 @@
           'post_title' => $title,
           'post_content' => $description,
           'post_excerpt' => $short_description,
-          'post_status' => 'publish',
+          'post_status' => $status,
           'post_author' => $post->post_author,
           'tax_input' => array( 'product_cat' => array($cat, $child, $children)),
         ));

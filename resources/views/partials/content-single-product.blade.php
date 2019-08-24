@@ -12,7 +12,21 @@ global $product;
   global $current_user;
   wp_get_current_user();
 
+  $user_downloads_count = somdn_get_user_downloads_count($current_user->ID);
+
+  $limit = somdn_get_user_limits($current_user->ID);
+
+  if ($limit["products"] == $user_downloads_count)  {
+    if(get_field('link_limit', 'option')) {
+      wp_redirect( get_field('link_limit', 'option') );
+      exit;
+    }
+  } 
+  
+  $is_memberships = wc_memberships_get_user_active_memberships($current_user->ID);
+  
   $author = get_the_author_meta('ID');
+
 @endphp
 
 <div id="product-{{ the_ID() }}" {!! wc_product_class() !!}>

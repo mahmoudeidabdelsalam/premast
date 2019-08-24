@@ -17,6 +17,7 @@
   wp_get_current_user();
   $user = wp_get_current_user();
   $allowed_roles = array('vendor', 'administrator');
+  $administrator = array('administrator');
 @endphp
 
 @if (get_field('banner_items_headline', 'option'))
@@ -43,6 +44,13 @@
     </div>
   @elseif (array_intersect($allowed_roles, $user->roles))
     @php
+
+      if ( array_intersect($administrator, $user->roles)) {
+          $status = 'publish';
+      } else {
+          $status = 'pending';
+      }
+
       if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POST['action'] == "new_post") {
         $title = $_POST["title"];
         $description = $_POST["description"];
@@ -71,7 +79,7 @@
           'post_title' => $title,
           'post_content' => $description,
           'post_excerpt' => $short_description,
-          'post_status' => 'pending',
+          'post_status' => $status,
           'post_author' => $current_user->ID,
           'tax_input' => array( 'product_cat' => array($cat, $child, $children))
         ));
@@ -111,7 +119,7 @@
           wp_redirect($link);
         }
       } 
-    do_action('wp_insert_post', 'wp_insert_post');
+    // do_action('wp_insert_post', 'wp_insert_post');
     @endphp
 
     <form id="publish_product" name="new_post" method="post" action="" enctype="multipart/form-data">
