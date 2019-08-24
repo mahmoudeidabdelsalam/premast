@@ -20,7 +20,9 @@ function all_graphics($data){
   }
 
   $posts = new WP_Query( $args );
-  if ( !empty($posts) ) {
+
+  
+  if ( $posts->have_posts() ) {
     foreach( $posts->posts as &$post ):
       $terms =  wp_get_post_terms($post->ID , 'graphics-category');
       if(!empty($terms)){
@@ -45,7 +47,7 @@ function all_graphics($data){
     $result = [
       'success' => 'false',
       'code' => 404,
-      'message' => 'no posts found',
+      'message' => 'Graphics Not Found',
     ];
   }
   
