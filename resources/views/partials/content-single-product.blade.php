@@ -14,14 +14,18 @@ global $product;
 
   $limit = somdn_has_user_reached_limit(get_the_ID(), $current_user->ID);
 
-  if ($limit)  {
+  $limit_membership = wc_memberships_get_user_active_memberships($current_user->ID);
+
+  // dd($limit);
+
+  if ($limit && !$limit_membership)  {
     if(get_field('link_limit', 'option')) {
       wp_redirect( get_field('link_limit', 'option') );
       exit;
     }
   } 
   
-  $is_memberships = wc_memberships_get_user_active_memberships($current_user->ID);
+
   
   $author = get_the_author_meta('ID');
 
