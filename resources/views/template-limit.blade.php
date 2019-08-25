@@ -2,7 +2,7 @@
   Template Name: Template Limit Download
 --}}
 
-@extends('layouts.app-elementor')
+@extends('layouts.dark-app')
 
 @section('content')
   @while(have_posts()) @php the_post() @endphp
