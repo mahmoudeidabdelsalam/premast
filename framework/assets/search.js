@@ -64,23 +64,23 @@ jQuery(document).ready(function ($) {
   });
 
   // Sharing fuctionality
-  // $('#somdn-form-submit-button').on('click', function () {
-  //   var post_id = $(this).data('id');
-  //   var post_event = $(this).data('event');
-  //   var action = $(this).data('action');
-  //   $.ajax({
-  //     url: ajaxurl,
-  //     type: 'post',
-  //     data: {
-  //       action: action,
-  //       event: post_event,
-  //       post_id: post_id,
-  //     },
-  //     success: function (response) {
-  //       $('.download-count').html(response);
-  //     },
-  //   });
+  $('#somdn-form-submit-button').on('click', function () {
+    var post_id = $(this).data('id');
+    var post_event = $(this).data('event');
+    var action = $(this).data('action');
+    $.ajax({
+      url: ajaxurl,
+      type: 'post',
+      data: {
+        action: action,
+        event: post_event,
+        post_id: post_id,
+      },
+      success: function (response) {
+        $('.download-count').html(response);
+      },
+    });
 
-  // });
+  });
 
 });

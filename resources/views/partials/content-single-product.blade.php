@@ -16,17 +16,6 @@ global $product;
 
   $limit_membership = wc_memberships_get_user_active_memberships($current_user->ID);
 
-  // dd($limit);
-
-  if ($limit && !$limit_membership)  {
-    if(get_field('link_limit', 'option')) {
-      wp_redirect( get_field('link_limit', 'option') );
-      exit;
-    }
-  } 
-  
-
-  
   $author = get_the_author_meta('ID');
 
 @endphp
@@ -112,9 +101,17 @@ global $product;
           {!! get_simple_likes_button( get_the_ID() ) !!}
 
           <div class="custom-summary">
-            @php  
-              do_action( 'woocommerce_single_product_summary' );
-            @endphp
+            @if ($limit && !$limit_membership && !$sale && !$price) 
+              @if(get_field('link_limit', 'option'))
+                <div class="bottom-summary col-12 mt-4 mb-4 w-100">
+                  <a class="btn-limit" href="{{ get_field('link_limit', 'option') }}" id="somdn-form-submit-button">{{ _e('Download Now', 'premast') }}</a>  
+                </div>
+              @endif
+            @else 
+              @php  
+                do_action( 'woocommerce_single_product_summary' );
+              @endphp
+            @endif
           </div>
 
           @if(current_user_can( 'edit_post', get_the_ID() ) && (get_the_author_meta('ID') == $current_user->ID) || is_super_admin())
@@ -266,7 +263,7 @@ global $product;
       });
     <?php else: ?>
       $('.click-downloads').click(function () {
-        $('.download-product button#somdn-form-submit-button').click();
+        $('.download-product #somdn-form-submit-button').click();
       });
     <?php endif; ?>
   });

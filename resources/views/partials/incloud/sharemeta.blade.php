@@ -102,7 +102,7 @@
 </div>
 @endif
 
-{{-- <script>
+<script>
   jQuery(document).ready(function ($) {
     var download = document.getElementById("somdn-form-submit-button"); 
 
@@ -113,4 +113,4 @@
     }
 
   });
-</script> --}}
+</script>
