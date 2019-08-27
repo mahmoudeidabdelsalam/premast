@@ -39,11 +39,17 @@
 <?php } ?>
       <div class="half">
         @if( is_user_logged_in() ) 
+          @php 
+            $limit_membership = wc_memberships_get_user_active_memberships($current_user->ID);
+          @endphp
           <label for="profile" class="profile-dropdown">
             <input type="checkbox" id="profile">
             <i class="fa fa-user-circle fa-lg" aria-hidden="true"></i>
             {!! get_the_author_meta('display_name', $current_user->ID) !!}
             <i class="fa fa-chevron-down text-primary" aria-hidden="true"></i>
+            @if ($limit_membership)
+              <i class="fa fa-star user-star" aria-hidden="true"></i>
+            @endif
             @include('partials/incloud/profile')
           </label>
         @else 

@@ -22,11 +22,7 @@
 global $current_user;
 wp_get_current_user();
 
-
 $membership  = sv_wc_memberships_my_memberships_shortcode();
-
-$membership_info = wc_memberships_get_user_memberships();
-
 @endphp
 
   <section class="header-users" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">

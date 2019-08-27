@@ -28,7 +28,7 @@ $brand-green          : #5fc754;
 $theme-color:
   // color name     	color brand         text color    	secondry
   "primary"          	$brand-primary      #fff       $brand-white,
-  "secondary"         brand-secondary     #fff       $brand-white,
+  "secondary"         $brand-secondary    #fff       $brand-white,
   "success"           $brand-success      #fff       $brand-white,
   "white"             $brand-white        #333       $brand-white,
   "black"          	  $brand-black        #fff       $brand-white,
@@ -39,7 +39,7 @@ $theme-color:
   "blue"          		$brand-blue         #fff       $brand-white,
   "silver"          	$brand-silver       #fff       $brand-white,
   "purple"            $brand-purple       #fff       $brand-white,
-  "green"             $brand-green         #fff      $brand-white;
+  "green"             $brand-green        #fff       $brand-white;
 
 //** Global text color on `<body>`.
 $text-color: $brand-black !default;
