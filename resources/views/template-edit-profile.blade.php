@@ -2,7 +2,7 @@
   Template Name: User edit Profile
 --}}
 
-@extends('layouts.template-custom')
+@extends('layouts.dark-app')
 
 @section('content')
 
@@ -17,7 +17,8 @@
     </div>
   </div>
 @else
-  <section class="header-users">
+  <section class="header-users" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
+    <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
     <div class="container">
       <div class="row justify-content-between">
           <h2 class="headline">{{ _e('My Account', 'premast') }}</h2>

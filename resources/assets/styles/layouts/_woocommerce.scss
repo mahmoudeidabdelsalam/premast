@@ -1457,4 +1457,65 @@ section.section-template {
   padding: 23%;
   color: #444bd2;
 }
+
+.my-membership {
+  h2 {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0.0935565px;
+    text-transform: capitalize;
+    color: #282F39;
+    text-align: center;
+    margin: 20px 0 30px;
+  }
+
+  table.shop_table {
+    background: #1E6DFB;
+    border-radius: 8px !important;
+    padding: 5px 0 0 !important;
+    box-sizing: unset !important;
+    border-collapse: unset !important;
+    border: 1px solid #fff !important;
+    border-spacing: 0;
+    text-align: center !important;
+  }
+
+  table.shop_table tbody {
+    background: #FFFFFF;
+    border-radius: 8px;
+  }
+
+  table.shop_table tbody tr.membership {
+    padding: 10px !important;
+    border: none !important;
+    background: #fff !important;
+  }
+
+  table.shop_table tbody tr.membership td {
+    border: none !important;
+    margin: 0 !important;
+    padding: 10px !important;
+  }
+
+  table.shop_table thead tr {
+    color: #fff;
+  }
+
+  .button.view {
+    display: none;
+  }
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation {
+  min-width: 220px;
+}
+
+li.woocommerce-MyAccount-navigation-link.woocommerce-MyAccount-navigation-link--back-to-memberships {
+  display: none !important;
+}
+
+div#wc-memberships-members-area {
+  width: 100%;
+}
 /* stylelint-enable */
