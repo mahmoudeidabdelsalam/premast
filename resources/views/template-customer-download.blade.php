@@ -106,7 +106,7 @@
                   <ul class="nav-downloads mb-5 list-inline nav nav-tabs border-0" id="myTab" role="tablist">
                     <li class="show-tabs list-inline-item">{{ _e('Show', 'premast') }}</li>
                     <li class="nav-item list-inline-item">
-                      <a class="nav-link @if($tabs == 'all') active @endif" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">All</a>
+                      <a class="nav-link @if($tabs == 'all' || !$has_downloads) active @endif" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">All</a>
                     </li>
                     @if($somdn_download_ids)
                       <li class="nav-item list-inline-item">
@@ -134,7 +134,7 @@
                 </div>
 
                 <div class="tab-content" id="myTabContent">
-                  <div class="tab-pane fade @if($tabs == 'all') active show @endif" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <div class="tab-pane fade @if($tabs == 'all' || !$has_downloads) active show @endif" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <div class="item-columns row m-0">
                       @if($loop_all->have_posts())
                         @while($loop_all->have_posts()) @php($loop_all->the_post())

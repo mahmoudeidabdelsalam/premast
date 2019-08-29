@@ -106,6 +106,28 @@ global $product;
                 <div class="bottom-summary col-12 mt-4 mb-4 w-100">
                   <a class="btn-limit" href="{{ get_field('link_limit', 'option') }}" id="somdn-form-submit-button">{{ _e('Download Now', 'premast') }}</a>  
                 </div>
+
+                <div class="modal" tabindex="-1" role="dialog" id="LimitDownload" >
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">{{ _e('You’ve 2 download left this, if you want more you can upgrade your plan day', 'premast') }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <p><a class="btn-limit" href="{{ get_field('link_limit', 'option') }}">{{ _e('Upgrade Your Plan', 'premast') }}</a>  </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <script>
+                  jQuery(function($) {
+                    $('#LimitDownload').modal('show')
+                  });
+                </script>
               @endif
             @else 
               @php  

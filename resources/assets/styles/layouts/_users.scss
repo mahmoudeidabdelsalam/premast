@@ -3,7 +3,7 @@
 }
 
 section.header-users {
-  min-height: 220px;
+  min-height: 205px;
   background-color: $brand-white;
   position: relative;
   padding-top: 30px;
@@ -26,22 +26,73 @@ section.header-users {
   .menu-item {
     border-right: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 0;
-    font-size: 18px;
-    line-height: 21px;
     padding: 0 40px;
+    position: relative;
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 16px;
+      line-height: 19px;
+      letter-spacing: 0.132987px;
+      text-transform: capitalize;
+    }
 
     &.active {
       background: transparent;
-      color: rgb(30, 109, 251);
       font-weight: bold;
+
+      .nav-link {
+        font-weight: bold;
+        color: $brand-white;
+      }
     }
 
     &:last-child {
       border-right: none;
     }
 
-    .nav-link {
-      color: $brand-white;
+    &:nth-child(1) {
+      &::after {
+        content: "\f2c0";
+        font-family: $font-aswsome;
+        position: absolute;
+        top: 3px;
+        left: 30px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+    }
+
+    &:nth-child(2) {
+      &::after {
+        content: "\f01a";
+        font-family: $font-aswsome;
+        position: absolute;
+        top: 3px;
+        left: 30px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+    }
+
+    &:nth-child(3) {
+      &::after {
+        content: "\f09d";
+        font-family: $font-aswsome;
+        position: absolute;
+        top: 3px;
+        left: 30px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+    }
+
+    &:nth-child(4) {
+      &::after {
+        content: "\f006";
+        font-family: $font-aswsome;
+        position: absolute;
+        top: 3px;
+        left: 30px;
+        color: rgba(255, 255, 255, 0.6);
+      }
     }
   }
 }
