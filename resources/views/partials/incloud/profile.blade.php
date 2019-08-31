@@ -15,7 +15,7 @@
       <li class="item-dropdown"><a class="border-0" href="{{ the_field('admin_dashborad_page','option') }}">{{ _e('My Profile', 'premast') }}</a></li>
       <li class="item-dropdown"><a class="border-0" href="{{ the_field('download_page','option') }}">{{ _e('My Downloads', 'premast') }}</a></li>
       @if ($limit_membership)
-        <li class="item-dropdown"><a class="border-0" href="{{ the_field('link_subscription','option') }}">{{ _e('My Plan', 'premast') }}</a></li>
+        <li class="item-dropdown"><a class="border-0" href="{{ the_field('link_subscription','option') }}">{{ _e('My Subscription', 'premast') }}</a></li>
       @endif
       <li class="item-dropdown"><a class="border-0" href="#">{{ _e('My Favourites', 'premast') }}</a></li>  
       <hr class="m-0">
