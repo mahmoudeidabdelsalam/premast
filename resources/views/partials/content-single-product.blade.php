@@ -106,36 +106,39 @@ global $product;
             $count_download = somdn_get_user_downloads_count( $membership_user );
             $download_limits = somdn_get_user_limits( $membership_user );
             $limits_amount = $download_limits['amount'];
+            $time = get_the_time('Y-m-d');
           @endphp
-          <div class="custom-summary">
-            @if ($limit && !$limit_membership && !$sale && !$price || $count_download == $limits_amount && !$sale && !$price ) 
+          <div class="custom-summary">            
+            @if ($limit && !$limit_membership && !$sale && !$price || $count_download == $limits_amount) 
               @if(get_field('link_limit', 'option'))
                 <div class="bottom-summary col-12 mt-4 mb-4 w-100">
-                  <a class="btn-limit" href="{{ get_field('link_limit', 'option') }}" id="somdn-form-submit-button">{{ _e('Download Now', 'premast') }}</a>  
+                  <a class="btn-limit" href="{{ get_field('link_pricing', 'option') }}" id="somdn-form-submit-button">{{ _e('Download Now', 'premast') }}</a>  
                 </div>
 
-                <div class="modal" tabindex="-1" role="dialog" id="LimitDownload" >
-                  <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h3>{{ _e('You’ve reached your download limit', 'premast') }}</h3>
-                        <h5 class="modal-title">{{ _e('your subscribtion have '. $count_download .' download limit per day', 'premast') }}</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <p><a class="btn-limit" href="{{ get_field('link_pricing', 'option') }}">{{ _e('Upgrade Your Plan', 'premast') }}</a>  </p>
+                @if($time > $_COOKIE['lastview'])
+                  <div class="modal" tabindex="-1" role="dialog" id="LimitDownload" >
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h3>{{ _e('You’ve reached your download limit', 'premast') }}</h3>
+                          <h5 class="modal-title">{{ _e('your subscribtion have '. $count_download .' download limit per day', 'premast') }}</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <p><a class="btn-limit" href="{{ get_field('link_pricing', 'option') }}">{{ _e('Upgrade Your Plan', 'premast') }}</a>  </p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                  <script>
+                    jQuery(function($) {
+                      $('#LimitDownload').modal('show')
+                    });
+                  </script>
+                @endif
 
-                <script>
-                  jQuery(function($) {
-                    $('#LimitDownload').modal('show')
-                  });
-                </script>
               @endif
             @else 
               @php  
