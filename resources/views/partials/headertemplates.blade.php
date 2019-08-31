@@ -113,8 +113,8 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             <a class="dropdown-item" href="{{ home_url( $wp->request ) }}?sort=featured">{{ _e('featured', 'premast') }}</a>
-            <a class="dropdown-item" href="{{ home_url( $wp->request ) }}?sort=view">{{ _e('view', 'premast') }}</a>
-            <a class="dropdown-item" href="{{ home_url( $wp->request ) }}?sort=date">{{ _e('date', 'premast') }}</a>
+            <a class="dropdown-item" href="{{ home_url( $wp->request ) }}?sort=view">{{ _e('Popular', 'premast') }}</a>
+            <a class="dropdown-item" href="{{ home_url( $wp->request ) }}?sort=date">{{ _e('Recent', 'premast') }}</a>
             <a class="dropdown-item" href="{{ home_url( $wp->request ) }}?sort=download">{{ _e('Download', 'premast') }}</a>
           </div>
         </div>

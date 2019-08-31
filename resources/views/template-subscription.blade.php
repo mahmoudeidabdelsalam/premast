@@ -54,6 +54,7 @@ $args = array(
 );
 
 $posts = get_post($post_id);
+
 $_end_date = get_post_meta( $posts->ID, '_end_date', true );
 $end_date = date_i18n('M d, Y', strtotime($_end_date));
 
@@ -92,7 +93,7 @@ $numberDays = intval($numberDays);
           @if ($membership)
             <div class="download-information">
               <div class="plan-information">
-                <p>{{ get_the_title($plan_id) }}</p> <p>{{ $numberDays }} {{ _e('days left', 'premast') }}</p>
+                <p>{{ get_the_title($plan_id) }}</p> <p>@if($_end_date) {{ $numberDays }} {{ _e('days left', 'premast') }} @else {{ _e('Free', 'premast') }} @endif</p>
               </div>
               <div class="limit-information">
                 <h3>{{ _e('your downloads', 'premast') }}</h3>
@@ -106,7 +107,7 @@ $numberDays = intval($numberDays);
               </div>
             </div>
 
-            <p class="renewed-plan">{{ _e('To continue using our services, please note that your subscribtion needs to be renewed every', 'premast') }} {{$freq_name}}</p>
+            <p class="renewed-plan">{{ _e('To continue using our services, please note that your subscribtion needs to be renewed every', 'premast') }} {{($freq_name)? $freq_name:'year'}}</p>
           @endif
         </div>
       </div>

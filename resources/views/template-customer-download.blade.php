@@ -140,7 +140,7 @@
                         @while($loop_all->have_posts()) @php($loop_all->the_post())
                           <div class="item-card col-md-2 col-sm-3 col-sx-6 col-12 grid-item">
                             <div class="card">
-                              <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');height:204px;">
+                              <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');min-height:155px;height:155px;">
                                 <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
                               </div>
                               <div class="card-body pt-2 pl-0 pr-0">
@@ -174,7 +174,7 @@
                         @while($loop_free->have_posts()) @php($loop_free->the_post())
                           <div class="item-card col-md-2 col-sm-3 col-sx-6 col-12 grid-item">
                             <div class="card">
-                              <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');height:204px;">
+                              <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');min-height:155px;height:155px;">
                                 <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
                               </div>
                               <div class="card-body pt-2 pl-0 pr-0">
@@ -208,7 +208,7 @@
                         @while($loop_paid->have_posts()) @php($loop_paid->the_post())
                           <div class="item-card col-md-2 col-sm-3 col-sx-6 col-12 grid-item">
                             <div class="card">
-                              <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');height:204px;">
+                              <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');min-height:155px;height:155px;">
                                 <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
                               </div>
                               <div class="card-body pt-2 pl-0 pr-0">
