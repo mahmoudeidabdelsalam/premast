@@ -119,13 +119,13 @@ global $product;
                     <div class="modal-content">
                       <div class="modal-header">
                         <h3>{{ _e('You’ve reached your download limit', 'premast') }}</h3>
-                        <h5 class="modal-title">{{ _e('your subscribtion have'. $count_download .' download limit per day', 'premast') }}</h5>
+                        <h5 class="modal-title">{{ _e('your subscribtion have '. $count_download .' download limit per day', 'premast') }}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
                       <div class="modal-body">
-                        <p><a class="btn-limit" href="{{ get_field('link_limit', 'option') }}">{{ _e('Upgrade Your Plan', 'premast') }}</a>  </p>
+                        <p><a class="btn-limit" href="{{ get_field('link_pricing', 'option') }}">{{ _e('Upgrade Your Plan', 'premast') }}</a>  </p>
                       </div>
                     </div>
                   </div>
