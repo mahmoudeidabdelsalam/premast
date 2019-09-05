@@ -199,3 +199,76 @@ if( ! function_exists('custom_ajax_add_to_cart_button') && class_exists('WooComm
     }
     add_shortcode('ajax_add_to_cart', 'custom_ajax_add_to_cart_button');
 }
+
+
+
+
+
+// WooCommerce Checkout Fields Hook
+add_filter( 'woocommerce_checkout_fields' , 'hjs_wc_checkout_fields' );
+ 
+// This example changes the default placeholder text for the state drop downs to "Select A State"
+function hjs_wc_checkout_fields( $fields ) {
+ 
+ $fields['billing']['billing_first_name']['placeholder'] = 'Full Name';
+ $fields['billing']['billing_last_name']['placeholder'] = 'Last Name';
+ $fields['billing']['billing_company']['placeholder'] = 'Company';
+ $fields['billing']['billing_address_1']['placeholder'] = 'street address 1';
+ $fields['billing']['billing_address_2']['placeholder'] = 'street address 2';
+ $fields['billing']['billing_city']['placeholder'] = 'state/city';
+ $fields['billing']['billing_postcode']['placeholder'] = 'Postcode';
+ $fields['billing']['billing_country']['placeholder'] = 'Country';
+ $fields['billing']['billing_state']['placeholder'] = 'State';
+ $fields['billing']['billing_email']['placeholder'] = 'Email';
+ $fields['billing']['billing_phone']['placeholder'] = 'Phone';
+
+ return $fields;
+}
+
+
+
+function mwe_get_formatted_shipping_name_and_address($user_id) {
+
+    $address = '<p>';
+    $address .= get_user_meta( $user_id, 'billing_first_name', true );
+    $address .= "\n";
+    $address .= get_user_meta( $user_id, 'billing_last_name', true );
+    $address .= '</p>';
+    $address .= '<p>';
+    $address .= get_user_meta( $user_id, 'billing_address_1', true );
+    $address .= ",";
+    $address .= get_user_meta( $user_id, 'billing_country', true );
+    $address .= "\n";
+    $address .= get_user_meta( $user_id, 'billing_city', true );
+    $address .= '</p>';
+    $address .= '<p>';
+    $address .= get_user_meta( $user_id, 'billing_email', true );
+    $address .= '</p>';
+    $address .= '<p>';
+    $address .= get_user_meta( $user_id, 'billing_phone', true );
+    $address .= '</p>';
+
+    return $address;
+}
+
+
+// Unset the fields we don't want in a free checkout
+function unset_unwanted_checkout_fields( $fields ) {
+    
+    // list of the billing field keys to remove
+    $billing_keys = array(
+        'billing_company',
+        'billing_phone',
+        'billing_address_2',
+        'billing_postcode',
+        'billing_state',
+    );
+
+    // unset each of those unwanted fields
+    foreach( $billing_keys as $key ) {
+        unset( $fields['billing'][$key] );
+    }
+    
+    return $fields;
+}
+add_filter( 'woocommerce_checkout_fields', 'unset_unwanted_checkout_fields' );
