@@ -430,6 +430,28 @@ if( function_exists('acf_add_local_field_group') ):
       ),
 
       array(
+        'key' => 'field_532r234d5434٢٤٣٤٣٢٤٢٣٤٢٣3s23e434346af47',
+        'label' => 'link Page Like',
+        'name' => 'link_like_page',
+        'type' => 'page_link',
+        'instructions' => '',
+        'required' => 0,
+        'conditional_logic' => 0,
+        'wrapper' => array(
+          'width' => '50',
+          'class' => '',
+          'id' => '',
+        ),
+        'post_type' => array(
+          0 => 'page',
+        ),
+        'taxonomy' => '',
+        'allow_null' => 0,
+        'allow_archives' => 1,
+        'multiple' => 0,
+      ),
+
+      array(
         'key' => 'field_532r234d54343s2234324323e434346af47',
         'label' => 'link Page Pricing',
         'name' => 'link_pricing',
@@ -438,7 +460,7 @@ if( function_exists('acf_add_local_field_group') ):
         'required' => 0,
         'conditional_logic' => 0,
         'wrapper' => array(
-          'width' => '',
+          'width' => '50',
           'class' => '',
           'id' => '',
         ),

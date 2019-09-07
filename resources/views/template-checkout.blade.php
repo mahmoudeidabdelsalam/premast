@@ -30,11 +30,13 @@
       </div>            
   </div>
 
-  <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
+  
 
     <div class="container-fluid mt-5 mb-5">
       <div class="row">
-        <div class="col-md-7 col-12 billing-custom">
+        <form name="checkout" method="post" class="checkout woocommerce-checkout col-md-7 col-12" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
+
+        <div class="col-12 billing-custom">
           <!-- Custom billing -->
           <div class="woocommerce-billing-custom">
             <div class="woocommerce-billing-fields">
@@ -131,6 +133,7 @@
           </div>
         </div>
 
+        </form>
 
         <div class="col-md-5">
           <!-- Custom coupons -->
@@ -141,7 +144,10 @@
                 return;
               }
             ?>
-            <form class="checkout_coupon woocommerce-form-coupon" method="post" style="display:none">
+            <div class="woocommerce-form-coupon-toggle">
+              <?php wc_print_notice( apply_filters( 'woocommerce_checkout_coupon_message', esc_html__( 'Have a coupon?', 'woocommerce' ) . ' <a href="#" class="showcoupon">' . esc_html__( 'Click here to enter your code', 'woocommerce' ) . '</a>' ), 'notice' ); ?>
+            </div>
+            <form class="checkout_coupon woocommerce-form-coupon" method="post" style="display:block">
               <p><?php esc_html_e( 'If you have a coupon code, please apply it below.', 'woocommerce' ); ?></p>
               <p class="form-row d-flex">
                 <input type="text" name="coupon_code" class="input-text" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" id="coupon_code" value="" />
@@ -241,7 +247,7 @@
         </div>
       </div>
     </div>
-  </form>
+ 
 
 
   <script type = "text/javascript">

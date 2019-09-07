@@ -17,7 +17,7 @@
       @if ($limit_membership)
         <li class="item-dropdown"><a class="border-0" href="{{ the_field('link_subscription','option') }}">{{ _e('My Subscription', 'premast') }}</a></li>
       @endif
-      <li class="item-dropdown"><a class="border-0" href="#">{{ _e('My Favourites', 'premast') }}</a></li>  
+      <li class="item-dropdown"><a class="border-0" href="{{ the_field('link_like_page','option') }}">{{ _e('My Favourites', 'premast') }}</a></li>  
       <hr class="m-0">
     @if (array_intersect($allowed_roles, $user->roles))
       <li class="item-dropdown"><a class="border-0" href="{{ get_author_posts_url( $current_user->ID) }}?dashboard=true">{{ _e('Dashboard', 'premast') }}</a></li>

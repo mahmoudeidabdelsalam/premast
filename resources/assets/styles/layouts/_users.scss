@@ -75,7 +75,7 @@ section.header-users {
 
     &:nth-child(3) {
       &::after {
-        content: "\f09d";
+        content: "\f08a";
         font-family: $font-aswsome;
         position: absolute;
         top: 3px;
@@ -85,6 +85,17 @@ section.header-users {
     }
 
     &:nth-child(4) {
+      &::after {
+        content: "\f09d";
+        font-family: $font-aswsome;
+        position: absolute;
+        top: 3px;
+        left: 30px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+    }
+
+    &:nth-child(5) {
       &::after {
         content: "\f006";
         font-family: $font-aswsome;

@@ -2144,4 +2144,17 @@ li.wc_payment_method label:after {
   text-transform: capitalize;
   color: #3D4552;
 }
+
+.woocommerce-terms-and-conditions-wrapper label {
+  display: flex !important;
+  padding-left: 20px;
+}
+
+.woocommerce-terms-and-conditions-wrapper label input {
+  width: auto;
+  position: absolute;
+  left: 0;
+  top: -9px;
+  opacity: 1;
+}
 /* stylelint-enable */
