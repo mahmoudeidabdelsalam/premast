@@ -34,106 +34,108 @@
 
     <div class="container-fluid mt-5 mb-5">
       <div class="row">
-        <form name="checkout" method="post" class="checkout woocommerce-checkout col-md-7 col-12" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
+        
 
-        <div class="col-12 billing-custom">
-          <!-- Custom billing -->
-          <div class="woocommerce-billing-custom">
-            <div class="woocommerce-billing-fields">
-            <?php if ( ! is_user_logged_in()) : ?>
-              <?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
-                <h3><?php esc_html_e( 'Billing &amp; Shipping', 'woocommerce' ); ?> <span class="login-checkout"><?php _e('Already Have account', 'premast'); ?> <a class="mt-2 login text-primary" href="#" data-toggle="modal" data-target="#LoginUser">sign in/a></span></h3>
+        <div class="col-md-7 col-12 billing-custom">
+          <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
+            <!-- Custom billing -->
+            <div class="woocommerce-billing-custom">
+              <div class="woocommerce-billing-fields">
+              <?php if ( ! is_user_logged_in()) : ?>
+                <?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
+                  <h3><?php esc_html_e( 'Billing &amp; Shipping', 'woocommerce' ); ?> <span class="login-checkout"><?php _e('Already Have account', 'premast'); ?> <a class="mt-2 login text-primary" href="#" data-toggle="modal" data-target="#LoginUser">sign in/a></span></h3>
+                <?php else : ?>
+                  <h3><?php esc_html_e( 'Billing details', 'woocommerce' ); ?> <span class="login-checkout"><?php _e('Already Have account', 'premast'); ?> <a class="mt-2 login text-primary" href="#" data-toggle="modal" data-target="#LoginUser">sign in</a></span></h3>
+                <?php endif; ?>
               <?php else : ?>
-                <h3><?php esc_html_e( 'Billing details', 'woocommerce' ); ?> <span class="login-checkout"><?php _e('Already Have account', 'premast'); ?> <a class="mt-2 login text-primary" href="#" data-toggle="modal" data-target="#LoginUser">sign in</a></span></h3>
+                <?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
+                  <h3><?php esc_html_e( 'Billing &amp; Shipping', 'woocommerce' ); ?> </h3>
+                <?php else : ?>
+                  <h3><?php esc_html_e( 'Billing details', 'woocommerce' ); ?></h3>
+                <?php endif; ?>
               <?php endif; ?>
-            <?php else : ?>
-              <?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
-                <h3><?php esc_html_e( 'Billing &amp; Shipping', 'woocommerce' ); ?> </h3>
-              <?php else : ?>
-                <h3><?php esc_html_e( 'Billing details', 'woocommerce' ); ?></h3>
-              <?php endif; ?>
-            <?php endif; ?>
-            <?php if ( ! is_user_logged_in()) : ?>
-              <?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
-              <div class="woocommerce-billing-fields__field-wrapper">
-                <?php
-                $fields = $checkout->get_checkout_fields( 'billing' );
-                foreach ( $fields as $key => $field ) {
-                  woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
-                }
-                ?>
-              </div>
-              <?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
-              <?php else: ?>
-                <div class="save-data">
-                  <?php echo mwe_get_formatted_shipping_name_and_address($current_user->ID); ?>
+              <?php if ( ! is_user_logged_in()) : ?>
+                <?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
+                <div class="woocommerce-billing-fields__field-wrapper">
+                  <?php
+                  $fields = $checkout->get_checkout_fields( 'billing' );
+                  foreach ( $fields as $key => $field ) {
+                    woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+                  }
+                  ?>
                 </div>
-                <a class="btn-edit" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                  <?php _e('edit billing details', 'premast'); ?>
-                </a>  
-                <div class="collapse" id="collapseExample">
-                  <?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
-                  <div class="woocommerce-billing-fields__field-wrapper">
-                    <?php
-                    $fields = $checkout->get_checkout_fields( 'billing' );
-                    foreach ( $fields as $key => $field ) {
-                      woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
-                    }
-                    ?>
+                <?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
+                <?php else: ?>
+                  <div class="save-data">
+                    <?php echo mwe_get_formatted_shipping_name_and_address($current_user->ID); ?>
                   </div>
-                  <?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
+                  <a class="btn-edit" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <?php _e('edit billing details', 'premast'); ?>
+                  </a>  
+                  <div class="collapse" id="collapseExample">
+                    <?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
+                    <div class="woocommerce-billing-fields__field-wrapper">
+                      <?php
+                      $fields = $checkout->get_checkout_fields( 'billing' );
+                      foreach ( $fields as $key => $field ) {
+                        woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
+                      }
+                      ?>
+                    </div>
+                    <?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
+                  </div>
+                <?php endif; ?>
+              </div>
+              <?php if ( ! is_user_logged_in()) : ?>
+                <div class="woocommerce-account-fields">
+                  <?php if ( ! $checkout->is_registration_required() ) : ?>
+                    <p class="form-row form-row-wide create-account">
+                      <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
+                        <input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount" <?php checked( ( true === $checkout->get_value( 'createaccount' ) || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) ) ), true ); ?> type="checkbox" name="createaccount" value="1" /> <span><?php esc_html_e( 'Create an account?', 'woocommerce' ); ?></span>
+                      </label>
+                    </p>
+                  <?php endif; ?>
+                  <?php do_action( 'woocommerce_before_checkout_registration_form', $checkout ); ?>
+                  <?php if ( $checkout->get_checkout_fields( 'account' ) ) : ?>
+                    <div class="create-account">
+                      <h4><?php _e('Account password', 'premast'); ?></h4>
+                      <?php foreach ( $checkout->get_checkout_fields( 'account' ) as $key => $field ) : ?>
+                        <?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
+                      <?php endforeach; ?>
+                      <div class="clear"></div>
+                    </div>
+                  <?php endif; ?>
+
+                  <?php do_action( 'woocommerce_after_checkout_registration_form', $checkout ); ?>
                 </div>
+                <a class="btn-next hidden" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  <?php _e('next', 'premast'); ?>
+                </a>  
               <?php endif; ?>
             </div>
-            <?php if ( ! is_user_logged_in()) : ?>
-              <div class="woocommerce-account-fields">
-                <?php if ( ! $checkout->is_registration_required() ) : ?>
-                  <p class="form-row form-row-wide create-account">
-                    <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-                      <input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount" <?php checked( ( true === $checkout->get_value( 'createaccount' ) || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) ) ), true ); ?> type="checkbox" name="createaccount" value="1" /> <span><?php esc_html_e( 'Create an account?', 'woocommerce' ); ?></span>
-                    </label>
-                  </p>
-                <?php endif; ?>
-                <?php do_action( 'woocommerce_before_checkout_registration_form', $checkout ); ?>
-                <?php if ( $checkout->get_checkout_fields( 'account' ) ) : ?>
-                  <div class="create-account">
-                    <h4><?php _e('Account password', 'premast'); ?></h4>
-                    <?php foreach ( $checkout->get_checkout_fields( 'account' ) as $key => $field ) : ?>
-                      <?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
-                    <?php endforeach; ?>
-                    <div class="clear"></div>
+            <!-- Custom Pay -->
+            <div class="custom-pay"> 
+              <h4><?php _e('Payment details', 'premast'); ?></h4>
+              <?php if ( ! is_user_logged_in()) : ?>
+                <div class="collapse" id="collapseExample">
+                  <?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
+                  <div id="order_review" class="woocommerce-checkout-review-order">
+                    <?php do_action( 'woocommerce_checkout_order_review' ); ?>
                   </div>
-                <?php endif; ?>
-
-                <?php do_action( 'woocommerce_after_checkout_registration_form', $checkout ); ?>
-              </div>
-              <a class="btn-next hidden" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                <?php _e('next', 'premast'); ?>
-              </a>  
-            <?php endif; ?>
-          </div>
-          <!-- Custom Pay -->
-          <div class="custom-pay"> 
-            <h4><?php _e('Payment details', 'premast'); ?></h4>
-            <?php if ( ! is_user_logged_in()) : ?>
-              <div class="collapse" id="collapseExample">
+                  <?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
+                </div>
+              <?php else: ?>     
                 <?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
                 <div id="order_review" class="woocommerce-checkout-review-order">
                   <?php do_action( 'woocommerce_checkout_order_review' ); ?>
                 </div>
                 <?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
-              </div>
-            <?php else: ?>     
-              <?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
-              <div id="order_review" class="woocommerce-checkout-review-order">
-                <?php do_action( 'woocommerce_checkout_order_review' ); ?>
-              </div>
-              <?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
-            <?php endif; ?>
-          </div>
+              <?php endif; ?>
+            </div>
+          </form>
         </div>
 
-        </form>
+        
 
         <div class="col-md-5">
           <!-- Custom coupons -->
@@ -145,7 +147,7 @@
               }
             ?>
             <div class="woocommerce-form-coupon-toggle">
-              <?php wc_print_notice( apply_filters( 'woocommerce_checkout_coupon_message', esc_html__( 'Have a coupon?', 'woocommerce' ) . ' <a href="#" class="showcoupon">' . esc_html__( 'Click here to enter your code', 'woocommerce' ) . '</a>' ), 'notice' ); ?>
+              <?php wc_print_notice( apply_filters( 'woocommerce_checkout_coupon_message', ' <a href="#" class="showcoupon">' . esc_html__( 'Click here to enter your code', 'woocommerce' ) . '</a>' ), 'notice' ); ?>
             </div>
             <form class="checkout_coupon woocommerce-form-coupon" method="post" style="display:block">
               <p><?php esc_html_e( 'If you have a coupon code, please apply it below.', 'woocommerce' ); ?></p>
