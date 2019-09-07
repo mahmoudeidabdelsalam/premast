@@ -250,25 +250,3 @@ function mwe_get_formatted_shipping_name_and_address($user_id) {
 
     return $address;
 }
-
-
-// Unset the fields we don't want in a free checkout
-function unset_unwanted_checkout_fields( $fields ) {
-    
-    // list of the billing field keys to remove
-    $billing_keys = array(
-        'billing_company',
-        'billing_phone',
-        'billing_address_2',
-        'billing_postcode',
-        'billing_state',
-    );
-
-    // unset each of those unwanted fields
-    foreach( $billing_keys as $key ) {
-        unset( $fields['billing'][$key] );
-    }
-    
-    return $fields;
-}
-add_filter( 'woocommerce_checkout_fields', 'unset_unwanted_checkout_fields' );
