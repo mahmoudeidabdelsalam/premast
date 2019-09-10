@@ -1896,7 +1896,7 @@ span.login-checkout {
 .header-checkout {
   background-color: #fff;
   position: relative;
-  z-index: 99;
+  z-index: 9;
 }
 
 div#order_review table.shop_table.woocommerce-checkout-review-order-table {
@@ -2156,5 +2156,30 @@ li.wc_payment_method label:after {
   left: 0;
   top: -9px;
   opacity: 1;
+}
+
+.woocommerce-info.wc-memberships-member-discount-message {
+  display: none;
+}
+
+ul.meta-buttons {
+  list-style: none;
+  position: absolute;
+  top: 15px;
+  left: 5px;
+  padding: 0;
+  z-index: 9;
+  display: flex;
+}
+
+ul.meta-buttons li {
+  margin: 0 10px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  background: linear-gradient(150deg, #7584ff 0%, #4242e3 100%);
+}
+
+ul.meta-buttons li * {
+  color: #fff;
 }
 /* stylelint-enable */

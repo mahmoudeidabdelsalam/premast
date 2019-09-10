@@ -510,28 +510,40 @@ ul#myshow {
   }
 }
 
-.sl-wrapper {
-  position: relative;
-
-  .sl-icon {
-    border: 1px solid rgb(232, 232, 232);
-    border-radius: 20px;
-    display: inline-block;
-    height: 40px;
-    line-height: 40px;
-    width: 100%;
-    font-weight: normal;
-    font-size: 15px;
-    text-align: center;
-    letter-spacing: 0.116946px;
-    text-transform: capitalize;
-    color: $brand-primary;
-  }
-
-  #sl-loader {
+.summary {
+  .sl-wrapper {
     position: absolute;
-    top: -2px;
-    right: 10px;
+    top: 40px;
+    width: 40px;
+    right: 30px;
+
+    .sl-icon {
+      border: 1px solid rgb(232, 232, 232);
+      border-radius: 20px;
+      display: inline-block;
+      height: 40px;
+      line-height: 40px;
+      width: 100%;
+      font-weight: normal;
+      font-size: 15px;
+      text-align: center;
+      letter-spacing: 0.116946px;
+      text-transform: capitalize;
+      color: $brand-primary;
+    }
+
+    #sl-loader {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      width: 40px;
+
+      i {
+        font-size: 40px;
+        color: rgb(251, 251, 251);
+      }
+    }
   }
 }
 

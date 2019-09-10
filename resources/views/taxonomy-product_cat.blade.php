@@ -159,8 +159,23 @@
         @if($my_query->have_posts())
           @while($my_query->have_posts()) @php($my_query->the_post())
 
+          @php ($sale = get_post_meta( get_the_ID(), '_sale_price', true))
+            
             <div class="item-card col-md-4 col-sm-4 col-sx-6 col-12 grid-item pl-4 pr-4 post-ajax">
               <div class="card">
+                <ul class="meta-buttons">
+                  @if($sale)
+                    <li>
+                      <span class="custom-onsale">
+                        {{ _e('Sale!', 'premast') }}
+                      </span>
+                    </li>
+                  @endif
+                  <li>
+                    {!! get_simple_likes_button( get_the_ID() ) !!}
+                  </li>
+                </ul>
+
                 <div class="bg-white  bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');height: 230px; min-height: 230px;">
                   <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
                   <div class="card-overlay">
