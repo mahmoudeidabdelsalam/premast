@@ -250,3 +250,5 @@ function mwe_get_formatted_shipping_name_and_address($user_id) {
 
     return $address;
 }
+
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );

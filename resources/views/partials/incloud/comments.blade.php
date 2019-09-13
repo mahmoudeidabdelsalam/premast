@@ -57,7 +57,7 @@ if ( ! comments_open() ) {
 						<option value="1">' . esc_html__( 'Very poor', 'woocommerce' ) . '</option>
 					</select> <span class="rate-text"> ' . esc_html__( 'rate this item!', 'woocommerce' ) . ' </span></div>';
 				}
-				$comment_form['comment_field'] .= '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="25" rows="4" required>write your comment.....</textarea></p>';
+				$comment_form['comment_field'] .= '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="25" rows="4" placeholder=" '.__("write your comment.....", "premast") .'" aria-required="true"></textarea></p>';
 				comment_form( apply_filters( 'woocommerce_product_review_comment_form_args', $comment_form ) );
 				?>
 			</div>

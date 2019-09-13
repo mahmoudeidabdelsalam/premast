@@ -157,6 +157,19 @@
               </p>                
             </form>
           </div>
+
+          @if(get_field('donation_text', 'option') || get_field('donation_link', 'option'))
+            <div class="col-12 custom-banner" style="background-image:url('{{ the_field('donation_background_image', 'option') }}'); background-color:{{ the_field('donation_background_color', 'option') }};">
+              <div class="media">
+                <img src="{{ the_field('donation_icon', 'option') }}" class="mr-3" alt="{{ the_field('donation_text', 'option') }}">
+                <div class="media-body">
+                  <p>{{ the_field('donation_text', 'option') }}</p>
+                  <a href="{{ the_field('donation_link', 'option') }}" class="overlay-link"></a>
+                </div>
+              </div>
+            </div>
+          @endif
+
           <!-- Custom summary -->
           <div class="col-12 summary-custom">
             <h3><?php _e('order summary', 'premast'); ?></h3>

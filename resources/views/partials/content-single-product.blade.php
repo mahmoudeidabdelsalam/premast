@@ -25,7 +25,7 @@ global $product;
     <div class="row justify-content-center m-0">
       <div class="col-12">
         <?php woocommerce_breadcrumb(); ?>
-        <h2 class="product-title">{{ the_title() }}</h2>
+        <h1 class="product-title">{{ the_title() }}</h1>
       </div>
 
       <div class="col-md-8 col-12">

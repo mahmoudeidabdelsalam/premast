@@ -67,7 +67,7 @@
     </div>
 
     <div class="col-md-9 col-sm-12">
-      <div class="item-columns grid row m-0 container-ajax">
+      <div class="item-columns grid row m-0 container-ajax items-categories">
         @php
           if ($sort != '0') {
             // second query
@@ -229,6 +229,11 @@
               </div>              
             </div>
           @endwhile
+
+        @else
+          <div class="col-12">
+            {{ __('Sorry, no results were found.', 'sage') }}
+          </div>
         @endif
         @php (wp_reset_postdata())
 
