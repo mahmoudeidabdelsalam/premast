@@ -166,7 +166,7 @@
                     {!! get_simple_likes_button( get_the_ID() ) !!}
                   </li>
                   <li class="pinterest-share">
-                    <a href="http://pinterest.com/pin/create/button/?url{{ the_permalink() }}=&media={{ Utilities::global_thumbnails(get_the_ID(),'full')}}&description={{ get_the_title() }}" class="pin-it-button" count-layout="horizontal">
+                    <a target="_blank" href="http://pinterest.com/pin/create/button/?url{{ the_permalink() }}=&media={{ Utilities::global_thumbnails(get_the_ID(),'full')}}&description={{ get_the_title() }}" class="pin-it-button" count-layout="horizontal">
                      <small>Pin it</small> <i class="fa fa-pinterest-p" aria-hidden="true"></i>
                     </a>
                   </li>
