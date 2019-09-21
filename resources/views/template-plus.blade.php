@@ -66,24 +66,24 @@
     background: #E5E5E5;
     height: 100%;
 }
-.all-items .card {
+.all-items .card, #results-items .card {
     background: #FFFFFF;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06);
     border-radius: 6px;
     height: 170px;
     margin-bottom: 30px;
 }
-.all-items .card {
+.all-items .card, #results-items .card {
     display: flex;
     justify-content: space-between;
     flex-flow: wrap;
     align-items: center;
 }
-.all-items .card .card-body {
+.all-items .card .card-body, #results-items .card .card-body {
     padding: 0;
     margin-top: auto;
 }
-.all-items .card .card-body h5 {
+.all-items .card .card-body h5, #results-items .card .card-body h5 {
     font-size: 17px;
     line-height: 20px;
     text-align: center;
