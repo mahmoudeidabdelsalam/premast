@@ -46,7 +46,13 @@
       {{ _e('Tags', 'premast') }}
         <ul class="list-inline">
           @foreach( $tags as $tag ) 
-            <li class="list-inline-item">{{ $tag->name }}</li>
+            @php 
+              $term_link = get_term_link( $tag );
+              if ( is_wp_error( $term_link ) ) {
+                  continue;
+              }
+            @endphp
+            <li class="list-inline-item"><a href="{{ $term_link  }}">{{ $tag->name }}</a></li>
           @endforeach
         </ul>
       </div>

@@ -4,20 +4,20 @@
 function graphics_categories() {
 
     $labels = array(
-        'name' => 'graphics Categories',
+        'name' => 'Plus Categories',
         'singular_name' => 'graphics',
-        'menu_name' => 'graphics Categories',
-        'all_items' => 'All graphics Categories',
-        'parent_item' => 'Parent graphics Category',
-        'parent_item_colon' => 'Parent graphics Category:',
-        'new_item_name' => 'New Item graphics Category',
-        'add_new_item' => 'Add New graphics Category',
-        'edit_item' => 'Edit graphics Category',
-        'update_item' => 'Update graphics Category',
+        'menu_name' => 'Plus Categories',
+        'all_items' => 'All Plus Categories',
+        'parent_item' => 'Parent Plus Category',
+        'parent_item_colon' => 'Parent Plus Category:',
+        'new_item_name' => 'New Item Plus Category',
+        'add_new_item' => 'Add New Plus Category',
+        'edit_item' => 'Edit Plus Category',
+        'update_item' => 'Update Plus Category',
         'separate_items_with_commas' => 'Separate items with commas',
-        'search_items' => 'Search graphics Categories',
-        'add_or_remove_items' => 'Add or remove graphics Categories',
-        'choose_from_most_used' => 'Choose from the most used graphics Categories',
+        'search_items' => 'Search Plus Categories',
+        'add_or_remove_items' => 'Add or remove Plus Categories',
+        'choose_from_most_used' => 'Choose from the most used Plus Categories',
         'not_found' => 'Not Found',
     );
     $args = array(

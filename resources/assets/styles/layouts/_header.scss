@@ -191,10 +191,10 @@ section.banner-items {
   margin-bottom: 50px;
 
   .card {
-    position: relative;
-    box-shadow: none;
-    border: none;
-    background-color: transparent;
+    background: $brand-white !important;
+    padding: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.063) !important;
+    border-radius: 7px;
 
     .bg-white {
       border-radius: 10px;
@@ -210,6 +210,14 @@ section.banner-items {
       color: rgb(61, 69, 82);
       font-weight: 500;
       margin-bottom: 14px;
+    }
+
+    .card-body {
+      overflow: hidden;
+      position: relative;
+      padding: 10px !important;
+      margin: 0 -10px -10px;
+      border-radius: 3px;
     }
   }
 

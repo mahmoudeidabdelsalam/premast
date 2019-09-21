@@ -24,7 +24,10 @@ function ajax_refineblog() {
     $titles = array();
 
     foreach( $results as $result )
-      $titles[] = ['value' => addslashes( $result->post_title )];
+      $tags = wp_get_post_terms( $result->ID, 'product_tag' );
+      foreach( $tags as $tag ) {
+        $titles[] = ['value' => addslashes( $tag->name )];
+      }
     if(count($titles) == 0 ){
       $titles[] = ['value' => __('No results found - Please change keyword ', 'premast')];
     }

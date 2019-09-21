@@ -1443,7 +1443,8 @@ section.section-template {
   }
 }
 
-#register-loader {
+#register-loader,
+#login-loader {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1456,6 +1457,10 @@ section.section-template {
   text-align: center;
   padding: 23%;
   color: #444bd2;
+}
+
+input:focus {
+  outline: none;
 }
 
 .my-membership {
@@ -2166,21 +2171,71 @@ ul.meta-buttons {
   list-style: none;
   position: absolute;
   top: 15px;
-  left: 5px;
+  right: 5px;
   padding: 0;
   z-index: 9;
-  display: flex;
-}
-
-ul.meta-buttons li {
-  margin: 0 10px;
-  padding: 5px 10px;
-  border-radius: 3px;
-  background: linear-gradient(150deg, #7584ff 0%, #4242e3 100%);
+  direction: rtl;
 }
 
 ul.meta-buttons li * {
-  color: #fff;
+  font-size: 15px;
+  color: #FFFFFF;
+  display: inline;
+}
+
+ul.meta-buttons li {
+  margin: 5px 10px;
+  padding: 5px 10px;
+  width: 32px;
+  white-space: nowrap;
+  height: 32px;
+  position: relative;
+  overflow: hidden;
+  transition: width 1s ease;
+  padding: 4px;
+  display: block;
+  border-radius: 40px !important;
+  text-align: right;
+}
+
+li.likes-button {
+  background: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.69);
+  box-sizing: border-box;
+  backdrop-filter: blur(2px);
+}
+
+ul.meta-buttons li:hover {
+  width: 80px;
+  transition: width 1s ease;
+}
+
+ul.meta-buttons li i {
+  font-size: 17px;
+  margin: 5px 3px;
+  position: relative;
+  top: 2px;
+}
+
+li.pinterest-share {
+  background: #CB2027;
+  border: 1px solid rgba(255, 255, 255, 0.86);
+  box-sizing: border-box;
+}
+
+li.pinterest-share i {
+  margin-left: 10px !important;
+  margin-right: 5px !important;
+}
+
+li.edit-post {
+  background: rgba(30, 109, 251, 0.67);
+  border: 1px solid #1E6DFB;
+  box-sizing: border-box;
+}
+
+li.edit-post i {
+  margin-left: 10px !important;
 }
 
 .custom-banner + .summary-custom {
@@ -2221,5 +2276,31 @@ ul.meta-buttons li * {
 
 .items-categories {
   min-height: 2600px;
+}
+
+span.premium {
+  position: absolute;
+  right: 0;
+  width: 58px;
+  height: 58px;
+  padding: 30px 0 0 32px;
+  bottom: 0;
+}
+
+span.premium:before {
+  content: "";
+  height: 100px;
+  width: 80px;
+  position: absolute;
+  left: 15px;
+  background-color: #FFB800;
+  transform: rotate(42deg);
+  top: 4px;
+}
+
+span.premium i {
+  position: relative;
+  color: #fff;
+  font-size: 20px;
 }
 /* stylelint-enable */

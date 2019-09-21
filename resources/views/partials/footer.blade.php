@@ -66,6 +66,7 @@
             <div class="modal-body">
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="WP_login">
+                  <span id="login-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span>
                   @php 
                     $args = array(
                       'echo'           => true,
@@ -213,6 +214,11 @@
                       }
                     });
                   });
+
+                  $('#wp-submit').on('click',function(e){
+                    $('#login-loader').show();
+                  });
+
                 });
               </script>
 

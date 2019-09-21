@@ -124,6 +124,32 @@
       file_upload.open();
     });
 
+
+    var file_item; // variable for the wp.media file_frame
+
+    // attach a click event (or whatever you want) to some element on your page
+    $('#upload_item').on('click', function (event) {
+      event.preventDefault();
+      if (file_item) {
+        file_item.open();
+        return;
+      }
+      file_item = wp.media.frames.file_item = wp.media({
+        title: $(this).data('uploader_title'),
+        button: {
+          text: $(this).data('uploader_button_text'),
+        },
+        multiple: false // set this to true for multiple file selection
+      });
+      file_item.on('select', function () {
+        attachment = file_item.state().get('selection').first().toJSON();
+        $('#file_item').attr('value', attachment.id);
+        $('.name-files').html(attachment.filename);
+      });
+
+      file_item.open();
+    });
+
   });
 
 })(jQuery);
