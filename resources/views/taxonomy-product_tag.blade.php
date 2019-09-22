@@ -179,6 +179,7 @@
 
                 <div class="bg-white  bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');height: 230px; min-height: 230px;">
                   <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
+                  <div class="card-overlay"><a class="the_permalink" href="{{ the_permalink() }}"></a></div>
                 </div>
                 <div class="card-body pt-2 pl-0 pr-0 pb-0">
                   <a class="card-link" href="{{ the_permalink() }}">
