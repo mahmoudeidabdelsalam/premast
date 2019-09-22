@@ -276,10 +276,6 @@ span.custom-onsale {
   z-index: 9;
 }
 
-ul.meta-buttons {
-  width: 100%;
-}
-
 span.custom-onsale:before {
   content: "";
   border-top: 8px solid #E6A601;
