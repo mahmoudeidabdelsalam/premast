@@ -7,6 +7,35 @@
 @section('content')
 
 @php
+  $order_pay   = isset($_GET['key']) ? $_GET['key'] : '0';
+  if($order_pay):
+
+@endphp
+
+
+@while(have_posts()) @php the_post() @endphp
+  <div class="custom-header pb-0">
+    <div class="elementor-background-overlay" style="background-image:url('{{ the_field('header_section_image', 'option') }}')"></div>
+      @include('partials.page-header')
+      <div class="header-checkout mt-5">
+        <div class="container-fluid">
+          <div class="row m-0">
+            <img class="img-fluid" src="{{ get_theme_file_uri().'/dist/images/header-checkout.png' }}" alt="{{ _e('2 checkout', 'premast') }}" title="{{ _e('2 checkout', 'premast') }}"/>
+          </div>
+        </div>
+      </div>            
+  </div>
+
+  <div class="container mt-5 mb-5">
+    <div class="row">
+      <?php echo do_shortcode( '[woocommerce_checkout]' ); ?>
+    </div>            
+  </div>
+@endwhile
+
+@php
+  else:
+
   if ( ! defined( 'ABSPATH' ) ) {
     exit;
   }
@@ -282,5 +311,8 @@
     });
   </script>
 
+  
+
   @endwhile
+  <?php endif; ?>
 @endsection
