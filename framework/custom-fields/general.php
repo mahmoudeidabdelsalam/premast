@@ -233,6 +233,28 @@ if( function_exists('acf_add_local_field_group') ):
 				'allow_null' => 0,
 				'allow_archives' => 0,
 				'multiple' => 0,
+      ),
+      array(
+				'key' => 'field_5a8bdbe9102f2110481423432423423423463',
+				'label' => 'Download Page',
+				'name' => 'thanks_page',
+				'type' => 'page_link',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '50',
+					'class' => '',
+					'id' => '',
+				),
+				'post_type' => array(
+					0 => 'page',
+				),
+				'taxonomy' => array(
+				),
+				'allow_null' => 0,
+				'allow_archives' => 0,
+				'multiple' => 0,
 			),
       array(
         'key' => 'field_5cbaeads9231434324324f7e6af47',
