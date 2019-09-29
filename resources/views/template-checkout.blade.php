@@ -287,7 +287,7 @@
               </tfoot>
             </table>
           </div>
-          <img class="img-fluid mr-auto ml-auto mt-5 d-block" src="{{ get_theme_file_uri().'/dist/images/2-checkout.png' }}" alt="{{ _e('2 checkout', 'premast') }}" title="{{ _e('2 checkout', 'premast') }}"/>
+          <img class="img-fluid mr-auto ml-auto mt-5 d-block" src="{{ get_theme_file_uri().'/dist/images/header-checkout.png' }}" alt="{{ _e('2 checkout', 'premast') }}" title="{{ _e('2 checkout', 'premast') }}"/>
         </div>
       </div>
     </div>
