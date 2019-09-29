@@ -2000,10 +2000,6 @@ button#place_order {
   padding: 0 20px;
 }
 
-ul.wc_payment_methods.payment_methods.methods {
-  padding: 0 !important;
-}
-
 #add_payment_method #payment,
 .woocommerce-cart #payment,
 .woocommerce-checkout #payment {
@@ -2030,10 +2026,6 @@ button#place_order {
   padding: 0 20px;
 }
 
-ul.wc_payment_methods.payment_methods.methods {
-  padding: 70px 0 !important;
-}
-
 li.wc_payment_method:after {
   display: none !important;
 }
@@ -2047,14 +2039,13 @@ li.wc_payment_method:before {
 }
 
 li.wc_payment_method label {
-  position: absolute;
-  top: 0;
-  font-size: 0;
-  height: 40px;
   display: flex;
-  justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+ul.wc_payment_methods.payment_methods.methods {
+  display: none !important;
 }
 
 ul.wc_payment_methods {
