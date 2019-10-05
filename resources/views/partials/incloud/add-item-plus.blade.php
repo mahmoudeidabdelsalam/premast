@@ -77,8 +77,39 @@
 
 
 <div id="results-items" class="mt-5">
-  <div class="row">
+  <div class="row m-0">
     <h2 class="col-12">{{ _e('Added Items list', 'premast') }}</h2>
+    <div class="new-item row m-0 col-12 p-0"></div>
+    @php 
+      $args = array(
+        'post_type'        => 'graphics',
+        'posts_per_page'   => '5',
+        'post_status'      => 'publish',
+      );
+      $posts = new WP_Query( $args );
+    @endphp
+    @if ( $posts->have_posts() )
+      @while($posts->have_posts()) @php $posts->the_post() @endphp
+        @php
+          $term_name = wp_get_post_terms(get_the_ID(), 'graphics-category', array("fields" => "names"));
+          $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), "full");
+        @endphp
+      <div class="media" id="{{ the_ID() }}">
+        <div class="card">
+          <div class="img-top-item">
+            <img src="{{ $thumbnail[0] }}" alt="{{ the_title() }}">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ the_title() }}</h5>
+            <h5 class="card-term">{{ $term_name['0'] }}</h5>
+            <div class="card-event">
+              <a herf="#" class="item-deleted item-event" data-deleted="{{ the_ID() }}" data-nonce="<?php echo wp_create_nonce('testdel') ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></a> 
+            </div>
+          </div>
+        </div>
+      </div>
+      @endwhile
+    @endif
   </div>
 </div>
 
@@ -88,16 +119,13 @@
     $('select').select2({
       theme: 'bootstrap4',
     });
+
     $('#tags').select2({
       theme: 'bootstrap4',
       tags: true,
       tokenSeparators: [',', ' '],
       placeholder: "selected tag...",
     });
-  });
-
-
-  jQuery(function($) {
 
     $('#submit').on('click',function(e){
       e.preventDefault();
@@ -145,7 +173,7 @@
               tokenSeparators: [',', ' '],
               placeholder: "selected tag...",
             });
-            $('#results-items .row').append(results);
+            $('#results-items .new-item').append(results);
           },
           error: function(results) {
             $('.register-message').html('plz try again later').show();
@@ -153,7 +181,46 @@
           }
         });
       }
+    });
 
+    $('#results-items .new-item').on('click', '.item-deleted', function() {
+      var post = $(this).attr('data-deleted'); // get post id from hidded field
+      var nonce = $(this).attr('data-nonce'); // get nonce from hidded field
+
+      $.ajax({
+        url: "<?php echo admin_url('admin-ajax.php'); ?>", // in backend you should pass the ajax url using this variable
+        type: 'POST',
+        data: { 
+          action : 'ajaxtestdel', 
+          postid: post, 
+          ajaxsecurity: nonce 
+        },
+        success: function(data){          
+          if(data === 'success') {
+            $('#' + post).remove()
+          }
+        }
+      });
+    });
+
+    $('.item-deleted').on('click', function(e){
+      var post = $(this).attr('data-deleted'); // get post id from hidded field
+      var nonce = $(this).attr('data-nonce'); // get nonce from hidded field
+      
+      $.ajax({
+        url: "<?php echo admin_url('admin-ajax.php'); ?>", // in backend you should pass the ajax url using this variable
+        type: 'POST',
+        data: { 
+          action : 'ajaxtestdel', 
+          postid: post, 
+          ajaxsecurity: nonce 
+        },
+        success: function(data){
+          if(data === 'success') {
+            $('#' + post).remove()
+          }
+        }
+      });
     });
   });
 </script>

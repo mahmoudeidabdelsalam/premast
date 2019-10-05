@@ -1,4 +1,7 @@
+@extends('layouts.template-items')
 
+@section('content')
+  @while(have_posts()) @php the_post() @endphp
 @php
 do_action( 'woocommerce_before_single_product' );
 if ( post_password_required() ) {
@@ -301,3 +304,6 @@ global $product;
     <?php endif; ?>
   });
 </script>
+
+  @endwhile
+@endsection

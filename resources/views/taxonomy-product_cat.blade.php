@@ -43,25 +43,37 @@
         <h2><i class="fa fa-align-right" aria-hidden="true"></i> {{ _e('Category', 'premast') }}</h2>
 
         <ul class="list-group product-term">
-          <li class="list-group-item">
-            <a class="text-term text-white" href="#">{{ _e('All Categories', 'premast') }} <span class="count-term">{{ $taxonomy_query->count }}</span></a>
-          </li>
-
-          @php 
-            $terms = get_terms( 'product_cat', array( 'parent' => $taxonomy_query->term_id, 'orderby' => 'slug', 'hide_empty' => false ) );
-          @endphp
-          @foreach ( $terms as $term )
-            @php
-              $term_link = get_term_link( $term );
-              if ( is_wp_error( $term_link ) ) {
-                  continue;
-              }
+          @if($taxonomy_query->parent) 
+            @php 
+            $term_parent = get_term_parents_list( $taxonomy_query->parent, 'product_cat' );
+            // dd($term_parent);
+              $term_link = get_term_link( $taxonomy_query );
             @endphp
-            <li class="list-group-item">
-              <a class="text-term @if($term->term_id == $taxonomy_query->term_id) active @endif" href="{{ $term_link }}">{{ $term->name }} <span class="count-term">{{ $term->count }}</span></a>
+            <li class="list-group-item term-parent">
+              <i class="fa fa-angle-left" aria-hidden="true"></i> {!! rtrim($term_parent,'/')  !!}
             </li>
-          @endforeach
-
+            <li class="list-group-item">
+              <a class="text-term  active " href="{{ $term_link }}">{{ $taxonomy_query->name }} <span class="count-term">{{ $taxonomy_query->count }}</span></a>
+            </li>
+          @else
+            <li class="list-group-item">
+              <a class="text-term text-white" href="#">{{ _e('All Categories', 'premast') }} <span class="count-term">{{ $taxonomy_query->count }}</span></a>
+            </li>
+            @php 
+              $terms = get_terms( 'product_cat', array( 'parent' => $taxonomy_query->term_id, 'orderby' => 'slug', 'hide_empty' => false ) );
+            @endphp
+            @foreach ( $terms as $term )
+              @php
+                $term_link = get_term_link( $term );
+                if ( is_wp_error( $term_link ) ) {
+                    continue;
+                }
+              @endphp
+              <li class="list-group-item">
+                <a class="text-term @if($term->term_id == $taxonomy_query->term_id) active @endif" href="{{ $term_link }}">{{ $term->name }} <span class="count-term">{{ $term->count }}</span></a>
+              </li>
+            @endforeach
+          @endif
         </ul>
       </div>
     </div>
@@ -69,8 +81,10 @@
     <div class="col-md-9 col-sm-12">
       <div class="item-columns grid row m-0 container-ajax items-categories">
         @php
-          if ($sort != '0') {
-            // second query
+        if ($sort == 'view') {
+          $second_ids = [];
+          $per_page = 21;
+        } elseif ($sort != '0') {
             $second_ids = get_posts( array(
               'post_type' => 'product',
               'posts_per_page' => 21,
@@ -88,6 +102,7 @@
               )
             ));
             $per_page = 21 - count($second_ids);
+            // dd(count($second_ids));
           } else {
             $second_ids = [];
             $per_page = 21;

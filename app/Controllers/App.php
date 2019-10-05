@@ -11,6 +11,63 @@ class App extends Controller
         return get_bloginfo('name');
     }
 
+      /**
+        * Function Name: post_loop();
+        * This Function takes 4 arguments $post_type & $posts_per_page & image size and no. of pages
+        * It returns the arguments for general post type loop
+      */
+      static function post_loop($type= 'post', $postCount = 3, $imgSize, $paged = 1 , $wordsCount = 15) {
+
+        $array = array();
+
+        $args = array(
+            'post_type' => $type,
+            'post_status' => 'publish',
+            'suppress_filters' => 0,
+            'posts_per_page' => $postCount,
+            'paged' => $paged,
+        );
+
+        $posts = get_posts($args);
+
+        foreach ( $posts as $post):
+            setup_postdata($post);
+            $array[] = [
+                'id'      => $post->ID,
+                'url'     => get_the_permalink($post->ID),
+                'image'   => \Utilities::global_thumbnails( $post->ID, $imgSize, false),
+                'date'    => get_the_date('d M, Y', $post->ID),
+                'title'   => get_the_title($post->ID),
+                'excerpt' => wp_trim_words(get_the_content($post->ID), $wordsCount , ' ...')
+            ];
+        endforeach;
+        wp_reset_postdata();
+
+        return $array;
+      }
+
+
+    public function RelatedPost () 
+    {
+      $category = wp_get_post_terms( get_queried_object_id(), 'category', ['fields' => 'ids'] );
+      $args = [
+        'post_type' => 'post',
+        'post__not_in'        => array( get_queried_object_id() ),
+        'posts_per_page'      => 3,
+        'ignore_sticky_posts' => 1,
+        'orderby'             => 'rand',
+        'tax_query' => [
+          [
+            'taxonomy' => 'category',
+            'terms'    => $category
+          ]
+        ]
+      ];
+
+      return new \WP_Query($args);
+    }
+
+
     /**
     * Function Name: Welcome Home()
     * This Function is used to return background, Headline, Subtitle and link For Welcome Section
