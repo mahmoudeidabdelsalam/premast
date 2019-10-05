@@ -24,7 +24,7 @@
           <div class="row">
             <!-- Head Information -->
             <div class="col-md-12 col-12 row m-0">
-              <div class="head col-md-6 col-12 p-0">
+              <div class="head col-md-7 col-12 p-0">
                 <p class="label label-term mb-0">
                   @if ($categories)
                     @foreach ($categories as $category)
@@ -69,6 +69,8 @@
             </div>
 
             <div class="col-md-4 col-12">
+              @php dynamic_sidebar('sidebar-blog') @endphp
+
               @if($related_post->have_posts())
                 <div class="related-single">
                   <h3 class="headline-related col-12">{{ _e('related Posts', 'premast') }}</h3>
@@ -97,116 +99,3 @@
     </section>
   @endwhile
 @endsection
-
-
-<style>
-  body.single-post {
-  background: #EFF6FA;
-}
-.user-info {
-    font-size: 16px;
-    line-height: 125.19%;
-    letter-spacing: 0.132987px;
-    text-transform: capitalize;
-    color: #1E6DFB;
-    padding: -0;
-    margin-bottom: 20px;
-}
-.label-term {
-    font-size: 16px;
-    line-height: 125.19%;
-    letter-spacing: 0.132987px;
-    text-transform: capitalize;
-    color: #1E6DFB;
-}
-.head h1 {
-    font-weight: bold;
-    font-size: 40px;
-    line-height: 50px;
-    letter-spacing: 0.132987px;
-    text-transform: capitalize;
-    color: #3D4552;
-}
-.date-info time {
-    font-size: 16px;
-    line-height: 125.19%;
-    letter-spacing: 0.132987px;
-    text-transform: capitalize;
-    color: rgba(0, 0, 0, 0.4);
-}
-.wp-post-thumbnail {
-    border-radius: 8px;
-    margin: 40px 0 24px !important;
-}
-
-#wpcomm .wc-field-textarea .wpdiscuz-textarea-wrap {
-    background: #fff;
-    border: none;
-}
-#wpcomm .avatar {
-    border-radius: 100% !important;
-}
-#wpcomm .wc-comment .wc-comment-right {
-    background: #FFFFFF;
-    box-shadow: 0px 2px 4px #D5EDFA;
-    border-radius: 8px;
-}
-#wpcomm .wc-comment-header {
-    border: none;
-}
-.related-single .media img {
-    border-radius: 5px;
-    width: 100px;
-}
-
-.related-single .media {
-    background-color: #fff;
-    margin-bottom: 10px;
-    box-shadow: 0px 2px 4px #D5EDFA;
-    border-radius: 8px;
-    padding: 10px;
-}
-.related-single li.media .card-title {
-    font-size: 16px;
-    line-height: 136.69%;
-    letter-spacing: 0.132987px;
-    text-transform: capitalize;
-    color: #3D4552 !important;
-}
-
-h3.headline-related {
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 125.19%;
-    letter-spacing: 0.132987px;
-    text-transform: capitalize;
-    color: #3D4552;
-    padding: 0;
-}
-.elements-share p {
-    font-size: 13px;
-    line-height: 125.19%;
-    letter-spacing: 0.132987px;
-    text-transform: capitalize;
-    color: rgba(0, 0, 0, 0.4);
-}
-
-.elements-share {
-    position: absolute;
-    left: -100px;
-    text-align: center;
-}
-
-.elements-share .sharing-buttons {
-    background: #FFFFFF;
-    box-shadow: 0px 2px 4px #D5EDFA;
-    width: 40px;
-    height: 40px;
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-    color: #1E6DFB;
-}
-</style>

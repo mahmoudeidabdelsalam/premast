@@ -2390,7 +2390,6 @@ ul#myTab .nav-link:after {
   height: 20px;
   width: 20px;
   border: 2px solid #282F39;
-  display: inline-block;
   float: left;
   margin-right: 10px;
   border-radius: 100%;
@@ -2522,6 +2521,7 @@ div#results-items .media {
 
 div#results-items .media .card {
   width: 100%;
+  height: auto;
 }
 
 div#results-items .media .card {
@@ -2547,7 +2547,7 @@ div#results-items .media .img-top-item {
 
 div#results-items .media .img-top-item img {
   max-width: 100%;
-  height: 70%;
+  height: 70px;
   width: auto;
 }
 
@@ -2619,5 +2619,225 @@ div#results-items .media .img-top-item img {
 
 .product-child ul .list-group-item.term-parent {
   padding: 0 15px !important;
+}
+
+body.single-post {
+  background: #EFF6FA;
+}
+
+.user-info {
+  font-size: 16px;
+  line-height: 125.19%;
+  letter-spacing: 0.132987px;
+  text-transform: capitalize;
+  color: #1E6DFB;
+  padding: -0;
+  margin-bottom: 20px;
+}
+
+.label-term {
+  font-size: 16px;
+  line-height: 125.19%;
+  letter-spacing: 0.132987px;
+  text-transform: capitalize;
+  color: #1E6DFB;
+}
+
+.head h1 {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 50px;
+  letter-spacing: 0.132987px;
+  text-transform: capitalize;
+  color: #3D4552;
+}
+
+.date-info time {
+  font-size: 16px;
+  line-height: 125.19%;
+  letter-spacing: 0.132987px;
+  text-transform: capitalize;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.wp-post-thumbnail {
+  border-radius: 8px;
+  margin: 40px 0 24px !important;
+}
+
+#wpcomm .wc-field-textarea .wpdiscuz-textarea-wrap {
+  background: #fff;
+  border: none;
+}
+
+#wpcomm .avatar {
+  border-radius: 100% !important;
+}
+
+#wpcomm .wc-comment .wc-comment-right {
+  background: #FFFFFF;
+  box-shadow: 0px 2px 4px #D5EDFA;
+  border-radius: 8px;
+}
+
+#wpcomm .wc-comment-header {
+  border: none;
+}
+
+.related-single .media img {
+  border-radius: 5px;
+  width: 100px;
+}
+
+.related-single .media {
+  background-color: #fff;
+  margin-bottom: 10px;
+  box-shadow: 0px 2px 4px #D5EDFA;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.related-single li.media .card-title {
+  font-size: 16px;
+  line-height: 136.69%;
+  letter-spacing: 0.132987px;
+  text-transform: capitalize;
+  color: #3D4552 !important;
+}
+
+h3.headline-related {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 125.19%;
+  letter-spacing: 0.132987px;
+  text-transform: capitalize;
+  color: #3D4552;
+  padding: 0;
+}
+
+.elements-share p {
+  font-size: 13px;
+  line-height: 125.19%;
+  letter-spacing: 0.132987px;
+  text-transform: capitalize;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.elements-share {
+  position: absolute;
+  left: -100px;
+  text-align: center;
+}
+
+.elements-share .sharing-buttons {
+  background: #FFFFFF;
+  box-shadow: 0px 2px 4px #D5EDFA;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #1E6DFB;
+}
+
+.description p {
+  font-size: 21px;
+  line-height: 39px;
+  font-weight: 300;
+}
+
+.description strong {
+  color: blue;
+  font-weight: 500;
+  font-size: 29px;
+}
+
+.description ul li::before {
+  content: "\2022";
+  color: #007bff;
+  font-weight: 900;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+  font-size: 22px;
+}
+
+.description img {
+  border-radius: 12px;
+  border: 4px solid white;
+  box-shadow: 0px 2px 3px #00000021;
+  margin: 35px 0px 35px 0px !important;
+}
+
+.description ul {
+  list-style: none;
+}
+
+header.banner .logos {
+  max-width: 130px;
+}
+
+body.template-blog {
+  background: #EFF6FA;
+}
+
+.item-blog .card {
+  background: transparent !important;
+  border: none;
+  box-shadow: none !important;
+}
+
+.item-blog .card p.label time {
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.132987px;
+  text-transform: capitalize;
+  color: #000000;
+  opacity: 0.5;
+}
+
+.item-blog .card h5.card-title {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.132987px;
+  text-transform: capitalize;
+  color: #282F39;
+  margin: 8px 0;
+}
+
+.item-blog .card p.card-text {
+  font-size: 14px;
+  line-height: 129.19%;
+  letter-spacing: 0.132987px;
+  color: #000000;
+  opacity: 0.5;
+}
+
+.bg-blogs {
+  position: absolute;
+  right: 0;
+  width: 390px;
+  height: 332px;
+  top: -150px;
+}
+
+body.template-blog .custom-header {
+  margin-bottom: 150px;
+}
+
+body.template-blog h2 {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 47px;
+  letter-spacing: 0.132987px;
+  color: #3D4552;
+  padding: 0 30px 20px;
+}
+
+section.widget_text iframe {
+  max-width: 100%;
 }
 /* stylelint-enable */

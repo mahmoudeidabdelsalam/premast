@@ -106,6 +106,10 @@ add_action('widgets_init', function () {
         'name'          => __('Single Product', 'sage'),
         'id'            => 'sidebar-shop'
     ] + $config);
+    register_sidebar([
+        'name'          => __('Single Blog', 'sage'),
+        'id'            => 'sidebar-blog'
+    ] + $config);
 });
 
 /**
