@@ -1664,7 +1664,7 @@ div#LimitDownload .modal-header {
 }
 
 div#LimitDownload .modal-body p a {
-  background: linear-gradient(170.96deg, #6b73ff -0.5%, #000dff 100%);
+  background: #6f00ff;
   height: 48px;
   display: inline-block;
   width: auto;
@@ -2155,11 +2155,19 @@ ul.meta-buttons li {
   height: 32px;
   position: relative;
   overflow: hidden;
-  transition: width 1s ease;
+  transition: width 0.3s ease;
   padding: 4px;
   display: block;
   border-radius: 40px !important;
   text-align: right;
+}
+
+ul.meta-buttons li.button-share {
+  display: none;
+}
+
+.item-card:hover ul.meta-buttons li.button-share {
+  display: block;
 }
 
 li.likes-button {
@@ -2169,9 +2177,9 @@ li.likes-button {
   backdrop-filter: blur(2px);
 }
 
-ul.meta-buttons li:hover {
+ul.meta-buttons li.likes-button:hover {
   width: 80px;
-  transition: width 1s ease;
+  transition: width 0.2s ease;
 }
 
 ul.meta-buttons li i {
@@ -2247,7 +2255,7 @@ span.premium {
   right: 0;
   width: 58px;
   height: 58px;
-  padding: 30px 0 0 32px;
+  padding: 36px 0 0 36px;
   bottom: 0;
 }
 
@@ -2256,7 +2264,7 @@ span.premium:before {
   height: 100px;
   width: 80px;
   position: absolute;
-  left: 15px;
+  left: 30px;
   background-color: #FFB800;
   transform: rotate(42deg);
   top: 4px;
@@ -2265,7 +2273,7 @@ span.premium:before {
 span.premium i {
   position: relative;
   color: #fff;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 button#place_order {
@@ -2839,5 +2847,122 @@ body.template-blog h2 {
 
 section.widget_text iframe {
   max-width: 100%;
+}
+
+div#ReportAProblem .modal-content {
+  background: #FFFFFF;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+}
+
+div#ReportAProblem .modal-content .modal-header h2 {
+  font-size: 24px;
+  line-height: 28px;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: 0.132987px;
+  color: #282F39;
+}
+
+div#ReportAProblem .modal-content input,
+div#ReportAProblem .modal-content textarea {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  box-sizing: border-box !important;
+  border-radius: 8px !important;
+  padding: 10px !important;
+}
+
+div#ReportAProblem .modal-content .ginput_container_fileupload {
+  width: auto;
+  float: right;
+  margin: 0;
+}
+
+div#ReportAProblem .modal-content input[type="file"] {
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+  padding: 0 !important;
+  width: 100px !important;
+  position: relative;
+}
+
+div#ReportAProblem .modal-content input[type="file"]:after {
+  content: "browse";
+  display: inline-block !important;
+  font-size: 15px;
+  position: absolute;
+  z-index: 999;
+  background-color: #fff;
+  left: 0;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  bottom: 0;
+  line-height: 30px;
+  letter-spacing: 0.0329024px;
+  text-transform: capitalize;
+  color: #1E6DFB;
+}
+
+div#ReportAProblem .modal-content .gform_footer.top_label button {
+  background: linear-gradient(168.35deg, #6B73FF -0.5%, #000DFF 100%);
+  border-radius: 26.5px;
+  margin: auto;
+  width: 200px;
+  height: 40px;
+}
+
+div#ReportAProblem .modal-content .gform_footer.top_label {
+  text-align: center;
+}
+
+div#ReportAProblem .modal-content label.gfield_label {
+  font-size: 13px !important;
+  line-height: 15px;
+  letter-spacing: 0.0329024px;
+  text-transform: capitalize;
+  color: #000000;
+  opacity: 0.4;
+  font-weight: 300 !important;
+}
+
+div#ReportAProblem .modal-content button.cancel {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.116946px;
+  text-transform: capitalize;
+  color: #1E6DFB;
+  background: transparent;
+  border: none;
+  margin: auto;
+  display: block;
+}
+
+div#ReportAProblem .modal-content .gfield_contains_required:before {
+  content: "" !important;
+  display: inline-block;
+  font-size: 13px;
+  position: absolute;
+  background: #FF0000;
+  left: 0;
+  top: 13px;
+  width: 4px !important;
+  height: 4px !important;
+  border-radius: 100%;
+}
+
+div#ReportAProblem .modal-content .gfield_contains_required {
+  position: relative;
+}
+
+div#ReportAProblem .modal-content .gform_wrapper ul li.gfield {
+  padding-left: 10px;
+}
+
+.summary .sl-wrapper .sl-icon small {
+  display: none;
 }
 /* stylelint-enable */

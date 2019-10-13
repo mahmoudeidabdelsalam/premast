@@ -94,6 +94,7 @@
     "popper.js": "^1.14.7",
     "select2": "^4.0.7",
     "slick-carousel": "^1.8.1",
+    "slideout": "^1.0.1",
     "wow.js": "^1.2.2"
   }
 }

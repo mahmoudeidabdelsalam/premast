@@ -168,16 +168,19 @@ global $product;
 
           @php $form_id = get_field('froms_problem_with_download', 'option' );@endphp
           @if($form_id)
-            <p class="form-probelm">{{ _e('there is a problem with download', 'premast') }} <a class="modal-forms" data-toggle="modal" data-target="#exampleModalCenter">{{ _e('click here', 'premast') }}</a></p>
+            <p class="form-probelm">{{ _e('there is a problem with download', 'premast') }} <a class="modal-forms" data-toggle="modal" data-target="#ReportAProblem">{{ _e('click here', 'premast') }}</a></p>
             <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade" id="ReportAProblem" tabindex="-1" role="dialog" aria-labelledby="ReportAProblemTitle" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                  <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>                  
+                  <div class="modal-header">
+                    <h2>{{ _e('Report a problem', 'premast') }}</h2>
+                  </div>
+                  <div class="modal-body">              
                       {!! do_shortcode( '[gravityform id="'.$form_id['id'].'" name="" title="false" description="false" ajax="true" ]' ) !!}
+                      <button type="button" class="cancel" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">{{ _e('cancel', 'premast') }}</span>
+                      </button>    
                   </div>
                 </div>
               </div>

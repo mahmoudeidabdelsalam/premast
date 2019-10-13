@@ -1,4 +1,5 @@
 import WOW from '../../../../node_modules/wow.js/dist/wow';
+import Slideout from '../../../../node_modules/slideout/dist/slideout';
 
 export default {
   init() {
@@ -145,6 +146,28 @@ export default {
 
     });
 
+
+    if ($('#menu').length != 0) {
+      // eslint-disable-next-line no-undef
+      var slideout = new Slideout({
+        'panel': document.getElementById('panel'),
+        'menu': document.getElementById('menu'),
+        'padding': 320,
+        'tolerance': 70,
+      });
+
+      // Toggle button
+      document.querySelector('.toggle-button').addEventListener('click', function () {
+        slideout.toggle();
+      });
+    }
+
+    if ($('#menu_user').length != 0) {
+      $('.menu-toggle').click(function () {
+        $('#menu_user').slideToggle(700);
+        $('body').toggleClass('is-open-user');
+      });
+    }
 
     $(function () {
       function setCookie(cname, cvalue, exdays) {

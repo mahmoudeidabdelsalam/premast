@@ -193,13 +193,13 @@
                   <li class="likes-button">
                     {!! get_simple_likes_button( get_the_ID() ) !!}
                   </li>
-                  <li class="pinterest-share">
+                  <li class="pinterest-share button-share">
                     <a target="_blank" href="http://pinterest.com/pin/create/button/?url{{ the_permalink() }}=&media={{ Utilities::global_thumbnails(get_the_ID(),'full')}}&description={{ get_the_title() }}" class="pin-it-button" count-layout="horizontal">
                      <small>Pin it</small> <i class="fa fa-pinterest-p" aria-hidden="true"></i>
                     </a>
                   </li>
                   @if(current_user_can( 'edit_post', get_the_ID() ) && (get_the_author_meta('ID') == $current_user->ID) || is_super_admin())
-                    <li class="edit-post">
+                    <li class="edit-post button-share">
                       <a class="post-edit-link" href="{{ the_field('link_edit_item', 'option') }}?post_id={{ the_ID() }}"><small>Edit</small> <i class="fa fa-pencil" aria-hidden="true"></a></i>
                     </li>
                   @endif

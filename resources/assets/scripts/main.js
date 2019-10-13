@@ -7,6 +7,7 @@ import 'lightgallery/dist/js/lightgallery-all.min';
 import 'lightslider/dist/js/lightslider.min';
 import 'select2/dist/js/select2.min';
 import 'select2/dist/js/select2.full.min';
+import 'slideout/dist/slideout';
 
 // Import everything from autoload
 import './autoload/**/*'

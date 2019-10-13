@@ -3,7 +3,7 @@
   @include('partials.head')
   <body @php body_class() @endphp>
     @php do_action('get_header') @endphp
-    <div class="wrap" role="document">
+    <div class="wrap" role="document" id="panel">
       <div class="content">
         <main class="main">
           @yield('content')
