@@ -28,6 +28,7 @@ global $product;
     <div class="row justify-content-center m-0">
       <div class="col-12">
         <?php woocommerce_breadcrumb(); ?>
+        <br>
         <h1 class="product-title">{{ the_title() }}</h1>
       </div>
 
@@ -52,20 +53,23 @@ global $product;
             @else 
               <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}"> 
             @endif
-            @if (get_field('slide_gallery'))
-              <div class="embed-container">
-                {{ the_field('slide_gallery') }}
+            @if ( !wp_is_mobile() ) 
+              @if (get_field('slide_gallery'))
+                <div class="embed-container">
+                  {{ the_field('slide_gallery') }}
+                </div>
+              @endif
+
+              <div class="product-infomation">
+                <h3>{{ _e('Description', 'premast') }}</h3>
+                <div id="tab-description">{!! get_the_content() !!}</div>
               </div>
             @endif
-
-            <div class="product-infomation">
-              <h3>{{ _e('Description', 'premast') }}</h3>
-              <div id="tab-description">{!! get_the_content() !!}</div>
-            </div>
           </div>
         </div>
-
-        @include('partials/incloud/comments')
+        @if ( !wp_is_mobile() ) 
+          @include('partials/incloud/comments')
+        @endif
       </div>
       
       <div class="summary entry-summary col-md-4 col-12 sidebar-shop">
@@ -198,6 +202,22 @@ global $product;
 
         @include('partials/incloud/sharemeta')
 
+
+
+
+        @if ( wp_is_mobile() ) 
+          @if (get_field('slide_gallery'))
+            <div class="embed-container">
+              {{ the_field('slide_gallery') }}
+            </div>
+          @endif
+
+          <div class="product-infomation">
+            <h3>{{ _e('Description', 'premast') }}</h3>
+            <div id="tab-description">{!! get_the_content() !!}</div>
+          </div>
+        @endif
+
         <div class="box-author box-counter">
 
           <h3>{{ _e('published by', 'premast') }}</h3>
@@ -222,8 +242,11 @@ global $product;
               <p>{{ _e('Total uploads:', 'premast') }} {{ $user_post_count }}</p>
             </div>
           </div>
-
         </div>
+
+          @if ( wp_is_mobile() ) 
+            @include('partials/incloud/comments')
+          @endif
       </div>
     </div>
   </div>

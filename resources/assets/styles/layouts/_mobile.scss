@@ -69,12 +69,16 @@
   }
 
   div#panel {
-    padding-top: 50px;
+    padding-top: 0;
+
+    body.single-product & {
+      padding-top: 0;
+    }
   }
 
   .slideout-menu {
     position: fixed;
-    top: 60px;
+    top: 125px;
     bottom: 0;
     width: 320px;
     min-height: 100vh;
@@ -99,7 +103,10 @@
     will-change: transform;
     min-height: 100vh;
     background: $brand-white;
-    padding-top: 50px;
+
+    .single-product & {
+      background: rgb(237, 244, 248);
+    }
   }
 
   .slideout-open,
@@ -168,14 +175,45 @@
   }
 
   header.banner {
-    position: fixed;
-    z-index: 999999;
-    top: 0;
-    width: 100%;
-
     .signup {
       white-space: nowrap;
       margin: 0 !important;
     }
   }
+
+  .grid {
+    .grid-item {
+      padding: 0 !important;
+    }
+  }
+}
+
+form#searchform.is-mobile-search {
+  background: transparent;
+}
+
+#dropdownMenuCat {
+  background: rgb(61, 69, 82);
+  border: 1.5px solid rgb(61, 69, 82);
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 5px 10px 10px 10px;
+  display: inline-block;
+  margin: 20px 10px;
+  color: rgb(255, 255, 255);
+
+  img {
+    margin-right: 10px;
+    display: inline-block;
+  }
+}
+
+#dropdownMenuFilter {
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 5px 10px 10px 10px;
+  display: inline-block;
+  margin: 20px 10px;
+  color: hsla(217, 15%, 28%, 0.8);
+  border: 1.5px solid rgba(61, 69, 82, 0.3);
 }

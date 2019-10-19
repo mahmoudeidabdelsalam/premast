@@ -2,7 +2,8 @@
   $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
   $Name   = isset($_GET['refine']) ? $_GET['refine'] : '0';
   $sort   = isset($_GET['sort']) ? $_GET['sort'] : '0';
-  
+  $refine   = isset($_GET['refine']) ? $_GET['refine'] : '0';
+
   if ( $sort == 'date' ):
     $orderby = 'date';
     $order = 'DESC';
@@ -22,7 +23,7 @@
   endif;
   
   $taxonomy_query = get_queried_object();
-
+  global $wp;
 @endphp
 
 @extends('layouts.template-items')
@@ -32,59 +33,138 @@
 @php 
   global $current_user;
   wp_get_current_user();
+  global $wp;
 @endphp
+
+
+@if ( wp_is_mobile() ) 
+  <form class="is-mobile-search" role="search" method="get" id="searchform" action="{{ home_url( $wp->request ) }}">
+    <button type="submit"><i class="fa fa-search"></i></button>
+    <input id="autoblogs" class="form-control w-100" type="search" value="@if($refine != '0') {!! $refine !!} @endif" name="refine" autocomplete="on" autocorrect="off" autocapitalize="on" spellcheck="false" placeholder="{{ _e('Search items', 'premast') }}" aria-label="Search">    
+  </form>
+
+  @php 
+    $args = array(
+      'post_type' => 'product',
+    );
+    $loop = new WP_Query( $args );
+    $count = $loop->found_posts;
+  @endphp
+
+  @if (get_field('banner_items_headline', 'option'))
+  <section class="banner-items" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
+    <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
+    <div class="container">
+      <div class="row justify-content-center align-items-center text-center">
+        <h2 class="col-12 text-white"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{  $count }}</strong> <span class="font-weight-300">{{ the_field('banner_items_headline','option') }}</span></h2>
+        <p class="col-md-5 col-12 text-white font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
+      </div>
+    </div>
+  </section>
+  @endif
+  
+  <div class="col-12 d-flex">
+    <div class="dropdown">
+      <a class="btn-toggle dropdown-toggle" href="#" role="button" id="dropdownMenuCat" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img src="{{ get_theme_file_uri().'/resources/assets/images' }}/categories.svg" alt=""> {{ _e('Categories', 'premast') }}
+      </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuCat">
+        @if($taxonomy_query->parent) 
+          @php 
+          $term_parent = get_term_parents_list( $taxonomy_query->parent, 'product_cat' );
+            $term_link = get_term_link( $taxonomy_query );
+          @endphp
+          <li class="dropdown-item">
+            <i class="fa fa-angle-left" aria-hidden="true"></i> {!! rtrim($term_parent,'/')  !!}
+          </li>
+          <li class="dropdown-item">
+            <a class="text-term  active " href="{{ $term_link }}">{{ $taxonomy_query->name }} <span class="count-term">{{ $taxonomy_query->count }}</span></a>
+          </li>
+        @else
+          @php 
+            $terms = get_terms( 'product_cat', array( 'parent' => $taxonomy_query->term_id, 'orderby' => 'slug', 'hide_empty' => false ) );
+          @endphp
+          @foreach ( $terms as $term )
+            @php
+              $term_link = get_term_link( $term );
+              if ( is_wp_error( $term_link ) ) {
+                  continue;
+              }
+            @endphp
+            <li class="dropdown-item">
+              <a class="text-term @if($term->term_id == $taxonomy_query->term_id) active @endif" href="{{ $term_link }}">{{ $term->name }} <span class="count-term">{{ $term->count }}</span></a>
+            </li>
+          @endforeach
+        @endif
+      </div>
+    </div>
+
+
+    <div class="dropdown">
+      <a class="btn-toggle dropdown-toggle" href="#" role="button" id="dropdownMenuFilter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{ _e('Sort by featured', 'premast') }}
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuFilter">
+        <a class="dropdown-item" href="{{ home_url( $wp->request ) }}?sort=featured">{{ _e('featured', 'premast') }}</a>
+        <a class="dropdown-item" href="{{ home_url( $wp->request ) }}?sort=view">{{ _e('Popular', 'premast') }}</a>
+        <a class="dropdown-item" href="{{ home_url( $wp->request ) }}?sort=date">{{ _e('Recent', 'premast') }}</a>
+        <a class="dropdown-item" href="{{ home_url( $wp->request ) }}?sort=download">{{ _e('Download', 'premast') }}</a>
+      </div>
+    </div>
+  </div>
+@endif
+
 
 
 <div class="container-fiuld">
   <div class="row justify-content-center m-0">
-    
-    <div class="col-md-3 col-sm-12">
-      <div class="product-child">
-        <h2><i class="fa fa-align-right" aria-hidden="true"></i> {{ _e('Category', 'premast') }}</h2>
+    @if ( !wp_is_mobile() ) 
+      <div class="col-md-3 col-sm-12">
+        <div class="product-child">
+          <h2><i class="fa fa-align-right" aria-hidden="true"></i> {{ _e('Category', 'premast') }}</h2>
 
-        <ul class="list-group product-term">
-          @if($taxonomy_query->parent) 
-            @php 
-            $term_parent = get_term_parents_list( $taxonomy_query->parent, 'product_cat' );
-            // dd($term_parent);
-              $term_link = get_term_link( $taxonomy_query );
-            @endphp
-            <li class="list-group-item term-parent">
-              <i class="fa fa-angle-left" aria-hidden="true"></i> {!! rtrim($term_parent,'/')  !!}
-            </li>
-            <li class="list-group-item">
-              <a class="text-term  active " href="{{ $term_link }}">{{ $taxonomy_query->name }} <span class="count-term">{{ $taxonomy_query->count }}</span></a>
-            </li>
-          @else
-            <li class="list-group-item">
-              <a class="text-term text-white" href="#">{{ _e('All Categories', 'premast') }} <span class="count-term">{{ $taxonomy_query->count }}</span></a>
-            </li>
-            @php 
-              $terms = get_terms( 'product_cat', array( 'parent' => $taxonomy_query->term_id, 'orderby' => 'slug', 'hide_empty' => false ) );
-            @endphp
-            @foreach ( $terms as $term )
-              @php
-                $term_link = get_term_link( $term );
-                if ( is_wp_error( $term_link ) ) {
-                    continue;
-                }
+          <ul class="list-group product-term">
+            @if($taxonomy_query->parent) 
+              @php 
+              $term_parent = get_term_parents_list( $taxonomy_query->parent, 'product_cat' );
+                $term_link = get_term_link( $taxonomy_query );
               @endphp
-              <li class="list-group-item">
-                <a class="text-term @if($term->term_id == $taxonomy_query->term_id) active @endif" href="{{ $term_link }}">{{ $term->name }} <span class="count-term">{{ $term->count }}</span></a>
+              <li class="list-group-item term-parent">
+                <i class="fa fa-angle-left" aria-hidden="true"></i> {!! rtrim($term_parent,'/')  !!}
               </li>
-            @endforeach
-          @endif
-        </ul>
+              <li class="list-group-item">
+                <a class="text-term  active " href="{{ $term_link }}">{{ $taxonomy_query->name }} <span class="count-term">{{ $taxonomy_query->count }}</span></a>
+              </li>
+            @else
+              <li class="list-group-item">
+                <a class="text-term text-white" href="#">{{ _e('All Categories', 'premast') }} <span class="count-term">{{ $taxonomy_query->count }}</span></a>
+              </li>
+              @php 
+                $terms = get_terms( 'product_cat', array( 'parent' => $taxonomy_query->term_id, 'orderby' => 'slug', 'hide_empty' => false ) );
+              @endphp
+              @foreach ( $terms as $term )
+                @php
+                  $term_link = get_term_link( $term );
+                  if ( is_wp_error( $term_link ) ) {
+                      continue;
+                  }
+                @endphp
+                <li class="list-group-item">
+                  <a class="text-term @if($term->term_id == $taxonomy_query->term_id) active @endif" href="{{ $term_link }}">{{ $term->name }} <span class="count-term">{{ $term->count }}</span></a>
+                </li>
+              @endforeach
+            @endif
+          </ul>
+        </div>
       </div>
-    </div>
+    @endif
+
 
     <div class="col-md-9 col-sm-12">
       <div class="item-columns grid row m-0 container-ajax items-categories">
         @php
-        if ($sort == 'view') {
-          $second_ids = [];
-          $per_page = 21;
-        } elseif ($sort != '0') {
+        if ($sort != '0') {
             $second_ids = get_posts( array(
               'post_type' => 'product',
               'posts_per_page' => 21,
@@ -101,8 +181,8 @@
                 )
               )
             ));
-            $per_page = 21 - count($second_ids);
-            // dd(count($second_ids));
+            $per_page = 22 - count($second_ids);
+            // dd($per_page);
           } else {
             $second_ids = [];
             $per_page = 21;
@@ -110,7 +190,7 @@
 
           $orders = array(
             'post_type' => 'product',
-            'posts_per_page' => 21,
+            'posts_per_page' => 20,
             'paged' => $paged,
             'meta_key' => $meta_key,
             'orderby' => $orderby,
@@ -138,6 +218,7 @@
             )
           );
 
+          
           if($Name != '0') {
             $args['tax_query'] = array(
               array(
@@ -165,6 +246,10 @@
           }
 
           $my_query = new \WP_Query( $args );
+
+
+          // dd($my_query);
+
 
           if ($sort != '0') {
             $more_query = new \WP_Query( $orders ); 

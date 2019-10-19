@@ -248,6 +248,10 @@
     height: 650px !important;
     margin-top: -25px !important;
 
+    @include media-breakpoint-down(sm) {
+      height: 250px !important;
+    }
+
     li.lslide {
       height: 100%;
       display: flex;
@@ -2965,4 +2969,18 @@ div#ReportAProblem .modal-content .gform_wrapper ul li.gfield {
 .summary .sl-wrapper .sl-icon small {
   display: none;
 }
+
+#dropdownMenuCat::after, #dropdownMenuFilter::after {
+  display: inline-block;
+  font: normal normal normal 30px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  content: "\f107";
+  border: none;
+  font-size: 20px;
+  position: relative;
+  top: 8px;
+}
+
 /* stylelint-enable */

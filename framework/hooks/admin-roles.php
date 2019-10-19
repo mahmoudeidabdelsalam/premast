@@ -69,6 +69,44 @@ function process_user_roles(){
         $role->add_cap( 'manage_categories' );
       }
 
+    /************************* products  SEO **************************/
+     remove_role('seo');
+     add_role('seo', __('SEO','premast'), []);
+     $roles = ['seo', 'administrator'];
+     foreach ($roles as $role) {
+        $role = get_role($role);
+        $role->add_cap('read');
+        $role->add_cap( 'manage_woocommerce_products' );
+        $role->add_cap( 'manage_woocommerce_taxonomies' );
+        $role->add_cap( 'manage_woocommerce_orders' );
+        $role->add_cap( 'manage_woocommerce_coupons' );
+        $role->add_cap( 'edit_product' );
+        $role->add_cap( 'read_product' );
+        $role->add_cap( 'delete_product' );
+        $role->add_cap( 'edit_products' );
+        $role->add_cap( 'edit_products' );
+        $role->add_cap( 'publish_products' );
+        $role->add_cap( 'read_private_products' );
+        $role->add_cap( 'delete_products' );
+        $role->add_cap( 'delete_private_products' );
+        $role->add_cap( 'delete_published_products' );
+        $role->add_cap( 'edit_private_products' );
+        $role->add_cap( 'edit_published_products' );
+        $role->add_cap( 'edit_products' );
+        $role->add_cap( 'manage_woocommerce_taxonomies' );
+        $role->add_cap( 'manage_woocommerce_orders' );
+        $role->add_cap( 'manage_woocommerce' );
+        $role->add_cap( 'view_woocommerce_reports' );
+        $role->add_cap( 'manage_product_terms' );
+        $role->add_cap( 'edit_product_terms' );
+        $role->add_cap( 'delete_product_terms' );
+        $role->add_cap( 'assign_product_terms' );
+        $role->add_cap( 'manage_categories' );
+        $role->add_cap( 'edit_others_posts' );
+        $role->add_cap( 'edit_others_pages' );
+        $role->add_cap( 'edit_others_products' );
+      }
+
       // Assign the Pages post type and Media to all roles
       $roles = $wp_roles->role_names;
       foreach ($roles as $role => $role_name) {
@@ -141,4 +179,20 @@ function include_all_users($output)
     $output .= '</select>';
 
     return $output;
+}
+
+$user = wp_get_current_user();
+$allowed_roles = array('seo');
+if( array_intersect($allowed_roles, $user->roles ) ) {  
+  function hide_baby_boy_hide() { ?>
+    <style>
+    .wp-admin #woocommerce-product-data, #acf_after_title-sortables {
+        opacity: 0;
+        visibility: hidden;
+        display: none;
+    }
+    </style>
+  <?php
+  }
+  add_action('admin_head', 'hide_baby_boy_hide');
 }
