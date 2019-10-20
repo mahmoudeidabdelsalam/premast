@@ -191,8 +191,42 @@ if( array_intersect($allowed_roles, $user->roles ) ) {
         visibility: hidden;
         display: none;
     }
+    li#menu-media {
+      display: nono;
+    }
+
+    li#toplevel_page_woocommerce {
+      display: none;
+    }
+
+    li#toplevel_page_wc-admin-path--analytics-revenue {
+      display: none;
+    }
+
+    li#menu-users {
+      display: none;
+    }
+    li.wp-not-current-submenu.wp-menu-separator.woocommerce {
+      display: none;
+    }
+    #adminmenu li.wp-menu-separator {
+      display: none;
+    }
     </style>
   <?php
   }
   add_action('admin_head', 'hide_baby_boy_hide');
+
+
+  function remove_menus() {
+    remove_menu_page( 'jetpack' );                    //Jetpack* 
+    remove_menu_page( 'upload.php' );                 //Media
+    remove_menu_page( 'edit-comments.php' );          //Comments
+    remove_menu_page( 'themes.php' );                 //Appearance
+    remove_menu_page( 'plugins.php' );                //Plugins
+    remove_menu_page( 'users.php' );                  //Users
+    remove_menu_page( 'tools.php' );                  //Tools
+  }
+  add_action( 'admin_menu', 'remove_menus' );
+
 }
