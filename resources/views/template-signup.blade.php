@@ -6,29 +6,23 @@
 
 @section('content')
   @while(have_posts()) @php the_post() @endphp
-    <section class="section-template">
+    <section class="section-template position-relative" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
+      <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
       <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
 
           @if ( !is_user_logged_in() )
+            <div class="col-md-7 col-12 modal-show">
 
-            <div class="col-md-5 col-12 row m-0 align-items-center"  style="background-image: linear-gradient(150deg, #56ecf2 0%, #4242e3 100%);">
-              <div class="elementor-background-overlay" style="background-image: url('{{ the_field('header_section_image', 'option') }}');"></div>
-              <div class="col-12 description">
-                <h4 class="text-white title-description">{{ _e('Welcome to premast', 'premast') }}</h4>
-                <p class="text-white text-description mb-3">{{ _e('Join us and enjoy with this benefits', 'premast') }}</p> 
-                <p class="text-white min-description">{{ _e('* Recieve a 20% off discount in your E-mail', 'premast') }}</p>
-                <p class="text-white min-description">{{ _e('* Downloads hunderds of powerpoint slides and graphics for free', 'premast') }}</p>
-                <p class="text-white min-description">{{ _e('* Discover amazing new products daily', 'premast') }}</p>
-              </div>
-            </div>
-            <div class="col-md-7 col-12">
-              <div class="modal-header">
+              <div class="show-header text-center">
                 <a class="navbar-brand" href="{{ home_url('/') }}" title="{{ get_bloginfo('name') }}">
                   <img class="img-fluid" src="@if(get_field('website_logo', 'option')) {{ the_field('website_logo','option') }} @else {{ get_theme_file_uri().'/dist/images/logo-en.png' }} @endif" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
                   <span class="sr-only"> {{ get_bloginfo('name') }} </span>
                 </a>
-                <h5 class="modal-title" id="SignupUserLabel">{{ _e('Create a New Premast Account', 'premast') }}</h5>
+                <br>
+                <h5 class="modal-title" id="LoginUserLabel">{{ _e('Create a New Premast Account & Enjoy access to all of our services', 'premast') }}</h5>
+
+                <img class="img-fluid" src="{{ get_theme_file_uri().'/dist/images/logos.png' }}" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
               </div>
               <div class="modal-body">
                 <p class="register-message m-0" style="display:none"></p>
@@ -52,7 +46,7 @@
                   <p class="Conditions">
                     <input type="checkbox" id="Conditions"> <label class="d-inline-block mb-0 label-Conditions" for="Conditions">{{ _e('Accept our Terms&Conditions', 'premast') }}</label>
                   </p>
-                  <button type="submit" id="register-button" class="woocommerce-Button button" name="register" value="Register">{{ _e('Register', 'premast') }}</button>
+                  <button type="submit" id="register-button" class="woocommerce-Button button m-auto d-block" name="register" value="Register">{{ _e('Register', 'premast') }}</button>
                   <span id="sl-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span>
                 </form> 
                 
@@ -114,3 +108,52 @@
     </section>
   @endwhile
 @endsection
+
+<style>
+.modal-show {
+    background: #EFF6FA;
+    box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.269107);
+    border-radius: 14px;
+    padding: 60px 100px 20px !important;
+}
+.modal-show .login-username label, .modal-show .login-password label {
+    display: none !important;
+}
+.modal-show h5.modal-title {
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: 0.0438698px;
+    color: #3D4552;
+    mix-blend-mode: normal;
+    opacity: 0.82;
+    margin-bottom: 40px;
+    margin-top: 10px;
+}
+.modal-show  input[type="text"], input[type="password"] {
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    border-radius: 8px !important;
+    height: 40px !important;
+}
+.modal-show .modal-body {
+    padding: 40px 0;
+}
+.modal-show  p.login-submit {
+    text-align: center;
+}
+.modal-show span.switch-to-lost {
+    position: absolute;
+    bottom: 146px;
+    width: auto !important;
+    right: 0;
+}
+section.section-template span.switch-link {
+  text-align: center !important;
+}
+.modal-show  p.woocommerce-form-row.form-row {
+    align-items: center;
+}
+</style>

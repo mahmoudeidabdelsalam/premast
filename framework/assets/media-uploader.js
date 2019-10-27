@@ -65,33 +65,36 @@
         return;
       }
 
+      
+
       gallery_upload = wp.media.frames.gallery_upload = wp.media({
         title: $(this).data('uploader_title'),
+        frame: 'post',
+        state: 'gallery-library',
         button: {
           text: $(this).data('uploader_button_text'),
         },
-        multiple: true // set this to true for multiple file selection
+        multiple: true, // set this to true for multiple file selection
       });
 
-      gallery_upload.on('select', function () {
-        attachments = gallery_upload.state().get('selection').toJSON();
+      // when click Insert Gallery, run callback
+      gallery_upload.on('update', function () {
+        var library = gallery_upload.state().get('library');
+        var images = [];
+        var image_ids = [];
 
-        var i;
-        var ids = '';
-        var images = '';
-
-        for (i = 0; i < attachments.length; ++i) {
-          ids += attachments[i].id + ',';
-          images += '<img class="thumb" src="' + attachments[i].url + '" >';
-        }
-
-        //sample function 1: add image preview
-        $('#thumb-output').html(images);
-        $('#gallers').attr('value', ids);
-
+        library.map(function (image) {
+          image = image.toJSON();
+          images.push(image.url);
+          image_ids.push(image.id);
+          $('#thumb-output').html();
+          $('#thumb-output').append('<img class="thumb"  src="' + image.url + '" alt="" />');
+          $('#gallers').attr('value', image_ids);
+        });
       });
 
       gallery_upload.open();
+
     });
 
 

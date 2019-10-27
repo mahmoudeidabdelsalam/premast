@@ -43,19 +43,16 @@
   $count = $loop->found_posts;
 @endphp
 
-@if (get_field('banner_items_headline', 'option'))
-<section class="banner-items mb-5" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
-  <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
-  <div class="container">
-    <div class="row justify-content-center align-items-center text-center">
-      <div class="page-header">
-        <h1 class="text-white">{!! single_tag_title() !!}</h1>
+@if (get_field('images_tags', 'option'))
+  <section class="banner-items mb-5" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
+    <div class="elementor-background-overlay" style="background-image: url('{{ the_field('images_tags','option') }}');"></div>
+    <div class="container">
+      <div class="row justify-content-center align-items-center text-center">
+        <h2 class="col-12 text-white"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{  $count }}</strong> <span class="font-weight-300">{{ the_field('heading_tags','option') }}</span></h2>
+        <p class="col-md-5 col-12 text-white font-weight-300">{{ the_field('description_tags','option') }}</p>
       </div>
-      <h2 class="col-12 text-white"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{  $count }}</strong> <span class="font-weight-300">{{ the_field('banner_items_headline','option') }}</span></h2>
-      <p class="col-md-5 col-12 text-white font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
     </div>
-  </div>
-</section>
+  </section>
 @endif
 <div class="container-fiuld">
   <div class="row justify-content-center m-0">
