@@ -279,7 +279,7 @@
                     {!! get_simple_likes_button( get_the_ID() ) !!}
                   </li>
                   <li class="pinterest-share button-share">
-                    <a target="_blank" href="http://pinterest.com/pin/create/button/?url{{ the_permalink() }}=&media={{ Utilities::global_thumbnails(get_the_ID(),'full')}}&description={{ get_the_title() }}" class="pin-it-button" count-layout="horizontal">
+                    <a target="_blank" href="http://pinterest.com/pin/create/button/?url{{ the_permalink() }}=&media={{ Utilities::global_thumbnails(get_the_ID(),'medium_large')}}&description={{ get_the_title() }}" class="pin-it-button" count-layout="horizontal">
                      <small>Pin it</small> <i class="fa fa-pinterest-p" aria-hidden="true"></i>
                     </a>
                   </li>
@@ -290,8 +290,8 @@
                   @endif
                 </ul>
 
-                <div class="bg-white  bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');height: 230px; min-height: 230px;">
-                  <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
+                <div class="bg-white  bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'medium_large')}}');height: 230px; min-height: 230px;">
+                  <img src="{{ Utilities::global_thumbnails(get_the_ID(),'medium_large')}}" class="card-img-top" alt="{{ the_title() }}">
                   <div class="card-overlay"><a class="the_permalink" href="{{ the_permalink() }}"></a></div>
                 </div>
                 <div class="card-body pt-2 pl-0 pr-0 pb-0">
