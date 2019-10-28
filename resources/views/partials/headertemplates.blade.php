@@ -237,12 +237,12 @@
     $heading = get_field('heading_cat', $term);
     $description = get_field('description_cat', $term);
   @endphp
-    @if ($image)
+    @if ($heading)
       <section class="banner-items mb-5" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
         <div class="elementor-background-overlay" style="background-image: url('{{ $image }}');"></div>
         <div class="container">
           <div class="row justify-content-center align-items-center text-center">
-            <h2 class="col-12 text-white"><strong class="font-weight-600">{{ $heading  }} +{{  $count }}</strong> <span class="font-weight-300">{{ $heading }}</span></h2>
+            <h2 class="col-12 text-white"><span class="font-weight-300">{{ $heading }}</span></h2>
             <p class="col-md-5 col-12 text-white font-weight-300">{{ $description }}</p>
           </div>
         </div>
