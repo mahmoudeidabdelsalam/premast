@@ -36399,6 +36399,49 @@ div#ReportAProblem .modal-content .gform_wrapper ul li.gfield {
   top: 8px;
 }
 
+/* line 2986, resources/assets/styles/layouts/_woocommerce.scss */
+
+span.custom-onsale {
+  background: #FFB800;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border-radius: 4px;
+  font-size: 14px !important;
+  text-align: center;
+  color: #000000 !important;
+  width: 62px;
+  height: 20px;
+  display: inline-block;
+  line-height: 20px;
+  position: absolute;
+  left: -10px;
+  text-transform: uppercase;
+  z-index: 9;
+}
+
+/* line 3003, resources/assets/styles/layouts/_woocommerce.scss */
+
+span.custom-onsale:before {
+  content: "";
+  border-top: 8px solid #E6A601;
+  border-left: 8px solid transparent;
+  position: absolute;
+  bottom: -7px;
+  z-index: 0;
+  left: 1px;
+}
+
+/* line 3013, resources/assets/styles/layouts/_woocommerce.scss */
+
+.col-offer a {
+  background-color: #1e6dfb;
+  border-radius: 5px 5px 5px 5px;
+  padding: 6px 20px 6px 20px;
+  color: #ffff;
+  font-weight: 500;
+  margin: 0 30px;
+}
+
 /* stylelint-enable */
 
 

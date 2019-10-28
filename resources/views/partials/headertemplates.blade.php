@@ -1,3 +1,13 @@
+@if(get_field('offer_head_text', 'option'))
+<div class="col-offer" style="background-color:{{ the_field('head_background_color', 'option') }}">
+  <div class="container">
+    <div class="row justify-content-center align-content-center p-3">
+      <p class="text-center m-0">{{ the_field('offer_head_text', 'option') }} <a href="{{ the_field('head_offer_link', 'option') }}">{{ the_field('head_link_text', 'option') }}</a></p>
+    </div>
+  </div>
+</div>
+@endif
+
 @php 
   $refine   = isset($_GET['refine']) ? $_GET['refine'] : '0';
   $sort   = isset($_GET['sort']) ? $_GET['sort'] : '0';

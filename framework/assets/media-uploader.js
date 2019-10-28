@@ -58,13 +58,14 @@
 
     var gallery_upload; // variable for the wp.media file_frame
     
-    $('#frontend-gallery').on('click', function (event) {
+    $('.frontend-gallery').on('click', function (event) {
       event.preventDefault();
       if (gallery_upload) {
         gallery_upload.open();
         return;
       }
 
+      $('#thumb-output img').remove();
       
 
       gallery_upload = wp.media.frames.gallery_upload = wp.media({
@@ -87,7 +88,6 @@
           image = image.toJSON();
           images.push(image.url);
           image_ids.push(image.id);
-          $('#thumb-output').html();
           $('#thumb-output').append('<img class="thumb"  src="' + image.url + '" alt="" />');
           $('#gallers').attr('value', image_ids);
         });

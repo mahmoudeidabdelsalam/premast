@@ -864,6 +864,7 @@ if( function_exists('acf_add_local_field_group') ):
         'default_value' => '',
       ),
 
+
       array(
 				'key' => 'field_5aewqe3449254343asddsd2fafasfad30880',
 				'label' => 'Sections',
@@ -881,6 +882,82 @@ if( function_exists('acf_add_local_field_group') ):
 				'endpoint' => 0,
       ),
       
+      array(
+        'key' => 'field_5d7b93453453458bef2b72',
+        'label' => 'Offer background color',
+        'name' => 'head_background_color',
+        'type' => 'color_picker',
+        'instructions' => '',
+        'required' => 0,
+        'conditional_logic' => 0,
+        'wrapper' => array(
+          'width' => '',
+          'class' => '',
+          'id' => '',
+        ),
+        'default_value' => '',
+      ),
+
+      array(
+        'key' => 'field_5d7b94564645688ef2b70',
+        'label' => 'Offer Head link',
+        'name' => 'head_offer_link',
+        'type' => 'text',
+        'instructions' => '',
+        'required' => 0,
+        'conditional_logic' => 0,
+        'wrapper' => array(
+          'width' => '50',
+          'class' => '',
+          'id' => '',
+        ),
+        'default_value' => '',
+        'placeholder' => '',
+        'prepend' => '',
+        'append' => '',
+        'maxlength' => '',
+      ),
+
+      array(
+        'key' => 'field_5d7b9456234234234645688ef2b70',
+        'label' => 'Offer Head text',
+        'name' => 'head_link_text',
+        'type' => 'text',
+        'instructions' => '',
+        'required' => 0,
+        'conditional_logic' => 0,
+        'wrapper' => array(
+          'width' => '50',
+          'class' => '',
+          'id' => '',
+        ),
+        'default_value' => '',
+        'placeholder' => '',
+        'prepend' => '',
+        'append' => '',
+        'maxlength' => '',
+      ),
+
+      array(
+        'key' => 'field_5d7345345636b9830f2b6e',
+        'label' => 'Offer text',
+        'name' => 'offer_head_text',
+        'type' => 'textarea',
+        'instructions' => '',
+        'required' => 0,
+        'conditional_logic' => 0,
+        'wrapper' => array(
+          'width' => '',
+          'class' => '',
+          'id' => '',
+        ),
+        'default_value' => '',
+        'placeholder' => '',
+        'maxlength' => '',
+        'rows' => '',
+        'new_lines' => '',
+      ),
+
       array (
 				'return_format' => 'url',
 				'preview_size' => 'thumbnail',

@@ -356,33 +356,3 @@
 </div>
 
 @endsection
-
-
-<style>
-span.custom-onsale {
-  background: #FFB800;
-  backdrop-filter: blur(10px);
-  border-radius: 4px;
-  font-size: 14px !important;
-  text-align: center;
-  color: #000000 !important;
-  width: 62px;
-  height: 20px;
-  display: inline-block;
-  line-height: 20px;
-  position: absolute;
-  left: -10px;
-  text-transform: uppercase;
-  z-index: 9;
-}
-
-span.custom-onsale:before {
-  content: "";
-  border-top: 8px solid #E6A601;
-  border-left: 8px solid transparent;
-  position: absolute;
-  bottom: -7px;
-  z-index: 0;
-  left: 1px;
-}
-</style>

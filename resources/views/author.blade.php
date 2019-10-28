@@ -5,7 +5,9 @@
 @php 
   global $current_user;
   wp_get_current_user();
-  
+  $user = wp_get_current_user();
+  $administrator = array('administrator');
+
   $author = get_user_by( 'slug', get_query_var( 'author_name' ) );
 
   $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
@@ -37,14 +39,24 @@
   );
   $all_drafts = new WP_Query( $drafts );
 
+  if ( array_intersect($administrator, $user->roles)) {
   // All Pending
-  $pending = array(
-    'post_type'       => array('product'),
-    'author'          =>  $author->ID,
-    'post_status'     => 'pending',
-    'posts_per_page'  => -1,
-  );
-  $all_pending = new WP_Query( $pending );
+    $pending = array(
+      'post_type'       => array('product'),
+      'post_status'     => 'pending',
+      'posts_per_page'  => -1,
+    );
+    $all_pending = new WP_Query( $pending );
+  } else {
+  // All Pending
+    $pending = array(
+      'post_type'       => array('product'),
+      'author'          =>  $author->ID,
+      'post_status'     => 'pending',
+      'posts_per_page'  => -1,
+    );
+    $all_pending = new WP_Query( $pending );
+  }
 
   // All Live
   $live = array(
@@ -100,7 +112,7 @@
 <section class="bg-gray-dark nav-vandor">
   <div class="container-fiuld woocommerce">
     <div class="row">
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <ul class="nav nav-tabs" id="myTabUser" role="tablist">
         <li class="nav-item">
           <a class="nav-link @if($dashboard == 'true' && $items != 'true' && $statistics != 'true' && $support != 'true') active @endif" id="dashboard-tab" data-tab="dashboard" data-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard" aria-selected="true">{{ _e('dashboard', 'premast') }}</a>
         </li>
@@ -291,7 +303,7 @@
 
 <script>
   jQuery(function($) {
-    $('#myTab a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    $('#myTabUser a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
       var $current_tab = $(e.target);
       var tab = $current_tab.attr('data-tab');
       var $location = location.origin + location.pathname;
