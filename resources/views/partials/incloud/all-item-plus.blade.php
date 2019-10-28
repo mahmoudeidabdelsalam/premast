@@ -1,4 +1,4 @@
-<ul class="nav nav-tabs" id="myTab" role="tablist">
+<ul class="nav nav-tabs" id="myTabPlus" role="tablist">
   <li class="nav-item nav-first">
     {{ _e('category', 'premast') }}
   </li>

@@ -35545,7 +35545,7 @@ button#place_order:hover {
 
 /* line 2366, resources/assets/styles/layouts/_woocommerce.scss */
 
-ul#myTab {
+ul#myTabPlus {
   background: #FFFFFF;
   -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
@@ -35559,7 +35559,7 @@ ul#myTab {
 
 /* line 2375, resources/assets/styles/layouts/_woocommerce.scss */
 
-ul#myTab li.nav-first {
+ul#myTabPlus li.nav-first {
   border-right: 1px solid rgba(0, 0, 0, 0.09);
   padding-right: 30px;
   margin-right: 70px;
@@ -35574,12 +35574,12 @@ ul#myTab li.nav-first {
 
 /* line 2388, resources/assets/styles/layouts/_woocommerce.scss */
 
-ul#myTab .nav-link.active,
-ul#myTab .banner .nav a.active,
-.banner .nav ul#myTab a.active,
-ul#myTab .nav-link,
-ul#myTab .banner .nav a,
-.banner .nav ul#myTab a {
+ul#myTabPlus .nav-link.active,
+ul#myTabPlus .banner .nav a.active,
+.banner .nav ul#myTabPlus a.active,
+ul#myTabPlus .nav-link,
+ul#myTabPlus .banner .nav a,
+.banner .nav ul#myTabPlus a {
   border: none !important;
   font-weight: 500;
   font-size: 20px;
@@ -35591,12 +35591,12 @@ ul#myTab .banner .nav a,
 
 /* line 2399, resources/assets/styles/layouts/_woocommerce.scss */
 
-ul#myTab .nav-link.active:after,
-ul#myTab .banner .nav a.active:after,
-.banner .nav ul#myTab a.active:after,
-ul#myTab .nav-link:after,
-ul#myTab .banner .nav a:after,
-.banner .nav ul#myTab a:after {
+ul#myTabPlus .nav-link.active:after,
+ul#myTabPlus .banner .nav a.active:after,
+.banner .nav ul#myTabPlus a.active:after,
+ul#myTabPlus .nav-link:after,
+ul#myTabPlus .banner .nav a:after,
+.banner .nav ul#myTabPlus a:after {
   content: "";
   height: 20px;
   width: 20px;
@@ -35608,9 +35608,9 @@ ul#myTab .banner .nav a:after,
 
 /* line 2410, resources/assets/styles/layouts/_woocommerce.scss */
 
-ul#myTab .nav-link.active:after,
-ul#myTab .banner .nav a.active:after,
-.banner .nav ul#myTab a.active:after {
+ul#myTabPlus .nav-link.active:after,
+ul#myTabPlus .banner .nav a.active:after,
+.banner .nav ul#myTabPlus a.active:after {
   background: #1E6DFB;
   -webkit-box-shadow: 0 0 0 2px #333;
           box-shadow: 0 0 0 2px #333;

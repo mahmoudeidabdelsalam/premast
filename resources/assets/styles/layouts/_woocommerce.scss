@@ -2363,7 +2363,7 @@ button#place_order:hover {
   font-weight: 300;
 }
 
-ul#myTab {
+ul#myTabPlus {
   background: #FFFFFF;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
   border-radius: 7px;
@@ -2372,7 +2372,7 @@ ul#myTab {
   align-items: center;
 }
 
-ul#myTab li.nav-first {
+ul#myTabPlus li.nav-first {
   border-right: 1px solid rgba(0, 0, 0, 0.09);
   padding-right: 30px;
   margin-right: 70px;
@@ -2385,8 +2385,8 @@ ul#myTab li.nav-first {
   padding-left: 10px;
 }
 
-ul#myTab .nav-link.active,
-ul#myTab .nav-link {
+ul#myTabPlus .nav-link.active,
+ul#myTabPlus .nav-link {
   border: none !important;
   font-weight: 500;
   font-size: 20px;
@@ -2396,8 +2396,8 @@ ul#myTab .nav-link {
   color: #282F39 !important;
 }
 
-ul#myTab .nav-link.active:after,
-ul#myTab .nav-link:after {
+ul#myTabPlus .nav-link.active:after,
+ul#myTabPlus .nav-link:after {
   content: "";
   height: 20px;
   width: 20px;
@@ -2407,7 +2407,7 @@ ul#myTab .nav-link:after {
   border-radius: 100%;
 }
 
-ul#myTab .nav-link.active:after {
+ul#myTabPlus .nav-link.active:after {
   background: #1E6DFB;
   box-shadow: 0 0 0 2px #333;
   border-color: #fff !important;
