@@ -61,7 +61,7 @@
                 <img src="{{ $thumb_url }}" alt="{{ the_title() }}" class="img-fluid img-post wp-post-thumbnail">
               @endif
 
-              <div class="description">  
+              <div class="blog-contet">  
                 @php the_content() @endphp
               </div>
 
