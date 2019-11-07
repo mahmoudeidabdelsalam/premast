@@ -236,7 +236,7 @@ if( function_exists('acf_add_local_field_group') ):
       ),
       array(
 				'key' => 'field_5a8bdbe9102f2110481423432423423423463',
-				'label' => 'Download Page',
+				'label' => 'thaks payemnt Page',
 				'name' => 'thanks_page',
 				'type' => 'page_link',
 				'instructions' => '',

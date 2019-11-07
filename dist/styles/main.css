@@ -27037,32 +27037,26 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
 
 /* line 1, resources/assets/styles/common/_global.scss */
 
-body,
-html {
-  overflow-x: hidden;
-}
-
-/* line 6, resources/assets/styles/common/_global.scss */
-
 body {
   font-family: "Roboto", sans-serif, Helvetica, Arial;
   font-weight: 300;
   background-color: rgba(61, 69, 82, 0.01);
+  overflow-x: hidden;
 }
 
-/* line 11, resources/assets/styles/common/_global.scss */
+/* line 7, resources/assets/styles/common/_global.scss */
 
 body.single-product {
   background: #eff6fa;
 }
 
-/* line 15, resources/assets/styles/common/_global.scss */
+/* line 11, resources/assets/styles/common/_global.scss */
 
 body.author {
   background: #eff6fa;
 }
 
-/* line 20, resources/assets/styles/common/_global.scss */
+/* line 16, resources/assets/styles/common/_global.scss */
 
 .background-overlay {
   background-color: transparent;
@@ -27079,7 +27073,7 @@ body.author {
   top: 0;
 }
 
-/* line 31, resources/assets/styles/common/_global.scss */
+/* line 27, resources/assets/styles/common/_global.scss */
 
 .background-center {
   background-position: center center;
@@ -27090,7 +27084,7 @@ body.author {
   transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s, -webkit-box-shadow 0.3s;
 }
 
-/* line 36, resources/assets/styles/common/_global.scss */
+/* line 32, resources/assets/styles/common/_global.scss */
 
 .btn,
 .comment-form input[type="submit"],
@@ -27107,39 +27101,39 @@ body.author {
   letter-spacing: 0.0877093px;
 }
 
-/* line 46, resources/assets/styles/common/_global.scss */
+/* line 42, resources/assets/styles/common/_global.scss */
 
 .font-weight-300 {
   font-weight: 300;
 }
 
-/* line 50, resources/assets/styles/common/_global.scss */
+/* line 46, resources/assets/styles/common/_global.scss */
 
 .font-weight-400 {
   font-weight: 400;
 }
 
-/* line 54, resources/assets/styles/common/_global.scss */
+/* line 50, resources/assets/styles/common/_global.scss */
 
 .font-weight-600 {
   font-weight: blod;
 }
 
-/* line 59, resources/assets/styles/common/_global.scss */
+/* line 55, resources/assets/styles/common/_global.scss */
 
 a:hover {
   text-decoration: none;
 }
 
 @media (min-width: 992px) {
-  /* line 65, resources/assets/styles/common/_global.scss */
+  /* line 61, resources/assets/styles/common/_global.scss */
 
   .container {
     max-width: 1140px;
   }
 }
 
-/* line 72, resources/assets/styles/common/_global.scss */
+/* line 68, resources/assets/styles/common/_global.scss */
 
 .pagination li.page-item .page-numbers {
   position: relative;
@@ -27156,14 +27150,14 @@ a:hover {
   margin: 0 10px;
 }
 
-/* line 86, resources/assets/styles/common/_global.scss */
+/* line 82, resources/assets/styles/common/_global.scss */
 
 .pagination li.page-item .page-numbers.current {
   color: #fcfcfc;
   background-color: #1e6cfb;
 }
 
-/* line 94, resources/assets/styles/common/_global.scss */
+/* line 90, resources/assets/styles/common/_global.scss */
 
 .modal-content {
   background: #eff6fa;
@@ -27172,7 +27166,7 @@ a:hover {
   border-radius: 14px;
 }
 
-/* line 102, resources/assets/styles/common/_global.scss */
+/* line 98, resources/assets/styles/common/_global.scss */
 
 .lSSlideOuter .lSPager.lSGallery li {
   height: 61px;
@@ -27180,7 +27174,7 @@ a:hover {
   border-radius: 5px;
 }
 
-/* line 107, resources/assets/styles/common/_global.scss */
+/* line 103, resources/assets/styles/common/_global.scss */
 
 .lSSlideOuter .lSPager.lSGallery li.active {
   height: 91px;
@@ -27196,7 +27190,7 @@ a:hover {
   background-color: #333333;
 }
 
-/* line 118, resources/assets/styles/common/_global.scss */
+/* line 114, resources/assets/styles/common/_global.scss */
 
 .malinky-ajax-pagination-loading img {
   -webkit-animation: spinner-border 0.75s linear infinite;
@@ -28701,26 +28695,32 @@ footer .gform_widget h3 {
   letter-spacing: 0.11px;
 }
 
-/* line 17, resources/assets/styles/layouts/_footer.scss */
+/* line 16, resources/assets/styles/layouts/_footer.scss */
+
+footer .gform_widget .gform_wrapper {
+  margin: 30px 0;
+}
+
+/* line 19, resources/assets/styles/layouts/_footer.scss */
 
 footer .gform_widget .gform_wrapper h3.gform_title,
 footer .gform_widget .gform_wrapper span.gform_description {
   display: none;
 }
 
-/* line 22, resources/assets/styles/layouts/_footer.scss */
+/* line 24, resources/assets/styles/layouts/_footer.scss */
 
 footer .gform_widget .gform_wrapper label.gfield_label {
   display: none !important;
 }
 
-/* line 26, resources/assets/styles/layouts/_footer.scss */
+/* line 28, resources/assets/styles/layouts/_footer.scss */
 
 footer .gform_widget .gform_wrapper form {
   position: relative;
 }
 
-/* line 29, resources/assets/styles/layouts/_footer.scss */
+/* line 31, resources/assets/styles/layouts/_footer.scss */
 
 footer .gform_widget .gform_wrapper form input {
   background-color: #3d4552;
@@ -28731,13 +28731,13 @@ footer .gform_widget .gform_wrapper form input {
   height: 45px !important;
 }
 
-/* line 38, resources/assets/styles/layouts/_footer.scss */
+/* line 40, resources/assets/styles/layouts/_footer.scss */
 
 footer .gform_widget .gform_wrapper form .gform_heading {
   display: none;
 }
 
-/* line 42, resources/assets/styles/layouts/_footer.scss */
+/* line 44, resources/assets/styles/layouts/_footer.scss */
 
 footer .gform_widget .gform_wrapper form .gform_footer {
   padding: 0;
@@ -28749,7 +28749,7 @@ footer .gform_widget .gform_wrapper form .gform_footer {
   margin: 0 !important;
 }
 
-/* line 51, resources/assets/styles/layouts/_footer.scss */
+/* line 53, resources/assets/styles/layouts/_footer.scss */
 
 footer .gform_widget .gform_wrapper form .gform_footer button {
   height: 45px !important;
@@ -28765,13 +28765,13 @@ footer .gform_widget .gform_wrapper form .gform_footer button {
           box-shadow: none !important;
 }
 
-/* line 65, resources/assets/styles/layouts/_footer.scss */
+/* line 67, resources/assets/styles/layouts/_footer.scss */
 
 footer .gform_widget .gform_wrapper .validation_error {
   display: none;
 }
 
-/* line 69, resources/assets/styles/layouts/_footer.scss */
+/* line 71, resources/assets/styles/layouts/_footer.scss */
 
 footer .gform_widget .gform_wrapper .gfield_error {
   padding: 0 !important;
@@ -28780,19 +28780,19 @@ footer .gform_widget .gform_wrapper .gfield_error {
   background: transparent !important;
 }
 
-/* line 76, resources/assets/styles/layouts/_footer.scss */
+/* line 78, resources/assets/styles/layouts/_footer.scss */
 
 footer .gform_widget .gform_wrapper .validation_message {
   position: absolute;
 }
 
-/* line 80, resources/assets/styles/layouts/_footer.scss */
+/* line 82, resources/assets/styles/layouts/_footer.scss */
 
 footer .gform_widget .gform_wrapper div.ginput_container {
   margin: 0;
 }
 
-/* line 87, resources/assets/styles/layouts/_footer.scss */
+/* line 89, resources/assets/styles/layouts/_footer.scss */
 
 footer .navbar-footer .navbar {
   -webkit-box-align: self-end;
@@ -28800,7 +28800,7 @@ footer .navbar-footer .navbar {
           align-items: self-end;
 }
 
-/* line 91, resources/assets/styles/layouts/_footer.scss */
+/* line 93, resources/assets/styles/layouts/_footer.scss */
 
 footer .navbar-footer .navbar .menu-item .nav-link,
 footer .navbar-footer .navbar .menu-item .banner .nav a,
@@ -28810,7 +28810,7 @@ footer .navbar-footer .navbar .menu-item .banner .nav a,
   font-weight: 500;
 }
 
-/* line 96, resources/assets/styles/layouts/_footer.scss */
+/* line 98, resources/assets/styles/layouts/_footer.scss */
 
 footer .navbar-footer .navbar .menu-item .nav-link[data-toggle="dropdown"],
 footer .navbar-footer .navbar .menu-item .banner .nav a[data-toggle="dropdown"],
@@ -28820,7 +28820,7 @@ footer .navbar-footer .navbar .menu-item .banner .nav a[data-toggle="dropdown"],
   font-weight: 500;
 }
 
-/* line 102, resources/assets/styles/layouts/_footer.scss */
+/* line 104, resources/assets/styles/layouts/_footer.scss */
 
 footer .navbar-footer .navbar .menu-item .nav-link span,
 footer .navbar-footer .navbar .menu-item .banner .nav a span,
@@ -28828,24 +28828,24 @@ footer .navbar-footer .navbar .menu-item .banner .nav a span,
   display: none;
 }
 
-/* line 107, resources/assets/styles/layouts/_footer.scss */
+/* line 109, resources/assets/styles/layouts/_footer.scss */
 
 footer .navbar-footer .navbar .menu-item ul.dropdown-menu {
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
+  display: block !important;
   padding: 0;
   left: 0 !important;
   background: transparent;
   border: none;
-  position: relative;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
+  position: static;
 }
 
 /* line 117, resources/assets/styles/layouts/_footer.scss */
+
+footer .navbar-footer .navbar .menu-item ul.dropdown-menu .menu-item {
+  display: block;
+}
+
+/* line 120, resources/assets/styles/layouts/_footer.scss */
 
 footer .navbar-footer .navbar .menu-item ul.dropdown-menu .menu-item .nav-link,
 footer .navbar-footer .navbar .menu-item ul.dropdown-menu .menu-item .banner .nav a,
@@ -28856,37 +28856,37 @@ footer .navbar-footer .navbar .menu-item ul.dropdown-menu .menu-item .banner .na
 }
 
 @media (max-width: 767.98px) {
-  /* line 129, resources/assets/styles/layouts/_footer.scss */
+  /* line 132, resources/assets/styles/layouts/_footer.scss */
 
   footer.content-info {
     display: none;
   }
 }
 
-/* line 135, resources/assets/styles/layouts/_footer.scss */
+/* line 138, resources/assets/styles/layouts/_footer.scss */
 
 section.copyright {
   color: rgba(255, 255, 255, 0.26);
-  padding: 15px;
+  padding: 0 50px 12px;
   background-color: #3d4552;
   font-size: 14px;
 }
 
 @media (max-width: 767.98px) {
-  /* line 135, resources/assets/styles/layouts/_footer.scss */
+  /* line 138, resources/assets/styles/layouts/_footer.scss */
 
   section.copyright {
     padding: 20px 0;
   }
 
-  /* line 144, resources/assets/styles/layouts/_footer.scss */
+  /* line 147, resources/assets/styles/layouts/_footer.scss */
 
   section.copyright .col-md-6 {
     margin: 10px auto;
   }
 }
 
-/* line 151, resources/assets/styles/layouts/_footer.scss */
+/* line 154, resources/assets/styles/layouts/_footer.scss */
 
 section.copyright .social-icons-ql li a {
   background-color: #656d7a;
@@ -28904,13 +28904,38 @@ section.copyright .social-icons-ql li a {
   border-radius: 7px;
 }
 
-/* line 160, resources/assets/styles/layouts/_footer.scss */
+/* line 163, resources/assets/styles/layouts/_footer.scss */
 
 section.copyright .social-icons-ql li a i {
   font-size: 15px !important;
 }
 
-/* line 168, resources/assets/styles/layouts/_footer.scss */
+/* line 170, resources/assets/styles/layouts/_footer.scss */
+
+section.copyright span.footer-secure-payment {
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+  letter-spacing: 0.116946px;
+  text-transform: capitalize;
+  color: #eff6fa;
+  display: inline-block;
+}
+
+/* line 179, resources/assets/styles/layouts/_footer.scss */
+
+section.copyright span.footer-secure-payment::after {
+  content: "";
+  height: 40px;
+  width: 1px;
+  background: #282f39;
+  display: inline-block;
+  margin: 0 20px;
+  top: 15px;
+  position: relative;
+}
+
+/* line 192, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser,
 div#SignupUser {
@@ -28918,7 +28943,7 @@ div#SignupUser {
   /* stylelint-enable */
 }
 
-/* line 174, resources/assets/styles/layouts/_footer.scss */
+/* line 198, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .register-user p input[type="text"],
 div#LoginUser .register-user p input[type="password"],
@@ -28948,7 +28973,7 @@ div#SignupUser form#loginform p input[type="email"] {
   padding: 0 10px;
 }
 
-/* line 187, resources/assets/styles/layouts/_footer.scss */
+/* line 211, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .register-user p.login-remember,
 div#LoginUser .lost_reset_password p.login-remember,
@@ -28963,7 +28988,7 @@ div#SignupUser form#loginform p.login-remember {
   color: #777777;
 }
 
-/* line 194, resources/assets/styles/layouts/_footer.scss */
+/* line 218, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .register-user p.login-remember input,
 div#LoginUser .lost_reset_password p.login-remember input,
@@ -28981,7 +29006,7 @@ div#SignupUser form#loginform p.login-remember input {
   vertical-align: middle;
 }
 
-/* line 205, resources/assets/styles/layouts/_footer.scss */
+/* line 229, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .register-user p.login-remember label,
 div#LoginUser .lost_reset_password p.login-remember label,
@@ -28992,7 +29017,7 @@ div#SignupUser form#loginform p.login-remember label {
   display: block !important;
 }
 
-/* line 210, resources/assets/styles/layouts/_footer.scss */
+/* line 234, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .register-user p.login-submit,
 div#LoginUser .lost_reset_password p.login-submit,
@@ -29003,7 +29028,7 @@ div#SignupUser form#loginform p.login-submit {
   margin: 0;
 }
 
-/* line 213, resources/assets/styles/layouts/_footer.scss */
+/* line 237, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .register-user p.login-submit input#wp-submit,
 div#LoginUser .lost_reset_password p.login-submit input#wp-submit,
@@ -29028,7 +29053,7 @@ div#SignupUser form#loginform p.login-submit input#wp-submit {
   display: block;
 }
 
-/* line 230, resources/assets/styles/layouts/_footer.scss */
+/* line 254, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .register-user .woocommerce-Button,
 div#LoginUser .lost_reset_password .woocommerce-Button,
@@ -29053,7 +29078,7 @@ div#SignupUser form#loginform .woocommerce-Button {
   display: block;
 }
 
-/* line 246, resources/assets/styles/layouts/_footer.scss */
+/* line 270, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .modal-footer,
 div#SignupUser .modal-footer {
@@ -29074,7 +29099,7 @@ div#SignupUser .modal-footer {
   min-height: 100px;
 }
 
-/* line 257, resources/assets/styles/layouts/_footer.scss */
+/* line 281, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .modal-footer a,
 div#SignupUser .modal-footer a {
@@ -29084,7 +29109,7 @@ div#SignupUser .modal-footer a {
   margin: 0 10px;
 }
 
-/* line 263, resources/assets/styles/layouts/_footer.scss */
+/* line 287, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .modal-footer a:hover,
 div#LoginUser .modal-footer a.active,
@@ -29100,7 +29125,7 @@ div#SignupUser .modal-footer a:focus {
   outline: none;
 }
 
-/* line 274, resources/assets/styles/layouts/_footer.scss */
+/* line 298, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .modal-footer .nav,
 div#SignupUser .modal-footer .nav {
@@ -29114,7 +29139,7 @@ div#SignupUser .modal-footer .nav {
   border: none;
 }
 
-/* line 280, resources/assets/styles/layouts/_footer.scss */
+/* line 304, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .modal-footer .nav li.nav-item,
 div#LoginUser .modal-footer .banner .nav li,
@@ -29126,7 +29151,7 @@ div#SignupUser .modal-footer .banner .nav li,
   padding: 0 20px;
 }
 
-/* line 284, resources/assets/styles/layouts/_footer.scss */
+/* line 308, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .modal-footer .nav li.nav-item::after,
 div#LoginUser .modal-footer .banner .nav li::after,
@@ -29144,7 +29169,7 @@ div#SignupUser .modal-footer .banner .nav li::after,
   top: 0;
 }
 
-/* line 296, resources/assets/styles/layouts/_footer.scss */
+/* line 320, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .modal-footer .nav li.nav-item:last-child::after,
 div#LoginUser .modal-footer .banner .nav li:last-child::after,
@@ -29155,7 +29180,7 @@ div#SignupUser .modal-footer .banner .nav li:last-child::after,
   display: none;
 }
 
-/* line 304, resources/assets/styles/layouts/_footer.scss */
+/* line 328, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .modal-header,
 div#SignupUser .modal-header {
@@ -29177,7 +29202,7 @@ div#SignupUser .modal-header {
   position: relative;
 }
 
-/* line 313, resources/assets/styles/layouts/_footer.scss */
+/* line 337, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .modal-header .close,
 div#SignupUser .modal-header .close {
@@ -29186,7 +29211,7 @@ div#SignupUser .modal-header .close {
   right: 0;
 }
 
-/* line 319, resources/assets/styles/layouts/_footer.scss */
+/* line 343, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .modal-header .modal-title,
 div#SignupUser .modal-header .modal-title {
@@ -29198,7 +29223,7 @@ div#SignupUser .modal-header .modal-title {
   margin-top: 15px;
 }
 
-/* line 329, resources/assets/styles/layouts/_footer.scss */
+/* line 353, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .modal-content,
 div#SignupUser .modal-content {
@@ -29209,7 +29234,7 @@ div#SignupUser .modal-content {
           box-shadow: none;
 }
 
-/* line 336, resources/assets/styles/layouts/_footer.scss */
+/* line 360, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .modal-content .description .title-description,
 div#SignupUser .modal-content .description .title-description {
@@ -29220,7 +29245,7 @@ div#SignupUser .modal-content .description .title-description {
   font-weight: 300;
 }
 
-/* line 344, resources/assets/styles/layouts/_footer.scss */
+/* line 368, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .modal-content .description .text-description,
 div#SignupUser .modal-content .description .text-description {
@@ -29231,7 +29256,7 @@ div#SignupUser .modal-content .description .text-description {
   margin-top: 30px;
 }
 
-/* line 352, resources/assets/styles/layouts/_footer.scss */
+/* line 376, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .modal-content .description .min-description,
 div#SignupUser .modal-content .description .min-description {
@@ -29239,7 +29264,7 @@ div#SignupUser .modal-content .description .min-description {
   font-size: 14px;
 }
 
-/* line 359, resources/assets/styles/layouts/_footer.scss */
+/* line 383, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .switch-to-lost,
 div#SignupUser .switch-to-lost {
@@ -29253,7 +29278,7 @@ div#SignupUser .switch-to-lost {
   cursor: pointer;
 }
 
-/* line 370, resources/assets/styles/layouts/_footer.scss */
+/* line 394, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .switch-to-login,
 div#SignupUser .switch-to-login {
@@ -29264,14 +29289,14 @@ div#SignupUser .switch-to-login {
   display: inline-block;
 }
 
-/* line 378, resources/assets/styles/layouts/_footer.scss */
+/* line 402, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser label,
 div#SignupUser label {
   display: none;
 }
 
-/* line 383, resources/assets/styles/layouts/_footer.scss */
+/* line 407, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .register-message span,
 div#SignupUser .register-message span {
@@ -29283,7 +29308,7 @@ div#SignupUser .register-message span {
   padding: 5px 10px;
 }
 
-/* line 393, resources/assets/styles/layouts/_footer.scss */
+/* line 417, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .Conditions,
 div#SignupUser .Conditions {
@@ -29296,7 +29321,7 @@ div#SignupUser .Conditions {
   cursor: pointer;
 }
 
-/* line 398, resources/assets/styles/layouts/_footer.scss */
+/* line 422, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .Conditions label,
 div#SignupUser .Conditions label {
@@ -29307,14 +29332,14 @@ div#SignupUser .Conditions label {
   margin: 2px 8px;
 }
 
-/* line 408, resources/assets/styles/layouts/_footer.scss */
+/* line 432, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .form-row-first,
 div#SignupUser .form-row-first {
   padding: 0 2% 0 0;
 }
 
-/* line 412, resources/assets/styles/layouts/_footer.scss */
+/* line 436, resources/assets/styles/layouts/_footer.scss */
 
 div#LoginUser .form-row-last,
 div#LoginUser .form-row-first,

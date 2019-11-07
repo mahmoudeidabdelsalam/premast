@@ -1,12 +1,8 @@
-body,
-html {
-  overflow-x: hidden;
-}
-
 body {
   font-family: $font-Roboto;
   font-weight: 300;
   background-color: rgba(61, 69, 82, 0.01);
+  overflow-x: hidden;
 
   &.single-product {
     background: rgb(239, 246, 250);

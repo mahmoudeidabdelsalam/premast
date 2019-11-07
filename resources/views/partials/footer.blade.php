@@ -9,7 +9,7 @@
           @endif
         </div>
       </div>
-      <div class="col-md-3 col-sm-12 col-12 pl-md-5 pr-md-5">
+      <div class="col-md-3 col-sm-12 col-12 pl-md-5 pr-md-5 pt-5">
         @php dynamic_sidebar('sidebar-footer') @endphp
       </div>
     </div>
@@ -18,21 +18,13 @@
 
 <section class="copyright">
   <h3 class="sr-only">{{ _e('Copyright © 2018 Premast-powerpoint design solutions. All rights reserved.', 'premast') }}</h3>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row align-items-center">
-      <div class="col-md-6">
+      <div class="col-md-6 text-left">
         {{ _e('Copyright © 2018 Premast-powerpoint design solutions. All rights reserved.', 'premast') }}
       </div>
-      <div class="col-md-6">
-        <ul class="social-icons-ql list-inline mb-0 text-right">
-          <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-          <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-          <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-          <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-          <li class="list-inline-item"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-          <li class="list-inline-item"><a href="#"><i class="fa fa-reddit"></i></a></li>
-          <li class="list-inline-item"><a href="#"><i class="fa fa-stumbleupon"></i></a></li>
-        </ul>
+      <div class="col-md-6 text-right">
+        <span class="footer-secure-payment">{{ _e('Secure Payment by', 'permast') }}</span> <img src="{{ get_theme_file_uri().'/dist/images/2checkout-2.png' }}" alt="2Checkout">
       </div>
     </div>
   </div>

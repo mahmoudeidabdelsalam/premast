@@ -62,7 +62,7 @@
               @endif
 
               <div class="description">  
-                {{ the_content() }}
+                @php the_content() @endphp
               </div>
 
               @include('partials/comments')

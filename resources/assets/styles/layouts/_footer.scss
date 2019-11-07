@@ -14,6 +14,8 @@ footer {
     }
 
     .gform_wrapper {
+      margin: 30px 0;
+
       h3.gform_title,
       span.gform_description {
         display: none;
@@ -105,15 +107,16 @@ footer {
         }
 
         ul.dropdown-menu {
-          display: flex !important;
+          display: block !important;
           padding: 0;
           left: 0 !important;
           background: transparent;
           border: none;
-          position: relative;
-          flex-flow: column;
+          position: static;
 
           .menu-item {
+            display: block;
+
             .nav-link {
               color: rgb(163, 166, 171);
               font-size: 12px;
@@ -134,7 +137,7 @@ footer {
 
 section.copyright {
   color: rgba(255, 255, 255, 0.26);
-  padding: 15px;
+  padding: 0 50px 12px;
   background-color: rgb(61, 69, 82);
   font-size: 14px;
 
@@ -161,6 +164,27 @@ section.copyright {
           font-size: 15px !important;
         }
       }
+    }
+  }
+
+  span.footer-secure-payment {
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    letter-spacing: 0.116946px;
+    text-transform: capitalize;
+    color: rgb(239, 246, 250);
+    display: inline-block;
+
+    &::after {
+      content: "";
+      height: 40px;
+      width: 1px;
+      background: rgb(40, 47, 57);
+      display: inline-block;
+      margin: 0 20px;
+      top: 15px;
+      position: relative;
     }
   }
 }
