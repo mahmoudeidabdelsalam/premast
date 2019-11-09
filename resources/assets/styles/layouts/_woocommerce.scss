@@ -3018,4 +3018,31 @@ span.custom-onsale:before {
   font-weight: 500;
   margin: 0 30px;
 }
+
+p.full-access span {
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.116946px;
+  text-transform: capitalize;
+  color: #3D4552;
+  display: block;
+  font-weight: normal;
+}
+
+p.full-access a {
+  background: linear-gradient(88.67deg, #F2C94C 0.18%, #FFA800 101.64%);
+  border-radius: 20px;
+  width: 100%;
+  display: inline-block;
+  padding: 10px;
+  margin: 10px 0;
+  font-weight: bold;
+  font-size: 17px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.116946px;
+  text-transform: capitalize;
+  color: rgba(1, 1, 1, 0.61);
+}
 /* stylelint-enable */

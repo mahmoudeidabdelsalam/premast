@@ -151,6 +151,10 @@ global $product;
               @php  
                 do_action( 'woocommerce_single_product_summary' );
               @endphp
+              <p class="full-access">
+                <span>{{ _e('OR', 'premast') }}</span>
+                <a href="{{ the_field('link_pricing', 'option') }}">{{ _e('Get Full Access', 'premast') }}</a>
+              </p>
             @endif
           </div>
 
@@ -164,9 +168,7 @@ global $product;
 
           @if($price != 0)
             <div class="row secure-payment">
-              <div class="col-md-6 col-12 p-0"><p>Secure Payment by</p></div>
-              <div class="col-md-6 col-12"><img src="{{ get_theme_file_uri().'/dist/images/2checkout-1.png' }}" alt="2Checkout"></div>
-              <div class="col-md-12 col-12 text-center"><img src="{{ get_theme_file_uri().'/dist/images/2checkout-2.png' }}" alt="2Checkout"></div>
+              <div class="col-md-12 col-12 text-center"><img src="{{ get_theme_file_uri().'/dist/images/2checkout-3.png' }}" alt="2Checkout"></div>
             </div>
           @endif
 
