@@ -10,10 +10,18 @@
 @php 
   global $current_user;
   wp_get_current_user();
+
+  $counter = $loop_items->found_posts;
+  $refine   = isset($_GET['refine']) ? $_GET['refine'] : '0';
 @endphp
 
 <div class="container-fiuld woocommerce">
   <div class="row justify-content-center m-0">
+
+    <div class="col-12 col-search">
+      <h4 class="results">{{ _e('Results for', 'premast') }} "{{ $refine }}"</h4>
+      <p>{{ _e('You found', 'premast') }} {{ $counter }} {{ $refine }} {{ _e('templates, slides & graphics', 'premast') }}</p>
+    </div>
 
     <div class="col-md-12 col-sm-12">
       <div class="item-columns grid row m-0 container-ajax">
