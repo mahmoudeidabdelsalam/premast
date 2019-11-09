@@ -236,7 +236,7 @@ function mwe_get_formatted_shipping_name_and_address($user_id) {
     $address .= '</p>';
     $address .= '<p>';
     $address .= get_user_meta( $user_id, 'billing_address_1', true );
-    $address .= ",";
+    $address .= "\n";
     $address .= get_user_meta( $user_id, 'billing_country', true );
     $address .= "\n";
     $address .= get_user_meta( $user_id, 'billing_city', true );
@@ -252,3 +252,32 @@ function mwe_get_formatted_shipping_name_and_address($user_id) {
 }
 
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
+
+
+add_filter( 'woocommerce_checkout_fields' , 'custom_remove_woo_checkout_fields' );
+ 
+function custom_remove_woo_checkout_fields( $fields ) {
+
+    // remove billing fields
+    unset($fields['billing']['billing_company']);
+    unset($fields['billing']['billing_address_1']);
+    unset($fields['billing']['billing_address_2']);
+    unset($fields['billing']['billing_city']);
+    unset($fields['billing']['billing_postcode']);
+    unset($fields['billing']['billing_state']);
+    unset($fields['billing']['billing_phone']);
+
+   
+    // remove shipping fields 
+    unset($fields['shipping']['shipping_company']);
+    unset($fields['shipping']['shipping_address_1']);
+    unset($fields['shipping']['shipping_address_2']);
+    unset($fields['shipping']['shipping_city']);
+    unset($fields['shipping']['shipping_postcode']);
+    unset($fields['shipping']['shipping_state']);
+    
+    // remove order comment fields
+    unset($fields['order']['order_comments']);
+    
+    return $fields;
+}

@@ -146,6 +146,29 @@
     
         @endphp
 
+        @if (get_field('show_card_pricing', 'option'))
+          <div class="item-card col-md-4 col-sm-4 col-sx-6 col-12 grid-item pl-4 pr-4 post-ajax">
+            <div class="card">
+              <span class="custom-onsale">
+                {{ the_field('tag_card_pricing', 'option') }}
+              </span>
+              <div class="bg-white  bg-images" style="background-image:url('{{ the_field('images_card_pricing', 'option') }}');height: 230px; min-height: 230px;">
+                <img src="{{ the_field('images_card_pricing', 'option') }}" class="card-img-top" alt="{{ the_field('heading_card_pricing', 'option') }}">
+                <div class="card-overlay"><a class="the_permalink" href="{{ the_field('lik_card_pricing', 'option') }}"></a></div>
+              </div>
+              <div class="card-body pt-2 pl-0 pr-0 pb-0">
+                <a class="card-link" href="{{ the_field('lik_card_pricing', 'option') }}">
+                  <h5 class="card-title font-weight-400">{{ the_field('heading_card_pricing', 'option') }}</h5>
+                </a>
+                <div class="review-and-download">
+                  {{ the_field('description_card_pricing', 'option') }}
+                  <span class="premium"><i class="fa fa-star"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        @endif
+
         @if($my_query->have_posts())
           @while($my_query->have_posts()) @php($my_query->the_post())
 

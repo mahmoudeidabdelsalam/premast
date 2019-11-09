@@ -100,7 +100,7 @@
                   <a class="btn-edit" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                     <?php _e('edit billing details', 'premast'); ?>
                   </a>  
-                  <div class="collapse" id="collapseExample">
+                  <div class="collapse <?= (get_user_meta( $current_user->ID, 'billing_first_name', true ) == 0)? 'show':''; ?>" id="collapseExample">
                     <?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
                     <div class="woocommerce-billing-fields__field-wrapper">
                       <?php
