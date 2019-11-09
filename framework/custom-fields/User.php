@@ -3,7 +3,7 @@ if( function_exists('acf_add_local_field_group') ):
 
   $countries = array
 (
-	'AF' => 'Afghanistan',
+	'0' => 'Select Country',
 	'AX' => 'Aland Islands',
 	'AL' => 'Albania',
 	'DZ' => 'Algeria',
