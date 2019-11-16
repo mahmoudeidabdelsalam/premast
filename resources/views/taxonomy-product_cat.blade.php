@@ -129,6 +129,7 @@
               @php 
               $term_parent = get_term_parents_list( $taxonomy_query->parent, 'product_cat' );
                 $term_link = get_term_link( $taxonomy_query );
+                $termchildren = get_term_children( $taxonomy_query->term_id, 'product_cat' );
               @endphp
               <li class="list-group-item term-parent">
                 <i class="fa fa-angle-left" aria-hidden="true"></i> {!! rtrim($term_parent,'/')  !!}
@@ -136,6 +137,16 @@
               <li class="list-group-item">
                 <a class="text-term  active " href="{{ $term_link }}">{{ $taxonomy_query->name }} <span class="count-term">{{ $taxonomy_query->count }}</span></a>
               </li>
+              @if ($termchildren)
+                @foreach ($termchildren as $child)
+                @php 
+                $term = get_term_by( 'id', $child, 'product_cat' );
+                @endphp
+                  <li class="list-group-item">
+                    <a class="text-term" href="{{ get_term_link( $term ) }}">{{ $term->name }} <span class="count-term">{{ $term->count }}</span></a>
+                  </li>
+                @endforeach
+              @endif
             @else
               <li class="list-group-item">
                 <a class="text-term text-white" href="#">{{ _e('All Categories', 'premast') }} <span class="count-term">{{ $taxonomy_query->count }}</span></a>

@@ -151,10 +151,12 @@ global $product;
               @php  
                 do_action( 'woocommerce_single_product_summary' );
               @endphp
-              <p class="full-access">
-                <span>{{ _e('OR', 'premast') }}</span>
-                <a href="{{ the_field('link_pricing', 'option') }}">{{ _e('Get Full Access', 'premast') }}</a>
-              </p>
+              @if($price != 0)
+                <p class="full-access">
+                  <span>{{ _e('OR', 'premast') }}</span>
+                  <a href="{{ the_field('link_pricing', 'option') }}">{{ _e('Get Full Access', 'premast') }}</a>
+                </p>
+              @endif
             @endif
           </div>
 
