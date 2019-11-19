@@ -78,6 +78,9 @@
                   
                   {{ wp_login_form($args) }}
                   <span class="switch-link switch-to-lost" data-tab="lost_password">{{ _e('Lost your password?', 'premast') }}</span>
+
+                  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
                 </div>
 
                 <div class="tab-pane fade" id="lost_password">

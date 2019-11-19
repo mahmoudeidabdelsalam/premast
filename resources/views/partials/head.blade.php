@@ -23,6 +23,11 @@
   <meta name="theme-color" content="#1E6CFC">
   <meta name="robots" content="index, follow" />
     
+
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <meta name="google-signin-client_id" content="196734085536-dcm2534lgl0djv6v7rl9v4k0u7l2l7mj.apps.googleusercontent.com">
+
   <!-- Head Scripts -->
   @if(get_field('header_scripts', 'option'))
     {{ the_field('header_scripts', 'option') }}

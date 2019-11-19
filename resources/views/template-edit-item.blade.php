@@ -291,12 +291,47 @@
               );
               wp_dropdown_categories( $args ); 
             ?>
-            <select name="sub_scat" id="sub_scat" disabled="disabled" multiple>
-              <option value="0" selected="selected">Sub Select</option>
-            </select>
-            <select name="sub_child" id="sub_child" disabled="disabled" multiple>
-              <option value="0" selected="selected">Sub Select</option>
-            </select>
+
+            <?php 
+              $children = get_post_child_list('product_cat', $post->ID);
+            ?>
+            <?php if($children): ?>
+              <select name="sub_scat" id="sub_scat" multiple>
+                <option value="0" selected="selected">Sub Select</option>
+                <?php 
+                  foreach ($children as $child_id): 
+                  $child = get_term_by('id', $child_id, 'product_cat')
+                  ?>
+                  <option value="<?= $child->term_id; ?>" selected="selected"><?= $child->name; ?></option>
+                <?php endforeach; ?>
+              </select>
+            <?php else: ?>
+              <select name="sub_scat" id="sub_scat" disabled="disabled" multiple>
+                <option value="0" selected="selected">Sub Select</option>
+              </select>
+          <?php endif; ?>
+
+
+
+          <?php 
+          $sub_children = get_post_childrdn('product_cat', $children, $post->ID); ?>
+
+            <?php if ($sub_children): ?>
+              <select name="sub_child" id="sub_child" multiple>
+                <option value="0" selected="selected">Sub Select</option>
+                <?php 
+                  foreach ($sub_children as $child_id): 
+                  $child = get_term_by('id', $child_id, 'product_cat')
+                  ?>
+                  <option value="<?= $child->term_id; ?>" selected="selected"><?= $child->name; ?></option>
+                <?php endforeach; ?>
+              </select>
+            <?php else: ?>
+              <select name="sub_child" id="sub_child" disabled="disabled" multiple>
+                <option value="0" selected="selected">Sub Select</option>
+              </select>
+            <?php endif; ?>
+
 
               @php 
                 $tags = wp_get_post_terms( $post->ID, 'product_tag' );
