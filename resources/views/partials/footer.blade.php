@@ -77,11 +77,11 @@
                   @endphp
                   
                   {{ wp_login_form($args) }}
-                  <span class="switch-link switch-to-lost" data-tab="lost_password">{{ _e('Lost your password?', 'premast') }}</span>
-
-                  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                  <span class="switch-link switch-to-lost position-relative" data-tab="lost_password" style=" bottom: 0; margin: 24px auto; display: block; text-align: center; width: 100%; right: 0; ">{{ _e('Lost your password?', 'premast') }}</span>
 
                 </div>
+
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
                 <div class="tab-pane fade" id="lost_password">
                   <?php
@@ -247,3 +247,12 @@
     });
   </script>
 @endif
+
+
+<style>
+.g-signin2 .abcRioButton {
+  width: 100% !important;
+  border: none !important;
+  font-size: 20px !important;
+}
+</style>
