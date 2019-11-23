@@ -152,7 +152,7 @@
               <span class="custom-onsale">
                 {{ the_field('tag_card_pricing', 'option') }}
               </span>
-              <div class="bg-white" style="background-image:url('{{ the_field('images_card_pricing', 'option') }}');height:auto;min-height:1px;">
+              <div class="bg-white" style="background-image:url('{{ the_field('images_card_pricing', 'option') }}');height:auto;min-height:180px;">
                 <img src="{{ the_field('images_card_pricing', 'option') }}" class="card-img-top" alt="{{ the_field('heading_card_pricing', 'option') }}">
                 <div class="card-overlay"><a class="the_permalink" href="{{ the_field('lik_card_pricing', 'option') }}"></a></div>
               </div>

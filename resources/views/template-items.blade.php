@@ -55,7 +55,7 @@
                   @endif
                 </ul>
 
-                <div class="bg-white" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');height:auto;min-height:1px;">
+                <div class="bg-white" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');height:auto;min-height:180px;">
                   <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
                   <div class="card-overlay"><a class="the_permalink" href="{{ the_permalink() }}"></a></div>
                 </div>
