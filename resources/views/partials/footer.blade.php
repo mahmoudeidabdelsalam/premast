@@ -81,7 +81,6 @@
 
                 </div>
 
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
                 <div class="tab-pane fade" id="lost_password">
                   <?php
@@ -248,11 +247,3 @@
   </script>
 @endif
 
-
-<style>
-.g-signin2 .abcRioButton {
-  width: 100% !important;
-  border: none !important;
-  font-size: 20px !important;
-}
-</style>
