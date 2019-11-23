@@ -103,6 +103,7 @@ export default {
 
     $('.grid').masonry({
       itemSelector: '.grid-item',
+      resize: false,
     });
 
     $('.product-grid').click(function () {

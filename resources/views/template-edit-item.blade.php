@@ -66,8 +66,9 @@
         $slide_format = $_POST["slide_format"];
         $tags = $_POST['tags'];
 
-        $tags = array_map( 'intval', $tags );
-        $tags = array_unique( $tags );
+        // dd($tags);
+        // $tags = array_map( 'intval', $tags );
+        // $tags = array_unique( $tags );
 
         $cat = $_POST["main_scat"];
         $child = $_POST["sub_scat"];
@@ -89,6 +90,7 @@
           'post_status' => $status,
           'post_author' => $post->post_author,
           'tax_input' => array( 'product_cat' => array($cat, $child, $children)),
+          'tax_input' => array( 'product_tag' => $tags),
         ));
 
         $image_id = $_POST["thumbnail"];
@@ -113,7 +115,7 @@
           update_field( 'field_5d38deb18e564', $ads_image_update, $product );
           update_field( 'field_5d38dee58e565', $ads_link_update, $product );
 
-          wp_set_object_terms($product, $tags, 'product_tag');
+          // wp_set_object_terms($product, $tags, 'product_tag');
           update_post_meta($product, '_regular_price', $prices);
           update_post_meta($product, '_price', $prices);
           update_post_meta($product, '_downloadable', 'yes');
@@ -338,7 +340,7 @@
                 $draught_tags = array();
                 if ( $tags && ! is_wp_error( $tags ) ) : 
                   foreach ( $tags as $tag ) {
-                      $draught_tags[] = $tag->term_id;
+                      $draught_tags[] = $tag->name;
                   }
                 endif;
               @endphp
@@ -351,6 +353,7 @@
                 'walker'     => new Willy_Walker_CategoryDropdown(),
                 'selected'   => $draught_tags,
                 'hide_empty' => false,
+                'value_field'       => 'name',
               ));
             ?>
           </div> 

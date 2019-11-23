@@ -13578,6 +13578,7 @@ Router.prototype.loadEvents = function loadEvents () {
 
     $('.grid').masonry({
       itemSelector: '.grid-item',
+      resize: false,
     });
 
     $('.product-grid').click(function () {

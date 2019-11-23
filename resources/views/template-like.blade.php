@@ -51,7 +51,7 @@
         @while($like_query->have_posts()) @php($like_query->the_post())
           <div class="item-card col-md-2 col-sm-3 col-sx-6 col-12 grid-item">
             <div class="card">
-              <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');min-height:155px;height:155px;">
+              <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');">
                 <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
               </div>
               <div class="card-body pt-2 pl-0 pr-0">

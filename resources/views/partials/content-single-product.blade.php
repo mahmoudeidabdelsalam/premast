@@ -121,20 +121,16 @@ global $product;
                 <div class="bottom-summary col-12 mt-4 mb-4 w-100">
                   <a class="btn-limit" href="{{ get_field('link_limit', 'option') }}" id="somdn-form-submit-button">{{ _e('Download Now', 'premast') }}</a>  
                 </div>
-
                 @if($time > $_COOKIE['lastview'])
                   <div class="modal" tabindex="-1" role="dialog" id="LimitDownload" >
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
-                        <div class="modal-header">
-                          <h3>{{ _e('You’ve reached your download limit', 'premast') }}</h3>
-                          <h5 class="modal-title">{{ _e('your subscribtion have '. $count_download .' download limit per day', 'premast') }}</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
                         <div class="modal-body">
+                          <img src="{{ get_theme_file_uri().'/resources/assets/images' }}/laptop.png" alt="Upgrade Your Plan">
+                          <h3>{{ _e('You have reached your download limit for today!', 'premast') }}</h3>
+                          <h5 class="modal-title">{{ _e('you can come back tomorrow to enjoy 2 more downloads, or upgrade plan for unlimited downloads!', 'premast') }}</h5>
                           <p><a class="btn-limit" href="{{ get_field('link_pricing', 'option') }}">{{ _e('Upgrade Your Plan', 'premast') }}</a>  </p>
+                          <p><a class="cancel" href="#" class="close" data-dismiss="modal" aria-label="Close">{{ _e('cancel', 'premast') }}</a></p>
                         </div>
                       </div>
                     </div>

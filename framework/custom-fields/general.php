@@ -101,7 +101,25 @@ if( function_exists('acf_add_local_field_group') ):
 					'id' => '',
 				),
 			),
-
+			array (
+				'default_value' => '',
+				'new_lines' => '',
+				'maxlength' => '',
+				'placeholder' => '',
+				'rows' => '',
+				'key' => 'field_584f254353d7f8e09d5',
+				'label' => 'Body Scripts',
+				'name' => 'body_scripts',
+				'type' => 'textarea',
+				'instructions' => 'Add any script you need show it in website header',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array (
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+			),
       array (
 				'message' => 'You can from here mange you login screen options like background color or images',
 				'esc_html' => 0,

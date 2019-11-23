@@ -60,8 +60,9 @@
         $slide_type = $_POST["slide_type"];
         $slide_format = $_POST["slide_format"];
         $tags = $_POST['tags'];
-        $tags = array_map( 'intval', $tags );
-        $tags = array_unique( $tags );
+
+        // $tags = array_map( 'intval', $tags );
+        // $tags = array_unique( $tags );
 
         $cat = $_POST["main_scat"];
         $child = $_POST["sub_scat"];
@@ -81,7 +82,8 @@
           'post_excerpt' => $short_description,
           'post_status' => $status,
           'post_author' => $current_user->ID,
-          'tax_input' => array( 'product_cat' => array($cat, $child, $children))
+          'tax_input' => array( 'product_cat' => array($cat, $child, $children)),
+          'tax_input' => array( 'product_tag' => $tags),
         ));
                
         $image_id = $_POST["thumbnail"];
@@ -105,7 +107,7 @@
           update_field( 'field_5d38dee58e565', $ads_link, $product );
 
 
-          wp_set_object_terms($product, $tags, 'product_tag');
+          // wp_add_post_tags($product, $tags, 'product_tag');
           update_post_meta($product, '_regular_price', $prices);
           update_post_meta($product, '_price', $prices);
           update_post_meta($product, '_downloadable', 'yes');
@@ -253,6 +255,7 @@
                 'walker'     => new Willy_Walker_CategoryDropdown(),
                 'show_option_all'=>'selected tag...',
                 'hide_empty' => false,
+                'value_field'       => 'name',
               ));
             ?>
           </div> 

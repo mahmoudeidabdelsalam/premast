@@ -1668,20 +1668,33 @@ div#LimitDownload .modal-header {
 }
 
 div#LimitDownload .modal-body p a {
-  background: #6f00ff;
   height: 48px;
   display: inline-block;
   width: auto;
-  font-weight: bold;
-  box-shadow: 0 5px 8px rgba(0, 123, 255, 0.59);
   border-radius: 20px;
   font-size: 15px;
   line-height: 34px;
   text-align: center;
   letter-spacing: 0.116946px;
   text-transform: capitalize;
-  color: #fff;
   padding: 7px 30px;
+}
+
+div#LimitDownload .modal-body p .btn-limit {
+  background: linear-gradient(167.75deg, #1ADB72 -0.5%, #10B151 100%);
+  border-radius: 20px;
+  color: #fff;
+  font-weight: 500;
+}
+
+div#LimitDownload .modal-body .cancel {
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.116946px;
+  text-transform: capitalize;
+  color: #1E6DFB;
 }
 
 #LimitDownload button.close {
@@ -1689,6 +1702,45 @@ div#LimitDownload .modal-body p a {
   position: absolute;
   right: 8px;
   font-weight: 100;
+}
+
+#LimitDownload .modal-content {
+  background: #FFFFFF;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+}
+
+#LimitDownload .modal-content .modal-body {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 30px;
+}
+
+div#LimitDownload .modal-dialog {
+  max-width: 570px;
+}
+
+#LimitDownload .modal-content .modal-body h3 {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  letter-spacing: 0.132987px;
+  color: #3D4552;
+  margin: 24px 0 10px;
+}
+
+#LimitDownload .modal-content .modal-body h5 {
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.132987px;
+  color: #000000;
+  opacity: 0.5;
+  margin-bottom: 32px;
+  max-width: 380px;
 }
 
 label[for="payment_method_twocheckoutpp"]:after {
@@ -3044,5 +3096,11 @@ p.full-access a {
   letter-spacing: 0.116946px;
   text-transform: capitalize;
   color: rgba(1, 1, 1, 0.61);
+}
+
+#LimitDownload .modal-content {
+  background: #FFFFFF;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
 }
 /* stylelint-enable */
