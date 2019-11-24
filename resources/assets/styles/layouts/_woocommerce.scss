@@ -2222,7 +2222,7 @@ ul.meta-buttons li.button-share {
   display: none;
 }
 
-.item-card:hover ul.meta-buttons li.button-share {
+.item-card .card:hover ul.meta-buttons li.button-share {
   display: block;
 }
 
@@ -3211,4 +3211,25 @@ p.full-access a {
     display: table-cell !important;
   }
 }
+
+@include media-breakpoint-up(md) {
+  .card-columns {
+    column-gap: 50px;
+  }
+
+  .card-columns .card {
+    margin-bottom: 50px;
+  }
+}
+
+.card-columns {
+  @include media-breakpoint-only(md) {
+    column-count: 2;
+  }
+
+  @include media-breakpoint-only(sm) {
+    column-count: 2;
+  }
+}
+
 /* stylelint-enable */

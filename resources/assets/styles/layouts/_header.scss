@@ -188,8 +188,6 @@ section.banner-items {
 }
 
 .item-card {
-  margin-bottom: 50px;
-
   .card {
     background: $brand-white !important;
     padding: 10px;
@@ -217,26 +215,39 @@ section.banner-items {
       margin: 0 -10px -10px;
       border-radius: 3px;
     }
-  }
 
-  .card-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    border-radius: 10px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    top: 0;
-    transition: all 0.5s;
-    opacity: 0;
-    flex-flow: column;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    .card-overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      border-radius: 10px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      top: 0;
+      transition: all 0.5s;
+      opacity: 0;
+      flex-flow: column;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 
-    .card-link {
-      p {
+      .card-link {
+        p {
+          padding: 11px 32px;
+          margin: 10px auto;
+          display: inline-block;
+          background: $brand-primary;
+          border-radius: 20px;
+          font-size: 15px;
+          line-height: 18px;
+          text-align: center;
+          text-transform: capitalize;
+          color: $brand-white;
+        }
+      }
+
+      .post-edit-link {
         padding: 11px 32px;
         margin: 10px auto;
         display: inline-block;
@@ -247,39 +258,26 @@ section.banner-items {
         text-align: center;
         text-transform: capitalize;
         color: $brand-white;
+        position: relative;
+        z-index: 3;
+      }
+
+      .the_permalink {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        z-index: 2;
       }
     }
 
-    .post-edit-link {
-      padding: 11px 32px;
-      margin: 10px auto;
-      display: inline-block;
-      background: $brand-primary;
-      border-radius: 20px;
-      font-size: 15px;
-      line-height: 18px;
-      text-align: center;
-      text-transform: capitalize;
-      color: $brand-white;
-      position: relative;
-      z-index: 3;
-    }
-
-    .the_permalink {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      top: 0;
-      z-index: 2;
-    }
-  }
-
-  &:hover {
-    .card-overlay {
-      top: 0;
-      transition: all 0.5s;
-      opacity: 1;
+    &:hover {
+      .card-overlay {
+        top: 0;
+        transition: all 0.5s;
+        opacity: 1;
+      }
     }
   }
 }

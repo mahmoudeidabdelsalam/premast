@@ -57,7 +57,7 @@
 <div class="container-fiuld">
   <div class="row justify-content-center m-0">
     <div class="col-md-12 col-sm-12">
-      <div class="item-columns grid row m-0 container-ajax items-categories">
+      <div class="item-columns container-ajax items-categories card-columns item-card">
         @php
           if ($sort != '0') {
             // second query
@@ -147,7 +147,7 @@
         @endphp
 
         @if (get_field('show_card_pricing', 'option'))
-          <div class="item-card col-md-4 col-sm-4 col-sx-6 col-12 grid-item pl-4 pr-4 post-ajax">
+
             <div class="card">
               <span class="custom-onsale">
                 {{ the_field('tag_card_pricing', 'option') }}
@@ -166,7 +166,7 @@
                 </div>
               </div>
             </div>
-          </div>
+
         @endif
 
         @if($my_query->have_posts())
@@ -174,7 +174,7 @@
 
           @php ($sale = get_post_meta( get_the_ID(), '_sale_price', true))
             
-            <div class="item-card col-md-4 col-sm-4 col-sx-6 col-12 grid-item pl-4 pr-4 post-ajax">
+
               <div class="card">
                   @if($sale)
                     <span class="custom-onsale">
@@ -241,7 +241,7 @@
                   </div>
                 </div>
               </div>              
-            </div>
+
           @endwhile
 
         @else
