@@ -59,10 +59,10 @@
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="WP_login">
                   <span id="login-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span>
-                  <p class="galogin"> 
-                    <a href="https://accounts.google.com/o/oauth2/auth?response_type=code&amp;redirect_uri=https%3A%2F%2Fpremast.com%2Fwp%2Fwp-login.php&amp;client_id=655629051006-gva2steha9rjuctdljglqaceb4gnpd6q.apps.googleusercontent.com&amp;scope=openid+email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&amp;access_type=online&amp;approval_prompt=auto&amp;state=5df5a9a169%257Chttps%253A%252F%252Fpremast.com%252Fwp%252Fwp-admin%252F">Login with Google <i class="fa fa-google" aria-hidden="true"></i></a>
+                  <div class="galogin">
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
                     <strong>Or</strong>
-                  </p>
+                  </div>
 
                   @php 
                     $args = array(
@@ -255,11 +255,11 @@
 
 
 <style>
-p.galogin {
+.galogin {
   text-align: center;
 }
 
-p.galogin a {
+.galogin a {
   padding: 6px 20px;
   background: -webkit-linear-gradient(284.26deg, #6b73ff -0.5%, #000dff 100%);
   background: -o-linear-gradient(284.26deg, #6b73ff -0.5%, #000dff 100%);
@@ -276,8 +276,12 @@ p.galogin a {
   margin: auto;
 }
 
-p.galogin strong {
+.galogin strong {
   display: block;
-  margin: 20px 0 0 0;
+  margin: 20px 0 20px;
+}
+
+.abcRioButton.abcRioButtonLightBlue {
+  margin: auto;
 }
 </style>
