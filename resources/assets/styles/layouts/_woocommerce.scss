@@ -3121,7 +3121,9 @@ p.full-access a {
   }
 
   .woocommerce-form-coupon-toggle .woocommerce-info .showcoupon {
-    font-size: 18px !important;
+    font-size: 16px !important;
+    white-space: nowrap;
+    margin-left: 15px !important;
   }
 
   form.checkout_coupon.woocommerce-form-coupon {
@@ -3168,14 +3170,12 @@ p.full-access a {
 
   .form-cart-woocommerce .box-cart table.cart img {
     height: auto !important;
-    width: 32px !important;
     margin: auto;
     display: block;
   }
 
   .form-cart-woocommerce .box-cart td.product-thumbnail {
     padding: 10px 0 !important;
-    max-width: 32px !important;
   }
 
   .form-cart-woocommerce .box-cart {
@@ -3190,7 +3190,7 @@ p.full-access a {
   .woocommerce table.shop_table_responsive tr td,
   .woocommerce-page table.shop_table_responsive tr td {
     display: table-cell !important;
-    text-align: center !important;
+    text-align: left !important;
   }
 
   .form-cart-woocommerce .box-cart td.product-name {
@@ -3209,6 +3209,19 @@ p.full-access a {
   .woocommerce table.shop_table_responsive tbody th,
   .woocommerce-page table.shop_table_responsive tbody th {
     display: table-cell !important;
+  }
+
+  .form-cart-woocommerce .box-cart td.product-name a {
+    font-size: 11px;
+    text-align: left !important;
+    padding: 0 10px;
+    display: inline-block;
+    line-height: 15px;
+  }
+
+  td.product-price {
+    font-size: 14px !important;
+    padding-left: 25px;
   }
 }
 

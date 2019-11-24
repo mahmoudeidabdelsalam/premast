@@ -36686,16 +36686,18 @@ p.full-access a {
   /* line 3123, resources/assets/styles/layouts/_woocommerce.scss */
 
   .woocommerce-form-coupon-toggle .woocommerce-info .showcoupon {
-    font-size: 18px !important;
+    font-size: 16px !important;
+    white-space: nowrap;
+    margin-left: 15px !important;
   }
 
-  /* line 3127, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3129, resources/assets/styles/layouts/_woocommerce.scss */
 
   form.checkout_coupon.woocommerce-form-coupon {
     display: block !important;
   }
 
-  /* line 3131, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3133, resources/assets/styles/layouts/_woocommerce.scss */
 
   .summary-custom table.shop_table tr td,
   .summary-custom table.shop_table tr th {
@@ -36703,7 +36705,7 @@ p.full-access a {
     font-size: 15px !important;
   }
 
-  /* line 3137, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3139, resources/assets/styles/layouts/_woocommerce.scss */
 
   .summary-custom td.product-name a img {
     max-width: 40px !important;
@@ -36712,27 +36714,27 @@ p.full-access a {
     margin: 10px 0 !important;
   }
 
-  /* line 3144, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3146, resources/assets/styles/layouts/_woocommerce.scss */
 
   .woocommerce-privacy-policy-text ul {
     padding: 0 25px;
   }
 
-  /* line 3148, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3150, resources/assets/styles/layouts/_woocommerce.scss */
 
   .woocommerce table.shop_table_responsive thead,
   .woocommerce-page table.shop_table_responsive thead {
     display: table-header-group !important;
   }
 
-  /* line 3153, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3155, resources/assets/styles/layouts/_woocommerce.scss */
 
   .woocommerce table.shop_table_responsive tr,
   .woocommerce-page table.shop_table_responsive tr {
     display: table-row !important;
   }
 
-  /* line 3158, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3160, resources/assets/styles/layouts/_woocommerce.scss */
 
   .woocommerce #content table.cart .product-thumbnail,
   .woocommerce table.cart .product-thumbnail,
@@ -36741,26 +36743,24 @@ p.full-access a {
     display: block !important;
   }
 
-  /* line 3165, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3167, resources/assets/styles/layouts/_woocommerce.scss */
 
   .form-cart-woocommerce .box-cart td.product-thumbnail {
     padding: 0 0 !important;
   }
 
-  /* line 3169, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3171, resources/assets/styles/layouts/_woocommerce.scss */
 
   .form-cart-woocommerce .box-cart table.cart img {
     height: auto !important;
-    width: 32px !important;
     margin: auto;
     display: block;
   }
 
-  /* line 3176, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3177, resources/assets/styles/layouts/_woocommerce.scss */
 
   .form-cart-woocommerce .box-cart td.product-thumbnail {
     padding: 10px 0 !important;
-    max-width: 32px !important;
   }
 
   /* line 3181, resources/assets/styles/layouts/_woocommerce.scss */
@@ -36781,7 +36781,7 @@ p.full-access a {
   .woocommerce table.shop_table_responsive tr td,
   .woocommerce-page table.shop_table_responsive tr td {
     display: table-cell !important;
-    text-align: center !important;
+    text-align: left !important;
   }
 
   /* line 3196, resources/assets/styles/layouts/_woocommerce.scss */
@@ -36809,17 +36809,34 @@ p.full-access a {
   .woocommerce-page table.shop_table_responsive tbody th {
     display: table-cell !important;
   }
+
+  /* line 3214, resources/assets/styles/layouts/_woocommerce.scss */
+
+  .form-cart-woocommerce .box-cart td.product-name a {
+    font-size: 11px;
+    text-align: left !important;
+    padding: 0 10px;
+    display: inline-block;
+    line-height: 15px;
+  }
+
+  /* line 3222, resources/assets/styles/layouts/_woocommerce.scss */
+
+  td.product-price {
+    font-size: 14px !important;
+    padding-left: 25px;
+  }
 }
 
 @media (min-width: 768px) {
-  /* line 3216, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3229, resources/assets/styles/layouts/_woocommerce.scss */
 
   .card-columns {
     -webkit-column-gap: 50px;
             column-gap: 50px;
   }
 
-  /* line 3220, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3233, resources/assets/styles/layouts/_woocommerce.scss */
 
   .card-columns .card {
     margin-bottom: 50px;
@@ -36827,7 +36844,7 @@ p.full-access a {
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
-  /* line 3225, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3238, resources/assets/styles/layouts/_woocommerce.scss */
 
   .card-columns {
     -webkit-column-count: 2;
@@ -36836,7 +36853,7 @@ p.full-access a {
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
-  /* line 3225, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3238, resources/assets/styles/layouts/_woocommerce.scss */
 
   .card-columns {
     -webkit-column-count: 2;
