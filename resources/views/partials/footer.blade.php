@@ -60,7 +60,7 @@
                 <div class="tab-pane fade show active" id="WP_login">
                   <span id="login-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span>
                   <div class="galogin">
-                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                    {!! do_shortcode( '[nextend_social_login]' ) !!}
                     <strong>Or</strong>
                   </div>
 
@@ -252,36 +252,3 @@
     });
   </script>
 @endif
-
-
-<style>
-.galogin {
-  text-align: center;
-}
-
-.galogin a {
-  padding: 6px 20px;
-  background: -webkit-linear-gradient(284.26deg, #6b73ff -0.5%, #000dff 100%);
-  background: -o-linear-gradient(284.26deg, #6b73ff -0.5%, #000dff 100%);
-  background: linear-gradient(165.74deg, #6b73ff -0.5%, #000dff 100%);
-  -webkit-box-shadow: 0 7px 11px rgba(0, 96, 255, 0.64);
-  box-shadow: 0 7px 11px rgba(0, 96, 255, 0.64);
-  border-radius: 27.5px;
-  font-weight: normal;
-  font-size: 15px;
-  line-height: 25px;
-  color: #fff;
-  min-width: 155px;
-  height: 39px;
-  margin: auto;
-}
-
-.galogin strong {
-  display: block;
-  margin: 20px 0 20px;
-}
-
-.abcRioButton.abcRioButtonLightBlue {
-  margin: auto;
-}
-</style>

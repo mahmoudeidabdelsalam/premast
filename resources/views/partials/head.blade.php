@@ -22,11 +22,6 @@
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#1E6CFC">
   <meta name="robots" content="index, follow" />
-    
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
-
-  <meta name="google-signin-client_id" content="655629051006-gva2steha9rjuctdljglqaceb4gnpd6q.apps.googleusercontent.com">
-  <meta name="google-signin-client_secret" content="NiHuq5vsn_1c_9CuDpaxaf-p">
 
   <!-- Head Scripts -->
   @if(get_field('header_scripts', 'option'))
