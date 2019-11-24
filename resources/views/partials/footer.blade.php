@@ -59,6 +59,11 @@
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="WP_login">
                   <span id="login-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span>
+                  <p class="galogin"> 
+                    <a href="https://accounts.google.com/o/oauth2/auth?response_type=code&amp;redirect_uri=https%3A%2F%2Fpremast.com%2Fwp%2Fwp-login.php&amp;client_id=655629051006-gva2steha9rjuctdljglqaceb4gnpd6q.apps.googleusercontent.com&amp;scope=openid+email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&amp;access_type=online&amp;approval_prompt=auto&amp;state=5df5a9a169%257Chttps%253A%252F%252Fpremast.com%252Fwp%252Fwp-admin%252F">Login with Google <i class="fa fa-google" aria-hidden="true"></i></a>
+                    <strong>Or</strong>
+                  </p>
+
                   @php 
                     $args = array(
                       'echo'           => true,
@@ -77,6 +82,7 @@
                   @endphp
                   
                   {{ wp_login_form($args) }}
+    
                   <span class="switch-link switch-to-lost position-relative" data-tab="lost_password" style=" bottom: 0; margin: 24px auto; display: block; text-align: center; width: 100%; right: 0; ">{{ _e('Lost your password?', 'premast') }}</span>
 
                 </div>
@@ -247,3 +253,31 @@
   </script>
 @endif
 
+
+<style>
+p.galogin {
+  text-align: center;
+}
+
+p.galogin a {
+  padding: 6px 20px;
+  background: -webkit-linear-gradient(284.26deg, #6b73ff -0.5%, #000dff 100%);
+  background: -o-linear-gradient(284.26deg, #6b73ff -0.5%, #000dff 100%);
+  background: linear-gradient(165.74deg, #6b73ff -0.5%, #000dff 100%);
+  -webkit-box-shadow: 0 7px 11px rgba(0, 96, 255, 0.64);
+  box-shadow: 0 7px 11px rgba(0, 96, 255, 0.64);
+  border-radius: 27.5px;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 25px;
+  color: #fff;
+  min-width: 155px;
+  height: 39px;
+  margin: auto;
+}
+
+p.galogin strong {
+  display: block;
+  margin: 20px 0 0 0;
+}
+</style>

@@ -197,9 +197,7 @@ section.banner-items {
     border-radius: 7px;
 
     .bg-white {
-      border-radius: 10px;
       overflow: hidden;
-      box-shadow: 1px 0 5px rgba(57, 69, 84, 0.4);
       position: relative;
       min-height: 248px;
       background-size: cover;
@@ -369,7 +367,6 @@ section.banner-items {
 .product-list,
 .product-grid {
   width: 27px;
-  display: inline-block;
   height: 27px;
   background-repeat: no-repeat;
   background-size: contain;

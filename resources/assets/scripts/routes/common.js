@@ -101,11 +101,6 @@ export default {
       });
     }
 
-    $('.grid').masonry({
-      itemSelector: '.grid-item',
-      resize: false,
-    });
-
     $('.product-grid').click(function () {
       $('.item-card').show(300);
       $('.item-card .bg-white').css('height', '230px');
