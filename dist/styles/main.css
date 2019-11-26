@@ -36886,7 +36886,7 @@ div.nsl-container .nsl-button-google[data-skin="dark"] .nsl-button-svg-container
 /* line 3270, resources/assets/styles/layouts/_woocommerce.scss */
 
 .grid-custom .grid-item {
-  opacity: 0;
+  opacity: 0.8;
 }
 
 /* line 3273, resources/assets/styles/layouts/_woocommerce.scss */
