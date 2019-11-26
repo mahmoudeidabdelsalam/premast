@@ -8,6 +8,8 @@ import 'lightslider/dist/js/lightslider.min';
 import 'select2/dist/js/select2.min';
 import 'select2/dist/js/select2.full.min';
 import 'slideout/dist/slideout';
+import 'isotope-layout/dist/isotope.pkgd.min';
+import 'imagesloaded/imagesloaded.pkgd.min';
 
 // Import everything from autoload
 import './autoload/**/*'

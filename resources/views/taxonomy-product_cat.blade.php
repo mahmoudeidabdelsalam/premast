@@ -172,13 +172,13 @@
     @endif
 
 
-    <div class="col-md-9 col-sm-12">
-      <div class="item-columns container-ajax items-categories card-columns item-card">
+    <div class="col-md-9 col-sm-12 position-relative">
+      <div class="item-columns container-ajax items-categories item-card grid grid-custom row">
         @php
         if ($sort != '0') {
             $second_ids = get_posts( array(
               'post_type' => 'product',
-              'posts_per_page' => 21,
+              'posts_per_page' => 20,
               'fields'         => 'ids',
               'paged' => $paged,
               'meta_key' => $meta_key,
@@ -192,16 +192,16 @@
                 )
               )
             ));
-            $per_page = 22 - count($second_ids);
+            $per_page = 21 - count($second_ids);
             // dd($per_page);
           } else {
             $second_ids = [];
-            $per_page = 21;
+            $per_page = 20;
           }
 
           $orders = array(
             'post_type' => 'product',
-            'posts_per_page' => 20,
+            'posts_per_page' => 19,
             'paged' => $paged,
             'meta_key' => $meta_key,
             'orderby' => $orderby,
@@ -274,7 +274,7 @@
         @endphp
 
         @if (get_field('show_card_pricing', 'option'))
-
+          <div class="col-md-4 col-12 grid-item">
             <div class="card">
               <span class="custom-onsale">
                 {{ the_field('tag_card_pricing', 'option') }}
@@ -293,7 +293,7 @@
                 </div>
               </div>
             </div>
-
+          </div>
         @endif
 
         @if($my_query->have_posts())
@@ -301,7 +301,7 @@
 
           @php ($sale = get_post_meta( get_the_ID(), '_sale_price', true))
             
-
+            <div class="col-md-4 col-12 grid-item">
               <div class="card">
                   @if($sale)
                     <span class="custom-onsale">
@@ -368,7 +368,7 @@
                   </div>
                 </div>
               </div>              
-
+            </div>
           @endwhile
 
         @else
@@ -377,8 +377,13 @@
           </div>
         @endif
         @php (wp_reset_postdata())
-
       </div>
+
+      <div class="spinner">
+        <div class="cube1"></div>
+        <div class="cube2"></div>
+      </div>
+
 
       <div class="col-12 pt-5 pb-5">
         <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $my_query) }}</nav>

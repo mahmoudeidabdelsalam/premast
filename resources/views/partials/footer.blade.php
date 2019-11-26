@@ -59,10 +59,6 @@
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="WP_login">
                   <span id="login-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span>
-                  <div class="galogin">
-                    {!! do_shortcode( '[nextend_social_login]' ) !!}
-                    <strong>Or</strong>
-                  </div>
 
                   @php 
                     $args = array(
@@ -223,6 +219,9 @@
               </script>
 
               <?php // echo do_shortcode('[wc_reg_form_bbloomer]') ?>
+              <div class="galogin">
+                {!! do_shortcode( '[nextend_social_login provider="google"]' ) !!}
+              </div>
             </div>
             <div class="modal-footer">
               {{ _e('You have an account?', 'premast') }} <a class="login" href="#" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#LoginUser">{{ _e('Sign in', 'premast') }}</a>

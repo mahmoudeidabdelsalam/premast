@@ -24,7 +24,7 @@
     </div>
 
     <div class="col-md-12 col-sm-12">
-      <div class="item-columns grid row m-0 container-ajax">
+      <div class="item-columns container-ajax items-categories item-card grid grid-custom row">
 
         @if($loop_items->have_posts())
           @while($loop_items->have_posts()) @php($loop_items->the_post())
@@ -32,7 +32,7 @@
 
           @php ($sale = get_post_meta( get_the_ID(), '_sale_price', true))
             
-            <div class="item-card col-md-3 col-sm-3 col-sx-6 col-12 grid-item pl-4 pr-4 post-ajax">
+            <div class="col-md-4 col-12 grid-item">
               <div class="card">
                   @if($sale)
                     <span class="custom-onsale">
@@ -105,6 +105,11 @@
           @endwhile
           @php (wp_reset_postdata())
         @endif
+      </div>
+
+      <div class="spinner">
+        <div class="cube1"></div>
+        <div class="cube2"></div>
       </div>
 
       <div class="col-12 pt-5 pb-5">

@@ -101,26 +101,36 @@ export default {
       });
     }
 
-    $('.product-grid').click(function () {
-      $('.item-card').show(300);
-      $('.item-card .bg-white').css('height', '230px');
-      $('.item-card .bg-white').css('min-height', '230px');
-      $('.item-card .bg-white').addClass('bg-images');
+    // $('.product-grid').click(function () {
+    //   $('.item-card').show(300);
+    //   $('.item-card .bg-white').css('height', '230px');
+    //   $('.item-card .bg-white').css('min-height', '230px');
+    //   $('.item-card .bg-white').addClass('bg-images');
 
-      $('.grid').masonry({
-        itemSelector: '.grid-item',
+    //   $('.grid').masonry({
+    //     itemSelector: '.grid-item',
+    //   });
+    // });
+
+    // $('.product-list').click(function () {
+    //   $('.item-card').show(300);
+    //   $('.item-card .bg-white').css('height', 'auto');
+    //   $('.item-card .bg-white').css('min-height', '1px');
+    //   $('.item-card .bg-white').removeClass('bg-images');
+
+    //   $('.grid').masonry({
+    //     itemSelector: '.grid-item',
+    //   });
+    // });
+
+    var $grid = $('.grid').imagesLoaded(function () {
+      // init Isotope after all images have loaded
+      $grid.isotope({
+        // options...
       });
-    });
 
-    $('.product-list').click(function () {
-      $('.item-card').show(300);
-      $('.item-card .bg-white').css('height', 'auto');
-      $('.item-card .bg-white').css('min-height', '1px');
-      $('.item-card .bg-white').removeClass('bg-images');
-
-      $('.grid').masonry({
-        itemSelector: '.grid-item',
-      });
+      $('.grid-item').addClass('is-visible');
+      $('.spinner').fadeOut('slow');
     });
 
     $(window).scroll(function () {
