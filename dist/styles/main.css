@@ -30965,21 +30965,15 @@ section.banner-items {
     white-space: nowrap;
     margin: 0 !important;
   }
-
-  /* line 185, resources/assets/styles/layouts/_mobile.scss */
-
-  .grid .grid-item {
-    padding: 0 !important;
-  }
 }
 
-/* line 191, resources/assets/styles/layouts/_mobile.scss */
+/* line 185, resources/assets/styles/layouts/_mobile.scss */
 
 form#searchform.is-mobile-search {
   background: transparent;
 }
 
-/* line 195, resources/assets/styles/layouts/_mobile.scss */
+/* line 189, resources/assets/styles/layouts/_mobile.scss */
 
 #dropdownMenuCat {
   background: #3d4552;
@@ -30993,14 +30987,14 @@ form#searchform.is-mobile-search {
   color: white;
 }
 
-/* line 205, resources/assets/styles/layouts/_mobile.scss */
+/* line 199, resources/assets/styles/layouts/_mobile.scss */
 
 #dropdownMenuCat img {
   margin-right: 10px;
   display: inline-block;
 }
 
-/* line 211, resources/assets/styles/layouts/_mobile.scss */
+/* line 205, resources/assets/styles/layouts/_mobile.scss */
 
 #dropdownMenuFilter {
   -webkit-box-sizing: border-box;
@@ -36892,11 +36886,10 @@ div.nsl-container .nsl-button-google[data-skin="dark"] .nsl-button-svg-container
 /* line 3270, resources/assets/styles/layouts/_woocommerce.scss */
 
 .grid-custom .grid-item {
-  width: 33.3333%;
   opacity: 0;
 }
 
-/* line 3274, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3273, resources/assets/styles/layouts/_woocommerce.scss */
 
 .grid-custom .grid-item.is-visible {
   -webkit-transition: opacity 1s ease-in-out;
@@ -36905,7 +36898,7 @@ div.nsl-container .nsl-button-google[data-skin="dark"] .nsl-button-svg-container
   opacity: 1;
 }
 
-/* line 3281, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3280, resources/assets/styles/layouts/_woocommerce.scss */
 
 .spinner {
   position: absolute;
@@ -36923,7 +36916,7 @@ div.nsl-container .nsl-button-google[data-skin="dark"] .nsl-button-svg-container
           justify-content: center;
 }
 
-/* line 3293, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3292, resources/assets/styles/layouts/_woocommerce.scss */
 
 .cube1,
 .cube2 {
@@ -36935,7 +36928,7 @@ div.nsl-container .nsl-button-google[data-skin="dark"] .nsl-button-svg-container
      animation: sk-cubemove 1.8s infinite ease-in-out;
 }
 
-/* line 3302, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3301, resources/assets/styles/layouts/_woocommerce.scss */
 
 .cube2 {
   -webkit-animation-delay: -0.9s;
