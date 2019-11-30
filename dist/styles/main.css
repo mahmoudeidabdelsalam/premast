@@ -36914,9 +36914,10 @@ div.nsl-container .nsl-button-google[data-skin="dark"] .nsl-button-svg-container
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  pointer-events: none;
 }
 
-/* line 3292, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3293, resources/assets/styles/layouts/_woocommerce.scss */
 
 .cube1,
 .cube2 {
@@ -36928,7 +36929,7 @@ div.nsl-container .nsl-button-google[data-skin="dark"] .nsl-button-svg-container
      animation: sk-cubemove 1.8s infinite ease-in-out;
 }
 
-/* line 3301, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3302, resources/assets/styles/layouts/_woocommerce.scss */
 
 .cube2 {
   -webkit-animation-delay: -0.9s;
@@ -37016,6 +37017,24 @@ div.nsl-container .nsl-button-google[data-skin="dark"] .nsl-button-svg-container
        transform: rotate(-360deg);
     -webkit-transform: rotate(-360deg);
   }
+}
+
+/* line 3352, resources/assets/styles/layouts/_woocommerce.scss */
+
+.woocommerce .quantity .qty {
+  display: none;
+}
+
+/* line 3356, resources/assets/styles/layouts/_woocommerce.scss */
+
+input[name='update_cart'] {
+  display: none !important;
+}
+
+/* line 3361, resources/assets/styles/layouts/_woocommerce.scss */
+
+button[name='update_cart'] {
+  display: none !important;
 }
 
 /* stylelint-enable */

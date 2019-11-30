@@ -80,7 +80,19 @@ global $product;
             $sale = get_post_meta( get_the_ID(), '_sale_price', true);
             $symbol = get_woocommerce_currency_symbol();
             $excerpt = get_the_excerpt();
+
+            global $product;
+            $product_id = $product->get_id();
+
+            $in_cart = false;
+            
+            foreach( WC()->cart->get_cart() as $cart_item ) {
+              $product_in_cart = $cart_item['product_id'];
+              if ( $product_in_cart === $product_id ) $in_cart = true;
+            }
           @endphp
+
+          
 
           @if($sale)
             <p class="price">
@@ -144,9 +156,16 @@ global $product;
 
               @endif
             @else 
-              @php  
-                do_action( 'woocommerce_single_product_summary' );
-              @endphp
+              @if ($in_cart) 
+              @php $link = wc_get_cart_url(); @endphp
+                <p class="full-access">
+                  <a href="{{ $link }}">{{ _e('view cart', 'premast') }}</a>
+                </p>
+              @else
+                @php  
+                  do_action( 'woocommerce_single_product_summary' );
+                @endphp
+              @endif
               @if($price != 0)
                 <p class="full-access">
                   <span>{{ _e('OR', 'premast') }}</span>
