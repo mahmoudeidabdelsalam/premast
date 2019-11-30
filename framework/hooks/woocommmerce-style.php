@@ -35,8 +35,8 @@ if ( is_product() ) {
 }
 add_action('loop_start', 'remove_gallery_and_product_images');
 
-// function custom_remove_all_quantity_fields( $return, $product ) {return true;}
-// add_filter( 'woocommerce_is_sold_individually','custom_remove_all_quantity_fields', 10, 2 );
+function custom_remove_all_quantity_fields( $return, $product ) {return true;}
+add_filter( 'woocommerce_is_sold_individually','custom_remove_all_quantity_fields', 10, 2 );
 
 
 // add_filter( 'woocommerce_add_to_cart_validation', 'remove_cart_item_before_add_to_cart', 20, 3 );
