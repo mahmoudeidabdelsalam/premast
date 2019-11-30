@@ -35,13 +35,16 @@ class ButtonCart extends WP_Widget {
 
         extract($args);
         global $product;
-        $product_id = $instance['title'];
+        $product_id = (int) $instance['title'];
 
         $in_cart = false;
         
         foreach( WC()->cart->get_cart() as $cart_item ) {
           $product_in_cart = $cart_item['product_id'];
-          if ( $product_in_cart === $product_id ) $in_cart = true;
+
+          if ( $product_in_cart === $product_id ) {
+            $in_cart = true;
+          }
         }
         $link = wc_get_checkout_url();
         ?>
