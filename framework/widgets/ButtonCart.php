@@ -67,7 +67,7 @@ class ButtonCart extends WP_Widget {
             <div class="elementor-widget-container">
               <div class="elementor-jet-button jet-elements">
                 <div class="jet-button__container">
-                  <a class="jet-button__instance jet-button__instance--icon- hover-effect-1" href="<?= $link; ?>/?add-to-cart=<?= $product_id; ?>">
+                  <a class="jet-button__instance jet-button__instance--icon- hover-effect-1" href="<?= $link; ?>?add-to-cart=<?= $product_id; ?>">
                     <div class="jet-button__plane jet-button__plane-normal"></div>
                     <div class="jet-button__plane jet-button__plane-hover"></div>
                     <div class="jet-button__state jet-button__state-normal">
