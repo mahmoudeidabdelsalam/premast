@@ -46,6 +46,14 @@ add_filter( 'woocommerce_is_sold_individually','custom_remove_all_quantity_field
 //     return $passed;
 // }
 
+add_filter( 'woocommerce_get_breadcrumb', 'ed_change_breadcrumb' );
+function ed_change_breadcrumb( $breadcrumb ) {
+  if(is_singular()){
+		array_pop($breadcrumb);
+	}
+  return $breadcrumb;
+}
+
 
 add_filter( 'add_to_cart_text', 'woo_custom_single_add_to_cart_text' );                // < 2.1
 add_filter( 'woocommerce_product_single_add_to_cart_text', 'woo_custom_single_add_to_cart_text' );  // 2.1 +
