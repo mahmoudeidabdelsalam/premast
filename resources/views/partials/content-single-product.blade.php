@@ -1,6 +1,55 @@
-@extends('layouts.template-items')
+@extends('layouts.dark-app')
 
 @section('content')
+  <section class="fixed-top-header bg-gray-dark border-top border-secondary">
+    <div class="container-fluid">
+      <div class="row justify-content-center align-items-center m-0">
+        <div class="col-md-6 col-sm-12 col-12">
+          @php 
+            $ids_to_exclude = array();
+            $get_terms_to_exclude =  get_terms(
+              array(
+                'fields'  => 'ids',
+                'slug'    => array( 'plans' ),
+                'taxonomy' => 'product_cat',
+              )
+            );
+            if( !is_wp_error( $get_terms_to_exclude ) && count($get_terms_to_exclude) > 0){
+                $ids_to_exclude = $get_terms_to_exclude; 
+            }
+            $product_terms = get_terms( 'product_cat', array(
+                'hide_empty' =>  1,
+                'exclude' => $ids_to_exclude,
+                'parent' =>0
+            ) );
+          @endphp
+          <ul class="list-inline m-0 product-term">
+            @foreach($product_terms as $product_term) 
+            @php 
+              $term_link = get_term_link( $product_term );
+              if ( is_wp_error( $term_link ) ) {
+                  continue;
+              }
+            @endphp
+              <li class="list-inline-item">
+                <a class="text-term @if($product_term->term_id == $taxonomy_query->term_id) active @endif" href="{{ $term_link }}">{{ $product_term->name }}</a>
+              </li>
+            @endforeach
+          </ul>
+        </div>
+        
+        
+        <div class="col-md-3 col-sm-12 col-12">
+          <form role="search" method="get" id="searchform" action="/">
+            <input id="autoblogs" class="form-control w-100" type="search" value="" name="s" autocomplete="on" autocorrect="off" autocapitalize="on" spellcheck="false" placeholder="{{ _e('Search items', 'premast') }}" aria-label="Search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   @while(have_posts()) @php the_post() @endphp
 @php
 do_action( 'woocommerce_before_single_product' );
