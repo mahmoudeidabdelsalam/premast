@@ -32,7 +32,7 @@
 
           @php ($sale = get_post_meta( get_the_ID(), '_sale_price', true))
             
-            <div class="col-md-4 col-12 grid-item">
+            <div class="col-md-3 col-12 grid-item">
               <div class="card">
                   @if($sale)
                     <span class="custom-onsale">
