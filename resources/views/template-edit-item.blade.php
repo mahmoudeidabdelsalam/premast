@@ -89,8 +89,8 @@
           'post_excerpt' => $short_description,
           'post_status' => $status,
           'post_author' => $post->post_author,
-          'tax_input' => array( 'product_cat' => array($cat, $child, $children)),
-          'tax_input' => array( 'product_tag' => $tags),
+          'tax_input' => array( 'product_cat' => array($cat, $child, $children), 'product_tag' => $tags),
+          // 'tax_input' => array( 'product_tag' => $tags),
         ));
 
         $image_id = $_POST["thumbnail"];
