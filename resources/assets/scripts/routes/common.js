@@ -1,3 +1,4 @@
+import AOS from 'aos/dist/aos';
 import WOW from '../../../../node_modules/wow.js/dist/wow';
 import Slideout from '../../../../node_modules/slideout/dist/slideout';
 
@@ -5,7 +6,8 @@ export default {
   init() {
     // JavaScript to be fired on all pages
 
-
+    AOS.init();
+    
     jQuery(document).ready(function ($) {
       //function to check if the .cd-image-container is in the viewport here
       // ...

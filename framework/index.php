@@ -13,6 +13,7 @@
    glob(__DIR__.'/backend/*.php'),
    glob(__DIR__.'/api/*.php'),
    glob(__DIR__.'/ajax/*.php'),
+   glob(__DIR__.'/builder/*.php'),
    glob(__DIR__.'/widgets/*.php')
  );
  

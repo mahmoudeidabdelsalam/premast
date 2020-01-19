@@ -10,6 +10,7 @@ import 'select2/dist/js/select2.full.min';
 import 'slideout/dist/slideout';
 import 'isotope-layout/dist/isotope.pkgd.min';
 import 'imagesloaded/imagesloaded.pkgd.min';
+import 'aos/dist/aos';
 
 // Import everything from autoload
 import './autoload/**/*'
