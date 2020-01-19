@@ -175,6 +175,8 @@ global $product;
             $download_limits = somdn_get_user_limits( $membership_user );
             $limits_amount = $download_limits['amount'];
             $time = get_the_time('Y-m-d');
+
+            // dd($_COOKIE['lastview']);
           @endphp
           <div class="custom-summary">            
             @if ($limit && !$limit_membership && !$sale && !$price || $count_download == $limits_amount && !$sale && !$price) 
