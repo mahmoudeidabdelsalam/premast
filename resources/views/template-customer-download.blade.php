@@ -138,7 +138,7 @@
                     <div class="item-columns row m-0">
                       @if($loop_all->have_posts())
                         @while($loop_all->have_posts()) @php($loop_all->the_post())
-                          <div class="item-card col-md-2 col-sm-3 col-sx-6 col-12 grid-item">
+                          <div class="item-card col-md-2 col-sm-3 col-sx-6 col-12 grid-item mb-3">
                             <div class="card">
                               <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');min-height:155px;height:155px;">
                                 <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
@@ -155,9 +155,9 @@
                                     </a>
                                   </div>
                                   <div class="download">
-                                    <a class="card-link" href="{{ the_permalink() }}">
-                                      {{ _e('Download', 'premast') }}
-                                    </a>
+                                    <div class="card-link">
+                                      <?php do_action( 'woocommerce_single_product_summary' ); ?>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
@@ -172,7 +172,7 @@
                     <div class="tab-pane fade @if($tabs == 'free') active show @endif" id="free" role="tabpanel" aria-labelledby="free-tab">
                       <div class="item-columns row m-0">
                         @while($loop_free->have_posts()) @php($loop_free->the_post())
-                          <div class="item-card col-md-2 col-sm-3 col-sx-6 col-12 grid-item">
+                          <div class="item-card col-md-2 col-sm-3 col-sx-6 col-12 grid-item mb-3">
                             <div class="card">
                               <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');min-height:155px;height:155px;">
                                 <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
@@ -189,9 +189,9 @@
                                     </a>
                                   </div>
                                   <div class="download">
-                                    <a class="card-link" href="{{ the_permalink() }}">
-                                      {{ _e('Download', 'premast') }}
-                                    </a>
+                                    <div class="card-link">
+                                      <?php do_action( 'woocommerce_single_product_summary' ); ?>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
@@ -206,7 +206,7 @@
                     <div class="tab-pane fade @if($tabs == 'paid') active show @endif" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                       <div class="item-columns row m-0">
                         @while($loop_paid->have_posts()) @php($loop_paid->the_post())
-                          <div class="item-card col-md-2 col-sm-3 col-sx-6 col-12 grid-item">
+                          <div class="item-card col-md-2 col-sm-3 col-sx-6 col-12 grid-item mb-3">
                             <div class="card">
                               <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');min-height:155px;height:155px;">
                                 <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
@@ -223,9 +223,9 @@
                                     </a>
                                   </div>
                                   <div class="download">
-                                    <a class="card-link" href="{{ the_permalink() }}">
-                                      {{ _e('Download', 'premast') }}
-                                    </a>
+                                    <div class="card-link">
+                                      <?php do_action( 'woocommerce_single_product_summary' ); ?>
+                                    </div>
                                   </div>
                                 </div>
                               </div>

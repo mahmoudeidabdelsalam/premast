@@ -56,7 +56,7 @@ add_filter('login_headerurl', 'siteurl_login');
 function login_headertitle() {
   return get_bloginfo('name');
 }
-add_filter('login_headertitle', 'login_headertitle');
+add_filter('login_headertext', 'login_headertext');
 /**
 * Function removes an wp-icon from the Toolbar
 * @param type $wp_admin_bar

@@ -3361,4 +3361,23 @@ input[name='update_cart'] {
 button[name='update_cart'] {
   display: none !important;
 }
+
+.download .card-link * {
+  display: none;
+}
+
+.download .card-link .somdn-download-wrap,
+.download .card-link .somdn-download-wrap *,
+.download .card-link .somdn-download-wrap button:hover {
+  display: block !important;
+  padding: 0;
+  background: transparent;
+  color: #fff;
+  font-weight: 200;
+  font-size: 11px;
+}
+
+.review-and-download .download {
+  background-color: transparent !important;
+}
 /* stylelint-enable */
