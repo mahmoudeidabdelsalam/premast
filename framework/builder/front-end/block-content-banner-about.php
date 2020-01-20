@@ -46,8 +46,7 @@ html {
 }
 </style>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.7/TweenMax.min.js"></script>
+<script src="<?= get_theme_file_uri() . '/framework/assets/TweenMax.min.js'; ?>"></script>
 <script>
 jQuery(function ($) {
   var $layer_3 = $('.layer-3'),

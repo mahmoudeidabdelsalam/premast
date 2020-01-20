@@ -31,8 +31,6 @@ $button_link = get_field('button_column_content_link');
   </div>
 </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.7/TweenMax.min.js"></script>
 <script>
 jQuery(function ($) {
   var $layer_0 = $('.layer-0'),
