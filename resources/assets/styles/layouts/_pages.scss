@@ -87,3 +87,23 @@ span.status {
 .border-lines {
   background-image: url("../images/border-lines.png");
 }
+
+.customer-download {
+  .review-and-download {
+    .download {
+      border: none;
+      white-space: nowrap;
+      padding: 0;
+      margin-top: 0;
+
+      button.loading {
+        padding: 0 !important;
+
+        &::after {
+          top: 0;
+          left: 13%;
+        }
+      }
+    }
+  }
+}
