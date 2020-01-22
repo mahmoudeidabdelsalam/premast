@@ -33770,6 +33770,28 @@ span.status.rejected {
   background-image: url(/app/themes/premast/dist/images/border-lines.png);
 }
 
+/* line 93, resources/assets/styles/layouts/_pages.scss */
+
+.customer-download .review-and-download .download {
+  border: none;
+  white-space: nowrap;
+  padding: 0;
+  margin-top: 0;
+}
+
+/* line 99, resources/assets/styles/layouts/_pages.scss */
+
+.customer-download .review-and-download .download button.loading {
+  padding: 0 !important;
+}
+
+/* line 102, resources/assets/styles/layouts/_pages.scss */
+
+.customer-download .review-and-download .download button.loading::after {
+  top: 0;
+  left: 13%;
+}
+
 /* line 2, resources/assets/styles/layouts/_posts.scss */
 
 .single-product .content-single {
