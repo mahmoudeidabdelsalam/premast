@@ -2,7 +2,7 @@
   Template Name: Thanks Customer
 --}}
 
-@extends('layouts.dark-app')
+@extends('layouts.app-dark')
 
 @section('content')
   <section class="header-users page-downloads" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">

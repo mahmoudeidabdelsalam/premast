@@ -3,7 +3,7 @@
 --}}
 
 
-@extends('layouts.template-items')
+@extends('layouts.app-items')
 
 @section('content')
 

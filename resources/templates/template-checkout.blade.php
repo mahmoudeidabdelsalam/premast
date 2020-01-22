@@ -2,7 +2,7 @@
   Template Name: Checkout Template
 --}}
 
-@extends('layouts.dark-app')
+@extends('layouts.app-dark')
 
 @section('content')
 

@@ -2,7 +2,7 @@
   Template Name: Cart Template
 --}}
 
-@extends('layouts.template-custom')
+@extends('layouts.app-custom')
 
 @section('content')
 @php 

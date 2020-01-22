@@ -102,9 +102,9 @@
 
 @else
 
-  <header class="bg-gray-dark banner">
+  <header class="bg-light banner">
     <div class="container-fluid">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-gray-dark">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-light">
         <h2 class="logos">
           <a class="navbar-brand p-0 align-self-center col" href="{{ the_field('link_page_login','option') }}" title="{{ get_bloginfo('name') }}">
               <img class="img-fluid" src="@if(get_field('templates_logo', 'option')) {{ the_field('templates_logo','option') }} @else {{ get_theme_file_uri().'/dist/images/premast-templates.png' }} @endif" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
@@ -154,7 +154,7 @@
     </div>
   </header>
 
-  <section class="fixed-top-header bg-gray-dark border-top border-secondary">
+  <section class="fixed-top-header bg-light border-top border-secondary">
     <div class="container-fluid">
       <div class="row justify-content-center align-items-center m-0">
         <div class="col-md-6 col-sm-12 col-12">

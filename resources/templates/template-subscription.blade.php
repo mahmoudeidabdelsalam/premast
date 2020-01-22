@@ -2,7 +2,7 @@
   Template Name: User Subscription
 --}}
 
-@extends('layouts.dark-app')
+@extends('layouts.app-dark')
 
 @section('content')
 

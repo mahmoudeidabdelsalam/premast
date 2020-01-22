@@ -489,7 +489,7 @@ acf_add_local_field_group(array(
 			array(
 				'param' => 'page_template',
 				'operator' => '==',
-				'value' => 'views/template-plan.blade.php',
+				'templates' => 'views/template-plan.blade.php',
 			),
 		),
 	),

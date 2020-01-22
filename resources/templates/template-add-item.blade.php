@@ -4,7 +4,7 @@
 
 @php acf_form_head() @endphp
 
-@extends('layouts.template-custom')
+@extends('layouts.app-custom')
 @section('content')
 
 @php 

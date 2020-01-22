@@ -1,4 +1,4 @@
-@extends('layouts.template-custom')
+@extends('layouts.app-custom')
 
 @section('content')
 

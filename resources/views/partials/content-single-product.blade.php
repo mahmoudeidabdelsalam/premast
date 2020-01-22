@@ -1,4 +1,4 @@
-@extends('layouts.dark-app')
+@extends('layouts.app-dark')
 
 @section('content')
   <section class="fixed-top-header bg-gray-dark border-top border-secondary">

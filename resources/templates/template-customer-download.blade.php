@@ -2,7 +2,7 @@
   Template Name: User Customer Download
 --}}
 
-@extends('layouts.dark-app')
+@extends('layouts.app-dark')
 
 @section('content')
 

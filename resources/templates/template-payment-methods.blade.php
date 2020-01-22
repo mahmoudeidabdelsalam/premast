@@ -2,7 +2,7 @@
   Template Name: User Payment Methods
 --}}
 
-@extends('layouts.dark-app')
+@extends('layouts.app-dark')
 
 @section('content')
 
