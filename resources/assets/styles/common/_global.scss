@@ -120,3 +120,51 @@ a {
     transform: rotate(360deg);
   }
 }
+
+.button-green {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.116946px;
+  text-transform: capitalize;
+  color: $brand-white;
+  background: linear-gradient(160.38deg, rgb(26, 219, 114) -0.5%, rgb(16, 177, 81) 100%);
+  border-radius: 20px;
+  padding: 10px 28px;
+  margin: 5px 15px;
+  position: relative;
+  z-index: 99;
+
+  &::before,
+  &::after {
+    width: 45px;
+    height: 30px;
+    position: absolute;
+    content: "";
+    display: inline-block;
+    background: -webkit-linear-gradient(289.62deg, rgb(26, 219, 114) -0.5%, rgb(16, 177, 81) 100%);
+    border-radius: 50%;
+    transition: transform 1s ease;
+    transform: scale(0);
+    z-index: -1;
+  }
+
+  &::before {
+    top: -20%;
+    left: 5%;
+  }
+
+  &::after {
+    bottom: -20%;
+    right: 5%;
+  }
+
+  &:hover::before,
+  &:hover::after,
+  &:hover {
+    transform: none;
+    color: $brand-white;
+    opacity: 0.9;
+  }
+}

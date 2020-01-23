@@ -11,7 +11,11 @@ header.banner {
   transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
 
   .nav-link {
-    font-size: 13px;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.132987px;
+    color: rgb(40, 47, 57) !important;
 
     &:focus {
       outline: none;
@@ -59,7 +63,7 @@ header.banner {
     background-image: url("../images/cart.svg");
     background-size: contain;
     background-repeat: no-repeat;
-    margin-left: 70px;
+    margin: 0;
 
     span {
       background: $brand-primary;
@@ -76,24 +80,13 @@ header.banner {
     }
   }
 
-  .login {
+  .login,
+  .signup {
     font-weight: 500;
     font-size: 14px;
     letter-spacing: 0.1px;
     line-height: 30px;
     display: inline-block;
-  }
-
-  .signup {
-    margin: 0 10px;
-    font-size: 12px;
-    text-align: center;
-    letter-spacing: 0.1px;
-    height: 30px;
-    display: inline-block;
-    line-height: 30px;
-    padding: 0 20px;
-    border-radius: 5px;
   }
 
   @include media-breakpoint-down(sm) {
@@ -111,7 +104,11 @@ header.banner {
   }
 
   .logos {
-    max-width: 130px;
+    max-width: 190px !important;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -173,12 +170,11 @@ form#searchform {
 
 .elementor-background-overlay {
   height: 100%;
-  width: 100%;
+  width: 40%;
   top: 0;
-  left: 0;
+  right: 0;
   position: absolute;
   background-size: cover;
-  opacity: 0.12;
   transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
 }
 
@@ -417,14 +413,9 @@ section.banner-items {
   }
 }
 
-.half {
-  margin-left: 30px;
-}
-
 .profile-dropdown {
   display: inline-block;
   position: relative;
-  margin: 0 0 5px 0;
   user-select: none;
   cursor: pointer;
   font-weight: 500;
@@ -432,8 +423,9 @@ section.banner-items {
   line-height: 16px;
   text-align: center;
   letter-spacing: 0.132987px;
-  color: $brand-white;
-  top: 2px;
+  color: rgb(39, 47, 56);
+  top: 4px;
+  text-transform: capitalize;
 
   * {
     -webkit-user-select: none;
@@ -450,6 +442,8 @@ section.banner-items {
   .fa-chevron-down {
     font-size: 13px;
     margin: 0 5px;
+    color: rgb(100, 100, 100);
+    opacity: 0.6;
   }
 
   input[type="checkbox"] {

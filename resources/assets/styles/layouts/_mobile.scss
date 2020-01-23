@@ -37,12 +37,12 @@
 
   nav#menu_user {
     position: fixed;
-    top: 7vh;
+    top: 65px;
     right: 0;
     width: 100%;
     z-index: 99;
     background: rgb(40, 47, 57);
-    height: 93vh;
+    height: 80vh;
 
     ul.link-dropdown {
       list-style: none;
@@ -78,7 +78,7 @@
 
   .slideout-menu {
     position: fixed;
-    top: 125px;
+    top: 65px;
     bottom: 0;
     width: 320px;
     min-height: 100vh;
@@ -86,7 +86,7 @@
     -webkit-overflow-scrolling: touch;
     z-index: 0;
     display: none;
-    background: rgb(40, 47, 57);
+    background: rgb(60, 69, 82);
   }
 
   .slideout-menu-left {
@@ -131,7 +131,7 @@
     position: absolute;
     display: block;
     height: 2px;
-    background: rgb(255, 255, 255);
+    background: rgb(61, 69, 82);
     width: 30px;
     left: 0;
     -webkit-transition: all 0.3s;
@@ -183,7 +183,15 @@
 }
 
 form#searchform.is-mobile-search {
-  background: transparent;
+  background: rgb(60, 69, 82);
+  margin: 0;
+  border-radius: 0;
+  height: 44px;
+}
+
+form#searchform.is-mobile-search input,
+form#searchform.is-mobile-search button {
+  height: 44px;
 }
 
 #dropdownMenuCat {
