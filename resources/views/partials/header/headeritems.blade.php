@@ -78,7 +78,7 @@
         @php 
           $count = WC()->cart->cart_contents_count; 
         @endphp
-          <a class="cart-contents ml-4" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
+          <a class="cart-contents" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
             @if ( $count > 0 )
             <span class="cart-contents-count"><?php echo esc_html( $count ); ?></span>
             @endif
@@ -128,7 +128,7 @@
       @php 
         $count = WC()->cart->cart_contents_count; 
       @endphp
-        <a class="cart-contents" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
+        <a class="cart-contents ml-4" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
           @if ( $count > 0 )
           <span class="cart-contents-count"><?php echo esc_html( $count ); ?></span>
           @endif
