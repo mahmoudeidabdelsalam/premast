@@ -30768,62 +30768,74 @@ form#publish_product .loading {
 
 /** Text meant only for screen readers */
 
-/* line 1, resources/assets/styles/layouts/_blocks.scss */
+@media (min-width: 576px) {
+  /* line 2, resources/assets/styles/layouts/_blocks.scss */
 
-section.block-about {
-  min-height: 1000px;
-  padding-top: 130px;
-  background: #e5e5e5;
+  section.block-about {
+    min-height: 1000px;
+    padding-top: 130px;
+    background: #e5e5e5;
+  }
+
+  /* line 8, resources/assets/styles/layouts/_blocks.scss */
+
+  .planet {
+    position: absolute;
+    z-index: 20;
+    height: 380px;
+    border-radius: 2px;
+    width: 100%;
+    top: 400px;
+  }
+
+  /* line 17, resources/assets/styles/layouts/_blocks.scss */
+
+  .planet img {
+    -webkit-box-shadow: 0 7px 84px rgba(0, 0, 0, 0.58);
+            box-shadow: 0 7px 84px rgba(0, 0, 0, 0.58);
+    max-width: 100%;
+    margin: auto;
+    display: block;
+  }
+
+  /* line 24, resources/assets/styles/layouts/_blocks.scss */
+
+  .background-about {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    top: 110px;
+  }
+
+  /* line 31, resources/assets/styles/layouts/_blocks.scss */
+
+  .layer-0 img {
+    height: 100%;
+    width: auto;
+  }
+
+  /* line 36, resources/assets/styles/layouts/_blocks.scss */
+
+  .planet.layer-3 {
+    -webkit-transform: none !important;
+         -o-transform: none !important;
+            transform: none !important;
+    left: 300px;
+    top: 500px;
+  }
+
+  /* line 42, resources/assets/styles/layouts/_blocks.scss */
+
+  .layer-0 {
+    bottom: -20%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 110px;
+  }
 }
 
-/* line 7, resources/assets/styles/layouts/_blocks.scss */
-
-.planet {
-  position: absolute;
-  z-index: 20;
-  height: 380px;
-  border-radius: 2px;
-  width: 100%;
-  top: 400px;
-}
-
-/* line 16, resources/assets/styles/layouts/_blocks.scss */
-
-.planet img {
-  -webkit-box-shadow: 0 7px 84px rgba(0, 0, 0, 0.58);
-          box-shadow: 0 7px 84px rgba(0, 0, 0, 0.58);
-  max-width: 100%;
-  margin: auto;
-  display: block;
-}
-
-/* line 23, resources/assets/styles/layouts/_blocks.scss */
-
-.background-about {
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  top: 110px;
-}
-
-/* line 30, resources/assets/styles/layouts/_blocks.scss */
-
-.layer-0 img {
-  height: 100%;
-  width: auto;
-}
-
-/* line 35, resources/assets/styles/layouts/_blocks.scss */
-
-.planet.layer-3 {
-  -webkit-transform: none !important;
-       -o-transform: none !important;
-          transform: none !important;
-  left: 300px;
-  top: 500px;
-}
-
-/* line 41, resources/assets/styles/layouts/_blocks.scss */
+/* line 51, resources/assets/styles/layouts/_blocks.scss */
 
 .content-about {
   height: 850px;
@@ -30840,7 +30852,7 @@ section.block-about {
   padding-top: 100px;
 }
 
-/* line 49, resources/assets/styles/layouts/_blocks.scss */
+/* line 59, resources/assets/styles/layouts/_blocks.scss */
 
 .content-about h2 {
   font-style: normal;
@@ -30850,7 +30862,7 @@ section.block-about {
   color: #3d4165;
 }
 
-/* line 57, resources/assets/styles/layouts/_blocks.scss */
+/* line 67, resources/assets/styles/layouts/_blocks.scss */
 
 .content-about p {
   font-weight: normal;
@@ -30859,7 +30871,7 @@ section.block-about {
   color: #3d4165;
 }
 
-/* line 64, resources/assets/styles/layouts/_blocks.scss */
+/* line 74, resources/assets/styles/layouts/_blocks.scss */
 
 .status-icon {
   background: #3d4165;
@@ -30869,7 +30881,7 @@ section.block-about {
   display: flex;
 }
 
-/* line 70, resources/assets/styles/layouts/_blocks.scss */
+/* line 80, resources/assets/styles/layouts/_blocks.scss */
 
 .content-editor {
   font-weight: normal;
@@ -30880,7 +30892,7 @@ section.block-about {
   margin-bottom: 27px;
 }
 
-/* line 79, resources/assets/styles/layouts/_blocks.scss */
+/* line 89, resources/assets/styles/layouts/_blocks.scss */
 
 .statusitems {
   font-size: 16px;
@@ -30893,13 +30905,13 @@ section.block-about {
   padding: 25px;
 }
 
-/* line 88, resources/assets/styles/layouts/_blocks.scss */
+/* line 98, resources/assets/styles/layouts/_blocks.scss */
 
 .statusitems img {
   margin-right: 20px;
 }
 
-/* line 92, resources/assets/styles/layouts/_blocks.scss */
+/* line 102, resources/assets/styles/layouts/_blocks.scss */
 
 section.block-banner {
   min-height: 100vh;
@@ -30907,17 +30919,7 @@ section.block-banner {
   background-attachment: fixed;
 }
 
-/* line 98, resources/assets/styles/layouts/_blocks.scss */
-
-.layer-0 {
-  bottom: -20%;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 110px;
-}
-
-/* line 106, resources/assets/styles/layouts/_blocks.scss */
+/* line 108, resources/assets/styles/layouts/_blocks.scss */
 
 .content-banner {
   height: 850px;
@@ -30933,7 +30935,7 @@ section.block-banner {
           justify-content: center;
 }
 
-/* line 113, resources/assets/styles/layouts/_blocks.scss */
+/* line 115, resources/assets/styles/layouts/_blocks.scss */
 
 .content-banner h2 {
   font-weight: bold;
@@ -30943,7 +30945,7 @@ section.block-banner {
   color: white;
 }
 
-/* line 121, resources/assets/styles/layouts/_blocks.scss */
+/* line 123, resources/assets/styles/layouts/_blocks.scss */
 
 .content-banner p {
   font-size: 16px;
@@ -30951,7 +30953,7 @@ section.block-banner {
   color: white;
 }
 
-/* line 127, resources/assets/styles/layouts/_blocks.scss */
+/* line 129, resources/assets/styles/layouts/_blocks.scss */
 
 .content-banner p a {
   font-size: 16px;
@@ -30959,7 +30961,7 @@ section.block-banner {
   color: white;
 }
 
-/* line 133, resources/assets/styles/layouts/_blocks.scss */
+/* line 135, resources/assets/styles/layouts/_blocks.scss */
 
 .content-banner .btn-push {
   background: -webkit-linear-gradient(280.79deg, #1adb72 -0.5%, #10b151 100%);
@@ -30976,13 +30978,13 @@ section.block-banner {
   text-align: center;
 }
 
-/* line 146, resources/assets/styles/layouts/_blocks.scss */
+/* line 148, resources/assets/styles/layouts/_blocks.scss */
 
 section.block-call {
   padding-bottom: 70px;
 }
 
-/* line 150, resources/assets/styles/layouts/_blocks.scss */
+/* line 152, resources/assets/styles/layouts/_blocks.scss */
 
 .content-call {
   font-weight: normal;
@@ -30992,7 +30994,7 @@ section.block-call {
   color: white;
 }
 
-/* line 158, resources/assets/styles/layouts/_blocks.scss */
+/* line 160, resources/assets/styles/layouts/_blocks.scss */
 
 section.block-call .btn-push {
   background: -webkit-linear-gradient(280.79deg, #1adb72 -0.5%, #10b151 100%);
@@ -31011,7 +31013,7 @@ section.block-call .btn-push {
   margin: 40px auto 0;
 }
 
-/* line 173, resources/assets/styles/layouts/_blocks.scss */
+/* line 175, resources/assets/styles/layouts/_blocks.scss */
 
 section.block-features {
   background: -webkit-linear-gradient(286.86deg, #3d4165 0%, #212230 129.32%);
@@ -31020,7 +31022,7 @@ section.block-features {
   padding: 95px 0 75px;
 }
 
-/* line 178, resources/assets/styles/layouts/_blocks.scss */
+/* line 180, resources/assets/styles/layouts/_blocks.scss */
 
 h2.border-lines {
   font-weight: bold;
@@ -31045,7 +31047,7 @@ h2.border-lines {
           align-items: center;
 }
 
-/* line 195, resources/assets/styles/layouts/_blocks.scss */
+/* line 197, resources/assets/styles/layouts/_blocks.scss */
 
 .features-item {
   font-weight: normal;
@@ -31055,14 +31057,14 @@ h2.border-lines {
   border-left: 6px solid #ff640a;
 }
 
-/* line 203, resources/assets/styles/layouts/_blocks.scss */
+/* line 205, resources/assets/styles/layouts/_blocks.scss */
 
 .features-item p {
   font-size: 24px;
   font-weight: bold;
 }
 
-/* line 208, resources/assets/styles/layouts/_blocks.scss */
+/* line 210, resources/assets/styles/layouts/_blocks.scss */
 
 .features-item span {
   font-style: normal;
@@ -31070,7 +31072,7 @@ h2.border-lines {
   font-size: 16px;
 }
 
-/* line 214, resources/assets/styles/layouts/_blocks.scss */
+/* line 216, resources/assets/styles/layouts/_blocks.scss */
 
 ul.footer-menu {
   display: -webkit-box;
@@ -31080,7 +31082,7 @@ ul.footer-menu {
   margin-left: auto;
 }
 
-/* line 220, resources/assets/styles/layouts/_blocks.scss */
+/* line 222, resources/assets/styles/layouts/_blocks.scss */
 
 ul.footer-menu li {
   font-size: 16px;
@@ -31092,7 +31094,7 @@ ul.footer-menu li {
   font-weight: 500;
 }
 
-/* line 230, resources/assets/styles/layouts/_blocks.scss */
+/* line 232, resources/assets/styles/layouts/_blocks.scss */
 
 ul.footer-links {
   list-style: none;
@@ -31103,13 +31105,13 @@ ul.footer-links {
   margin: 0 20px;
 }
 
-/* line 237, resources/assets/styles/layouts/_blocks.scss */
+/* line 239, resources/assets/styles/layouts/_blocks.scss */
 
 ul.footer-links li {
   margin: 0 20px;
 }
 
-/* line 241, resources/assets/styles/layouts/_blocks.scss */
+/* line 243, resources/assets/styles/layouts/_blocks.scss */
 
 ul.footer-links li a {
   font-size: 16px;
@@ -31121,27 +31123,27 @@ ul.footer-links li a {
   font-weight: normal;
 }
 
-/* line 251, resources/assets/styles/layouts/_blocks.scss */
+/* line 253, resources/assets/styles/layouts/_blocks.scss */
 
 ul.footer-menu li a {
   font-size: 25px;
 }
 
-/* line 255, resources/assets/styles/layouts/_blocks.scss */
+/* line 257, resources/assets/styles/layouts/_blocks.scss */
 
 .header-block img {
   max-width: 230px;
   margin: 30px 0;
 }
 
-/* line 260, resources/assets/styles/layouts/_blocks.scss */
+/* line 262, resources/assets/styles/layouts/_blocks.scss */
 
 section.block-models {
   background: #e5e5e5;
   padding: 90px 0 100px;
 }
 
-/* line 265, resources/assets/styles/layouts/_blocks.scss */
+/* line 267, resources/assets/styles/layouts/_blocks.scss */
 
 h2.headline-block {
   font-size: 40px;
@@ -31151,13 +31153,13 @@ h2.headline-block {
   margin-bottom: 100px;
 }
 
-/* line 273, resources/assets/styles/layouts/_blocks.scss */
+/* line 275, resources/assets/styles/layouts/_blocks.scss */
 
 .models-item img {
   max-width: 100%;
 }
 
-/* line 277, resources/assets/styles/layouts/_blocks.scss */
+/* line 279, resources/assets/styles/layouts/_blocks.scss */
 
 .models-item .row:nth-child(even) .one {
   -webkit-box-ordinal-group: 3;
@@ -31165,7 +31167,7 @@ h2.headline-block {
           order: 2;
 }
 
-/* line 281, resources/assets/styles/layouts/_blocks.scss */
+/* line 283, resources/assets/styles/layouts/_blocks.scss */
 
 .two {
   font-size: 16px;
@@ -31173,14 +31175,14 @@ h2.headline-block {
   color: #3d4165;
 }
 
-/* line 287, resources/assets/styles/layouts/_blocks.scss */
+/* line 289, resources/assets/styles/layouts/_blocks.scss */
 
 .two ul li {
   font-size: 16px;
   margin-bottom: 10px;
 }
 
-/* line 292, resources/assets/styles/layouts/_blocks.scss */
+/* line 294, resources/assets/styles/layouts/_blocks.scss */
 
 section.block-subscribe {
   background: -webkit-linear-gradient(286.86deg, #3d4166 0%, #212230 129.32%);
@@ -31189,13 +31191,13 @@ section.block-subscribe {
   padding: 45px 0 40px;
 }
 
-/* line 297, resources/assets/styles/layouts/_blocks.scss */
+/* line 299, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe {
   border-left: 6px solid #ff640a;
 }
 
-/* line 301, resources/assets/styles/layouts/_blocks.scss */
+/* line 303, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe p {
   font-style: normal;
@@ -31205,13 +31207,13 @@ section.block-subscribe {
   color: white;
 }
 
-/* line 309, resources/assets/styles/layouts/_blocks.scss */
+/* line 311, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper label {
   display: none !important;
 }
 
-/* line 313, resources/assets/styles/layouts/_blocks.scss */
+/* line 315, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper form {
   display: -webkit-box;
@@ -31219,20 +31221,20 @@ section.block-subscribe {
   display: flex;
 }
 
-/* line 317, resources/assets/styles/layouts/_blocks.scss */
+/* line 319, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper {
   margin: 0 !important;
 }
 
-/* line 321, resources/assets/styles/layouts/_blocks.scss */
+/* line 323, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper .gform_footer {
   padding: 0;
   margin: 0;
 }
 
-/* line 326, resources/assets/styles/layouts/_blocks.scss */
+/* line 328, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper .gform_footer button {
   background: #1e6dfb !important;
@@ -31242,20 +31244,20 @@ section.block-subscribe {
   height: 45px;
 }
 
-/* line 333, resources/assets/styles/layouts/_blocks.scss */
+/* line 335, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper li {
   padding: 0 !important;
   margin: 0 !important;
 }
 
-/* line 338, resources/assets/styles/layouts/_blocks.scss */
+/* line 340, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper li .ginput_container {
   margin: 0 !important;
 }
 
-/* line 342, resources/assets/styles/layouts/_blocks.scss */
+/* line 344, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper li .ginput_container input {
   height: 45px;
@@ -31265,7 +31267,7 @@ section.block-subscribe {
   min-width: 240px;
 }
 
-/* line 350, resources/assets/styles/layouts/_blocks.scss */
+/* line 352, resources/assets/styles/layouts/_blocks.scss */
 
 .one-subscribe h3 {
   font-weight: bold;
@@ -31274,7 +31276,7 @@ section.block-subscribe {
   color: white;
 }
 
-/* line 357, resources/assets/styles/layouts/_blocks.scss */
+/* line 359, resources/assets/styles/layouts/_blocks.scss */
 
 .one-subscribe h2 {
   font-weight: bold;
@@ -31284,14 +31286,14 @@ section.block-subscribe {
   color: white;
 }
 
-/* line 365, resources/assets/styles/layouts/_blocks.scss */
+/* line 367, resources/assets/styles/layouts/_blocks.scss */
 
 section.footer img {
   max-width: 230px;
   margin: 30px 0;
 }
 
-/* line 370, resources/assets/styles/layouts/_blocks.scss */
+/* line 372, resources/assets/styles/layouts/_blocks.scss */
 
 section.block-call h2 {
   font-weight: bold;
@@ -31301,6 +31303,125 @@ section.block-call h2 {
   text-transform: capitalize;
   color: white;
   margin: 54px 0 16px 0;
+}
+
+@media (max-width: 767.98px) {
+  /* line 383, resources/assets/styles/layouts/_blocks.scss */
+
+  .layer-0 img {
+    max-width: 100%;
+  }
+
+  /* line 387, resources/assets/styles/layouts/_blocks.scss */
+
+  .content-about {
+    height: auto;
+    padding: 15px;
+  }
+
+  /* line 392, resources/assets/styles/layouts/_blocks.scss */
+
+  .content-banner {
+    height: auto;
+    padding-top: 100px !important;
+    margin-bottom: 40px;
+  }
+
+  /* line 398, resources/assets/styles/layouts/_blocks.scss */
+
+  [data-aos] {
+    -webkit-transform: translate3d(0, 0, 0) !important;
+            transform: translate3d(0, 0, 0) !important;
+    opacity: 1 !important;
+  }
+
+  /* line 403, resources/assets/styles/layouts/_blocks.scss */
+
+  .planet img {
+    max-width: 100%;
+    margin: 10px 0;
+  }
+
+  /* line 408, resources/assets/styles/layouts/_blocks.scss */
+
+  .content-banner h2 {
+    font-size: 30px;
+  }
+
+  /* line 412, resources/assets/styles/layouts/_blocks.scss */
+
+  section.block-about img {
+    max-width: 100%;
+  }
+
+  /* line 416, resources/assets/styles/layouts/_blocks.scss */
+
+  section.block-about {
+    min-height: 1px !important;
+    padding: 15px 0;
+  }
+
+  /* line 421, resources/assets/styles/layouts/_blocks.scss */
+
+  section.block-about .layer-0 img {
+    margin-left: -20px;
+  }
+
+  /* line 425, resources/assets/styles/layouts/_blocks.scss */
+
+  .status-icon {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column;
+            flex-flow: column;
+    background: transparent;
+  }
+
+  /* line 430, resources/assets/styles/layouts/_blocks.scss */
+
+  .statusitems {
+    padding: 12px;
+    margin: 10px 0;
+    background: #3d4165;
+    border-radius: 26px;
+  }
+
+  /* line 437, resources/assets/styles/layouts/_blocks.scss */
+
+  .models-item .row:nth-child(even) .two {
+    -webkit-box-ordinal-group: 3 !important;
+        -ms-flex-order: 2 !important;
+            order: 2 !important;
+  }
+
+  /* line 441, resources/assets/styles/layouts/_blocks.scss */
+
+  .models-item .two ul {
+    padding: 0;
+    margin: 20px;
+  }
+
+  /* line 446, resources/assets/styles/layouts/_blocks.scss */
+
+  .two-subscribe .gform_wrapper .gform_footer button {
+    width: 90px;
+    white-space: nowrap;
+    padding: 0;
+  }
+
+  /* line 452, resources/assets/styles/layouts/_blocks.scss */
+
+  section.footer {
+    padding-bottom: 60px !important;
+  }
+
+  /* line 456, resources/assets/styles/layouts/_blocks.scss */
+
+  ul.footer-links {
+    white-space: nowrap;
+    overflow: scroll;
+    margin: 0;
+  }
 }
 
 /* line 1, resources/assets/styles/layouts/_footer.scss */

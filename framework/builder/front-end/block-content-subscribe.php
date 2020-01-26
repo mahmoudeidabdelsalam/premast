@@ -10,7 +10,7 @@ $shortcode_subscribe = get_field('shortcode_subscribe');
 ?>
 <section class="block-subscribe">
   <div class="container">
-    <div class="row">
+    <div class="row m-0">
       <div class="col-md-10 col-12">
         <div class="row">
          <div class="col-md-7 col-12 one-subscribe">
