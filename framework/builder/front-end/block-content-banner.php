@@ -13,7 +13,7 @@ $button_link = get_field('button_column_content_link');
 ?>
 <section class="block-banner" style="background-image:url('<?= $bg_banner; ?>');">
   <div class="container">
-    <div class="row">
+    <div class="row m-0">
       <div class="col-md-4 col-12 content-banner p-0">
         <h2 data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" data-aos-duration="1000"><?= $headline; ?></h2>
         <div data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" data-aos-duration="1000"><?= $editor; ?></div>

@@ -10,7 +10,7 @@ $editor = get_field('content_banner_about');
 ?>
 <section class="block-about">
   <div class="container-fluid p-0">
-    <div class="row">
+    <div class="row m-0">
       <div class="col-md-5 col-12 relative">
         <div class="layer-0 background background-about">
           <img src="<?= $bg_banner; ?>" alt="<?= $headline; ?>">

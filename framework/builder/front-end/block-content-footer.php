@@ -8,7 +8,7 @@
 ?>
 <section class="footer">
   <div class="container">
-    <div class="row align-items-center">
+    <div class="row align-items-center m-0">
       <a href="<?= home_url('/'); ?>"><img src="<?= $logo; ?>" alt="logo footer"></a>
 
       <?php if( $menus ): ?>

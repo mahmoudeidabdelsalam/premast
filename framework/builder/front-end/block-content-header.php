@@ -9,7 +9,7 @@
 ?>
 <header class="header-block">
   <div class="container">
-    <div class="row">
+    <div class="row m-0">
       <a href="<?= $link; ?>"><img src="<?= $logo; ?>" alt="logo premast"></a>
     </div>
   </div>

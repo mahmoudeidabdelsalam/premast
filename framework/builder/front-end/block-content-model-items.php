@@ -7,7 +7,7 @@ $headline = get_field('headline_block_models');
 ?>
 <section class="block-models">
   <div class="container">
-    <div class="row justify-content-center align-items-center">
+    <div class="row justify-content-center align-items-center m-0">
       <div class="col-md-6 col-12">
         <h2 class="headline-block" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000"><?= $headline; ?></h2>
       </div>
