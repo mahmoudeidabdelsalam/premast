@@ -379,6 +379,24 @@ section.block-call h2 {
   margin: 54px 0 16px 0;
 }
 
+.block-video {
+  position: relative;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.722);
+  border-radius: 5px;
+}
+
+.block-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 @include media-breakpoint-down(sm) {
   .layer-0 img {
     max-width: 100%;

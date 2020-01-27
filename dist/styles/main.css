@@ -31305,21 +31305,44 @@ section.block-call h2 {
   margin: 54px 0 16px 0;
 }
 
+/* line 382, resources/assets/styles/layouts/_blocks.scss */
+
+.block-video {
+  position: relative;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  max-width: 100%;
+  height: auto;
+  -webkit-box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.722);
+          box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.722);
+  border-radius: 5px;
+}
+
+/* line 392, resources/assets/styles/layouts/_blocks.scss */
+
+.block-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 @media (max-width: 767.98px) {
-  /* line 383, resources/assets/styles/layouts/_blocks.scss */
+  /* line 401, resources/assets/styles/layouts/_blocks.scss */
 
   .layer-0 img {
     max-width: 100%;
   }
 
-  /* line 387, resources/assets/styles/layouts/_blocks.scss */
+  /* line 405, resources/assets/styles/layouts/_blocks.scss */
 
   .content-about {
     height: auto;
     padding: 15px;
   }
 
-  /* line 392, resources/assets/styles/layouts/_blocks.scss */
+  /* line 410, resources/assets/styles/layouts/_blocks.scss */
 
   .content-banner {
     height: auto;
@@ -31327,7 +31350,7 @@ section.block-call h2 {
     margin-bottom: 40px;
   }
 
-  /* line 398, resources/assets/styles/layouts/_blocks.scss */
+  /* line 416, resources/assets/styles/layouts/_blocks.scss */
 
   [data-aos] {
     -webkit-transform: translate3d(0, 0, 0) !important;
@@ -31335,39 +31358,39 @@ section.block-call h2 {
     opacity: 1 !important;
   }
 
-  /* line 403, resources/assets/styles/layouts/_blocks.scss */
+  /* line 421, resources/assets/styles/layouts/_blocks.scss */
 
   .planet img {
     max-width: 100%;
     margin: 10px 0;
   }
 
-  /* line 408, resources/assets/styles/layouts/_blocks.scss */
+  /* line 426, resources/assets/styles/layouts/_blocks.scss */
 
   .content-banner h2 {
     font-size: 30px;
   }
 
-  /* line 412, resources/assets/styles/layouts/_blocks.scss */
+  /* line 430, resources/assets/styles/layouts/_blocks.scss */
 
   section.block-about img {
     max-width: 100%;
   }
 
-  /* line 416, resources/assets/styles/layouts/_blocks.scss */
+  /* line 434, resources/assets/styles/layouts/_blocks.scss */
 
   section.block-about {
     min-height: 1px !important;
     padding: 15px 0;
   }
 
-  /* line 421, resources/assets/styles/layouts/_blocks.scss */
+  /* line 439, resources/assets/styles/layouts/_blocks.scss */
 
   section.block-about .layer-0 img {
     margin-left: -20px;
   }
 
-  /* line 425, resources/assets/styles/layouts/_blocks.scss */
+  /* line 443, resources/assets/styles/layouts/_blocks.scss */
 
   .status-icon {
     -webkit-box-orient: vertical;
@@ -31377,7 +31400,7 @@ section.block-call h2 {
     background: transparent;
   }
 
-  /* line 430, resources/assets/styles/layouts/_blocks.scss */
+  /* line 448, resources/assets/styles/layouts/_blocks.scss */
 
   .statusitems {
     padding: 12px;
@@ -31386,7 +31409,7 @@ section.block-call h2 {
     border-radius: 26px;
   }
 
-  /* line 437, resources/assets/styles/layouts/_blocks.scss */
+  /* line 455, resources/assets/styles/layouts/_blocks.scss */
 
   .models-item .row:nth-child(even) .two {
     -webkit-box-ordinal-group: 3 !important;
@@ -31394,14 +31417,14 @@ section.block-call h2 {
             order: 2 !important;
   }
 
-  /* line 441, resources/assets/styles/layouts/_blocks.scss */
+  /* line 459, resources/assets/styles/layouts/_blocks.scss */
 
   .models-item .two ul {
     padding: 0;
     margin: 20px;
   }
 
-  /* line 446, resources/assets/styles/layouts/_blocks.scss */
+  /* line 464, resources/assets/styles/layouts/_blocks.scss */
 
   .two-subscribe .gform_wrapper .gform_footer button {
     width: 90px;
@@ -31409,13 +31432,13 @@ section.block-call h2 {
     padding: 0;
   }
 
-  /* line 452, resources/assets/styles/layouts/_blocks.scss */
+  /* line 470, resources/assets/styles/layouts/_blocks.scss */
 
   section.footer {
     padding-bottom: 60px !important;
   }
 
-  /* line 456, resources/assets/styles/layouts/_blocks.scss */
+  /* line 474, resources/assets/styles/layouts/_blocks.scss */
 
   ul.footer-links {
     white-space: nowrap;

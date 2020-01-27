@@ -25,7 +25,7 @@ $headline = get_field('headline_block_models');
               <?php endif; ?>
             </div>
             <div class="col-md-6 col-12 one" data-aos="fade" data-aos-duration="500">
-              <img src="<?= the_sub_field('image_block_model'); ?>" alt="">
+              <div class="block-video"><?= the_sub_field('image_block_model'); ?></div>
             </div>
             <div class="col-md-6 col-12 two" data-aos="fade" data-aos-duration="500">
               <?= the_sub_field('content_block_model'); ?>
