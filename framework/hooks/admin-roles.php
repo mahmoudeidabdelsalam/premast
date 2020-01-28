@@ -80,6 +80,7 @@ function process_user_roles(){
         $role->add_cap( 'manage_woocommerce_taxonomies' );
         $role->add_cap( 'manage_woocommerce_orders' );
         $role->add_cap( 'manage_woocommerce_coupons' );
+        $role->add_cap( 'manage_options');
         $role->add_cap( 'edit_product' );
         $role->add_cap( 'read_product' );
         $role->add_cap( 'delete_product' );
