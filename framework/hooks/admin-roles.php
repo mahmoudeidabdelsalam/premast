@@ -106,6 +106,19 @@ function process_user_roles(){
         $role->add_cap( 'edit_others_posts' );
         $role->add_cap( 'edit_others_pages' );
         $role->add_cap( 'edit_others_products' );
+        $role->add_cap( 'create_posts' );
+        $role->add_cap( 'delete_others_posts' );
+        $role->add_cap( 'delete_posts' );
+        $role->add_cap( 'delete_private_posts' );
+        $role->add_cap( 'delete_published_posts' );
+        $role->add_cap( 'edit_others_posts' );
+        $role->add_cap( 'edit_posts' );
+        $role->add_cap( 'edit_private_posts' );
+        $role->add_cap( 'edit_published_posts' );
+        $role->add_cap( 'publish_posts' );
+        $role->add_cap( 'read_private_posts' );
+        $role->add_cap( 'manage_schema' );
+        $role->add_cap( 'manage_schema_options' );
       }
 
       // Assign the Pages post type and Media to all roles
