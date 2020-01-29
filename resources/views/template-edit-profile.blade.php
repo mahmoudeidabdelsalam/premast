@@ -10,8 +10,8 @@
   <div class="container">
     <div class="row justify-content-center m-0">
       <div class="user-not-login">
-        <h2>{{ _e('See what’s happening in the world right now', 'premast') }}</h2>
-        <p>{{ _e('Join Twitter today.', 'premast') }}</p>
+        <h2>{{ _e('Join us and enjoy with this benefits', 'premast') }}</h2>
+        <p>{{ _e('Join Premast today.', 'premast') }}</p>
         <a class="mt-2 login btn btn-blue" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Log In', 'premast') }}</a>
       </div>
     </div>
