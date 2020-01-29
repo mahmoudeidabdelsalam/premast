@@ -136,32 +136,6 @@ a {
   position: relative;
   z-index: 99;
 
-  &::before,
-  &::after {
-    width: 45px;
-    height: 30px;
-    position: absolute;
-    content: "";
-    display: inline-block;
-    background: -webkit-linear-gradient(289.62deg, rgb(26, 219, 114) -0.5%, rgb(16, 177, 81) 100%);
-    border-radius: 50%;
-    transition: transform 1s ease;
-    transform: scale(0);
-    z-index: -1;
-  }
-
-  &::before {
-    top: -20%;
-    left: 5%;
-  }
-
-  &::after {
-    bottom: -20%;
-    right: 5%;
-  }
-
-  &:hover::before,
-  &:hover::after,
   &:hover {
     transform: none;
     color: $brand-white;

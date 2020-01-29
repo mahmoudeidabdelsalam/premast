@@ -42,7 +42,6 @@
     <button type="submit"><i class="fa fa-search"></i></button>
     <input id="autoblogs" class="form-control w-100" type="search" value="@if($refine != '0') {!! $refine !!} @endif" name="refine" autocomplete="on" autocorrect="off" autocapitalize="on" spellcheck="false" placeholder="{{ _e('Search items', 'premast') }}" aria-label="Search">    
   </form>
-
   @php 
     $args = array(
       'post_type' => 'product',
@@ -50,7 +49,6 @@
     $loop = new WP_Query( $args );
     $count = $loop->found_posts;
   @endphp
-
   @if (get_field('banner_items_headline', 'option'))
   <section class="banner-items" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
     <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
@@ -62,7 +60,6 @@
     </div>
   </section>
   @endif
-  
   <div class="col-12 d-flex">
     <div class="dropdown">
       <a class="btn-toggle dropdown-toggle" href="#" role="button" id="dropdownMenuCat" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -98,13 +95,10 @@
         @endif
       </div>
     </div>
-
-
     <div class="dropdown">
       <a class="btn-toggle dropdown-toggle" href="#" role="button" id="dropdownMenuFilter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         {{ _e('Sort by featured', 'premast') }}
       </a>
-
       <div class="dropdown-menu" aria-labelledby="dropdownMenuFilter">
         <a class="dropdown-item" href="{{ home_url( $wp->request ) }}?sort=featured">{{ _e('featured', 'premast') }}</a>
         <a class="dropdown-item" href="{{ home_url( $wp->request ) }}?sort=view">{{ _e('Popular', 'premast') }}</a>
@@ -121,56 +115,9 @@
   <div class="row justify-content-center m-0">
     @if ( !wp_is_mobile() ) 
       <div class="col-md-3 col-sm-12">
-        <div class="product-child">
-          <h2><i class="fa fa-align-right" aria-hidden="true"></i> {{ _e('Category', 'premast') }}</h2>
 
-          <ul class="list-group product-term">
-            @if($taxonomy_query->parent) 
-              @php 
-              $term_parent = get_term_parents_list( $taxonomy_query->parent, 'product_cat' );
-                $term_link = get_term_link( $taxonomy_query );
-                $termchildren = get_term_children( $taxonomy_query->term_id, 'product_cat' );
-              @endphp
-              <li class="list-group-item term-parent">
-                <i class="fa fa-angle-left" aria-hidden="true"></i> {!! rtrim($term_parent,'/')  !!}
-              </li>
-              <li class="list-group-item">
-                <a class="text-term  active " href="{{ $term_link }}">{{ $taxonomy_query->name }} <span class="count-term">{{ $taxonomy_query->count }}</span></a>
-              </li>
-              @if ($termchildren)
-                @foreach ($termchildren as $child)
-                @php 
-                $term = get_term_by( 'id', $child, 'product_cat' );
-                @endphp
-                  <li class="list-group-item">
-                    <a class="text-term" href="{{ get_term_link( $term ) }}">{{ $term->name }} <span class="count-term">{{ $term->count }}</span></a>
-                  </li>
-                @endforeach
-              @endif
-            @else
-              <li class="list-group-item">
-                <a class="text-term text-white" href="#">{{ _e('All Categories', 'premast') }} <span class="count-term">{{ $taxonomy_query->count }}</span></a>
-              </li>
-              @php 
-                $terms = get_terms( 'product_cat', array( 'parent' => $taxonomy_query->term_id, 'orderby' => 'slug', 'hide_empty' => false ) );
-              @endphp
-              @foreach ( $terms as $term )
-                @php
-                  $term_link = get_term_link( $term );
-                  if ( is_wp_error( $term_link ) ) {
-                      continue;
-                  }
-                @endphp
-                <li class="list-group-item">
-                  <a class="text-term @if($term->term_id == $taxonomy_query->term_id) active @endif" href="{{ $term_link }}">{{ $term->name }} <span class="count-term">{{ $term->count }}</span></a>
-                </li>
-              @endforeach
-            @endif
-          </ul>
-        </div>
       </div>
     @endif
-
 
     <div class="col-md-9 col-sm-12 position-relative">
       <div class="item-columns container-ajax items-categories item-card grid grid-custom row">
@@ -193,12 +140,10 @@
               )
             ));
             $per_page = 21 - count($second_ids);
-            // dd($per_page);
           } else {
             $second_ids = [];
             $per_page = 20;
           }
-
           $orders = array(
             'post_type' => 'product',
             'posts_per_page' => 19,
@@ -214,7 +159,6 @@
               )
             )
           );
-
           $args = array(
             'post_type' => 'product',
             'posts_per_page' => $per_page,
@@ -228,8 +172,6 @@
               )
             )
           );
-
-          
           if($Name != '0') {
             $args['tax_query'] = array(
               array(
@@ -255,22 +197,12 @@
               )
             );
           }
-
           $my_query = new \WP_Query( $args );
-
-
-          // dd($my_query);
-
-
           if ($sort != '0') {
             $more_query = new \WP_Query( $orders ); 
             $my_query->posts = array_merge( $more_query->posts, $my_query->posts);
-
             $my_query->post_count = count( $my_query->posts );
-
-            //dd($my_query->post_count);
           }
-    
         @endphp
 
         @if (get_field('show_card_pricing', 'option'))
@@ -298,9 +230,7 @@
 
         @if($my_query->have_posts())
           @while($my_query->have_posts()) @php($my_query->the_post())
-
           @php ($sale = get_post_meta( get_the_ID(), '_sale_price', true))
-            
             <div class="col-md-4 col-12 grid-item">
               <div class="card">
                   @if($sale)
@@ -388,9 +318,7 @@
       <div class="col-12 pt-5 pb-5">
         <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $my_query) }}</nav>
       </div>
-
     </div>
-
   </div>
 </div>
 

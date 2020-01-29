@@ -488,6 +488,7 @@ section.banner-items {
     z-index: 99;
     min-width: 180px;
     box-shadow: 0 14px 36px 0 rgba(61, 69, 82, 0.47);
+    overflow: hidden;
 
     .item-dropdown {
       a,

@@ -29328,44 +29328,6 @@ a:hover {
 
 /* line 139, resources/assets/styles/common/_global.scss */
 
-.button-green::before,
-.button-green::after {
-  width: 45px;
-  height: 30px;
-  position: absolute;
-  content: "";
-  display: inline-block;
-  background: -webkit-linear-gradient(289.62deg, #1adb72 -0.5%, #10b151 100%);
-  border-radius: 50%;
-  -webkit-transition: -webkit-transform 1s ease;
-  transition: -webkit-transform 1s ease;
-  -o-transition: -o-transform 1s ease;
-  transition: transform 1s ease;
-  transition: transform 1s ease, -webkit-transform 1s ease, -o-transform 1s ease;
-  -webkit-transform: scale(0);
-       -o-transform: scale(0);
-          transform: scale(0);
-  z-index: -1;
-}
-
-/* line 153, resources/assets/styles/common/_global.scss */
-
-.button-green::before {
-  top: -20%;
-  left: 5%;
-}
-
-/* line 158, resources/assets/styles/common/_global.scss */
-
-.button-green::after {
-  bottom: -20%;
-  right: 5%;
-}
-
-/* line 163, resources/assets/styles/common/_global.scss */
-
-.button-green:hover::before,
-.button-green:hover::after,
 .button-green:hover {
   -webkit-transform: none;
        -o-transform: none;

@@ -7,7 +7,6 @@
   </div>
 </div>
 @endif
-
 @php
   $refine   = isset($_GET['refine']) ? $_GET['refine'] : '0';
   $sort   = isset($_GET['sort']) ? $_GET['sort'] : '0';
@@ -51,15 +50,13 @@
       @endforeach
     </ul>
     <hr>
-    @if (has_nav_menu('templates_navigation'))
-      {!! wp_nav_menu(['theme_location' => 'templates_navigation', 'container' => false, 'menu_class' => 'navbar-nav', 'walker' => new NavWalker()]) !!}
+    @if (has_nav_menu('items_navigation'))
+      {!! wp_nav_menu(['theme_location' => 'items_navigation', 'container' => false, 'menu_class' => 'navbar-nav', 'walker' => new NavWalker()]) !!}
     @endif
   </nav>
-
   <nav id="menu_user" style="display: none;">
     @include('partials/incloud/profile')
   </nav>
-
   <header class="banner">
     <div class="container p-0">
       <nav class="navbar navbar-expand-lg navbar-light bg-light px-0">
@@ -98,128 +95,158 @@
     </div>
   </header>
 @else
-<header class="bg-light banner">
-  <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <h2 class="logos">
-        <a class="navbar-brand p-0 align-self-center col" href="{{ the_field('link_page_login','option') }}" title="{{ get_bloginfo('name') }}">
-          <img class="img-fluid" src="@if(get_field('templates_logo', 'option')) {{ the_field('templates_logo','option') }} @else {{ get_theme_file_uri().'/dist/images/premast-templates.png' }} @endif" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
-          <span class="sr-only"> {{ get_bloginfo('name') }} </span>
-        </a>
-      </h2>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <h2 class="sr-only">{{ _e('Breadcrumb navigation', 'premast') }}</h2>
-        @if (has_nav_menu('templates_navigation'))
-          {!! wp_nav_menu(['theme_location' => 'templates_navigation', 'container' => false, 'menu_class' => 'navbar-nav ml-4 mr-auto', 'walker' => new NavWalker()]) !!}
-        @endif
-      </div>
-      <form action="" autocomplete="on" id="search">
-        <input id="search" name="search" type="text" placeholder="search.."><input id="search_submit" value="Rechercher" type="submit">
-      </form>
-      @if(get_field('link_pricing', 'option'))
-        <div class="button-pricing">
-          <a class="button-green" href="{{ the_field('link_pricing', 'option') }}">{{ _e('pricing', 'premast') }}</a>
-        </div>
-      @endif
-      @if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) 
-      @php 
-        $count = WC()->cart->cart_contents_count; 
-      @endphp
-        <a class="cart-contents ml-4" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
-          @if ( $count > 0 )
-          <span class="cart-contents-count"><?php echo esc_html( $count ); ?></span>
-          @endif
-        </a>
-      @endif
-      <div class="notification mx-3">
-        <a href="#"><i class="fa fa-bell-o text-gray-dark fa-lg" aria-hidden="true"></i> <span class="notification-counter"></span></a>
-      </div>
-      <div class="half">
-        @if( is_user_logged_in() ) 
-          @php 
-            $limit_membership = wc_memberships_get_user_active_memberships($current_user->ID);
-          @endphp
-          <label for="profile" class="profile-dropdown">
-            <input type="checkbox" id="profile">
-            <i class="fa fa-user-circle fa-lg" aria-hidden="true"></i>
-            {!! get_the_author_meta('display_name', $current_user->ID) !!}
-            <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            @if ($limit_membership)
-              <i class="fa fa-star user-star" aria-hidden="true"></i>
-            @endif
-            @include('partials/incloud/profile')
-          </label>
-        @else 
-          <a class="mx-2 signup text-primary" href="#" data-toggle="modal" data-target="#SignupUser">{{ _e('Sign Up', 'premast') }}</a>
-          <a class="mx-2 login text-gray-dark" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Login', 'premast') }}</a>
-        @endif
-      </div>
-    </nav>
-  </div>
-</header>
-
 
 
 @php 
-  $args = array(
-    'post_type' => 'product',
-  );
-  $loop = new WP_Query( $args );
-  $count = $loop->found_posts;
+  $taxonomy_query = get_queried_object();
 @endphp
-@if(is_tax( 'product_cat' ))
-  @php 
-    $term = get_queried_object();
-    $image = get_field('images_cat', $term);
-    $heading = get_field('heading_cat', $term);
-    $description = get_field('description_cat', $term);
-  @endphp
-    @if ($heading)
-      <section class="banner-items mb-5" style="background: linear-gradient(105deg, {{ the_field('gradient_color_one','option') }} 0.7%, {{ the_field('gradient_color_two','option') }} 100%);">
-        <div class="elementor-background-overlay" style="background-image: url('{{ $image }}');"></div>
-        <div class="container-fluid">
-          <div class="row align-items-center text-left">
-            <h2 class="col-12 text-black"><span class="font-weight-300">{{ $heading }}</span></h2>
-            <p class="col-md-5 col-12 text-black font-weight-300">{{ $description }}</p>
-          </div>
-        </div>
-      </section>
-    @else
-      <section class="banner-items mb-5" style="background: linear-gradient(105deg, {{ the_field('gradient_color_one','option') }} 0.7%, {{ the_field('gradient_color_two','option') }} 100%);">
-        <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
-        <div class="container-fluid">
-          <div class="row align-items-center text-left">
-            <h2 class="col-12 text-black"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{  $count }}</strong> <span class="font-weight-300">{{ the_field('banner_items_headline','option') }}</span></h2>
-            <p class="col-md-5 col-12 text-black font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
-          </div>
-        </div>
-      </section>
-    @endif
-@else
-  @if (get_field('banner_items_headline', 'option'))
-  <section class="banner-items mb-5" style="background: linear-gradient(105deg, {{ the_field('gradient_color_one','option') }} 0.7%, {{ the_field('gradient_color_two','option') }} 100%);">
-    <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
+
+
+  <header class="bg-light banner @if($taxonomy_query) is-child @endif">
     <div class="container-fluid">
-      <div class="row align-items-center text-left">
-        <h2 class="col-12 text-black"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{  $count }}</strong> <span class="font-weight-300">{{ the_field('banner_items_headline','option') }}</span></h2>
-        <p class="col-md-5 col-12 text-black font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
-      </div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <h2 class="logos">
+          <a class="navbar-brand p-0 align-self-center col" href="{{ the_field('link_page_login','option') }}" title="{{ get_bloginfo('name') }}">
+            <img class="img-fluid" src="@if(get_field('templates_logo', 'option')) {{ the_field('templates_logo','option') }} @else {{ get_theme_file_uri().'/dist/images/premast-templates.png' }} @endif" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
+            <span class="sr-only"> {{ get_bloginfo('name') }} </span>
+          </a>
+        </h2>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <h2 class="sr-only">{{ _e('Breadcrumb navigation', 'premast') }}</h2>
+          
+          @if (has_nav_menu('items_navigation'))
+            {!! wp_nav_menu(['theme_location' => 'items_navigation', 'container' => false, 'menu_class' => 'navbar-item navbar-nav ml-4 mr-auto', 'walker' => new Nav_Item_Walker()]) !!}
+          @endif
+        </div>
+        <form action="" autocomplete="on" id="search">
+          <input id="search" name="search" type="text" placeholder="search.."><input id="search_submit" value="Rechercher" type="submit">
+        </form>
+        @if(get_field('link_pricing', 'option'))
+          <div class="button-pricing">
+            <a class="button-green" href="{{ the_field('link_pricing', 'option') }}">{{ _e('pricing', 'premast') }}</a>
+          </div>
+        @endif
+        @if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) 
+        @php 
+          $count = WC()->cart->cart_contents_count; 
+        @endphp
+          <a class="cart-contents ml-4" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
+            @if ( $count > 0 )
+            <span class="cart-contents-count"><?php echo esc_html( $count ); ?></span>
+            @endif
+          </a>
+        @endif
+        <div class="notification mx-3">
+          <a href="#"><i class="fa fa-bell-o text-gray-dark fa-lg" aria-hidden="true"></i> <span class="notification-counter"></span></a>
+        </div>
+        <div class="half">
+          @if( is_user_logged_in() ) 
+            @php 
+              $limit_membership = wc_memberships_get_user_active_memberships($current_user->ID);
+            @endphp
+            <label for="profile" class="profile-dropdown">
+              <input type="checkbox" id="profile">
+              <i class="fa fa-user-circle fa-lg" aria-hidden="true"></i>
+              {!! get_the_author_meta('display_name', $current_user->ID) !!}
+              <i class="fa fa-chevron-down" aria-hidden="true"></i>
+              @if ($limit_membership)
+                <i class="fa fa-star user-star" aria-hidden="true"></i>
+              @endif
+              @include('partials/incloud/profile')
+            </label>
+          @else 
+            <a class="mx-2 signup text-primary" href="#" data-toggle="modal" data-target="#SignupUser">{{ _e('Sign Up', 'premast') }}</a>
+            <a class="mx-2 login text-gray-dark" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Login', 'premast') }}</a>
+          @endif
+        </div>
+      </nav>
     </div>
-  </section>
+  </header>
+  @php 
+    $args = array(
+      'post_type' => 'product',
+    );
+    $loop = new WP_Query( $args );
+    $count = $loop->found_posts;
+  @endphp
+  @if(is_tax( 'product_cat' ))
+    @php 
+      if($taxonomy_query->parent) {
+        $term = get_term_by( 'id', $taxonomy_query->parent, 'product_cat' );
+        $image = get_field('images_cat', $term);
+        $heading = get_field('heading_cat', $term);
+        $description = get_field('description_cat', $term);
+      } else {
+        $term = get_queried_object();
+        $image = get_field('images_cat', $term);
+        $heading = get_field('heading_cat', $term);
+        $description = get_field('description_cat', $term);
+      }
+    @endphp
+      @if ($heading)
+        <section class="banner-items" style="background: linear-gradient(105deg, {{ the_field('gradient_color_one','option') }} 0.7%, {{ the_field('gradient_color_two','option') }} 100%);">
+          <div class="elementor-background-overlay" style="background-image: url('{{ $image }}');"></div>
+          <div class="container-fluid">
+            <div class="row align-items-center text-left">
+              <h2 class="col-12 text-black"><span class="font-weight-600">{{ $heading }}</span></h2>
+              <p class="col-md-5 col-12 text-black font-weight-300">{{ $description }}</p>
+            </div>
+          </div>
+        </section>
+      @else
+        <section class="banner-items" style="background: linear-gradient(105deg, {{ the_field('gradient_color_one','option') }} 0.7%, {{ the_field('gradient_color_two','option') }} 100%);">
+          <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
+          <div class="container-fluid">
+            <div class="row align-items-center text-left">
+              <h2 class="col-12 text-black"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{  $count }}</strong> <span class="font-weight-300">{{ the_field('banner_items_headline','option') }}</span></h2>
+              <p class="col-md-5 col-12 text-black font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
+            </div>
+          </div>
+        </section>
+      @endif
+  @else
+    @if (get_field('banner_items_headline', 'option'))
+    <section class="banner-items" style="background: linear-gradient(105deg, {{ the_field('gradient_color_one','option') }} 0.7%, {{ the_field('gradient_color_two','option') }} 100%);">
+      <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
+      <div class="container-fluid">
+        <div class="row align-items-center text-left">
+          <h2 class="col-12 text-black"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{  $count }}</strong> <span class="font-weight-300">{{ the_field('banner_items_headline','option') }}</span></h2>
+          <p class="col-md-5 col-12 text-black font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
+        </div>
+      </div>
+    </section>
+    @endif
   @endif
+  
+  <div class="total-slide mb-5">
+    <strong class="font-weight-600">{{ $count }}</strong> {{ _e('total slides', 'premast') }}
+  </div>
+
+
+
 @endif
 
 
-@endif
+
+
+
+
 
 <style>
+.total-slide {
+  background: #D8F0FF;
+}
 #search {
-    position: relative;
-    display: inline-block;
-    height: 40px;
+  position: relative;
+  display: inline-block;
+  height: 40px;
+  margin: 0;
+}
+header.bg-light.banner.is-child {
+  margin-bottom: 62px;
 }
 #search input[type="text"] {
   height: 40px;
@@ -262,15 +289,13 @@
   cursor: pointer;
   transition: opacity .4s ease;
 }
-
 #search input[type="submit"]:hover {
   opacity: 0.8;
 }
-
 .notification {
-    position: relative;
-    top: 2px;
-    right: -7px;
+  position: relative;
+  top: 2px;
+  right: -7px;
 }
 .notification:hover i {
   animation: swingClapper 0.7s 0.04s cubic-bezier(0.455, 0.03, 0.515, 0.955);
@@ -290,11 +315,86 @@ span.notification-counter {
   5% {
     transform: rotate(0deg) scale3d(1, 1, 1);
   }
+
   30% {
     transform: rotate(-8deg) scale3d(1.5, 1.5, 1.5);
   }
+
   80% {
     transform: rotate(8deg) scale3d(.9, .9, .9);
   }
+}
+.navbar-item ul {
+  display: none;
+  position: absolute;
+  z-index: 9;
+  left: -15px;
+  top: 100%;
+  background-color: #f8f9fa;
+  white-space: nowrap;
+  list-style: none;
+  padding: 0;
+  right: -15px;
+}
+.navbar-item .radio:checked + .link + ul {
+  display: block;
+}
+.navbar-item ul li {
+  float: left;
+}
+.radio {
+  display: none;
+}
+label.link {
+  margin: 0 !important;
+  cursor: pointer;
+}
+.navbar-item .item-current .link-item {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.132987px;
+  color: #1E6DFB !important;
+}
+ul.sub {
+  padding: 15px 20px;
+  border-top: 1px solid #ccc;
+}
+ul.sub li a {
+  position: relative;
+  transition: width .5s;
+}
+ul.sub li a:after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  height: 2px;
+  width: 0px;
+  background: #1E6DFB;
+  left: 0;
+  transition: width .4s;
+}
+ul.sub li a:hover:after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  height: 2px;
+  width: 100%;
+  background: #1E6DFB;
+  left: 0;
+}
+ul.sub .item-current a:after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  height: 2px;
+  width: 100%;
+  background: #1E6DFB;
+  left: 0;
+}
+.navbar-item li a:hover {
+  color: #1E6DFB !important;
 }
 </style>
