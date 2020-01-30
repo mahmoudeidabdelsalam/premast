@@ -115,7 +115,87 @@
   <div class="row justify-content-center m-0">
     @if ( !wp_is_mobile() ) 
       <div class="col-md-3 col-sm-12">
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <button class="btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  {{ _e('sort by', 'premast') }} <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </button>
+              </h2>
+            </div>
 
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                @if ( !is_singular('product') ) 
+                  <div class="dropdown ml-4 mr-2">
+                      <a class="dropdown-item" href="{{ home_url( $wp->request ) }}?sort=featured"><i class="fa @if($sort == 'featured') fa-check-square @else fa-square-o @endif" aria-hidden="true"></i> {{ _e('featured', 'premast') }}</a>
+                      <a class="dropdown-item" href="{{ home_url( $wp->request ) }}?sort=view"><i class="fa @if($sort == 'view') fa-check-square @else fa-square-o @endif" aria-hidden="true"></i> {{ _e('Popular', 'premast') }}</a>
+                      <a class="dropdown-item" href="{{ home_url( $wp->request ) }}?sort=date"><i class="fa @if($sort == 'date') fa-check-square @else fa-square-o @endif" aria-hidden="true"></i> {{ _e('Recent', 'premast') }}</a>
+                      <a class="dropdown-item" href="{{ home_url( $wp->request ) }}?sort=download"><i class="fa @if($sort == 'download') fa-check-square @else fa-square-o @endif" aria-hidden="true"></i> {{ _e('Download', 'premast') }}</a>
+                  </div>
+                @endif
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h2 class="mb-0">
+                <button class="btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  {{ _e('filter by', 'premast') }} <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div class="card-body">
+              <ul class="list-unstyled mb-0">
+                @if($taxonomy_query->parent) 
+                  @php 
+                  $term_parent = get_term_parents_list( $taxonomy_query->parent, 'product_cat' );
+                    $term_link = get_term_link( $taxonomy_query );
+                    $termchildren = get_term_children( $taxonomy_query->term_id, 'product_cat' );
+                  @endphp
+                  <li class="list-item term-parent">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i> {!! rtrim($term_parent,'/')  !!}
+                  </li>
+                  <li class="list-item">
+                    <a class="text-term active" href="{{ $term_link }}">{{ $taxonomy_query->name }} <span class="count-term">{{ $taxonomy_query->count }}</span></a>
+                  </li>
+                  @if ($termchildren)
+                    @foreach ($termchildren as $child)
+                    @php 
+                    $term = get_term_by( 'id', $child, 'product_cat' );
+                    @endphp
+                      <li class="list-item">
+                        <a class="text-term" href="{{ get_term_link( $term ) }}">{{ $term->name }} <span class="count-term">{{ $term->count }}</span></a>
+                      </li>
+                    @endforeach
+                  @endif
+                @else
+                  <li class="list-item">
+                    <a class="text-term active" href="#">{{ _e('All Categories', 'premast') }} <span class="count-term">{{ $taxonomy_query->count }}</span></a>
+                  </li>
+                  @php 
+                    $terms = get_terms( 'product_cat', array( 'parent' => $taxonomy_query->term_id, 'orderby' => 'slug', 'hide_empty' => false ) );
+                  @endphp
+                  @foreach ( $terms as $term )
+                    @php
+                      $term_link = get_term_link( $term );
+                      if ( is_wp_error( $term_link ) ) {
+                          continue;
+                      }
+                    @endphp
+                    <li class="list-item">
+                      <a class="text-term @if($term->term_id == $taxonomy_query->term_id) active @endif" href="{{ $term_link }}">{{ $term->name }} <span class="count-term">{{ $term->count }}</span></a>
+                    </li>
+                  @endforeach
+                @endif
+              </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     @endif
 
@@ -323,3 +403,84 @@
 </div>
 
 @endsection
+
+<style>
+.accordion .card {
+  background: #F9F9F9 !important;
+  border: 1px solid #E8E8E8 !important;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 0;
+}
+
+.accordion .card button {
+  border: none !important;
+  background: transparent !important;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  text-transform: capitalize;
+  color: #3F4A59;
+  width: 100%;
+  text-align: left;
+}
+
+.accordion .card .card-header {
+  background: transparent !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  border-radius: 0 !important;
+  padding: 10px;
+}
+
+.accordion .card .card-header i {
+  margin-left: auto;
+  display: block;
+}
+
+.accordion .card button:hover, .accordion .card button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.accordion .card .dropdown-item {
+  font-size: 14px;
+  line-height: 16px;
+  text-transform: capitalize;
+  color: #3F4A59;
+  text-align: left;
+  padding: 0;
+  font-weight: 300;
+}
+.accordion .card .dropdown-item .fa-check-square {
+    color: #1d6dfa;
+}
+.accordion .card ul.list-unstyled li a {
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+    border-bottom: 1px solid #e9e9e9;
+    margin-top: 10px;
+}
+
+.accordion .card ul.list-unstyled li a.active {
+    font-weight: bold;
+}
+
+.accordion .card ul.list-unstyled li.term-parent a {
+    margin: 0px !important;
+    height: auto !important;
+    width: 100%;
+    font-weight: bold;
+    color: #000;
+}
+
+.accordion .card .term-parent i {
+    position: relative;
+    top: -2px;
+    left: -5px;
+}
+</style>

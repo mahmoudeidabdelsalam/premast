@@ -95,13 +95,9 @@
     </div>
   </header>
 @else
-
-
 @php 
   $taxonomy_query = get_queried_object();
 @endphp
-
-
   <header class="bg-light banner @if($taxonomy_query) is-child @endif">
     <div class="container-fluid">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -220,13 +216,9 @@
     </section>
     @endif
   @endif
-  
   <div class="total-slide mb-5">
-    <strong class="font-weight-600">{{ $count }}</strong> {{ _e('total slides', 'premast') }}
+    <strong class="font-weight-600">{{ $count }}</strong> <span></span>{{ _e('total slides', 'premast') }}
   </div>
-
-
-
 @endif
 
 
@@ -238,6 +230,23 @@
 <style>
 .total-slide {
   background: #D8F0FF;
+  padding: 14px 15px;
+}
+.total-slide strong {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: 0.151985px;
+  text-transform: capitalize;
+  color: #000000;
+}
+.total-slide span {
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.151985px;
+  text-transform: capitalize;
+  color: #000000;
+  opacity: 0.6;
 }
 #search {
   position: relative;
@@ -279,7 +288,7 @@ header.bg-light.banner.is-child {
   height: 40px;
   width: 40px;
   display: inline-block;
-  background: url('https://www.premast.test/app/themes/premast/dist/images/search.svg') center center no-repeat;
+  background: url('{{ get_theme_file_uri()."/resources/assets/images/" }}search.svg') center center no-repeat;
   text-indent: -10000px;
   border: none;
   position: absolute;

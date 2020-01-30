@@ -32815,9 +32815,10 @@ section.banner-items {
   min-width: 180px;
   -webkit-box-shadow: 0 14px 36px 0 rgba(61, 69, 82, 0.47);
           box-shadow: 0 14px 36px 0 rgba(61, 69, 82, 0.47);
+  overflow: hidden;
 }
 
-/* line 493, resources/assets/styles/layouts/_header.scss */
+/* line 494, resources/assets/styles/layouts/_header.scss */
 
 .profile-dropdown .link-dropdown .item-dropdown a,
 .profile-dropdown .link-dropdown .item-dropdown .item-user {
@@ -32832,26 +32833,26 @@ section.banner-items {
   text-align: center;
 }
 
-/* line 505, resources/assets/styles/layouts/_header.scss */
+/* line 506, resources/assets/styles/layouts/_header.scss */
 
 .profile-dropdown .link-dropdown .item-dropdown a:hover,
 .profile-dropdown .link-dropdown .item-dropdown .item-user:hover {
   background-color: #282f39;
 }
 
-/* line 510, resources/assets/styles/layouts/_header.scss */
+/* line 511, resources/assets/styles/layouts/_header.scss */
 
 .profile-dropdown .link-dropdown .item-dropdown:first-child a:hover {
   border-radius: 3px 3px 0 0;
 }
 
-/* line 514, resources/assets/styles/layouts/_header.scss */
+/* line 515, resources/assets/styles/layouts/_header.scss */
 
 .profile-dropdown .link-dropdown .item-dropdown:last-child a:hover {
   border-radius: 0 0 3px 3px;
 }
 
-/* line 520, resources/assets/styles/layouts/_header.scss */
+/* line 521, resources/assets/styles/layouts/_header.scss */
 
 .profile-dropdown::after {
   content: "";
@@ -32859,7 +32860,7 @@ section.banner-items {
   clear: both;
 }
 
-/* line 527, resources/assets/styles/layouts/_header.scss */
+/* line 528, resources/assets/styles/layouts/_header.scss */
 
 .premast-social-icons {
   margin: 0;
@@ -32875,7 +32876,7 @@ section.banner-items {
           justify-content: space-between;
 }
 
-/* line 536, resources/assets/styles/layouts/_header.scss */
+/* line 537, resources/assets/styles/layouts/_header.scss */
 
 .premast-social-icons .premast-icon {
   color: #fff;
@@ -32883,25 +32884,25 @@ section.banner-items {
   margin: 0;
 }
 
-/* line 542, resources/assets/styles/layouts/_header.scss */
+/* line 543, resources/assets/styles/layouts/_header.scss */
 
 .premast-social-icons .premast-icon.icon-facebook:hover {
   color: #3b5998;
 }
 
-/* line 548, resources/assets/styles/layouts/_header.scss */
+/* line 549, resources/assets/styles/layouts/_header.scss */
 
 .premast-social-icons .premast-icon.icon-twitter:hover {
   color: #1da1f2;
 }
 
-/* line 554, resources/assets/styles/layouts/_header.scss */
+/* line 555, resources/assets/styles/layouts/_header.scss */
 
 .premast-social-icons .premast-icon.icon-behance:hover {
   color: #1769ff;
 }
 
-/* line 560, resources/assets/styles/layouts/_header.scss */
+/* line 561, resources/assets/styles/layouts/_header.scss */
 
 .premast-social-icons .premast-icon.icon-instagram:hover {
   color: #e4405f;
