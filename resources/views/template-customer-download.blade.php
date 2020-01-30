@@ -154,7 +154,7 @@
                                       <span itemprop="reviewCount">{{ _e('Rate it', 'premast') }}</span>
                                     </a>
                                   </div>
-                                  <div class="download">
+                                  <div class="download" id="download-all-{{ get_the_ID() }}">
                                     <div class="card-link">
                                       <?php do_action( 'woocommerce_single_product_summary' ); ?>
                                     </div>
@@ -163,6 +163,29 @@
                               </div>
                             </div>              
                           </div>
+
+                          <script>
+                            jQuery(function($) {
+                              // Sharing fuctionality
+                              $('#download-all-{{ get_the_ID() }} #somdn-form-submit-button').on('click', function () {
+                                var post_id = {{ get_the_ID() }};
+                                var post_event = "counterdownload";
+                                var action = "counterdownload";
+                                $.ajax({
+                                  url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                                  type: 'post',
+                                  data: {
+                                    action: action,
+                                    event: post_event,
+                                    post_id: post_id,
+                                  },
+                                  success: function (response) {
+                                    $('.download-count').html(response);
+                                  },
+                                });
+                              });
+                            });
+                          </script>
                         @endwhile
                         @php (wp_reset_postdata())
                       @endif
@@ -188,7 +211,7 @@
                                       <span itemprop="reviewCount">{{ _e('Rate it', 'premast') }}</span>
                                     </a>
                                   </div>
-                                  <div class="download">
+                                  <div class="download" id="download-free-{{ get_the_ID() }}">
                                     <div class="card-link">
                                       <?php do_action( 'woocommerce_single_product_summary' ); ?>
                                     </div>
@@ -197,6 +220,29 @@
                               </div>
                             </div>              
                           </div>
+
+                          <script>
+                            jQuery(function($) {
+                              // Sharing fuctionality
+                              $('#download-free-{{ get_the_ID() }} #somdn-form-submit-button').on('click', function () {
+                                var post_id = {{ get_the_ID() }};
+                                var post_event = "counterdownload";
+                                var action = "counterdownload";
+                                $.ajax({
+                                  url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                                  type: 'post',
+                                  data: {
+                                    action: action,
+                                    event: post_event,
+                                    post_id: post_id,
+                                  },
+                                  success: function (response) {
+                                    $('.download-count').html(response);
+                                  },
+                                });
+                              });
+                            });
+                          </script>
                         @endwhile
                         @php (wp_reset_postdata())
                       </div>                
@@ -222,11 +268,33 @@
                                       <span itemprop="reviewCount">{{ _e('Rate it', 'premast') }}</span>
                                     </a>
                                   </div>
-                                  <div class="download">
+                                  <div class="download" id="download-paid-{{ get_the_ID() }}">
                                     <div class="card-link">
                                       <?php do_action( 'woocommerce_single_product_summary' ); ?>
                                     </div>
                                   </div>
+                                  <script>
+                                    jQuery(function($) {
+                                      // Sharing fuctionality
+                                      $('#download-paid-{{ get_the_ID() }} #somdn-form-submit-button').on('click', function () {
+                                        var post_id = {{ get_the_ID() }};
+                                        var post_event = "counterdownload";
+                                        var action = "counterdownload";
+                                        $.ajax({
+                                          url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                                          type: 'post',
+                                          data: {
+                                            action: action,
+                                            event: post_event,
+                                            post_id: post_id,
+                                          },
+                                          success: function (response) {
+                                            $('.download-count').html(response);
+                                          },
+                                        });
+                                      });
+                                    });
+                                  </script>
                                 </div>
                               </div>
                             </div>              
