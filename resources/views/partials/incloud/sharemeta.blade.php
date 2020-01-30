@@ -111,12 +111,10 @@
 <script>
   jQuery(document).ready(function ($) {
     var download = document.getElementById("somdn-form-submit-button"); 
-
     if (download) {
       download.setAttribute("data-id", "{{ get_the_ID()}}");
       download.setAttribute("data-action", "counterdownload");
       download.setAttribute("data-event", "counterdownload");
     }
-
   });
 </script>
