@@ -1,5 +1,5 @@
 {{--
-  Template Name: publishing Template
+  Template Name: item Publish
 --}}
 
 @php acf_form_head() @endphp

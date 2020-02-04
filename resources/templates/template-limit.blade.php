@@ -1,5 +1,5 @@
 {{--
-  Template Name: Template Limit Download
+  Template Name: Limit Download
 --}}
 
 @extends('layouts.app-dark')

@@ -3,7 +3,6 @@
   $Name   = isset($_GET['refine']) ? $_GET['refine'] : '0';
   $sort   = isset($_GET['sort']) ? $_GET['sort'] : '0';
   $refine   = isset($_GET['refine']) ? $_GET['refine'] : '0';
-
   if ( $sort == 'date' ):
     $orderby = 'date';
     $order = 'DESC';
@@ -21,7 +20,6 @@
     $order = 'DESC';
     $meta_key = '';
   endif;
-  
   $taxonomy_query = get_queried_object();
   global $wp;
 @endphp
@@ -42,24 +40,6 @@
     <button type="submit"><i class="fa fa-search"></i></button>
     <input id="autoblogs" class="form-control w-100" type="search" value="@if($refine != '0') {!! $refine !!} @endif" name="refine" autocomplete="on" autocorrect="off" autocapitalize="on" spellcheck="false" placeholder="{{ _e('Search items', 'premast') }}" aria-label="Search">    
   </form>
-  @php 
-    $args = array(
-      'post_type' => 'product',
-    );
-    $loop = new WP_Query( $args );
-    $count = $loop->found_posts;
-  @endphp
-  @if (get_field('banner_items_headline', 'option'))
-  <section class="banner-items" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
-    <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
-    <div class="container">
-      <div class="row justify-content-center align-items-center text-center">
-        <h2 class="col-12 text-white"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{  $count }}</strong> <span class="font-weight-300">{{ the_field('banner_items_headline','option') }}</span></h2>
-        <p class="col-md-5 col-12 text-white font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
-      </div>
-    </div>
-  </section>
-  @endif
   <div class="col-12 d-flex">
     <div class="dropdown">
       <a class="btn-toggle dropdown-toggle" href="#" role="button" id="dropdownMenuCat" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -115,83 +95,93 @@
   <div class="row justify-content-center m-0">
     @if ( !wp_is_mobile() ) 
       <div class="col-md-3 col-sm-12">
-        <div class="accordion" id="accordionExample">
-          <div class="card">
-            <div class="card-header" id="headingOne">
-              <h2 class="mb-0">
-                <button class="btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  {{ _e('sort by', 'premast') }} <i class="fa fa-angle-down" aria-hidden="true"></i>
-                </button>
-              </h2>
-            </div>
-
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-              <div class="card-body">
-                @if ( !is_singular('product') ) 
-                  <div class="dropdown ml-4 mr-2">
-                      <a class="dropdown-item" href="{{ home_url( $wp->request ) }}?sort=featured"><i class="fa @if($sort == 'featured') fa-check-square @else fa-square-o @endif" aria-hidden="true"></i> {{ _e('featured', 'premast') }}</a>
-                      <a class="dropdown-item" href="{{ home_url( $wp->request ) }}?sort=view"><i class="fa @if($sort == 'view') fa-check-square @else fa-square-o @endif" aria-hidden="true"></i> {{ _e('Popular', 'premast') }}</a>
-                      <a class="dropdown-item" href="{{ home_url( $wp->request ) }}?sort=date"><i class="fa @if($sort == 'date') fa-check-square @else fa-square-o @endif" aria-hidden="true"></i> {{ _e('Recent', 'premast') }}</a>
-                      <a class="dropdown-item" href="{{ home_url( $wp->request ) }}?sort=download"><i class="fa @if($sort == 'download') fa-check-square @else fa-square-o @endif" aria-hidden="true"></i> {{ _e('Download', 'premast') }}</a>
-                  </div>
-                @endif
+        <div class="by-filter">
+          <div class="accordion" id="accordionExample">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    @if ($sort != '0')
+                      {{ _e('Sort by', 'premast') }} {{ $sort }} <i class="fa fa-angle-down fa-lg text-term float-right" aria-hidden="true"></i>
+                    @else
+                      {{ _e('Sort by date', 'premast') }} <i class="fa fa-angle-down fa-lg text-term float-right" aria-hidden="true"></i>
+                    @endif
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                  <ul class="list-unstyled mb-0">
+                    <li class="list-item">
+                      <a class="text-term" href="{{ home_url( $wp->request ) }}?sort=featured">{{ _e('featured', 'premast') }}</a>
+                    </li>
+                    <li class="list-item">
+                      <a class="text-term" href="{{ home_url( $wp->request ) }}?sort=view">{{ _e('Popular', 'premast') }}</a>
+                    </li>
+                    <li class="list-item">
+                      <a class="text-term" href="{{ home_url( $wp->request ) }}?sort=date">{{ _e('Recent', 'premast') }}</a>
+                    </li>
+                    <li class="list-item">
+                      <a class="text-term" href="{{ home_url( $wp->request ) }}?sort=download">{{ _e('Download', 'premast') }}</a>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
-
-          <div class="card">
-            <div class="card-header" id="headingTwo">
-              <h2 class="mb-0">
-                <button class="btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  {{ _e('filter by', 'premast') }} <i class="fa fa-angle-down" aria-hidden="true"></i>
-                </button>
-              </h2>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-              <div class="card-body">
-              <ul class="list-unstyled mb-0">
-                @if($taxonomy_query->parent) 
-                  @php 
-                  $term_parent = get_term_parents_list( $taxonomy_query->parent, 'product_cat' );
-                    $term_link = get_term_link( $taxonomy_query );
-                    $termchildren = get_term_children( $taxonomy_query->term_id, 'product_cat' );
-                  @endphp
-                  <li class="list-item term-parent">
-                    <i class="fa fa-angle-left" aria-hidden="true"></i> {!! rtrim($term_parent,'/')  !!}
-                  </li>
-                  <li class="list-item">
-                    <a class="text-term active" href="{{ $term_link }}">{{ $taxonomy_query->name }} <span class="count-term">{{ $taxonomy_query->count }}</span></a>
-                  </li>
-                  @if ($termchildren)
-                    @foreach ($termchildren as $child)
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                  <button class="btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    {{ _e('filter by', 'premast') }} <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  </button>
+                </h2>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                <ul class="list-unstyled mb-0">
+                  @if($taxonomy_query->parent) 
                     @php 
-                    $term = get_term_by( 'id', $child, 'product_cat' );
+                    $term_parent = get_term_parents_list( $taxonomy_query->parent, 'product_cat' );
+                      $term_link = get_term_link( $taxonomy_query );
+                      $termchildren = get_term_children( $taxonomy_query->term_id, 'product_cat' );
                     @endphp
+                    <li class="list-item term-parent">
+                      <i class="fa fa-angle-left" aria-hidden="true"></i> {!! rtrim($term_parent,'/')  !!}
+                    </li>
+                    <li class="list-item">
+                      <a class="text-term active" href="{{ $term_link }}">{{ $taxonomy_query->name }} <span class="count-term">{{ $taxonomy_query->count }}</span></a>
+                    </li>
+                    @if ($termchildren)
+                      @foreach ($termchildren as $child)
+                      @php 
+                      $term = get_term_by( 'id', $child, 'product_cat' );
+                      @endphp
+                        <li class="list-item">
+                          <a class="text-term" href="{{ get_term_link( $term ) }}">{{ $term->name }} <span class="count-term">{{ $term->count }}</span></a>
+                        </li>
+                      @endforeach
+                    @endif
+                  @else
+                    <li class="list-item">
+                      <a class="text-term active" href="#">{{ _e('All Categories', 'premast') }} <span class="count-term">{{ $taxonomy_query->count }}</span></a>
+                    </li>
+                    @php 
+                      $terms = get_terms( 'product_cat', array( 'parent' => $taxonomy_query->term_id, 'orderby' => 'slug', 'hide_empty' => false ) );
+                    @endphp
+                    @foreach ( $terms as $term )
+                      @php
+                        $term_link = get_term_link( $term );
+                        if ( is_wp_error( $term_link ) ) {
+                            continue;
+                        }
+                      @endphp
                       <li class="list-item">
-                        <a class="text-term" href="{{ get_term_link( $term ) }}">{{ $term->name }} <span class="count-term">{{ $term->count }}</span></a>
+                        <a class="text-term @if($term->term_id == $taxonomy_query->term_id) active @endif" href="{{ $term_link }}">{{ $term->name }} <span class="count-term">{{ $term->count }}</span></a>
                       </li>
                     @endforeach
                   @endif
-                @else
-                  <li class="list-item">
-                    <a class="text-term active" href="#">{{ _e('All Categories', 'premast') }} <span class="count-term">{{ $taxonomy_query->count }}</span></a>
-                  </li>
-                  @php 
-                    $terms = get_terms( 'product_cat', array( 'parent' => $taxonomy_query->term_id, 'orderby' => 'slug', 'hide_empty' => false ) );
-                  @endphp
-                  @foreach ( $terms as $term )
-                    @php
-                      $term_link = get_term_link( $term );
-                      if ( is_wp_error( $term_link ) ) {
-                          continue;
-                      }
-                    @endphp
-                    <li class="list-item">
-                      <a class="text-term @if($term->term_id == $taxonomy_query->term_id) active @endif" href="{{ $term_link }}">{{ $term->name }} <span class="count-term">{{ $term->count }}</span></a>
-                    </li>
-                  @endforeach
-                @endif
-              </ul>
+                </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -402,10 +392,33 @@
   </div>
 </div>
 
+
+<script>
+jQuery(function ($) {
+  var $window = $(window);  
+  var $sidebar = $(".by-filter"); 
+  var $sidebarHeight = $sidebar.innerHeight();   
+  var $footerOffsetTop = $(".content-info").offset().top; 
+  var $sidebarOffset = $sidebar.offset();
+  $window.scroll(function() {
+    if($window.scrollTop() > $sidebarOffset.top) {
+      $sidebar.addClass("fixed");   
+    } else {
+      $sidebar.removeClass("fixed");   
+    }    
+    if($window.scrollTop() + $sidebarHeight > $footerOffsetTop) {
+      $sidebar.css({"top" : -($window.scrollTop() + $sidebarHeight - $footerOffsetTop)});        
+    } else {
+      $sidebar.css({"top": "0",});  
+    }    
+  });
+});
+</script>
+
 @endsection
 
 <style>
-.accordion .card {
+.by-filter .accordion .card {
   background: #F9F9F9 !important;
   border: 1px solid #E8E8E8 !important;
   box-sizing: border-box;
@@ -413,7 +426,7 @@
   padding: 0;
 }
 
-.accordion .card button {
+.by-filter .accordion .card button {
   border: none !important;
   background: transparent !important;
   font-style: normal;
@@ -426,7 +439,7 @@
   text-align: left;
 }
 
-.accordion .card .card-header {
+.by-filter .accordion .card .card-header {
   background: transparent !important;
   border-left: none !important;
   border-right: none !important;
@@ -435,17 +448,17 @@
   padding: 10px;
 }
 
-.accordion .card .card-header i {
+.by-filter .accordion .card .card-header i {
   margin-left: auto;
   display: block;
 }
 
-.accordion .card button:hover, .accordion .card button:focus {
+.by-filter .accordion .card button:hover, .accordion .card button:focus {
   outline: none;
   box-shadow: none;
 }
 
-.accordion .card .dropdown-item {
+.by-filter .accordion .card .dropdown-item {
   font-size: 14px;
   line-height: 16px;
   text-transform: capitalize;
@@ -454,33 +467,38 @@
   padding: 0;
   font-weight: 300;
 }
-.accordion .card .dropdown-item .fa-check-square {
-    color: #1d6dfa;
-}
-.accordion .card ul.list-unstyled li a {
-    font-size: 14px;
-    display: flex;
-    justify-content: space-between;
-    height: 30px;
-    border-bottom: 1px solid #e9e9e9;
-    margin-top: 10px;
+
+.by-filter .accordion .card ul.list-unstyled li a {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  border-bottom: 1px solid #e9e9e9;
+  margin-top: 10px;
 }
 
-.accordion .card ul.list-unstyled li a.active {
-    font-weight: bold;
+.by-filter .accordion .card ul.list-unstyled li a.active {
+  font-weight: bold;
 }
 
-.accordion .card ul.list-unstyled li.term-parent a {
-    margin: 0px !important;
-    height: auto !important;
-    width: 100%;
-    font-weight: bold;
-    color: #000;
+.by-filter .accordion .card ul.list-unstyled li.term-parent a {
+  margin: 0px !important;
+  height: auto !important;
+  width: 100%;
+  font-weight: bold;
+  color: #000;
 }
 
-.accordion .card .term-parent i {
-    position: relative;
-    top: -2px;
-    left: -5px;
+.by-filter .accordion .card .term-parent i {
+  position: relative;
+  top: -2px;
+  left: -5px;
 }
+
+.by-filter .fixed {
+  position: fixed !important;
+  top: 0 !important;
+  width: 23%;
+} 
 </style>
+

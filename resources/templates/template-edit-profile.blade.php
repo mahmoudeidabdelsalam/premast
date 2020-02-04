@@ -1,5 +1,5 @@
 {{--
-  Template Name: User edit Profile
+  Template Name: User Profile
 --}}
 
 @extends('layouts.app-dark')

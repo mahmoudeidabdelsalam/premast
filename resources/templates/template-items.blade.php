@@ -1,5 +1,5 @@
 {{--
-  Template Name: Items Template
+  Template Name: Items landing
 --}}
 
 

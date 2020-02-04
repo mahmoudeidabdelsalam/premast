@@ -93,18 +93,22 @@ add_action( 'wp_enqueue_scripts', 'the_dramatist_enqueue_scripts' );
 add_filter( 'ajax_query_attachments_args', 'the_dramatist_filter_media' );
 add_shortcode( 'the_dramatist_front_upload', 'the_dramatist_front_upload' );
 
+
 /**
  * Call wp_enqueue_media() to load up all the scripts we need for media uploader
  */
 function the_dramatist_enqueue_scripts() {
-    wp_enqueue_media();
-    wp_enqueue_script(
-        'some-script',
-        get_theme_file_uri() . '/framework/assets/media-uploader.js',
-        array( 'jquery' ),
-        null
-    );
+    if (!is_tax('product_cat')) {
+      wp_enqueue_media();
+      wp_enqueue_script(
+          'some-script',
+          get_theme_file_uri() . '/framework/assets/media-uploader.js',
+          array( 'jquery' ),
+          null
+      );
+  }
 }
+
 /**
  * This filter insures users only see their own media
  */

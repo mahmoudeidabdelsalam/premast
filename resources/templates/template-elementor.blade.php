@@ -1,5 +1,5 @@
 {{--
-  Template Name: Template with out header 
+  Template Name: elementor with out header 
 --}}
 
 @extends('layouts.app-elementor')

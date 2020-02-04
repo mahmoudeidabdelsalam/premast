@@ -1,5 +1,5 @@
 {{--
-  Template Name: Template Sign Up
+  Template Name: Sign Up
 --}}
 
 @extends('layouts.app-dark')

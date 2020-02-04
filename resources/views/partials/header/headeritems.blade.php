@@ -7,6 +7,7 @@
   </div>
 </div>
 @endif
+
 @php
   $refine   = isset($_GET['refine']) ? $_GET['refine'] : '0';
   $sort   = isset($_GET['sort']) ? $_GET['sort'] : '0';
@@ -135,9 +136,11 @@
             @endif
           </a>
         @endif
-        <div class="notification mx-3">
-          <a href="#"><i class="fa fa-bell-o text-gray-dark fa-lg" aria-hidden="true"></i> <span class="notification-counter"></span></a>
-        </div>
+        @if( is_user_logged_in() ) 
+          <div class="notification mx-3">
+            <a href="#"><i class="fa fa-bell-o text-gray-dark fa-lg" aria-hidden="true"></i> <span class="notification-counter"></span></a>
+          </div>
+        @endif
         <div class="half">
           @if( is_user_logged_in() ) 
             @php 
@@ -161,12 +164,10 @@
       </nav>
     </div>
   </header>
+  
+  @if ( !is_singular('product') ) 
   @php 
-    $args = array(
-      'post_type' => 'product',
-    );
-    $loop = new WP_Query( $args );
-    $count = $loop->found_posts;
+    $count = $taxonomy_query->count;
   @endphp
   @if(is_tax( 'product_cat' ))
     @php 
@@ -175,29 +176,33 @@
         $image = get_field('images_cat', $term);
         $heading = get_field('heading_cat', $term);
         $description = get_field('description_cat', $term);
+        $calculation = get_field('number_slide', $term);
+        $text_total = get_field('text_total', $term);
       } else {
         $term = get_queried_object();
         $image = get_field('images_cat', $term);
         $heading = get_field('heading_cat', $term);
         $description = get_field('description_cat', $term);
+        $calculation = get_field('number_slide', $term);
+        $text_total = get_field('text_total', $term);
       }
     @endphp
       @if ($heading)
         <section class="banner-items" style="background: linear-gradient(105deg, {{ the_field('gradient_color_one','option') }} 0.7%, {{ the_field('gradient_color_two','option') }} 100%);">
-          <div class="elementor-background-overlay" style="background-image: url('{{ $image }}');"></div>
+          <div class="elementor-background-overlay-items" style="background-image: url('{{ $image }}');"></div>
           <div class="container-fluid">
             <div class="row align-items-center text-left">
-              <h2 class="col-12 text-black"><span class="font-weight-600">{{ $heading }}</span></h2>
+              <h1 class="col-12 text-black"><span class="font-weight-600">{{ $heading }}</span></h1>
               <p class="col-md-5 col-12 text-black font-weight-300">{{ $description }}</p>
             </div>
           </div>
         </section>
       @else
         <section class="banner-items" style="background: linear-gradient(105deg, {{ the_field('gradient_color_one','option') }} 0.7%, {{ the_field('gradient_color_two','option') }} 100%);">
-          <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
+          <div class="elementor-background-overlay-items" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
           <div class="container-fluid">
             <div class="row align-items-center text-left">
-              <h2 class="col-12 text-black"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{  $count }}</strong> <span class="font-weight-300">{{ the_field('banner_items_headline','option') }}</span></h2>
+              <h2 class="col-12 text-black"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{ ($calculation)? $calculation*$count:$count }}</strong> <span class="font-weight-300">{{ the_field('banner_items_headline','option') }}</span></h2>
               <p class="col-md-5 col-12 text-black font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
             </div>
           </div>
@@ -206,10 +211,10 @@
   @else
     @if (get_field('banner_items_headline', 'option'))
     <section class="banner-items" style="background: linear-gradient(105deg, {{ the_field('gradient_color_one','option') }} 0.7%, {{ the_field('gradient_color_two','option') }} 100%);">
-      <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
+      <div class="elementor-background-overlay-items" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
       <div class="container-fluid">
         <div class="row align-items-center text-left">
-          <h2 class="col-12 text-black"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{  $count }}</strong> <span class="font-weight-300">{{ the_field('banner_items_headline','option') }}</span></h2>
+          <h2 class="col-12 text-black"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{  ($calculation)? $calculation*$count:$count }}</strong> <span class="font-weight-300">{{ the_field('banner_items_headline','option') }}</span></h2>
           <p class="col-md-5 col-12 text-black font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
         </div>
       </div>
@@ -217,193 +222,8 @@
     @endif
   @endif
   <div class="total-slide mb-5">
-    <strong class="font-weight-600">{{ $count }}</strong> <span></span>{{ _e('total slides', 'premast') }}
+    <strong class="font-weight-600">{{ ($calculation)? $calculation*$count:$count }}</strong> <span></span>{{ ($text_total)? $text_total:_e('total slides', 'premast') }}
   </div>
+  @endif
+
 @endif
-
-
-
-
-
-
-
-<style>
-.total-slide {
-  background: #D8F0FF;
-  padding: 14px 15px;
-}
-.total-slide strong {
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 23px;
-  letter-spacing: 0.151985px;
-  text-transform: capitalize;
-  color: #000000;
-}
-.total-slide span {
-  font-size: 12px;
-  line-height: 14px;
-  letter-spacing: 0.151985px;
-  text-transform: capitalize;
-  color: #000000;
-  opacity: 0.6;
-}
-#search {
-  position: relative;
-  display: inline-block;
-  height: 40px;
-  margin: 0;
-}
-header.bg-light.banner.is-child {
-  margin-bottom: 62px;
-}
-#search input[type="text"] {
-  height: 40px;
-  font-size: 14px;
-  line-height: 16px;
-  letter-spacing: 0.116946px;
-  text-transform: capitalize;
-  outline: none;
-  color: #555;
-  padding-right: 20px;
-  width: 0;
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: none;
-  z-index: 3;
-  transition: width .5s cubic-bezier(0.000, 0.795, 0.000, 1.000);
-  cursor: pointer;
-  border: 1px solid #E3E3E3;
-  padding-left: 20px;
-  border-radius: 54px;
-}
-#search input[type="text"]:focus {
-  width: 300px;
-  z-index: 1;
-  cursor: text;
-  background-color: #f8f9fa;
-}
-#search input[type="submit"] {
-  height: 40px;
-  width: 40px;
-  display: inline-block;
-  background: url('{{ get_theme_file_uri()."/resources/assets/images/" }}search.svg') center center no-repeat;
-  text-indent: -10000px;
-  border: none;
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 2;
-  cursor: pointer;
-  transition: opacity .4s ease;
-}
-#search input[type="submit"]:hover {
-  opacity: 0.8;
-}
-.notification {
-  position: relative;
-  top: 2px;
-  right: -7px;
-}
-.notification:hover i {
-  animation: swingClapper 0.7s 0.04s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-}
-span.notification-counter {
-  background-color: #1E6DFB;
-  width: 7px;
-  height: 7px;
-  border-radius: 100%;
-  position: absolute;
-  right: 3px;
-  top: 1px;
-  box-shadow: 0 0 1px 0px #333;
-  animation: swingClapper 0.7s 0.04s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-}
-@keyframes swingClapper {
-  5% {
-    transform: rotate(0deg) scale3d(1, 1, 1);
-  }
-
-  30% {
-    transform: rotate(-8deg) scale3d(1.5, 1.5, 1.5);
-  }
-
-  80% {
-    transform: rotate(8deg) scale3d(.9, .9, .9);
-  }
-}
-.navbar-item ul {
-  display: none;
-  position: absolute;
-  z-index: 9;
-  left: -15px;
-  top: 100%;
-  background-color: #f8f9fa;
-  white-space: nowrap;
-  list-style: none;
-  padding: 0;
-  right: -15px;
-}
-.navbar-item .radio:checked + .link + ul {
-  display: block;
-}
-.navbar-item ul li {
-  float: left;
-}
-.radio {
-  display: none;
-}
-label.link {
-  margin: 0 !important;
-  cursor: pointer;
-}
-.navbar-item .item-current .link-item {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 16px;
-  text-align: center;
-  letter-spacing: 0.132987px;
-  color: #1E6DFB !important;
-}
-ul.sub {
-  padding: 15px 20px;
-  border-top: 1px solid #ccc;
-}
-ul.sub li a {
-  position: relative;
-  transition: width .5s;
-}
-ul.sub li a:after {
-  content: "";
-  position: absolute;
-  bottom: -15px;
-  height: 2px;
-  width: 0px;
-  background: #1E6DFB;
-  left: 0;
-  transition: width .4s;
-}
-ul.sub li a:hover:after {
-  content: "";
-  position: absolute;
-  bottom: -15px;
-  height: 2px;
-  width: 100%;
-  background: #1E6DFB;
-  left: 0;
-}
-ul.sub .item-current a:after {
-  content: "";
-  position: absolute;
-  bottom: -15px;
-  height: 2px;
-  width: 100%;
-  background: #1E6DFB;
-  left: 0;
-}
-.navbar-item li a:hover {
-  color: #1E6DFB !important;
-}
-</style>

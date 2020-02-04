@@ -1,5 +1,5 @@
 {{--
-  Template Name: With Header Template
+  Template Name: Custom Header
 --}}
 
 

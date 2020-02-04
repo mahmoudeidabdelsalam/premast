@@ -1,5 +1,5 @@
 {{--
-  Template Name: Template elementor blank
+  Template Name: elementor blank
 --}}
 
 @extends('layouts.app-blank')

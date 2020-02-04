@@ -1,5 +1,5 @@
 {{--
-  Template Name: edit Template
+  Template Name: item edit
 --}}
 
 @php acf_form_head() @endphp
