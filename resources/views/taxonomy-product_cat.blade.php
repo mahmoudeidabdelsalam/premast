@@ -495,7 +495,7 @@ jQuery(function ($) {
   left: -5px;
 }
 
-.by-filter .fixed {
+.by-filter.fixed {
   position: fixed !important;
   top: 0 !important;
   width: 23%;
