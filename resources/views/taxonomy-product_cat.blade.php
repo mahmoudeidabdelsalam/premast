@@ -102,9 +102,9 @@
                 <p class="mb-0">
                   <button class="btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                     @if ($sort != '0')
-                      {{ _e('Sort by', 'premast') }} {{ $sort }} <i class="fa fa-chevron-down fa-lg text-term float-right" aria-hidden="true"></i>
+                      {{ _e('Sort by', 'premast') }} {{ $sort }} <i class="fa fa-chevron-down text-term float-right" aria-hidden="true"></i>
                     @else
-                      {{ _e('Sort by date', 'premast') }} <i class="fa fa-chevron-down fa-lg text-term float-right" aria-hidden="true"></i>
+                      {{ _e('Sort by date', 'premast') }} <i class="fa fa-chevron-down text-term float-right" aria-hidden="true"></i>
                     @endif
                   </button>
                 </p>
