@@ -139,8 +139,8 @@ a {
   z-index: 99;
 
   &:hover {
-    transform: none;
+    background: linear-gradient(160.38deg, rgb(16, 177, 81) -0.5%, rgb(26, 219, 114) 100%);
+    transition: all 1s;
     color: $brand-white;
-    opacity: 0.9;
   }
 }

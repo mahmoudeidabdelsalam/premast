@@ -99,15 +99,15 @@
           <div class="accordion" id="accordionExample">
             <div class="card">
               <div class="card-header" id="headingOne">
-                <h2 class="mb-0">
+                <p class="mb-0">
                   <button class="btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                     @if ($sort != '0')
-                      {{ _e('Sort by', 'premast') }} {{ $sort }} <i class="fa fa-angle-down fa-lg text-term float-right" aria-hidden="true"></i>
+                      {{ _e('Sort by', 'premast') }} {{ $sort }} <i class="fa chevron-down fa-lg text-term float-right" aria-hidden="true"></i>
                     @else
-                      {{ _e('Sort by date', 'premast') }} <i class="fa fa-angle-down fa-lg text-term float-right" aria-hidden="true"></i>
+                      {{ _e('Sort by date', 'premast') }} <i class="fa chevron-down fa-lg text-term float-right" aria-hidden="true"></i>
                     @endif
                   </button>
-                </h2>
+                </p>
               </div>
               <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">
@@ -130,11 +130,11 @@
             </div>
             <div class="card">
               <div class="card-header" id="headingTwo">
-                <h2 class="mb-0">
+                <p class="mb-0">
                   <button class="btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    {{ _e('filter by', 'premast') }} <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    {{ _e('filter by', 'premast') }} <i class="fa chevron-down" aria-hidden="true"></i>
                   </button>
-                </h2>
+                </p>
               </div>
               <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
                 <div class="card-body">

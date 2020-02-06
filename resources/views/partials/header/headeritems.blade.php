@@ -137,7 +137,7 @@
           </a>
         @endif
         @if( is_user_logged_in() ) 
-          <div class="notification mx-3">
+          <div class="notification mx-4">
             <a href="#"><i class="fa fa-bell-o text-gray-dark fa-lg" aria-hidden="true"></i> <span class="notification-counter"></span></a>
           </div>
         @endif
