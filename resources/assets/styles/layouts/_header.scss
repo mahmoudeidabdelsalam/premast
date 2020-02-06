@@ -110,6 +110,10 @@ header.banner {
     justify-content: center;
     align-items: center;
   }
+
+  &.navbar-banner-items {
+    max-height: 60px;
+  }
 }
 
 form#searchform {
@@ -197,7 +201,7 @@ section.banner-items {
 .item-card {
   .card {
     background: $brand-white !important;
-    padding: 10px;
+    padding: 0;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.063) !important;
     border-radius: 7px;
 
@@ -219,7 +223,6 @@ section.banner-items {
       overflow: hidden;
       position: relative;
       padding: 10px !important;
-      margin: 0 -10px -10px;
       border-radius: 3px;
     }
 
@@ -437,6 +440,7 @@ section.banner-items {
   color: rgb(39, 47, 56);
   top: 4px;
   text-transform: capitalize;
+  margin-bottom: 0;
 
   * {
     -webkit-user-select: none;
@@ -534,6 +538,14 @@ section.banner-items {
     content: "";
     display: table;
     clear: both;
+  }
+
+  img.avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 100%;
+    position: relative;
+    top: -2px;
   }
 }
 
@@ -726,7 +738,7 @@ label.link {
   cursor: pointer;
 }
 
-.navbar-item .item-current .link-item {
+.navbar-item .item-current .link-item .nav-link {
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -779,5 +791,59 @@ ul.sub .item-current a:after {
 
 .navbar-item li a:hover {
   color: #1E6DFB !important;
+}
+
+.navbar-item .link:hover+.sub {
+  display: block;
+}
+
+.profile-dropdown img.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 100%;
+  position: relative;
+  top: -2px;
+}
+
+.navbar-item .link:hover+.sub {
+  display: block;
+}
+
+.navbar-item .item-menu>.nav-link:hover:after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  width: 100%;
+  height: 2px;
+  background: #1d6dfa;
+  left: 0;
+}
+
+.navbar-item .nav-link {
+  position: relative;
+}
+
+
+.navbar-banner-items .navbar {
+  padding: 0 15px;
+}
+
+.navbar-banner-items li.item-menu:hover .sub {
+  display: block;
+}
+
+.navbar-banner-items li.item-menu {
+  padding: 12px 0;
+}
+
+.navbar-banner-items label .nav-link {
+  padding: 0;
+}
+
+.navbar-banner-items li.item-menu.star {
+  background-image: url("../images/star-menu.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 /* stylelint-enable */

@@ -276,7 +276,7 @@
         @endphp
 
         @if (get_field('show_card_pricing', 'option'))
-          <div class="col-md-4 col-12 grid-item">
+          <div class="col-md-4 col-6 grid-item">
             <div class="card">
               <span class="custom-onsale">
                 {{ the_field('tag_card_pricing', 'option') }}
@@ -301,7 +301,7 @@
         @if($my_query->have_posts())
           @while($my_query->have_posts()) @php($my_query->the_post())
           @php ($sale = get_post_meta( get_the_ID(), '_sale_price', true))
-            <div class="col-md-4 col-12 grid-item">
+            <div class="col-md-4 col-6 grid-item">
               <div class="card">
                   @if($sale)
                     <span class="custom-onsale">
@@ -391,114 +391,4 @@
     </div>
   </div>
 </div>
-
-
-<script>
-jQuery(function ($) {
-  var $window = $(window);  
-  var $sidebar = $(".by-filter"); 
-  var $sidebarHeight = $sidebar.innerHeight();   
-  var $footerOffsetTop = $(".content-info").offset().top; 
-  var $sidebarOffset = $sidebar.offset();
-  $window.scroll(function() {
-    if($window.scrollTop() > $sidebarOffset.top) {
-      $sidebar.addClass("fixed");   
-    } else {
-      $sidebar.removeClass("fixed");   
-    }    
-    if($window.scrollTop() + $sidebarHeight > $footerOffsetTop) {
-      $sidebar.css({"top" : -($window.scrollTop() + $sidebarHeight - $footerOffsetTop)});        
-    } else {
-      $sidebar.css({"top": "0",});  
-    }    
-  });
-});
-</script>
-
 @endsection
-
-<style>
-.by-filter .accordion .card {
-  background: #F9F9F9 !important;
-  border: 1px solid #E8E8E8 !important;
-  box-sizing: border-box;
-  border-radius: 4px;
-  padding: 0;
-}
-
-.by-filter .accordion .card button {
-  border: none !important;
-  background: transparent !important;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 16px;
-  text-transform: capitalize;
-  color: #3F4A59;
-  width: 100%;
-  text-align: left;
-}
-
-.by-filter .accordion .card .card-header {
-  background: transparent !important;
-  border-left: none !important;
-  border-right: none !important;
-  border-top: none !important;
-  border-radius: 0 !important;
-  padding: 10px;
-}
-
-.by-filter .accordion .card .card-header i {
-  margin-left: auto;
-  display: block;
-}
-
-.by-filter .accordion .card button:hover, .accordion .card button:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-.by-filter .accordion .card .dropdown-item {
-  font-size: 14px;
-  line-height: 16px;
-  text-transform: capitalize;
-  color: #3F4A59;
-  text-align: left;
-  padding: 0;
-  font-weight: 300;
-}
-
-.by-filter .accordion .card ul.list-unstyled li a {
-  font-size: 14px;
-  display: flex;
-  justify-content: space-between;
-  height: 30px;
-  border-bottom: 1px solid #e9e9e9;
-  margin-top: 10px;
-}
-
-.by-filter .accordion .card ul.list-unstyled li a.active {
-  font-weight: bold;
-}
-
-.by-filter .accordion .card ul.list-unstyled li.term-parent a {
-  margin: 0px !important;
-  height: auto !important;
-  width: 100%;
-  font-weight: bold;
-  color: #000;
-}
-
-.by-filter .accordion .card .term-parent i {
-  position: relative;
-  top: -2px;
-  left: -5px;
-}
-
-.by-filter.fixed {
-  position: fixed !important;
-  top: 0 !important;
-  width: 23%;
-} 
-</style>
-

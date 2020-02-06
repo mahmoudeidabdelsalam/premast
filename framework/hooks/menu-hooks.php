@@ -215,7 +215,7 @@ class Nav_Item_Walker extends Walker_Nav_Menu {
 		$classes[] = 'menu-item-' . $item->ID;
 
 		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
-		$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
+		$class_names = $class_names ? ' class="item-menu ' . esc_attr( $class_names ) . '"' : '';
 
 		$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
 		$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
@@ -242,12 +242,12 @@ class Nav_Item_Walker extends Walker_Nav_Menu {
       $parent_checked = ($item->object_id == $taxonomy_query->parent)? "checked":"";
 
       $item_output .= '<li class="item-menu '.$current.' '.$parent_current.'">';
-      $item_output .= '<input id="'.$item->ID.'" class="radio" name="links" type="radio" '.$checked.' '.$parent_checked.'> <label class="link nav-link link-item" for="'.$item->ID.'">';
+      $item_output .= '<input id="'.$item->ID.'" class="radio" name="links" type="radio" '.$checked.' '.$parent_checked.'> <label class="link nav-link link-item" for="'.$item->ID.'"> <a href="'.get_term_link( $term ).'">';
       $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-      $item_output .= '</label>';
+      $item_output .= '</a></label>';
       $item_output .= '<ul class="sub">';
       $item_output .= '<li class="'.$current.'">';
-      $item_output .= '<a'. $attributes .'>';
+      $item_output .= '<a class="nav-link" '. $attributes .'>';
       $item_output .= 'All categories';
       $item_output .= '</a>';
       $item_output .= '</li>';
@@ -264,7 +264,7 @@ class Nav_Item_Walker extends Walker_Nav_Menu {
     } 
     else 
     {
-      $item_output .= '<li class="item-menu">';
+      $item_output .= '<li '.$class_names.'>';
       $item_output .= '<a'. $attributes .' class="link-item">';
       $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
       $item_output .= '</a>';

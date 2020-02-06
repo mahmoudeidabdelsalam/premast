@@ -67,7 +67,7 @@ a {
   li.page-item {
     .page-numbers {
       position: relative;
-      display: block;
+      display: flex;
       padding: 0;
       font-size: 16px;
       line-height: 31px;
@@ -78,6 +78,8 @@ a {
       height: 32px;
       border-radius: 100%;
       margin: 0 10px;
+      justify-content: center;
+      align-items: center;
 
       &.current {
         color: rgb(252, 252, 252);
