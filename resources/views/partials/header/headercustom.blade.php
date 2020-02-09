@@ -49,10 +49,10 @@
   <nav id="menu_user" style="display: none;">
     @include('partials/incloud/profile')
   </nav>
-
-  <header class="banner">
+  
+  <header class="bg-light banner">
     <div class="container p-0">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-gray-dark">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="toggle-menu toggle-button" href="#">
           <i></i>
           <i></i>
