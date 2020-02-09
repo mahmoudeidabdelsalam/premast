@@ -93,7 +93,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'max_height' => '',
 				'max_size' => '',
 				'mime_types' => '',
-				'key' => 'field_584e7155a3f1a',
+				'key' => 'field_584e71swerew2343255a3f1a',
 				'label' => 'Website Logo light',
 				'name' => 'website_logo_light',
 				'type' => 'image',
