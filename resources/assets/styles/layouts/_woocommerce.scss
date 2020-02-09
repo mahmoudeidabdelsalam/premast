@@ -3803,6 +3803,10 @@ section.block-about {
   }
 }
 
+.navbar-item ul.sub {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
 
 .navbar-item ul li {
   display: inline-block !important;

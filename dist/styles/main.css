@@ -40960,14 +40960,21 @@ section.block-about {
   }
 }
 
-/* line 3807, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3806, resources/assets/styles/layouts/_woocommerce.scss */
+
+.navbar-item ul.sub {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* line 3811, resources/assets/styles/layouts/_woocommerce.scss */
 
 .navbar-item ul li {
   display: inline-block !important;
   float: none;
 }
 
-/* line 3812, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3816, resources/assets/styles/layouts/_woocommerce.scss */
 
 .navbar-item ul li ul.sub {
   overflow-y: hidden;
@@ -40976,7 +40983,7 @@ section.block-about {
 
 /* width */
 
-/* line 3818, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3822, resources/assets/styles/layouts/_woocommerce.scss */
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -40985,7 +40992,7 @@ section.block-about {
 
 /* Track */
 
-/* line 3824, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3828, resources/assets/styles/layouts/_woocommerce.scss */
 
 ::-webkit-scrollbar-track {
   background: #dfdfdf;
@@ -40993,7 +41000,7 @@ section.block-about {
 
 /* Handle */
 
-/* line 3829, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3833, resources/assets/styles/layouts/_woocommerce.scss */
 
 ::-webkit-scrollbar-thumb {
   background: #4e8afc;
@@ -41001,13 +41008,13 @@ section.block-about {
 
 /* Handle on hover */
 
-/* line 3834, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3838, resources/assets/styles/layouts/_woocommerce.scss */
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
 
-/* line 3838, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3842, resources/assets/styles/layouts/_woocommerce.scss */
 
 .container.blogs {
   margin: 100px auto;
