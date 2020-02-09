@@ -40524,6 +40524,495 @@ button[name='update_cart'] {
   padding: 0 1rem;
 }
 
+/* line 3485, resources/assets/styles/layouts/_woocommerce.scss */
+
+.grid .grid-item {
+  margin-bottom: 40px !important;
+}
+
+/* line 3489, resources/assets/styles/layouts/_woocommerce.scss */
+
+.item-card .card-overlay .card-link p {
+  font-size: 15px;
+}
+
+/* line 3493, resources/assets/styles/layouts/_woocommerce.scss */
+
+.item-card .card-overlay .post-edit-link {
+  font-size: 15px;
+}
+
+/* line 3497, resources/assets/styles/layouts/_woocommerce.scss */
+
+nav.navbar.navbar-expand-lg.navbar-dark.bg-gray-dark {
+  background-color: #282F39;
+}
+
+/* line 3501, resources/assets/styles/layouts/_woocommerce.scss */
+
+form#searchform {
+  border-radius: 5px;
+}
+
+/* line 3505, resources/assets/styles/layouts/_woocommerce.scss */
+
+input#autoblogs {
+  font-size: 14px;
+  font-family: roboto;
+  font-weight: 400 !important;
+}
+
+/* line 3511, resources/assets/styles/layouts/_woocommerce.scss */
+
+.text-silver {
+  font-size: 14px;
+  font-family: roboto;
+  font-weight: 300;
+  color: #9098a2;
+}
+
+/* line 3518, resources/assets/styles/layouts/_woocommerce.scss */
+
+.fixed-top-header .dropdown {
+  padding: 6px 15px 6px 10px;
+}
+
+/* line 3522, resources/assets/styles/layouts/_woocommerce.scss */
+
+a.checkout-button.button.alt.wc-forward {
+  background: -webkit-linear-gradient(279.04deg, #6b73ff -0.5%, #000dff 100%);
+  background: -o-linear-gradient(279.04deg, #6b73ff -0.5%, #000dff 100%);
+  background: linear-gradient(170.96deg, #6b73ff -0.5%, #000dff 100%);
+  border-radius: 50px;
+  -webkit-box-shadow: 0 5px 8px rgba(0, 123, 255, 0.59);
+          box-shadow: 0 5px 8px rgba(0, 123, 255, 0.59);
+  /* height: 40px; */
+  padding: 14px;
+  /* display: block; */
+  /* float: none !important; */
+  max-width: 321px;
+}
+
+/* line 3535, resources/assets/styles/layouts/_woocommerce.scss */
+
+table.shop_table.shop_table_responsive.cart.woocommerce-cart-form__contents {
+  background: #FFFFFF;
+  border: 1px solid rgba(40, 47, 57, 0.06);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.16);
+          box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.16);
+  border-radius: 5px;
+}
+
+/* line 3544, resources/assets/styles/layouts/_woocommerce.scss */
+
+#add_payment_method table.cart img,
+.woocommerce-cart table.cart img,
+.woocommerce-checkout table.cart img {
+  width: 104px;
+}
+
+/* line 3550, resources/assets/styles/layouts/_woocommerce.scss */
+
+.buy-x1 {
+  background-color: aquamarine;
+  border-radius: 50px;
+  text-align: center;
+  padding: 9px;
+  margin: 11px;
+}
+
+/* line 3559, resources/assets/styles/layouts/_woocommerce.scss */
+
+td.xoo-cp-ptitle a {
+  white-space: nowrap;
+  margin-left: 14px;
+}
+
+/* line 3564, resources/assets/styles/layouts/_woocommerce.scss */
+
+.added_to_cart.wc-forward {
+  display: none !important;
+}
+
+/* line 3568, resources/assets/styles/layouts/_woocommerce.scss */
+
+.card {
+  background: white !important;
+  padding: 10px;
+  -webkit-box-shadow: 0px 1px 3px #00000010 !important;
+          box-shadow: 0px 1px 3px #00000010 !important;
+  border-radius: 7px;
+}
+
+/* line 3575, resources/assets/styles/layouts/_woocommerce.scss */
+
+.bg-white.bg-images {
+  border-radius: 0px !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+/* line 3580, resources/assets/styles/layouts/_woocommerce.scss */
+
+.download {
+  background: cornsilk;
+}
+
+/* line 3584, resources/assets/styles/layouts/_woocommerce.scss */
+
+.review-and-download {
+  padding-right: 10px;
+}
+
+/* line 3588, resources/assets/styles/layouts/_woocommerce.scss */
+
+.card-overlay {
+  border-radius: 0px !important;
+}
+
+/* line 3592, resources/assets/styles/layouts/_woocommerce.scss */
+
+h5.card-title.font-weight-400 {
+  font-size: 14px !important;
+  font-family: roboto;
+  font-weight: 400 !important;
+  margin-bottom: 25px !important;
+}
+
+/* line 3599, resources/assets/styles/layouts/_woocommerce.scss */
+
+nav.woocommerce-MyAccount-navigation {
+  background: white !important;
+  box-shadow: 0px 1px 2px #0000004d;
+  -webkit-box-shadow: 0px 1px 2px #0000004d;
+}
+
+/* line 3605, resources/assets/styles/layouts/_woocommerce.scss */
+
+li.woocommerce-MyAccount-navigation-link.woocommerce-MyAccount-navigation-link--members-area.is-active {
+  background: #1d6dfb !important;
+  border-radius: 0px 0px 5px 5px;
+}
+
+/* line 3610, resources/assets/styles/layouts/_woocommerce.scss */
+
+.woocommerce-info {
+  background: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 2px 2px #00000014;
+          box-shadow: 0px 2px 2px #00000014;
+  border-top-color: #1d6dfb;
+}
+
+/* line 3617, resources/assets/styles/layouts/_woocommerce.scss */
+
+.woocommerce-error::before,
+.woocommerce-info::before,
+.woocommerce-message::before {
+  font-family: "Font Awesome 5 Free" !important;
+  content: "\F05A" !important;
+  font-weight: 900;
+  color: #ff9900;
+}
+
+/* line 3626, resources/assets/styles/layouts/_woocommerce.scss */
+
+.woocommerce-notices-wrapper {
+  text-align: center;
+}
+
+/* line 3630, resources/assets/styles/layouts/_woocommerce.scss */
+
+ul.woocommerce-error {
+  display: inline-block;
+  width: 80%;
+  background: #efe1e3;
+  border-radius: 5px;
+  border-top-color: #dc3545;
+  text-align: left;
+}
+
+/* line 3639, resources/assets/styles/layouts/_woocommerce.scss */
+
+a.button.wc-forward {
+  border-radius: 50px;
+  background: #ffffff;
+  color: #686e77;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+/* checkout page style*/
+
+/* line 3651, resources/assets/styles/layouts/_woocommerce.scss */
+
+.woocommerce-form-coupon-toggle .woocommerce-info {
+  background: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 2px 2px #00000014;
+          box-shadow: 0px 2px 2px #00000014;
+  border-top-color: #1d6dfb;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+/* line 3660, resources/assets/styles/layouts/_woocommerce.scss */
+
+.woocommerce-form-coupon-toggle .woocommerce-error::before,
+.woocommerce-info::before,
+.woocommerce-message::before {
+  color: #2c72fb;
+  font-family: FontAwesome !important;
+  content: "\F06B" !important;
+  font-weight: 900;
+}
+
+/* line 3669, resources/assets/styles/layouts/_woocommerce.scss */
+
+.woocommerce-form-coupon-toggle .woocommerce-info .showcoupon {
+  background: #2c72fb45;
+  padding: 5px 25px;
+  border-radius: 7px;
+  border: 1px black !important;
+  border-width: 1px;
+  margin-left: 10px;
+  color: #2361da;
+  font-weight: 400;
+}
+
+/* line 3681, resources/assets/styles/layouts/_woocommerce.scss */
+
+.woocommerce-billing-fields h3:before {
+  font-family: "woocommerce" !important;
+  content: "\E02B" !important;
+  font-weight: 900;
+  color: #2c72fb;
+  margin-right: 8px;
+}
+
+/* line 3689, resources/assets/styles/layouts/_woocommerce.scss */
+
+.col-1 {
+  padding: 20px;
+  background: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 2px 2px #00000014;
+          box-shadow: 0px 2px 2px #00000014;
+  border-top-color: #1d6dfb;
+  border-top-width: 4px !important;
+}
+
+/* line 3700, resources/assets/styles/layouts/_woocommerce.scss */
+
+.woocommerce-checkout-review-order {
+  display: inline-block;
+  width: 100%;
+}
+
+/* line 3705, resources/assets/styles/layouts/_woocommerce.scss */
+
+h3#order_review_heading {
+  display: none;
+}
+
+/* line 3709, resources/assets/styles/layouts/_woocommerce.scss */
+
+#add_payment_method #payment div.payment_box::before,
+.woocommerce-cart #payment div.payment_box::before,
+.woocommerce-checkout #payment div.payment_box::before {
+  display: none;
+}
+
+/* line 3716, resources/assets/styles/layouts/_woocommerce.scss */
+
+button#place_order {
+  color: #fff;
+}
+
+/* line 3720, resources/assets/styles/layouts/_woocommerce.scss */
+
+.items-categories {
+  min-height: 1800px;
+}
+
+/* line 3724, resources/assets/styles/layouts/_woocommerce.scss */
+
+.user-images h3 {
+  display: none;
+}
+
+/* line 3728, resources/assets/styles/layouts/_woocommerce.scss */
+
+.user-images h3 + table.form-table {
+  display: none;
+}
+
+/* line 3732, resources/assets/styles/layouts/_woocommerce.scss */
+
+.custom-pay div#collapseExample {
+  display: block;
+}
+
+/* line 3736, resources/assets/styles/layouts/_woocommerce.scss */
+
+.product-list,
+.product-grid {
+  display: none;
+}
+
+/* line 3741, resources/assets/styles/layouts/_woocommerce.scss */
+
+.jet-button__instance span {
+  font-family: "Roboto", roboto;
+  font-size: 16px;
+  font-weight: 400 !important;
+  letter-spacing: 0.2px;
+}
+
+/* line 3748, resources/assets/styles/layouts/_woocommerce.scss */
+
+.jet-button__instance {
+  border-radius: 35px;
+  background-color: transparent;
+  background-image: -webkit-linear-gradient(300deg, #6b73ff 10%, #000dff 91%);
+  background-image: -o-linear-gradient(300deg, #6b73ff 10%, #000dff 91%);
+  background-image: linear-gradient(150deg, #6b73ff 10%, #000dff 91%);
+}
+
+/* line 3754, resources/assets/styles/layouts/_woocommerce.scss */
+
+.jet-button__plane.jet-button__plane-normal {
+  background-color: transparent;
+  background-image: -webkit-linear-gradient(300deg, #6b73ff 10%, #000dff 91%);
+  background-image: -o-linear-gradient(300deg, #6b73ff 10%, #000dff 91%);
+  background-image: linear-gradient(150deg, #6b73ff 10%, #000dff 91%);
+}
+
+/* line 3759, resources/assets/styles/layouts/_woocommerce.scss */
+
+.product-term li a[href*="studio"] {
+  display: none;
+}
+
+/* line 3763, resources/assets/styles/layouts/_woocommerce.scss */
+
+section.block-about {
+  min-height: 1200px;
+}
+
+/* line 3767, resources/assets/styles/layouts/_woocommerce.scss */
+
+.customer-download .review-and-download .download button:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+}
+
+/* line 3772, resources/assets/styles/layouts/_woocommerce.scss */
+
+.button-green {
+  min-width: 225px;
+  height: 40px;
+  background: -webkit-linear-gradient(280.22deg, #1ADB72 -0.5%, #10B151 100%), -webkit-linear-gradient(262.64deg, #3F6AFF 13.67%, #00ABF4 116.7%);
+  background: -o-linear-gradient(280.22deg, #1ADB72 -0.5%, #10B151 100%), -o-linear-gradient(262.64deg, #3F6AFF 13.67%, #00ABF4 116.7%);
+  background: linear-gradient(169.78deg, #1ADB72 -0.5%, #10B151 100%), linear-gradient(187.36deg, #3F6AFF 13.67%, #00ABF4 116.7%);
+  border-radius: 30px;
+}
+
+/* line 3779, resources/assets/styles/layouts/_woocommerce.scss */
+
+.is-hidden {
+  display: none;
+}
+
+/* line 3783, resources/assets/styles/layouts/_woocommerce.scss */
+
+.she-header .is-hidden {
+  display: block;
+}
+
+@media screen and (max-width: 782px) {
+  /* line 3788, resources/assets/styles/layouts/_woocommerce.scss */
+
+  .fixed-button-purchase {
+    position: fixed;
+    width: 100% !important;
+    bottom: 0px;
+    z-index: 99999999999999999999999;
+    text-align: center;
+    background-image: -webkit-linear-gradient(290deg, #1adb72 4%, #10b151 100%);
+    background-image: -o-linear-gradient(290deg, #1adb72 4%, #10b151 100%);
+    background-image: linear-gradient(160deg, #1adb72 4%, #10b151 100%);
+  }
+
+  /* line 3797, resources/assets/styles/layouts/_woocommerce.scss */
+
+  .fixed-button-purchase a {
+    width: 100%;
+  }
+
+  /* line 3801, resources/assets/styles/layouts/_woocommerce.scss */
+
+  .addthis-smartlayers {
+    display: none;
+  }
+}
+
+/* line 3807, resources/assets/styles/layouts/_woocommerce.scss */
+
+.navbar-item ul li {
+  display: inline-block !important;
+  float: none;
+}
+
+/* line 3812, resources/assets/styles/layouts/_woocommerce.scss */
+
+.navbar-item ul li ul.sub {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+/* width */
+
+/* line 3818, resources/assets/styles/layouts/_woocommerce.scss */
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+
+/* line 3824, resources/assets/styles/layouts/_woocommerce.scss */
+
+::-webkit-scrollbar-track {
+  background: #dfdfdf;
+}
+
+/* Handle */
+
+/* line 3829, resources/assets/styles/layouts/_woocommerce.scss */
+
+::-webkit-scrollbar-thumb {
+  background: #4e8afc;
+}
+
+/* Handle on hover */
+
+/* line 3834, resources/assets/styles/layouts/_woocommerce.scss */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* line 3838, resources/assets/styles/layouts/_woocommerce.scss */
+
+.container.blogs {
+  margin: 100px auto;
+}
+
 /* stylelint-enable */
 
 
