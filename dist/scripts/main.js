@@ -13659,7 +13659,7 @@ Router.prototype.loadEvents = function loadEvents () {
           if ($window.scrollTop() + $sidebarHeight > $footerOffsetTop) {
             $sidebar.css({ 'top': -($window.scrollTop() + $sidebarHeight - $footerOffsetTop) });
           } else {
-            $sidebar.css({ 'top': '0' });
+            $sidebar.css({ 'top': '70px' });
           }
         });
       }
