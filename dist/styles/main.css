@@ -40804,20 +40804,20 @@ a.button.wc-forward {
   border-top-width: 4px !important;
 }
 
-/* line 3700, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3698, resources/assets/styles/layouts/_woocommerce.scss */
 
 .woocommerce-checkout-review-order {
   display: inline-block;
   width: 100%;
 }
 
-/* line 3705, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3703, resources/assets/styles/layouts/_woocommerce.scss */
 
 h3#order_review_heading {
   display: none;
 }
 
-/* line 3709, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3707, resources/assets/styles/layouts/_woocommerce.scss */
 
 #add_payment_method #payment div.payment_box::before,
 .woocommerce-cart #payment div.payment_box::before,
@@ -40825,44 +40825,44 @@ h3#order_review_heading {
   display: none;
 }
 
-/* line 3716, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3714, resources/assets/styles/layouts/_woocommerce.scss */
 
 button#place_order {
   color: #fff;
 }
 
-/* line 3720, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3718, resources/assets/styles/layouts/_woocommerce.scss */
 
 .items-categories {
   min-height: 1800px;
 }
 
-/* line 3724, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3722, resources/assets/styles/layouts/_woocommerce.scss */
 
 .user-images h3 {
   display: none;
 }
 
-/* line 3728, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3726, resources/assets/styles/layouts/_woocommerce.scss */
 
 .user-images h3 + table.form-table {
   display: none;
 }
 
-/* line 3732, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3730, resources/assets/styles/layouts/_woocommerce.scss */
 
 .custom-pay div#collapseExample {
   display: block;
 }
 
-/* line 3736, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3734, resources/assets/styles/layouts/_woocommerce.scss */
 
 .product-list,
 .product-grid {
   display: none;
 }
 
-/* line 3741, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3739, resources/assets/styles/layouts/_woocommerce.scss */
 
 .jet-button__instance span {
   font-family: "Roboto", roboto;
@@ -40871,7 +40871,7 @@ button#place_order {
   letter-spacing: 0.2px;
 }
 
-/* line 3748, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3746, resources/assets/styles/layouts/_woocommerce.scss */
 
 .jet-button__instance {
   border-radius: 35px;
@@ -40881,7 +40881,7 @@ button#place_order {
   background-image: linear-gradient(150deg, #6b73ff 10%, #000dff 91%);
 }
 
-/* line 3754, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3752, resources/assets/styles/layouts/_woocommerce.scss */
 
 .jet-button__plane.jet-button__plane-normal {
   background-color: transparent;
@@ -40890,19 +40890,19 @@ button#place_order {
   background-image: linear-gradient(150deg, #6b73ff 10%, #000dff 91%);
 }
 
-/* line 3759, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3757, resources/assets/styles/layouts/_woocommerce.scss */
 
 .product-term li a[href*="studio"] {
   display: none;
 }
 
-/* line 3763, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3761, resources/assets/styles/layouts/_woocommerce.scss */
 
 section.block-about {
   min-height: 1200px;
 }
 
-/* line 3767, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3765, resources/assets/styles/layouts/_woocommerce.scss */
 
 .customer-download .review-and-download .download button:focus {
   -webkit-box-shadow: none;
@@ -40910,7 +40910,7 @@ section.block-about {
   outline: none;
 }
 
-/* line 3772, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3770, resources/assets/styles/layouts/_woocommerce.scss */
 
 .button-green {
   min-width: 225px;
@@ -40921,20 +40921,20 @@ section.block-about {
   border-radius: 30px;
 }
 
-/* line 3779, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3777, resources/assets/styles/layouts/_woocommerce.scss */
 
 .is-hidden {
   display: none;
 }
 
-/* line 3783, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3781, resources/assets/styles/layouts/_woocommerce.scss */
 
 .she-header .is-hidden {
   display: block;
 }
 
 @media screen and (max-width: 782px) {
-  /* line 3788, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3786, resources/assets/styles/layouts/_woocommerce.scss */
 
   .fixed-button-purchase {
     position: fixed;
@@ -40947,34 +40947,34 @@ section.block-about {
     background-image: linear-gradient(160deg, #1adb72 4%, #10b151 100%);
   }
 
-  /* line 3797, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3795, resources/assets/styles/layouts/_woocommerce.scss */
 
   .fixed-button-purchase a {
     width: 100%;
   }
 
-  /* line 3801, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3799, resources/assets/styles/layouts/_woocommerce.scss */
 
   .addthis-smartlayers {
     display: none;
   }
 }
 
-/* line 3806, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3804, resources/assets/styles/layouts/_woocommerce.scss */
 
 .navbar-item ul.sub {
   overflow-x: auto;
   overflow-y: hidden;
 }
 
-/* line 3811, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3809, resources/assets/styles/layouts/_woocommerce.scss */
 
 .navbar-item ul li {
   display: inline-block !important;
   float: none;
 }
 
-/* line 3816, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3814, resources/assets/styles/layouts/_woocommerce.scss */
 
 .navbar-item ul li ul.sub {
   overflow-y: hidden;
@@ -40983,7 +40983,7 @@ section.block-about {
 
 /* width */
 
-/* line 3822, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3820, resources/assets/styles/layouts/_woocommerce.scss */
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -40992,7 +40992,7 @@ section.block-about {
 
 /* Track */
 
-/* line 3828, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3826, resources/assets/styles/layouts/_woocommerce.scss */
 
 ::-webkit-scrollbar-track {
   background: #dfdfdf;
@@ -41000,7 +41000,7 @@ section.block-about {
 
 /* Handle */
 
-/* line 3833, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3831, resources/assets/styles/layouts/_woocommerce.scss */
 
 ::-webkit-scrollbar-thumb {
   background: #4e8afc;
@@ -41008,13 +41008,13 @@ section.block-about {
 
 /* Handle on hover */
 
-/* line 3838, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3836, resources/assets/styles/layouts/_woocommerce.scss */
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
 
-/* line 3842, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3840, resources/assets/styles/layouts/_woocommerce.scss */
 
 .container.blogs {
   margin: 100px auto;
