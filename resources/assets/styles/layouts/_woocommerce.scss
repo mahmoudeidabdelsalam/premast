@@ -2664,7 +2664,7 @@ div#results-items .media .img-top-item img {
   font-size: 16px;
   letter-spacing: 0.114083px;
   text-transform: capitalize;
-  color: #FAFBFC;
+  color: rgb(250, 251, 252);
   display: inline-block;
   margin: 2px;
   position: relative;
@@ -2674,8 +2674,9 @@ div#results-items .media .img-top-item img {
 .term-parent a,
 .term-parent i {
   font-size: 15px;
-  font-weight: 500;
-  color: #ccc;
+  color: rgb(100, 100, 100) !important;
+  font-weight: 400 !important;
+  border: none !important;
   text-transform: capitalize;
 }
 
@@ -3466,8 +3467,7 @@ button[name='update_cart'] {
 
     .term-parent i {
       position: relative;
-      top: -2px;
-      left: -5px;
+      margin-right: 10px;
     }
   }
 
