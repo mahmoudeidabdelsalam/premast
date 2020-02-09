@@ -99,7 +99,7 @@
 @php 
   $taxonomy_query = get_queried_object();
 @endphp
-  <header class="bg-light banner navbar-banner-items @if($taxonomy_query) is-child @endif">
+  <header class="bg-light banner navbar-banner-items">
     <div class="container-fluid">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <h2 class="logos">
