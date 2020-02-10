@@ -145,15 +145,16 @@
           @if( is_user_logged_in() ) 
             @php 
               $limit_membership = wc_memberships_get_user_active_memberships($current_user->ID);
-              // $author = get_the_author_meta($current_user->ID);
+              $author = get_the_author_meta($current_user->ID);
+              // dd($current_user->ID);
               $avatar = get_field('owner_picture', 'user_'. $current_user->ID );
             @endphp
             <label for="profile" class="profile-dropdown">
               <input type="checkbox" id="profile">
               @if($avatar)
-                <img class="avatar" src="{{ $avatar['url'] }}" alt="{!! get_the_author_meta('display_name', $author) !!}">
+                <img class="avatar" src="{{ $avatar['url'] }}" alt="{!! get_the_author_meta('display_name', $current_user->ID) !!}">
               @else 
-                {!! get_avatar( get_the_author_meta('ID', $author), '94') !!}
+                <img class="avatar" src="{!! esc_url( get_avatar_url( $current_user->ID, ['size' => '40'] ) ) !!}" alt="{!! get_the_author_meta('display_name', $current_user->ID) !!}">
               @endif
               {!! get_the_author_meta('display_name', $current_user->ID) !!}
               <i class="fa fa-chevron-down" aria-hidden="true"></i>

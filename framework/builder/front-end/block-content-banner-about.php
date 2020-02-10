@@ -39,37 +39,3 @@ $editor = get_field('content_banner_about');
     </div>
   </div>
 </section>
-
-<style>
-html {
-  overflow-x: hidden;
-}
-</style>
-
-<script src="<?= get_theme_file_uri() . '/framework/assets/TweenMax.min.js'; ?>"></script>
-<script>
-jQuery(function ($) {
-  var $layer_3 = $('.layer-3'),
-    $container = $('block-about'),
-    container_w = $container.width(),
-    container_h = $container.height();
-  $(window).on('mousemove.parallax', function (event) {
-    var pos_x = event.pageX,
-        pos_y = event.pageY,
-        left = 0,
-        top = 0;
-    left = container_w / 2 - pos_x;
-    top = container_h / 2 - pos_y;
-    TweenMax.to(
-      $layer_3,
-      10, {
-        css: {
-          transform: 'rotate(' + left / 200 + 'deg)'
-        },
-        ease: Expo.easeOut,
-        overwrite: 'none'
-      }
-    )
-  });
-});
-</script>

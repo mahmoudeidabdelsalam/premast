@@ -161,10 +161,12 @@ export default {
       if ($(window).scrollTop() >= 65) {
         $('.fixed-top-header').addClass('fixed-header');
         $('.navbar-banner-items').addClass('fixed-header');
+        $('.header-block').addClass('fixed-header');
       }
       else {
         $('.fixed-top-header').removeClass('fixed-header');
         $('.navbar-banner-items').removeClass('fixed-header');
+        $('.header-block').removeClass('fixed-header');
       }
     });
 

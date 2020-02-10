@@ -11,14 +11,14 @@
     height: 380px;
     border-radius: 2px;
     width: 100%;
-    top: 400px;
+    top: 414px;
   }
 
   .planet img {
     box-shadow: 0 7px 84px rgba(0, 0, 0, 0.58);
     max-width: 100%;
-    margin: auto;
     display: block;
+    margin-left: 40px;
   }
 
   .background-about {
@@ -29,8 +29,8 @@
   }
 
   .layer-0 img {
-    height: 100%;
-    width: auto;
+    height: auto;
+    width: 100%;
   }
 
   .planet.layer-3 {
@@ -43,9 +43,14 @@
     bottom: -20%;
     left: 0;
     position: absolute;
-    right: 0;
-    top: 110px;
+    right: -38px;
+    top: 108px;
   }
+}
+
+.container-padding {
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
 .content-about {
@@ -75,6 +80,7 @@
   background: rgb(61, 65, 101);
   border-radius: 26px;
   display: flex;
+  justify-content: space-around;
 }
 
 .content-editor {
@@ -103,6 +109,7 @@ section.block-banner {
   min-height: 100vh;
   margin-top: -90px;
   background-attachment: fixed;
+  background-size: cover;
 }
 
 .content-banner {
@@ -256,7 +263,15 @@ ul.footer-menu li a {
 
 .header-block img {
   max-width: 230px;
-  margin: 30px 0;
+}
+
+header.header-block {
+  padding: 20px 0;
+}
+
+header.header-block.fixed-header {
+  padding: 5px;
+  background-color: #3c4165;
 }
 
 section.block-models {
@@ -264,19 +279,29 @@ section.block-models {
   padding: 90px 0 100px;
 }
 
+.col-action {
+  opacity: 0;
+  transition: all 0.7s;
+}
+
+.fixed-header .col-action {
+  opacity: 1;
+  transition: all 0.5s;
+}
+
 h2.headline-block {
   font-size: 40px;
   line-height: 121.69%;
   text-align: center;
   color: rgb(61, 65, 101);
-  margin-bottom: 100px;
+  margin-bottom: 20px;
 }
 
 .models-item img {
   max-width: 100%;
 }
 
-.models-item .row:nth-child(even) .one {
+.models-item .row:nth-child(odd) .one {
   order: 2;
 }
 
@@ -298,6 +323,10 @@ section.block-subscribe {
 
 .two-subscribe {
   border-left: 6px solid rgb(255, 100, 10);
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  min-height: 115px;
 }
 
 .two-subscribe p {
@@ -346,7 +375,7 @@ section.block-subscribe {
   border: none;
   background: rgb(255, 255, 255);
   border-radius: 2px;
-  min-width: 240px;
+  min-width: 300px;
 }
 
 .one-subscribe h3 {
@@ -385,8 +414,8 @@ section.block-call h2 {
   overflow: hidden;
   max-width: 100%;
   height: auto;
-  box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.722);
   border-radius: 5px;
+  background-color: rgb(196, 196, 196);
 }
 
 .block-video iframe {

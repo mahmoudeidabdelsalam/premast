@@ -44,8 +44,7 @@
             <form method="post" id="adduser" action="<?php the_permalink(); ?>">
               <div class="row">
                 <div class="col-md-3 col-sm-12 user-images">
-                  <?php
-                do_action('edit_user_profile', $current_user);?>
+                  <?php do_action('edit_user_profile', $current_user); ?>
                 </div>
                 <div class="col-md-9 col-sm-12 user-forms">
                   <p class="form-username">
