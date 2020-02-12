@@ -546,7 +546,15 @@ section.banner-items {
     border-radius: 100%;
     position: relative;
     top: -2px;
+    font-size: 0;
   }
+}
+
+.premast-bell- {
+  background-image: url("../images/bell.svg");
+  height: 25px;
+  width: 20px;
+  background-size: cover;
 }
 
 .premast-social-icons {
@@ -646,14 +654,8 @@ header.bg-light.banner.is-child {
   border-radius: 54px;
 }
 
-#search input[type="text"]:focus {
-  width: 300px;
-  z-index: 1;
-  cursor: text;
-  background-color: #f8f9fa;
-}
-
-#search input[type="submit"] {
+#search input[type="submit"],
+.button-close {
   height: 40px;
   width: 40px;
   display: inline-block;
@@ -668,13 +670,35 @@ header.bg-light.banner.is-child {
   transition: opacity .4s ease;
 }
 
-#search input[type="submit"]:hover {
+#search input[type="submit"]:hover,
+.button-close:hover {
   opacity: 0.8;
+}
+
+#search .button-close {
+  z-index: 99;
+  transition: all 0.6s;
+}
+
+#search.active input[type="text"] {
+  width: 300px;
+  z-index: 1;
+  cursor: text;
+  background-color: #f8f9fa;
+}
+
+#search.active .button-close {
+  right: 0;
+  left: -335px;
+  background-image: url("../images/close.svg");
+  height: 20px;
+  width: 20px;
+  transition: all 0.6s;
 }
 
 .notification {
   position: relative;
-  top: 2px;
+  top: 5px;
   right: -7px;
 }
 

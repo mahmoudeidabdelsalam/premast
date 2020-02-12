@@ -13665,16 +13665,9 @@ Router.prototype.loadEvents = function loadEvents () {
       }
     }
 
-    // $('.product-grid').click(function () {
-    //   $('.item-card').show(300);
-    //   $('.item-card .bg-white').css('height', '230px');
-    //   $('.item-card .bg-white').css('min-height', '230px');
-    //   $('.item-card .bg-white').addClass('bg-images');
-
-    //   $('.grid').masonry({
-    //     itemSelector: '.grid-item',
-    //   });
-    // });
+    $('.button-close').click(function () {
+      $('#search').toggleClass('active');
+    });
 
     // $('.product-list').click(function () {
     //   $('.item-card').show(300);

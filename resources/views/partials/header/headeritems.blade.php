@@ -118,9 +118,13 @@
             {!! wp_nav_menu(['theme_location' => 'items_navigation', 'container' => false, 'menu_class' => 'navbar-item navbar-nav ml-4 mr-auto', 'walker' => new Nav_Item_Walker()]) !!}
           @endif
         </div>
+
         <form action="" autocomplete="on" id="search">
-          <input id="search" name="search" type="text" placeholder="search.."><input id="search_submit" value="Rechercher" type="submit">
+          <input id="autoblogs" class="search-inputs" name="refine" value="{{ get_search_query() }}" type="text" placeholder="{{ _e('search...','premast') }}" autocomplete="off" spellcheck="false" maxlength="100"">
+          <input id="search_submit" value="Rechercher" type="submit">
+          <i class="button-close"></i>
         </form>
+
         @if(get_field('link_pricing', 'option'))
           <div class="button-pricing">
             <a class="button-green" href="{{ the_field('link_pricing', 'option') }}">{{ _e('pricing', 'premast') }}</a>
@@ -138,7 +142,7 @@
         @endif
         @if( is_user_logged_in() ) 
           <div class="notification mx-4">
-            <a href="#"><i class="fa fa-bell-o text-gray-dark fa-lg" aria-hidden="true"></i> <span class="notification-counter"></span></a>
+            <a href="#"><i class="fa premast-bell-" aria-hidden="true"></i> <span class="notification-counter"></span></a>
           </div>
         @endif
         <div class="half">
