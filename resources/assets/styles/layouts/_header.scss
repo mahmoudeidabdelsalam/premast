@@ -677,7 +677,7 @@ header.bg-light.banner.is-child {
 
 #search .button-close {
   z-index: 99;
-  transition: all 0.6s;
+  transition: all 0.4s;
 }
 
 #search.active input[type="text"] {
@@ -685,15 +685,24 @@ header.bg-light.banner.is-child {
   z-index: 1;
   cursor: text;
   background-color: #f8f9fa;
+  padding: 0 40px;
 }
 
 #search.active .button-close {
   right: 0;
-  left: -335px;
   background-image: url("../images/close.svg");
-  height: 20px;
-  width: 20px;
-  transition: all 0.6s;
+  transition: all 0.4s;
+  background-size: 10px;
+}
+
+#search.active input[type="submit"] {
+  left: -300px;
+  right: auto;
+}
+
+.autocomplete-blog {
+  z-index: 99999999999 !important;
+  cursor: pointer;
 }
 
 .notification {
