@@ -30864,7 +30864,7 @@ form#publish_product .loading {
   section.block-about {
     min-height: 1000px;
     padding-top: 130px;
-    background: #e5e5e5;
+    background: #f4f7fa;
   }
 
   /* line 8, resources/assets/styles/layouts/_blocks.scss */
@@ -30881,14 +30881,15 @@ form#publish_product .loading {
   /* line 17, resources/assets/styles/layouts/_blocks.scss */
 
   .planet img {
-    -webkit-box-shadow: 0 7px 84px rgba(0, 0, 0, 0.58);
-            box-shadow: 0 7px 84px rgba(0, 0, 0, 0.58);
+    -webkit-box-shadow: 0 5px 50px #b2b2b2;
+            box-shadow: 0 5px 50px #b2b2b2;
     max-width: 100%;
     display: block;
     margin-left: 40px;
+    border-radius: 2px;
   }
 
-  /* line 24, resources/assets/styles/layouts/_blocks.scss */
+  /* line 25, resources/assets/styles/layouts/_blocks.scss */
 
   .background-about {
     bottom: 0;
@@ -30897,14 +30898,14 @@ form#publish_product .loading {
     top: 110px;
   }
 
-  /* line 31, resources/assets/styles/layouts/_blocks.scss */
+  /* line 32, resources/assets/styles/layouts/_blocks.scss */
 
   .layer-0 img {
     height: auto;
     width: 100%;
   }
 
-  /* line 36, resources/assets/styles/layouts/_blocks.scss */
+  /* line 37, resources/assets/styles/layouts/_blocks.scss */
 
   .planet.layer-3 {
     -webkit-transform: none !important;
@@ -30914,7 +30915,7 @@ form#publish_product .loading {
     top: 500px;
   }
 
-  /* line 42, resources/assets/styles/layouts/_blocks.scss */
+  /* line 43, resources/assets/styles/layouts/_blocks.scss */
 
   .layer-0 {
     bottom: -20%;
@@ -30925,14 +30926,14 @@ form#publish_product .loading {
   }
 }
 
-/* line 51, resources/assets/styles/layouts/_blocks.scss */
+/* line 52, resources/assets/styles/layouts/_blocks.scss */
 
 .container-padding {
   padding-left: 60px;
   padding-right: 60px;
 }
 
-/* line 56, resources/assets/styles/layouts/_blocks.scss */
+/* line 57, resources/assets/styles/layouts/_blocks.scss */
 
 .content-about {
   height: 850px;
@@ -30949,7 +30950,7 @@ form#publish_product .loading {
   padding-top: 100px;
 }
 
-/* line 64, resources/assets/styles/layouts/_blocks.scss */
+/* line 65, resources/assets/styles/layouts/_blocks.scss */
 
 .content-about h2 {
   font-style: normal;
@@ -30959,7 +30960,7 @@ form#publish_product .loading {
   color: #3d4165;
 }
 
-/* line 72, resources/assets/styles/layouts/_blocks.scss */
+/* line 73, resources/assets/styles/layouts/_blocks.scss */
 
 .content-about p {
   font-weight: normal;
@@ -30968,7 +30969,7 @@ form#publish_product .loading {
   color: #3d4165;
 }
 
-/* line 79, resources/assets/styles/layouts/_blocks.scss */
+/* line 80, resources/assets/styles/layouts/_blocks.scss */
 
 .status-icon {
   background: #3d4165;
@@ -30980,7 +30981,7 @@ form#publish_product .loading {
       justify-content: space-around;
 }
 
-/* line 86, resources/assets/styles/layouts/_blocks.scss */
+/* line 87, resources/assets/styles/layouts/_blocks.scss */
 
 .content-editor {
   font-weight: normal;
@@ -30991,7 +30992,7 @@ form#publish_product .loading {
   margin-bottom: 27px;
 }
 
-/* line 95, resources/assets/styles/layouts/_blocks.scss */
+/* line 96, resources/assets/styles/layouts/_blocks.scss */
 
 .statusitems {
   font-size: 16px;
@@ -31002,15 +31003,21 @@ form#publish_product .loading {
   display: -ms-flexbox;
   display: flex;
   padding: 25px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-/* line 104, resources/assets/styles/layouts/_blocks.scss */
+/* line 107, resources/assets/styles/layouts/_blocks.scss */
 
 .statusitems img {
   margin-right: 20px;
 }
 
-/* line 108, resources/assets/styles/layouts/_blocks.scss */
+/* line 111, resources/assets/styles/layouts/_blocks.scss */
 
 section.block-banner {
   min-height: 100vh;
@@ -31019,7 +31026,13 @@ section.block-banner {
   background-size: cover;
 }
 
-/* line 115, resources/assets/styles/layouts/_blocks.scss */
+/* line 118, resources/assets/styles/layouts/_blocks.scss */
+
+.mb-100 {
+  margin-bottom: 100px !important;
+}
+
+/* line 122, resources/assets/styles/layouts/_blocks.scss */
 
 .content-banner {
   height: 850px;
@@ -31035,7 +31048,7 @@ section.block-banner {
           justify-content: center;
 }
 
-/* line 122, resources/assets/styles/layouts/_blocks.scss */
+/* line 129, resources/assets/styles/layouts/_blocks.scss */
 
 .content-banner h2 {
   font-weight: bold;
@@ -31045,7 +31058,7 @@ section.block-banner {
   color: white;
 }
 
-/* line 130, resources/assets/styles/layouts/_blocks.scss */
+/* line 137, resources/assets/styles/layouts/_blocks.scss */
 
 .content-banner p {
   font-size: 16px;
@@ -31053,7 +31066,7 @@ section.block-banner {
   color: white;
 }
 
-/* line 136, resources/assets/styles/layouts/_blocks.scss */
+/* line 143, resources/assets/styles/layouts/_blocks.scss */
 
 .content-banner p a {
   font-size: 16px;
@@ -31061,7 +31074,7 @@ section.block-banner {
   color: white;
 }
 
-/* line 142, resources/assets/styles/layouts/_blocks.scss */
+/* line 149, resources/assets/styles/layouts/_blocks.scss */
 
 .content-banner .btn-push {
   background: -webkit-linear-gradient(280.79deg, #1adb72 -0.5%, #10b151 100%);
@@ -31073,18 +31086,26 @@ section.block-banner {
   text-transform: capitalize;
   color: white;
   height: 40px;
-  padding: 12px;
   width: 212px;
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-/* line 155, resources/assets/styles/layouts/_blocks.scss */
+/* line 164, resources/assets/styles/layouts/_blocks.scss */
 
 section.block-call {
   padding-bottom: 70px;
 }
 
-/* line 159, resources/assets/styles/layouts/_blocks.scss */
+/* line 168, resources/assets/styles/layouts/_blocks.scss */
 
 .content-call {
   font-weight: normal;
@@ -31094,7 +31115,7 @@ section.block-call {
   color: white;
 }
 
-/* line 167, resources/assets/styles/layouts/_blocks.scss */
+/* line 176, resources/assets/styles/layouts/_blocks.scss */
 
 section.block-call .btn-push {
   background: -webkit-linear-gradient(280.79deg, #1adb72 -0.5%, #10b151 100%);
@@ -31113,7 +31134,7 @@ section.block-call .btn-push {
   margin: 40px auto 0;
 }
 
-/* line 182, resources/assets/styles/layouts/_blocks.scss */
+/* line 191, resources/assets/styles/layouts/_blocks.scss */
 
 section.block-features {
   background: -webkit-linear-gradient(286.86deg, #3d4165 0%, #212230 129.32%);
@@ -31122,7 +31143,7 @@ section.block-features {
   padding: 95px 0 75px;
 }
 
-/* line 187, resources/assets/styles/layouts/_blocks.scss */
+/* line 196, resources/assets/styles/layouts/_blocks.scss */
 
 h2.border-lines {
   font-weight: bold;
@@ -31147,7 +31168,7 @@ h2.border-lines {
           align-items: center;
 }
 
-/* line 204, resources/assets/styles/layouts/_blocks.scss */
+/* line 213, resources/assets/styles/layouts/_blocks.scss */
 
 .features-item {
   font-weight: normal;
@@ -31157,14 +31178,14 @@ h2.border-lines {
   border-left: 6px solid #ff640a;
 }
 
-/* line 212, resources/assets/styles/layouts/_blocks.scss */
+/* line 221, resources/assets/styles/layouts/_blocks.scss */
 
 .features-item p {
   font-size: 24px;
   font-weight: bold;
 }
 
-/* line 217, resources/assets/styles/layouts/_blocks.scss */
+/* line 226, resources/assets/styles/layouts/_blocks.scss */
 
 .features-item span {
   font-style: normal;
@@ -31172,7 +31193,7 @@ h2.border-lines {
   font-size: 16px;
 }
 
-/* line 223, resources/assets/styles/layouts/_blocks.scss */
+/* line 232, resources/assets/styles/layouts/_blocks.scss */
 
 ul.footer-menu {
   display: -webkit-box;
@@ -31182,7 +31203,7 @@ ul.footer-menu {
   margin-left: auto;
 }
 
-/* line 229, resources/assets/styles/layouts/_blocks.scss */
+/* line 238, resources/assets/styles/layouts/_blocks.scss */
 
 ul.footer-menu li {
   font-size: 16px;
@@ -31194,7 +31215,7 @@ ul.footer-menu li {
   font-weight: 500;
 }
 
-/* line 239, resources/assets/styles/layouts/_blocks.scss */
+/* line 248, resources/assets/styles/layouts/_blocks.scss */
 
 ul.footer-links {
   list-style: none;
@@ -31205,13 +31226,13 @@ ul.footer-links {
   margin: 0 20px;
 }
 
-/* line 246, resources/assets/styles/layouts/_blocks.scss */
+/* line 255, resources/assets/styles/layouts/_blocks.scss */
 
 ul.footer-links li {
   margin: 0 20px;
 }
 
-/* line 250, resources/assets/styles/layouts/_blocks.scss */
+/* line 259, resources/assets/styles/layouts/_blocks.scss */
 
 ul.footer-links li a {
   font-size: 16px;
@@ -31223,39 +31244,39 @@ ul.footer-links li a {
   font-weight: normal;
 }
 
-/* line 260, resources/assets/styles/layouts/_blocks.scss */
+/* line 269, resources/assets/styles/layouts/_blocks.scss */
 
 ul.footer-menu li a {
   font-size: 25px;
 }
 
-/* line 264, resources/assets/styles/layouts/_blocks.scss */
+/* line 273, resources/assets/styles/layouts/_blocks.scss */
 
 .header-block img {
   max-width: 230px;
 }
 
-/* line 268, resources/assets/styles/layouts/_blocks.scss */
+/* line 277, resources/assets/styles/layouts/_blocks.scss */
 
 header.header-block {
   padding: 20px 0;
 }
 
-/* line 272, resources/assets/styles/layouts/_blocks.scss */
+/* line 281, resources/assets/styles/layouts/_blocks.scss */
 
 header.header-block.fixed-header {
   padding: 5px;
   background-color: #3c4165;
 }
 
-/* line 277, resources/assets/styles/layouts/_blocks.scss */
+/* line 286, resources/assets/styles/layouts/_blocks.scss */
 
 section.block-models {
   background: #e5e5e5;
   padding: 90px 0 100px;
 }
 
-/* line 282, resources/assets/styles/layouts/_blocks.scss */
+/* line 291, resources/assets/styles/layouts/_blocks.scss */
 
 .col-action {
   opacity: 0;
@@ -31264,7 +31285,7 @@ section.block-models {
   transition: all 0.7s;
 }
 
-/* line 287, resources/assets/styles/layouts/_blocks.scss */
+/* line 296, resources/assets/styles/layouts/_blocks.scss */
 
 .fixed-header .col-action {
   opacity: 1;
@@ -31273,7 +31294,7 @@ section.block-models {
   transition: all 0.5s;
 }
 
-/* line 292, resources/assets/styles/layouts/_blocks.scss */
+/* line 301, resources/assets/styles/layouts/_blocks.scss */
 
 h2.headline-block {
   font-size: 40px;
@@ -31283,13 +31304,13 @@ h2.headline-block {
   margin-bottom: 20px;
 }
 
-/* line 300, resources/assets/styles/layouts/_blocks.scss */
+/* line 309, resources/assets/styles/layouts/_blocks.scss */
 
 .models-item img {
   max-width: 100%;
 }
 
-/* line 304, resources/assets/styles/layouts/_blocks.scss */
+/* line 313, resources/assets/styles/layouts/_blocks.scss */
 
 .models-item .row:nth-child(odd) .one {
   -webkit-box-ordinal-group: 3;
@@ -31297,7 +31318,7 @@ h2.headline-block {
           order: 2;
 }
 
-/* line 308, resources/assets/styles/layouts/_blocks.scss */
+/* line 317, resources/assets/styles/layouts/_blocks.scss */
 
 .two {
   font-size: 16px;
@@ -31305,14 +31326,14 @@ h2.headline-block {
   color: #3d4165;
 }
 
-/* line 314, resources/assets/styles/layouts/_blocks.scss */
+/* line 323, resources/assets/styles/layouts/_blocks.scss */
 
 .two ul li {
   font-size: 16px;
   margin-bottom: 10px;
 }
 
-/* line 319, resources/assets/styles/layouts/_blocks.scss */
+/* line 328, resources/assets/styles/layouts/_blocks.scss */
 
 section.block-subscribe {
   background: -webkit-linear-gradient(286.86deg, #3d4166 0%, #212230 129.32%);
@@ -31321,7 +31342,7 @@ section.block-subscribe {
   padding: 45px 0 40px;
 }
 
-/* line 324, resources/assets/styles/layouts/_blocks.scss */
+/* line 333, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe {
   border-left: 6px solid #ff640a;
@@ -31338,7 +31359,7 @@ section.block-subscribe {
   min-height: 115px;
 }
 
-/* line 332, resources/assets/styles/layouts/_blocks.scss */
+/* line 341, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe p {
   font-style: normal;
@@ -31348,13 +31369,13 @@ section.block-subscribe {
   color: white;
 }
 
-/* line 340, resources/assets/styles/layouts/_blocks.scss */
+/* line 349, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper label {
   display: none !important;
 }
 
-/* line 344, resources/assets/styles/layouts/_blocks.scss */
+/* line 353, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper form {
   display: -webkit-box;
@@ -31362,20 +31383,20 @@ section.block-subscribe {
   display: flex;
 }
 
-/* line 348, resources/assets/styles/layouts/_blocks.scss */
+/* line 357, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper {
   margin: 0 !important;
 }
 
-/* line 352, resources/assets/styles/layouts/_blocks.scss */
+/* line 361, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper .gform_footer {
   padding: 0;
   margin: 0;
 }
 
-/* line 357, resources/assets/styles/layouts/_blocks.scss */
+/* line 366, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper .gform_footer button {
   background: #1e6dfb !important;
@@ -31385,20 +31406,20 @@ section.block-subscribe {
   height: 45px;
 }
 
-/* line 364, resources/assets/styles/layouts/_blocks.scss */
+/* line 373, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper li {
   padding: 0 !important;
   margin: 0 !important;
 }
 
-/* line 369, resources/assets/styles/layouts/_blocks.scss */
+/* line 378, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper li .ginput_container {
   margin: 0 !important;
 }
 
-/* line 373, resources/assets/styles/layouts/_blocks.scss */
+/* line 382, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper li .ginput_container input {
   height: 45px;
@@ -31408,7 +31429,7 @@ section.block-subscribe {
   min-width: 300px;
 }
 
-/* line 381, resources/assets/styles/layouts/_blocks.scss */
+/* line 390, resources/assets/styles/layouts/_blocks.scss */
 
 .one-subscribe h3 {
   font-weight: bold;
@@ -31417,7 +31438,7 @@ section.block-subscribe {
   color: white;
 }
 
-/* line 388, resources/assets/styles/layouts/_blocks.scss */
+/* line 397, resources/assets/styles/layouts/_blocks.scss */
 
 .one-subscribe h2 {
   font-weight: bold;
@@ -31427,14 +31448,14 @@ section.block-subscribe {
   color: white;
 }
 
-/* line 396, resources/assets/styles/layouts/_blocks.scss */
+/* line 405, resources/assets/styles/layouts/_blocks.scss */
 
 section.footer img {
   max-width: 230px;
   margin: 30px 0;
 }
 
-/* line 401, resources/assets/styles/layouts/_blocks.scss */
+/* line 410, resources/assets/styles/layouts/_blocks.scss */
 
 section.block-call h2 {
   font-weight: bold;
@@ -31446,7 +31467,7 @@ section.block-call h2 {
   margin: 54px 0 16px 0;
 }
 
-/* line 411, resources/assets/styles/layouts/_blocks.scss */
+/* line 420, resources/assets/styles/layouts/_blocks.scss */
 
 .block-video {
   position: relative;
@@ -31458,7 +31479,7 @@ section.block-call h2 {
   background-color: #c4c4c4;
 }
 
-/* line 421, resources/assets/styles/layouts/_blocks.scss */
+/* line 430, resources/assets/styles/layouts/_blocks.scss */
 
 .block-video iframe {
   position: absolute;
@@ -31469,20 +31490,20 @@ section.block-call h2 {
 }
 
 @media (max-width: 767.98px) {
-  /* line 430, resources/assets/styles/layouts/_blocks.scss */
+  /* line 439, resources/assets/styles/layouts/_blocks.scss */
 
   .layer-0 img {
     max-width: 100%;
   }
 
-  /* line 434, resources/assets/styles/layouts/_blocks.scss */
+  /* line 443, resources/assets/styles/layouts/_blocks.scss */
 
   .content-about {
     height: auto;
     padding: 15px;
   }
 
-  /* line 439, resources/assets/styles/layouts/_blocks.scss */
+  /* line 448, resources/assets/styles/layouts/_blocks.scss */
 
   .content-banner {
     height: auto;
@@ -31490,7 +31511,7 @@ section.block-call h2 {
     margin-bottom: 40px;
   }
 
-  /* line 445, resources/assets/styles/layouts/_blocks.scss */
+  /* line 454, resources/assets/styles/layouts/_blocks.scss */
 
   [data-aos] {
     -webkit-transform: translate3d(0, 0, 0) !important;
@@ -31498,39 +31519,39 @@ section.block-call h2 {
     opacity: 1 !important;
   }
 
-  /* line 450, resources/assets/styles/layouts/_blocks.scss */
+  /* line 459, resources/assets/styles/layouts/_blocks.scss */
 
   .planet img {
     max-width: 100%;
     margin: 10px 0;
   }
 
-  /* line 455, resources/assets/styles/layouts/_blocks.scss */
+  /* line 464, resources/assets/styles/layouts/_blocks.scss */
 
   .content-banner h2 {
     font-size: 30px;
   }
 
-  /* line 459, resources/assets/styles/layouts/_blocks.scss */
+  /* line 468, resources/assets/styles/layouts/_blocks.scss */
 
   section.block-about img {
     max-width: 100%;
   }
 
-  /* line 463, resources/assets/styles/layouts/_blocks.scss */
+  /* line 472, resources/assets/styles/layouts/_blocks.scss */
 
   section.block-about {
     min-height: 1px !important;
     padding: 15px 0;
   }
 
-  /* line 468, resources/assets/styles/layouts/_blocks.scss */
+  /* line 477, resources/assets/styles/layouts/_blocks.scss */
 
   section.block-about .layer-0 img {
     margin-left: -20px;
   }
 
-  /* line 472, resources/assets/styles/layouts/_blocks.scss */
+  /* line 481, resources/assets/styles/layouts/_blocks.scss */
 
   .status-icon {
     -webkit-box-orient: vertical;
@@ -31540,7 +31561,7 @@ section.block-call h2 {
     background: transparent;
   }
 
-  /* line 477, resources/assets/styles/layouts/_blocks.scss */
+  /* line 486, resources/assets/styles/layouts/_blocks.scss */
 
   .statusitems {
     padding: 12px;
@@ -31549,7 +31570,7 @@ section.block-call h2 {
     border-radius: 26px;
   }
 
-  /* line 484, resources/assets/styles/layouts/_blocks.scss */
+  /* line 493, resources/assets/styles/layouts/_blocks.scss */
 
   .models-item .row:nth-child(even) .two {
     -webkit-box-ordinal-group: 3 !important;
@@ -31557,14 +31578,14 @@ section.block-call h2 {
             order: 2 !important;
   }
 
-  /* line 488, resources/assets/styles/layouts/_blocks.scss */
+  /* line 497, resources/assets/styles/layouts/_blocks.scss */
 
   .models-item .two ul {
     padding: 0;
     margin: 20px;
   }
 
-  /* line 493, resources/assets/styles/layouts/_blocks.scss */
+  /* line 502, resources/assets/styles/layouts/_blocks.scss */
 
   .two-subscribe .gform_wrapper .gform_footer button {
     width: 90px;
@@ -31572,19 +31593,41 @@ section.block-call h2 {
     padding: 0;
   }
 
-  /* line 499, resources/assets/styles/layouts/_blocks.scss */
+  /* line 508, resources/assets/styles/layouts/_blocks.scss */
 
   section.footer {
     padding-bottom: 60px !important;
   }
 
-  /* line 503, resources/assets/styles/layouts/_blocks.scss */
+  /* line 512, resources/assets/styles/layouts/_blocks.scss */
 
   ul.footer-links {
     white-space: nowrap;
     overflow: scroll;
     margin: 0;
   }
+}
+
+/* line 519, resources/assets/styles/layouts/_blocks.scss */
+
+h3.the-headline-border {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYyIiBoZWlnaHQ9IjEzIiB2aWV3Qm94PSIwIDAgMTYyIDEzIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMSA0LjY4MTI2QzQ1LjYzMTYgLTAuMzkxOTE2IDE0Ni4xNzEgLTEuNzY3NTkgMTYwLjQ3IDEwLjc2ODlDMTY3Ljk5MiAxNy4zNjM5IDk0LjI3NSAtNS40NjUzMiAxMi42NTk0IDEwLjc2ODkiIHN0cm9rZT0iIzFFNkRGQiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==);
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: 0.04px;
+  color: #282f39;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  padding-bottom: 20px;
+  margin-bottom: 37px;
+  margin-top: 34px;
+}
+
+/* line 533, resources/assets/styles/layouts/_blocks.scss */
+
+.space-union {
+  background-image: url(/app/themes/premast/dist/images/union.svg);
 }
 
 /* line 1, resources/assets/styles/layouts/_footer.scss */
@@ -32349,7 +32392,7 @@ header.banner .cart-contents {
   height: 23px;
   display: inline-block;
   position: relative;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwLjE4MTggMjAuNzk5OUg0TDUuNjE4MTggNy44NTQ0OUgxOC41NjM2TDIwLjE4MTggMjAuNzk5OVoiIHN0cm9rZT0iIzI4MkYzOSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiLz4KPHBhdGggZD0iTTguODU0NTQgMTAuMjgxOFY2LjIzNjM2QzguODU0NTQgNC40NTYzNiAxMC4zMTA5IDMgMTIuMDkwOSAzQzEzLjg3MDkgMyAxNS4zMjczIDQuNDU2MzYgMTUuMzI3MyA2LjIzNjM2VjEwLjI4MTgiIHN0cm9rZT0iIzI4MkYzOSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiLz4KPC9zdmc+Cg==);
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgb3BhY2l0eT0iMC41NSI+CjxwYXRoIGQ9Ik0yMC4xODE4IDIwLjc5OTlINEw1LjYxODE4IDcuODU0NDNIMTguNTYzNkwyMC4xODE4IDIwLjc5OTlaIiBzdHJva2U9IiMyODJGMzkiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIi8+CjxwYXRoIGQ9Ik04Ljg1NDQ5IDEwLjI4MThWNi4yMzYzNkM4Ljg1NDQ5IDQuNDU2MzYgMTAuMzEwOSAzIDEyLjA5MDkgM0MxMy44NzA5IDMgMTUuMzI3MiA0LjQ1NjM2IDE1LjMyNzIgNi4yMzYzNlYxMC4yODE4IiBzdHJva2U9IiMyODJGMzkiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIi8+CjwvZz4KPC9zdmc+Cg==);
   background-size: contain;
   background-repeat: no-repeat;
   margin: 0 !important;
