@@ -1,5 +1,5 @@
 .template-users {
-  background-color: rgb(239, 246, 250);
+  background-color: rgb(255, 255, 255);
 }
 
 section.header-users {
@@ -114,13 +114,13 @@ section.header-users {
   .form-url,
   .form-password {
     input {
-      width: 100%;
-      border-bottom: 1px solid rgb(151, 151, 151);
-      border-right: 0;
-      border-left: 0;
-      border-top: 0;
-      background: transparent;
+      width: 80%;
       height: 40px;
+      border: 1px solid rgb(227, 227, 227);
+      box-sizing: border-box;
+      border-radius: 8px;
+      display: block;
+      padding: 0 10px;
 
       &:focus {
         box-shadow: none;
@@ -129,8 +129,11 @@ section.header-users {
     }
 
     label {
-      font-weight: 300;
-      font-size: 12px;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0.04px;
+      text-transform: capitalize;
+      color: rgb(100, 100, 100);
       margin-top: 25px;
       margin-bottom: 0;
     }

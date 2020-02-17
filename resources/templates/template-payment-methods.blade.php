@@ -17,23 +17,16 @@
     </div>
   </div>
 @else
-  <section class="header-users page-payment" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
-    <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
-    <div class="container">
-      <div class="row justify-content-between">
-          <h2 class="headline">{{ _e('My Account', 'premast') }}</h2>
-          
+  <section class="template-users">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3 col-12 side-menu-user">
+          <h2 class="headline text-primary">{{ _e('My Account', 'premast') }}</h2>
           @if (has_nav_menu('user_navigation'))
             {!! wp_nav_menu(['theme_location' => 'user_navigation', 'container' => false, 'menu_class' => 'nav nav-pills flex-column flex-sm-row col-12', 'walker' => new NavWalker()]) !!}
           @endif
-
-      </div>
-    </div>        
-  </section>
-  <section class="template-users">
-    <div class="container">
-      <div class="row pt-5 pb-5">
-        <div class="col-12 p-0 mb-5">
+        </div>
+        <div class="col-md-9 col-12 p-5 mb-5">
           <?php
           if ( ! defined( 'ABSPATH' ) ) {
             exit;
@@ -82,16 +75,11 @@
                 <?php endforeach; ?>
               <?php endforeach; ?>
             </table>
-
           <?php else : ?>
-
             <p class="woocommerce-Message woocommerce-Message--info woocommerce-info"><?php esc_html_e( 'No saved methods found.', 'woocommerce' ); ?></p>
-
           <?php endif; ?>
 
-        </div>
-        <div class="col-12 p-0">
-        <?php do_action( 'woocommerce_after_account_payment_methods', $has_methods ); ?>
+          <?php do_action( 'woocommerce_after_account_payment_methods', $has_methods ); ?>
 
         <?php if ( WC()->payment_gateways->get_available_payment_gateways() ) : ?>
           <?php

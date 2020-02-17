@@ -94,6 +94,9 @@
                   <li class="list-inline-item">
                     <a class="item" data-network="facebook" data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-facebook"></i></a>      
                   </li>
+                  <li class="list-inline-item">
+                    <a class="item" data-network="addtoany" data-url="{{ $link }}" data-title="{{ $link }}" href="#"> <i class="fa fa-facebook"></i></a>      
+                  </li>
                 </ul>
 
                 <div id="inviteCode" class="invite-page">
@@ -110,10 +113,12 @@
   </section>
 <script>
   jQuery(function($) {
+    
     $('#copy').on('click', function(event) {
       console.log(event);
       copyToClipboard(event);
     });
+    
     function copyToClipboard(e) {
       var
         t = e.target, 
@@ -330,21 +335,21 @@ div#copy {
 }
 #inviteCode.invite-page #copy i.copied::after {
   position: absolute;
-  top: 0px;
-  right: 35px;
+  top: 5px;
+  right: 105%;
   height: 30px;
   line-height: 25px;
   display: block;
   content: "copied";
-  font-size: 1.5em;
+  font-size: 16px;
   padding: 2px 10px;
   color: #fff;
-  background-color: #4099FF;
+  background-color: #1e6cfd;
   border-radius: 3px;
   opacity: 1;
   will-change: opacity, transform;
-  -webkit-animation: showcopied 1.5s ease;
-          animation: showcopied 1.5s ease;
+  animation: showcopied 1.5s ease;
+  font-weight: 200;
 }
 .container #inviteCode.invite-page #copy:hover {
   cursor: pointer;
@@ -415,5 +420,28 @@ div#copy i {
   letter-spacing: 0.04px;
   color: #1E6DFB;
   cursor: pointer;
+}
+.custom-share .item {
+    border: 1px solid #282F39;
+    box-sizing: border-box;
+    border-radius: 30px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}
+li.head {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.04px;
+    color: #282F39;
+}
+.social-sharer {
+    justify-content: end;
 }
 </style>

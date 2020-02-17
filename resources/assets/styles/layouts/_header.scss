@@ -677,7 +677,6 @@ header.bg-light.banner.is-child {
 
 #search .button-close {
   z-index: 99;
-  transition: all 0.4s;
 }
 
 #search.active input[type="text"] {
@@ -883,5 +882,131 @@ ul.sub .item-current a:after {
 header.banner .nav-link {
   padding-left: 12.5px !important;
   padding-right: 12.5px !important;
+}
+
+.notification {
+  display: none;
+}
+
+.side-menu-user {
+  background: #F9F9F9;
+}
+
+header.banner .cart-contents {
+  margin-right: 25px !important;
+  margin-left: 20px !important;
+}
+
+.side-menu-user {
+  .menu-item {
+    &::after {
+      position: absolute;
+      top: 15px;
+      color: rgb(40, 47, 57);
+      left: 35px;
+      font-family: $font-aswsome;
+    }
+
+    &:nth-child(1) {
+      &::after {
+        content: "\f2c0";
+      }
+    }
+
+    &:nth-child(2) {
+      &::after {
+        content: "\f01a";
+      }
+    }
+
+    &:nth-child(3) {
+      &::after {
+        content: "\f08a";
+      }
+    }
+
+    &:nth-child(4) {
+      &::after {
+        content: "\f09d";
+      }
+    }
+
+    &:nth-child(5) {
+      &::after {
+        content: "\f006";        
+      }
+    }
+  }
+}
+
+ul.list-editing {
+  list-style: none;
+  padding: 30px;
+  margin-top: 188px;
+  position: relative;
+}
+
+ul.list-editing li {
+  margin-bottom: 30px;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.114083px;
+  text-transform: capitalize;
+  color: rgb(0, 0, 0);
+}
+
+ul.list-editing:after {
+  content: "";
+  height: 1px;
+  width: 265px;
+  background: rgb(0, 0, 0);
+  position: absolute;
+  top: 40px;
+  right: 93%;
+}
+
+header.bg-light.banner {
+  border-bottom: 1px solid #cccc;
+  padding: 10px 0 5px;
+}
+
+.side-menu-user .headline {
+  margin-top: 95px;
+  margin-bottom: 65px;
+}
+
+.side-menu-user ul {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+}
+
+.side-menu-user ul li {
+  width: 100%;
+  margin: 0 0 30px;
+  padding-left: 45px;
+  position: relative;
+}
+
+.side-menu-user ul li a {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.04px;
+  color: #282F39;
+  flex: none;
+  order: 1;
+  align-self: center;
+  margin: 10px 0px;
+}
+
+.side-menu-user .headline {
+  margin-left: 30px;
+}
+
+.side-menu-user ul li.active a {
+  font-weight: bold;
+  letter-spacing: 0.04px;
+  color: #1E6DFB;
 }
 /* stylelint-enable */

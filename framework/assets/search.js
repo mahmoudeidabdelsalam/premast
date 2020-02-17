@@ -1,7 +1,7 @@
 jQuery(document).ready(function ($) {
 
+  // eslint-disable-next-line no-undef
   var ajaxurl = sage.ajax_url;
-  var width = 0;
 
   $('#autoblogs').autocomplete({
     minChars: 3,
@@ -17,6 +17,7 @@ jQuery(document).ready(function ($) {
     beforeRender: function (container, suggestions) {
       container.find('.autocomplete-blog').each(function (i, suggestion) {
         $(suggestion).wrapInner('<div class="search-resulte"><h3>' + suggestions[i].value + '</h3></div>');
+        // eslint-disable-next-line no-undef
         width = 100;
       });
     },
@@ -33,6 +34,7 @@ jQuery(document).ready(function ($) {
         facebook: 'https://facebook.com/sharer.php?u=' + encodeURIComponent(url) + '&t=' + encodeURIComponent(title),
         twitter: 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(title) + '&url=' + encodeURIComponent(url) + '',
         linkedin: 'https://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(title),
+        addtoany: 'https://www.addtoany.com/share_save?linkurl=' + encodeURIComponent(url),
       };
     var
       width = 600,
