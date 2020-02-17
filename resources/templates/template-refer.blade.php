@@ -390,8 +390,8 @@ div#copy {
   }
 }
 div#inviteCode {
-    display: flex;
-    width: 100%;
+  display: flex;
+  width: 100%;
 }
 
 div#inviteCode input {
@@ -422,26 +422,26 @@ div#copy i {
   cursor: pointer;
 }
 .custom-share .item {
-    border: 1px solid #282F39;
-    box-sizing: border-box;
-    border-radius: 30px;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 15px;
+  border: 1px solid #282F39;
+  box-sizing: border-box;
+  border-radius: 30px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
 }
 li.head {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    letter-spacing: 0.04px;
-    color: #282F39;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.04px;
+  color: #282F39;
 }
 .social-sharer {
-    justify-content: end;
+  justify-content: end !important;
 }
 </style>
