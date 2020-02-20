@@ -365,10 +365,13 @@ section.block-subscribe {
 
 .two-subscribe .gform_wrapper .gform_footer button {
   background: rgb(30, 109, 251) !important;
+  -webkit-box-shadow: none !important;
   box-shadow: none !important;
   height: 45px;
-  margin-left: -3px;
   border-radius: 0 2px 2px 0 !important;
+  min-width: 1px;
+  margin: 0 -5px;
+  border: 1px solid rgb(255, 255, 255);
 }
 
 .two-subscribe input::placeholder {

@@ -26,15 +26,9 @@
             {!! wp_nav_menu(['theme_location' => 'user_navigation', 'container' => false, 'menu_class' => 'nav nav-pills flex-column flex-sm-row col-12', 'walker' => new NavWalker()]) !!}
           @endif
         </div>
-        <div class="col-md-3 col-12">
-          <ul class="list-editing">
-            <li>{{ _e('edit profile > adding social media', 'premast') }}</li>
-            <li>{{ _e('notification settings', 'premast') }}</li>
-            <li>{{ _e('account changes/settings > change from user to publisher', 'premast') }}</li>
-            <li>{{ _e('privacy&data protection?', 'premast') }}</li>
-          </ul>
+        <div class="col-md-2 col-12">
         </div>
-        <div class="entry-content entry col-md-6 col-12 pl-0 pr-0 pt-5 pb-5">
+        <div class="entry-content entry col-md-7 col-12 pl-0 pr-0 pt-5 pb-5">
           <?php
             $error = array();
             global $current_user, $wp_roles;

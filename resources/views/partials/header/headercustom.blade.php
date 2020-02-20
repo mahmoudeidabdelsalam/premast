@@ -136,7 +136,7 @@
               @if($avatar)
                 <img class="avatar" src="{{ $avatar['url'] }}" alt="{!! get_the_author_meta('display_name', $current_user->ID) !!}">
               @else 
-                <img class="avatar" src="{!! esc_url( get_avatar_url( $current_user->ID, ['size' => '40'] ) ) !!}" alt="{!! get_the_author_meta('display_name', $current_user->ID) !!}">
+                <img class="avatar" src="{{ get_theme_file_uri().'/resources/assets/images' }}/avatar.svg" alt="{!! get_the_author_meta('display_name', $current_user->ID) !!}">
               @endif
               {!! get_the_author_meta('display_name', $current_user->ID) !!}
               <i class="fa fa-chevron-down" aria-hidden="true"></i>

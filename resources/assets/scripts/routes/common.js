@@ -7,6 +7,8 @@ export default {
     // JavaScript to be fired on all pages
 
     AOS.init();
+
+    $('[data-toggle="tooltip"]').tooltip();
     
     jQuery(document).ready(function ($) {
       //function to check if the .cd-image-container is in the viewport here

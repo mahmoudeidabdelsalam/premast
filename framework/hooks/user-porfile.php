@@ -118,7 +118,11 @@ function register_user_front_end() {
     $first_name = stripcslashes($_POST['first_name']);
 	  $last_name = stripcslashes($_POST['last_name']);
 	  $new_user_email = stripcslashes($_POST['user_email']);
-	  $new_user_password = $_POST['user_password'];
+    $new_user_password = $_POST['user_password'];
+    
+    $refer_id = $_POST['refer'];
+    $follow_ip = $_POST['follow_ip'];
+
 	  $user_nice_name = strtolower($_POST['user_email']);
 	  $user_data = array(
         'first_name' => $first_name,
@@ -130,7 +134,8 @@ function register_user_front_end() {
 	      'display_name' => $new_user_first_name,
 	      'role' => 'subscriber'
 	  	);
-	  $user_id = wp_insert_user($user_data);
+      $user_id = wp_insert_user($user_data);
+
 	  	if (!is_wp_error($user_id)) {
         $output .= '<span class="user-created alert alert-success">we have Created an account for you.</span>';
         $output .= '<script>';
@@ -140,16 +145,60 @@ function register_user_front_end() {
         $output .= 'jQuery("#user_pass").val("'.$new_user_password.'");';
         $output .=  '});';
         $output .='</script>';
+
+        if($refer_id) {
+          $credit = get_user_meta( $refer_id, 'ref_credit', true );
+          $meta_ip = get_user_meta( $refer_id, 'follow_ip', true );
+          $friends = get_user_meta( $refer_id, 'friends', true );
+          $arr_friends = array($friends, $user_id);
+          $array_ip = array($meta_ip, $follow_ip);
+          $credit++;
+          if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+            update_user_meta( $refer_id, 'ref_credit', $credit );
+            update_user_meta( $refer_id, 'follow_ip', $array_ip );
+            update_user_meta( $refer_id, 'friends', $arr_friends );
+            update_user_meta( $user_id, 'refed_id', $refer_id );
+          }
+
+          $membership = wp_insert_post(array (
+            'post_type' => 'wc_user_membership',
+            'post_title' => 0,
+            'post_status' => 'publish',
+            'post_author' => $current_user->ID,
+          ));
+
+
+          if ($membership) {
+            update_post_meta($membership, 'referrals_user', $user_id);
+          }
+
+        }
+
         echo $output;
 	  	} else {
 	    	if (isset($user_id->errors['empty_user_login'])) {
-	          $notice_key = '<span class="user-errors alert alert-danger">User Name and Email are mandatory</span>';
-	          echo $notice_key;
-	      	} elseif (isset($user_id->errors['existing_user_login'])) {
-	          echo'<span class="user-errors alert alert-danger">User Email already exixts.</span>';
-	      	} else {
-	          echo'<span class="user-errors alert alert-danger">Error Occured please fill up the sign up form carefully.</span>';
-	      	}
+	        $notice_key = '<span class="user-errors alert alert-danger">User Name and Email are mandatory</span>';
+          echo $notice_key;
+        } elseif (isset($user_id->errors['existing_user_login'])) {
+          echo'<span class="user-errors alert alert-danger">User Email already exixts.</span>';
+        } else {
+          echo'<span class="user-errors alert alert-danger">Error Occured please fill up the sign up form carefully.</span>';
+        }
 	  	}
 	die;
+}
+
+
+
+function get_the_user_ip() {
+  if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
+    //check ip from share internet
+    $ip = $_SERVER['HTTP_CLIENT_IP'];
+  } elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+    //to check ip is pass from proxy
+    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+  } else {
+    $ip = $_SERVER['REMOTE_ADDR'];
+  }
+  return apply_filters( 'wpb_get_ip', $ip );
 }

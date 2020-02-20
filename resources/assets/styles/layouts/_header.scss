@@ -901,7 +901,7 @@ header.banner .cart-contents {
   .menu-item {
     &::after {
       position: absolute;
-      top: 15px;
+      top: 18px;
       color: rgb(40, 47, 57);
       left: 35px;
       font-family: $font-aswsome;
@@ -934,6 +934,12 @@ header.banner .cart-contents {
     &:nth-child(5) {
       &::after {
         content: "\f006";        
+      }
+    }
+
+    &:nth-child(6) {
+      &::after {
+        content: "\f118";
       }
     }
   }
