@@ -7,6 +7,8 @@ export default {
     // JavaScript to be fired on all pages
 
     AOS.init();
+
+    $('[data-toggle="tooltip"]').tooltip();
     
     jQuery(document).ready(function ($) {
       //function to check if the .cd-image-container is in the viewport here
@@ -125,16 +127,9 @@ export default {
       }
     }
 
-    // $('.product-grid').click(function () {
-    //   $('.item-card').show(300);
-    //   $('.item-card .bg-white').css('height', '230px');
-    //   $('.item-card .bg-white').css('min-height', '230px');
-    //   $('.item-card .bg-white').addClass('bg-images');
-
-    //   $('.grid').masonry({
-    //     itemSelector: '.grid-item',
-    //   });
-    // });
+    $('.button-close').click(function () {
+      $('#search').toggleClass('active');
+    });
 
     // $('.product-list').click(function () {
     //   $('.item-card').show(300);

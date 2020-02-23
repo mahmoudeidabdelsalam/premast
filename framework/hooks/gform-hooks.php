@@ -66,5 +66,5 @@ function bootstrap_styles_for_gravityforms_fields($content, $field, $value, $lea
 add_filter('gform_submit_button', 'theme_t_wp_submit_button', 10, 2);
 
 function theme_t_wp_submit_button($button, $form) {
-    return "<button id='gform_submit_button_{$form['id']}' class='btn btn-lg btn-primary'><span>" . $form['button']['text'] . "</span></button>";
+    return "<button id='gform_submit_button_{$form['id']}' class='btn button-green'><span>" . $form['button']['text'] . "</span></button>";
 }

@@ -86,24 +86,36 @@
               <span class="cart-contents-count"><?php echo esc_html( $count ); ?></span>    
             <?php } ?></a>
         <?php } ?>
+        @if( is_user_logged_in() ) 
+          <div class="notification mx-4">
+            <a href="#"><i class="fa premast-bell-" aria-hidden="true"></i> <span class="notification-counter"></span></a>
+          </div>
+        @endif
         <div class="half">
           @if( is_user_logged_in() ) 
             @php 
               $limit_membership = wc_memberships_get_user_active_memberships($current_user->ID);
+              $author = get_the_author_meta($current_user->ID);
+              // dd($current_user->ID);
+              $avatar = get_field('owner_picture', 'user_'. $current_user->ID );
             @endphp
             <label for="profile" class="profile-dropdown">
               <input type="checkbox" id="profile">
-              <i class="fa fa-user-circle fa-lg" aria-hidden="true"></i>
+              @if($avatar)
+                <img class="avatar" src="{{ $avatar['url'] }}" alt="{!! get_the_author_meta('display_name', $current_user->ID) !!}">
+              @else 
+                <img class="avatar" src="{{ get_theme_file_uri().'/resources/assets/images' }}/avatar.svg" alt="{!! get_the_author_meta('display_name', $current_user->ID) !!}">
+              @endif
               {!! get_the_author_meta('display_name', $current_user->ID) !!}
-              <i class="fa fa-chevron-down text-primary" aria-hidden="true"></i>
+              <i class="fa fa-chevron-down" aria-hidden="true"></i>
               @if ($limit_membership)
                 <i class="fa fa-star user-star" aria-hidden="true"></i>
               @endif
               @include('partials/incloud/profile')
             </label>
           @else 
-            <a class="mt-2 login text-primary" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Log In', 'premast') }}</a>
-            <a class="mt-2 signup btn-primary" href="#" data-toggle="modal" data-target="#SignupUser">{{ _e('Sign Up', 'premast') }}</a>
+            <a class="mx-2 signup text-primary" href="#" data-toggle="modal" data-target="#SignupUser">{{ _e('Sign Up', 'premast') }}</a>
+            <a class="mx-2 login text-gray-dark" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Login', 'premast') }}</a>
           @endif
         </div>
       </nav>

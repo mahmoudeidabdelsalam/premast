@@ -1,37 +1,18 @@
 <?php
-
-/* Get user info. */
 global $current_user, $wp_roles;
 
 $current_user = wp_get_current_user();
-//get_currentuserinfo(); //deprecated since 3.1
 
-/* Load the registration file. */
-//require_once( ABSPATH . WPINC . '/registration.php' ); //deprecated since 3.1
-$error = array();
-
-/* If profile was saved, update profile. */
 if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POST['action'] == 'update-user' ) {
 
-  /* Update user password. */
-  if ( !empty($_POST['pass1'] ) && !empty( $_POST['pass2'] ) ) {
-    if ( $_POST['pass1'] == $_POST['pass2'] )
-    wp_update_user( array( 'ID' => $current_user->ID, 'user_pass' => esc_attr( $_POST['pass1'] ) ) );
-    else
-    $error[] = __('The passwords you entered do not match.  Your password was not updated.', 'profile');
-  }
+  $error = array();
 
-  /* Update user information. */
-  if ( !empty( $_POST['url'] ) )
-  wp_update_user( array( 'ID' => $current_user->ID, 'user_url' => esc_url( $_POST['url'] ) ) );
-  if ( !empty( $_POST['email'] ) ){
-    if (!is_email(esc_attr( $_POST['email'] )))
-      $error[] = __('The Email you entered is not valid.  please try again.', 'profile');
-    elseif(email_exists(esc_attr( $_POST['email'] )) != $current_user->id )
-      $error[] = __('This email is already used by another user.  try a different one.', 'profile');
-    else{
-      wp_update_user( array ('ID' => $current_user->ID, 'user_email' => esc_attr( $_POST['email'] )));
-    }
+  if ( !empty($_POST['pass1'] ) && !empty( $_POST['pass2'] ) ) {
+    if ( $_POST['pass1'] == $_POST['pass2'] ) {
+      wp_update_user( array( 'ID' => $current_user->ID, 'user_pass' => esc_attr( $_POST['pass1'] ) ) );
+    } else {
+      $error[] = __('The passwords you entered do not match.  Your password was not updated.', 'profile');
+    } 
   }
 
   if ( !empty( $_POST['first-name'] ) )
@@ -41,8 +22,6 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
   if ( !empty( $_POST['description'] ) )
   update_user_meta( $current_user->ID, 'description', esc_attr( $_POST['description'] ) );
 
-
-// dd($_POST['acf']['field_5a9fb97bf63963d5'] );
   // ACF updates
   if ( !empty( $_POST['acf']['field_5a9ba9963267c8b1'] ) )
   update_user_meta( $current_user->ID, 'owner_city', esc_attr( $_POST['acf']['field_5a9ba9963267c8b1'] ) );
@@ -51,10 +30,6 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
   if ( !empty( $_POST['acf']['field_5a632631202544365aa'] ) )
   update_user_meta( $current_user->ID, 'owner_picture', esc_attr( $_POST['acf']['field_5a632631202544365aa'] ) );
 
-
-
-  /* Redirect so the page will show updated info.*/
-  /*I am not Author of this Code- i dont know why but it worked for me after changing below line to if ( count($error) == 0 ){ */
   if ( count($error) == 0 ) {
     //action hook for plugins and extra fields saving
     do_action('edit_user_profile_update', $current_user->ID);
@@ -143,7 +118,11 @@ function register_user_front_end() {
     $first_name = stripcslashes($_POST['first_name']);
 	  $last_name = stripcslashes($_POST['last_name']);
 	  $new_user_email = stripcslashes($_POST['user_email']);
-	  $new_user_password = $_POST['user_password'];
+    $new_user_password = $_POST['user_password'];
+    
+    $refer_id = $_POST['refer'];
+    $follow_ip = $_POST['follow_ip'];
+
 	  $user_nice_name = strtolower($_POST['user_email']);
 	  $user_data = array(
         'first_name' => $first_name,
@@ -155,7 +134,8 @@ function register_user_front_end() {
 	      'display_name' => $new_user_first_name,
 	      'role' => 'subscriber'
 	  	);
-	  $user_id = wp_insert_user($user_data);
+      $user_id = wp_insert_user($user_data);
+
 	  	if (!is_wp_error($user_id)) {
         $output .= '<span class="user-created alert alert-success">we have Created an account for you.</span>';
         $output .= '<script>';
@@ -165,16 +145,82 @@ function register_user_front_end() {
         $output .= 'jQuery("#user_pass").val("'.$new_user_password.'");';
         $output .=  '});';
         $output .='</script>';
+
+        if($refer_id) {
+          $credit = get_user_meta( $refer_id, 'ref_credit', true );
+          $meta_ip = get_user_meta( $refer_id, 'follow_ip', true );
+          $friends = get_user_meta( $refer_id, 'friends', true );
+          $arr_friends = array($friends, $user_id);
+          $array_ip = array($meta_ip, $follow_ip);
+          $credit++;
+          if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+            update_user_meta( $refer_id, 'ref_credit', $credit );
+            update_user_meta( $refer_id, 'follow_ip', $array_ip );
+            update_user_meta( $refer_id, 'friends', $arr_friends );
+            update_user_meta( $user_id, 'refed_id', $refer_id );
+          }
+
+            // bail if Memberships isn't active
+            if ( ! function_exists( 'wc_memberships' ) ) {
+              return;
+            }
+
+            $args = array(
+              // Enter the ID (post ID) of the plan to grant at registration
+              'plan_id' => 1023297,
+              'user_id' => $refer_id,
+            );
+
+            // magic!
+            wc_memberships_create_user_membership( $args );
+
+            // Optional: get the new membership and add a note so we know how this was registered.
+            $user_membership = wc_memberships_get_user_membership( $user_id, $args['plan_id'] );
+            $user_membership->add_note( 'Membership access granted automatically from registration.' );
+  
+
+
+
+          // $membership = wp_insert_post(array (
+          //   'post_type' => 'wc_user_membership',
+          //   'post_title' => 0,
+          //   'post_status' => 'publish',
+          //   'post_author' => $current_user->ID,
+          // ));
+
+          
+
+          // if ($membership) {
+          //   update_post_meta($membership, 'referrals_user', $user_id);
+          // }
+
+        }
+
         echo $output;
 	  	} else {
 	    	if (isset($user_id->errors['empty_user_login'])) {
-	          $notice_key = '<span class="user-errors alert alert-danger">User Name and Email are mandatory</span>';
-	          echo $notice_key;
-	      	} elseif (isset($user_id->errors['existing_user_login'])) {
-	          echo'<span class="user-errors alert alert-danger">User Email already exixts.</span>';
-	      	} else {
-	          echo'<span class="user-errors alert alert-danger">Error Occured please fill up the sign up form carefully.</span>';
-	      	}
+	        $notice_key = '<span class="user-errors alert alert-danger">User Name and Email are mandatory</span>';
+          echo $notice_key;
+        } elseif (isset($user_id->errors['existing_user_login'])) {
+          echo'<span class="user-errors alert alert-danger">User Email already exixts.</span>';
+        } else {
+          echo'<span class="user-errors alert alert-danger">Error Occured please fill up the sign up form carefully.</span>';
+        }
 	  	}
 	die;
+}
+
+
+
+function get_the_user_ip() {
+  if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
+    //check ip from share internet
+    $ip = $_SERVER['HTTP_CLIENT_IP'];
+  } elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+    //to check ip is pass from proxy
+    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+  } else {
+    $ip = $_SERVER['REMOTE_ADDR'];
+  }
+  return apply_filters( 'wpb_get_ip', $ip );
 }
