@@ -18,7 +18,7 @@
 
 @media (max-width: 575px){ .u-section-1 .u-text-1 {width: 340px}
 .u-section-1 .u-btn-1 {margin-left: 89px; margin-right: 75px} }.u-section-2 {background-image: none; margin-top: 0; margin-bottom: 0}
-.u-section-2 .u-sheet-1 {min-height: 1494px}
+.u-section-2 .u-sheet-1 {min-height: 1px}
 .u-section-2 .u-line-1 {left: 463px; top: 588px; position: absolute; height: 37px; transform-origin: center top 0}
 .u-section-2 .u-image-1 {width: 829px; height: 489px; margin: -72px auto 0}
 .u-section-2 .u-text-1 {font-size: 2.25rem; font-weight: 700; line-height: 1.4; width: 880px; margin: 2px auto 0}
@@ -43,7 +43,7 @@
 .u-section-2 .u-layout-wrap-2 {width: 723px; margin: 32px auto 50px}
 .u-section-2 .u-layout-cell-4 {min-height: 105px}
 .u-section-2 .u-container-layout-4 {padding: 0 30px}
-.u-section-2 .u-image-3 {width: 42px; height: 43px; margin: 42px auto 0 22px}
+.u-section-2 .u-image-3 {width: 42px; height: auto; margin: 42px auto 0 22px}
 .u-section-2 .u-text-10 {font-size: 1.125rem; margin: -35px auto 0 79px}
 .u-section-2 .u-layout-cell-5 {min-height: 105px}
 .u-section-2 .u-container-layout-5 {padding: 30px 30px 0}
@@ -55,7 +55,7 @@
 .u-section-2 .u-text-12 {line-height: 1.2; margin: -39px 25px 0 11px}
 .u-section-2 .u-layout-cell-7 {min-height: 136px}
 .u-section-2 .u-container-layout-7 {padding: 0 30px 30px}
-.u-section-2 .u-image-6 {width: 43px; height: 42px; margin: 29px auto 0 22px}
+.u-section-2 .u-image-6 {width: 43px; height: auto; margin: 29px auto 0 22px}
 .u-section-2 .u-text-13 {margin: -46px 30px 0 79px}
 .u-section-2 .u-layout-cell-8 {min-height: 136px}
 .u-section-2 .u-container-layout-8 {padding: 0 30px}
@@ -140,7 +140,6 @@
 .u-section-2 .u-image-7 {margin-left: 5px}
 .u-section-2 .u-text-14 {margin-top: -43px; margin-right: auto; margin-left: 80px}
 .u-section-2 .u-text-15 {margin-top: -26px; margin-right: auto; margin-left: 66px} }.u-section-3 {margin-top: 0; margin-bottom: 0}
-.u-section-3 .u-sheet-1 {min-height: 50vw}
 .u-section-3 .u-text-1 {font-size: 3rem; margin: 41px 328px 0 294px}
 .u-section-3 .u-shape-1 {width: 126px; height: 34px; background-image: none; margin: 143px auto 0 155px}
 .u-section-3 .u-shape-2 {width: 127px; height: 34px; background-image: none; margin: -33px auto 0 299px}

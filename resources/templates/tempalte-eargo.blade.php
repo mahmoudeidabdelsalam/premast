@@ -11,7 +11,6 @@
 @section('content')
   @while(have_posts()) @php the_post() @endphp
 
-
         <header class="u-clearfix u-header u-header" id="sec-8398"><div class="u-clearfix u-sheet u-sheet-1">
             <a href="{{ the_field('logo_image_eargo') }}" class="u-image u-logo u-image-1">
               <img src="{{ the_field('logo_image_eargo') }}" class="u-logo-image u-logo-image-1" data-image-width="223">
@@ -20,198 +19,115 @@
           </div>
         </header>
 
-
-
-
-
-
         <section class="u-align-center u-clearfix u-image u-section-1" id="sec-2d01" data-image-width="1384" data-image-height="574" style="background-image:url('{{ the_field('background_banner') }}')">
           <div class="u-clearfix u-sheet u-sheet-1">
-
             <?php if( get_field('eargo_logo') ): ?>
-            <img src="<?php the_field('eargo_logo'); ?>" />
-        <?php endif; ?>
+                <img src="<?php the_field('eargo_logo'); ?>" />
+            <?php endif; ?>
             <h3 class="line-height u-text u-text-1">The Hugest Growing Set of Infographics In One Package
               <br>
             </h3>
             <?php
              $link = get_field('button_banner');
-             if( $link ):
-             $link_url = $link['url'];
-             $link_title = $link['title'];
-             $link_target = $link['target'] ? $link['target'] : '_self';
+                if( $link ):
+                $link_url = $link['url'];
+                $link_title = $link['title'];
+                $link_target = $link['target'] ? $link['target'] : '_self';
              ?>
-             <a class="button u-border-radius-30 u-btn u-btn-round u-button-style u-custom-font u-font-roboto u-gradient u-none u-text-white u-btn-1" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+                <a class="button u-border-radius-30 u-btn u-btn-round u-button-style u-custom-font u-font-roboto u-gradient u-none u-text-white u-btn-1" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
             <?php endif; ?>
-
-
-            <p class="u-align-center u-custom-font u-heading-font u-text u-text-custom-color-1 u-text-default u-text-2" ><?php the_field('subhead_banner'); ?>
-              <br>
-            </p>
+            <p class="u-align-center u-custom-font u-heading-font u-text u-text-custom-color-1 u-text-default u-text-2" ><?php the_field('subhead_banner'); ?><br></p>
           </div>
         </section>
+
+
         <section class="u-align-center u-clearfix u-custom-color-4 u-section-2" id="sec-bc6d">
           <div class="u-clearfix u-sheet u-sheet-1">
             <div class="u-border-1 u-border-grey-dark-1 u-line u-line-vertical u-opacity u-opacity-55 u-line-1"></div>
-          <img src="{{the_field('banner_img') }}" alt="" class="u-image u-image-default u-image-1" data-image-width="1435" data-image-height="696" data-animation-name="flipIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction="X">
-            <p class="u-custom-font u-heading-font u-text u-text-custom-color-1 u-text-1">{{the_field('header_ss') }}
-            </p>
+                <img src="{{the_field('banner_img') }}" alt="" class="u-image u-image-default u-image-1" data-image-width="1435" data-image-height="696" data-animation-name="flipIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction="X">
+            <p class="u-custom-font u-heading-font u-text u-text-custom-color-1 u-text-1">{{the_field('header_ss') }}</p>
             <div class="u-clearfix u-gutter-0 u-layout-wrap u-layout-wrap-1">
               <div class="u-layout">
                 <div class="u-layout-row">
+                    <?php
+                    $counter = -1;
+                    if( have_rows('counters') ):
+                        while ( have_rows('counters') ) : the_row();
+                        $counter++;
+                        ?>
                   <div class="u-container-style u-layout-cell u-left-cell u-size-20 u-white u-layout-cell-1">
                     <div class="u-container-layout u-container-layout-1">
-                      <p class="u-align-center u-text u-text-custom-color-1 u-text-2">Unique Slides</p>
-                      <h1 class="u-align-center u-text u-text-custom-color-1 u-title u-text-3" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">+600</h1>
+                      <p class="u-align-center u-text u-text-custom-color-1 u-text-2"><?= the_sub_field('text_counter'); ?></p>
+                      <h1 class="u-align-center u-text u-text-custom-color-1 u-title u-text-3" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">+<?= the_sub_field('number_counter'); ?></h1>
                     </div>
                   </div>
-                  <div class="u-container-style u-layout-cell u-size-20 u-white u-layout-cell-2">
-                    <div class="u-container-layout u-container-layout-2">
-                      <p class="u-align-center u-text u-text-custom-color-1 u-text-4">Categories</p>
-                      <h1 class="u-align-center u-text u-text-custom-color-1 u-title u-text-5" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">15</h1>
-                      <div class="u-border-1 u-border-grey-dark-1 u-line u-line-vertical u-opacity u-opacity-55 u-line-2"></div>
-                    </div>
-                  </div>
-                  <div class="u-container-style u-layout-cell u-right-cell u-size-20 u-white u-layout-cell-3">
-                    <div class="u-container-layout u-container-layout-3">
-                      <p class="u-align-center u-text u-text-custom-color-1 u-text-6">Icons
-                        <br>
-                      </p>
-                      <div class="u-border-1 u-border-grey-dark-1 u-line u-line-vertical u-opacity u-opacity-55 u-line-3"></div>
-                      <h1 class="u-align-center u-text u-text-custom-color-1 u-title u-text-7" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">2000</h1>
-                    </div>
-                  </div>
+                <?php
+                    endwhile;
+                endif;
+                ?>
                 </div>
               </div>
             </div>
             <img src="{{the_field('counter_img') }}" alt="" class="u-image u-image-default u-image-2" data-image-width="1400" data-image-height="606">
-            <h3 class="u-text u-text-default u-text-8">{{the_field('feat_text')}}
-              <br>
-              <br>
-            </h3>
-            <p class="u-custom-font u-heading-font u-text u-text-custom-color-5 u-text-default u-text-9">{{the_field(('feat_subtext')) }}
-            </p>
+            <h3 class="u-text u-text-default u-text-8">{{the_sub_field('feat_text')}}</h3>
+            <p class="u-custom-font u-heading-font u-text u-text-custom-color-5 u-text-default u-text-9">{{the_field(('feat_subtext')) }}</p>
+
+
             <div class="u-clearfix u-gutter-0 u-layout-wrap u-layout-wrap-2">
               <div class="u-layout">
                 <div class="u-layout-col">
+
                   <div class="u-size-30">
                     <div class="u-layout-row">
-                      <div class="u-container-style u-layout-cell u-left-cell u-size-20-lg u-size-20-xl u-size-21-sm u-size-21-xs u-size-60-md u-layout-cell-4">
-                        <div class="u-container-layout u-container-layout-4">
-                          <img src="{{the_field('icon_1')}}" alt="" class="u-image u-image-default u-image-3" data-image-width="42" data-image-height="43">
-                          <p class="u-custom-font u-heading-font u-text u-text-custom-color-5 u-text-10">{{the_field('slides_icon')}}
-                            <br>
-                          </p>
-                        </div>
-                      </div>
-                      <div class="u-container-style u-layout-cell u-size-19-sm u-size-19-xs u-size-20-lg u-size-20-xl u-size-60-md u-layout-cell-5">
-                        <div class="u-container-layout u-container-layout-5">
-                          <img src="{{the_field('icon_2')}}" alt="" class="u-image u-image-default u-image-4" data-image-width="45" data-image-height="42">
-                          <p class="u-align-center u-custom-font u-heading-font u-text u-text-11">{{the_field('collections_icon')}}
-
-                          </p>
-                        </div>
-                      </div>
-                      <div class="u-container-style u-layout-cell u-right-cell u-size-20 u-size-60-md u-layout-cell-6">
-                        <div class="u-container-layout u-container-layout-6">
-                          <img src="{{the_field('icon_3')}}" alt="" class="u-image u-image-default u-image-5" data-image-width="49" data-image-height="39">
-                          <p class="u-align-center u-custom-font u-heading-font u-text u-text-12">{{the_field(('color_icon'))}}
-
-
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="u-size-30">
-                    <div class="u-layout-row">
+                        <?php if( have_rows('infographics_items') ): ?>
+                            <?php while( have_rows('infographics_items') ): the_row(); ?>
                       <div class="u-container-style u-layout-cell u-left-cell u-size-20 u-layout-cell-7">
                         <div class="u-container-layout u-container-layout-7">
-                          <img src="{{the_field('icon_4')}}" alt="" class="u-image u-image-default u-image-6" data-image-width="44" data-image-height="43">
-                          <p class="u-custom-font u-heading-font u-text u-text-13">{{the_field('edit_icon')}}</p>
-                        </div>
+                            <img src="<?= the_sub_field('image_infographics_item'); ?>" alt="" class="u-image u-image-default u-image-3" data-image-width="42" data-image-height="43">
+                            <p class="u-custom-font u-heading-font u-text u-text-custom-color-5 u-text-10"><?php the_sub_field('text_infographics_item'); ?>
+                            </div>
                       </div>
-                      <div class="u-container-style u-layout-cell u-size-20 u-layout-cell-8">
-                        <div class="u-container-layout u-container-layout-8">
-                          <img src="{{the_field('icon_5')}}" alt="" class="u-image u-image-default u-image-7" data-image-width="43" data-image-height="43">
-                          <p class="u-align-center u-custom-font u-heading-font u-text u-text-default u-text-14">{{the_field('google_icon')}}
-
-                          </p>
-                        </div>
-                      </div>
-                      <div class="u-align-left u-container-style u-layout-cell u-right-cell u-size-20 u-layout-cell-9">
-                        <div class="u-container-layout u-container-layout-9">
-                          <img src="{{the_field('icon_6')}}" alt="" class="u-image u-image-default u-image-8" data-image-width="42" data-image-height="35">
-                          <p class="u-custom-font u-heading-font u-text u-text-default u-text-15">{{the_field('support_icon')}}
-
-                          </p>
-                        </div>
-                      </div>
+                      <?php
+                      endwhile; ?>
+                          <?php endif; ?>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
         </section>
+
+
+
+
+
         <section class="u-align-left u-border-1 u-border-palette-5-base u-clearfix u-section-3" id="sec-428e">
           <div class="u-clearfix u-sheet u-sheet-1">
             <h3 class="u-text u-text-1">{{the_field('heading_fields')}}</h3>
-            <div class="u-border-1 u-border-palette-5-light-1 u-border-radius-15 u-shape u-shape-round u-shape-1"></div>
-            <div class="u-border-1 u-border-palette-5-light-1 u-border-radius-15 u-shape u-shape-round u-shape-2"></div>
-            <div class="u-border-1 u-border-palette-5-light-1 u-border-radius-15 u-shape u-shape-round u-shape-3"></div>
             <div class="u-video u-video-contain u-video-1">
               <div style="position: absolute;" class="embed-responsive">
                 <iframe style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;" class="embed-responsive-item" src="https://www.youtube.com/embed/Qr98RS8_Qa4?mute=0&amp;showinfo=0&amp;controls=1&amp;start=0" frameborder="0" allowfullscreen=""></iframe>
               </div>
             </div>
-            <div class="u-border-1 u-border-palette-5-light-1 u-border-radius-15 u-shape u-shape-round u-shape-4"></div>
-            <div class="u-border-1 u-border-palette-5-light-1 u-border-radius-15 u-shape u-shape-round u-shape-5"></div>
-            <div class="u-border-1 u-border-palette-5-light-1 u-border-radius-15 u-shape u-shape-round u-shape-6"></div>
-            <div class="u-border-1 u-border-palette-5-light-1 u-border-radius-15 u-shape u-shape-round u-shape-7"></div>
-            <div class="u-border-1 u-border-palette-5-light-1 u-border-radius-15 u-shape u-shape-round u-shape-8"></div>
-            <div class="u-border-1 u-border-palette-5-light-1 u-border-radius-15 u-shape u-shape-round u-shape-9"></div>
-            <div class="u-border-1 u-border-palette-5-light-1 u-border-radius-15 u-shape u-shape-round u-shape-10"></div>
-            <div class="u-border-1 u-border-palette-5-light-1 u-border-radius-15 u-shape u-shape-round u-shape-11"></div>
-            <div class="u-border-2 u-border-palette-5-light-3 u-border-radius-28 u-shape u-shape-round u-shape-12"></div>
-            <p class="u-custom-font u-heading-font u-text u-text-default u-text-2">{{the_field('subheading')}}
-              <br>
-            </p>
+            <div>
+            <p class="u-custom-font u-heading-font u-text u-text-default u-text-2">{{the_field('subheading')}}</p>
             <p class="u-custom-font u-heading-font u-text u-text-default u-text-3">Business</p>
-            <p class="u-text u-text-default u-text-4">Education
-              <br>
-            </p>
-            <p class="u-text u-text-default u-text-5">Medical
-              <br>
-            </p>
-            <p class="u-text u-text-default u-text-6">Media
-              <br>
-            </p>
-            <p class="u-text u-text-default u-text-7">Marketing
-              <br>
-            </p>
-            <p class="u-text u-text-default u-text-8">Growth Hacking
-              <br>
-              <br>
-            </p>
-            <p class="u-text u-text-default u-text-9">Research
-              <br>
-            </p>
-            <p class="u-text u-text-default u-text-10">Tech
-              <br>
-            </p>
-            <p class="u-text u-text-11">Advertising
-              <br>
-            </p>
-            <p class="u-text u-text-default u-text-12">Pitching
-              <br>
-            </p>
-            <p class="u-text u-text-default u-text-13">Blockchain
-              <br>
-            </p>
-            <p class="u-text u-text-default u-text-14">And more
-              <br>
-            </p>
+            <p class="u-text u-text-default u-text-4">Education</p>
+            <p class="u-text u-text-default u-text-5">Medical</p>
+            <p class="u-text u-text-default u-text-6">Media</p>
+            <p class="u-text u-text-default u-text-7">Marketing</p>
+            <p class="u-text u-text-default u-text-8">Growth Hacking</p>
+            <p class="u-text u-text-default u-text-9">Research</p>
+            <p class="u-text u-text-default u-text-10">Tech</p>
+            <p class="u-text u-text-11">Advertising</p>
+            <p class="u-text u-text-default u-text-12">Pitching</p>
+            <p class="u-text u-text-default u-text-13">Blockchain</p>
+            <p class="u-text u-text-default u-text-14">And more</p>
+
+            </div>
+
           </div>
         </section>
         <section class="u-align-left u-clearfix u-custom-color-4 u-section-4" id="sec-b672">
