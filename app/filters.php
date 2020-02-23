@@ -13,6 +13,7 @@ add_filter('body_class', function (array $classes) {
         }
     }
 
+    $classes[] = 'u-body';
     /** Add class if sidebar is active */
     if (display_sidebar()) {
         $classes[] = 'sidebar-primary';
