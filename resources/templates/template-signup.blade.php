@@ -2,6 +2,15 @@
   Template Name: Sign Up
 --}}
 
+
+@php 
+  $refer   = isset($_GET['refer']) ? $_GET['refer'] : '';
+  $credit = get_user_meta( $refer, 'ref_credit', true);
+  $array_ip = get_user_meta( $refer, 'follow_ip', true);
+  $friends = get_user_meta( $refer, 'friends', true);
+  $ip = get_the_user_ip();
+@endphp
+
 @extends('layouts.app-dark')
 
 @section('content')
@@ -10,10 +19,8 @@
       <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
       <div class="container">
         <div class="row justify-content-center">
-
           @if ( !is_user_logged_in() )
             <div class="col-md-7 col-12 modal-show">
-
               <div class="show-header text-center">
                 <a class="navbar-brand" href="{{ home_url('/') }}" title="{{ get_bloginfo('name') }}">
                   <img class="img-fluid" src="@if(get_field('website_logo', 'option')) {{ the_field('website_logo','option') }} @else {{ get_theme_file_uri().'/dist/images/logo-en.png' }} @endif" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
@@ -21,7 +28,6 @@
                 </a>
                 <br>
                 <h5 class="modal-title" id="LoginUserLabel">{{ _e('Create a New Premast Account & Enjoy access to all of our services', 'premast') }}</h5>
-
                 <img class="img-fluid" src="{{ get_theme_file_uri().'/dist/images/logos.png' }}" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
               </div>
               <div class="modal-body">
@@ -46,11 +52,15 @@
                   <p class="Conditions">
                     <input type="checkbox" id="Conditions"> <label class="d-inline-block mb-0 label-Conditions" for="Conditions">{{ _e('Accept our Terms&Conditions', 'premast') }}</label>
                   </p>
+
+
+                    <input hidden  id="ref" type="text" value="<?= $refer; ?>"  name="refer" readonly="readonly"/>
+                    <input hidden id="follow_ip" type="text" value="<?= $ip; ?>"  name="follow_ip" readonly="readonly"/>
+
+
                   <button type="submit" id="register-button" class="woocommerce-Button button m-auto d-block" name="register" value="Register">{{ _e('Register', 'premast') }}</button>
                   <span id="sl-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span>
                 </form> 
-                
-
                 <script type="text/javascript">
                   jQuery(function($) {
                     $('#password, #confirm_password').on('keyup', function () {
@@ -65,6 +75,8 @@
                       var useremail = $('#useremail').val();
                       var password = $('#password').val();
                       var lastname = $('#lastname').val();
+                      var refer = $('#ref').val();
+                      var follow_ip = $('#follow_ip').val();
                       $.ajax({
                         type:"POST",
                         url:"<?php echo admin_url('admin-ajax.php'); ?>",
@@ -73,7 +85,9 @@
                           first_name : firstname,
                           last_name : lastname,
                           user_email : useremail,
-                          user_password : password
+                          user_password : password,
+                          refer : refer,
+                          follow_ip : follow_ip
                         },
                         beforeSend: function(results) {
                           $('#sl-loader').show();
@@ -90,22 +104,17 @@
                     });
                   });
                 </script>
-
-                <?php // echo do_shortcode('[wc_reg_form_bbloomer]') ?>
               </div>
               <div class="modal-footer">
                 {{ _e('You have an account?', 'premast') }} <a class="login" href="#" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#LoginUser">{{ _e('Sign in', 'premast') }}</a>
               </div>
             </div>
-          
-
           @endif
-
-
-
         </div>
       </div>
     </section>
+    
+
   @endwhile
 @endsection
 

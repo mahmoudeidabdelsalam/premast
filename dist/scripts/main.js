@@ -13533,7 +13533,7 @@ Router.prototype.loadEvents = function loadEvents () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(jQuery, $) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aos_dist_aos__ = __webpack_require__(2);
+/* WEBPACK VAR INJECTION */(function($, jQuery) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aos_dist_aos__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aos_dist_aos___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_aos_dist_aos__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_wow_js_dist_wow__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_wow_js_dist_wow___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__node_modules_wow_js_dist_wow__);
@@ -13548,6 +13548,8 @@ Router.prototype.loadEvents = function loadEvents () {
     // JavaScript to be fired on all pages
 
     __WEBPACK_IMPORTED_MODULE_0_aos_dist_aos___default.a.init();
+
+    $('[data-toggle="tooltip"]').tooltip();
     
     jQuery(document).ready(function ($) {
       //function to check if the .cd-image-container is in the viewport here
@@ -13665,16 +13667,9 @@ Router.prototype.loadEvents = function loadEvents () {
       }
     }
 
-    // $('.product-grid').click(function () {
-    //   $('.item-card').show(300);
-    //   $('.item-card .bg-white').css('height', '230px');
-    //   $('.item-card .bg-white').css('min-height', '230px');
-    //   $('.item-card .bg-white').addClass('bg-images');
-
-    //   $('.grid').masonry({
-    //     itemSelector: '.grid-item',
-    //   });
-    // });
+    $('.button-close').click(function () {
+      $('#search').toggleClass('active');
+    });
 
     // $('.product-list').click(function () {
     //   $('.item-card').show(300);

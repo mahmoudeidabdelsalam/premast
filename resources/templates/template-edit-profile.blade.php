@@ -17,24 +17,18 @@
     </div>
   </div>
 @else
-  <section class="header-users page-profile" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
-    <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
-    <div class="container">
-      <div class="row justify-content-between">
-          <h2 class="headline">{{ _e('My Account', 'premast') }}</h2>
-          
+  <section class="template-users">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3 col-12 side-menu-user">
+          <h2 class="headline text-primary">{{ _e('My Account', 'premast') }}</h2>
           @if (has_nav_menu('user_navigation'))
             {!! wp_nav_menu(['theme_location' => 'user_navigation', 'container' => false, 'menu_class' => 'nav nav-pills flex-column flex-sm-row col-12', 'walker' => new NavWalker()]) !!}
           @endif
-
-      </div>
-    </div>        
-  </section>
-
-  <section class="template-users">
-    <div class="container">
-      <div class="row">
-        <div class="entry-content entry col-12 pl-0 pr-0 pt-5 pb-5">
+        </div>
+        <div class="col-md-2 col-12">
+        </div>
+        <div class="entry-content entry col-md-7 col-12 pl-0 pr-0 pt-5 pb-5">
           <?php
             $error = array();
             global $current_user, $wp_roles;
@@ -43,10 +37,10 @@
           ?>
             <form method="post" id="adduser" action="<?php the_permalink(); ?>">
               <div class="row">
-                <div class="col-md-3 col-sm-12 user-images">
+                <div class="col-md-12 col-sm-12 user-images">
                   <?php do_action('edit_user_profile', $current_user); ?>
                 </div>
-                <div class="col-md-9 col-sm-12 user-forms">
+                <div class="col-md-12 col-sm-12 user-forms">
                   <p class="form-username">
                     <label for="first-name">{{ _e('First Name', 'profile') }}</label>
                     <input class="text-input" name="first-name" type="text" id="first-name" value="<?php the_author_meta( 'first_name', $current_user->ID ); ?>" />
@@ -60,7 +54,7 @@
                     <input class="text-input" name="email" type="text" id="email" value="<?php the_author_meta( 'user_email', $current_user->ID ); ?>" />
                   </p><!-- .form-email -->
                   <p class="form-url">
-                    <label for="url">{{ _e('job title', 'profile') }}</label>
+                    <label for="description">{{ _e('job title', 'profile') }}</label>
                     <input class="text-input" name="description" type="text" id="description" value="<?php the_author_meta( 'description', $current_user->ID ); ?>" />
                   </p><!-- .form-url -->
                   <p class="form-password">

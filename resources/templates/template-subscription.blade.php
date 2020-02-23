@@ -73,23 +73,16 @@ $numberDays = intval($numberDays);
 
 @endphp
 
-  <section class="header-users page-subscription" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
-    <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
-    <div class="container">
-      <div class="row justify-content-between">
-          <h2 class="headline">{{ _e('My Account', 'premast') }}</h2>
-          
+  <section class="template-users my-membership">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-md-3 col-12 side-menu-user">
+          <h3 class="headline text-primary">{{ _e('My Account', 'premast') }}</h3>
           @if (has_nav_menu('user_navigation'))
             {!! wp_nav_menu(['theme_location' => 'user_navigation', 'container' => false, 'menu_class' => 'nav nav-pills flex-column flex-sm-row col-12', 'walker' => new NavWalker()]) !!}
           @endif
-
-      </div>
-    </div>        
-  </section>
-  <section class="template-users my-membership">
-    <div class="container">
-      <div class="row justify-content-center pt-5 pb-5">
-        <div class="col-md-8 col-12 p-0 mb-5">
+        </div>
+        <div class="col-md-9 col-12 p-0 mb-5 p-5">
           @if ($membership)
             <div class="download-information">
               <div class="plan-information">

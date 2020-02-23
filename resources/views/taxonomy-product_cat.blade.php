@@ -386,7 +386,12 @@
 
 
       <div class="col-12 pt-5 pb-5">
-        <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $my_query) }}</nav>
+        @if ($sort != '0')
+          <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $more_query) }}</nav>
+        @else 
+          <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $my_query) }}</nav>
+        @endif
+        
       </div>
     </div>
   </div>

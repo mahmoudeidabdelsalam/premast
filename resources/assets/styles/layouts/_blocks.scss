@@ -2,7 +2,7 @@
   section.block-about {
     min-height: 1000px;
     padding-top: 130px;
-    background: rgb(229, 229, 229);
+    background: #f4f7fa;
   }
 
   .planet {
@@ -15,10 +15,11 @@
   }
 
   .planet img {
-    box-shadow: 0 7px 84px rgba(0, 0, 0, 0.58);
+    box-shadow: 0 5px 50px rgb(178, 178, 178);
     max-width: 100%;
     display: block;
     margin-left: 40px;
+    border-radius: 2px;
   }
 
   .background-about {
@@ -99,6 +100,8 @@
   color: rgb(255, 255, 255);
   display: flex;
   padding: 25px;
+  justify-content: center;
+  align-items: center;
 }
 
 .statusitems img {
@@ -110,6 +113,10 @@ section.block-banner {
   margin-top: -90px;
   background-attachment: fixed;
   background-size: cover;
+}
+
+.mb-100 {
+  margin-bottom: 100px !important;
 }
 
 .content-banner {
@@ -147,9 +154,11 @@ section.block-banner {
   text-transform: capitalize;
   color: rgb(255, 255, 255);
   height: 40px;
-  padding: 12px;
   width: 212px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 section.block-call {
@@ -356,9 +365,22 @@ section.block-subscribe {
 
 .two-subscribe .gform_wrapper .gform_footer button {
   background: rgb(30, 109, 251) !important;
-  border-radius: 0 !important;
+  -webkit-box-shadow: none !important;
   box-shadow: none !important;
   height: 45px;
+  border-radius: 0 2px 2px 0 !important;
+  min-width: 1px;
+  margin: 0 -5px;
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.two-subscribe input::placeholder {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.two-subscribe p .btn-primary {
+  font-size: 16px;
+  border-radius: 2px;
 }
 
 .two-subscribe .gform_wrapper li {
@@ -376,6 +398,7 @@ section.block-subscribe {
   background: rgb(255, 255, 255);
   border-radius: 2px;
   min-width: 300px;
+  padding: 5px 10px !important;
 }
 
 .one-subscribe h3 {
@@ -505,4 +528,22 @@ section.block-call h2 {
     overflow: scroll;
     margin: 0;
   }
+}
+
+h3.the-headline-border {
+  background-image: url("../images/border.svg");
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: 0.04px;
+  color: rgb(40, 47, 57);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  padding-bottom: 20px;
+  margin-bottom: 37px;
+  margin-top: 34px;
+}
+
+.space-union {
+  background-image: url("../images/union.svg");
 }

@@ -17,20 +17,6 @@
     </div>
   </div>
 @else
-  <section class="header-users page-downloads" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
-    <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
-    <div class="container">
-      <div class="row justify-content-between">
-          <h2 class="headline">{{ _e('My Account', 'premast') }}</h2>
-          
-          @if (has_nav_menu('user_navigation'))
-            {!! wp_nav_menu(['theme_location' => 'user_navigation', 'container' => false, 'menu_class' => 'nav nav-pills flex-column flex-sm-row col-12', 'walker' => new NavWalker()]) !!}
-          @endif
-
-      </div>
-    </div>        
-  </section>
-
   <section class="template-users">
         <?php
         $sort   = isset($_GET['sort']) ? $_GET['sort'] : 'DESC';
@@ -99,9 +85,16 @@
         @if($all_ids)
 
           <div class="container-fiuld woocommerce customer-download">
-            <div class="row justify-content-center m-0 pt-5 pb-5">
-              <div class="col-md-12 col-sm-12">
-             
+            <div class="row justify-content-center">
+
+              <div class="col-md-3 col-12 side-menu-user">
+                <h2 class="headline text-primary">{{ _e('My Account', 'premast') }}</h2>
+                @if (has_nav_menu('user_navigation'))
+                  {!! wp_nav_menu(['theme_location' => 'user_navigation', 'container' => false, 'menu_class' => 'nav nav-pills flex-column flex-sm-row col-12', 'walker' => new NavWalker()]) !!}
+                @endif
+              </div>
+
+              <div class="col-md-9 col-sm-12 pt-5 mt-5 pb-5">
                 <div class="row justify-content-between">
                   <ul class="nav-downloads mb-5 list-inline nav nav-tabs border-0" id="myTab" role="tablist">
                     <li class="show-tabs list-inline-item">{{ _e('Show', 'premast') }}</li>
@@ -138,7 +131,7 @@
                     <div class="item-columns row m-0">
                       @if($loop_all->have_posts())
                         @while($loop_all->have_posts()) @php($loop_all->the_post())
-                          <div class="item-card col-md-2 col-sm-3 col-sx-6 col-12 grid-item mb-3">
+                          <div class="item-card col-md-4 col-sm-4 col-sx-6 col-12 grid-item mb-3">
                             <div class="card">
                               <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');min-height:155px;height:155px;">
                                 <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
@@ -195,7 +188,7 @@
                     <div class="tab-pane fade @if($tabs == 'free') active show @endif" id="free" role="tabpanel" aria-labelledby="free-tab">
                       <div class="item-columns row m-0">
                         @while($loop_free->have_posts()) @php($loop_free->the_post())
-                          <div class="item-card col-md-2 col-sm-3 col-sx-6 col-12 grid-item mb-3">
+                          <div class="item-card col-md-4 col-sm-4 col-sx-6 col-12 grid-item mb-3">
                             <div class="card">
                               <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');min-height:155px;height:155px;">
                                 <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
@@ -252,7 +245,7 @@
                     <div class="tab-pane fade @if($tabs == 'paid') active show @endif" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                       <div class="item-columns row m-0">
                         @while($loop_paid->have_posts()) @php($loop_paid->the_post())
-                          <div class="item-card col-md-2 col-sm-3 col-sx-6 col-12 grid-item mb-3">
+                          <div class="item-card col-md-4 col-sm-4 col-sx-6 col-12 grid-item mb-3">
                             <div class="card">
                               <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');min-height:155px;height:155px;">
                                 <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">

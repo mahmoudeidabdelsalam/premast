@@ -15,7 +15,7 @@ $headline = get_field('headline_block_models');
         <?php
         if( have_rows('models_block') ):
           while ( have_rows('models_block') ) : the_row(); ?>
-          <div class="row justify-content-between align-items-center mt-5 mb-5">
+          <div class="row justify-content-between align-items-center mt-5 mb-100">
             <div class="col-md-6 col-12 one" data-aos="fade" data-aos-duration="500">
               <div class="block-video"><?= the_sub_field('image_block_model'); ?></div>
             </div>

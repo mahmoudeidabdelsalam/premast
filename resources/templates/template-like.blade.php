@@ -17,17 +17,6 @@
     </div>
   </div>
 @else
-  <section class="header-users page-likes" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
-    <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
-    <div class="container">
-      <div class="row justify-content-between">
-          <h2 class="headline">{{ _e('My Account', 'premast') }}</h2>
-          @if (has_nav_menu('user_navigation'))
-            {!! wp_nav_menu(['theme_location' => 'user_navigation', 'container' => false, 'menu_class' => 'nav nav-pills flex-column flex-sm-row col-12', 'walker' => new NavWalker()]) !!}
-          @endif
-      </div>
-    </div>        
-  </section>
 
   @php
     global $current_user;
@@ -46,44 +35,54 @@
     $like_query = new WP_Query( $args );  
   @endphp
   <div class="container-fiuld woocommerce customer-download">
-    <div class="item-columns row mt-5 pt-5 ml-0 mr-0">
-      @if($like_query->have_posts())
-        @while($like_query->have_posts()) @php($like_query->the_post())
-          <div class="item-card col-md-2 col-sm-3 col-sx-6 col-12 grid-item">
-            <div class="card">
-              <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');">
-                <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
-              </div>
-              <div class="card-body pt-2 pl-0 pr-0">
-                <a class="card-link" href="{{ the_permalink() }}">
-                  <h5 class="card-title font-weight-400">{{ wp_trim_words(get_the_title(), '5', ' ...') }}</h5>
-                </a>
-                <div class="review-and-download">
-                  <div class="review">
-                    <a class="card-link" href="{{ the_permalink() }}">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <span itemprop="reviewCount">{{ _e('Rate it', 'premast') }}</span>
-                    </a>
+    <div class="row">
+      <div class="col-md-3 col-12 side-menu-user">
+        <h2 class="headline text-primary">{{ _e('My Account', 'premast') }}</h2>
+        @if (has_nav_menu('user_navigation'))
+          {!! wp_nav_menu(['theme_location' => 'user_navigation', 'container' => false, 'menu_class' => 'nav nav-pills flex-column flex-sm-row col-12', 'walker' => new NavWalker()]) !!}
+        @endif
+      </div>
+      <div class="col-md-9 col-12">
+        <div class="item-columns row mt-5 pt-5 ml-0 mr-0">
+          @if($like_query->have_posts())
+            @while($like_query->have_posts()) @php($like_query->the_post())
+              <div class="item-card col-md-4 col-sm-4 col-sx-6 col-12 grid-item">
+                <div class="card">
+                  <div class="bg-white bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');">
+                    <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
                   </div>
-                  <div class="download">
+                  <div class="card-body pt-2 pl-0 pr-0">
                     <a class="card-link" href="{{ the_permalink() }}">
-                      {{ _e('Download', 'premast') }}
+                      <h5 class="card-title font-weight-400">{{ wp_trim_words(get_the_title(), '5', ' ...') }}</h5>
                     </a>
+                    <div class="review-and-download">
+                      <div class="review">
+                        <a class="card-link" href="{{ the_permalink() }}">
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <span itemprop="reviewCount">{{ _e('Rate it', 'premast') }}</span>
+                        </a>
+                      </div>
+                      <div class="download">
+                        <a class="card-link" href="{{ the_permalink() }}">
+                          {{ _e('Download', 'premast') }}
+                        </a>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </div>              
               </div>
-            </div>              
-          </div>
-        @endwhile
-        @php (wp_reset_postdata())
-      @else
-        <div class="woocommerce-Message woocommerce-Message--info text-center col-12 pt-5 pb-5 mb-5 mt-5">
-          <a class="woocommerce-Button button" href="{{ the_field('link_page_login','option') }}">
-            <?php esc_html_e( 'Go shop', 'woocommerce' ); ?>
-          </a>
-          <?php esc_html_e( 'No Likes available yet.', 'woocommerce' ); ?>
+            @endwhile
+            @php (wp_reset_postdata())
+          @else
+            <div class="woocommerce-Message woocommerce-Message--info text-center col-12 pt-5 pb-5 mb-5 mt-5">
+              <a class="woocommerce-Button button" href="{{ the_field('link_page_login','option') }}">
+                <?php esc_html_e( 'Go shop', 'woocommerce' ); ?>
+              </a>
+              <?php esc_html_e( 'No Likes available yet.', 'woocommerce' ); ?>
+            </div>
+          @endif
         </div>
-      @endif
+      </div>
     </div>
   </div>
 
