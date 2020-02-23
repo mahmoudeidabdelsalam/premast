@@ -160,17 +160,39 @@ function register_user_front_end() {
             update_user_meta( $user_id, 'refed_id', $refer_id );
           }
 
-          $membership = wp_insert_post(array (
-            'post_type' => 'wc_user_membership',
-            'post_title' => 0,
-            'post_status' => 'publish',
-            'post_author' => $current_user->ID,
-          ));
+            // bail if Memberships isn't active
+            if ( ! function_exists( 'wc_memberships' ) ) {
+              return;
+            }
+
+            $args = array(
+              // Enter the ID (post ID) of the plan to grant at registration
+              'plan_id' => 1023297,
+              'user_id' => $refer_id,
+            );
+
+            // magic!
+            wc_memberships_create_user_membership( $args );
+
+            // Optional: get the new membership and add a note so we know how this was registered.
+            $user_membership = wc_memberships_get_user_membership( $user_id, $args['plan_id'] );
+            $user_membership->add_note( 'Membership access granted automatically from registration.' );
+  
 
 
-          if ($membership) {
-            update_post_meta($membership, 'referrals_user', $user_id);
-          }
+
+          // $membership = wp_insert_post(array (
+          //   'post_type' => 'wc_user_membership',
+          //   'post_title' => 0,
+          //   'post_status' => 'publish',
+          //   'post_author' => $current_user->ID,
+          // ));
+
+          
+
+          // if ($membership) {
+          //   update_post_meta($membership, 'referrals_user', $user_id);
+          // }
 
         }
 
