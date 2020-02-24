@@ -92,7 +92,7 @@
 
             $posts = get_posts($args);
 
-            // dd($posts);
+
 
           @endphp
 
@@ -103,22 +103,28 @@
                 <th scope="col">date</th>
                 <th scope="col">Referrals <i class="fa fa-question-circle-o" aria-hidden="true" data-toggle="tooltip" title="Date Invitation completed"></i></th>
                 <th scope="col">Status <i class="fa fa-question-circle-o" aria-hidden="true" data-toggle="tooltip" title="Date Invitation completed"></i></th>
-                <th scope="col">Rewards <i class="fa fa-question-circle-o" aria-hidden="true" data-toggle="tooltip" title="Date Invitation completed"></i></th>
                 <th scope="col">Expires on <i class="fa fa-question-circle-o" aria-hidden="true" data-toggle="tooltip" title="Date Invitation completed"></i></th>
+                <th scope="col">action <i class="fa fa-question-circle-o" aria-hidden="true" data-toggle="tooltip" title="Date Invitation completed"></i></th>
               </tr>
             </thead>
             <tbody>
+            <?php
+              foreach ($posts as $post):
+              setup_postdata( $post ); 
+              $author = get_user_by( 'ID', $post->post_author );
+              $author_display_name = $author->display_name;
+            ?>
               <tr>
-                <td class="first">July 15, 2019</td>
-                <td>max.hoffman@example.com</td>
-                <td>Invitation sent</td>
-                <td>Pending</td>
-                <td>-</td>
+                <td><?= $author_display_name; ?></td>
+                <td><?= (get_post_meta($post->ID, 'email_referrals', TRUE))? get_post_meta($post->ID, 'email_referrals', TRUE):'-'; ?></td>
+                <td><?= get_post_status($post->ID, 'post_status', TRUE); ?></td>
+                <td><?= (get_post_meta( $post->ID, '_end_date', true ))? get_post_meta( $post->ID, '_end_date', true ):'-'; ?></td>
+                <td><button class="btn-green rounded">active</button></td>
               </tr>
+            <?php endforeach; ?>
             </tbody>
           </table>
         </div>
-
 
 
         <script>

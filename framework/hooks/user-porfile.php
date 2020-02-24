@@ -125,14 +125,14 @@ function register_user_front_end() {
 
 	  $user_nice_name = strtolower($_POST['user_email']);
 	  $user_data = array(
-        'first_name' => $first_name,
-        'last_name' => $last_name,
-	      'user_login' => $user_nice_name,
-	      'user_email' => $new_user_email,
-	      'user_pass' => $new_user_password,
+        'first_name'    => $first_name,
+        'last_name'     => $last_name,
+	      'user_login'    => $user_nice_name,
+	      'user_email'    => $new_user_email,
+	      'user_pass'     => $new_user_password,
 	      'user_nicename' => $user_nice_name,
-	      'display_name' => $new_user_first_name,
-	      'role' => 'subscriber'
+	      'display_name'  => $new_user_first_name,
+	      'role'          => 'subscriber'
 	  	);
       $user_id = wp_insert_user($user_data);
 
@@ -145,56 +145,6 @@ function register_user_front_end() {
         $output .= 'jQuery("#user_pass").val("'.$new_user_password.'");';
         $output .=  '});';
         $output .='</script>';
-
-        if($refer_id) {
-          $credit = get_user_meta( $refer_id, 'ref_credit', true );
-          $meta_ip = get_user_meta( $refer_id, 'follow_ip', true );
-          $friends = get_user_meta( $refer_id, 'friends', true );
-          $arr_friends = array($friends, $user_id);
-          $array_ip = array($meta_ip, $follow_ip);
-          $credit++;
-          if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-            update_user_meta( $refer_id, 'ref_credit', $credit );
-            update_user_meta( $refer_id, 'follow_ip', $array_ip );
-            update_user_meta( $refer_id, 'friends', $arr_friends );
-            update_user_meta( $user_id, 'refed_id', $refer_id );
-          }
-
-            // bail if Memberships isn't active
-            if ( ! function_exists( 'wc_memberships' ) ) {
-              return;
-            }
-
-            $args = array(
-              // Enter the ID (post ID) of the plan to grant at registration
-              'plan_id' => 1023297,
-              'user_id' => $refer_id,
-            );
-
-            // magic!
-            wc_memberships_create_user_membership( $args );
-
-            // Optional: get the new membership and add a note so we know how this was registered.
-            $user_membership = wc_memberships_get_user_membership( $user_id, $args['plan_id'] );
-            $user_membership->add_note( 'Membership access granted automatically from registration.' );
-  
-
-
-
-          // $membership = wp_insert_post(array (
-          //   'post_type' => 'wc_user_membership',
-          //   'post_title' => 0,
-          //   'post_status' => 'publish',
-          //   'post_author' => $current_user->ID,
-          // ));
-
-          
-
-          // if ($membership) {
-          //   update_post_meta($membership, 'referrals_user', $user_id);
-          // }
-
-        }
 
         echo $output;
 	  	} else {
@@ -223,4 +173,37 @@ function get_the_user_ip() {
     $ip = $_SERVER['REMOTE_ADDR'];
   }
   return apply_filters( 'wpb_get_ip', $ip );
+}
+
+
+
+
+add_action('user_register','premast_memberships_create');
+
+function premast_memberships_create(){
+  
+  $refer_id = $_POST['refer'];
+  $plan_id = 1023297;
+
+  $data = apply_filters( 'wc_memberships_groups_import_membership_data', array(
+    'plan_id' => $plan_id, 
+    'post_parent'    => $plan_id,
+    'post_author'    => $refer_id,
+    // 'user_id'        => $refer_id,
+    'post_type'      => 'wc_user_membership',
+    'post_status'    => 'wcm-pending',
+    'comment_status' => 'open',
+  ) );
+
+  // create a new membership
+  $user_membership_id = wp_insert_post( $data, true );
+
+    $user_email = $_POST['user_email'];
+
+  update_post_meta( $user_membership_id, 'email_referrals', $user_email );
+
+  // bail out on failure
+  if ( is_wp_error( $user_membership_id ) ) {
+    return false;
+  }
 }

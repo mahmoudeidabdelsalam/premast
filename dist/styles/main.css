@@ -33553,24 +33553,17 @@ header.banner .nav a {
 
 /* line 887, resources/assets/styles/layouts/_header.scss */
 
-.notification {
-  display: none;
-}
-
-/* line 891, resources/assets/styles/layouts/_header.scss */
-
 .side-menu-user {
   background: #F9F9F9;
 }
 
-/* line 895, resources/assets/styles/layouts/_header.scss */
+/* line 891, resources/assets/styles/layouts/_header.scss */
 
 header.banner .cart-contents {
-  margin-right: 25px !important;
   margin-left: 20px !important;
 }
 
-/* line 902, resources/assets/styles/layouts/_header.scss */
+/* line 897, resources/assets/styles/layouts/_header.scss */
 
 .side-menu-user .menu-item::after {
   position: absolute;
@@ -33580,43 +33573,43 @@ header.banner .cart-contents {
   font-family: "FontAwesome";
 }
 
-/* line 911, resources/assets/styles/layouts/_header.scss */
+/* line 906, resources/assets/styles/layouts/_header.scss */
 
 .side-menu-user .menu-item:nth-child(1)::after {
   content: "\F2C0";
 }
 
-/* line 917, resources/assets/styles/layouts/_header.scss */
+/* line 912, resources/assets/styles/layouts/_header.scss */
 
 .side-menu-user .menu-item:nth-child(2)::after {
   content: "\F01A";
 }
 
-/* line 923, resources/assets/styles/layouts/_header.scss */
+/* line 918, resources/assets/styles/layouts/_header.scss */
 
 .side-menu-user .menu-item:nth-child(3)::after {
   content: "\F08A";
 }
 
-/* line 929, resources/assets/styles/layouts/_header.scss */
+/* line 924, resources/assets/styles/layouts/_header.scss */
 
 .side-menu-user .menu-item:nth-child(4)::after {
   content: "\F09D";
 }
 
-/* line 935, resources/assets/styles/layouts/_header.scss */
+/* line 930, resources/assets/styles/layouts/_header.scss */
 
 .side-menu-user .menu-item:nth-child(5)::after {
   content: "\F006";
 }
 
-/* line 941, resources/assets/styles/layouts/_header.scss */
+/* line 936, resources/assets/styles/layouts/_header.scss */
 
 .side-menu-user .menu-item:nth-child(6)::after {
   content: "\F118";
 }
 
-/* line 948, resources/assets/styles/layouts/_header.scss */
+/* line 943, resources/assets/styles/layouts/_header.scss */
 
 ul.list-editing {
   list-style: none;
@@ -33625,7 +33618,7 @@ ul.list-editing {
   position: relative;
 }
 
-/* line 955, resources/assets/styles/layouts/_header.scss */
+/* line 950, resources/assets/styles/layouts/_header.scss */
 
 ul.list-editing li {
   margin-bottom: 30px;
@@ -33637,7 +33630,7 @@ ul.list-editing li {
   color: black;
 }
 
-/* line 965, resources/assets/styles/layouts/_header.scss */
+/* line 960, resources/assets/styles/layouts/_header.scss */
 
 ul.list-editing:after {
   content: "";
@@ -33649,21 +33642,21 @@ ul.list-editing:after {
   right: 93%;
 }
 
-/* line 975, resources/assets/styles/layouts/_header.scss */
+/* line 970, resources/assets/styles/layouts/_header.scss */
 
 header.bg-light.banner {
   border-bottom: 1px solid #cccc;
   padding: 10px 0 5px;
 }
 
-/* line 980, resources/assets/styles/layouts/_header.scss */
+/* line 975, resources/assets/styles/layouts/_header.scss */
 
 .side-menu-user .headline {
   margin-top: 95px;
   margin-bottom: 65px;
 }
 
-/* line 985, resources/assets/styles/layouts/_header.scss */
+/* line 980, resources/assets/styles/layouts/_header.scss */
 
 .side-menu-user ul {
   display: -webkit-box;
@@ -33677,7 +33670,7 @@ header.bg-light.banner {
       flex-wrap: wrap;
 }
 
-/* line 991, resources/assets/styles/layouts/_header.scss */
+/* line 986, resources/assets/styles/layouts/_header.scss */
 
 .side-menu-user ul li {
   width: 100%;
@@ -33686,7 +33679,7 @@ header.bg-light.banner {
   position: relative;
 }
 
-/* line 998, resources/assets/styles/layouts/_header.scss */
+/* line 993, resources/assets/styles/layouts/_header.scss */
 
 .side-menu-user ul li a {
   font-size: 16px;
@@ -33704,13 +33697,13 @@ header.bg-light.banner {
   margin: 10px 0px;
 }
 
-/* line 1009, resources/assets/styles/layouts/_header.scss */
+/* line 1004, resources/assets/styles/layouts/_header.scss */
 
 .side-menu-user .headline {
   margin-left: 30px;
 }
 
-/* line 1013, resources/assets/styles/layouts/_header.scss */
+/* line 1008, resources/assets/styles/layouts/_header.scss */
 
 .side-menu-user ul li.active a {
   font-weight: bold;
