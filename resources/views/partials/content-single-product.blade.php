@@ -64,7 +64,7 @@
 
                   <div class="product-infomation">
                     <h3>{{ _e('Description', 'premast') }}</h3>
-                    <div id="tab-description">{!! get_the_content() !!}</div>
+                    <div id="tab-description"> @php the_content() @endphp</div>
                   </div>
                 @endif
               </div>
