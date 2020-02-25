@@ -1183,3 +1183,17 @@ acf_add_local_field_group(array(
 ));
 
 endif;
+
+
+
+if( function_exists('acf_add_options_page') ) {
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'membership settings',
+		'menu_title'	=> 'membership settings',
+		'menu_slug' 	=> 'membership-settings',
+		'parent_slug'	=> 'membership-csutom',
+		'icon_url' 		=> 'dashicons-welcome-widgets-menus',
+		'position' => 1,
+		'redirect'		=> false
+	));
+}

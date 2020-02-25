@@ -1136,15 +1136,6 @@
   height: 15px
 }
 
-.u-section-5-1 {
-  background-image: url("images/Group2041.png");
-  background-position: 50% 50%
-}
-
-.u-section-5-1 .u-sheet-1 {
-  min-height: 560px
-}
-
 .u-section-5-1 .u-text-1 {
   font-size: 3rem;
   margin: 63px auto 0
@@ -1214,11 +1205,6 @@
   margin: 10px 0 0
 }
 
-@media (max-width: 1199px) {
-  .u-section-5-1 .u-sheet-1 {
-    min-height: 475px
-  }
-}
 
 @media (max-width: 991px) {
   .u-section-5-1 .u-group-1 {
@@ -1249,15 +1235,6 @@
   .u-section-5-1 .u-icon-5 {
     margin-right: 300px
   }
-}
-
-.u-section-5-2 {
-  background-image: url("images/Group2041.png");
-  background-position: 50% 50%
-}
-
-.u-section-5-2 .u-sheet-1 {
-  min-height: 560px
 }
 
 .u-section-5-2 .u-text-1 {
@@ -1366,15 +1343,6 @@
   }
 }
 
-.u-section-5-3 {
-  background-image: url("images/Group2041.png");
-  background-position: 50% 50%
-}
-
-.u-section-5-3 .u-sheet-1 {
-  min-height: 560px
-}
-
 .u-section-5-3 .u-text-1 {
   font-size: 3rem;
   margin: 63px auto 0
@@ -1479,15 +1447,6 @@
   .u-section-5-3 .u-icon-5 {
     margin-right: 300px
   }
-}
-
-.u-section-5-4 {
-  background-image: url("images/Group2041.png");
-  background-position: 50% 50%
-}
-
-.u-section-5-4 .u-sheet-1 {
-  min-height: 560px
 }
 
 .u-section-5-4 .u-text-1 {

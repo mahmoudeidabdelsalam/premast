@@ -163,7 +163,12 @@
             </div>
         </section>
 
-        <section class="u-carousel u-carousel-duration-750 u-slide u-block-b0a8-1" id="carousel_bfd6" data-interval="1250" data-u-ride="carousel" style="">
+        <section class="u-carousel u-carousel-duration-750 u-slide u-block-b0a8-1 pt-5 pb-5" id="carousel_bfd6" data-interval="1250" data-u-ride="carousel" style="background-image:url('<?= the_field('updates_trusted'); ?>')">
+
+          <h3 class="text-center"><?= the_field('headline_trusted'); ?></h3>
+          <p class="u-custom-font u-heading-font u-text u-text-2 text-center"><?= the_field('subheadline_trusted_eargo'); ?></p>
+
+
           <ol class="u-absolute-hcenter u-carousel-indicators u-opacity u-opacity-80 u-block-b0a8-2">
             <?php
             $counter = -1;
@@ -186,8 +191,6 @@
                 ?>
                 <div class="u-align-center u-carousel-item u-clearfix u-image <?= ($counter == 1)? 'u-active':''; ?> u-section-5-<?= $counter; ?>">
                 <div class="u-clearfix u-sheet u-sheet-1">
-                    <h3 class="u-text u-text-default u-text-1"><?= the_sub_field('headline_trusted'); ?></h3>
-                    <p class="u-custom-font u-heading-font u-text u-text-2"><?= the_sub_field('subheadline_trusted_eargo'); ?></p>
                     <div class="u-border-2 u-border-custom-color-4 u-border-radius-8 u-container-style u-custom-color-4 u-group u-shape-round u-group-1">
                     <div class="u-container-layout u-container-layout-1">
 
