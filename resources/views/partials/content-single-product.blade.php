@@ -201,7 +201,7 @@
                   <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h2>{{ _e('Report a problem', 'premast') }}</h2>
+                        <h4>{{ _e('Report a problem', 'premast') }}</h4>
                       </div>
                       <div class="modal-body">              
                           {!! do_shortcode( '[gravityform id="'.$form_id['id'].'" name="" title="false" description="false" ajax="true" ]' ) !!}

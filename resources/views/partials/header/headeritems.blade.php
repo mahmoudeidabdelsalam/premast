@@ -112,7 +112,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <h2 class="sr-only">{{ _e('Breadcrumb navigation', 'premast') }}</h2>
+          <h5 class="sr-only">{{ _e('Breadcrumb navigation', 'premast') }}</h5>
           
           @if (has_nav_menu('items_navigation'))
             {!! wp_nav_menu(['theme_location' => 'items_navigation', 'container' => false, 'menu_class' => 'navbar-item navbar-nav ml-4 mr-auto', 'walker' => new Nav_Item_Walker()]) !!}

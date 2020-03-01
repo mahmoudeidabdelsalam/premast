@@ -83,7 +83,7 @@
 </div>
 @if ( empty(!$slide_colors) || empty(!$slide_number) || empty(!$slide_pages) ||empty(!$slide_date) || get_field('custom_slide_information') )
 <div class="box-counter">
-  <h2>{{ _e('information', 'premast') }}</h2>
+  <h4>{{ _e('information', 'premast') }}</h4>
   <ul class="list-unstyled">
     @if ($slide_colors)
       <li class="list-item"><strong>{{ _e('Unique Slides:', 'premast') }}</strong> <span>{{ $slide_colors }}</span></li>
