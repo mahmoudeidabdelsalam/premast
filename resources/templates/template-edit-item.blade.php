@@ -20,17 +20,6 @@
   $administrator = array('administrator');
 @endphp
 
-@if (get_field('banner_items_headline', 'option'))
-<section class="banner-items mb-5" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
-  <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
-  <div class="container">
-    <div class="row justify-content-center align-items-center text-center">
-      <h2 class="col-12 text-white"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{  $count }}</strong> <span class="font-weight-300">{{ the_field('banner_items_headline','option') }}</span></h2>
-      <p class="col-md-5 col-12 text-white font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
-    </div>
-  </div>
-</section>
-@endif
 <div class="container single-product">
   @if(!is_user_logged_in())
     <div class="row justify-content-center m-0">
@@ -50,7 +39,7 @@
       if ( array_intersect($administrator, $user->roles)) {
           $status = 'publish';
       } else {
-          $status = 'pending';
+          $status = 'publish';
       }
 
       if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POST['action'] == "update_post" && $post_id != 'false') {
@@ -161,11 +150,11 @@
     @endphp
 
     <form id="publish_product" name="update_post" method="post" action="" enctype="multipart/form-data">
-      <div class="row justify-content-center m-0">
+      <div class="row justify-content-center mt-5 pt-5">
         <div class="col-md-8 col-12">
           <?php woocommerce_breadcrumb(); ?>
           <div class="input-group mb-5 mt-2 arrows right">
-            <input type="text" name="title" class="form-control" value="{{ get_the_title($post->ID) }}" placeholder="Enter headline" required>
+            <input type="text" name="title" class="form-control" value="{{ html_entity_decode(get_the_title($post->ID)) }}" placeholder="Enter headline" required>
           </div>
           <div class="row ml-0 mr-0 mb-5 content-single pl-0 pr-0 pt-3">
             <div class="col-12">

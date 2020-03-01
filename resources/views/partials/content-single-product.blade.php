@@ -26,7 +26,7 @@
     @endphp
 
     <div id="product-{{ the_ID() }}" {!! wc_product_class() !!}>
-      <div class="container custom-container mt-5 mb-5">
+      <div class="container custom-container mt-5 mb-5 pt-5">
         <div class="row justify-content-center m-0">
           <div class="col-12">
             <?php woocommerce_breadcrumb(); ?>
