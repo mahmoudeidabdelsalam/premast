@@ -68,27 +68,25 @@
               </div>
             </div>
             <img src="{{the_field('counter_img') }}" alt="" class="u-image u-image-default u-image-2" data-image-width="1400" data-image-height="606">
-            <h3 class="u-text u-text-default u-text-8">{{the_sub_field('feat_text')}}</h3>
-            <p class="u-custom-font u-heading-font u-text u-text-custom-color-5 u-text-default u-text-9">{{the_field(('feat_subtext')) }}</p>
-            <div class="u-clearfix u-gutter-0 u-layout-wrap u-layout-wrap-2">
-              <div class="u-layout">
-                <div class="u-layout-col">
-                  <div class="u-size-30">
-                    <div class="u-layout-row">
-                    <?php if( have_rows('infographics_items') ): ?>
-                        <?php while( have_rows('infographics_items') ): the_row(); ?>
-                        <div class="u-container-style u-layout-cell u-left-cell u-size-20 u-layout-cell-7">
-                            <div class="u-container-layout u-container-layout-7">
-                                <img src="<?= the_sub_field('image_infographics_item'); ?>" alt="" class="u-image u-image-default u-image-3" data-image-width="42" data-image-height="43">
-                                <p class="u-custom-font u-heading-font u-text u-text-custom-color-5 u-text-10"><?php the_sub_field('text_infographics_item'); ?>
-                            </div>
+            <h3 class="container">{{the_field('feat_text')}}</h3>
+            <p class="row justify-content-center">{{the_field(('feat_subtext')) }}</p>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 col-12">
+                        <div class="row justify-content-center">
+                            <?php if( have_rows('infographics_items') ): ?>
+                                <?php while( have_rows('infographics_items') ): the_row(); ?>
+                                <div class="col-md-4 col-12">
+                                    <div class="infographics-container-layout">
+                                        <img src="<?= the_sub_field('image_infographics_item'); ?>" alt="" class="img-infographics" data-image-width="42" data-image-height="43">
+                                        <p class="heading-infographics"><?php the_sub_field('text_infographics_item'); ?>
+                                    </div>
+                                </div>
+                                <?php endwhile; ?>
+                            <?php endif; ?>
                         </div>
-                      <?php endwhile; ?>
-                    <?php endif; ?>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
           </div>
         </section>
