@@ -4,7 +4,7 @@
 
 @php acf_form_head() @endphp
 
-@extends('layouts.app-custom')
+@extends('layouts.app-dark')
 @section('content')
 
 @php 
