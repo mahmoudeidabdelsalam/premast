@@ -955,4 +955,60 @@ li.head {
 .social-sharer {
   justify-content: end !important;
 }
+
+section.custom-style-template .show-header img {
+  width: 400px;
+  margin: 15px 10px;
+}
+
+section.custom-style-template .show-header h2 {
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: 0.04px;
+  color: #282F39;
+  mix-blend-mode: normal;
+  opacity: 0.82;
+}
+
+section.custom-style-template .form-row label {
+  display: block !important;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.04px;
+  text-transform: capitalize;
+  color: #646464;
+  font-weight: 400;
+}
+
+section.custom-style-template .button {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.04px;
+  text-transform: capitalize;
+  color: #FFFFFF;
+  background: linear-gradient(158.58deg, #6B73FF -0.5%, #000DFF 100%);
+  border-radius: 30px;
+  padding: 10px 20px;
+  margin: 10px 0 !important;
+}
+
+section.custom-style-template p.Conditions label {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.04px;
+  color: #1E6DFB;
+  margin: 10px 5px;
+}
+
+.form-row input,
+.form-row select {
+  text-transform: lowercase;
+}
 /* stylelint-enable */

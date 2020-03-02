@@ -151,8 +151,8 @@
 
     <form id="publish_product" name="update_post" method="post" action="" enctype="multipart/form-data">
       <div class="row justify-content-center mt-5 pt-5">
+        <div class="col-12 mt-5 pt-5"></div>
         <div class="col-md-8 col-12">
-          <?php woocommerce_breadcrumb(); ?>
           <div class="input-group mb-5 mt-2 arrows right">
             <input type="text" name="title" class="form-control" value="{{ html_entity_decode(get_the_title($post->ID)) }}" placeholder="Enter headline" required>
           </div>
@@ -209,8 +209,7 @@
         </div>
 
 
-        <div class="summary entry-summary col-md-4 col-12 sidebar-shop">
-          
+        <div class="summary entry-summary col-md-4 col-12 sidebar-shop mt-2">
           <div class="download-product price-input arrows left">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
@@ -223,7 +222,6 @@
             </div>
             <textarea class="form-control" name="short_description" placeholder="Short description" rows="3" required>{{ $post->post_excerpt }}</textarea>
           </div>
-
           <div class="input-group mb-4 mt-4">
             <label class="custom-download-label arrows left mb-0" for="upload_file">
               <div class="upload-response"></div>
@@ -237,7 +235,6 @@
               <input name="file_name" value="{{ $download['name'] }}" id="files_name" hidden required/>
             </div>
           </div>
-        
           <div class="ads-block mb-3">
             <div class="alert alert-light m-0 pt-2 pb-2 pl-0" role="alert">{{ _e('Add Ads Items', 'premast') }}</div>
             <label for="ads-button" class="label-ads">
@@ -250,12 +247,10 @@
                 <input name="ads_image" value="@if($ads_image){{ $ads_image }}@endif" id="ads" hidden/>
               </div>
             </div>
-
             <div class="input-group">
               <input type="text" name="ads_link" value="@if($ads_link) {{ $ads_link }} @endif" class="form-control" placeholder="@">
             </div>
           </div>
-
           <div class="box-taxonomy arrows left">
             <div class="loading small text-center" style="display:none;">
               <i class="fa fa-spinner fa-pulse"></i>
@@ -282,7 +277,6 @@
               );
               wp_dropdown_categories( $args ); 
             ?>
-
             <?php 
               $children = get_post_child_list('product_cat', $post->ID);
             ?>
@@ -301,12 +295,8 @@
                 <option value="0" selected="selected">Sub Select</option>
               </select>
           <?php endif; ?>
-
-
-
           <?php 
           $sub_children = get_post_childrdn('product_cat', $children, $post->ID); ?>
-
             <?php if ($sub_children): ?>
               <select name="sub_child" id="sub_child" multiple>
                 <option value="0" selected="selected">Sub Select</option>
@@ -322,8 +312,6 @@
                 <option value="0" selected="selected">Sub Select</option>
               </select>
             <?php endif; ?>
-
-
               @php 
                 $tags = wp_get_post_terms( $post->ID, 'product_tag' );
                 $draught_tags = array();
@@ -333,7 +321,6 @@
                   }
                 endif;
               @endphp
-
             <?php 
               wp_dropdown_categories( array(
                 'taxonomy'   => 'product_tag',
