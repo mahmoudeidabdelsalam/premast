@@ -70,10 +70,9 @@ $timeDiff = abs($endTimeStamp - $startTimeStamp);
 $numberDays = $timeDiff/86400;  // 86400 seconds in one day
 $numberDays = intval($numberDays);
 
-
 @endphp
 
-  <section class="template-users my-membership">
+  <section class="template-users my-membership mt-5">
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-md-3 col-12 side-menu-user">

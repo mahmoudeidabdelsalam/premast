@@ -144,3 +144,17 @@ a {
     color: $brand-white;
   }
 }
+
+.bg-sections {
+  background: url("../images/bg-sections.png"), linear-gradient(134.24deg, rgb(31, 162, 255) -4.21%, rgb(39, 79, 219) 135.73%);
+  background-size: cover;
+}
+
+@include media-breakpoint-up(lg) {
+  .custom-padding {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    padding-right: 110px;
+    padding-left: 110px;
+  }
+}

@@ -4,7 +4,7 @@
 
 @php acf_form_head() @endphp
 
-@extends('layouts.app-custom')
+@extends('layouts.app-dark')
 @section('content')
 
 @php 
@@ -20,17 +20,6 @@
   $administrator = array('administrator');
 @endphp
 
-@if (get_field('banner_items_headline', 'option'))
-<section class="banner-items mb-5" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
-  <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
-  <div class="container">
-    <div class="row justify-content-center align-items-center text-center">
-      <h2 class="col-12 text-white"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{  $count }}</strong> <span class="font-weight-300">{{ the_field('banner_items_headline','option') }}</span></h2>
-      <p class="col-md-5 col-12 text-white font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
-    </div>
-  </div>
-</section>
-@endif
 <div class="container single-product">
   @if(!is_user_logged_in())
     <div class="row justify-content-center m-0">
@@ -50,7 +39,7 @@
       if ( array_intersect($administrator, $user->roles)) {
           $status = 'publish';
       } else {
-          $status = 'pending';
+          $status = 'publish';
       }
 
       if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POST['action'] == "update_post" && $post_id != 'false') {
@@ -161,11 +150,11 @@
     @endphp
 
     <form id="publish_product" name="update_post" method="post" action="" enctype="multipart/form-data">
-      <div class="row justify-content-center m-0">
+      <div class="row justify-content-center mt-5 pt-5">
+        <div class="col-12 mt-5 pt-5"></div>
         <div class="col-md-8 col-12">
-          <?php woocommerce_breadcrumb(); ?>
           <div class="input-group mb-5 mt-2 arrows right">
-            <input type="text" name="title" class="form-control" value="{{ get_the_title($post->ID) }}" placeholder="Enter headline" required>
+            <input type="text" name="title" class="form-control" value="{{ html_entity_decode(get_the_title($post->ID)) }}" placeholder="Enter headline" required>
           </div>
           <div class="row ml-0 mr-0 mb-5 content-single pl-0 pr-0 pt-3">
             <div class="col-12">
@@ -220,8 +209,7 @@
         </div>
 
 
-        <div class="summary entry-summary col-md-4 col-12 sidebar-shop">
-          
+        <div class="summary entry-summary col-md-4 col-12 sidebar-shop mt-2">
           <div class="download-product price-input arrows left">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
@@ -234,7 +222,6 @@
             </div>
             <textarea class="form-control" name="short_description" placeholder="Short description" rows="3" required>{{ $post->post_excerpt }}</textarea>
           </div>
-
           <div class="input-group mb-4 mt-4">
             <label class="custom-download-label arrows left mb-0" for="upload_file">
               <div class="upload-response"></div>
@@ -248,7 +235,6 @@
               <input name="file_name" value="{{ $download['name'] }}" id="files_name" hidden required/>
             </div>
           </div>
-        
           <div class="ads-block mb-3">
             <div class="alert alert-light m-0 pt-2 pb-2 pl-0" role="alert">{{ _e('Add Ads Items', 'premast') }}</div>
             <label for="ads-button" class="label-ads">
@@ -261,12 +247,10 @@
                 <input name="ads_image" value="@if($ads_image){{ $ads_image }}@endif" id="ads" hidden/>
               </div>
             </div>
-
             <div class="input-group">
               <input type="text" name="ads_link" value="@if($ads_link) {{ $ads_link }} @endif" class="form-control" placeholder="@">
             </div>
           </div>
-
           <div class="box-taxonomy arrows left">
             <div class="loading small text-center" style="display:none;">
               <i class="fa fa-spinner fa-pulse"></i>
@@ -293,7 +277,6 @@
               );
               wp_dropdown_categories( $args ); 
             ?>
-
             <?php 
               $children = get_post_child_list('product_cat', $post->ID);
             ?>
@@ -312,12 +295,8 @@
                 <option value="0" selected="selected">Sub Select</option>
               </select>
           <?php endif; ?>
-
-
-
           <?php 
           $sub_children = get_post_childrdn('product_cat', $children, $post->ID); ?>
-
             <?php if ($sub_children): ?>
               <select name="sub_child" id="sub_child" multiple>
                 <option value="0" selected="selected">Sub Select</option>
@@ -333,8 +312,6 @@
                 <option value="0" selected="selected">Sub Select</option>
               </select>
             <?php endif; ?>
-
-
               @php 
                 $tags = wp_get_post_terms( $post->ID, 'product_tag' );
                 $draught_tags = array();
@@ -344,7 +321,6 @@
                   }
                 endif;
               @endphp
-
             <?php 
               wp_dropdown_categories( array(
                 'taxonomy'   => 'product_tag',

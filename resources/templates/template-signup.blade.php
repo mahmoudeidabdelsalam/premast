@@ -15,37 +15,47 @@
 
 @section('content')
   @while(have_posts()) @php the_post() @endphp
-    <section class="section-template position-relative" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
-      <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
-      <div class="container">
+    <section class="custom-style-template">
+
+      <div class="container-fluid">
         <div class="row justify-content-center">
           @if ( !is_user_logged_in() )
-            <div class="col-md-7 col-12 modal-show">
-              <div class="show-header text-center">
-                <a class="navbar-brand" href="{{ home_url('/') }}" title="{{ get_bloginfo('name') }}">
-                  <img class="img-fluid" src="@if(get_field('website_logo', 'option')) {{ the_field('website_logo','option') }} @else {{ get_theme_file_uri().'/dist/images/logo-en.png' }} @endif" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
-                  <span class="sr-only"> {{ get_bloginfo('name') }} </span>
-                </a>
-                <br>
-                <h5 class="modal-title" id="LoginUserLabel">{{ _e('Create a New Premast Account & Enjoy access to all of our services', 'premast') }}</h5>
+            <div class="col-md-5 col-12 custom-padding bg-sections">
+                <h3 class="text-white">Welcome! You’ve been invited to join premast</h3>
+                <p class="text-white mb-5">* Join us and enjoy these benefits:</p>
+                <ul class="text-white">
+                  <li>Recieve a 20% off discount in your E-mail</li>
+                  <li>Downloads hundreds of powerpoint templates and graphics.</li>
+                  <li>Discover amazing new products daily</li>
+                </ul>
+
+                <a href="#" class="text-white mt-5">{{ _e('Know more about us', 'permast') }} <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            </div>
+            <div class="col-md-7 col-12 bg-light custom-padding">
+              <div class="show-header text-left">
+                <h2 class="modal-title" id="LoginUserLabel">{{ _e('Create a New Premast Account', 'premast') }}</h2>
                 <img class="img-fluid" src="{{ get_theme_file_uri().'/dist/images/logos.png' }}" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
               </div>
               <div class="modal-body">
                 <p class="register-message m-0" style="display:none"></p>
                 <form action="#" method="POST" name="register-form" class="register-form register-user">
-                  <p class="form-row form-row-first">
+                  <p class="form-row">
+                    <label for="">First Name</label>
                     <input class="form-control" type="text"  name="first_name" placeholder="First Name" id="firstname">
                   </p>
-                  <p class="form-row form-row-last">
+                  <p class="form-row">
+                    <label for="">Last Name</label>
                     <input type="text" name="last_name" placeholder="Last Name" id="lastname">
                   </p>
-                  <p>
+                  <p class="form-row">
+                    <label for="">email</label>
                     <input type="email" name="user_email" placeholder="Email" id="useremail">
                   </p>
-                  <p>
+                  <p class="form-row">
+                    <label for="">password</label>
                     <input type="password" name="user_password" placeholder="Password" id="password">
                   </p>
-                  <p>
+                  <p class="form-row">
                     <input type="password" name="re-pwd" placeholder="Confirm Password" id="confirm_password">
                     <span id="message"></span>
                   </p>  
@@ -53,12 +63,10 @@
                     <input type="checkbox" id="Conditions"> <label class="d-inline-block mb-0 label-Conditions" for="Conditions">{{ _e('Accept our Terms&Conditions', 'premast') }}</label>
                   </p>
 
+                  <input hidden  id="ref" type="text" value="<?= $refer; ?>"  name="refer" readonly="readonly"/>
+                  <input hidden id="follow_ip" type="text" value="<?= $ip; ?>"  name="follow_ip" readonly="readonly"/>
 
-                    <input hidden  id="ref" type="text" value="<?= $refer; ?>"  name="refer" readonly="readonly"/>
-                    <input hidden id="follow_ip" type="text" value="<?= $ip; ?>"  name="follow_ip" readonly="readonly"/>
-
-
-                  <button type="submit" id="register-button" class="woocommerce-Button button m-auto d-block" name="register" value="Register">{{ _e('Register', 'premast') }}</button>
+                  <button type="submit" id="register-button" class="woocommerce-Button button m-auto d-block" name="register" value="Register">{{ _e('sign up', 'premast') }}</button>
                   <span id="sl-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span>
                 </form> 
                 <script type="text/javascript">

@@ -68,43 +68,58 @@
           @else
             <div class="custom-share">
               <h4>{{ _e('Invite through mail', 'premast') }}</h4>
-              <form class="form-inline">
-                <div class="form-group mb-2">
-                  <label for="inputPassword2" class="sr-only">write an email</label>
-                  <input type="email" class="form-control" id="emailInput" placeholder="write an email">
-                </div>
-                <button type="submit" class="btn btn-primary mb-2 shadow-none py-2 px-4">{{ _e('Send Invite', 'premast') }}</button>
+              @php 
+                global $current_user;
+                wp_get_current_user();
+                $form = get_field('forms_referral', 'option');
+                $inputs = get_all_form_fields($form['id']);
+                $link = get_field('link_signup', 'option').'?refer='.$current_user->ID.'&token='.get_the_date('U').'';
+              @endphp
+
+              <form class="form-inline" role="" method="post" id="gform_<?= $form['id']; ?>" action="<?= the_permalink(); ?>?send=gf_<?= $form['id']; ?>">
+                <?php foreach ($inputs as $input): ?>
+                  <?php if($input["type"] == "email"): ?>
+                    <div class="form-group mb-2">
+                      <input type="email" name="input_<?= $input["id"]; ?>" class="form-control" id="emailInput" placeholder="write an email">
+                    </div>
+                  <?php elseif($input["type"] == "hidden"): ?>
+                    <input type="text" name="input_<?= $input["id"]; ?>" class="form-control" hidden value="<?= $current_user->display_name; ?>">
+                  <?php else: ?>
+                    <input type="text" name="input_<?= $input["id"]; ?>" class="form-control" hidden value="<?= $link; ?>">
+                  <?php endif; ?>
+                <?php endforeach; ?>
+                <button id="gform_submit_button_<?= $form['id']; ?>" class="btn btn-primary mb-2 shadow-none py-2 px-4"><span>{{ _e('Send Invite', 'premast') }}</span></button>
+                <input type="hidden" class="gform_hidden" name="is_submit_<?= $form['id']; ?>" value="1">
+                <input type="hidden" class="gform_hidden" name="gform_submit" value="<?= $form['id']; ?>">
+                <input type="hidden" class="gform_hidden" name="gform_unique_id" value="">
+                <input type="hidden" class="gform_hidden" name="state_<?= $form['id']; ?>" value="WyJbXSIsImU5YjY1MWMyNzBhYjc5MDI0ZjlmYzlkZjVhMzVmMTZmIl0=">
+                <input type="hidden" class="gform_hidden" name="gform_target_page_number_<?= $form['id']; ?>" id="gform_target_page_number_<?= $form['id']; ?>" value="0">
+                <input type="hidden" class="gform_hidden" name="gform_source_page_number_<?= $form['id']; ?>" id="gform_source_page_number_<?= $form['id']; ?>" value="1">
+                <input type="hidden" name="gform_field_values" value="">
               </form>
 
-                @php 
-                  global $current_user;
-                  wp_get_current_user();
+              <ul class="list-inline social-sharer">
+                <li class="head"><span>{{ _e('Share your link', 'premast') }}</span></li>
+                <li class="list-inline-item">
+                  <a class="item" data-network="linkedin" data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-linkedin"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="item" data-network="twitter"  data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-twitter"></i></a>      
+                </li>
+                <li class="list-inline-item">
+                  <a class="item" data-network="facebook" data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-facebook"></i></a>      
+                </li>
+                <li class="list-inline-item">
+                  <a class="item" data-network="addtoany" data-url="{{ $link }}" data-title="{{ $link }}" href="#"> <i class="fa fa-ellipsis-v"></i></a>      
+                </li>
+              </ul>
 
-                  $link = get_field('link_signup', 'option').'?refer='.$current_user->ID.'&token='.get_the_date('U').'';
-                @endphp
-
-                <ul class="list-inline social-sharer">
-                  <li class="head"><span>{{ _e('Share your link', 'premast') }}</span></li>
-                  <li class="list-inline-item">
-                    <a class="item" data-network="linkedin" data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-linkedin"></i></a>
-                  </li>
-                  <li class="list-inline-item">
-                    <a class="item" data-network="twitter"  data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-twitter"></i></a>      
-                  </li>
-                  <li class="list-inline-item">
-                    <a class="item" data-network="facebook" data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-facebook"></i></a>      
-                  </li>
-                  <li class="list-inline-item">
-                    <a class="item" data-network="addtoany" data-url="{{ $link }}" data-title="{{ $link }}" href="#"> <i class="fa fa-ellipsis-v"></i></a>      
-                  </li>
-                </ul>
-
-                <div id="inviteCode" class="invite-page">
-                  <input id="link" value="{{ $link }}" readonly>
-                  <div id="copy">
-                    <i data-copytarget="#link">{{ _e('Copy Link', 'premast') }}</i>
-                  </div>
+              <div id="inviteCode" class="invite-page">
+                <input id="link" value="{{ $link }}" readonly>
+                <div id="copy">
+                  <i data-copytarget="#link">{{ _e('Copy Link', 'premast') }}</i>
                 </div>
+              </div>
             </div>
           @endif
         </div>

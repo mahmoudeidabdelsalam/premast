@@ -6707,7 +6707,7 @@ input[type="button"].btn-block {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  padding-left: 20px;
+  padding-left: 0;
   margin-bottom: 0;
   list-style: none;
 }
@@ -13117,7 +13117,7 @@ button.bg-dark:focus {
 
 .pt-5,
 .py-5 {
-  padding-top: 1rem !important;
+  padding-top: 3rem !important;
 }
 
 /* line 16, node_modules/bootstrap/scss/utilities/_spacing.scss */
@@ -13131,7 +13131,7 @@ button.bg-dark:focus {
 
 .pb-5,
 .py-5 {
-  padding-bottom: 2rem !important;
+  padding-bottom: 3rem !important;
 }
 
 /* line 24, node_modules/bootstrap/scss/utilities/_spacing.scss */
@@ -29346,6 +29346,26 @@ a:hover {
   color: #fff;
 }
 
+/* line 148, resources/assets/styles/common/_global.scss */
+
+.bg-sections {
+  background: url(/app/themes/premast/dist/images/bg-sections.png), -webkit-linear-gradient(315.76deg, #1fa2ff -4.21%, #274fdb 135.73%);
+  background: url(/app/themes/premast/dist/images/bg-sections.png), -o-linear-gradient(315.76deg, #1fa2ff -4.21%, #274fdb 135.73%);
+  background: url(/app/themes/premast/dist/images/bg-sections.png), linear-gradient(134.24deg, #1fa2ff -4.21%, #274fdb 135.73%);
+  background-size: cover;
+}
+
+@media (min-width: 992px) {
+  /* line 154, resources/assets/styles/common/_global.scss */
+
+  .custom-padding {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    padding-right: 110px;
+    padding-left: 110px;
+  }
+}
+
 /* line 11, resources/assets/styles/common/_loop.scss */
 
 .bg-primary {
@@ -31201,9 +31221,12 @@ ul.footer-menu {
   display: flex;
   margin-bottom: 0;
   margin-left: auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-/* line 238, resources/assets/styles/layouts/_blocks.scss */
+/* line 239, resources/assets/styles/layouts/_blocks.scss */
 
 ul.footer-menu li {
   font-size: 16px;
@@ -31215,7 +31238,7 @@ ul.footer-menu li {
   font-weight: 500;
 }
 
-/* line 248, resources/assets/styles/layouts/_blocks.scss */
+/* line 249, resources/assets/styles/layouts/_blocks.scss */
 
 ul.footer-links {
   list-style: none;
@@ -31226,13 +31249,13 @@ ul.footer-links {
   margin: 0 20px;
 }
 
-/* line 255, resources/assets/styles/layouts/_blocks.scss */
+/* line 256, resources/assets/styles/layouts/_blocks.scss */
 
 ul.footer-links li {
   margin: 0 20px;
 }
 
-/* line 259, resources/assets/styles/layouts/_blocks.scss */
+/* line 260, resources/assets/styles/layouts/_blocks.scss */
 
 ul.footer-links li a {
   font-size: 16px;
@@ -31244,39 +31267,39 @@ ul.footer-links li a {
   font-weight: normal;
 }
 
-/* line 269, resources/assets/styles/layouts/_blocks.scss */
+/* line 270, resources/assets/styles/layouts/_blocks.scss */
 
 ul.footer-menu li a {
   font-size: 25px;
 }
 
-/* line 273, resources/assets/styles/layouts/_blocks.scss */
+/* line 274, resources/assets/styles/layouts/_blocks.scss */
 
 .header-block img {
   max-width: 230px;
 }
 
-/* line 277, resources/assets/styles/layouts/_blocks.scss */
+/* line 278, resources/assets/styles/layouts/_blocks.scss */
 
 header.header-block {
   padding: 20px 0;
 }
 
-/* line 281, resources/assets/styles/layouts/_blocks.scss */
+/* line 282, resources/assets/styles/layouts/_blocks.scss */
 
 header.header-block.fixed-header {
   padding: 5px;
   background-color: #3c4165;
 }
 
-/* line 286, resources/assets/styles/layouts/_blocks.scss */
+/* line 287, resources/assets/styles/layouts/_blocks.scss */
 
 section.block-models {
   background: #e5e5e5;
   padding: 90px 0 100px;
 }
 
-/* line 291, resources/assets/styles/layouts/_blocks.scss */
+/* line 292, resources/assets/styles/layouts/_blocks.scss */
 
 .col-action {
   opacity: 0;
@@ -31285,7 +31308,7 @@ section.block-models {
   transition: all 0.7s;
 }
 
-/* line 296, resources/assets/styles/layouts/_blocks.scss */
+/* line 297, resources/assets/styles/layouts/_blocks.scss */
 
 .fixed-header .col-action {
   opacity: 1;
@@ -31294,7 +31317,7 @@ section.block-models {
   transition: all 0.5s;
 }
 
-/* line 301, resources/assets/styles/layouts/_blocks.scss */
+/* line 302, resources/assets/styles/layouts/_blocks.scss */
 
 h2.headline-block {
   font-size: 40px;
@@ -31304,13 +31327,13 @@ h2.headline-block {
   margin-bottom: 20px;
 }
 
-/* line 309, resources/assets/styles/layouts/_blocks.scss */
+/* line 310, resources/assets/styles/layouts/_blocks.scss */
 
 .models-item img {
   max-width: 100%;
 }
 
-/* line 313, resources/assets/styles/layouts/_blocks.scss */
+/* line 314, resources/assets/styles/layouts/_blocks.scss */
 
 .models-item .row:nth-child(odd) .one {
   -webkit-box-ordinal-group: 3;
@@ -31318,7 +31341,7 @@ h2.headline-block {
           order: 2;
 }
 
-/* line 317, resources/assets/styles/layouts/_blocks.scss */
+/* line 318, resources/assets/styles/layouts/_blocks.scss */
 
 .two {
   font-size: 16px;
@@ -31326,14 +31349,14 @@ h2.headline-block {
   color: #3d4165;
 }
 
-/* line 323, resources/assets/styles/layouts/_blocks.scss */
+/* line 324, resources/assets/styles/layouts/_blocks.scss */
 
 .two ul li {
   font-size: 16px;
   margin-bottom: 10px;
 }
 
-/* line 328, resources/assets/styles/layouts/_blocks.scss */
+/* line 329, resources/assets/styles/layouts/_blocks.scss */
 
 section.block-subscribe {
   background: -webkit-linear-gradient(286.86deg, #3d4166 0%, #212230 129.32%);
@@ -31342,7 +31365,7 @@ section.block-subscribe {
   padding: 45px 0 40px;
 }
 
-/* line 333, resources/assets/styles/layouts/_blocks.scss */
+/* line 334, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe {
   border-left: 6px solid #ff640a;
@@ -31359,7 +31382,7 @@ section.block-subscribe {
   min-height: 115px;
 }
 
-/* line 341, resources/assets/styles/layouts/_blocks.scss */
+/* line 342, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe p {
   font-style: normal;
@@ -31369,13 +31392,13 @@ section.block-subscribe {
   color: white;
 }
 
-/* line 349, resources/assets/styles/layouts/_blocks.scss */
+/* line 350, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper label {
   display: none !important;
 }
 
-/* line 353, resources/assets/styles/layouts/_blocks.scss */
+/* line 354, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper form {
   display: -webkit-box;
@@ -31383,20 +31406,20 @@ section.block-subscribe {
   display: flex;
 }
 
-/* line 357, resources/assets/styles/layouts/_blocks.scss */
+/* line 358, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper {
   margin: 0 !important;
 }
 
-/* line 361, resources/assets/styles/layouts/_blocks.scss */
+/* line 362, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper .gform_footer {
   padding: 0;
   margin: 0;
 }
 
-/* line 366, resources/assets/styles/layouts/_blocks.scss */
+/* line 367, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper .gform_footer button {
   background: #1e6dfb !important;
@@ -31409,7 +31432,7 @@ section.block-subscribe {
   border: 1px solid white;
 }
 
-/* line 377, resources/assets/styles/layouts/_blocks.scss */
+/* line 378, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe input::-webkit-input-placeholder {
   color: rgba(0, 0, 0, 0.4) !important;
@@ -31423,27 +31446,27 @@ section.block-subscribe {
   color: rgba(0, 0, 0, 0.4) !important;
 }
 
-/* line 381, resources/assets/styles/layouts/_blocks.scss */
+/* line 382, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe p .btn-primary {
   font-size: 16px;
   border-radius: 2px;
 }
 
-/* line 386, resources/assets/styles/layouts/_blocks.scss */
+/* line 387, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper li {
   padding: 0 !important;
   margin: 0 !important;
 }
 
-/* line 391, resources/assets/styles/layouts/_blocks.scss */
+/* line 392, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper li .ginput_container {
   margin: 0 !important;
 }
 
-/* line 395, resources/assets/styles/layouts/_blocks.scss */
+/* line 396, resources/assets/styles/layouts/_blocks.scss */
 
 .two-subscribe .gform_wrapper li .ginput_container input {
   height: 45px;
@@ -31454,7 +31477,7 @@ section.block-subscribe {
   padding: 5px 10px !important;
 }
 
-/* line 404, resources/assets/styles/layouts/_blocks.scss */
+/* line 405, resources/assets/styles/layouts/_blocks.scss */
 
 .one-subscribe h3 {
   font-weight: bold;
@@ -31463,7 +31486,7 @@ section.block-subscribe {
   color: white;
 }
 
-/* line 411, resources/assets/styles/layouts/_blocks.scss */
+/* line 412, resources/assets/styles/layouts/_blocks.scss */
 
 .one-subscribe h2 {
   font-weight: bold;
@@ -31473,15 +31496,14 @@ section.block-subscribe {
   color: white;
 }
 
-/* line 419, resources/assets/styles/layouts/_blocks.scss */
+/* line 420, resources/assets/styles/layouts/_blocks.scss */
 
 section.footer img {
-  max-width: 194.34px;
-  max-height:22.17px;
+  max-width: 230px;
   margin: 30px 0;
 }
 
-/* line 424, resources/assets/styles/layouts/_blocks.scss */
+/* line 425, resources/assets/styles/layouts/_blocks.scss */
 
 section.block-call h2 {
   font-weight: bold;
@@ -31493,7 +31515,7 @@ section.block-call h2 {
   margin: 54px 0 16px 0;
 }
 
-/* line 434, resources/assets/styles/layouts/_blocks.scss */
+/* line 435, resources/assets/styles/layouts/_blocks.scss */
 
 .block-video {
   position: relative;
@@ -31505,7 +31527,7 @@ section.block-call h2 {
   background-color: #c4c4c4;
 }
 
-/* line 444, resources/assets/styles/layouts/_blocks.scss */
+/* line 445, resources/assets/styles/layouts/_blocks.scss */
 
 .block-video iframe {
   position: absolute;
@@ -31516,20 +31538,20 @@ section.block-call h2 {
 }
 
 @media (max-width: 767.98px) {
-  /* line 453, resources/assets/styles/layouts/_blocks.scss */
+  /* line 454, resources/assets/styles/layouts/_blocks.scss */
 
   .layer-0 img {
     max-width: 100%;
   }
 
-  /* line 457, resources/assets/styles/layouts/_blocks.scss */
+  /* line 458, resources/assets/styles/layouts/_blocks.scss */
 
   .content-about {
     height: auto;
     padding: 15px;
   }
 
-  /* line 462, resources/assets/styles/layouts/_blocks.scss */
+  /* line 463, resources/assets/styles/layouts/_blocks.scss */
 
   .content-banner {
     height: auto;
@@ -31537,7 +31559,7 @@ section.block-call h2 {
     margin-bottom: 40px;
   }
 
-  /* line 468, resources/assets/styles/layouts/_blocks.scss */
+  /* line 469, resources/assets/styles/layouts/_blocks.scss */
 
   [data-aos] {
     -webkit-transform: translate3d(0, 0, 0) !important;
@@ -31545,39 +31567,39 @@ section.block-call h2 {
     opacity: 1 !important;
   }
 
-  /* line 473, resources/assets/styles/layouts/_blocks.scss */
+  /* line 474, resources/assets/styles/layouts/_blocks.scss */
 
   .planet img {
     max-width: 100%;
     margin: 10px 0;
   }
 
-  /* line 478, resources/assets/styles/layouts/_blocks.scss */
+  /* line 479, resources/assets/styles/layouts/_blocks.scss */
 
   .content-banner h2 {
     font-size: 30px;
   }
 
-  /* line 482, resources/assets/styles/layouts/_blocks.scss */
+  /* line 483, resources/assets/styles/layouts/_blocks.scss */
 
   section.block-about img {
     max-width: 100%;
   }
 
-  /* line 486, resources/assets/styles/layouts/_blocks.scss */
+  /* line 487, resources/assets/styles/layouts/_blocks.scss */
 
   section.block-about {
     min-height: 1px !important;
     padding: 15px 0;
   }
 
-  /* line 491, resources/assets/styles/layouts/_blocks.scss */
+  /* line 492, resources/assets/styles/layouts/_blocks.scss */
 
   section.block-about .layer-0 img {
     margin-left: -20px;
   }
 
-  /* line 495, resources/assets/styles/layouts/_blocks.scss */
+  /* line 496, resources/assets/styles/layouts/_blocks.scss */
 
   .status-icon {
     -webkit-box-orient: vertical;
@@ -31587,7 +31609,7 @@ section.block-call h2 {
     background: transparent;
   }
 
-  /* line 500, resources/assets/styles/layouts/_blocks.scss */
+  /* line 501, resources/assets/styles/layouts/_blocks.scss */
 
   .statusitems {
     padding: 12px;
@@ -31596,7 +31618,7 @@ section.block-call h2 {
     border-radius: 26px;
   }
 
-  /* line 507, resources/assets/styles/layouts/_blocks.scss */
+  /* line 508, resources/assets/styles/layouts/_blocks.scss */
 
   .models-item .row:nth-child(even) .two {
     -webkit-box-ordinal-group: 3 !important;
@@ -31604,14 +31626,14 @@ section.block-call h2 {
             order: 2 !important;
   }
 
-  /* line 511, resources/assets/styles/layouts/_blocks.scss */
+  /* line 512, resources/assets/styles/layouts/_blocks.scss */
 
   .models-item .two ul {
     padding: 0;
     margin: 20px;
   }
 
-  /* line 516, resources/assets/styles/layouts/_blocks.scss */
+  /* line 517, resources/assets/styles/layouts/_blocks.scss */
 
   .two-subscribe .gform_wrapper .gform_footer button {
     width: 90px;
@@ -31619,13 +31641,13 @@ section.block-call h2 {
     padding: 0;
   }
 
-  /* line 522, resources/assets/styles/layouts/_blocks.scss */
+  /* line 523, resources/assets/styles/layouts/_blocks.scss */
 
   section.footer {
     padding-bottom: 60px !important;
   }
 
-  /* line 526, resources/assets/styles/layouts/_blocks.scss */
+  /* line 527, resources/assets/styles/layouts/_blocks.scss */
 
   ul.footer-links {
     white-space: nowrap;
@@ -31634,7 +31656,7 @@ section.block-call h2 {
   }
 }
 
-/* line 533, resources/assets/styles/layouts/_blocks.scss */
+/* line 534, resources/assets/styles/layouts/_blocks.scss */
 
 h3.the-headline-border {
   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYyIiBoZWlnaHQ9IjEzIiB2aWV3Qm94PSIwIDAgMTYyIDEzIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMSA0LjY4MTI2QzQ1LjYzMTYgLTAuMzkxOTE2IDE0Ni4xNzEgLTEuNzY3NTkgMTYwLjQ3IDEwLjc2ODlDMTY3Ljk5MiAxNy4zNjM5IDk0LjI3NSAtNS40NjUzMiAxMi42NTk0IDEwLjc2ODkiIHN0cm9rZT0iIzFFNkRGQiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==);
@@ -31650,7 +31672,7 @@ h3.the-headline-border {
   margin-top: 34px;
 }
 
-/* line 547, resources/assets/styles/layouts/_blocks.scss */
+/* line 548, resources/assets/styles/layouts/_blocks.scss */
 
 .space-union {
   background-image: url(/app/themes/premast/dist/images/union.svg);
@@ -36539,6 +36561,76 @@ li.head {
   -webkit-box-pack: end !important;
       -ms-flex-pack: end !important;
           justify-content: end !important;
+}
+
+/* line 959, resources/assets/styles/layouts/_users.scss */
+
+section.custom-style-template .show-header img {
+  width: 400px;
+  margin: 15px 10px;
+}
+
+/* line 964, resources/assets/styles/layouts/_users.scss */
+
+section.custom-style-template .show-header h2 {
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: 0.04px;
+  color: #282F39;
+  mix-blend-mode: normal;
+  opacity: 0.82;
+}
+
+/* line 974, resources/assets/styles/layouts/_users.scss */
+
+section.custom-style-template .form-row label {
+  display: block !important;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.04px;
+  text-transform: capitalize;
+  color: #646464;
+  font-weight: 400;
+}
+
+/* line 984, resources/assets/styles/layouts/_users.scss */
+
+section.custom-style-template .button {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.04px;
+  text-transform: capitalize;
+  color: #FFFFFF;
+  background: -webkit-linear-gradient(291.42deg, #6B73FF -0.5%, #000DFF 100%);
+  background: -o-linear-gradient(291.42deg, #6B73FF -0.5%, #000DFF 100%);
+  background: linear-gradient(158.58deg, #6B73FF -0.5%, #000DFF 100%);
+  border-radius: 30px;
+  padding: 10px 20px;
+  margin: 10px 0 !important;
+}
+
+/* line 999, resources/assets/styles/layouts/_users.scss */
+
+section.custom-style-template p.Conditions label {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.04px;
+  color: #1E6DFB;
+  margin: 10px 5px;
+}
+
+/* line 1010, resources/assets/styles/layouts/_users.scss */
+
+.form-row input,
+.form-row select {
+  text-transform: lowercase;
 }
 
 /* stylelint-enable */
