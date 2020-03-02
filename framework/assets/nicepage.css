@@ -14282,7 +14282,7 @@ h2 {
   font-size: 1.5rem;
 }
 h3 {
-  font-size: 1.25rem;
+  font-size: 40px;
 }
 h4 {
   font-size: 1.25rem;
@@ -26917,8 +26917,8 @@ p.u-small-text {
 }
 
 p:not(.u-text-variant) {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .u-link {

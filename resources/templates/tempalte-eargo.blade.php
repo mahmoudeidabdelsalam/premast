@@ -91,7 +91,7 @@
           </div>
         </section>
 
-        <section class="u-align-left u-border-1 u-border-palette-5-base u-clearfix u-section-3" id="sec-428e">
+        <section class="u-align-left u-clearfix u-section-3" id="sec-428e">
           <div class="container py-5">
               <div class="row">
                     <h3 class="u-text u-text-1 col-12 mb-5">{{the_field('heading_fields')}}</h3>
@@ -115,10 +115,10 @@
           </div>
         </section>
 
-        <section class="u-align-left u-border-1 u-border-palette-5-base u-clearfix u-section-3" id="sec-b672" >
-            <div class="container-fluid pt-5 pb-5" style="background-color:#E9F3FF;">
+        <section class="u-align-left u-clearfix u-section-3" id="sec-b672" >
+            <div class="container-fluid pt-5" style="background-color:#E9F3FF;">
                 <div class="row">
-                    <div class="col-md-1 col-l12 align-self-center">
+                    <div class="col-md-1 col-12 margin-top-100">
                       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <?php
                         $counter = 0;
@@ -144,11 +144,11 @@
                                 ?>
                             <div class="tab-pane fade <?= ($counter == 1)? 'active show':''; ?>" id="v-pills-<?= $counter; ?>" role="tabpanel" aria-labelledby="pills-<?= $counter; ?>-tab">
                                 <div class="row">
-                                    <div class="col-md-6 col-12 align-self-center">
+                                    <div class="col-md-6 col-12 margin-top-100">
                                         <h5><?php the_sub_field('headline_tbs'); ?></h5>
                                         <p><?php the_sub_field('content_tabs'); ?></p>
                                     </div>
-                                    <div class="col-md-6 col-12 align-self-center">
+                                    <div class="col-md-6 col-12">
                                         <img src="<?= the_sub_field('images_tabs'); ?>"/>
                                     </div>
                                 </div>
@@ -163,8 +163,8 @@
 
         <section class="u-carousel u-carousel-duration-750 u-slide u-block-b0a8-1 pt-5 pb-5" id="carousel_bfd6" data-interval="1250" data-u-ride="carousel" style="background-image:url('<?= the_field('updates_trusted'); ?>')">
 
-          <h3 class="text-center"><?= the_field('headline_trusted'); ?></h3>
-          <p class="u-custom-font u-heading-font u-text u-text-2 text-center"><?= the_field('subheadline_trusted_eargo'); ?></p>
+          <h3 id="headline" class="text-center" ><?php the_field('headline_trusted'); ?></h3>
+          <p class="u-custom-font u-heading-font u-text u-text-2 text-center"><?php the_field('subheadline_trusted_eargo'); ?></p>
 
 
           <ol class="u-absolute-hcenter u-carousel-indicators u-opacity u-opacity-80 u-block-b0a8-2">
