@@ -98,11 +98,16 @@
 
 
           @php 
+          $limit = get_field('limit_referral_gift', 'option');
+          $token   = isset($_GET['token']) ? $_GET['token'] : '';
+          $active   = isset($_GET['active']) ? $_GET['active'] : '';
+          $login   = isset($_GET['login']) ? $_GET['login'] : '';
+
             $args = array(
               'post_type' => 'wc_user_membership',
               'post_status'   => array('wcm-active', 'wcm-expired', 'wcm-pending'),
               'suppress_filters' => 0,
-              'numberposts'   => 3,
+              'numberposts'   => $limit,
               'author' => $current_user->ID
             );
             $posts = get_posts($args);
@@ -111,6 +116,75 @@
             $start_date = date('Y-m-d H:i:s');
           @endphp
 
+          @if($login == $current_user->ID && $active == 'done' && $token) 
+            <h4>{{ _e('Check your progress', 'premast') }}</h4>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">date</th>
+                  <th scope="col">Referrals <i class="fa fa-question-circle-o" aria-hidden="true" data-toggle="tooltip" title="name a friend from Invitation"></i></th>
+                  <th scope="col">Rewards <i class="fa fa-question-circle-o" aria-hidden="true" data-toggle="tooltip" title="status of Invitation with acion"></i></th>
+                  <th scope="col">Expires on <i class="fa fa-question-circle-o" aria-hidden="true" data-toggle="tooltip" title="Date Invitation completed"></i></th>
+                </tr>
+              </thead>
+              <tbody>
+              <?php
+                foreach ($posts as $post):
+                setup_postdata( $post ); 
+                $author = get_user_by( 'ID', $post->post_author );
+                $author_display_name = $author->display_name;
+                $date_stamp = strtotime($post->post_date);
+                $postdate = date("M d, Y", $date_stamp);
+                $expired = date('M d, Y', strtotime(get_post_meta( $post->ID, '_end_date', true )));
+                $ex_active = date('M d, Y', strtotime($post->post_date. ' + 7 days'));
+                $status = get_post_status($post->ID, 'post_status', TRUE);
+                if($status == 'wcm-active'):
+                  $label = '<span class="text-green"> <i class="fa fa-check" aria-hidden="true"></i> Activated</span>';
+                elseif($status == 'wcm-pending'):
+                  $label = '<a data-id="'.$post->ID.'" href="javascript:void(0)" class="activate-now text-blue" >Activate Now</a>';
+                elseif($status == 'wcm-expired'):
+                  $label = '<span class="text-red">expired</span>';
+                else: 
+                  $label = '-';
+                endif;
+
+                $user_ref = get_user_by('ID', $token);
+                if (get_post_meta($post->ID, 'email_referrals', TRUE) == $user_ref->user_email):
+              ?>
+                <tr>
+                  <td><?= $postdate; ?></td>
+                  <td><?= (get_post_meta($post->ID, 'email_referrals', TRUE))? get_post_meta($post->ID, 'email_referrals', TRUE):'-'; ?></td>
+                  <td class="rewards" id="<?= $post->ID; ?>"><?= $label; ?></td>
+                  <td><?= ($status == 'wcm-pending')? $ex_active:$expired; ?></td>
+                </tr>
+
+                @if($status == 'wcm-pending')
+                  <script>
+                    jQuery(function($) {
+                      $( window ).load(function() {
+                        var active_id = $('.activate-now').data('id');
+                        var status = $('td#' + active_id);
+                        
+                        $.ajax({
+                          url:"<?= admin_url( 'admin-ajax.php' ); ?>",       
+                          type:'POST',
+                          data: {
+                            action: 'get_active',
+                            post_id: active_id,
+                          },
+                          success: function (data) {
+                            status.html('<span class="text-green"> <i class="fa fa-check" aria-hidden="true"></i> Activated</span>');
+                          },
+                        });
+                      });
+                    });
+                  </script>
+                @endif
+                <?php endif; ?>
+              <?php endforeach; ?>
+              </tbody>
+            </table>
+        @else
           <h4>{{ _e('Check your progress', 'premast') }}</h4>
           <table class="table table-hover">
             <thead>
@@ -151,9 +225,9 @@
             <?php endforeach; ?>
             </tbody>
           </table>
+        @endif 
         </div>
-
-
+        
         <script>
           jQuery(function($) {
             

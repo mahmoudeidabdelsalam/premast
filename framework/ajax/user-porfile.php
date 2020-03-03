@@ -136,13 +136,19 @@ function register_user_front_end() {
 	  	);
       $user_id = wp_insert_user($user_data);
 
+      $link = get_field('link_page_referral', 'option').'?token='.$user_id.'&active=done&login='.$refer_id;
+
 	  	if (!is_wp_error($user_id)) {
         $output .= '<span class="user-created alert alert-success">we have Created an account for you.</span>';
         $output .= '<script>';
         $output .= 'jQuery(function(){';
-        $output .= 'jQuery(".login").click();';
         $output .= 'jQuery("#user_login").val("'.$user_nice_name.'");';
         $output .= 'jQuery("#user_pass").val("'.$new_user_password.'");';
+        if($refer_id) {
+          $output .= 'jQuery("#linkInput").val("'.$link.'");';
+        } else {
+          $output .= 'jQuery(".login").click();';
+        }
         $output .=  '});';
         $output .='</script>';
 

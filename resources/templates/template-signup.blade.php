@@ -63,12 +63,43 @@
                     <input type="checkbox" id="Conditions"> <label class="d-inline-block mb-0 label-Conditions" for="Conditions">{{ _e('Accept our Terms&Conditions', 'premast') }}</label>
                   </p>
 
-                  <input hidden  id="ref" type="text" value="<?= $refer; ?>"  name="refer" readonly="readonly"/>
-                  <input hidden id="follow_ip" type="text" value="<?= $ip; ?>"  name="follow_ip" readonly="readonly"/>
+                  @if($refer)
+                    <input hidden  id="ref" type="text" value="<?= $refer; ?>"  name="refer" readonly="readonly"/>
+                    <input hidden id="follow_ip" type="text" value="<?= $ip; ?>"  name="follow_ip" readonly="readonly"/>
+                  @endif
 
                   <button type="submit" id="register-button" class="woocommerce-Button button m-auto d-block" name="register" value="Register">{{ _e('sign up', 'premast') }}</button>
                   <span id="sl-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span>
                 </form> 
+
+
+                @if ($refer)
+                  @php 
+                    $confierm = get_field('forms_confirm_email', 'option');
+                    $signin = get_field('link_signin', 'option');
+                    $inputs = get_all_form_fields($confierm['id']);
+                    $author_obj = get_user_by('id', $refer);
+                  @endphp
+
+                  <form class="form-inline" role="" method="post" id="gform_<?= $confierm['id']; ?>" action="<?= $signin; ?>">
+                    <?php foreach ($inputs as $input): ?>
+                      <?php if($input["type"] == "email"): ?>
+                        <input hidden type="email" name="input_<?= $input["id"]; ?>" value="<?= $author_obj->user_email; ?>" class="form-control" id="emailInput" placeholder="write an email">
+                      <?php else: ?>
+                        <input hidden type="text" name="input_<?= $input["id"]; ?>" class="form-control" hidden value="" id="linkInput">
+                      <?php endif; ?>
+                    <?php endforeach; ?>
+                    <button id="gform_submit_button" class="btn btn-primary mb-2 shadow-none py-2 px-4" hidden></button>
+                    <input type="hidden" class="gform_hidden" name="is_submit_<?= $confierm['id']; ?>" value="1">
+                    <input type="hidden" class="gform_hidden" name="gform_submit" value="<?= $confierm['id']; ?>">
+                    <input type="hidden" class="gform_hidden" name="gform_unique_id" value="">
+                    <input type="hidden" class="gform_hidden" name="state_<?= $confierm['id']; ?>" value="WyJbXSIsImU5YjY1MWMyNzBhYjc5MDI0ZjlmYzlkZjVhMzVmMTZmIl0=">
+                    <input type="hidden" class="gform_hidden" name="gform_target_page_number_<?= $confierm['id']; ?>" id="gform_target_page_number_<?= $confierm['id']; ?>" value="0">
+                    <input type="hidden" class="gform_hidden" name="gform_source_page_number_<?= $confierm['id']; ?>" id="gform_source_page_number_<?= $confierm['id']; ?>" value="1">
+                    <input type="hidden" name="gform_field_values" value="">
+                  </form>
+                @endif
+
                 <script type="text/javascript">
                   jQuery(function($) {
                     $('#password, #confirm_password').on('keyup', function () {
@@ -103,6 +134,7 @@
                         success: function(results){
                           $('.register-message').html(results).show();
                           $('#sl-loader').hide();
+                          $('#gform_<?= $confierm["id"]; ?>' ).submit();
                         },
                         error: function(results) {
                           $('.register-message').html('plz try again later').show();

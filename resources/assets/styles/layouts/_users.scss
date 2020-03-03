@@ -1009,6 +1009,19 @@ section.custom-style-template p.Conditions label {
 
 .form-row input,
 .form-row select {
-  text-transform: lowercase;
+  text-transform: lowercase !important;
+}
+
+span.text-red {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.04px;
+  color: #FF0000;
+}
+
+.modal-footer .login {
+  color: #3a51ff;
+  margin: 0 10px;
 }
 /* stylelint-enable */

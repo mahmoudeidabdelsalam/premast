@@ -2,9 +2,8 @@
 // ajax function change status user membership gift
 function membership_gift() {
 
-  $active_id = $_POST['post_id'];
-                  
-    $limit = get_field('limit_referral_gift', 'option');
+  $active_id = $_POST['post_id'];                
+  $limit = get_field('limit_referral_gift', 'option');
 
     global $current_user;
     wp_get_current_user();
