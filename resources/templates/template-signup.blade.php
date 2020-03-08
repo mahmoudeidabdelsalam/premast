@@ -20,7 +20,7 @@
       <div class="container-fluid">
         <div class="row justify-content-center">
           @if ( !is_user_logged_in() )
-            <div class="col-md-5 col-12 custom-padding bg-sections">
+            <div class="col-md-5 col-12 custom-padding bg-sections row m-0 align-middle">
                 <h3 class="text-white">Welcome! You’ve been invited to join premast</h3>
                 <p class="text-white mb-5">* Join us and enjoy these benefits:</p>
                 <ul class="text-white">
@@ -29,7 +29,13 @@
                   <li>Discover amazing new products daily</li>
                 </ul>
 
-                <a href="#" class="text-white mt-5">{{ _e('Know more about us', 'permast') }} <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                <a href="<?= the_field('link_about_us', 'option'); ?>" class="text-white mt-5">{{ _e('Know more about us', 'permast') }} <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+
+                <div class="mt-auto">
+                  <span class="text-white">*</span>
+                  <p class="text-white">You’ll automatically be registered on our free plan with 2 free downloads/day.</p>
+                  <a class="text-white" href="<?= the_field('link_pricing', 'option'); ?>">to upgrade, Check Our Plans  <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                </div>
             </div>
             <div class="col-md-7 col-12 bg-light custom-padding">
               <div class="show-header text-left">

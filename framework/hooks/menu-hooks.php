@@ -206,6 +206,7 @@ class Nav_Item_Walker extends Walker_Nav_Menu {
 
 	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
     $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+
     
     $child_term = get_term_children( $item->object_id, $item->object );
 

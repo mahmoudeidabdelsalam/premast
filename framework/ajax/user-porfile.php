@@ -187,23 +187,23 @@ function get_the_user_ip() {
 add_action('user_register', 'premast_memberships_create');
 
 function premast_memberships_create(){
-  
-  
   $refer_id = $_POST['refer'];
   $plan_id = get_field('plan_id', 'option');
 
-  $data = apply_filters( 'wc_memberships_groups_import_membership_data', array(
-    'plan_id' => $plan_id, 
-    'post_author'    => $refer_id,
-    'post_type'      => 'wc_user_membership',
-    'post_status'    => 'wcm-pending',
-    'comment_status' => 'open',
-  ) );
+  if ($refer_id) {
+    $data = apply_filters( 'wc_memberships_groups_import_membership_data', array(
+      'plan_id' => $plan_id, 
+      'post_author'    => $refer_id,
+      'post_type'      => 'wc_user_membership',
+      'post_status'    => 'wcm-pending',
+      'comment_status' => 'open',
+    ) );
 
-  // create a new membership
-  $user_membership_id = wp_insert_post( $data, true );
-  $user_email = $_POST['user_email'];
-  update_post_meta( $user_membership_id, 'email_referrals', $user_email );
+    // create a new membership
+    $user_membership_id = wp_insert_post( $data, true );
+    $user_email = $_POST['user_email'];
+    update_post_meta( $user_membership_id, 'email_referrals', $user_email );
+  }
 
   // bail out on failure
   if ( is_wp_error( $user_membership_id ) ) {

@@ -141,7 +141,7 @@
                 <ul class="list-unstyled mb-0">
                   @if($taxonomy_query->parent) 
                     @php 
-                    $term_parent = get_term_parents_list( $taxonomy_query->parent, 'product_cat' );
+                      $term_parent = get_term_parents_list( $taxonomy_query->parent, 'product_cat' );
                       $term_link = get_term_link( $taxonomy_query );
                       $termchildren = get_term_children( $taxonomy_query->term_id, 'product_cat' );
                     @endphp

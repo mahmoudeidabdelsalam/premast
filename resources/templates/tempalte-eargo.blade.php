@@ -68,7 +68,7 @@
               </div>
             </div>
             <img src="{{the_field('counter_img') }}" alt="" class="u-image u-image-default u-image-2" data-image-width="1400" data-image-height="606">
-            <h3 class="container">{{the_field('feat_text')}}</h3>
+            <h3 class="container">{{ _e('Features', 'premast') }}</h3>
             <p class="row justify-content-center">{{the_field(('feat_subtext')) }}</p>
             <div class="container">
                 <div class="row justify-content-center">

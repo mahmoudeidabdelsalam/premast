@@ -30,7 +30,7 @@
   </div>
 </section>
 
-@if ( !is_user_logged_in() && !is_page_template( 'views/template-signup.blade.php' ) && !is_page_template( 'views/template-signin.blade.php' ) )
+@if ( !is_user_logged_in() && !is_page_template( 'templates/template-signup.blade.php' ) && !is_page_template( 'templates/template-signin.blade.php' ) )
 
   <!-- Modal Login -->
   <div class="modal fade" id="LoginUser" tabindex="-1" role="dialog" aria-labelledby="LoginUserLabel" aria-hidden="true">
