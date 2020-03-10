@@ -379,12 +379,7 @@
         @php (wp_reset_postdata())
       </div>
 
-      <div class="spinner">
-        <div class="cube1"></div>
-        <div class="cube2"></div>
-      </div>
-
-
+      
       <div class="col-12 pt-5 pb-5">
         @if ($sort != '0')
           <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $more_query) }}</nav>

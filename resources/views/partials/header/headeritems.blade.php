@@ -238,3 +238,55 @@
   @endif
 
 @endif
+
+<style>
+  .admin-bar .col-offer + header.bg-light.banner {
+    top: 88px !important;
+  }
+  .admin-bar .col-offer + header.bg-light.banner.navbar-banner-items.fixed-header {
+    top: 32px !important;
+  }
+  .col-offer + header.bg-light.banner {
+    top: 55px !important;
+  }
+  .col-offer + header.bg-light.banner.navbar-banner-items.fixed-header {
+    top: 0px !important;
+  }
+  .navbar-banner-items li.item-menu.open .sub {
+    display: block !important;
+    z-index: 999;
+  }
+  li.item-menu.star .sub li {
+      border-right: 1px solid #ddd;
+  }
+
+  li.item-menu.star .sub li a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  li.item-menu.star .sub li a img {
+      margin-right: 10px;
+  }  
+</style>
+
+<script>
+  jQuery(function($) {
+    if ($(window).width() > 767) {
+      var hoverTimeout;
+      $(".nav-link").hover(function () {
+        var element = $(this).parent(".item-menu");
+        hoverTimeout = setTimeout(function () {
+          element.addClass("open");
+        }, 250);
+      }, function () {
+        clearTimeout(hoverTimeout);
+        var element = $(this).parent(".item-menu");
+        hoverTimeout = setTimeout(function () {
+          element.removeClass("open");
+        }, 1500);
+      });
+    }
+  });
+</script>

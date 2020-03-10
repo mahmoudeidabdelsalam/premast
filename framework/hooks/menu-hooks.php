@@ -208,73 +208,101 @@ class Nav_Item_Walker extends Walker_Nav_Menu {
     $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
     
-    $child_term = get_term_children( $item->object_id, $item->object );
+    if($item->object == "custom")  {
+      $attributes .= ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+      $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+      $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+      $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+      $item_output = $args->before;
+        $item_output .= '<li class="item-menu star">';
+        $item_output .= '<input id="'.$item->ID.'" class="radio" name="links" type="radio" '.$checked.' '.$parent_checked.'> <label class="link nav-link link-item" for="'.$item->ID.'"> <a href="#">';
+        $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+        $item_output .= '</a></label>';
+        $item_output .= '<ul class="sub">';
+          if( have_rows('select_page_bundles', 'option') ):
+            while ( have_rows('select_page_bundles', 'option') ) : the_row();
+            $link = get_sub_field('link_page_bundles', 'option');
+            $img = get_sub_field('page_logo_bundles', 'option');
+              if( $link ): 
+                $link_url     = $link['url'];
+                $link_title   = $link['title'];
+                $link_target  = $link['target'] ? $link['target'] : '_self';
 
-		$class_names = $value = '';
+                $item_output .= '<li class="'.$term_current.'"><a class="nav-link" href="'.esc_url( $link_url ).'"  target="'. esc_attr( $link_target ) .'">';
+                $item_output .= '<img src="'.$img.'" alt="'. esc_attr( $link_target ) .'" title="'. esc_attr( $link_target ) .'" />';
+                $item_output .= esc_html( $link_title );
+                $item_output .= '</a></li>';
+              endif;
+            endwhile;
+          endif;
+        $item_output .= '</ul>';
+        $item_output .= '</li>';
+      $item_output .= $args->after;
+      $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+    } else {
 
-		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
-		$classes[] = 'menu-item-' . $item->ID;
-
-		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
-		$class_names = $class_names ? ' class="item-menu ' . esc_attr( $class_names ) . '"' : '';
-
-		$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
-		$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
-
-		$output .= $indent . '';
-
-    $term = get_term_by( 'id', $item->object_id, $item->object );
-    $parent = $term->parent;
-
-    $taxonomy_query = get_queried_object();
-
-    $current = ($item->current)? "item-current":"";
-    $checked = ($item->current)? "checked":"";
-
-
-		$attributes .= ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
-		$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
-		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
-		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
-
-    $item_output = $args->before;
-    if($child_term) {
-      $parent_current = ($item->object_id == $taxonomy_query->parent)? "item-current":"";
-      $parent_checked = ($item->object_id == $taxonomy_query->parent)? "checked":"";
-
-      $item_output .= '<li class="item-menu '.$current.' '.$parent_current.'">';
-      $item_output .= '<input id="'.$item->ID.'" class="radio" name="links" type="radio" '.$checked.' '.$parent_checked.'> <label class="link nav-link link-item" for="'.$item->ID.'"> <a href="'.get_term_link( $term ).'">';
-      $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-      $item_output .= '</a></label>';
-      $item_output .= '<ul class="sub">';
-      $item_output .= '<li class="'.$current.'">';
-      $item_output .= '<a class="nav-link" '. $attributes .'>';
-      $item_output .= 'All categories';
-      $item_output .= '</a>';
-      $item_output .= '</li>';
-        foreach($child_term as $child):
-          $term = get_term_by( 'id', $child, $item->object );
-          $term_current = ($term->term_id == $taxonomy_query->term_id)? "item-current":"";
-
-          $item_output .= '<li class="'.$term_current.'"><a class="nav-link" href="'.get_term_link( $term ).'">';
-          $item_output .= $term->name;
-          $item_output .= '</a></li>';
-        endforeach;
-      $item_output .= '</ul>';
-      $item_output .= '</li>';
-    } 
-    else 
-    {
-      $item_output .= '<li '.$class_names.'>';
-      $item_output .= '<a'. $attributes .' class="link-item">';
-      $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-      $item_output .= '</a>';
-      $item_output .= '</li>';
+      $child_term = get_term_children( $item->object_id, $item->object );
+      $class_names = $value = '';
+      $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+      $classes[] = 'menu-item-' . $item->ID;
+      $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
+      $class_names = $class_names ? ' class="item-menu ' . esc_attr( $class_names ) . '"' : '';
+      $id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
+      $id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
+      $output .= $indent . '';
+      $term = get_term_by( 'id', $item->object_id, $item->object );
+      $parent = $term->parent;
+      $taxonomy_query = get_queried_object();
+      $current = ($item->current)? "item-current":"";
+      $checked = ($item->current)? "checked":"";
+      $attributes .= ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+      $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+      $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+      $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+      $item_output = $args->before;
+      if($child_term) {
+        $parent_current = ($item->object_id == $taxonomy_query->parent)? "item-current":"";
+        $parent_checked = ($item->object_id == $taxonomy_query->parent)? "checked":"";
+        $term_link = get_term_link( $term );
+        if ( is_wp_error( $term_link ) ) {
+          $term_link = null;
+        }
+        $item_output .= '<li class="item-menu '.$current.' '.$parent_current.'">';
+        $item_output .= '<input id="'.$item->ID.'" class="radio" name="links" type="radio" '.$checked.' '.$parent_checked.'> <label class="link nav-link link-item" for="'.$item->ID.'"> <a href="'.$term_link.'">';
+        $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+        $item_output .= '</a></label>';
+        $item_output .= '<ul class="sub">';
+        $item_output .= '<li class="'.$current.'">';
+        $item_output .= '<a class="nav-link" '. $attributes .'>';
+        $item_output .= 'All categories';
+        $item_output .= '</a>';
+        $item_output .= '</li>';
+          foreach($child_term as $child):
+            $term = get_term_by( 'id', $child, $item->object );
+            $term_current = ($term->term_id == $taxonomy_query->term_id)? "item-current":"";
+            $term_link = get_term_link( $term );
+            if ( is_wp_error( $term_link ) ) {
+                continue;
+            }
+            $item_output .= '<li class="'.$term_current.'"><a class="nav-link" href="'.$term_link.'">';
+            $item_output .= $term->name;
+            $item_output .= '</a></li>';
+          endforeach;
+        $item_output .= '</ul>';
+        $item_output .= '</li>';
+      } 
+      else 
+      {
+        $item_output .= '<li '.$class_names.'>';
+        $item_output .= '<a'. $attributes .' class="link-item">';
+        $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+        $item_output .= '</a>';
+        $item_output .= '</li>';
+      }
+      $item_output .= $args->after;
+      $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
     }
-
-		$item_output .= $args->after;
-		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-	}
+  }
 
 	function end_el( &$output, $item, $depth = 0, $args = array() ) {
 		$output .= "\n";

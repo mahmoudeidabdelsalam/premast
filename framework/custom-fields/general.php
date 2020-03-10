@@ -1048,6 +1048,85 @@ if( function_exists('acf_add_local_field_group') ):
       ),
 
 
+      array(
+				'key' => 'field_5aewqe312412421412449254343asddsd2fafasfad30880',
+				'label' => 'Menu Bundles',
+				'name' => '',
+				'type' => 'tab',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'placement' => 'left',
+				'endpoint' => 0,
+      ),
+      
+
+      array(
+        'key' => 'field_5e1dab05123123123215b606',
+        'label' => 'Select Pages Bundles',
+        'name' => 'select_page_bundles',
+        'type' => 'repeater',
+        'instructions' => '',
+        'required' => 0,
+        'conditional_logic' => 0,
+        'wrapper' => array(
+          'width' => '',
+          'class' => '',
+          'id' => '',
+        ),
+        'collapsed' => '',
+        'min' => 0,
+        'max' => 0,
+        'layout' => 'block',
+        'button_label' => 'Add Page',
+        'sub_fields' => array(
+          array(
+            'key' => 'field_5e1d3123123213ab1d5b607',
+            'label' => 'Page logo',
+            'name' => 'page_logo_bundles',
+            'type' => 'image',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+              'width' => '',
+              'class' => '',
+              'id' => '',
+            ),
+            'return_format' => 'url',
+            'preview_size' => 'medium',
+            'library' => 'all',
+            'min_width' => '',
+            'min_height' => '',
+            'min_size' => '',
+            'max_width' => '',
+            'max_height' => '',
+            'max_size' => '',
+            'mime_types' => '',
+          ),
+          array(
+            'key' => 'field_5e112321321312312f04545af04',
+            'label' => 'link page bundles',
+            'name' => 'link_page_bundles',
+            'type' => 'link',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+              'width' => '',
+              'class' => '',
+              'id' => '',
+            ),
+            'return_format' => 'array',
+          ),
+        ),
+      ),
+
 		),
 		'location' => array (
 			array (
