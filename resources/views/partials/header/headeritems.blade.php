@@ -257,18 +257,26 @@
     z-index: 999;
   }
   li.item-menu.star .sub li {
-      border-right: 1px solid #ddd;
+    border-right: 1px solid #ddd;
   }
-
   li.item-menu.star .sub li a {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-
   li.item-menu.star .sub li a img {
-      margin-right: 10px;
-  }  
+    margin-right: 10px;
+  } 
+  .col-offer + header, .admin-bar .col-offer + header.bg-light.banner {
+    position: relative !important;
+    top: 0 !important;
+  }
+  header.bg-light.banner.navbar-banner-items.fixed-header {
+    position: fixed !important;
+  } 
+  .col-offer + header + section.banner-items {
+    margin-top: 0;
+  }
 </style>
 
 <script>

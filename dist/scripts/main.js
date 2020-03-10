@@ -13693,7 +13693,7 @@ Router.prototype.loadEvents = function loadEvents () {
     });
 
     $(window).scroll(function () {
-      if ($(window).scrollTop() >= 65) {
+      if ($(window).scrollTop() >= 165) {
         $('.fixed-top-header').addClass('fixed-header');
         $('.navbar-banner-items').addClass('fixed-header');
         $('.header-block').addClass('fixed-header');
