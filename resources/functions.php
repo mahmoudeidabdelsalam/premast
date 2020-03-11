@@ -118,3 +118,14 @@ function the_dramatist_filter_media( $query ) {
         $query['author'] = get_current_user_id();
     return $query;
 }
+
+
+
+function custom_rewrite_basic() {
+  add_rewrite_rule('product$', 'index.php?product=true', 'top');
+  add_rewrite_rule('product/page/?([0-9]{1,})/?$', 'index.php?product=true&paged=$matches[1]', 'top');
+  add_rewrite_rule('product/feed/(feed|rdf|rss|rss2|atom)/?$', 'index.php?product=true&feed=$matches[1]', 'top');
+  add_rewrite_rule('product/(feed|rdf|rss|rss2|atom)/?$', 'index.php?product=true&feed=$matches[1]', 'top');
+}
+
+add_action('init', 'custom_rewrite_basic');
