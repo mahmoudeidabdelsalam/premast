@@ -193,6 +193,7 @@ function premast_memberships_create(){
   if ($refer_id) {
     $data = apply_filters( 'wc_memberships_groups_import_membership_data', array(
       'plan_id' => $plan_id, 
+      'post_parent' => $plan_id,
       'post_author'    => $refer_id,
       'post_type'      => 'wc_user_membership',
       'post_status'    => 'wcm-pending',
@@ -202,6 +203,7 @@ function premast_memberships_create(){
     // create a new membership
     $user_membership_id = wp_insert_post( $data, true );
     $user_email = $_POST['user_email'];
+    update_post_meta( $user_membership_id, 'email_referrals', $user_email );
     update_post_meta( $user_membership_id, 'email_referrals', $user_email );
   }
 

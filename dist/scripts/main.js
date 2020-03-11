@@ -13671,16 +13671,55 @@ Router.prototype.loadEvents = function loadEvents () {
       $('#search').toggleClass('active');
     });
 
-    // $('.product-list').click(function () {
-    //   $('.item-card').show(300);
-    //   $('.item-card .bg-white').css('height', 'auto');
-    //   $('.item-card .bg-white').css('min-height', '1px');
-    //   $('.item-card .bg-white').removeClass('bg-images');
+    if ($(window).width() > 767) {
+      var hoverTimeout;
+      $('.nav-link').hover(function () {
+        var element = $(this).parent('.item-menu');
+        hoverTimeout = setTimeout(function () {
+          $(this).find('.nav-link').removeClass('open');
+          element.addClass('open');
+        }, 250);
+      }, function () {
+        clearTimeout(hoverTimeout);
+        var element = $(this).parent('.item-menu');
+        hoverTimeout = setTimeout(function () {
+          element.removeClass('open');
+        }, 1500);
+      });
+    }
 
-    //   $('.grid').masonry({
-    //     itemSelector: '.grid-item',
-    //   });
-    // });
+
+    function setCookie(cname, cvalue, exdays) {
+      var d = new Date();
+      d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+      var expires = 'expires=' + d.toUTCString();
+      document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
+    }
+
+    $('#CloseBanner').on('click', function () {
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth() + 1; //January is 0!
+      var yyyy = today.getFullYear();
+      var hours = today.getHours();
+      var minutes = today.getMinutes();
+      if (dd < 10) {
+        dd = '0' + dd
+      }
+      if (mm < 10) {
+        mm = '0' + mm
+      }
+      if (minutes < 10) {
+        minutes = '0' + minutes
+      }
+      if (hours < 10) {
+        hours = '0' + hours
+      }
+      // eslint-disable-next-line no-redeclare
+      var today = yyyy + '-' + mm + '-' + dd;
+      setCookie('the_last_view', today, 1000);
+      $('.col-offer').hide('slow');
+    });
 
     var $grid = $('.grid').imagesLoaded(function () {
       // init Isotope after all images have loaded

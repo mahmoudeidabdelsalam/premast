@@ -33559,7 +33559,7 @@ ul.sub .item-current a:after {
 
 /* line 875, resources/assets/styles/layouts/_header.scss */
 
-.navbar-banner-items li.item-menu.star {
+.navbar-banner-items li.item-menu.star label {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAAAmCAYAAABu+H0XAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAFvSURBVHgB7drRTcJQFMbxc2/llXQAknIn0BFwAxPiu0wgTmA3UCeQBYxuIBvoBrRM0Ogj6a3nEvpiiPgVnnq/X9JCadqEfy6EhCNC9JfmZfisWy4dWYnPRLdb6SiqYM3rMIQa65bqKptLBybsVqtVaq29CTeSnsiyLG+fa6h78RIC/X5/hZ5dmun3rH2hLMt8z+0q7/2bc66wGms8GAw+kiQ5l76qxem+2nMmFW/KQ5cbYy600XtYWEaLzkOs0Wg0k57bfQwftgde7sz11+N/r12v14umaT7Dd1ha1/XByn1gpttAYaUVSKxAYxX6kJ5JbLw8iW0y6Si6YLqycjlCjL/DjsJgIAYDMRiIwUAMBmIwEIOBGAzEYCAGAzEYiMFADAZiMBCDgRgMxGAgBgMxGIjBQAwGYjAQg4EYDBSCVUmSdP7rPBa7RpUJIzxh3EkPlrEMpaB2sSabzeayHagbW2uvpEcDdScWBuoWzrnqB/RCZFkdd3YiAAAAAElFTkSuQmCC);
   background-size: contain;
   background-position: center;
@@ -33732,6 +33732,94 @@ header.bg-light.banner {
   font-weight: bold;
   letter-spacing: 0.04px;
   color: #1E6DFB;
+}
+
+/* line 1013, resources/assets/styles/layouts/_header.scss */
+
+.admin-bar .col-offer + header.bg-light.banner.navbar-banner-items.fixed-header {
+  top: 32px !important;
+}
+
+/* line 1017, resources/assets/styles/layouts/_header.scss */
+
+.col-offer + header.bg-light.banner.navbar-banner-items.fixed-header {
+  top: 0px !important;
+}
+
+/* line 1021, resources/assets/styles/layouts/_header.scss */
+
+.navbar-banner-items li.item-menu.open .sub {
+  display: block !important;
+  z-index: 999;
+}
+
+/* line 1026, resources/assets/styles/layouts/_header.scss */
+
+li.item-menu.star .sub li {
+  border-right: 1px solid #ddd;
+}
+
+/* line 1030, resources/assets/styles/layouts/_header.scss */
+
+li.item-menu.star .sub li a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+/* line 1036, resources/assets/styles/layouts/_header.scss */
+
+li.item-menu.star .sub li a img {
+  margin-right: 10px;
+}
+
+/* line 1040, resources/assets/styles/layouts/_header.scss */
+
+.col-offer + header,
+.admin-bar .col-offer + header.bg-light.banner {
+  position: relative !important;
+  top: 0 !important;
+}
+
+/* line 1046, resources/assets/styles/layouts/_header.scss */
+
+header.bg-light.banner.navbar-banner-items.fixed-header {
+  position: fixed !important;
+}
+
+/* line 1050, resources/assets/styles/layouts/_header.scss */
+
+.col-offer + header + section.banner-items {
+  margin-top: 0;
+}
+
+/* line 1054, resources/assets/styles/layouts/_header.scss */
+
+#CloseBanner {
+  background: transparent;
+  position: absolute;
+  top: 5px;
+  right: 0;
+  color: #333;
+  border: 1px solid #333;
+  padding: 0;
+  border-radius: 7px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  opacity: .7;
+}
+
+/* line 1069, resources/assets/styles/layouts/_header.scss */
+
+.col-offer {
+  position: relative;
 }
 
 /* stylelint-enable */
