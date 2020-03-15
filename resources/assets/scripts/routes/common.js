@@ -1,10 +1,19 @@
 import AOS from 'aos/dist/aos';
 import WOW from '../../../../node_modules/wow.js/dist/wow';
 import Slideout from '../../../../node_modules/slideout/dist/slideout';
+import simpleParallax from '../../../../node_modules/simple-parallax-js/dist/simpleParallax';
 
 export default {
   init() {
     // JavaScript to be fired on all pages
+
+
+    var image = document.getElementsByClassName('simpleParallax');
+    new simpleParallax(image, {
+      orientation: 'right',
+    });
+
+
 
     AOS.init();
 

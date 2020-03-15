@@ -126,7 +126,7 @@
                 <p>Save countless hours by <br> using these templates</p>
             </div>
             <div class="slides">
-                <img src="slides.png" style="width:100%;">
+                <img class="simpleParallax" src="https://premast.com/app/uploads/2020/02/Group-160.png">
             </div>
         </div>
         <!-- dashboard slide  -->
@@ -392,6 +392,11 @@
     });
 </script>
 
+<style>
+  .simpleParallax {
+    width: 130%;
+  }
+</style>
 
   @endwhile
 @endsection
