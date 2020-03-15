@@ -62,6 +62,7 @@
                     <input type="password" name="user_password" id="password">
                   </p>
                   <p class="form-row">
+                    <label for="">confirm password</label>
                     <input type="password" name="re-pwd" id="confirm_password">
                     <span id="message"></span>
                   </p>  
