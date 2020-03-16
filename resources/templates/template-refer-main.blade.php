@@ -6,6 +6,36 @@
 @extends('layouts.app-dark')
 @section('content')
 
+@php 
+  $send = (isset($_GET['send']))? $_GET['send']:'';
+  global $current_user;
+  wp_get_current_user();
+@endphp
+
+@if($send == 'true')
+  <!-- Modal -->
+  <div class="modal" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" >
+      <div class="modal-content" style="background-image:url('{{ the_field('background_banner_hero') }}');">
+        <div class="modal-header border-0">
+          <h5 class="modal-title text-white" id="exampleModalLongTitle">Dear <?= $current_user->display_name; ?></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-white">
+          <h2 class="text-white">Thank you,</h2> the invitation has been sent to your friend
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    jQuery(function($) {
+      $('#exampleModalLong').modal('show')
+    });
+  </script>
+@endif
+
   <section class="banner-hero" style="background-image:url('{{ the_field('background_banner_hero') }}');">
     <div class="container-fluid">
       <div class="row text-center">
@@ -69,14 +99,12 @@
             <div class="custom-share">
               <h4>{{ _e('Invite through mail', 'premast') }}</h4>
               @php 
-                global $current_user;
-                wp_get_current_user();
                 $form = get_field('forms_referral', 'option');
                 $inputs = get_all_form_fields($form['id']);
                 $link = get_field('link_signup', 'option').'?refer='.$current_user->ID.'&token='.get_the_date('U').'';
               @endphp
 
-              <form class="form-inline" role="" method="post" id="gform_<?= $form['id']; ?>" action="<?= the_permalink(); ?>?send=gf_<?= $form['id']; ?>">
+              <form class="form-inline" role="" method="post" id="gform_<?= $form['id']; ?>" action="<?= the_permalink(); ?>?send='true'">
                 <?php foreach ($inputs as $input): ?>
                   <?php if($input["type"] == "email"): ?>
                     <div class="form-group mb-2">

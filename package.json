@@ -96,6 +96,7 @@
     "masonry-layout": "^4.2.2",
     "popper.js": "^1.14.7",
     "select2": "^4.0.7",
+    "simple-parallax-js": "^5.3.0",
     "slick-carousel": "^1.8.1",
     "slideout": "^1.0.1",
     "wow.js": "^1.2.2"

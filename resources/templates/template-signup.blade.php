@@ -37,7 +37,7 @@
                   <a class="text-white" href="<?= the_field('link_pricing', 'option'); ?>">to upgrade, Check Our Plans  <i class="fa fa-angle-right" aria-hidden="true"></i></a>
                 </div>
             </div>
-            <div class="col-md-7 col-12 bg-light custom-padding">
+            <div class="col-md-7 col-12 bg-white custom-padding">
               <div class="show-header text-left">
                 <h2 class="modal-title" id="LoginUserLabel">{{ _e('Create a New Premast Account', 'premast') }}</h2>
                 <img class="img-fluid" src="{{ get_theme_file_uri().'/dist/images/logos.png' }}" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
@@ -47,22 +47,23 @@
                 <form action="#" method="POST" name="register-form" class="register-form register-user">
                   <p class="form-row">
                     <label for="">First Name</label>
-                    <input class="form-control" type="text"  name="first_name" placeholder="First Name" id="firstname">
+                    <input class="form-control" type="text"  name="first_name" id="firstname">
                   </p>
                   <p class="form-row">
                     <label for="">Last Name</label>
-                    <input type="text" name="last_name" placeholder="Last Name" id="lastname">
+                    <input type="text" name="last_name" id="lastname">
                   </p>
                   <p class="form-row">
                     <label for="">email</label>
-                    <input type="email" name="user_email" placeholder="Email" id="useremail">
+                    <input type="email" name="user_email" id="useremail">
                   </p>
                   <p class="form-row">
                     <label for="">password</label>
-                    <input type="password" name="user_password" placeholder="Password" id="password">
+                    <input type="password" name="user_password" id="password">
                   </p>
                   <p class="form-row">
-                    <input type="password" name="re-pwd" placeholder="Confirm Password" id="confirm_password">
+                    <label for="">confirm password</label>
+                    <input type="password" name="re-pwd" id="confirm_password">
                     <span id="message"></span>
                   </p>  
                   <p class="Conditions">
@@ -74,7 +75,7 @@
                     <input hidden id="follow_ip" type="text" value="<?= $ip; ?>"  name="follow_ip" readonly="readonly"/>
                   @endif
 
-                  <button type="submit" id="register-button" class="woocommerce-Button button m-auto d-block" name="register" value="Register">{{ _e('sign up', 'premast') }}</button>
+                  <button type="submit" id="register-button" class="woocommerce-Button button m-auto d-block border-0" name="register" value="Register">{{ _e('sign up', 'premast') }}</button>
                   <span id="sl-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span>
                 </form> 
 

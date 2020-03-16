@@ -1,11 +1,17 @@
 @if(get_field('offer_head_text', 'option'))
-<div class="col-offer" style="background-color:{{ the_field('head_background_color', 'option') }}">
-  <div class="container">
-    <div class="row justify-content-center align-content-center p-3">
-      <p class="text-center m-0">{{ the_field('offer_head_text', 'option') }} <a href="{{ the_field('head_offer_link', 'option') }}">{{ the_field('head_link_text', 'option') }}</a></p>
+@php
+$time = get_the_time('Y-m-d')
+@endphp
+  @if($time > $_COOKIE['the_last_view'])
+    <div class="col-offer" style="background-color:{{ the_field('head_background_color', 'option') }}">
+      <div class="container">
+        <div class="row justify-content-center align-content-center p-3">
+          <p class="text-center m-0">{{ the_field('offer_head_text', 'option') }} <a href="{{ the_field('head_offer_link', 'option') }}">{{ the_field('head_link_text', 'option') }}</a></p>
+        </div>
+      </div>
+      <a href="javascript:void(0)" class="closeBanner" id="CloseBanner"><i class="fa fa-times" aria-hidden="true"></i></a>
     </div>
-  </div>
-</div>
+  @endif
 @endif
 
 @php
@@ -96,6 +102,7 @@
     </div>
   </header>
 @else
+
 @php 
   $taxonomy_query = get_queried_object();
 @endphp
@@ -175,126 +182,82 @@
       </nav>
     </div>
   </header>
-  
+
   @if ( !is_singular('product') ) 
-  @php 
-    $count = $taxonomy_query->count;
-  @endphp
-  @if(is_tax( 'product_cat' ))
     @php 
-      if($taxonomy_query->parent) {
-        $term = get_term_by( 'id', $taxonomy_query->parent, 'product_cat' );
-        $image = get_field('images_cat', $term);
-        $heading = get_field('heading_cat', $term);
-        $description = get_field('description_cat', $term);
-        $calculation = get_field('number_slide', $term);
-        $text_total = get_field('text_total', $term);
-      } else {
+      $count = $taxonomy_query->count;
+    @endphp
+    @if(is_tax( 'product_cat' ))
+      @php 
         $term = get_queried_object();
         $image = get_field('images_cat', $term);
         $heading = get_field('heading_cat', $term);
         $description = get_field('description_cat', $term);
         $calculation = get_field('number_slide', $term);
         $text_total = get_field('text_total', $term);
-      }
-    @endphp
-      @if ($heading)
-        <section class="banner-items" style="background: linear-gradient(105deg, {{ the_field('gradient_color_one','option') }} 0.7%, {{ the_field('gradient_color_two','option') }} 100%);">
-          <div class="elementor-background-overlay-items" style="background-image: url('{{ $image }}');"></div>
-          <div class="container-fluid">
-            <div class="row align-items-center text-left">
-              <h1 class="col-12 text-black"><span class="font-weight-600">{{ $heading }}</span></h1>
-              <p class="col-md-5 col-12 text-black font-weight-300">{{ $description }}</p>
+        $color_one = get_field('gradient_color_one_cat', $term);
+        $color_two = get_field('gradient_color_two_cat', $term);
+      @endphp
+        @if ($heading)
+          <section class="banner-items" style="background: linear-gradient(105deg, {{ $color_one }} 0.7%, {{ $color_two }} 100%);">
+            <div class="elementor-background-overlay-items" style="background-image: url('{{ $image }}');"></div>
+            <div class="container-fluid">
+              <div class="row align-items-center text-left">
+                <h1 class="col-12 text-black"><span class="font-weight-600">{{ $heading }}</span></h1>
+                <p class="col-md-5 col-12 text-black font-weight-300">{{ $description }}</p>
+              </div>
             </div>
+          </section>
+        @else
+          @if($taxonomy_query->parent)
+            @php 
+              $term = get_term_by( 'id', $taxonomy_query->parent, 'product_cat' );
+              $image = get_field('images_cat', $term);
+              $heading = get_field('heading_cat', $term);
+              $description = get_field('description_cat', $term);
+              $calculation = get_field('number_slide', $term);
+              $text_total = get_field('text_total', $term);
+              $color_one = get_field('gradient_color_one_cat', $term);
+              $color_two = get_field('gradient_color_two_cat', $term);
+            @endphp
+            <section class="banner-items" style="background: linear-gradient(105deg, {{ $color_one }} 0.7%, {{ $color_two }} 100%);">
+              <div class="elementor-background-overlay-items" style="background-image: url('{{ $image }}');"></div>
+              <div class="container-fluid">
+                <div class="row align-items-center text-left">
+                  <h1 class="col-12 text-black"><span class="font-weight-600">{{ $heading }}</span></h1>
+                  <p class="col-md-5 col-12 text-black font-weight-300">{{ $description }}</p>
+                </div>
+              </div>
+            </section>
+          @else
+            <section class="banner-items" style="background: linear-gradient(105deg, {{ the_field('gradient_color_one_cat','option') }} 0.7%, {{ the_field('gradient_color_two_cat','option') }} 100%);">
+              <div class="elementor-background-overlay-items" style="background-image: url('{{ the_field('banner_background_overlay_cat','option') }}');"></div>
+              <div class="container-fluid">
+                <div class="row align-items-center text-left">
+                  <h2 class="col-12 text-black"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{  ($calculation)? $calculation*$count:$count }}</strong> <span class="font-weight-300">{{ the_field('banner_items_headline','option') }}</span></h2>
+                  <p class="col-md-5 col-12 text-black font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
+                </div>
+              </div>
+            </section>
+          @endif
+        @endif
+    @else
+      @if (get_field('banner_items_headline', 'option'))
+      <section class="banner-items" style="background: linear-gradient(105deg, {{ the_field('gradient_color_one_cat','option') }} 0.7%, {{ the_field('gradient_color_two_cat','option') }} 100%);">
+        <div class="elementor-background-overlay-items" style="background-image: url('{{ the_field('banner_background_overlay_cat','option') }}');"></div>
+        <div class="container-fluid">
+          <div class="row align-items-center text-left">
+            <h2 class="col-12 text-black"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{  ($calculation)? $calculation*$count:$count }}</strong> <span class="font-weight-300">{{ the_field('banner_items_headline','option') }}</span></h2>
+            <p class="col-md-5 col-12 text-black font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
           </div>
-        </section>
-      @else
-        <section class="banner-items" style="background: linear-gradient(105deg, {{ the_field('gradient_color_one','option') }} 0.7%, {{ the_field('gradient_color_two','option') }} 100%);">
-          <div class="elementor-background-overlay-items" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
-          <div class="container-fluid">
-            <div class="row align-items-center text-left">
-              <h2 class="col-12 text-black"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{ ($calculation)? $calculation*$count:$count }}</strong> <span class="font-weight-300">{{ the_field('banner_items_headline','option') }}</span></h2>
-              <p class="col-md-5 col-12 text-black font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
-            </div>
-          </div>
-        </section>
-      @endif
-  @else
-    @if (get_field('banner_items_headline', 'option'))
-    <section class="banner-items" style="background: linear-gradient(105deg, {{ the_field('gradient_color_one','option') }} 0.7%, {{ the_field('gradient_color_two','option') }} 100%);">
-      <div class="elementor-background-overlay-items" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
-      <div class="container-fluid">
-        <div class="row align-items-center text-left">
-          <h2 class="col-12 text-black"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{  ($calculation)? $calculation*$count:$count }}</strong> <span class="font-weight-300">{{ the_field('banner_items_headline','option') }}</span></h2>
-          <p class="col-md-5 col-12 text-black font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
         </div>
-      </div>
-    </section>
+      </section>
+      @endif
     @endif
-  @endif
-  <div class="total-slide mb-5">
-    <strong class="font-weight-600">{{ ($calculation)? $calculation*$count:$count }}</strong> <span></span>{{ ($text_total)? $text_total:_e('total slides', 'premast') }}
-  </div>
+
+    <div class="total-slide mb-5">
+      <strong class="font-weight-600">{{ ($calculation)? $calculation*$count:$count }}</strong> <span></span>{{ ($text_total)? $text_total:_e('total slides', 'premast') }}
+    </div>
   @endif
 
 @endif
-
-<style>
-  .admin-bar .col-offer + header.bg-light.banner {
-    top: 88px !important;
-  }
-  .admin-bar .col-offer + header.bg-light.banner.navbar-banner-items.fixed-header {
-    top: 32px !important;
-  }
-  .col-offer + header.bg-light.banner {
-    top: 55px !important;
-  }
-  .col-offer + header.bg-light.banner.navbar-banner-items.fixed-header {
-    top: 0px !important;
-  }
-  .navbar-banner-items li.item-menu.open .sub {
-    display: block !important;
-    z-index: 999;
-  }
-  li.item-menu.star .sub li {
-    border-right: 1px solid #ddd;
-  }
-  li.item-menu.star .sub li a {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  li.item-menu.star .sub li a img {
-    margin-right: 10px;
-  } 
-  .col-offer + header, .admin-bar .col-offer + header.bg-light.banner {
-    position: relative !important;
-    top: 0 !important;
-  }
-  header.bg-light.banner.navbar-banner-items.fixed-header {
-    position: fixed !important;
-  } 
-  .col-offer + header + section.banner-items {
-    margin-top: 0;
-  }
-</style>
-
-<script>
-  jQuery(function($) {
-    if ($(window).width() > 767) {
-      var hoverTimeout;
-      $(".nav-link").hover(function () {
-        var element = $(this).parent(".item-menu");
-        hoverTimeout = setTimeout(function () {
-          element.addClass("open");
-        }, 250);
-      }, function () {
-        clearTimeout(hoverTimeout);
-        var element = $(this).parent(".item-menu");
-        hoverTimeout = setTimeout(function () {
-          element.removeClass("open");
-        }, 1500);
-      });
-    }
-  });
-</script>
