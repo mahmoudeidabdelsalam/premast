@@ -7,38 +7,46 @@
   @while(have_posts()) @php the_post() @endphp
 
   <link rel="stylesheet" href="<?= get_theme_file_uri() . '/framework/assets/dashi.css'; ?>">
-<header>
+<header style= "background-image:linear-gradient(90deg, #000000 14.32%, rgba(0, 0, 0, 0.25) 123.61%), url('{{ the_field('background_mac') }}') ">
     <div class="conatiner">
         <div id="navs" class="row">
             <div class="col-md-8">
                 <div id="navbar">
-                    <a href="#home">
-                        <img src="Logo.png" alt="Premast" style="padding-left:60px;">
-                    </a>
+                    <?php if( get_field('logo_premast') ): ?>
+                   <img style="padding-left:60px;" src="<?php the_field('logo_premast'); ?>" />
+                    <?php endif; ?>
                     <nav></nav>
-                    <a id="nav-btn" class="btn btn-danger" href="#">Purchase Now for $25</a>
+                    <?php
+                    $link = get_field('pricing_btn');
+                          if( $link ): ?>
+                           <a  id="nav-btn" class="btn btn-danger " href="<?php echo esc_url( $link ); ?>">Purchase Now for $25</a>
+                            <?php endif; ?>
                 </div>
             </div>
         </div>
     </div>
-    </div>
+
     <div class="conatiner" style="width:100%;">
         <div clas="row">
             <div class="col-12">
                 <a href="">
-                    <img src="Logo.png" style="padding: 60px;" />
+                    <img src="<?php the_field('logo_premast'); ?>" style="padding: 60px;" />
                 </a>
                 <div class="row">
                     <div class="col-md-6" style="padding: 60px;">
-                        <img src="dashi.png" />
-                        <h3 class="dashi-text">
-                            All-in-one Dashboard Presentation Package
+                        <img src="<?php the_field('dashi_logo'); ?>" />
+                    <h3 class="dashi-text">
+                        <?php the_field('f_heading'); ?>
                         </h3>
-                        <p class="subtext">
-                            With 90 slides in one package, no need for another search!
+                        <p class="subtext" style=" background-image: url(' {{ the_field ('line_img') }}')">
+                            <?php the_field('f_sub_heading'); ?>
                         </p>
-                        <p class="pricing">Only $15</p>
-                        <a class="btn btn-primary" href="#">purchase now</a>
+                        <p class="pricing"><?php the_field('pricing_text'); ?></p>
+                        <?php
+                         $link = get_field('pricing_btn');
+                          if( $link ): ?>
+                           <a class="btn btn-primary " href="<?php echo esc_url( $link ); ?>">Purchase Now </a>
+                            <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -46,32 +54,32 @@
     </div>
 </header>
 <!-- container that contain animations and counter -->
-<section>
+<section >
     <div class="conatiner">
         <div class="row">
             <div col-md-8>
-                <img class="img-fluid aos-init aos-animate" data-aos="fade-up" data-duration="1000" src="Group0.png" />
+                <img class="img-fluid aos-init aos-animate" data-aos="fade-up" data-duration="1000" src="<?php the_field('ani_img'); ?>"/>
             </div>
             <div class="col-md-4 pt-5">
-                <p class="text">Multiple options in one package</p>
+                <p class="text"><?php the_field('side_text'); ?></p>
                 <div class="counter">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="themes">
-                                    <p class="counter-count">35</p>
+                                    <p data-count="35" class="counter-count counting">0</p>
                                     <p class="themes-p">Color Theme</p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="icons">
-                                    <p class="counter-count">3000</p>
+                                    <p data-count="3000"class="counter-count counting">0</p>
                                     <p class="icons-p">Vector Icons</p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="characters">
-                                    <p class="counter-count">100</p>
+                                    <p data-count="100" class="counter-count counting">0</p>
                                     <p class="characters-p">Vector Characters</p>
                                 </div>
                             </div>
@@ -89,27 +97,25 @@
         <div class="row">
             <div class="col-md-5">
                 <div class="access">
-                    <p class="full">Full Access to +90 premium slides instantly
+                    <p class="full"><?php the_field('sec_heading'); ?>
                     </p>
-                    <p class="subline">All types of dashboards needed to deliver a perfect presentation. Track, Analyze
-                        and display your data.</p>
+                    <p class="subline"><?php the_field('sec_sub_heading'); ?></p>
                     <div class="badges">
                         <div class="first">
-                            <img src="Group2.png">
-
+                            <img src="<?php the_field('light_badge'); ?>">
                         </div>
                         <div class="second">
-                            <img src="Group3.png">
+                            <img src="<?php the_field('update_badge'); ?>">
                         </div>
                         <div class="third">
-                            <img src="Group4.png">
+                            <img src="<?php the_field('support_badge'); ?>">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-7">
                 <img class="img-fluid aos-init aos-animate" data-aos="fade-left" data-duration="1000"
-                    src="Preview.png" />
+                    src="<?php the_field('sec_ani_img'); ?>" />
             </div>
         </div>
 
@@ -140,36 +146,18 @@
 
         <div class="row justify-content-center" style="padding-bottom: 90px;">
             <div class="slider">
-                <div class="col-md-2">
-                    <img src="img1.png">
-                    <p class="models">Dashi Marketing</p>
-                    <p class="slidesnum">10 slides</p>
-                </div>
-                <div class="col-md-2">
-                    <img src="img2.png">
-                    <p class="models">SEO Dashboard</p>
-                    <p class="slidesnum">10 slides</p>
-                </div>
-                <div class="col-md-2">
-                    <img src="img3.png">
-                    <p class="models">Financial Dashboard</p>
-                    <p class="slidesnum">10 slides</p>
-
-                </div>
-                <div class="col-md-2">
-                    <img src="img4.png">
-                    <p class="models">2020 Calender </p>
-                    <p class="slidesnum">10 slides</p>
-
-                </div>
-                <div class="col-md-2">
-                    <img src="img5.png">
-                    <p class="models">Social Media Report</p>
-                    <p class="slidesnum">10 slides</p>
-
-                </div>
-
-            </div>
+                <?php
+                  $dashboard_categories = get_field(‘dashboard_categories’);
+                  foreach ($dashboard_categories as  $value):
+                  $slide_number = get_field(‘slide_colors’, $value->ID );
+                ?>
+                  <div class="col-md-2">
+                      <img src="<?= Utilities::global_thumbnails($value->ID,‘full’); ?>">
+                      <p class="models"><a class="text-white" href="<?= get_permalink($value->ID); ?>"><?= get_the_title($value->ID); ?></a></p>
+                      <p class="slidesnum"><?= $slide_number; ?></p>
+                  </div>
+                <?php endforeach; ?>
+              </div>
         </div>
     </div>
 </section>
@@ -178,28 +166,28 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="custom">
-                <p class="custom-head">Customize Everything</p>
-                <p class="custom-sub">Easily create your own version of dashboards through the following features.</p>
+                <p class="custom-head"><?php the_field('cust_headline'); ?></p>
+                <p class="custom-sub"><?php the_field('cust_sub'); ?></p>
             </div>
         </div>
         <div class="row" style="padding-bottom:90px;">
             <div class="col-md-3 ">
-                <img src="custom1.png" alt="">
+                <img  src="<?php the_field('cust_icon'); ?>">
             </div>
             <div class="col-md-3 ">
-                <img src="custom2.png" alt="">
+                <img  src="<?php the_field('cust_charts'); ?>">
             </div>
             <div id="cc" class="col-md-3 ">
-                <img src="custom3.png" alt="">
+                <img src="<?php the_field('cust_setting'); ?>">
             </div>
             <div class="col-md-3 ">
-                <img src="custom4.png" alt="">
+                <img src="<?php the_field('cust_colors'); ?>">
             </div>
         </div>
     </div>
 </section>
 <!-- carousel and testmonials  -->
-
+<!-- carousel and testmonials  -->
 <section>
     <div class="container">
         <div class="row justify-content-center">
@@ -208,22 +196,30 @@
                 <p class="sub-test">Who trusted Dashi and use it to improve their presentation designs</p>
             </div>
         </div>
-
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2 col-10 offset-1 mt-5">
                     <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                        <?php
+                        $counter =  -1;
+                        if( have_rows('customers') ):
+                            while( have_rows('customers') ): the_row();
+                            $counter++;
+                        ?>
+                          <li data-target="#carouselExampleIndicators" data-slide-to="<?= $counter; ?>" class="<?= ($counter == 0)? 'active':''; ?>"></li>
+                        <?php
+                            endwhile;
+                        endif; ?>
                     </ol>
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-
                         <div class="carousel-inner mt-4">
-                            <div class="carousel-item text-center active">
-
+                                                  <?php
+                        $counter = -1;
+                        if( have_rows('customers') ):
+                            while( have_rows('customers') ): the_row();
+                            $counter++;
+                        ?>
+                            <div class="carousel-item text-center <?= ($counter == 0)? 'active':''; ?>">
                                 <div class="rating-box">
                                     <span class="rating-star full-star"></span>
                                     <span class="rating-star full-star"></span>
@@ -231,62 +227,12 @@
                                     <span class="rating-star full-star"></span>
                                     <span class="rating-star half-star"></span>
                                 </div>
-                                <p class="cr-text">This is such an exhaustive and compelete set of designs and slides.
-                                    Thank<br> you for all your hard work </p>
-                                <p class="cust">John Barhorst</p>
+                                <p class="cr-text"><?= the_sub_field('customers_content'); ?></p>
+                                <p class="cust"><?= the_sub_field('customers_name'); ?></p>
                             </div>
-                            <div class="carousel-item text-center">
-
-                                <div class="rating-box">
-                                    <span class="rating-star full-star"></span>
-                                    <span class="rating-star full-star"></span>
-                                    <span class="rating-star full-star"></span>
-                                    <span class="rating-star full-star"></span>
-                                    <span class="rating-star half-star"></span>
-                                </div>
-                                <p class="cr-text">Premast Team was great! They did a great job on the slide designs i
-                                    needed <br>
-                                    and were a pleasure to work with. I look forward to working with them on future
-                                    projects </p>
-                                <p class="cust">Sarah Press</p>
-                            </div>
-                            <div class="carousel-item text-center">
-                                <div class="rating-box">
-                                    <span class="rating-star full-star"></span>
-                                    <span class="rating-star full-star"></span>
-                                    <span class="rating-star full-star"></span>
-                                    <span class="rating-star full-star"></span>
-                                    <span class="rating-star half-star"></span>
-                                </div>
-                                <p class="cr-text"> I love premast work. Talent - creativity and professionalism in
-                                    reporting <br>
-                                    work. For sure i will work with them again</p>
-                                <p class="cust">Alxtel Inc</p>
-                            </div>
-                            <div class="carousel-item text-center">
-                                <div class="rating-box">
-                                    <span class="rating-star full-star"></span>
-                                    <span class="rating-star full-star"></span>
-                                    <span class="rating-star full-star"></span>
-                                    <span class="rating-star full-star"></span>
-                                    <span class="rating-star half-star"></span>
-                                </div>
-                                <p class="cr-text"> very good put up, i definitly love this website, keep on it </p>
-                                <p class="cust">Ernest Rinheimer</p>
-
-
-                            </div>
-                            <div class="carousel-item text-center">
-                                <div class="rating-box">
-                                    <span class="rating-star full-star"></span>
-                                    <span class="rating-star full-star"></span>
-                                    <span class="rating-star full-star"></span>
-                                    <span class="rating-star full-star"></span>
-                                    <span class="rating-star half-star"></span>
-                                </div>
-                                <p class="cr-text">Amazing work! Highly recommend</p>
-                                <p class="cust">Dane Shelford</p>
-                            </div>
+                          <?php
+                            endwhile;
+                        endif; ?>
                         </div>
                     </div>
                 </div>
@@ -309,21 +255,28 @@
                             aria-controls="home" aria-selected="true">release 1 <span>27 may 2018</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
                             aria-controls="profile" aria-selected="true">release 2 <span>27 may 2018</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
                             aria-controls="contact" aria-selected="true">release 2 <span>27 may 2018</span></a>
                     </li>
                 </ul>
 
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <h3></h3>
+                        <h3>Easily create your own version of dashboards through the following features. 1</h3>
+                        <p>Easily create your own version of dashboards through the following features.</p>
                     </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <h3>Easily create your own version of dashboards through the following features. 2</h3>
+                        <p>Easily create your own version of dashboards through the following features.</p>
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <h3>Easily create your own version of dashboards through the following features. 3</h3>
+                        <p>Easily create your own version of dashboards through the following features.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -357,13 +310,11 @@
 
 </footer>
 
-
 <script>
     // When the user scrolls down 20px from the top of the document, slide down the navbar
     window.onscroll = function () {
         scrollFunction()
     };
-
     function scrollFunction() {
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
             document.getElementById("navbar").style.top = "0";
@@ -372,26 +323,38 @@
         }
     }
     jQuery(function($) {
-      var scrollPositionToAnimate = 300;
-      var positionToAnimateTo = 200;
-      $(window).scroll(function() {
-        if ($(window).scrollTop() > scrollPositionToAnimate) {
-          if ($('.slides').position().left < positionToAnimateTo) {
-            $('.slides').clearQueue().animate({
-              left: positionToAnimateTo
+      var top = $('.counter').offset().top;
+      console.log(top);
+      $(window).on('scroll', function () {
+        if ($(window).scrollTop() >= top - 400) {
+          $('.counting').each(function () {
+            var $this = $(this),
+              countTo = $this.attr('data-count');
+            $({
+              countNum: $this.text()
+            }).animate({
+              countNum: countTo
+            },
+            {
+              duration: 3000,
+              easing: 'linear',
+              step: function () {
+                  $this.text(Math.floor(this.countNum));
+              },
+              complete: function () {
+                $this.text(this.countNum);
+              }
             });
-          }
-        } else {
-          if ($('.slides').position().left > 0) {
-            $('.slides').clearQueue().animate({
-              left: 0
-            });
-          }
+          });
         }
       });
     });
 </script>
-
+<style>
+  .simpleParallax {
+    width: 130%;
+  }
+</style>
 
   @endwhile
 @endsection
