@@ -8,8 +8,8 @@ export default {
     // JavaScript to be fired on all pages
 
 
-    var image = document.getElementsByClassName('simpleParallax');
-    new simpleParallax(image, {
+    var parallax = document.getElementsByClassName('simpleParallax');
+    new simpleParallax(parallax, {
       orientation: 'right',
     });
 

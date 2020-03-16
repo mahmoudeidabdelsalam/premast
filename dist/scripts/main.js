@@ -13551,8 +13551,8 @@ Router.prototype.loadEvents = function loadEvents () {
     // JavaScript to be fired on all pages
 
 
-    var image = document.getElementsByClassName('thumbnail');
-    new __WEBPACK_IMPORTED_MODULE_3__node_modules_simple_parallax_js_dist_simpleParallax___default.a(image, {
+    var parallax = document.getElementsByClassName('simpleParallax');
+    new __WEBPACK_IMPORTED_MODULE_3__node_modules_simple_parallax_js_dist_simpleParallax___default.a(parallax, {
       orientation: 'right',
     });
 
