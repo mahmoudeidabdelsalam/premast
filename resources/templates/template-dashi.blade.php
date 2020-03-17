@@ -12,13 +12,13 @@
                     <div class="col-md-8">
                         <div id="navbar">
                             <?php if( get_field('logo_premast') ): ?>
-                        <img style="padding-left:60px;" src="<?php the_field('logo_premast'); ?>" />
+                        <img style=" margin-top: 39px; margin-bottom: -39px;padding-left:60px;" src="<?php the_field('logo_premast'); ?>" />
                             <?php endif; ?>
                             <nav></nav>
                             <?php
                             $link = get_field('pricing_btn');
                                 if( $link ): ?>
-                                <a  id="nav-btn" class="btn btn-danger " href="<?php echo esc_url( $link ); ?>">Purchase Now for $25</a>
+                                <a style="box-shadow: none!important;" id="nav-btn" class="btn btn-danger " href="<?php echo esc_url( $link ); ?>">Purchase Now for $25</a>
                                     <?php endif; ?>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                                 <?php
                                 $link = get_field('pricing_btn');
                                 if( $link ): ?>
-                                <a class="btn btn-primary " href="<?php echo esc_url( $link ); ?>">Purchase Now </a>
+                                <a style="box-shadow: none!important;" class="btn btn-primary " href="<?php echo esc_url( $link ); ?>">Purchase Now </a>
                                     <?php endif; ?>
                             </div>
                         </div>
@@ -115,7 +115,7 @@
                         </div>
                     </div>
                     <div class="col-md-7">
-                        <img class="simpleParallax" data-aos="fade-left" data-duration="1000"
+                        <img style="width:100%;" class="simpleParallax" data-aos="fade-left" data-duration="1000"
                             src="<?php the_field('sec_ani_img'); ?>" />
                     </div>
                 </div>
@@ -133,7 +133,7 @@
                         <p>Save countless hours by <br> using these templates</p>
                     </div>
                     <div class="slides">
-                        <img src="slides.png" style="width:100%;">
+                        <img  src="<?php the_field('slide_image'); ?>" style="width:100%;">
                     </div>
                 </div>
                 <!-- dashboard slide  -->
@@ -193,8 +193,8 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="customers">
-                        <p class="head-count">+1000 Customers</p>
-                        <p class="sub-test">Who trusted Dashi and use it to improve their presentation designs</p>
+                        <p class="head-count"><?php the_field('test_headline'); ?></p>
+                        <p class="sub-test"><?php the_field('test_sub'); ?></p>
                     </div>
                 </div>
                 <div class="container">
@@ -228,7 +228,7 @@
                                             <span class="rating-star full-star"></span>
                                             <span class="rating-star half-star"></span>
                                         </div>
-                                        <p class="cr-text"><?= the_sub_field('customers_content'); ?></p>
+                                        <p class="cr-text"><?= the_sub_field('customer_content'); ?></p>
                                         <p class="cust"><?= the_sub_field('customers_name'); ?></p>
                                     </div>
                                 <?php
@@ -290,12 +290,14 @@
             <div class="container">
                 <div class="row justify-content-center pt-5">
                     <div class="full-ac text-center">
-                        <p class="full-head">Get Full Access For $15</p>
-                        <p class="full-sub">If you purchase the budle at any time all future releases will be emailed
-                            straight<br>
-                            to your inbox for free once released.</p>
+                        <p class="full-head"><?php the_field('headline_text'); ?></p>
+                        <p class="full-sub"><?php the_field('sub_text'); ?>
                         <div class="btn-pr">
-                            <a class="btn btn-primary" href="#">purchase now</a>
+                            <?php
+                            $link = get_field('pricing_button');
+                            if( $link ): ?>
+                            <a  class="btn btn-primary" style="box-shadow: none!important;"  href="<?php echo esc_url( $link ); ?>">Purchase Now </a>
+                                <?php endif; ?>
                         </div>
 
                     </div>
@@ -327,7 +329,7 @@
             var top = $('.counter').offset().top;
             console.log(top);
             $(window).on('scroll', function () {
-                if ($(window).scrollTop() >= top - 400) {
+                if ($(window).scrollTop() >= top - 300) {
                 $('.counting').each(function () {
                     var $this = $(this),
                     countTo = $this.attr('data-count');
@@ -337,7 +339,7 @@
                     countNum: countTo
                     },
                     {
-                    duration: 3000,
+                    duration: 1000,
                     easing: 'linear',
                     step: function () {
                         $this.text(Math.floor(this.countNum));
