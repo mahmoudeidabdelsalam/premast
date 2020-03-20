@@ -22,6 +22,7 @@
   line-height: 125.74%;
   font-style: normal;
   font-weight: normal;
+  box-shadow: none;
 }
 
 
@@ -36,8 +37,11 @@
 
 }
 
+a {
+  outline: hidden;
+}
+
 .btn-danger:focus {
-  /* color: #fff; */
   background-color: transparent;
   border-color: none !important;
   box-shadow: none !important;
@@ -96,10 +100,9 @@ p.pricing {
 a.btn-primary {
   background: linear-gradient(168.41deg, #1ADB72 -0.5%, #10B151 100%);
   border-radius: 30px;
-  border: none;
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: 400;
+  font-weight: normal;
   font-size: 16px;
   line-height: 125.74%;
   text-transform: capitalize;
@@ -107,6 +110,7 @@ a.btn-primary {
   padding: 11px;
   width: 197px;
   height: 40px;
+  border:none;
 }
 
 section {
