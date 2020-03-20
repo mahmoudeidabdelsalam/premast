@@ -20,7 +20,6 @@ function all_graphics($data){
   }
 
   $posts = new WP_Query( $args );
-
   
   if ( $posts->have_posts() ) {
     foreach( $posts->posts as &$post ):
