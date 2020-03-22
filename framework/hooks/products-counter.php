@@ -25,3 +25,31 @@ function product_count_shortcode( ) {
 	return $count_posts->publish;
 }
 add_shortcode( 'product_count', 'product_count_shortcode' );
+
+
+function show_number_of_downloads() {
+    $posts = get_posts( array(
+      'post_type' => 'product',
+      'posts_per_page' => -1,
+      'fields'         => 'ids',
+    ));
+
+    $counter = [];
+    foreach ($posts as $post) {
+      if(get_post_meta( $post, 'counterdownload', true )) {
+        $counter[] = get_post_meta( $post, 'counterdownload', true );
+      }      
+    }
+
+
+    // dd($counter);
+
+    if ( ! empty( $counter ) ) {
+        echo '<p><strong>' . array_sum($counter) . '</strong> ' . __( 'Total Downloads' ) . '</p>';
+    }
+}
+
+function show_number_users(){
+  $total_users = count_users();
+  echo $total_users['total_users'];
+}

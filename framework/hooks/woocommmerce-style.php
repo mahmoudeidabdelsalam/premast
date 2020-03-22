@@ -252,13 +252,6 @@ function mwe_get_formatted_shipping_name_and_address($user_id) {
     $address .= get_user_meta( $user_id, 'billing_last_name', true );
     $address .= '</p>';
     $address .= '<p>';
-    $address .= get_user_meta( $user_id, 'billing_address_1', true );
-    $address .= "\n";
-    $address .= get_user_meta( $user_id, 'billing_country', true );
-    $address .= "\n";
-    $address .= get_user_meta( $user_id, 'billing_city', true );
-    $address .= '</p>';
-    $address .= '<p>';
     $address .= get_user_meta( $user_id, 'billing_email', true );
     $address .= '</p>';
     $address .= '<p>';

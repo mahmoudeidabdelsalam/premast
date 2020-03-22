@@ -13,16 +13,8 @@
 
 
 @while(have_posts()) @php the_post() @endphp
-  <div class="custom-header pb-0">
-    <div class="elementor-background-overlay" style="background-image:url('{{ the_field('header_section_image', 'option') }}')"></div>
-      @include('partials.page-header')
-      <div class="header-checkout mt-5">
-        <div class="container-fluid">
-          <div class="row m-0">
-            <img class="img-fluid" src="{{ get_theme_file_uri().'/dist/images/header-checkout.png' }}" alt="{{ _e('2 checkout', 'premast') }}" title="{{ _e('2 checkout', 'premast') }}"/>
-          </div>
-        </div>
-      </div>            
+  <div class="checkout-custom-header">
+    @include('partials.page-header')
   </div>
 
   <div class="container mt-5 mb-5">
@@ -46,18 +38,9 @@
 @endphp
 
 @while(have_posts()) @php the_post() @endphp
-  <div class="custom-header pb-0">
-    <div class="elementor-background-overlay" style="background-image:url('{{ the_field('header_section_image', 'option') }}')"></div>
+    <div class="checkout-custom-header">
       @include('partials.page-header')
-      <div class="header-checkout mt-5">
-        <div class="container-fluid">
-          <div class="row m-0">
-            <img class="img-fluid" src="{{ get_theme_file_uri().'/dist/images/header-checkout.png' }}" alt="{{ _e('2 checkout', 'premast') }}" title="{{ _e('2 checkout', 'premast') }}"/>
-          </div>
-        </div>
-      </div>            
-  </div>
-
+    </div>
   
 
     <div class="container-fluid mt-5 mb-5">
@@ -69,19 +52,32 @@
             <!-- Custom billing -->
             <div class="woocommerce-billing-custom">
               <div class="woocommerce-billing-fields">
+              
               <?php if ( ! is_user_logged_in()) : ?>
                 <?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
-                  <h3><?php esc_html_e( 'Billing &amp; Shipping', 'woocommerce' ); ?> <span class="login-checkout"><?php _e('Already Have account', 'premast'); ?> <a class="mt-2 login text-primary" href="#" data-toggle="modal" data-target="#LoginUser">sign in/a></span></h3>
+                  <h3><?php esc_html_e( 'Billing &amp; Shipping', 'woocommerce' ); ?> <span class="login-checkout"><?php _e('Already Have account', 'premast'); ?> <a class="mt-2 login text-primary" href="#" data-toggle="modal" data-target="#LoginUser">log in <i class="fa fa-angle-right"></i></a></span></h3>
                 <?php else : ?>
-                  <h3><?php esc_html_e( 'Billing details', 'woocommerce' ); ?> <span class="login-checkout"><?php _e('Already Have account', 'premast'); ?> <a class="mt-2 login text-primary" href="#" data-toggle="modal" data-target="#LoginUser">sign in</a></span></h3>
+                  <h3><?php esc_html_e( 'Billing details', 'woocommerce' ); ?> <span class="login-checkout"><?php _e('Already Have account', 'premast'); ?> <a class="mt-2 login text-primary" href="#" data-toggle="modal" data-target="#LoginUser">log in <i class="fa fa-angle-right"></i> </a></span></h3>
                 <?php endif; ?>
               <?php else : ?>
                 <?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
-                  <h3><?php esc_html_e( 'Billing &amp; Shipping', 'woocommerce' ); ?> </h3>
+                  <h3>
+                    <?php esc_html_e( 'Billing &amp; Shipping', 'woocommerce' ); ?> 
+                    <a class="btn-edit login-checkout" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                      <?php _e('edit billing details', 'premast'); ?>
+                    </a>  
+                  </h3>
                 <?php else : ?>
-                  <h3><?php esc_html_e( 'Billing details', 'woocommerce' ); ?></h3>
+                  <h3>
+                    <?php esc_html_e( 'Billing details', 'woocommerce' ); ?>
+                    <a class="btn-edit login-checkout" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                      <?php _e('edit billing details', 'premast'); ?>
+                    </a>  
+                  </h3>
                 <?php endif; ?>
               <?php endif; ?>
+
+
               <?php if ( ! is_user_logged_in()) : ?>
                 <?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
                 <div class="woocommerce-billing-fields__field-wrapper">
@@ -97,10 +93,7 @@
                   <div class="save-data">
                     <?php echo mwe_get_formatted_shipping_name_and_address($current_user->ID); ?>
                   </div>
-                  <a class="btn-edit" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    <?php _e('edit billing details', 'premast'); ?>
-                  </a>  
-                  <div class="collapse <?= (get_user_meta( $current_user->ID, 'billing_first_name', true ) == 0)? 'show':''; ?>" id="collapseExample">
+                  <div class="collapse" id="collapseExample">
                     <?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
                     <div class="woocommerce-billing-fields__field-wrapper">
                       <?php
@@ -136,28 +129,15 @@
 
                   <?php do_action( 'woocommerce_after_checkout_registration_form', $checkout ); ?>
                 </div>
-                <a class="btn-next hidden" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                  <?php _e('next', 'premast'); ?>
-                </a>  
               <?php endif; ?>
-            </div>
-            <!-- Custom Pay -->
-            <div class="custom-pay">
-              <?php if ( ! is_user_logged_in()) : ?>
-                <div class="collapse" id="collapseExample">
-                  <?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
-                  <div id="order_review" class="woocommerce-checkout-review-order">
-                    <?php do_action( 'woocommerce_checkout_order_review' ); ?>
-                  </div>
-                  <?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
-                </div>
-              <?php else: ?>     
+            
+                
                 <?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
                 <div id="order_review" class="woocommerce-checkout-review-order mt-0">
                   <?php do_action( 'woocommerce_checkout_order_review' ); ?>
                 </div>
                 <?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
-              <?php endif; ?>
+
             </div>
           </form>
         </div>
@@ -165,37 +145,29 @@
         
 
         <div class="col-md-5">
-          <!-- Custom coupons -->
-          <div class="custom-coupons">
             <?php
               defined( 'ABSPATH' ) || exit;
               if ( ! wc_coupons_enabled() ) { // @codingStandardsIgnoreLine.
                 return;
               }
             ?>
-            <div class="woocommerce-form-coupon-toggle">
-              <?php wc_print_notice( apply_filters( 'woocommerce_checkout_coupon_message', ' <a href="#" class="showcoupon">' . esc_html__( 'Click here to enter your code', 'woocommerce' ) . '</a>' ), 'notice' ); ?>
-            </div>
-            <form class="checkout_coupon woocommerce-form-coupon" method="post" style="display:block">
-              <p><?php esc_html_e( 'If you have a coupon code, please apply it below.', 'woocommerce' ); ?></p>
-              <p class="form-row d-flex">
-                <input type="text" name="coupon_code" class="input-text" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" id="coupon_code" value="" />
-                <button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply', 'woocommerce' ); ?></button>
-              </p>                
-            </form>
-          </div>
 
-          @if(get_field('donation_text', 'option') || get_field('donation_link', 'option'))
-            <div class="col-12 custom-banner" style="background-image:url('{{ the_field('donation_background_image', 'option') }}'); background-color:{{ the_field('donation_background_color', 'option') }};">
-              <div class="media">
-                <img src="{{ the_field('donation_icon', 'option') }}" class="mr-3" alt="{{ the_field('donation_text', 'option') }}">
-                <div class="media-body">
-                  <p>{{ the_field('donation_text', 'option') }}</p>
-                  <a href="{{ the_field('donation_link', 'option') }}" class="overlay-link"></a>
-                </div>
-              </div>
+          <div class="col-12 bg-white box-cart mb-5 summary-custom mt-0">
+            <div class="box-coupon">
+              <p><img class="img-fluid" src="{{ get_theme_file_uri().'/dist/images/coupon.png' }}" alt="{{ _e('coupon', 'premast') }}" title="{{ _e('coupon', 'premast') }}"/> <?php esc_html_e( 'If you have a coupon code, please apply it below.', 'woocommerce' ); ?></p>
+              <form class="checkout_coupon woocommerce-form-coupon" method="post" style="">
+                <?php if ( wc_coupons_enabled() ) { ?>
+                  <div class="coupon">
+                    <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> <button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?></button>
+                    <?php do_action( 'woocommerce_cart_coupon' ); ?>
+                  </div>
+                <?php } ?>
+                <button type="submit" class="button" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
+                <?php do_action( 'woocommerce_cart_actions' ); ?>
+                <?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
+              </form>
             </div>
-          @endif
+          </div>
 
           <!-- Custom summary -->
           <div class="col-12 summary-custom">
@@ -285,7 +257,20 @@
               </tfoot>
             </table>
           </div>
-          <img class="img-fluid mr-auto ml-auto mt-5 d-block" src="{{ get_theme_file_uri().'/dist/images/header-checkout.png' }}" alt="{{ _e('2 checkout', 'premast') }}" title="{{ _e('2 checkout', 'premast') }}"/>
+
+          @if(get_field('donation_text', 'option') || get_field('donation_link', 'option'))
+            <div class="col-12 custom-banner" style="background-image:url('{{ the_field('donation_background_image', 'option') }}'); background-color:{{ the_field('donation_background_color', 'option') }};">
+              <div class="media">
+                <img src="{{ the_field('donation_icon', 'option') }}" class="mr-3" alt="{{ the_field('donation_text', 'option') }}">
+                <div class="media-body">
+                  <p>{{ the_field('donation_text', 'option') }}</p>
+                  <a href="{{ the_field('donation_link', 'option') }}" class="overlay-link"></a>
+                </div>
+              </div>
+            </div>
+          @endif
+
+          <div class="checout-secure"><span class="footer-secure-payment">{{ _e('Secure Payment by', 'permast') }}</span> <img src="{{ get_theme_file_uri().'/dist/images/2checkout-2.png' }}" alt="2Checkout"></div>
         </div>
       </div>
     </div>
@@ -314,3 +299,137 @@
   @endwhile
   <?php endif; ?>
 @endsection
+
+
+<style>
+.checkout-custom-header {
+    margin-top: 50px;
+    height: 100px;
+    position: relative;
+    background: linear-gradient(176.82deg, #1FA2FF -4.21%, #274FDB 135.73%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkout-custom-header h1 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 47px;
+    text-align: center;
+    letter-spacing: 0.04px;
+    text-transform: capitalize;
+    color: #FFFFFF;
+}
+
+.box-coupon {
+    padding: 20px 20px 0;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.04px;
+    color: #282F39;
+    opacity: 0.9;
+}
+
+.coupon input {
+    border: 1px solid #E3E3E3;
+    border-radius: 8px;
+    height: 40px;
+    width: 70%;
+    padding: 10px;
+}
+
+.coupon button {
+    background: #E8E8E8;
+    border-radius: 30px;
+    border: none;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.04px;
+    text-transform: capitalize;
+    color: #A6A6A6;
+    flex: none;
+    order: 0;
+    align-self: center;
+    margin: 10px 0px;
+    height: 40px;
+    color: #fff;
+}
+
+.checout-secure img {
+    width: 190px;
+}
+
+.checout-secure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wc-proceed-to-checkout a {
+    box-shadow: none !important;
+    height: 40px !important;
+    display: inline-block !important;
+}
+
+.wc-proceed-to-checkout {
+    text-align: center;
+}
+
+.woocommerce-privacy-policy-text {
+    display: none;
+}
+
+.woocommerce-billing-fields input, .woocommerce-billing-fields select {
+    background: #FFFFFF;
+    border: 1px solid #E3E3E3 !important;
+    box-sizing: border-box !important;
+    border-radius: 8px;
+    height: 50px !important;
+    align-items: center;
+    letter-spacing: 0.04px;
+    color: #3F4A59 !important;
+    font-size: 16px !important;
+    opacity: 1 !important;
+}
+
+span.login-checkout a {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.132987px;
+    text-transform: capitalize;
+    color: #1e6dfb;
+    border-radius: 4px;
+    margin: 0 10px !important;
+    display: flex;
+    float: right;
+    justify-content: space-between;
+    align-items: center;
+    width: 57px;
+}
+
+.save-data p {
+    font-size: 16px !important;
+    line-height: 24px !important;
+    letter-spacing: 0.04px !important;
+    color: #3F4A59 !important;
+    text-transform: lowercase !important;
+    margin-bottom: 10px !important;
+}
+
+.btn-edit {
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: 0.0329024px;
+    text-transform: capitalize;
+    color: #1E6DFB;
+    position: absolute;
+    right: 40px;
+}
+</style>

@@ -243,41 +243,45 @@
         <!-- bundle update section -->
         <section style="background: linear-gradient(247.87deg, #00A3FF -15.32%, rgba(7, 62, 255, 0.8) 87.3%);">
             <div class="container">
-                <div class="row justify-content-center p-5">
+                <div class="row justify-content-center pt-5">
                     <div class="bundels">
-                        <p class="bd-head">Bundle Update</p>
-                        <p class="bd-sub">We would like you to join along</p>
+                        <p class="bd-head">><?= the_field('timeline_headline'); ?></p>
+                        <p class="bd-sub"><?= the_field('timeline_subheadline'); ?></p>
                     </div>
 
                     <div class="col-12 timeline">
                         <ul class="nav nav-pills nav-fill" id="myTab" role="tablist">
+                          <?php
+                          $counter = -1;
+                          if( have_rows('timelines') ):
+                            while( have_rows('timelines') ): the_row();
+                              $counter++;
+                          ?>
                             <li class="nav-item">
-                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                    aria-controls="home" aria-selected="true">release 1 <span>27 may 2018</span></a>
+                                <a class="nav-link <?= ($counter == 0)? 'active':''; ?>" id="home<?= $counter; ?>-item-tab" data-toggle="tab" href="#<?= $counter; ?>-item" role="tab"
+                                    aria-controls="home<?= $counter; ?>" aria-selected="true"><?= the_sub_field('headline_item'); ?> <span><?= the_sub_field('date_item'); ?></span></a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                    aria-controls="profile" aria-selected="true">release 2 <span>27 may 2018</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-                                    aria-controls="contact" aria-selected="true">release 2 <span>27 may 2018</span></a>
-                            </li>
+                          <?php
+                            endwhile;
+                          endif; ?>                            
                         </ul>
 
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                <h3>Easily create your own version of dashboards through the following features. 1</h3>
-                                <p>Easily create your own version of dashboards through the following features.</p>
+                          <?php
+                          $counter = -1;
+                          if( have_rows('timelines') ):
+                            while( have_rows('timelines') ): the_row();
+                              $counter++;
+                          ?>
+                            <div class="tab-pane fade <?= ($counter == 0)? 'show active':''; ?>" id="home<?= $counter; ?>-item" role="tabpanel" aria-labelledby="<?= $counter; ?>-item-tab">
+                              <div class="col-md-6 col-12 col-content">
+                                <h3><?= the_sub_field('headline_item_content'); ?></h3>
+                                <p><?= the_sub_field('description_item_content'); ?></p>
+                              </div>
                             </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <h3>Easily create your own version of dashboards through the following features. 2</h3>
-                                <p>Easily create your own version of dashboards through the following features.</p>
-                            </div>
-                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                <h3>Easily create your own version of dashboards through the following features. 3</h3>
-                                <p>Easily create your own version of dashboards through the following features.</p>
-                            </div>
+                          <?php
+                            endwhile;
+                          endif; ?>                               
                         </div>
                     </div>
                 </div>
@@ -356,6 +360,95 @@
         <style>
         .simpleParallax {
             width: 130%;
+        }
+
+        ul#myTab li a:after {
+            border-top: 1px dashed rgba(255, 255, 255, 0.6);
+            content: "";
+            width: 100%;
+            height: 1px;
+            position: absolute;
+            top: -2px;
+            left: 70px;
+            z-index: 9;
+        }
+
+        ul#myTab li {
+            position: relative;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 21px;
+            text-align: center;
+            text-transform: capitalize;
+            color: #FFFFFF;
+        }
+
+        ul#myTab li a:before {
+            content: "";
+            width: 12px;
+            height: 12px;
+            top: -7px;
+            background: #fff;
+            display: inline-block;
+            border-radius: 100%;
+            position: absolute;
+            margin-left: -6px;
+            z-index: 99;
+            left: 47%;
+        }
+
+        ul#myTab li a {
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 21px;
+            text-align: center;
+            text-transform: capitalize;
+            color: #FFFFFF;
+            padding-top: 20px;
+        }
+
+        ul#myTab li a.active {
+            background: transparent;
+        }
+
+        ul#myTab li a span {
+            display: block;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 14px;
+            text-align: center;
+            text-transform: capitalize;
+            color: #FFFFFF;
+            opacity: 0.7;
+            margin-top: 10px;
+        }
+
+        ul#myTab li a.active:before {
+            background: rgba(255, 255, 255, 0.8);
+            content: "";
+        }
+
+        .col-content h3,
+        .col-content p {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 16px;
+            text-transform: capitalize;
+            color: #FFFFFF;
+        }
+
+        .col-content p {
+            font-weight: 400;
+        }
+
+        .col-content {
+            padding: 35px 60px;
+        }
+
+        .timeline .nav {
+            margin-top: 80px;
         }
         </style>
 

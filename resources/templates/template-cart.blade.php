@@ -2,7 +2,7 @@
   Template Name: Cart Template
 --}}
 
-@extends('layouts.app-custom')
+@extends('layouts.app-dark')
 
 @section('content')
 @php 
@@ -29,32 +29,31 @@ do_action( 'woocommerce_before_cart' );
 
 
   @while(have_posts()) @php the_post() @endphp
-    <div class="custom-header">
-    <div class="elementor-background-overlay" style="background-image:url('{{ the_field('header_section_image', 'option') }}')"></div>
+    <div class="checkout-custom-header">
       @include('partials.page-header')
     </div>
-
-
     <?php 
     $count = WC()->cart->cart_contents_count;
     if (  $count == 0 ): ?>
-    <div class="container-fluid pt-5 pb-5 form-cart-woocommerce mt-5">
-      <div class="row justify-content-center">
-        <p class="return-to-shop">
-          <div class="col-12 text-center"><?php do_action( 'woocommerce_cart_is_empty' ); ?></div>
-          <a class="button wc-backward btn mt-5 text-white" href="{{ the_field('link_page_login','option') }}">
-            <?php esc_html_e( 'Return to shop', 'woocommerce' ); ?>
-          </a>
-        </p>
+      <div class="container-fluid pt-5 pb-5 form-cart-woocommerce mt-5">
+        <div class="row justify-content-center">
+          <p class="return-to-shop">
+            <div class="col-12 text-center"><?php do_action( 'woocommerce_cart_is_empty' ); ?></div>
+            <a class="button wc-backward btn mt-5 text-white" href="{{ the_field('link_page_login','option') }}">
+              <?php esc_html_e( 'Return to shop', 'woocommerce' ); ?>
+            </a>
+          </p>
+        </div>
       </div>
-    </div>
     <?php else: ?>
 
     <div class="container-fluid pt-5 pb-5 form-cart-woocommerce mt-5">
       <div class="row justify-content-center">
-
         <div class="col-md-7 col-12">
+
+
           <h3>{{ _e('cart Items', 'premast') }}</h3>
+
           <div class="col-12 bg-white box-cart">
             <form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
               <?php do_action( 'woocommerce_before_cart_table' ); ?>
@@ -62,9 +61,9 @@ do_action( 'woocommerce_before_cart' );
                 <thead>
                   <tr>
                     <th class="product-name"><?php esc_html_e( 'item', 'woocommerce' ); ?></th>
-				            <th class="product-remove">&nbsp;</th>
-				            <th class="product-thumbnail">&nbsp;</th>
+				            <th class="product-remove">&nbsp;</th>				            
                     <th class="product-price"><?php esc_html_e( 'Price', 'woocommerce' ); ?></th>
+                    <th class="product-thumbnail">&nbsp;</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -77,21 +76,6 @@ do_action( 'woocommerce_before_cart' );
                       $product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
                       ?>
                       <tr class="woocommerce-cart-form__cart-item <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
-                        <td class="product-remove">
-                          <?php
-                            echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-                              'woocommerce_cart_item_remove_link',
-                              sprintf(
-                                '<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">&times;</a>',
-                                esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
-                                esc_html__( 'Remove this item', 'woocommerce' ),
-                                esc_attr( $product_id ),
-                                esc_attr( $_product->get_sku() )
-                              ),
-                              $cart_item_key
-                            );
-                          ?>
-                        </td>
                         <td class="product-thumbnail">
                         <?php
                         $thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
@@ -125,7 +109,21 @@ do_action( 'woocommerce_before_cart' );
                             echo apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
                           ?>
                         </td>
-
+                        <td class="product-remove">
+                          <?php
+                            echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                              'woocommerce_cart_item_remove_link',
+                              sprintf(
+                                '<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">&times;</a>',
+                                esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
+                                esc_html__( 'Remove this item', 'woocommerce' ),
+                                esc_attr( $product_id ),
+                                esc_attr( $_product->get_sku() )
+                              ),
+                              $cart_item_key
+                            );
+                          ?>
+                        </td>
                       </tr>
                       <?php
                     }
@@ -142,6 +140,25 @@ do_action( 'woocommerce_before_cart' );
 
         <div class="col-md-4 col-12">
           <h3>{{ _e('cart total', 'premast') }}</h3>
+
+          <div class="col-12 bg-white box-cart mb-5">
+            <div class="box-coupon">
+              <p><img class="img-fluid" src="{{ get_theme_file_uri().'/dist/images/coupon.png' }}" alt="{{ _e('coupon', 'premast') }}" title="{{ _e('coupon', 'premast') }}"/> <?php esc_html_e( 'If you have a coupon code, please apply it below.', 'woocommerce' ); ?></p>
+              <form class="checkout_coupon woocommerce-form-coupon" method="post" style="">
+                <?php if ( wc_coupons_enabled() ) { ?>
+                  <div class="coupon">
+                    <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> <button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?></button>
+                    <?php do_action( 'woocommerce_cart_coupon' ); ?>
+                  </div>
+                <?php } ?>
+                <button type="submit" class="button" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
+                <?php do_action( 'woocommerce_cart_actions' ); ?>
+                <?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
+              </form>
+            </div>
+          </div>
+
+
           <div class="col-12 bg-white box-cart">
           
             <div class="cart_totals <?php echo ( WC()->customer->has_calculated_shipping() ) ? 'calculated_shipping' : ''; ?>">
@@ -201,28 +218,6 @@ do_action( 'woocommerce_before_cart' );
                 }
                 ?>
 
-                <tr class="coupon-totals">
-                  <th><?php esc_html_e( 'Coupon', 'woocommerce' ); ?></th>
-                  <td data-title="<?php esc_attr_e( 'Coupon', 'woocommerce' ); ?>">
-                    <a class="btn-coupon" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><?php esc_attr_e( 'Add a coupon', 'woocommerce' ); ?></a>
-                  </td>
-                </tr>
-
-                <tr class="collapse" id="collapseExample">
-                  <td colspan="6" class="actions">
-                    <form class="checkout_coupon woocommerce-form-coupon" method="post" style="">
-                      <?php if ( wc_coupons_enabled() ) { ?>
-                        <div class="coupon">
-                          <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> <button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?></button>
-                          <?php do_action( 'woocommerce_cart_coupon' ); ?>
-                        </div>
-                      <?php } ?>
-                      <button type="submit" class="button" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
-                      <?php do_action( 'woocommerce_cart_actions' ); ?>
-                      <?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
-                    </form>
-                  </td>
-                </tr>
 
                 <?php do_action( 'woocommerce_cart_totals_before_order_total' ); ?>
                 <tr class="order-total">
@@ -232,10 +227,10 @@ do_action( 'woocommerce_before_cart' );
                 <?php do_action( 'woocommerce_cart_totals_after_order_total' ); ?>
               </table>
 
-              <img class="img-fluid" src="{{ get_theme_file_uri().'/dist/images/2checkout.png' }}" alt="{{ _e('2 checkout', 'premast') }}" title="{{ _e('2 checkout', 'premast') }}"/>
               <div class="wc-proceed-to-checkout">
                 <?php do_action( 'woocommerce_proceed_to_checkout' ); ?>
               </div>
+              <div class="checout-secure"><span class="footer-secure-payment">{{ _e('Secure Payment by', 'permast') }}</span> <img src="{{ get_theme_file_uri().'/dist/images/2checkout-2.png' }}" alt="2Checkout"></div>
               <?php do_action( 'woocommerce_after_cart_totals' ); ?>
             </div>
 
@@ -247,3 +242,73 @@ do_action( 'woocommerce_before_cart' );
     <?php endif; ?>
   @endwhile
 @endsection
+
+
+<style>
+.checkout-custom-header {
+    margin-top: 50px;
+    height: 100px;
+    position: relative;
+    background: linear-gradient(176.82deg, #1FA2FF -4.21%, #274FDB 135.73%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkout-custom-header h1 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 47px;
+    text-align: center;
+    letter-spacing: 0.04px;
+    text-transform: capitalize;
+    color: #FFFFFF;
+}
+
+.box-coupon {
+    padding: 20px 20px 0;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.04px;
+    color: #282F39;
+    opacity: 0.9;
+}
+
+.coupon input {
+    border: 1px solid #E3E3E3;
+    border-radius: 8px;
+    height: 40px;
+    width: 70%;
+    padding: 10px;
+}
+
+.coupon button {
+    background: linear-gradient(155.59deg, #6B73FF -0.5%, #000DFF 100%);
+    border-radius: 30px;
+    border: none;
+    height: 40px;
+    color: #fff;
+}
+
+.checout-secure img {
+    width: 190px;
+}
+
+.checout-secure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wc-proceed-to-checkout a {
+    box-shadow: none !important;
+    height: 40px !important;
+    display: inline-block !important;
+}
+
+.wc-proceed-to-checkout {
+    text-align: center;
+}
+</style>

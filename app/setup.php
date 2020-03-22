@@ -53,6 +53,7 @@ add_action('after_setup_theme', function () {
         'user_navigation' => __('Customer Navigation', 'sage'),
         'templates_navigation' => __('Templates Navigation', 'sage'),
         'items_navigation' => __('Taxonomy Product Navigation', 'sage'),
+        'copyright_navigation' => __('Copyright Navigation', 'sage'),
         'footer_navigation' => __('Footer Home Navigation', 'sage')
     ]);
 

@@ -1,104 +1,29 @@
 footer {
   transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
-  padding: 0 50px;
+  padding: 30px 0 0;
   min-height: 265px;
   display: flex;
   align-items: center;
 
-  .gform_widget {
-    h3 {
-      color: rgba(255, 255, 255, 0.52);
-      font-size: 12px;
-      font-weight: normal;
-      letter-spacing: 0.11px;
-    }
-
-    .gform_wrapper {
-      margin: 30px 0;
-
-      h3.gform_title,
-      span.gform_description {
-        display: none;
-      }
-
-      label.gfield_label {
-        display: none !important;
-      }
-
-      form {
-        position: relative;
-
-        input {
-          background-color: rgb(61, 69, 82);
-          border-color: rgba(30, 109, 251, 0.52);
-          border-width: 0;
-          border-radius: 50px 50px 50px 50px;
-          padding: 20px !important;
-          height: 45px !important;
-        }
-
-        .gform_heading {
-          display: none;
-        }
-
-        .gform_footer {
-          padding: 0;
-          width: auto;
-          white-space: nowrap;
-          position: absolute;
-          top: 0;
-          right: 0;
-          margin: 0 !important;
-
-          button {
-            height: 45px !important;
-            line-height: 41px !important;
-            padding: 0 20px !important;
-            font-size: 14px;
-            background: $brand-primary;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
-            box-sizing: border-box !important;
-            border-radius: 25px !important;
-            box-shadow: none !important;
-          }
-        }
-      }
-
-      .validation_error {
-        display: none;
-      }
-
-      .gfield_error {
-        padding: 0 !important;
-        margin: 0 !important;
-        border: none !important;
-        background: transparent !important;
-      }
-
-      .validation_message {
-        position: absolute;
-      }
-
-      div.ginput_container {
-        margin: 0;
-      }
-    }
-  }
-
   .navbar-footer {
     .navbar {
       align-items: self-end;
+      justify-content: start;
+
+      .menu-item-has-children {
+        width: 22%;
+      }
 
       .menu-item {
         .nav-link {
           color: $brand-white;
           font-size: 14px;
-          font-weight: 500;
+          font-weight: bold;
 
           &[data-toggle="dropdown"] {
             color: $brand-white;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: bold;
           }
 
           span {
@@ -118,9 +43,9 @@ footer {
             display: block;
 
             .nav-link {
-              color: rgb(163, 166, 171);
-              font-size: 12px;
-              font-weight: 500;
+              color: rgb(190, 198, 210);
+              font-size: 14px;
+              font-weight: normal;
             }
           }
         }
@@ -137,7 +62,7 @@ footer {
 
 section.copyright {
   color: rgba(255, 255, 255, 0.26);
-  padding: 0 50px 12px;
+  padding: 0;
   background-color: rgb(61, 69, 82);
   font-size: 14px;
 
