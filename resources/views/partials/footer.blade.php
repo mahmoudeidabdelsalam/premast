@@ -99,7 +99,7 @@
 
 .footer-secure img {
   max-width: 190px;
-  margin-left: auto;
+  margin-left: 10px;
 }
 
 .social-btns .network,
