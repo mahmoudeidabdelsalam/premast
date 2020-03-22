@@ -841,6 +841,50 @@ acf_add_local_field_group(array(
 		),
 
 		array(
+			'key' => 'field_5e709123123123b8641b09',
+			'label' => 'headline',
+			'name' => 'timeline_headline',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
+    ),
+    
+    array(
+			'key' => 'field_5e7094214124124124b8641b09',
+			'label' => 'Sub headline',
+			'name' => 'timeline_subheadline',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
+		),
+
+
+
+
+
+		array(
 			'key' => 'field_5e7664a0c36f5',
 			'label' => 'timelines',
 			'name' => 'timelines',
