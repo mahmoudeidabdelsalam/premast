@@ -311,11 +311,41 @@
             </div>
         </section>
 
-        <footer style="background: #000000;
-            box-shadow: 0px -2px 2px rgba(222, 222, 222, 0.25);">
-            bdjdbbdjbdbdjbdjbdjbdj
+        <section class="footer">
+            <div class="container">
+              <div class="row align-items-center m-0">
+                <a href="<?= home_url('/'); ?>"><img src="{{the_field('logo_footer')}}" alt="logo footer"></a>
+                  <ul class="footer-links">
+                    <?php
+                    $post_objects = get_field('footer_menu_eargo');
+                    if($post_objects) :
+                        foreach( $post_objects as $post):
+                        setup_postdata($post); ?>
+                    <li>
+                      <a href="<?= get_the_permalink($post->ID); ?>"><?=  get_the_title($post->ID); ?></a>
+                    </li>
+                    <?php
+                     endforeach;
+                        wp_reset_postdata();
+                    endif;
+                     ?>
+                  </ul>
 
-        </footer>
+                <ul class="footer-menu p-0 list-inline">
+                  <li><?= _e('follow us', 'theme'); ?></li>
+                  <?php
+                  if( have_rows('follow_us') ):
+                    while ( have_rows('follow_us') ) : the_row(); ?>
+                      <li><a href="<?= the_sub_field('links_social_media'); ?>"><?= the_sub_field('icon_image'); ?></a></li>
+                  <?php
+                    endwhile;
+                  endif;
+                  ?>
+                </ul>
+              </div>
+            </div>
+          </section>
+
 
         <script>
             // When the user scrolls down 20px from the top of the document, slide down the navbar
