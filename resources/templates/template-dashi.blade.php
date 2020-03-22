@@ -245,7 +245,7 @@
             <div class="container">
                 <div class="row justify-content-center pt-5">
                     <div class="bundels">
-                        <p class="bd-head">><?= the_field('timeline_headline'); ?></p>
+                        <p class="bd-head"><?= the_field('timeline_headline'); ?></p>
                         <p class="bd-sub"><?= the_field('timeline_subheadline'); ?></p>
                     </div>
 
