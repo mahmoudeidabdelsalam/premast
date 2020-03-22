@@ -44,12 +44,12 @@
 @endphp
 
 @if (get_field('images_tags', 'option'))
-  <section class="banner-items mb-5" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
+  <section class="banner-items mb-5 mt-5" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one_tags','option') }} 0%, {{ the_field('gradient_color_two_tags','option') }} 100%);">
     <div class="elementor-background-overlay" style="background-image: url('{{ the_field('images_tags','option') }}');"></div>
     <div class="container">
       <div class="row justify-content-center align-items-center text-center">
-        <h2 class="col-12 text-white"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{  $count }}</strong> <span class="font-weight-300">{{ the_field('heading_tags','option') }}</span></h2>
-        <p class="col-md-5 col-12 text-white font-weight-300">{{ the_field('description_tags','option') }}</p>
+        <h1 class="col-12" style="color:{{ the_field('font_color_tags','option') }}"><strong class="font-weight-600">{{ _e('Discover Best', 'premast') }} {{ single_tag_title() }} </strong> <span class="font-weight-300">{{ _e('templates', 'premast') }}</span></h1>
+        <p class="col-md-5 col-12 font-weight-300" style="color:{{ the_field('font_color_tags','option') }}">{{ _e('Download your preferred design from huge collection of professionally, creative designed', 'premast') }} {{ single_tag_title() }} {{ _e('templates for all your needs.', 'premast') }}</p>
       </div>
     </div>
   </section>
