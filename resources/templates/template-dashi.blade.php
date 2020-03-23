@@ -133,8 +133,7 @@
                         <p>Save countless hours by <br> using these templates</p>
                     </div>
                     <div class="slides">
-                      <img style="width:130%;" class="simpleParallax" data-aos="fade-left" data-duration="1000"
-                            src="<?php the_field('slide_image'); ?>" />
+                      <img style="width:130%;" class="simpleParallax" src="<?php the_field('slide_image'); ?>" />
                     </div>
                 </div>
                 <!-- dashboard slide  -->
@@ -489,6 +488,10 @@
 
         .timeline .nav {
             margin-top: 80px;
+        }
+
+        .slider img {
+          max-width: 100%;
         }
         </style>
 
