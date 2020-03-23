@@ -25,6 +25,7 @@ function ajax_refineblog() {
 
     foreach( $results as $result )
       $tags = wp_get_post_terms( $result->ID, 'product_tag' );
+      $titles[] = ['value' => addslashes( $result->post_title )];
       foreach( $tags as $tag ) {
         $titles[] = ['value' => addslashes( $tag->name )];
       }

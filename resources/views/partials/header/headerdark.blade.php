@@ -126,8 +126,8 @@ $time = get_the_time('Y-m-d')
           @endif
         </div>
 
-        <form action="" autocomplete="on" id="search">
-          <input id="autoblogs" class="search-inputs" action="{{ bloginfo('url') }}" name="refine"  value="{{ get_search_query() }}" type="text" placeholder="{{ _e('search...','premast') }}" autocomplete="off" spellcheck="false" maxlength="100"">
+        <form action="{{ bloginfo('url') }}/items" autocomplete="on" id="search">
+          <input id="autoblogs" class="search-inputs"  name="refine"  value="{{ get_search_query() }}" type="text" placeholder="{{ _e('search...','premast') }}" autocomplete="off" spellcheck="false" maxlength="100"">
           <input id="search_submit" value="Rechercher" type="submit">
           <i class="button-close"></i>
         </form>

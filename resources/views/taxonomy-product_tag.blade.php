@@ -140,14 +140,12 @@
             $my_query->posts = array_merge( $more_query->posts, $my_query->posts);
 
             $my_query->post_count = count( $my_query->posts );
-
-            //dd($my_query->post_count);
           }
     
         @endphp
 
         @if (get_field('show_card_pricing', 'option'))
-          <div class="col-md-3 col-12 grid-item">
+          <div class="col-md-4 col-12 grid-item">
             <div class="card">
               <span class="custom-onsale">
                 {{ the_field('tag_card_pricing', 'option') }}
@@ -174,7 +172,7 @@
 
           @php ($sale = get_post_meta( get_the_ID(), '_sale_price', true))
             
-            <div class="col-md-3 col-12 grid-item">
+            <div class="col-md-4 col-12 grid-item">
               <div class="card">
                   @if($sale)
                     <span class="custom-onsale">

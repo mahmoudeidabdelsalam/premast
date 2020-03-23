@@ -778,6 +778,8 @@ acf_add_local_field_group(array(
             '<i class="fa fa-linkedin-square"></i>' => '<i class="fa fa-linkedin"></i>',
             '<i class="fa fa-youtube-square"></i>' => '<i class="fa fa-youtube"></i>',
             '<i class="fa fa-instagram-square"></i>' => '<i class="fa fa-instagram"></i>',
+            '<i class="fa fa-behance-square"></i>' => '<i class="fa fa-behance"></i>',
+            '<i class="fa fa-twitter-square"></i>' => '<i class="fa fa-twitter"></i>',
           ),
           'allow_null' => 0,
           'other_choice' => 0,
