@@ -1,3 +1,11 @@
+<?php 
+$reset   = isset($_GET['show-reset-form']) ? $_GET['show-reset-form'] : '0';
+
+if($reset == true) {
+  wp_redirect( home_url() );
+  exit();
+}
+?>
 @extends('layouts.app')
 
 @section('content')
