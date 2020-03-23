@@ -133,7 +133,8 @@
                         <p>Save countless hours by <br> using these templates</p>
                     </div>
                     <div class="slides">
-                        <img  src="<?php the_field('slide_image'); ?>" style="width:100%;">
+                      <img style="width:130%;" class="simpleParallax" data-aos="fade-left" data-duration="1000"
+                            src="<?php the_field('slide_image'); ?>" />
                     </div>
                 </div>
                 <!-- dashboard slide  -->
@@ -148,12 +149,12 @@
                 <div class="row justify-content-center" style="padding-bottom: 90px;">
                     <div class="slider">
                         <?php
-                        $dashboard_categories = get_field(‘dashboard_categories’);
+                        $dashboard_categories = get_field('dashboard_categories');
                         foreach ($dashboard_categories as  $value):
-                        $slide_number = get_field(‘slide_colors’, $value->ID );
+                        $slide_number = get_field('slide_colors', $value->ID );
                         ?>
                         <div class="col-md-2">
-                            <img src="<?= Utilities::global_thumbnails($value->ID,‘full’); ?>">
+                            <img src="<?= Utilities::global_thumbnails($value->ID,'full'); ?>">
                             <p class="models"><a class="text-white" href="<?= get_permalink($value->ID); ?>"><?= get_the_title($value->ID); ?></a></p>
                             <p class="slidesnum"><?= $slide_number; ?></p>
                         </div>
@@ -346,12 +347,21 @@
             </div>
           </section>
 
+        
+        <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.3.0/dist/simpleParallax.js"></script>
 
         <script>
             // When the user scrolls down 20px from the top of the document, slide down the navbar
             window.onscroll = function () {
                 scrollFunction()
             };
+
+            var image = document.getElementsByClassName('thumbnail');
+            new simpleParallax(image, {
+              orientation: 'left'
+            });
+
+
             function scrollFunction() {
                 if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
                     document.getElementById("navbar").style.top = "0";
