@@ -489,6 +489,9 @@
         .slider img {
           max-width: 100%;
         }
+        ul.footer-menu li, ul.footer-menu li a, ul.footer-links li, ul.footer-links li a {
+          color: #fff;
+        }
         </style>
 
   @endwhile
