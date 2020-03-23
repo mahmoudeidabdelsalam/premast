@@ -397,10 +397,6 @@
             });
         </script>
         <style>
-        .simpleParallax {
-            width: 130%;
-        }
-
         ul#myTab li a:after {
             border-top: 1px dashed rgba(255, 255, 255, 0.6);
             content: "";
