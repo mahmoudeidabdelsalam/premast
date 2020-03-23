@@ -133,7 +133,7 @@
                         <p>Save countless hours by <br> using these templates</p>
                     </div>
                     <div class="slides">
-                      <img style="width:130%;" class="simpleParallax" src="<?php the_field('slide_image'); ?>" />
+                      <img style="width:130%;" class="ImageParallax" src="<?php the_field('slide_image'); ?>" />
                     </div>
                 </div>
                 <!-- dashboard slide  -->
@@ -355,7 +355,7 @@
                 scrollFunction()
             };
 
-            var image = document.getElementsByClassName('thumbnail');
+            var image = document.getElementsByClassName('ImageParallax');
             new simpleParallax(image, {
               orientation: 'left'
             });
