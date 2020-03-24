@@ -46,19 +46,19 @@
                 <p class="register-message m-0" style="display:none"></p>
                 <form action="#" method="POST" name="register-form" class="register-form register-user">
                   <p class="form-row">
-                    <label for="">First Name</label>
+                    <label for="" hidden>First Name</label>
                     <input class="form-control" type="text"  name="first_name" id="firstname">
                   </p>
                   <p class="form-row">
-                    <label for="">Last Name</label>
+                    <label for="" hidden>Last Name</label>
                     <input type="text" name="last_name" id="lastname">
                   </p>
                   <p class="form-row">
-                    <label for="">email</label>
+                    <label for="" hidden>email</label>
                     <input type="email" name="user_email" id="useremail">
                   </p>
                   <p class="form-row">
-                    <label for="">password</label>
+                    <label for="" hidden>password</label>
                     <input type="password" name="user_password" id="password">
                   </p>
                   <p class="form-row">
