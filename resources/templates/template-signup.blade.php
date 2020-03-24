@@ -47,23 +47,23 @@
                 <form action="#" method="POST" name="register-form" class="register-form register-user">
                   <p class="form-row">
                     <label for="" hidden>First Name</label>
-                    <input class="form-control" type="text"  name="first_name" id="firstname">
+                    <input class="form-control" placeholder="First Name" type="text"  name="first_name" id="firstname">
                   </p>
                   <p class="form-row">
                     <label for="" hidden>Last Name</label>
-                    <input type="text" name="last_name" id="lastname">
+                    <input type="text" name="last_name" placeholder="Last Name" id="lastname">
                   </p>
                   <p class="form-row">
                     <label for="" hidden>email</label>
-                    <input type="email" name="user_email" id="useremail">
+                    <input type="email" name="user_email" placeholder="E-mail" id="useremail">
                   </p>
                   <p class="form-row">
                     <label for="" hidden>password</label>
-                    <input type="password" name="user_password" id="password">
+                    <input type="password" name="user_password" placeholder="******" id="password">
                   </p>
                   <p class="form-row">
                     <label for="">confirm password</label>
-                    <input type="password" name="re-pwd" id="confirm_password">
+                    <input type="password" name="re-pwd" id="confirm_password" placeholder="******">
                     <span id="message"></span>
                   </p>  
                   <p class="Conditions">
