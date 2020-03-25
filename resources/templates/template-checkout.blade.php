@@ -8,6 +8,14 @@
 
 @php
   $order_pay   = isset($_GET['key']) ? $_GET['key'] : '0';
+  $to_cart   = isset($_GET['add-to-cart']) ? $_GET['add-to-cart'] : '0';
+
+  // var_dump($to_cart);
+
+  if($to_cart) {
+    wp_redirect( wc_get_checkout_url() );
+    exit();
+  }
   if($order_pay):
 @endphp
 
