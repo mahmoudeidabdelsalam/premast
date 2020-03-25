@@ -6,11 +6,25 @@
 
 @section('content')
   @while(have_posts()) @php the_post() @endphp
+
+
+
+@php $login   = isset($_GET['login']) ? $_GET['login'] : '0'; @endphp
+
+
+
+
     <section class="section-template position-relative" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
       <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
       <div class="container">
         <div class="row justify-content-center">
         @if ( !is_user_logged_in() )
+
+        @if($login == 'failed')
+          <h5 class="alert alert-danger col-12">The username and password you entered did not match our records. Please double-check and try again.</h5>
+        @endif
+
+
           <div class="col-md-7 col-12 modal-show">
             <div class="show-header text-center">
               <a class="navbar-brand" href="{{ home_url('/') }}" title="{{ get_bloginfo('name') }}">
