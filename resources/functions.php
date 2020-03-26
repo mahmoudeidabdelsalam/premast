@@ -97,15 +97,19 @@ add_shortcode( 'the_dramatist_front_upload', 'the_dramatist_front_upload' );
 /**
  * Call wp_enqueue_media() to load up all the scripts we need for media uploader
  */
-function the_dramatist_enqueue_scripts() {
-    if (!is_tax('product_cat')) {
-      wp_enqueue_media();
-      wp_enqueue_script(
-          'some-script',
-          get_theme_file_uri() . '/framework/assets/media-uploader.js',
-          array( 'jquery' ),
-          null
-      );
+
+
+if (!is_singular('product')) {
+  function the_dramatist_enqueue_scripts() {
+      if (!is_tax('product_cat')) {
+        wp_enqueue_media();
+        wp_enqueue_script(
+            'some-script',
+            get_theme_file_uri() . '/framework/assets/media-uploader.js',
+            array( 'jquery' ),
+            null
+        );
+    }
   }
 }
 

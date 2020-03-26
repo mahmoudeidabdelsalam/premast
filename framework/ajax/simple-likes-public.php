@@ -332,7 +332,7 @@ function get_simple_likes_button( $post_id, $is_comment = NULL ) {
 		$title = __( 'Like', 'YourThemeTextDomain' );
 		$icon = $icon_empty;
 	}
-	$output = '<span class="sl-wrapper"><a href="' . admin_url( 'admin-ajax.php?action=process_simple_like' . '&post_id=' . $post_id . '&nonce=' . $nonce . '&is_comment=' . $is_comment . '&disabled=true' ) . '" class="sl-button' . $post_id_class . $class . $comment_class . '" data-nonce="' . $nonce . '" data-post-id="' . $post_id . '" data-iscomment="' . $is_comment . '" title="' . $title . '">' . $icon . '</a>' . $loader . '</span>';
+	$output = '<span class="sl-wrapper"><a href="#" class="sl-button' . $post_id_class . $class . $comment_class . '" data-nonce="' . $nonce . '" data-post-id="' . $post_id . '" data-iscomment="' . $is_comment . '" title="' . $title . '">' . $icon . '</a>' . $loader . '</span>';
 	return $output;
 } // get_simple_likes_button()
 

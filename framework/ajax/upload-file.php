@@ -302,3 +302,24 @@ function cvf_td_generate_random_code($length=10) {
    return $string;
 }
 
+
+
+add_action( 'wp_ajax_image_attributes', 'image_attributes_update' );
+add_action( 'wp_ajax_nopriv_image_attributes', 'image_attributes_update' );
+function image_attributes_update() {
+  if ( $_FILES ) {
+    require_once(ABSPATH . "wp-admin" . '/includes/image.php');
+    require_once(ABSPATH . "wp-admin" . '/includes/file.php');
+    require_once(ABSPATH . "wp-admin" . '/includes/media.php');
+    $file_handler = 'updoc';
+    $attach_id = media_handle_upload($file_handler,$pid );
+  }
+
+  $image_attributes = wp_get_attachment_image_src( $attach_id );
+  $return_arr = array("id" => $attach_id, "src" => $image_attributes[0]);
+  
+  echo json_encode($return_arr);
+
+  wp_die();
+}
+

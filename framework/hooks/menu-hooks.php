@@ -255,10 +255,11 @@ class Nav_Item_Walker extends Walker_Nav_Menu {
       $taxonomy_query = get_queried_object();
       $current = ($item->current)? "item-current":"";
       $checked = ($item->current)? "checked":"";
-      $attributes .= ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
-      $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
-      $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
-      $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+      $attributes = "";
+      $attributes .= !empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+      $attributes .= !empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+      $attributes .= !empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+      $attributes .= !empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
       $item_output = $args->before;
       if($child_term) {
         $parent_current = ($item->object_id == $taxonomy_query->parent)? "item-current":"";

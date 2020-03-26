@@ -85,4 +85,26 @@ jQuery(document).ready(function ($) {
 
   });
 
+
+  $('.likes-button a').on('click', function () {
+    var post_id = $(this).data('id');
+    var nonce = $(this).data('nonce');
+    var is_comment = $(this).data('iscomment');
+    var action = 'process_simple_like';
+    $.ajax({
+      url: ajaxurl,
+      type: 'post',
+      data: {
+        action: action,
+        is_comment: is_comment,
+        post_id: post_id,
+        nonce: nonce,
+      },
+      success: function (response) {
+        $('.download-count').html(response);
+      },
+    });
+
+  });
+
 });
