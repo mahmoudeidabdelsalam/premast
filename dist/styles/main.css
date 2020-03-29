@@ -41111,21 +41111,6 @@ div.nsl-container .nsl-button-google[data-skin="dark"] .nsl-button-svg-container
   background: transparent !important;
 }
 
-/* line 3278, resources/assets/styles/layouts/_woocommerce.scss */
-
-.grid-custom .grid-item {
-  opacity: 0.8;
-}
-
-/* line 3281, resources/assets/styles/layouts/_woocommerce.scss */
-
-.grid-custom .grid-item.is-visible {
-  -webkit-transition: opacity 1s ease-in-out;
-  -o-transition: opacity 1s ease-in-out;
-  transition: opacity 1s ease-in-out;
-  opacity: 1;
-}
-
 /* line 3288, resources/assets/styles/layouts/_woocommerce.scss */
 
 .spinner {
@@ -41919,6 +41904,35 @@ section.block-about {
 
 .container.blogs {
   margin: 100px auto;
+}
+
+/* line 3853, resources/assets/styles/layouts/_woocommerce.scss */
+
+div#LimitDownload .modal-body p .btn-referral,
+.btn-referral {
+  width: 360px;
+  height: 40px;
+  border: 1px solid #3f4a59;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 30px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.116946px;
+  text-transform: capitalize;
+  color: #3f4a59;
+  padding: 0 !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 /* stylelint-enable */

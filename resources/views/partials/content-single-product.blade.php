@@ -145,7 +145,8 @@
                               <img src="{{ get_theme_file_uri().'/resources/assets/images' }}/laptop.png" alt="Upgrade Your Plan">
                               <h3>{{ _e('You have reached your download limit for today!', 'premast') }}</h3>
                               <h5 class="modal-title">{{ _e('you can come back tomorrow to enjoy 2 more downloads, or upgrade plan for unlimited downloads!', 'premast') }}</h5>
-                              <p><a class="btn-limit" href="{{ get_field('link_pricing', 'option') }}">{{ _e('Upgrade Your Plan', 'premast') }}</a>  </p>
+                              <p><a class="btn-limit" href="{{ get_field('link_pricing', 'option') }}">{{ _e('Upgrade Your Plan', 'premast') }}</a></p>
+                              <p><a class="btn-referral" href="{{ the_field('link_page_referral', 'option')}}"><i class="fa fa-users" aria-hidden="true"></i> {{ _e('Or Invite a friend and get a Free month', 'premast') }}</a></p>
                               <p><a class="cancel" href="#" class="close" data-dismiss="modal" aria-label="Close">{{ _e('cancel', 'premast') }}</a></p>
                             </div>
                           </div>

@@ -13732,15 +13732,15 @@ Router.prototype.loadEvents = function loadEvents () {
       $('.col-offer').hide('slow');
     });
 
-    var $grid = $('.grid').imagesLoaded(function () {
-      // init Isotope after all images have loaded
-      $grid.isotope({
-        // options...
-      });
+    // var $grid = $('.grid').imagesLoaded(function () {
+    //   // init Isotope after all images have loaded
+    //   $grid.isotope({
+    //     // options...
+    //   });
 
-      $('.grid-item').addClass('is-visible');
-      $('.spinner').fadeOut('slow');
-    });
+    //   $('.grid-item').addClass('is-visible');
+    //   $('.spinner').fadeOut('slow');
+    // });
 
     $(window).scroll(function () {
       if ($(window).scrollTop() >= 165) {

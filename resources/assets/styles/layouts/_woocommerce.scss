@@ -3274,16 +3274,16 @@ div.nsl-container .nsl-button-google[data-skin="dark"] .nsl-button-svg-container
   background: transparent !important;
 }
 
-.grid-custom {
-  .grid-item {
-    opacity: 0.8;
+// .grid-custom {
+//   .grid-item {
+//     opacity: 0.8;
 
-    &.is-visible {
-      transition: opacity 1s ease-in-out;
-      opacity: 1;
-    }
-  }
-}
+//     &.is-visible {
+//       transition: opacity 1s ease-in-out;
+//       opacity: 1;
+//     }
+//   }
+// }
 
 .spinner {
   position: absolute;
@@ -3848,5 +3848,25 @@ section.block-about {
 
 .container.blogs {
   margin: 100px auto;
+}
+
+div#LimitDownload .modal-body p .btn-referral,
+.btn-referral {
+  width: 360px;
+  height: 40px;
+  border: 1px solid rgb(63, 74, 89);
+  box-sizing: border-box;
+  border-radius: 30px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.116946px;
+  text-transform: capitalize;
+  color: rgb(63, 74, 89);
+  padding: 0 !important;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 /* stylelint-enable */
