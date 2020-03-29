@@ -119,7 +119,7 @@ export default {
         var $window = $(window);
         var $sidebar = $('.by-filter');
         var $sidebarHeight = $sidebar.innerHeight();
-        var $footerOffsetTop = $('.content-info').offset().top - 200;
+        var $footerOffsetTop = $('.content-info').offset().top - 400;
         var $sidebarOffset = $sidebar.offset();
         $window.scroll(function () {
           if ($window.scrollTop() > $sidebarOffset.top) {
