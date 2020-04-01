@@ -173,7 +173,7 @@
                               <div id="galleryPro<?= $post->ID; ?>" class="galleryPro">
                                 @foreach( $attachment_ids as $attachment_id ) 
                                   <a href="{{ wp_get_attachment_url( $attachment_id ) }}">
-                                    <img src="{{ wp_get_attachment_url( $attachment_id ) }}" />
+                                    {{ wp_get_attachment_image($attachment_id, 'medium') }}
                                   </a>
                                 @endforeach
                               </div>
