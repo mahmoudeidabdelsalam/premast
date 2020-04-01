@@ -343,7 +343,8 @@ section.templateList .card {
 }
 
 .galleryPro a img {
-  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
 
 .galleryPro {
