@@ -238,13 +238,14 @@ section.banner-slide {
   margin-left: 10px
 }
 
-  section.templateList,
-  section.Why-use,
-  section.design {
-    padding: 20px 10px;
-  }
+section.templateList,
+section.Why-use,
+section.design {
+  padding: 20px 10px;
+}
 
 @media (min-width: 577px) {
+
   section.templateList,
   section.Why-use,
   section.design {
@@ -402,4 +403,33 @@ section.templateList .card {
     left: 0;
     margin: 0;
   }
+}
+
+section.Why-use {
+  position: relative;
+}
+
+section.Why-use::before,
+section.Why-use::after {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 175px;
+  background-size: contain;
+}
+
+section.Why-use::before {
+  background-image: url("img/bg-before.png");
+  background-repeat: no-repeat;
+  background-position: top right;
+  right: 0;
+  bottom: -20px;
+}
+
+section.Why-use::after {
+  background-image: url("img/bg-after.png");
+  background-repeat: no-repeat;
+  background-position: top left;
+  left: 0;
+  top: -60px;
 }
