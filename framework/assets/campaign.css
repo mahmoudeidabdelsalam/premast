@@ -356,11 +356,11 @@ section.templateList .card {
 }
 
 .lg-backdrop {
-  z-index: 9999;
+  z-index: 9999 !important;
 }
 
 .lg-outer {
-  z-index: 99999;
+  z-index: 99999 !important;
 }
 
 .product-description img {
