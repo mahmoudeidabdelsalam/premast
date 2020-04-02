@@ -26,6 +26,9 @@ function front_end_campaign() {
     if($posts):
       foreach ($posts as $post):
       setup_postdata( $post ); 
+        $content = $post->post_content;
+        $content = apply_filters('the_content', $content);
+        $content = str_replace(']]>', ']]&gt;', $content);
     ?>
       <div class="col-md-3 col-sm-6 col-12">
         <div class="card">
@@ -54,7 +57,7 @@ function front_end_campaign() {
                 <div class="col-md-6 col-12">
                   <div class="product-description">
                     <h3 class="text-left mb-5"><?= _e('Description', 'premast'); ?></h3>
-                    <div id="tab-description"><?= get_content($post->ID); ?></div>
+                    <div id="tab-description"><?= $content; ?></div>
                   </div>
                 </div>
                 <div class="col-md-6 col-12">
