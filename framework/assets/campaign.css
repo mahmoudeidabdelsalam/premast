@@ -434,3 +434,109 @@ section.Why-use::after {
   left: 0;
   top: -60px;
 }
+
+ul.paginations {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.paginations li {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 100%;
+}
+
+ul.paginations li.acitve {
+  background: #1E6DFB;
+  color: #fff;
+}
+
+ul.paginations li i {
+  font-size: 16px !important;
+  line-height: 24px !important;
+}
+
+div[id*="ajax"] {
+  min-height: 1100px;
+}
+
+
+.loading {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  background-color: rgba(51, 51, 51, 0.02);
+  border-radius: 5%;
+  display: none;
+}
+
+section.templateList {
+  position: relative;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  position: relative !important;
+}
+
+.double-bounce1,
+.double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #333;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+  animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-bounce {
+
+  0%,
+  100% {
+    -webkit-transform: scale(0.0)
+  }
+
+  50% {
+    -webkit-transform: scale(1.0)
+  }
+}
+
+@keyframes sk-bounce {
+
+  0%,
+  100% {
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  }
+
+  50% {
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}

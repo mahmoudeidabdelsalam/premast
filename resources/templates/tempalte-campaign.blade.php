@@ -113,6 +113,20 @@
               $product_term = get_term_by('id', $term, 'product_cat');
               $counter++;
 
+              $total = array(
+                'post_type' => 'product',
+                'posts_per_page' => -1,
+                'tax_query' => array(
+                  array(
+                    'taxonomy' => 'product_cat',
+                    'field' => 'term_id',
+                    'terms' => $product_term->term_id
+                  )
+                )
+              );
+              $total_posts = get_posts($total);
+              $paginations = count($total_posts) % 12;
+
               $args = array(
                 'post_type' => 'product',
                 'posts_per_page' => 12,
@@ -127,7 +141,7 @@
               $posts = get_posts($args);
             ?>
             <div class="tab-pane fade <?= ($counter == 1)? 'show active':''; ?> " id="<?php echo esc_html( $product_term->slug ); ?>" role="tabpanel" aria-labelledby="<?php echo esc_html( $product_term->slug ); ?>-tab">
-              <div class="row">
+              <div class="row" id="ajax-<?= $product_term->term_id; ?>">
                 <?php 
                 if($posts):
                   foreach ($posts as $post):
@@ -192,6 +206,22 @@
                 endif;
                 ?>
               </div>
+              <div class="loading">
+                <div class="spinner">
+                  <div class="double-bounce1"></div>
+                  <div class="double-bounce2"></div>
+                </div>
+              </div>
+              <ul class="paginations">
+                <li><i class="fa fa-angle-left"></i></li>
+                <?php 
+                  foreach (range(1, $paginations) as $number): 
+                  ?>
+                  <li data-page="<?= $number; ?>" data-term="<?= $product_term->term_id; ?>" class="<?= ($number == 1)? 'acitve':''; ?>"><span><?= $number; ?></span></li>
+                <?php endforeach; ?>
+                <li><i class="fa fa-angle-right"></i></li>
+              </ul>
+
             </div>
           <?php endforeach; ?>
         </div>
