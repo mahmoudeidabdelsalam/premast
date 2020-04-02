@@ -213,13 +213,11 @@
                 </div>
               </div>
               <ul class="paginations">
-                <li><i class="fa fa-angle-left"></i></li>
                 <?php 
                   foreach (range(1, $paginations) as $number): 
                   ?>
                   <li data-page="<?= $number; ?>" data-term="<?= $product_term->term_id; ?>" class="<?= ($number == 1)? 'acitve':''; ?>"><span><?= $number; ?></span></li>
                 <?php endforeach; ?>
-                <li><i class="fa fa-angle-right"></i></li>
               </ul>
 
             </div>
