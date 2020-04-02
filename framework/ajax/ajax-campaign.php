@@ -59,21 +59,21 @@ function front_end_campaign() {
                 </div>
                 <div class="col-md-6 col-12">
                   <h3 class="text-left mb-5"><?= _e('Gallery', 'premast'); ?></h3>
-                  @php  
+                  <?php  
                     $product = new WC_product($post->ID);
                     $attachment_ids = $product->get_gallery_image_ids();
-                  @endphp                         
-                  @if ($attachment_ids)
+                    if ($attachment_ids):
+                  ?>
                   <div id="galleryPro<?= $post->ID; ?>" class="galleryPro">
-                    @foreach( $attachment_ids as $attachment_id ) 
+                    <?php foreach( $attachment_ids as $attachment_id ): ?>
                       <a href="<?= wp_get_attachment_url( $attachment_id ); ?>">
-                        {!! wp_get_attachment_image($attachment_id, 'thumbnail') !!}
+                        <?= wp_get_attachment_image($attachment_id, 'thumbnail'); ?>
                       </a>
-                    @endforeach
+                    <?php endforeach; ?>
                   </div>
-                  @else 
+                  <?php else : ?>
                     <img src="<?= Utilities::global_thumbnails($post->ID,'full'); ?>" class="card-img-top" alt="<?= get_the_title($post->ID); ?>"> 
-                  @endif
+                  <?php endif; ?>
                 </div>
               </div>
             </div>
