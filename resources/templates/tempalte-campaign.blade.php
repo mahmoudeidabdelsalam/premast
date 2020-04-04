@@ -274,7 +274,7 @@
                 if($paginations != 1):
                   foreach (range(1, $paginations) as $number): 
                 ?>
-                  <li data-page="<?= $number; ?>" data-term="<?= $product_term->term_id; ?>" class="<?= ($number == 1)? 'acitve':''; ?>"><span><?= $number; ?></span></li>
+                  <li data-page-id="<?= get_the_ID(); ?>" data-page="<?= $number; ?>" data-term="<?= $product_term->term_id; ?>" class="<?= ($number == 1)? 'acitve':''; ?>"><span><?= $number; ?></span></li>
                 <?php 
                   endforeach; 
                 endif; ?>

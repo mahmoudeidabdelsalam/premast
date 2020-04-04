@@ -62,6 +62,7 @@ jQuery(function ($) {
     $(this).addClass('acitve');
     var page = $(this).data('page');
     var term = $(this).data('term');
+    var page_id = $(this).data('page-id');
     var action = 'front_end_campaign';
     $.ajax({
       url: ajaxurl,
@@ -70,6 +71,7 @@ jQuery(function ($) {
         action: action,
         page: page,
         term: term,
+        page_id: page_id,
       },
       beforeSend: function () {
         $('.loading').show();
