@@ -50,11 +50,12 @@ jQuery(function ($) {
   });
 
 
-  $('.galleryPro').lightGallery({
-    thumbnail: true,
-    animateThumb: false,
-    showThumbByDefault: false,
-  });
+
+  // $('.galleryPro').lightGallery({
+  //   thumbnail: true,
+  //   animateThumb: false,
+  //   showThumbByDefault: false,
+  // });
 
   $('.paginations li').on('click', function () {
     $('.paginations li').removeClass('acitve');

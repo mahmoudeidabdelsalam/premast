@@ -4,8 +4,6 @@ add_action('wp_ajax_front_end_campaign', 'front_end_campaign', 0);
 add_action('wp_ajax_nopriv_front_end_campaign', 'front_end_campaign');
 function front_end_campaign() {
 
- 
-
     $paged = $_POST["page"];
     $term = $_POST["term"];
 

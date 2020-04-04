@@ -333,26 +333,31 @@ section.templateList .card {
   margin-bottom: 30px;
 }
 
-.galleryPro a {
-  width: 33%;
-  height: 135px;
-  overflow: hidden;
-  margin: 1%;
-  border: 2px solid;
-  flex: 0 0 30.3333%;
-}
-
-.galleryPro a img {
-  max-width: 100%;
-  height: auto;
-}
-
 .galleryPro {
+  height: 650px !important;
+}
+
+.galleryPro li.lslide {
+  height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-flow: row;
-  flex-wrap: wrap;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.galleryPro li.lslide img {
+  max-width: 100%;
+}
+
+.lSSlideOuter .lSPager.lSGallery li {
+  height: 113px !important;
+  border: none !important;
+  border-radius: 5px;
+}
+
+.lSSlideOuter .lSPager.lSGallery li.active {
+  height: 113px;
+  border: 1px solid #333333 !important;
 }
 
 .lg-backdrop {
@@ -466,11 +471,6 @@ ul.paginations li i {
   line-height: 24px !important;
 }
 
-div[id*="ajax"] {
-  min-height: 1100px;
-}
-
-
 .loading {
   position: absolute;
   top: 0;
@@ -539,4 +539,67 @@ section.templateList {
     transform: scale(1.0);
     -webkit-transform: scale(1.0);
   }
+}
+
+.sideModal {
+  height: 100%;
+  border: 1px solid #749AF2;
+  box-sizing: border-box;
+  border-radius: 7px;
+  padding: 55px 30px;
+}
+
+.sideModal ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sideModal ul li {
+  margin-top: 25px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.04px;
+  color: #282F39;
+}
+
+.sideModal h4 {
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 36px;
+  letter-spacing: 0.04px;
+  text-transform: capitalize;
+  color: #000000;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.sideModal .button {
+  margin: 30px 0 !important;
+  width: 100% !important;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 25px;
+  text-align: center;
+  letter-spacing: 0.116946px;
+  text-transform: capitalize;
+  color: #FFFFFF;
+  height: 45px;
+}
+
+.sideModal p {
+  font-weight: normal;
+  font-size: 19px;
+  line-height: 36px;
+  letter-spacing: 0.04px;
+  color: #6881AF;
+  margin: 0;
+}
+
+.sideModal p.font-blod {
+  font-weight: bold !important;
+  color: #4d8afc !important;
+  font-size: 25px !important;
 }
