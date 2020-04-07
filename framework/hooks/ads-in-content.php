@@ -3,8 +3,13 @@ add_filter( 'the_content', 'tbn_ads_inside_content' );
 function tbn_ads_inside_content( $content ) {
   $link_ads = get_field('link_ads', 'option');
   $banner_ads = get_field('banner_ads', 'option');
-  if ( is_single() && in_the_loop() && is_main_query() && $banner_ads) {
-    $ads = "<p class='banner-custom'><a href='".$link_ads ."'><img src='".$banner_ads ."' /></a></p>";
+  if ( is_single() && in_the_loop() && is_main_query()) {
+    if ($banner_ads) {
+      $ads = "<p class='banner-custom'><a href='".$link_ads ."'><img src='".$banner_ads ."' /></a></p>";
+    } else {
+      $ads = "";
+    }
+    
     $p_array = explode('</p>', $content );
     $p_count = 1;
     if( !empty( $p_array ) ){
