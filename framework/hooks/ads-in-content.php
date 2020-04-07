@@ -1,7 +1,8 @@
 <?php
-if ( is_single() && in_the_loop() && is_main_query()) {
-  add_filter( 'the_content', 'tbn_ads_inside_content' );
-  function tbn_ads_inside_content( $content ) {
+
+add_filter( 'the_content', 'tbn_ads_inside_content' );
+function tbn_ads_inside_content( $content ) {
+  if ( is_single() && in_the_loop() && is_main_query() ) {
     $link_ads = get_field('link_ads', 'option');
     $banner_ads = get_field('banner_ads', 'option');
     
@@ -15,12 +16,14 @@ if ( is_single() && in_the_loop() && is_main_query()) {
       $p_count = 1;
       if( !empty( $p_array ) ){
         array_splice( $p_array, $p_count, 0, $ads );
-        $output = '';
+        $content = '';
         foreach( $p_array as $key=>$value ){
-          $output .= $value;
+          $content .= $value;
         }
       }
     
-    return $output;
+    return $content;
   }
+
+  return $content;
 }
