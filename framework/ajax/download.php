@@ -2,12 +2,22 @@
 add_action( 'wp_ajax_nopriv_counter', 'counter' );
 add_action( 'wp_ajax_counter', 'counter' );
 function counter() {
-	$counter = get_post_meta( $_POST['post_id'], 'counter', true );
-	$counter++;
-	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-		update_post_meta( $_POST['post_id'], 'counter', $counter );
-		echo $counter;
-	}
+
+  $user_id = $_POST['user_id'];
+
+  if($user_id) {
+    $share_counter = get_user_meta( $user_id, 'share_counter' , true );
+	  $share_counter++;
+    update_user_meta( $user_id, 'share_counter', $share_counter );
+    echo $share_counter;
+  } else {
+    $counter = get_post_meta( $_POST['post_id'], 'counter', true );
+    $counter++;
+    if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+      update_post_meta( $_POST['post_id'], 'counter', $counter );
+      echo $counter;
+    }
+  }
 	die();
 }
 

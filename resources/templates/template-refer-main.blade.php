@@ -108,7 +108,7 @@
                 <?php foreach ($inputs as $input): ?>
                   <?php if($input["type"] == "email"): ?>
                     <div class="form-group mb-2">
-                      <input type="email" name="input_<?= $input["id"]; ?>" class="form-control" id="emailInput" placeholder="write an email">
+                      <input type="text" name="input_<?= $input["id"]; ?>" class="form-control" id="emailInput" placeholder="write an email">
                     </div>
                   <?php elseif($input["type"] == "hidden"): ?>
                     <input type="text" name="input_<?= $input["id"]; ?>" class="form-control" hidden value="<?= $current_user->display_name; ?>">
@@ -126,19 +126,19 @@
                 <input type="hidden" name="gform_field_values" value="">
               </form>
 
-              <ul class="list-inline social-sharer">
+              <ul class="list-inline social-sharer customSocial">
                 <li class="head"><span>{{ _e('Share your link', 'premast') }}</span></li>
                 <li class="list-inline-item">
-                  <a class="item" data-network="linkedin" data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-linkedin"></i></a>
+                  <a class="item" data-user="<?= $current_user->ID; ?>" data-action="counter" data-event="counter" data-id="{{ get_the_ID()}}" data-network="linkedin" data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-linkedin"></i></a>
                 </li>
                 <li class="list-inline-item">
-                  <a class="item" data-network="twitter"  data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-twitter"></i></a>      
+                  <a class="item" data-user="<?= $current_user->ID; ?>" data-action="counter" data-event="counter" data-id="{{ get_the_ID()}}" data-network="twitter"  data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-twitter"></i></a>      
                 </li>
                 <li class="list-inline-item">
-                  <a class="item" data-network="facebook" data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-facebook"></i></a>      
+                  <a class="item" data-user="<?= $current_user->ID; ?>" data-action="counter" data-event="counter" data-id="{{ get_the_ID()}}" data-network="facebook" data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-facebook"></i></a>      
                 </li>
                 <li class="list-inline-item">
-                  <a class="item" data-network="addtoany" data-url="{{ $link }}" data-title="{{ $link }}" href="#"> <i class="fa fa-ellipsis-v"></i></a>      
+                  <a class="item" data-user="<?= $current_user->ID; ?>" data-action="counter" data-event="counter" data-id="{{ get_the_ID()}}" data-network="addtoany" data-url="{{ $link }}" data-title="{{ $link }}" href="#"> <i class="fa fa-ellipsis-v"></i></a>      
                 </li>
               </ul>
 

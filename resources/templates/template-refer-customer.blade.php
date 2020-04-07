@@ -99,16 +99,16 @@
                 <ul class="list-inline social-sharer">
                   <li class="head"><span>{{ _e('Share your link', 'premast') }}</span></li>
                   <li class="list-inline-item">
-                    <a class="item" data-network="linkedin" data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-linkedin"></i></a>
+                    <a class="item" data-user="<?= $current_user->ID; ?>" data-action="counter" data-event="counter" data-network="linkedin" data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-linkedin"></i></a>
                   </li>
                   <li class="list-inline-item">
-                    <a class="item" data-network="twitter"  data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-twitter"></i></a>      
+                    <a class="item" data-user="<?= $current_user->ID; ?>" data-action="counter" data-event="counter" data-network="twitter"  data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-twitter"></i></a>      
                   </li>
                   <li class="list-inline-item">
-                    <a class="item" data-network="facebook" data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-facebook"></i></a>      
+                    <a class="item" data-user="<?= $current_user->ID; ?>" data-action="counter" data-event="counter" data-network="facebook" data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-facebook"></i></a>      
                   </li>
                   <li class="list-inline-item">
-                    <a class="item" data-network="addtoany" data-url="{{ $link }}" data-title="{{ $link }}" href="#"> <i class="fa fa-ellipsis-v"></i></a>      
+                    <a class="item" data-user="<?= $current_user->ID; ?>" data-action="counter" data-event="counter" data-network="addtoany" data-url="{{ $link }}" data-title="{{ $link }}" href="#"> <i class="fa fa-ellipsis-v"></i></a>      
                   </li>
                 </ul>
                 <div id="inviteCode" class="invite-page">

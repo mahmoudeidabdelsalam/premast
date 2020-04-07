@@ -33574,16 +33574,17 @@ ul.list-editing:after {
 header.bg-light.banner {
   border-bottom: 1px solid #cccc;
   padding: 10px 0 5px;
+  z-index: 99999 !important;
 }
 
-/* line 976, resources/assets/styles/layouts/_header.scss */
+/* line 977, resources/assets/styles/layouts/_header.scss */
 
 .side-menu-user .headline {
   margin-top: 95px;
   margin-bottom: 65px;
 }
 
-/* line 981, resources/assets/styles/layouts/_header.scss */
+/* line 982, resources/assets/styles/layouts/_header.scss */
 
 .side-menu-user ul {
   display: -webkit-box;
@@ -33597,7 +33598,7 @@ header.bg-light.banner {
       flex-wrap: wrap;
 }
 
-/* line 987, resources/assets/styles/layouts/_header.scss */
+/* line 988, resources/assets/styles/layouts/_header.scss */
 
 .side-menu-user ul li {
   width: 100%;
@@ -33606,7 +33607,7 @@ header.bg-light.banner {
   position: relative;
 }
 
-/* line 994, resources/assets/styles/layouts/_header.scss */
+/* line 995, resources/assets/styles/layouts/_header.scss */
 
 .side-menu-user ul li a {
   font-size: 16px;
@@ -33624,13 +33625,13 @@ header.bg-light.banner {
   margin: 10px 0px;
 }
 
-/* line 1005, resources/assets/styles/layouts/_header.scss */
+/* line 1006, resources/assets/styles/layouts/_header.scss */
 
 .side-menu-user .headline {
   margin-left: 30px;
 }
 
-/* line 1009, resources/assets/styles/layouts/_header.scss */
+/* line 1010, resources/assets/styles/layouts/_header.scss */
 
 .side-menu-user ul li.active a {
   font-weight: bold;
@@ -33638,32 +33639,32 @@ header.bg-light.banner {
   color: #1E6DFB;
 }
 
-/* line 1014, resources/assets/styles/layouts/_header.scss */
+/* line 1015, resources/assets/styles/layouts/_header.scss */
 
 .admin-bar .col-offer + header.bg-light.banner.navbar-banner-items.fixed-header {
   top: 32px !important;
 }
 
-/* line 1018, resources/assets/styles/layouts/_header.scss */
+/* line 1019, resources/assets/styles/layouts/_header.scss */
 
 .col-offer + header.bg-light.banner.navbar-banner-items.fixed-header {
   top: 0px !important;
 }
 
-/* line 1022, resources/assets/styles/layouts/_header.scss */
+/* line 1023, resources/assets/styles/layouts/_header.scss */
 
 .navbar-banner-items li.item-menu.open .sub {
   display: block !important;
   z-index: 999;
 }
 
-/* line 1027, resources/assets/styles/layouts/_header.scss */
+/* line 1028, resources/assets/styles/layouts/_header.scss */
 
 li.item-menu.star .sub li {
   border-right: 1px solid #ddd;
 }
 
-/* line 1031, resources/assets/styles/layouts/_header.scss */
+/* line 1032, resources/assets/styles/layouts/_header.scss */
 
 li.item-menu.star .sub li a {
   display: -webkit-box;
@@ -33677,13 +33678,13 @@ li.item-menu.star .sub li a {
           align-items: center;
 }
 
-/* line 1037, resources/assets/styles/layouts/_header.scss */
+/* line 1038, resources/assets/styles/layouts/_header.scss */
 
 li.item-menu.star .sub li a img {
   margin-right: 10px;
 }
 
-/* line 1041, resources/assets/styles/layouts/_header.scss */
+/* line 1042, resources/assets/styles/layouts/_header.scss */
 
 .col-offer + header,
 .admin-bar .col-offer + header.bg-light.banner {
@@ -33691,19 +33692,19 @@ li.item-menu.star .sub li a img {
   top: 0 !important;
 }
 
-/* line 1047, resources/assets/styles/layouts/_header.scss */
+/* line 1048, resources/assets/styles/layouts/_header.scss */
 
 header.bg-light.banner.navbar-banner-items.fixed-header {
   position: fixed !important;
 }
 
-/* line 1051, resources/assets/styles/layouts/_header.scss */
+/* line 1052, resources/assets/styles/layouts/_header.scss */
 
 .col-offer + header + section.banner-items {
   margin-top: 0;
 }
 
-/* line 1055, resources/assets/styles/layouts/_header.scss */
+/* line 1056, resources/assets/styles/layouts/_header.scss */
 
 #CloseBanner {
   background: transparent;
@@ -33720,7 +33721,7 @@ header.bg-light.banner.navbar-banner-items.fixed-header {
   opacity: .7;
 }
 
-/* line 1070, resources/assets/styles/layouts/_header.scss */
+/* line 1071, resources/assets/styles/layouts/_header.scss */
 
 .col-offer {
   position: relative;
@@ -35277,6 +35278,13 @@ span.status.rejected {
   -webkit-box-shadow: 0px 2px 3px #00000021;
           box-shadow: 0px 2px 3px #00000021;
   margin: 35px 0px 35px 0px !important;
+}
+
+/* line 372, resources/assets/styles/layouts/_posts.scss */
+
+.banner-custom img {
+  max-width: 95%;
+  margin: 0 !important;
 }
 
 /* stylelint-enable */

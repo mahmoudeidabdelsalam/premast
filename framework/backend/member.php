@@ -52,6 +52,42 @@ function membership_add_pages() {
         </tr>
       <?php endforeach; ?>
     </table>
+
+
+
+
+
+
+    <h3>Member count share</h3>
+
+    <?php
+    $args = array(
+      'count_total'  => false,
+      'fields'       => 'all',
+    ); 
+    $users = get_users( $args );
+    ?>
+
+    <table style="width:100%">
+      <tr>
+        <th>User</th>
+        <th>count share link</th> 
+      </tr>
+      <?php
+        foreach ($users as $user):
+          $share_counter = get_user_meta( $user->ID, 'share_counter', true );
+          if ($share_counter):
+        ?>
+        <tr>
+          <td><?= $user->display_name; ?></td>
+          <td><?= $share_counter; ?></td>
+        </tr>
+      <?php 
+          endif;
+        endforeach; 
+      ?>
+    </table>
+
     <style>
         th {
           text-align: left;

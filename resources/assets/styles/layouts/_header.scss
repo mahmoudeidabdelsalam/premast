@@ -971,6 +971,7 @@ ul.list-editing:after {
 header.bg-light.banner {
   border-bottom: 1px solid #cccc;
   padding: 10px 0 5px;
+  z-index: 99999 !important;
 }
 
 .side-menu-user .headline {

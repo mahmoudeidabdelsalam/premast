@@ -50,6 +50,8 @@ jQuery(document).ready(function ($) {
     var post_id = $(this).data('id');
     var post_event = $(this).data('event');
     var action = $(this).data('action');
+    var social = $(this).data('network');
+    var user_id = $(this).data('user');
     $.ajax({
       url: ajaxurl,
       type: 'post',
@@ -57,6 +59,8 @@ jQuery(document).ready(function ($) {
         action: action,
         event: post_event,
         post_id: post_id,
+        social: social,
+        user_id: user_id,
       },
       success: function (response) {
         $('.namber-share').html(response);
