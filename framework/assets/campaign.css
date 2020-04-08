@@ -735,3 +735,53 @@ ul.paginations li.first i,
 ul.paginations li.last i {
   font-size: 12px !important;
 }
+
+
+div#lightSlider .item {
+  height: 270px !important;
+  position: absolute;
+  width: 440px !important;
+  z-index: 1;
+  box-shadow: 0px 8px 45px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  margin: 40px;
+  transform: translate3d(0, 0, 0);
+  transition: transform 1s, opacity 1s;
+  opacity: 1;
+  transition: all 1s cubic-bezier(.48, .16, .15, .98);
+}
+
+div#lightSlider {
+  height: 460px !important;
+}
+
+div#lightSlider .item a {
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+}
+
+div#lightSlider .item:first-child {
+  left: 600px;
+}
+
+div#lightSlider .item.item.active {
+  top: 50px;
+  z-index: 2;
+  box-shadow: 0px 10px 70px rgba(0, 0, 0, 0.2);
+  left: 300px;
+  position: absolute;
+}
+
+div#lightSlider .item.item.active+.item {
+  left: 600px;
+}
+
+ul.lSPager.lSpg {
+  margin-top: -70px !important;
+  margin-bottom: 100px !important;
+}

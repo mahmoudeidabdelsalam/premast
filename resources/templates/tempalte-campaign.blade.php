@@ -26,9 +26,9 @@
   <section class="banner-background vh-90" style="background-image: url({{ the_field('background_banner') }});">
     <div class="container-fluid vh-90">
       <div class="row align-content-center justify-content-center vh-90">
-        <h2>{{ the_field('headline_banner') }}</h2>
+        <h1>{{ the_field('headline_banner') }}</h1>
         <div class="col-12 text-center instructions-offer">
-          {{ the_field('instructions_offer') }}
+          <h2>{{ the_field('instructions_offer') }}</h2>
         </div>
         <div class="col-12 text-center">
           @php
@@ -51,11 +51,13 @@
 
   <section class="banner-slide pb-5">
    <div class="container">
-      <div class="rev_slider">
+      <div id="lightSlider">
         <?php
         if( have_rows('slider_3d') ):
           while ( have_rows('slider_3d') ) : the_row(); ?>
-          <div class="rev_slide"><a href="<?= the_sub_field('slide_url'); ?>" style="background-image:url('<?= the_sub_field('slide_image'); ?>');"></a></div>
+          <div class="item">
+            <a href="<?= the_sub_field('slide_url'); ?>" style="background-image:url('<?= the_sub_field('slide_image'); ?>');"></a>
+          </div>
         <?php
           endwhile;
         endif;
@@ -85,7 +87,7 @@
 
 
   <section class="templateList" style="background:#F3F3F3;">
-    <h3>{{ _e('Wide range of Unique Designed template', 'premast') }}</h3>
+    <h3>{{ _e('Wide range of Unique Designed templates', 'premast') }}</h3>
     <div class="container-fluid">
       <div class="row">
         <?php 
