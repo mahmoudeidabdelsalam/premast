@@ -785,3 +785,22 @@ ul.lSPager.lSpg {
   margin-top: -70px !important;
   margin-bottom: 100px !important;
 }
+
+@media (max-width: 769px) {
+  div#lightSlider .item {
+    margin: 0;
+    width: 100% !important;
+    left: auto !important;
+    box-shadow: none !important;
+  }
+}
+
+.lSSlideOuter .lSPager.lSpg li a,
+.lSSlideOuter .lSPager.lSpg li a {
+  background-color: #C1C1C1 !important;
+}
+
+.lSSlideOuter .lSPager.lSpg li.active a,
+.lSSlideOuter .lSPager.lSpg li:hover a {
+  background-color: #646464 !important;
+}
