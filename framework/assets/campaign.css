@@ -639,6 +639,10 @@ section.templateList {
   .galleryPro {
     height: 350px !important;
   }
+
+  ul#TabProducts li {
+    margin: 0;
+  }
 }
 
 ul.galleryPro img {
