@@ -64,7 +64,7 @@ section.banner-background {
   background-position: center top;
 }
 
-section.banner-background h2 {
+section.banner-background h1 {
   font-style: normal;
   font-weight: 900;
   font-size: 50px;
@@ -72,6 +72,16 @@ section.banner-background h2 {
   text-align: center;
   letter-spacing: 0.04px;
   text-transform: capitalize;
+  color: #000000;
+}
+
+section.banner-background h2 {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 36px;
+  text-align: center;
+  letter-spacing: 0.04px;
   color: #000000;
 }
 
