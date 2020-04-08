@@ -271,12 +271,12 @@
               </div>
               <ul class="paginations">
                 <?php if($paginations != 1): ?>
-                <li data-page-id="<?= get_the_ID(); ?>" data-page="1" data-term="<?= $product_term->term_id; ?>" class=""><span><i class="fa fa-angle-left" aria-hidden="true"></i></span></li>
+                <li data-page-id="<?= get_the_ID(); ?>" data-page="1" data-term="<?= $product_term->term_id; ?>" class="first"><span><i class="fa fa-chevron-left" aria-hidden="true"></i> first</span></li>
                 <?php foreach (range(1, $paginations) as $number): ?>
                   <li data-page-id="<?= get_the_ID(); ?>" data-page="<?= $number; ?>" data-term="<?= $product_term->term_id; ?>" class="<?= ($number == 1)? 'acitve':''; ?>"><span><?= $number; ?></span></li>
                 <?php endforeach; ?>
                   <li class="more"><span>...</span></li>
-                  <li data-page-id="<?= get_the_ID(); ?>" data-page="<?= $paginations; ?>" data-term="<?= $product_term->term_id; ?>" class="last"><span><i class="fa fa-angle-right" aria-hidden="true"></i></span></li>
+                  <li data-page-id="<?= get_the_ID(); ?>" data-page="<?= $paginations; ?>" data-term="<?= $product_term->term_id; ?>" class="last"><span>last <i class="fa fa-chevron-right" aria-hidden="true"></i></span></li>
                  <?php endif; ?>
               </ul>
 

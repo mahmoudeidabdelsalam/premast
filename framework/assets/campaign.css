@@ -715,3 +715,19 @@ section.footer img {
 .instructions a span {
   font-weight: 400;
 }
+
+ul.paginations li.first, 
+ul.paginations li.last {
+  white-space: nowrap;
+  width: 70px !important;
+  margin: 0 10px;
+  border: 1px solid #1d6dfa;
+  border-radius: 20px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+ul.paginations li.first i,
+ul.paginations li.last i {
+  font-size: 12px !important;
+}
