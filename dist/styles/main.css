@@ -31651,12 +31651,11 @@ section.block-call h2 {
 
   ul.footer-links {
     white-space: nowrap;
-    overflow: scroll;
     margin: 0;
   }
 }
 
-/* line 534, resources/assets/styles/layouts/_blocks.scss */
+/* line 533, resources/assets/styles/layouts/_blocks.scss */
 
 h3.the-headline-border {
   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYyIiBoZWlnaHQ9IjEzIiB2aWV3Qm94PSIwIDAgMTYyIDEzIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMSA0LjY4MTI2QzQ1LjYzMTYgLTAuMzkxOTE2IDE0Ni4xNzEgLTEuNzY3NTkgMTYwLjQ3IDEwLjc2ODlDMTY3Ljk5MiAxNy4zNjM5IDk0LjI3NSAtNS40NjUzMiAxMi42NTk0IDEwLjc2ODkiIHN0cm9rZT0iIzFFNkRGQiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==);
@@ -31672,7 +31671,7 @@ h3.the-headline-border {
   margin-top: 34px;
 }
 
-/* line 548, resources/assets/styles/layouts/_blocks.scss */
+/* line 547, resources/assets/styles/layouts/_blocks.scss */
 
 .space-union {
   background-image: url(/app/themes/premast/dist/images/union.svg);

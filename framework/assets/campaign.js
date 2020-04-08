@@ -33,7 +33,7 @@ jQuery(function ($) {
   });
 
   rev.slick({
-    speed: 1000,
+    speed: 600,
     arrows: false,
     dots: true,
     focusOnSelect: true,

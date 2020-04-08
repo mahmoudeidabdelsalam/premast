@@ -34,6 +34,10 @@ header.header-block.fixed-header {
   color: #282F39;
 }
 
+.vh-90 {
+  height: 90vh;
+}
+
 div#time {
   background: rgba(155, 197, 245, .5);
   border-radius: 2px;
@@ -397,6 +401,7 @@ section.templateList .card {
   color: #3F4A59;
   mix-blend-mode: normal;
   opacity: 0.9;
+  font-weight: 400;
 }
 
 @media (max-width: 576px) {
@@ -602,4 +607,111 @@ section.templateList {
   font-weight: bold !important;
   color: #4d8afc !important;
   font-size: 25px !important;
+}
+
+@media (max-width: 769px) {
+  section.design img {
+    max-width: 100%;
+  }
+
+  .wrap section.banner-background.vh-90,
+  .wrap section.banner-background.vh-90 * {
+    height: auto !important;
+  }
+
+  section.banner-background {
+    margin: 0;
+    padding-top: 100px;
+  }
+
+  .instructions-list {
+    padding-top: 50px;
+  }
+
+  .item-why {
+    margin-bottom: 30px;
+  }
+
+  .sideModal {
+    margin-top: 30px;
+  }
+
+  .galleryPro {
+    height: 350px !important;
+  }
+}
+
+ul.galleryPro img {
+  max-width: 100%;
+}
+
+.april-campaign a.button.button-green {
+  font-size: 20px;
+  padding: 11px 44px;
+  font-weight: 500;
+}
+
+.modal-content {
+  background: #f9f9f9;
+}
+
+.sidemodal a.button.button-green {
+  font-size: 17px;
+}
+
+.modal-dialog.modal-dialog-centered.modal-xl {
+  max-width: 1224px;
+}
+
+.modal-title {
+  font-size: 25px;
+}
+
+.modal-body {
+  padding: 40px;
+}
+
+.modal-header.border-0.pt-5 {
+  padding: 0px 40px;
+}
+
+
+ul.paginations li {
+  display: none;
+}
+
+ul.paginations li:nth-child(2),
+ul.paginations li:nth-child(1),
+ul.paginations li:nth-child(3),
+ul.paginations li:nth-child(4), 
+ul.paginations li.acitve+li,
+ul.paginations li.acitve,
+ul.paginations li.last,
+ul.paginations li.frist,
+ul.paginations li.more {
+  display: flex;
+}
+
+section.design .button {
+  margin: 40px auto 0;
+  display: block;
+  max-width: 200px;
+}
+
+section.footer {
+  height: 70px;
+  overflow: hidden;
+}
+
+section.footer img {
+  max-width: 190px !important;
+  margin: 25px 0 !important;
+}
+
+.header-block img {
+  max-width: 190px !important;
+}
+
+.instructions a span {
+  font-weight: 400;
 }

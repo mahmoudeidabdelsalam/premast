@@ -23,9 +23,9 @@
     </div>
   </header>
 
-  <section class="banner-background vh-100" style="background-image: url({{ the_field('background_banner') }});">
-    <div class="container-fluid vh-100">
-      <div class="row align-content-center justify-content-center vh-100">
+  <section class="banner-background vh-90" style="background-image: url({{ the_field('background_banner') }});">
+    <div class="container-fluid vh-90">
+      <div class="row align-content-center justify-content-center vh-90">
         <h2>{{ the_field('headline_banner') }}</h2>
         <div class="col-12 text-center instructions-offer">
           {{ the_field('instructions_offer') }}
@@ -270,14 +270,14 @@
                 </div>
               </div>
               <ul class="paginations">
-                <?php 
-                if($paginations != 1):
-                  foreach (range(1, $paginations) as $number): 
-                ?>
+                <?php if($paginations != 1): ?>
+                <li data-page-id="<?= get_the_ID(); ?>" data-page="1" data-term="<?= $product_term->term_id; ?>" class=""><span><i class="fa fa-angle-left" aria-hidden="true"></i></span></li>
+                <?php foreach (range(1, $paginations) as $number): ?>
                   <li data-page-id="<?= get_the_ID(); ?>" data-page="<?= $number; ?>" data-term="<?= $product_term->term_id; ?>" class="<?= ($number == 1)? 'acitve':''; ?>"><span><?= $number; ?></span></li>
-                <?php 
-                  endforeach; 
-                endif; ?>
+                <?php endforeach; ?>
+                  <li class="more"><span>...</span></li>
+                  <li data-page-id="<?= get_the_ID(); ?>" data-page="<?= $paginations; ?>" data-term="<?= $product_term->term_id; ?>" class="last"><span><i class="fa fa-angle-right" aria-hidden="true"></i></span></li>
+                 <?php endif; ?>
               </ul>
 
             </div>
@@ -314,7 +314,16 @@
         <div class="row justify-content-center align-content-center">
           <img src="{{ the_field('background_design') }}" alt="{{ the_field('headline_design') }}">
         </div>
-      </div>          
+      </div>    
+    @php
+      $link = get_field('button_offer_go');
+      if( $link ):
+      $link_url = $link['url'];
+      $link_title = $link['title'];
+      $link_target = $link['target'] ? $link['target'] : '_self';
+    @endphp
+      <a class="button button-green" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+    @endif      
   </section>
 
   <section class="footer bg-white" style="box-shadow: 0px -2px 2px rgba(192, 192, 192, 0.25);">
