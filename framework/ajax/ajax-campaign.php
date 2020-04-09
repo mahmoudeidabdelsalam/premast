@@ -64,7 +64,7 @@ function front_end_gallery() {
     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
       <div class="modal-content">
         <div class="modal-header border-0 pt-5">
-          <h6 class="modal-title" id="exampleModalLabel"><?= html_entity_decode(get_the_title($post->ID)); ?></h6>
+          <h6 class="modal-title" id="exampleModalLabel"><?= html_entity_decode(get_the_title($post_id)); ?></h6>
           <button type="button" class="Ajaxclose" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
