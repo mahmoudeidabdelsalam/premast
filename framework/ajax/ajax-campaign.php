@@ -31,12 +31,16 @@ function front_end_campaign() {
     ?>
       <div class="col-md-3 col-sm-6 col-12">
         <div class="card">
-          <a class="img-modal" href="#" data-toggle="modal" data-target="#Modal<?= $post->ID; ?>">
+          <a class="img-modal ajaxModal" data-id="<?= $post->ID; ?>" href="#" data-toggle="modal" data-target="#ModalAjax">
             <img src="<?= Utilities::global_thumbnails($post->ID,'medium'); ?>" class="card-img-top" alt="<?= get_the_title($post->ID); ?>">
           </a>
           
           <div class="card-body">
-            <h5 class="card-title"><a href="#" data-toggle="modal" data-target="#Modal<?= $post->ID; ?>"><?= html_entity_decode(wp_trim_words(get_the_title($post->ID), '4', ' ...')); ?></a></h5>
+            <h5 class="card-title">
+              <a class="ajaxModal" data-id="<?= $post->ID; ?>" href="#" data-toggle="modal" data-target="#ModalAjax">
+                <?= html_entity_decode(wp_trim_words(get_the_title($post->ID), '4', ' ...')); ?>
+              </a>
+            </h5>
           </div>
         </div>
       </div>
