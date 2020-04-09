@@ -176,13 +176,6 @@
                   wp_reset_postdata(); 
                 endif;
                 ?>
-
-                
-              <div class="modal fade"  id="ModalAjax" tabindex="-1" role="dialog" aria-labelledby="ModalAjaxLabel" aria-hidden="true">
-
-              </div>
-
-
               </div>
               <div class="loading">
                 <div class="spinner">
@@ -207,6 +200,8 @@
       </div>
     </div>
   </section>
+
+  <div class="modal fade"  id="ModalAjax" tabindex="-1" role="dialog" aria-labelledby="ModalAjaxLabel" aria-hidden="true"></div>
 
   <section class="Why-use" style="background: linear-gradient(18.08deg, #BEDBFD 3.57%, rgba(190, 219, 253, 0.4) 76.69%);">
     <h3 class="mb-5">{{ the_field('headline_why_use') }}</h3>
