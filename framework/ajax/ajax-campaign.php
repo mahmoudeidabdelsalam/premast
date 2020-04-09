@@ -25,16 +25,12 @@ function front_end_campaign() {
     if($posts):
       foreach ($posts as $post):
       setup_postdata( $post ); 
-        $content = $post->post_content;
-        $content = apply_filters('the_content', $content);
-        $content = str_replace(']]>', ']]&gt;', $content);
     ?>
       <div class="col-md-3 col-sm-6 col-12">
         <div class="card">
           <a class="img-modal ajaxModal" data-id="<?= $post->ID; ?>" href="#" data-toggle="modal" data-target="#ModalAjax">
             <img src="<?= Utilities::global_thumbnails($post->ID,'medium'); ?>" class="card-img-top" alt="<?= get_the_title($post->ID); ?>">
           </a>
-          
           <div class="card-body">
             <h5 class="card-title">
               <a class="ajaxModal" data-id="<?= $post->ID; ?>" href="#" data-toggle="modal" data-target="#ModalAjax">
@@ -44,14 +40,66 @@ function front_end_campaign() {
           </div>
         </div>
       </div>
-
       <?php 
       endforeach;
       wp_reset_postdata(); 
     else:
       echo "No tempalte More";
     endif;
+    ?>
 
+  <script>
+    jQuery(function ($) {
+        $('.ajaxModal').on('click', function () {
+        var post_id = $(this).data('id');
+        var action = 'get_front_end_gallery';
+        $.ajax({
+          url: "<?= admin_url( 'admin-ajax.php' ); ?>",
+          type: 'post',
+          data: {
+            action: action,
+            post_id: post_id,
+          },
+          beforeSend: function () {
+            $('.loading').show();
+          },
+          success: function (response) {
+            $('#ModalAjax').html(response);
+            $('.modal-backdrop').addClass('show');
+            $('.modal').addClass('show');
+            $('body').addClass('modal-open');
+            $('#ModalAjax').show();
+            $('.modal-backdrop').show();
+            $('.loading').hide();
+            $('#galleryPro' + post_id).lightSlider({
+              gallery: true,
+              item: 1,
+              loop: true,
+              thumbItem: 6,
+              slideMargin: 0,
+              enableDrag: false,
+              currentPagerPosition: 'left',
+              onSliderLoad: function (el) {
+                $('.lightSlider').removeClass('cS-hidden');
+                el.lightGallery({
+                  selector: '#imageGallery .lslide',
+                });
+              },
+              responsive: [{
+                breakpoint: 480,
+                settings: {
+                  enableDrag: true,
+                  controls: false,
+                  thumbItem: 4,
+                },
+              }],
+            });
+          },
+        });
+      });
+    });
+  </script>
+  <?php
 	die;
 }
 
