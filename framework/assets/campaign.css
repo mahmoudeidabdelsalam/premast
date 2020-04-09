@@ -814,3 +814,9 @@ ul.lSPager.lSpg {
 .lSSlideOuter .lSPager.lSpg li:hover a {
   background-color: #646464 !important;
 }
+
+button.Ajaxclose {
+  background: transparent;
+  border: none;
+  font-size: 29px;
+}

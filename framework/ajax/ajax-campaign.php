@@ -65,7 +65,7 @@ function front_end_gallery() {
       <div class="modal-content">
         <div class="modal-header border-0 pt-5">
           <h6 class="modal-title" id="exampleModalLabel"><?= html_entity_decode(get_the_title($post->ID)); ?></h6>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="Ajaxclose" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -87,6 +87,17 @@ function front_end_gallery() {
                 </li>                            
               <?php endforeach; ?>
               </ul>
+             <script>
+                jQuery(function ($) {
+                  $('.Ajaxclose').on('click', function () {
+                    $('.modal-backdrop').removeClass('show');
+                    $('.modal').removeClass('show');
+                    $('body').removeClass('modal-open');
+                    $('#ModalAjax').hide();
+                    $('.modal-backdrop').hide();
+                  });
+                });
+              </script>
             <?php else: ?>
               <img src="<?= Utilities::global_thumbnails($post_id,'full'); ?>" class="card-img-top" alt="<?= get_the_title($post_id); ?>"> 
             <?php endif; ?>
@@ -121,5 +132,5 @@ function front_end_gallery() {
       </div>
     </div>
 <?php
-
+die;
 }

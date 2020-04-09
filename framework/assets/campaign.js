@@ -57,6 +57,8 @@ jQuery(function ($) {
     });
   });
 
+
+
   $('.ajaxModal').on('click', function () {
     var post_id = $(this).data('id');
     var action = 'get_front_end_gallery';
@@ -72,6 +74,11 @@ jQuery(function ($) {
       },
       success: function (response) {
         $('#ModalAjax').html(response);
+        $('.modal-backdrop').addClass('show');
+        $('.modal').addClass('show');
+        $('body').addClass('modal-open');
+        $('#ModalAjax').show();
+        $('.modal-backdrop').show();
         $('.loading').hide();
         $('#galleryPro' + post_id).lightSlider({
           gallery: true,
