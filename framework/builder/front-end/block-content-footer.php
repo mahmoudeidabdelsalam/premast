@@ -4,26 +4,33 @@
  */
 
  $logo = get_field('footer_logo_block');
- $menus = get_field('footer_menu_link');
 ?>
 <section class="footer">
   <div class="container">
     <div class="row align-items-center m-0">
-      <a href="<?= home_url('/'); ?>"><img src="<?= $logo; ?>" alt="logo footer"></a>
+      <a href="<?= the_field('link_logo_footer'); ?>"><img src="<?= $logo; ?>" alt="logo footer"></a>
 
-      <?php if( $menus ): ?>
-        <ul class="footer-links">
-          <?php 
-          foreach( $menus as $menu ): 
-            $parts = explode("/", $menu);
-            $title = get_the_title(get_page_by_path($parts['3']));
-          ?>
-          <li>
-            <a href="<?php echo esc_url( $menu ); ?>"><?= $title; ?></a>
-          </li>
-          <?php endforeach; ?>
-        </ul>
-      <?php endif; ?>
+      <ul class="footer-links">
+        <?php
+        if( have_rows('mune_footer') ):
+          while ( have_rows('mune_footer') ) : the_row();
+        ?>
+        <?php 
+        $link = get_sub_field('link_mune_footer');
+        if( $link ): 
+            $link_url = $link['url'];
+            $link_title = $link['title'];
+            $link_target = $link['target'] ? $link['target'] : '_self';
+            ?>
+        <li>
+          <a class="button" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+        </li>
+        <?php endif; ?>
+        <?php
+          endwhile;
+        endif;
+        ?>
+      </ul>
 
       <ul class="footer-menu p-0 list-inline">
         <li><?= _e('follow us', 'theme'); ?></li>
