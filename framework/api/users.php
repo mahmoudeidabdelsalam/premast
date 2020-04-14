@@ -40,7 +40,7 @@ function all_users($data){
       $message = 'successfully Login';
     } else { 
       $login = false;
-      $message = 'Try to login again (login or password) error';
+      $message = 'email or password wrong, try to login again';
     } 
 
     $array =  [
