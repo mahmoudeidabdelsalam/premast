@@ -192,6 +192,7 @@
                 do_action( 'woocommerce_review_order_before_cart_contents' );
                 foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
                   $_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+                  $product_id = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
                   if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
                     $product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
                     ?>
@@ -208,6 +209,19 @@
                         <?php echo apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) . '&nbsp;'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                         <?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times; %s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                         <?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                        <?php
+                          echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                            'woocommerce_cart_item_remove_link',
+                            sprintf(
+                              '<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">&times;</a>',
+                              esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
+                              esc_html__( 'Remove this item', 'woocommerce' ),
+                              esc_attr( $product_id ),
+                              esc_attr( $_product->get_sku() )
+                            ),
+                            $cart_item_key
+                          );
+                        ?>
                       </td>
                       <td class="product-total">
                         <?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -439,5 +453,15 @@ span.login-checkout a {
     color: #1E6DFB;
     position: absolute;
     right: 40px;
+}
+
+.summary-custom td.product-name a.remove {
+    color: red;
+    overflow: visible;
+    margin: 0 0 0 30px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 </style>

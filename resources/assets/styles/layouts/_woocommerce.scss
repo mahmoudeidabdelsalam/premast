@@ -3151,6 +3151,17 @@ p.full-access a {
     margin: 10px 0 !important;
   }
 
+  .summary-custom td.product-name strong.product-quantity {
+    margin-left: 10px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+  }
+
+  .summary-custom td.product-name a {
+    overflow: hidden;
+  }
+
   .woocommerce-privacy-policy-text ul {
     padding: 0 25px;
   }
