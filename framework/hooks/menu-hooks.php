@@ -241,7 +241,8 @@ class Nav_Item_Walker extends Walker_Nav_Menu {
       $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
     } else {
 
-      $child_term = get_term_children( $item->object_id, $item->object );
+      // $child_term = get_term_children( $item->object_id, $item->object );
+      $child_term = get_terms( $item->object, array( 'parent' => $item->object_id, 'hide_empty' => false ) );
       $class_names = $value = '';
       $classes = empty( $item->classes ) ? array() : (array) $item->classes;
       $classes[] = 'menu-item-' . $item->ID;
@@ -279,7 +280,7 @@ class Nav_Item_Walker extends Walker_Nav_Menu {
         $item_output .= '</a>';
         $item_output .= '</li>';
           foreach($child_term as $child):
-            $term = get_term_by( 'id', $child, $item->object );
+            $term = get_term_by( 'id', $child->term_id, $item->object );
             $term_current = ($term->term_id == $taxonomy_query->term_id)? "item-current":"";
             $term_link = get_term_link( $term );
             if ( is_wp_error( $term_link ) ) {
