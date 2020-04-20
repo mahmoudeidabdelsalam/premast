@@ -63,7 +63,7 @@
               </ul>
             </div>
             <div class="generic_price_btn clearfix">
-              <a href="#" class="paddle_button" data-status="" data-user_id="<?= $current_user->ID; ?>" data-subscription_id="<?= $current_user->ID; ?>" data-subscription_plan_id="571645" data-passthrough="<?= $current_user->ID; ?>">Subscribe!</a>
+              <a href="#">Subscribe!</a>
             </div>
           </div>
         </div>
@@ -93,7 +93,7 @@
               </ul>
             </div>
             <div class="generic_price_btn clearfix">
-              <a href="#" class="paddle_button" data-status="" data-user_id="<?= $current_user->ID; ?>" data-subscription_id="<?= $current_user->ID; ?>" data-subscription_plan_id="571645" data-passthrough="<?= $current_user->ID; ?>">Subscribe!</a>
+              <a href="#">Subscribe!</a>
             </div>
           </div>
         </div>
@@ -123,7 +123,7 @@
               </ul>
             </div>
             <div class="generic_price_btn clearfix">
-              <a href="#" class="paddle_button" data-status="" data-user_id="<?= $current_user->ID; ?>" data-subscription_id="<?= $current_user->ID; ?>" data-subscription_plan_id="571645" data-passthrough="<?= $current_user->ID; ?>">Subscribe!</a>
+              <a href="#" class="paddle_button" data-product="571645" data-success="/thank-you/" data-passthrough="123">Subscribe</a>
             </div>
           </div>
         </div>
