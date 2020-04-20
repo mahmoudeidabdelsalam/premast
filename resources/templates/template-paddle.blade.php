@@ -123,7 +123,7 @@
               </ul>
             </div>
             <div class="generic_price_btn clearfix">
-              <a href="#" class="paddle_button" data-product="590810" data-success="/thank-you/"  data-passthrough="<?= $current_user->ID; ?>">Subscribe</a>
+              <a href="#" class="paddle_button" data-product="590810" data-success="/thank-you/"  data-passthrough="562">Subscribe</a>
             </div>
           </div>
         </div>
