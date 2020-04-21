@@ -8,7 +8,6 @@
 
 @php 
   $alert_name = $_POST['alert_name'];
-
 @endphp
 
 
@@ -137,7 +136,7 @@
               </ul>
             </div>
             <div class="generic_price_btn clearfix">
-              <a href="#" class="paddle_button" data-product="590810" data-success="/paddel/" data-email="<?= $current_user->email; ?>" data-passthrough="<?= $current_user->ID; ?>">Subscribe</a>
+              <a href="#" class="paddle_button" data-product="571645" data-success="/paddel/" data-email="<?= $current_user->email; ?>" data-passthrough="<?= $current_user->ID; ?>">Subscribe</a>
             </div>
           </div>
         </div>
