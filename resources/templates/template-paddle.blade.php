@@ -11,7 +11,18 @@
 
 
   @php 
-    dd($alert_name);
+    
+
+
+      $paddles = wp_insert_post(array (
+        'post_type' => 'paddles',
+        'post_title' => $alert_name,
+        'post_status' => 'publish'
+      ));
+
+
+      dd($paddles);
+
   @endphp
 
 @else
