@@ -7,13 +7,20 @@
 
 
 @php 
-  $variable = $_POST['alert_name'];
-  dd($variable);
+  $alert_name = $_POST['alert_name'];
+
 @endphp
+
+
 
 @section('content')
   @while(have_posts()) @php the_post() @endphp
 
+
+
+@if ($alert_name)
+
+@else
 @php 
   global $current_user;
   wp_get_current_user();
@@ -586,5 +593,6 @@
     }
 
   </style>
+  @endif
   @endwhile
 @endsection
