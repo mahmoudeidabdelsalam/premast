@@ -2,13 +2,21 @@
   Template Name: paddle Template
 --}}
 
+@php 
+  $alert_name = $_POST['alert_name'];
+@endphp
+
+
+@if ($alert_name)
+
+@else
+
+
+
 @extends('layouts.app-dark')
 
 
 
-@php 
-  $alert_name = $_POST['alert_name'];
-@endphp
 
 
 
@@ -17,9 +25,7 @@
 
 
 
-@if ($alert_name)
 
-@else
 @php 
   global $current_user;
   wp_get_current_user();
@@ -592,6 +598,8 @@
     }
 
   </style>
-  @endif
+ 
   @endwhile
 @endsection
+
+ @endif
