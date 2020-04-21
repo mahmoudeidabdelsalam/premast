@@ -4,6 +4,13 @@
 
 @extends('layouts.app-dark')
 
+
+
+@php 
+  $variable = $_POST['alert_name'];
+  dd($variable);
+@endphp
+
 @section('content')
   @while(have_posts()) @php the_post() @endphp
 
@@ -123,7 +130,7 @@
               </ul>
             </div>
             <div class="generic_price_btn clearfix">
-              <a href="#" class="paddle_button" data-product="590810" data-success="/thank-you/"  data-passthrough="562">Subscribe</a>
+              <a href="#" class="paddle_button" data-product="590810" data-success="/paddel/" data-email="<?= $current_user->email; ?>" data-passthrough="<?= $current_user->ID; ?>">Subscribe</a>
             </div>
           </div>
         </div>
