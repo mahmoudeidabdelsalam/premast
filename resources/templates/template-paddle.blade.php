@@ -9,6 +9,11 @@
 
 @if ($alert_name)
 
+
+  @php 
+    dd($alert_name);
+  @endphp
+
 @else
 
 
