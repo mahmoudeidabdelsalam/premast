@@ -329,7 +329,7 @@
     }
 
     #generic_price_table .generic_content .generic_head_price .generic_price_tag {
-        padding: 0 0 20px;
+        padding: 10px 30px;
     }
 
     #generic_price_table .generic_content .generic_head_price .generic_price_tag .price {
