@@ -145,7 +145,7 @@
           while ( have_rows('pricing_table') ) : the_row();
           ?>
           <div class="col-md-4 p-0">
-            <div class="generic_content clearfix">
+            <div class="generic_content clearfix <?= (get_row_index() == 2)? 'active':'' ; ?>">
               <div class="generic_head_price clearfix">
                 <div class="generic_head_content clearfix">
                   <div class="head_bg"></div>
