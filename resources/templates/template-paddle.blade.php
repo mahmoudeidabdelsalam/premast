@@ -1,172 +1,92 @@
 {{--
-  Template Name: paddle Template
+  Template Name: Paddle Template
 --}}
 
-@php 
-  $alert_name = $_POST['alert_name'];
-@endphp
-
-
-@if ($alert_name)
-
-
-  @php 
-    
-
-
-      $paddles = wp_insert_post(array (
-        'post_type' => 'paddles',
-        'post_title' => $alert_name,
-        'post_status' => 'publish'
-      ));
-
-
-      dd($paddles);
-
-  @endphp
-
-@else
-
-
-
 @extends('layouts.app-dark')
-
-
-
-
-
 
 @section('content')
   @while(have_posts()) @php the_post() @endphp
 
 
-
-
-@php 
-  global $current_user;
-  wp_get_current_user();
-@endphp
-<section class="banner" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
-  <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
-  <div class="container">
-    <div class="row align-items-center text-center justify-content-center">
-      <div class="col-md-7 col-sm-12 col-12">
-        <h2>Get Full Access to <br> +80k Slides  For Only $6 </h2>
-        <p>Save hours of work and stand out from the crowd. Join thousands of people and companies worldwide who trust us with their presentations.</p>
-        <p class="time-back"><span>15 day</span> {{ _e('money back guarantee', 'premast') }}</p>
-      </div>
-    </div>
-  </div>
-</section>
-<div id="generic_price_table">
-  <section>
+  @php 
+    global $current_user;
+    wp_get_current_user();
+  @endphp
+  <section class="banner" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
+    <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="price-heading clearfix">
-              <h1>We offer money back guarantee according to your package choice, in case you don’t like it</h1>
-          </div>
+      <div class="row align-items-center text-center justify-content-center">
+        <div class="col-md-7 col-sm-12 col-12">
+          <h2>{{ the_field('headline_paddle') }}</h2>
+          <p>{{ the_field('content_paddle') }}</p>
         </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-          <div class="col-md-4 p-0">
-          <div class="generic_content clearfix">
-            <div class="generic_head_price clearfix">
-              <div class="generic_head_content clearfix">
-                <div class="head_bg"></div>
-                <div class="head">
-                  <span>Plus</span>
-                </div>
-              </div>
-              <div class="generic_price_tag clearfix">
-                <span class="price">
-                  <span class="sign">$</span>
-                  <span class="currency">143</span>
-                  <span class="cent">.99</span>
-                  <span class="month">/Unlimited Downloads Other Benefits</span>
-                </span>
-              </div>
-            </div>
-            <div class="generic_feature_list">
-              <ul>
-                <li><span>1.</span> Access to all Free & Premium items</li>
-                <li><span>2.</span> Support 24/7</li>
-                <li><span>3.</span> Commercial license</li>
-              </ul>
-            </div>
-            <div class="generic_price_btn clearfix">
-              <a href="#">Subscribe!</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="generic_content active clearfix">
-            <div class="generic_head_price clearfix">
-              <div class="generic_head_content clearfix">
-                <div class="head_bg"></div>
-                <div class="head">
-                  <span>Mega</span>
-                </div>
-              </div>
-              <div class="generic_price_tag clearfix">
-                <span class="price">
-                  <span class="sign">$</span>
-                  <span class="currency">143</span>
-                  <span class="cent">.99</span>
-                  <span class="month">/Unlimited Downloads Other Benefits</span>
-                </span>
-              </div>
-            </div>
-            <div class="generic_feature_list">
-              <ul>
-                <li><span>1.</span> Access to all Free & Premium items</li>
-                <li><span>2.</span> Support 24/7</li>
-                <li><span>3.</span> Commercial license</li>
-              </ul>
-            </div>
-            <div class="generic_price_btn clearfix">
-              <a href="#">Subscribe!</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 p-0">
-          <div class="generic_content clearfix">
-            <div class="generic_head_price clearfix">
-              <div class="generic_head_content clearfix">
-                <div class="head_bg"></div>
-                <div class="head">
-                  <span>Advanced</span>
-                </div>
-              </div>
-              <div class="generic_price_tag clearfix">
-                <span class="price">
-                  <span class="sign">$</span>
-                  <span class="currency">143</span>
-                  <span class="cent">.99</span>
-                  <span class="month">/Unlimited Downloads Other Benefits</span>
-                </span>
-              </div>
-            </div>
-            <div class="generic_feature_list">
-              <ul>
-                <li><span>1.</span> Access to all Free & Premium items</li>
-                <li><span>2.</span> Support 24/7</li>
-                <li><span>3.</span> Commercial license</li>
-              </ul>
-            </div>
-            <div class="generic_price_btn clearfix">
-              <a href="#" class="paddle_button" data-product="571645" data-success="/paddel/" data-email="<?= $current_user->email; ?>" data-passthrough="<?= $current_user->ID; ?>">Subscribe</a>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
-</div>
+
+  <div id="generic_price_table">
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="price-heading clearfix">
+                <h1>{{ the_field('price_heading') }}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+        <?php 
+        if( have_rows('pricing_table') ): 
+          while ( have_rows('pricing_table') ) : the_row();
+          ?>
+          <div class="col-md-4 p-0">
+            <div class="generic_content clearfix">
+              <div class="generic_head_price clearfix">
+                <div class="generic_head_content clearfix">
+                  <div class="head_bg"></div>
+                  <div class="head">
+                    <span><?= the_sub_field('head_price'); ?></span>
+                  </div>
+                </div>
+                <div class="generic_price_tag clearfix">
+                  <span class="price">
+                    <span class="sign">$</span>
+                    <span class="currency"><?= the_sub_field('tag_currency'); ?></span>
+                    <span class="month">/<?= the_sub_field('tag_month'); ?></span>
+                  </span>
+                </div>
+              </div>
+              <div class="generic_feature_list">
+                <ul>
+                  <?php 
+                  if( have_rows('feature_list') ): 
+                    while ( have_rows('feature_list') ) : the_row();
+                    ?>
+                    <li><?= the_sub_field('heading_feature_list'); ?></li>
+                  <?php
+                    endwhile;
+                  endif; 
+                  ?>
+                </ul>
+              </div>
+              <div class="generic_price_btn clearfix">
+                <a href="#" class="paddle_button" data-product="<?= the_sub_field('id_plan_subscribe'); ?>" data-passthrough="<?= $current_user->ID; ?>">Subscribe</a>
+              </div>
+            </div>
+          </div>
+        <?php
+          endwhile;
+        endif; 
+        ?>
+
+          
+        </div>
+      </div>
+    </section>
+  </div>
 
   <style>
     body {
@@ -617,5 +537,3 @@
  
   @endwhile
 @endsection
-
- @endif
