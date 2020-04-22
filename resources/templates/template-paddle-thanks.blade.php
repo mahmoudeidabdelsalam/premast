@@ -50,7 +50,8 @@
   <!-- Modal -->
   <div class="modal" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document" >
-      <div class="modal-content" style="background-image:url('{{ the_field('banner_background_overlay','option') }}');">
+      <div class="modal-content" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
+        <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
         <div class="modal-header border-0">
           <h5 class="modal-title text-white" id="exampleModalLongTitle">Dear <?= $current_user->display_name; ?></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
