@@ -2,10 +2,6 @@
   Template Name: Paddle Thanks Template
 --}}
 
-@extends('layouts.app-dark')
-
-@section('content')
-
 @php 
   $send = (isset($_POST['alert_name']))? $_POST['alert_name']:'';
   $passthrough = (isset($_POST['passthrough']))? $_POST['passthrough']:'';
@@ -40,7 +36,16 @@
       ) );
       $user_membership_id = wp_insert_post( $data, true );
     }
+
+    dd($user_membership_id);
   @endphp
+@endif  
+
+@extends('layouts.app-dark')
+
+@section('content')
+
+
 
   <!-- Modal -->
   <div class="modal" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -63,7 +68,7 @@
       $('#exampleModalLong').modal('show')
     });
   </script>
-@endif  
+
   <div class="checkout-custom-header">
     <h1>{{ _e('Thanks for your subscription!', 'premast') }}</h1>
     @php ($like_download = get_field('download_page','option') . '?tabs=paid')
