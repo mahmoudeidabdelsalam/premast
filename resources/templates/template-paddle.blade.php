@@ -109,6 +109,62 @@
         </div>
       </div>
     </section>
+<style>
+.modal-show {
+    background: #EFF6FA;
+    box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.269107);
+    border-radius: 14px;
+    padding: 60px 100px 20px !important;
+}
+.modal-show .login-username label, .modal-show .login-password label {
+    display: none !important;
+}
+.modal-show h5.modal-title {
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: 0.0438698px;
+    color: #3D4552;
+    mix-blend-mode: normal;
+    opacity: 0.82;
+    margin-bottom: 40px;
+    margin-top: 10px;
+}
+.modal-show  input[type="text"], input[type="password"] {
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    border-radius: 8px !important;
+    height: 40px !important;
+}
+.modal-show .modal-body {
+    padding: 40px 0;
+}
+.modal-show  p.login-submit {
+    text-align: center;
+}
+.modal-show span.switch-to-lost {
+    position: absolute;
+    bottom: 146px;
+    width: auto !important;
+    right: 0;
+}
+section.section-template span.switch-link {
+  text-align: center !important;
+}
+.modal-show  p.woocommerce-form-row.form-row {
+    align-items: center;
+}
+</style>
+    <style>
+      .modal-show {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 2px 1px #ccc;
+}
+    </style>
 @else 
   @php 
     global $current_user;
