@@ -26,6 +26,11 @@
       $plan_id = 1023293;
     }
 
+
+    $event_time = (isset($_POST['event_time']))? $_POST['event_time']:'';
+    $next_bill_date = (isset($_POST['next_bill_date']))? $_POST['next_bill_date']:'';
+
+
     if ($send == 'subscription_created') {
       $data = apply_filters( 'wc_memberships_groups_import_membership_data', array(
         'plan_id' => $plan_id, 
@@ -36,6 +41,9 @@
       ) );
       $user_membership_id = wp_insert_post( $data, true );
     }
+
+    update_post_meta($user_membership_id, '_start_date', $event_time);
+    update_post_meta($user_membership_id, '_end_date', $next_bill_date);
 
     dd($user_membership_id);
   @endphp
