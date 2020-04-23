@@ -174,7 +174,7 @@
                   @if($price != 0)
                     <p class="full-access">
                       <span>{{ _e('OR', 'premast') }}</span>
-                      <a href="{{ the_field('link_pricing', 'option') }}">{{ _e('Get Full Access', 'premast') }}</a>
+                      <a href="{{ the_field('link_pricing', 'option') }}">{{ the_field('link_text_pricing', 'option') }}</a>
                     </p>
                   @endif
                 @endif
