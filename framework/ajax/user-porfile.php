@@ -136,6 +136,10 @@ function register_user_front_end() {
 	  	);
       $user_id = wp_insert_user($user_data);
 
+      update_user_meta( $user_id, 'billing_first_name',  $first_name);
+      update_user_meta( $user_id, 'billing_last_name', $last_name );
+      update_user_meta( $user_id, 'billing_email', $new_user_email );
+
       $link = get_field('link_page_referral', 'option').'?token='.$user_id.'&active=done&login='.$refer_id;
 
 	  	if (!is_wp_error($user_id)) {

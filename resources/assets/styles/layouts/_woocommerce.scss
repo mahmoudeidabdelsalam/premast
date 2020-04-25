@@ -3880,4 +3880,13 @@ div#LimitDownload .modal-body p .btn-referral,
   justify-content: space-evenly;
   align-items: center;
 }
+
+.modal {
+  z-index: 999999;
+}
+
+.modal-backdrop {
+  z-index: 99999;
+}
+
 /* stylelint-enable */

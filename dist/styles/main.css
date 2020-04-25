@@ -41961,6 +41961,18 @@ div#LimitDownload .modal-body p .btn-referral,
           align-items: center;
 }
 
+/* line 3884, resources/assets/styles/layouts/_woocommerce.scss */
+
+.modal {
+  z-index: 999999;
+}
+
+/* line 3888, resources/assets/styles/layouts/_woocommerce.scss */
+
+.modal-backdrop {
+  z-index: 99999;
+}
+
 /* stylelint-enable */
 
 

@@ -2,7 +2,7 @@
 @php
 $time = get_the_time('Y-m-d')
 @endphp
-  @if($time > $_COOKIE['the_last_view'])
+  @if($time > isset($_COOKIE['the_last_view']))
     <div class="col-offer" style="background-color:{{ the_field('head_background_color', 'option') }}">
       <div class="container">
         <div class="row justify-content-center align-content-center p-3">
