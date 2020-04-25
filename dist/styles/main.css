@@ -37019,9 +37019,12 @@ span.text-red {
 /* line 274, resources/assets/styles/layouts/_woocommerce.scss */
 
 .product-infomation div#tab-description {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 400;
-  color: rgba(90, 94, 101, 0.639);
+  color: rgb(36, 37, 39) !important;
+  -webkit-font-smoothing: antialiased;
+  opacity: .8;
+  line-height: 1.8;
 }
 
 /* line 282, resources/assets/styles/layouts/_woocommerce.scss */
