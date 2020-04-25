@@ -821,7 +821,7 @@ div#reviews #respond form {
     color: rgb(61, 69, 82);
     text-align: center;
   }
-  
+
   .item-card {
     padding: 15px !important;
 
@@ -1534,12 +1534,16 @@ div#wc-memberships-members-area {
 }
 
 .profile-dropdown .user-star {
-  color: #CB9F36;
+  color: #ffa600;
   float: left;
   position: relative;
-  font-size: 20px;
-  text-shadow: 0 1px 2px #6e5416;
-  margin-right: -5px;
+  font-size: 14px;
+  margin-right: -10px;
+  background-color: white;
+  border-radius: 50px;
+  padding: 2px;
+  border: 1px solid;
+  bottom: 8px;
 }
 
 .download-information {
