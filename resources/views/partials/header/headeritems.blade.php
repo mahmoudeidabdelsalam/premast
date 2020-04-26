@@ -332,5 +332,8 @@ $time = get_the_time('Y-m-d')
     li.item-menu.star .sub li a img {
       display: none;
     }
+    .slideout-menu {
+      min-height: 10vh;
+    }    
   }
 </style>
