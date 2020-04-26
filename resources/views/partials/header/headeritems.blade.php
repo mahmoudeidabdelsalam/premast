@@ -22,48 +22,29 @@ $time = get_the_time('Y-m-d')
   wp_get_current_user();
   global $wp;
 @endphp
+
+
+
+
 @if ( wp_is_mobile() ) 
   <nav id="menu">
-    <hr>
-    @php 
-      $ids_to_exclude = array();
-      $get_terms_to_exclude =  get_terms(
-        array(
-          'fields'  => 'ids',
-          'slug'    => array( 'plans' ),
-          'taxonomy' => 'product_cat',
-        )
-      );
-      if( !is_wp_error( $get_terms_to_exclude ) && count($get_terms_to_exclude) > 0){
-          $ids_to_exclude = $get_terms_to_exclude; 
-      }
-      $product_terms = get_terms( 'product_cat', array(
-          'hide_empty' =>  1,
-          'exclude' => $ids_to_exclude,
-          'parent' =>0
-      ) );
-    @endphp
-    <ul class="navbar-nav">
-      @foreach($product_terms as $product_term) 
-      @php 
-        $term_link = get_term_link( $product_term );
-        if ( is_wp_error( $term_link ) ) {
-            continue;
-        }
-      @endphp
-        <li class="list-inline-item">
-          <a class="text-term @if($product_term->term_id == $taxonomy_query->term_id) active @endif" href="{{ $term_link }}">{{ $product_term->name }}</a>
-        </li>
-      @endforeach
-    </ul>
-    <hr>
+            @if(get_field('link_pricing', 'option'))
+          <div class="button-pricing">
+            <a class="button-green" href="{{ the_field('link_pricing', 'option') }}">{{ _e('pricing', 'premast') }}</a>
+          </div>
+        @endif
     @if (has_nav_menu('items_navigation'))
-      {!! wp_nav_menu(['theme_location' => 'items_navigation', 'container' => false, 'menu_class' => 'navbar-nav', 'walker' => new NavWalker()]) !!}
+      {!! wp_nav_menu(['theme_location' => 'items_navigation', 'container' => false, 'menu_class' => 'navbar-item navbar-nav ml-4 mr-auto', 'walker' => new Nav_Item_Walker()]) !!}
     @endif
   </nav>
+
+
+
   <nav id="menu_user" style="display: none;">
     @include('partials/incloud/profile')
   </nav>
+
+
   <header class="banner">
     <div class="container p-0">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -74,7 +55,7 @@ $time = get_the_time('Y-m-d')
         </a>
         <h2 class="logos mr-auto">
           <a class="navbar-brand p-0 align-self-center col" href="{{ the_field('link_page_login','option') }}" title="{{ get_bloginfo('name') }}">
-            <img class="img-fluid" src="@if(get_field('website_logo_light', 'option')) {{ the_field('website_logo_light','option') }} @else {{ get_theme_file_uri().'/dist/images/premast-templates.png' }} @endif" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
+            <img class="img-fluid" src="@if(get_field('templates_logo', 'option')) {{ the_field('templates_logo','option') }} @else {{ get_theme_file_uri().'/dist/images/premast-templates.png' }} @endif" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
             <span class="sr-only"> {{ get_bloginfo('name') }} </span>
           </a>
         </h2>
@@ -88,19 +69,24 @@ $time = get_the_time('Y-m-d')
             @endif
           </a>
         @endif
-        <div class="usermenu ml-4 mt-1">
+        <div class="usermenu">
           @if( is_user_logged_in() ) 
             <a href="#" class="menu-toggle">
               <i class="fa fa-user-circle fa-lg text-gray-dark" aria-hidden="true"></i>
               <i class="fa fa-times fa-lg text-gray-dark" aria-hidden="true"></i>
             </a>
           @else 
-            <a class="mt-2 signup btn-primary" href="#" data-toggle="modal" data-target="#SignupUser">{{ _e('Sign Up', 'premast') }}</a>
+            <a class="mx-2 login text-gray-dark" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Login', 'premast') }}</a>
           @endif
         </div>
       </nav>
     </div>
   </header>
+
+
+
+
+
 @else
 
 @php 
@@ -261,3 +247,65 @@ $time = get_the_time('Y-m-d')
   @endif
 
 @endif
+
+
+<style>
+  @media (max-width: 579px) {
+    section.banner-items {
+      margin-top: 0;
+    }
+    header.banner,
+    .admin-bar header.bg-light.banner {
+      position: relative !important;
+      top: 0 !important;
+    }
+    ul#menu-footer-menu {
+      padding: 0;
+    }
+    nav#menu .navbar-nav li a {
+      text-align: left;
+      color: #fff !important;
+    }
+    nav#menu .navbar-nav li a {
+      color: #fff !important;
+      text-align: left;
+    }
+    nav#menu .navbar-nav li ul.sub {
+      position: relative;
+      background: transparent;
+      overflow: hidden;
+      white-space: normal;
+      border: none;
+      padding: 0 30px;
+    }
+    nav#menu .navbar-nav li ul.sub li {
+      width: 100%;
+    }
+    ul.sub .item-current a:after {
+      display: none;
+    }
+    nav#menu .navbar-nav li ul.sub li a {
+      font-size: 14px;
+      margin: 0 20px !important;
+    }
+    ul#menu-category-product-menu {
+      margin: 20px 0 !important;
+    }
+    nav#menu .button-pricing {
+        margin: 30px auto 0;
+        display: block;
+    }
+    nav#menu .button-pricing {
+      margin: 30px auto 0;
+      display: block;
+    }
+
+    label a {
+      pointer-events: none;
+    }
+
+    label:hover:after {
+      display: none;
+    } 
+  }
+</style>
