@@ -307,5 +307,30 @@ $time = get_the_time('Y-m-d')
     label:hover:after {
       display: none;
     } 
+
+    .item-card .card .bg-white {
+      min-height: 1px;
+    }
+    .col-offer a {
+      display: block;
+      margin-top: 12px;
+    }
+    #CloseBanner {
+      margin: -1px 0;
+    }
+    #CloseBanner .fa-times {
+      display: inline-block;
+    }
+    .col-offer + .slideout-menu {
+      top: 190px;
+    }
+    li.item-menu.star .sub li {
+      border: none;
+      height: auto;
+      padding: 6px;
+    }
+    li.item-menu.star .sub li a img {
+      display: none;
+    }
   }
 </style>
