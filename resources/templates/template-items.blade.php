@@ -24,7 +24,7 @@
     </div>
 
     <div class="col-md-12 col-sm-12">
-      <div class="item-columns container-ajax items-categories item-card grid grid-custom row">
+      <div class="item-columns container-ajax items-categories item-card grid grid-custom row" style="min-height:1px;">
 
         @if($loop_items->have_posts())
           @while($loop_items->have_posts()) @php($loop_items->the_post())
@@ -107,10 +107,7 @@
         @endif
       </div>
 
-      <div class="spinner">
-        <div class="cube1"></div>
-        <div class="cube2"></div>
-      </div>
+    
 
       <div class="col-12 pt-5 pb-5">
         <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $loop_items) }}</nav>

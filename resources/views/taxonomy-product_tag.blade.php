@@ -251,11 +251,7 @@
 
       </div>
 
-      <div class="spinner">
-        <div class="cube1"></div>
-        <div class="cube2"></div>
-      </div>
-
+      
 
       <div class="col-12 pt-5 pb-5">
         <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $my_query) }}</nav>
