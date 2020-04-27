@@ -19,6 +19,26 @@ function products_counter( $atts ) {
 }
 
 
+// [paddle-button product="123123" text="Subscribe"]
+add_shortcode( 'paddle-button', 'paddle_button' );
+function paddle_button( $atts ) {
+  extract( shortcode_atts( array(
+  'product' => 'product',
+  'text' => 'text',
+  ), $atts ) );
+
+  if ( !is_user_logged_in() ) {
+    return '<a class="mx-2 login text-gray-dark" href="#" data-toggle="modal" data-target="#LoginUser">Login</a>';
+  } else {
+    
+    global $current_user;
+    wp_get_current_user();
+    return '<a href="#" class="paddle_button" data-product="'.esc_attr($product).'" data-passthrough="'.$current_user->ID.'">'.esc_attr($text).'</a>';
+  }
+
+}
+
+
 // [product_count] shortcode
 function product_count_shortcode( ) {
 	$count_posts = wp_count_posts( 'product' );

@@ -12,11 +12,6 @@
 
 @if ($send)
   @php 
-    $paddles = wp_insert_post(array (
-      'post_type' => 'paddles',
-      'post_title' => $send,
-      'post_status' => 'publish'
-    ));
 
     if ($subscription_plan_id == '590810') {
       $plan_id = 1023297;
@@ -52,8 +47,6 @@
 @extends('layouts.app-dark')
 
 @section('content')
-
-
 
   <!-- Modal -->
   <div class="modal" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
