@@ -1488,3 +1488,15 @@ if( function_exists('acf_add_options_page') ) {
 		'redirect'		=> false
 	));
 }
+
+if( function_exists('acf_add_options_page') ) {
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Paddle settings',
+		'menu_title'	=> 'Paddle settings',
+		'menu_slug' 	=> 'paddle-settings',
+		'parent_slug'	=> 'paddle-csutom',
+		'icon_url' 		=> 'dashicons-welcome-widgets-menus',
+		'position' => 1,
+		'redirect'		=> false
+	));
+}

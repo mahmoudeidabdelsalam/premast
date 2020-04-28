@@ -8,25 +8,35 @@
   $subscription_plan_id = (isset($_POST['subscription_plan_id']))? $_POST['subscription_plan_id']:'';
   global $current_user;
   wp_get_current_user();
+
+
+  $subscription_plan_paddle_one   = get_field('subscription_plan_paddle_one', 'option');
+  $subscription_plan_paddle_two   = get_field('subscription_plan_paddle_two', 'option');
+  $subscription_plan_paddle_three = get_field('subscription_plan_paddle_three', 'option');
+
+
+  $member_ship_plan_one   = get_field('member_ship_plan_one', 'option');
+  $member_ship_plan_two   = get_field('member_ship_plan_two', 'option');
+  $member_ship_plan_three = get_field('member_ship_plan_three', 'option');
 @endphp
 
 @if ($send)
   @php 
 
-    if ($subscription_plan_id == '590810') {
-      $plan_id = 1023297;
-    } elseif ($subscription_plan_id == '590964') {
-      $plan_id = 1023296;
-    } elseif ($subscription_plan_id == '590965') {
-      $plan_id = 1023293;
+    if ($subscription_plan_id == $subscription_plan_paddle_one) {
+      $plan_id = $member_ship_plan_one;
+    } elseif ($subscription_plan_id == $subscription_plan_paddle_two) {
+      $plan_id = $member_ship_plan_two;
+    } elseif ($subscription_plan_id == $subscription_plan_paddle_three) {
+      $plan_id = $member_ship_plan_three;
     }
 
 
-    $event_time = (isset($_POST['event_time']))? $_POST['event_time']:'';
-    $next_bill_date = (isset($_POST['next_bill_date']))? $_POST['next_bill_date']:'';
-
-
     if ($send == 'subscription_created') {
+
+      $event_time = (isset($_POST['event_time']))? $_POST['event_time']:'';
+      $next_bill_date = (isset($_POST['next_bill_date']))? $_POST['next_bill_date']:'';
+
       $data = apply_filters( 'wc_memberships_groups_import_membership_data', array(
         'plan_id' => $plan_id, 
         'post_parent' => $plan_id,
@@ -35,12 +45,64 @@
         'post_status'    => 'wcm-active',
       ) );
       $user_membership_id = wp_insert_post( $data, true );
+      update_post_meta($user_membership_id, '_start_date', $event_time);
+      update_post_meta($user_membership_id, '_end_date', $next_bill_date);
+
+    } elseif ($send == 'subscription_updated') {
+
+      $next_bill_date = (isset($_POST['next_bill_date']))? $_POST['next_bill_date']:'';
+
+      $updated = array(
+        'post_type' => 'wc_user_membership',
+        'post_status'   => array('wcm-active'),
+        'suppress_filters' => 0,
+        'numberposts'   => 1,
+        'author' => $passthrough
+      );
+      $updateds = get_posts($updated);
+
+      if($updateds) {
+        foreach ($updateds as  $post) {
+          wp_update_post(array(
+            'ID'          =>  $post->ID,
+            'post_type'   => 'wc_user_membership',
+            'post_status' =>  'wcm-active',
+          ));
+          update_post_meta($post->ID, '_end_date', $next_bill_date);
+          do_action('wp_update_post', 'wp_update_post');
+        }
+      }
+
+    } elseif ($send == 'subscription_cancelled') {
+
+      $next_bill_date = (isset($_POST['cancellation_effective_date']))? $_POST['cancellation_effective_date']:'';
+
+      $updated = array(
+        'post_type' => 'wc_user_membership',
+        'post_status'   => array('wcm-active'),
+        'suppress_filters' => 0,
+        'numberposts'   => 1,
+        'author' => $passthrough
+      );
+      $updateds = get_posts($updated);
+
+      if($updateds) {
+        foreach ($updateds as  $post) {
+          wp_update_post(array(
+            'ID'          =>  $post->ID,
+            'post_type'   => 'wc_user_membership',
+            'post_status' =>  'wcm-cancelled',
+          ));
+          update_post_meta($post->ID, '_end_date', $next_bill_date);
+          do_action('wp_update_post', 'wp_update_post');
+        }
+      }
+
     }
 
-    update_post_meta($user_membership_id, '_start_date', $event_time);
-    update_post_meta($user_membership_id, '_end_date', $next_bill_date);
 
-    dd($user_membership_id);
+
+    // dd($user_membership_id);
   @endphp
 @endif  
 
