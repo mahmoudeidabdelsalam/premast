@@ -102,7 +102,7 @@
 
 
 
-    // dd($user_membership_id);
+    dd($user_membership_id);
   @endphp
 @endif  
 
