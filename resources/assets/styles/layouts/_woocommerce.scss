@@ -4070,11 +4070,11 @@ div#LimitDownload .modal-body p .btn-referral,
     text-align: right;
   }
   nav#menu {
-    z-index: 99;
+    z-index: 999;
     width: 100% !important;
     background-color: #f9f9f9;
     top: 0;
-    padding-top: 80px;
+    padding-top: 45px;
   }
   nav#menu li.item-menu {
     border-top: 1px solid rgba(0, 0, 0, 0.4);
@@ -4114,6 +4114,10 @@ div#LimitDownload .modal-body p .btn-referral,
   }
   section.copyright {
     padding: 20px 20px 40px;
+  }
+  .slideout-open .toggle-menu {
+    position: fixed;
+    top: 10px;
   }
 }
 /* stylelint-enable */
