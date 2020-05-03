@@ -42240,7 +42240,7 @@ div#LimitDownload .modal-body p .btn-referral,
   /* line 4043, resources/assets/styles/layouts/_woocommerce.scss */
 
   header.banner .logos {
-    max-width: 130px !important;
+    max-width: 160px !important;
   }
 
   /* line 4046, resources/assets/styles/layouts/_woocommerce.scss */
@@ -42290,11 +42290,11 @@ div#LimitDownload .modal-body p .btn-referral,
   /* line 4072, resources/assets/styles/layouts/_woocommerce.scss */
 
   nav#menu {
-    z-index: 99;
+    z-index: 999;
     width: 100% !important;
     background-color: #f9f9f9;
     top: 0;
-    padding-top: 80px;
+    padding-top: 45px;
   }
 
   /* line 4079, resources/assets/styles/layouts/_woocommerce.scss */
@@ -42375,6 +42375,13 @@ div#LimitDownload .modal-body p .btn-referral,
 
   section.copyright {
     padding: 20px 20px 40px;
+  }
+
+  /* line 4118, resources/assets/styles/layouts/_woocommerce.scss */
+
+  .slideout-open .toggle-menu {
+    position: fixed;
+    top: 10px;
   }
 }
 
