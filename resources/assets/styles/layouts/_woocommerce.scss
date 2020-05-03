@@ -272,9 +272,12 @@
   }
 
   div#tab-description {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 400;
-    color: rgba(90, 94, 101, 0.639);
+    color: rgb(36, 37, 39) !important;
+    -webkit-font-smoothing: antialiased;
+    opacity: 0.8;
+    line-height: 1.8;
   }
 }
 
@@ -1534,12 +1537,16 @@ div#wc-memberships-members-area {
 }
 
 .profile-dropdown .user-star {
-  color: #CB9F36;
+  color: #ffa600;
   float: left;
   position: relative;
-  font-size: 20px;
-  text-shadow: 0 1px 2px #6e5416;
-  margin-right: -5px;
+  font-size: 14px;
+  margin-right: -10px;
+  background-color: white;
+  border-radius: 50px;
+  padding: 2px;
+  border: 1px solid;
+  bottom: 8px;
 }
 
 .download-information {
@@ -3145,10 +3152,10 @@ p.full-access a {
   }
 
   .summary-custom td.product-name a img {
-    max-width: 40px !important;
-    height: auto !important;
     display: block !important;
     margin: 10px 0 !important;
+    max-width: 60px !important;
+    height: 50px;
   }
 
   .summary-custom td.product-name strong.product-quantity {
@@ -3231,7 +3238,7 @@ p.full-access a {
   }
 
   .form-cart-woocommerce .box-cart td.product-name a {
-    font-size: 11px;
+    font-size: 14px;
     text-align: left !important;
     padding: 0 10px;
     display: inline-block;
@@ -3907,12 +3914,13 @@ div#LimitDownload .modal-body p .btn-referral,
 
   nav#menu .navbar-nav li a {
     text-align: left;
-    color: #fff !important;
-  }
-
-  nav#menu .navbar-nav li a {
-    color: #fff !important;
-    text-align: left;
+    color: rgb(100, 100, 100) !important;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.132987px;
+    font-weight: 400;
+    margin: 0 !important;
+    padding: 15px 20px;
   }
 
   nav#menu .navbar-nav li ul.sub {
@@ -3934,7 +3942,7 @@ div#LimitDownload .modal-body p .btn-referral,
 
   nav#menu .navbar-nav li ul.sub li a {
     font-size: 14px;
-    margin: 0 20px !important;
+    padding: 10px 5px;
   }
 
   ul#menu-category-product-menu {
@@ -3992,6 +4000,120 @@ div#LimitDownload .modal-body p .btn-referral,
 
   .slideout-menu {
     min-height: 10vh;
+  }
+  nav#menu .navbar-nav li ul.sub li.item-current a {
+    font-weight: bold !important;
+    color: #1E6DFB !important;
+  }
+  .checkout-custom-header {
+    margin-top: 0 !important;
+  }
+  nav#menu_user .premast-social-icons {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #282F39;
+    left: 0;
+  }
+  nav#menu_user {
+    display: flex;
+    flex-flow: column;
+  }
+  .cart-div {
+    background: #D2E2FE;
+    padding: 15px;
+  }
+  span.cart-contents-count {
+    width: 24px;
+    height: 24px;
+    float: right;
+    background: #1E6DFB;
+    color: #fff;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  nav#menu_user .link-item-mobile {
+    padding: 15px;
+  }
+  .signup {
+    border-bottom: 1px solid rgba(0, 0, 0, .4);
+  }
+  header.banner .logos {
+    max-width: 130px !important;
+  }
+  #search.active input[type="submit"] {
+    left: -245px;
+    right: auto;
+    color: #282F39;
+    opacity: 0.6;
+  }
+  .search-items-mobile {
+    display: inline-block;
+    width: 50px;
+    position: relative;
+  }
+  .search-items-mobile form#search {
+    position: static;
+  }
+  .button-pricing {
+    z-index: 1;
+  }
+  .button-pricing .button-green {
+    margin: 0;
+    max-width: 66px;
+    padding: 10px 15px;
+  }
+  .usermenu {
+    width: 30px;
+    text-align: right;
+  }
+  nav#menu {
+    z-index: 99;
+    width: 100% !important;
+    background-color: #f9f9f9;
+    top: 0;
+    padding-top: 80px;
+  }
+  nav#menu li.item-menu {
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
+  }
+  .navbar-item .radio+.link a:after {
+    content: "+";
+    position: absolute;
+    right: 15px;
+    font-size: 30px;
+    color: #1E6DFB;
+  }
+  .navbar-item .radio:checked+.link a:after {
+    content: "-";
+  }
+  footer.content-info .row {
+    margin: 0;
+  }
+  .navbar-brand {
+    padding: 15px 30px;
+  }
+  .more-informtion {
+    padding: 15px 30px;
+    flex-flow: column;
+  }
+  ul#menu-footer-info {
+    padding: 0;
+    flex-flow: column;
+  }
+  ul#menu-footer-info li {
+    width: 100%;
+  }
+  ul.copyright a {
+    padding: 10px 0;
+  }
+  section.copyright .col-md-4.text-left {
+    order: 2;
+  }
+  section.copyright {
+    padding: 20px 20px 40px;
   }
 }
 /* stylelint-enable */

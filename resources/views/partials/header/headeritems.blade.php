@@ -24,26 +24,42 @@ $time = get_the_time('Y-m-d')
 @endphp
 
 
-
-
 @if ( wp_is_mobile() ) 
-  <nav id="menu">
-            @if(get_field('link_pricing', 'option'))
-          <div class="button-pricing">
-            <a class="button-green" href="{{ the_field('link_pricing', 'option') }}">{{ _e('pricing', 'premast') }}</a>
-          </div>
-        @endif
+   <nav id="menu">
     @if (has_nav_menu('items_navigation'))
       {!! wp_nav_menu(['theme_location' => 'items_navigation', 'container' => false, 'menu_class' => 'navbar-item navbar-nav ml-4 mr-auto', 'walker' => new Nav_Item_Walker()]) !!}
     @endif
   </nav>
 
-
-
   <nav id="menu_user" style="display: none;">
-    @include('partials/incloud/profile')
+    @if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) 
+    @php 
+      $count = WC()->cart->cart_contents_count; 
+    @endphp
+    <div class="cart-div">
+      <span>{{ _e('cart', 'premast') }}</span>
+       <a class="cart-contents" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
+        @if ( $count > 0 )
+        <span class="cart-contents-count"><?php echo esc_html( $count ); ?></span>
+        @endif
+      </a>
+    </div>
+    @endif
+    @if( is_user_logged_in() ) 
+      @include('partials/incloud/profile')
+    @else 
+      <a class="login link-item-mobile" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Sign in to your account', 'premast') }}</a>
+      <a class="signup link-item-mobile" href="#" data-toggle="modal" data-target="#SignupUser">{{ _e('Sign Up', 'premast') }}</a>
+      <a class="link-item-mobile" href="{{ home_url('/') }}/contact-us/">{{ _e('Contact US', 'premast') }}</a>
+      <a class="link-item-mobile" href="{{ home_url('/') }}/faq">{{ _e('Help Center', 'premast') }}</a>
+      <div class="premast-social-icons"> 
+        <a class="premast-icon icon-facebook" href="http://facebook.com/premast.co/" target="_blank" rel="nofollow"> <span class="sr-only">Facebook</span> <i class="fa fa-facebook-square"></i> </a> 
+        <a class="premast-icon icon-twitter" href="https://twitter.com/Premast_co" target="_blank" rel="nofollow"> <span class="sr-only">Twitter</span> <i class="fa fa-twitter-square"></i> </a> 
+        <a class="premast-icon icon-instagram" href="https://www.instagram.com/premast.co/" target="_blank" rel="nofollow"> <span class="sr-only">instagram</span> <i class="fa fa-instagram"></i> </a>
+        <a class="premast-icon icon-behance" href="http://behance.net/Premast" target="_blank" rel="nofollow"> <span class="sr-only">Behance</span> <i class="fa fa-behance-square"></i> </a>       
+      </div>
+    @endif
   </nav>
-
 
   <header class="banner">
     <div class="container p-0">
@@ -55,38 +71,31 @@ $time = get_the_time('Y-m-d')
         </a>
         <h2 class="logos mr-auto">
           <a class="navbar-brand p-0 align-self-center col" href="{{ the_field('link_page_login','option') }}" title="{{ get_bloginfo('name') }}">
-            <img class="img-fluid" src="@if(get_field('templates_logo', 'option')) {{ the_field('templates_logo','option') }} @else {{ get_theme_file_uri().'/dist/images/premast-templates.png' }} @endif" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
+            <img class="img-fluid" src="@if(get_field('website_logo_light', 'option')) {{ the_field('website_logo_light','option') }} @else {{ get_theme_file_uri().'/dist/images/premast-templates.png' }} @endif" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
             <span class="sr-only"> {{ get_bloginfo('name') }} </span>
           </a>
         </h2>
-        @if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) 
-        @php 
-          $count = WC()->cart->cart_contents_count; 
-        @endphp
-          <a class="cart-contents" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
-            @if ( $count > 0 )
-            <span class="cart-contents-count"><?php echo esc_html( $count ); ?></span>
-            @endif
-          </a>
+        @if(get_field('link_pricing', 'option'))
+          <div class="button-pricing">
+            <a class="button-green" href="{{ the_field('link_pricing', 'option') }}">{{ _e('pricing', 'premast') }}</a>
+          </div>
         @endif
+        <div class="search-items-mobile">
+          <form action="{{ bloginfo('url') }}/items" autocomplete="on" id="search">
+            <input id="autoblogs" class="search-inputs"  name="refine"  value="{{ get_search_query() }}" type="text" placeholder="{{ _e('type something','premast') }}" autocomplete="off" spellcheck="false" maxlength="100"">
+            <input id="search_submit" value="Rechercher" type="submit">
+            <i class="button-close"></i>
+          </form>
+        </div>
         <div class="usermenu">
-          @if( is_user_logged_in() ) 
-            <a href="#" class="menu-toggle">
-              <i class="fa fa-user-circle fa-lg text-gray-dark" aria-hidden="true"></i>
-              <i class="fa fa-times fa-lg text-gray-dark" aria-hidden="true"></i>
-            </a>
-          @else 
-            <a class="mx-2 login text-gray-dark" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Login', 'premast') }}</a>
-          @endif
+          <a href="#" class="menu-toggle">
+            <i class="fa fa-user-circle fa-lg text-gray-dark" aria-hidden="true"></i>
+            <i class="fa fa-times fa-lg text-gray-dark" aria-hidden="true"></i>
+          </a>
         </div>
       </nav>
     </div>
   </header>
-
-
-
-
-
 @else
 
 @php 

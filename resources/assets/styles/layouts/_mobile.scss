@@ -41,7 +41,7 @@
     right: 0;
     width: 100%;
     z-index: 99;
-    background: rgb(40, 47, 57);
+    background: rgb(249, 249, 249);
     height: 80vh;
 
     ul.link-dropdown {
@@ -50,13 +50,17 @@
       display: flex;
       flex-flow: column;
       height: 100%;
-      padding-top: 20px;
+      padding-top: 0;
 
       li.item-dropdown {
         margin: 10px 20px;
 
         a {
-          color: rgb(255, 255, 255);
+          font-size: 14px;
+          line-height: 16px;
+          letter-spacing: 0.132987px;
+          color: rgb(40, 47, 57);
+          font-weight: 400;
         }
       }
 

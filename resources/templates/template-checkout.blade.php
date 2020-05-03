@@ -152,7 +152,7 @@
 
         
 
-        <div class="col-md-5">
+        <div class="col-md-5 custom-d-flax-mobile">
             <?php
               defined( 'ABSPATH' ) || exit;
               if ( ! wc_coupons_enabled() ) { // @codingStandardsIgnoreLine.
@@ -178,7 +178,7 @@
           </div>
 
           <!-- Custom summary -->
-          <div class="col-12 summary-custom">
+          <div class="col-12 summary-custom summary-order-custom-mobile">
             <h3><?php _e('order summary', 'premast'); ?></h3>
             <table class="shop_table woocommerce-checkout-review-order-table">
               <thead>
@@ -463,5 +463,69 @@ span.login-checkout a {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 579px) {
+  .summary-order-custom-mobile {
+      order: 1 !important;
+      padding: 0 !important;
+      margin-bottom: 20px;
+  }
+  .custom-d-flax {
+      display: flex;
+      flex-flow: wrap;
+  }
+  .custom-d-flax .col-12,
+  .custom-d-flax .checout-secure {
+      order: 2;
+  }
+  .summary-order-custom-mobile h3 {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+      padding: 10px;
+  }
+  .summary-custom td.product-name a img {
+      height: 50px !important;
+      max-width: 50px !important;
+  }
+  .summary-order-custom-mobile h3 {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+      padding: 10px;
+  }
+  .summary-custom .shop_table td,
+  .summary-custom .shop_table th {
+      border: none !important;
+  }
+  .summary-custom .shop_table tbody {
+      padding: 10px !important;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+  td.product-name {
+    font-weight: bold !important;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.04px;
+    color: #282F39;
+  }  
+  tfoot tr th, tfoot tr td {
+    padding: 10px !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+  }  
+  .custom-banner .media {
+    flex-flow: column;
+  }
+  .custom-banner {
+    margin: 0;
+  }
+  .checout-secure {
+    display: none;
+  }
+  .custom-d-flax-mobile .col-12 {
+    order: 2;
+  }
+  .custom-d-flax-mobile {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 </style>

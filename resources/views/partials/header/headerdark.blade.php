@@ -14,6 +14,7 @@ $time = get_the_time('Y-m-d')
   @endif
 @endif
 
+
 @php
   $refine   = isset($_GET['refine']) ? $_GET['refine'] : '0';
   $sort   = isset($_GET['sort']) ? $_GET['sort'] : '0';
@@ -22,48 +23,44 @@ $time = get_the_time('Y-m-d')
   wp_get_current_user();
   global $wp;
 @endphp
+
+
 @if ( wp_is_mobile() ) 
   <nav id="menu">
-    <hr>
-    @php 
-      $ids_to_exclude = array();
-      $get_terms_to_exclude =  get_terms(
-        array(
-          'fields'  => 'ids',
-          'slug'    => array( 'plans' ),
-          'taxonomy' => 'product_cat',
-        )
-      );
-      if( !is_wp_error( $get_terms_to_exclude ) && count($get_terms_to_exclude) > 0){
-          $ids_to_exclude = $get_terms_to_exclude; 
-      }
-      $product_terms = get_terms( 'product_cat', array(
-          'hide_empty' =>  1,
-          'exclude' => $ids_to_exclude,
-          'parent' =>0
-      ) );
-    @endphp
-    <ul class="navbar-nav">
-      @foreach($product_terms as $product_term) 
-      @php 
-        $term_link = get_term_link( $product_term );
-        if ( is_wp_error( $term_link ) ) {
-            continue;
-        }
-      @endphp
-        <li class="list-inline-item">
-          <a class="text-term @if($product_term->term_id == $taxonomy_query->term_id) active @endif" href="{{ $term_link }}">{{ $product_term->name }}</a>
-        </li>
-      @endforeach
-    </ul>
-    <hr>
     @if (has_nav_menu('items_navigation'))
-      {!! wp_nav_menu(['theme_location' => 'items_navigation', 'container' => false, 'menu_class' => 'navbar-nav', 'walker' => new NavWalker()]) !!}
+      {!! wp_nav_menu(['theme_location' => 'items_navigation', 'container' => false, 'menu_class' => 'navbar-item navbar-nav ml-4 mr-auto', 'walker' => new Nav_Item_Walker()]) !!}
     @endif
   </nav>
   <nav id="menu_user" style="display: none;">
-    @include('partials/incloud/profile')
+    @if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) 
+    @php 
+      $count = WC()->cart->cart_contents_count; 
+    @endphp
+    <div class="cart-div">
+      <span>{{ _e('cart', 'premast') }}</span>
+       <a class="cart-contents" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
+        @if ( $count > 0 )
+        <span class="cart-contents-count"><?php echo esc_html( $count ); ?></span>
+        @endif
+      </a>
+    </div>
+    @endif
+    @if( is_user_logged_in() ) 
+      @include('partials/incloud/profile')
+    @else 
+      <a class="login link-item-mobile" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Sign in to your account', 'premast') }}</a>
+      <a class="signup link-item-mobile" href="#" data-toggle="modal" data-target="#SignupUser">{{ _e('Sign Up', 'premast') }}</a>
+      <a class="link-item-mobile" href="{{ home_url('/') }}/contact-us/">{{ _e('Contact US', 'premast') }}</a>
+      <a class="link-item-mobile" href="{{ home_url('/') }}/faq">{{ _e('Help Center', 'premast') }}</a>
+      <div class="premast-social-icons"> 
+        <a class="premast-icon icon-facebook" href="http://facebook.com/premast.co/" target="_blank" rel="nofollow"> <span class="sr-only">Facebook</span> <i class="fa fa-facebook-square"></i> </a> 
+        <a class="premast-icon icon-twitter" href="https://twitter.com/Premast_co" target="_blank" rel="nofollow"> <span class="sr-only">Twitter</span> <i class="fa fa-twitter-square"></i> </a> 
+        <a class="premast-icon icon-instagram" href="https://www.instagram.com/premast.co/" target="_blank" rel="nofollow"> <span class="sr-only">instagram</span> <i class="fa fa-instagram"></i> </a>
+        <a class="premast-icon icon-behance" href="http://behance.net/Premast" target="_blank" rel="nofollow"> <span class="sr-only">Behance</span> <i class="fa fa-behance-square"></i> </a>       
+      </div>
+    @endif
   </nav>
+
   <header class="banner">
     <div class="container p-0">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -78,29 +75,28 @@ $time = get_the_time('Y-m-d')
             <span class="sr-only"> {{ get_bloginfo('name') }} </span>
           </a>
         </h2>
-        @if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) 
-        @php 
-          $count = WC()->cart->cart_contents_count; 
-        @endphp
-          <a class="cart-contents" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
-            @if ( $count > 0 )
-            <span class="cart-contents-count"><?php echo esc_html( $count ); ?></span>
-            @endif
-          </a>
+        @if(get_field('link_pricing', 'option'))
+          <div class="button-pricing">
+            <a class="button-green" href="{{ the_field('link_pricing', 'option') }}">{{ _e('pricing', 'premast') }}</a>
+          </div>
         @endif
-        <div class="usermenu ml-4 mt-1">
-          @if( is_user_logged_in() ) 
-            <a href="#" class="menu-toggle">
-              <i class="fa fa-user-circle fa-lg text-gray-dark" aria-hidden="true"></i>
-              <i class="fa fa-times fa-lg text-gray-dark" aria-hidden="true"></i>
-            </a>
-          @else 
-            <a class="mt-2 signup btn-primary" href="#" data-toggle="modal" data-target="#SignupUser">{{ _e('Sign Up', 'premast') }}</a>
-          @endif
+        <div class="search-items-mobile">
+          <form action="{{ bloginfo('url') }}/items" autocomplete="on" id="search">
+            <input id="autoblogs" class="search-inputs"  name="refine"  value="{{ get_search_query() }}" type="text" placeholder="{{ _e('type something','premast') }}" autocomplete="off" spellcheck="false" maxlength="100"">
+            <input id="search_submit" value="Rechercher" type="submit">
+            <i class="button-close"></i>
+          </form>
+        </div>
+        <div class="usermenu">
+          <a href="#" class="menu-toggle">
+            <i class="fa fa-user-circle fa-lg text-gray-dark" aria-hidden="true"></i>
+            <i class="fa fa-times fa-lg text-gray-dark" aria-hidden="true"></i>
+          </a>
         </div>
       </nav>
     </div>
   </header>
+
 @else
 
 @php 

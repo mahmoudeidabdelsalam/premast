@@ -311,5 +311,32 @@ do_action( 'woocommerce_before_cart' );
 .wc-proceed-to-checkout {
     text-align: center;
 }
+@media (max-width: 579px) { 
+  .container-fluid.pt-5.pb-5.form-cart-woocommerce.mt-5 {
+      margin: 0 !important;
+      padding: 20px 10px  !important;
+  }
+
+  .container-fluid.pt-5.pb-5.form-cart-woocommerce.mt-5 h3 {
+      text-align: center;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0.04px;
+      color: #282F39;
+  }
+
+  .woocommerce table.shop_table_responsive tr td, .woocommerce-page table.shop_table_responsive tr td {
+      border: none !important;
+  }
+
+  .form-cart-woocommerce .box-cart thead tr th {
+      border: none !important;
+  }
+
+  form.woocommerce-cart-form {
+      padding-bottom: 0 !important;
+      margin: 0;
+  }
+}
 </style>
 
