@@ -3930,6 +3930,8 @@ div#LimitDownload .modal-body p .btn-referral,
     white-space: normal;
     border: none;
     padding: 0 30px;
+    float: left;
+    top: 0;
   }
 
   nav#menu .navbar-nav li ul.sub li {
@@ -4075,6 +4077,7 @@ div#LimitDownload .modal-body p .btn-referral,
     background-color: #f9f9f9;
     top: 0;
     padding-top: 45px;
+    overflow: hidden;
   }
   nav#menu li.item-menu {
     border-top: 1px solid rgba(0, 0, 0, 0.4);
@@ -4124,6 +4127,12 @@ div#LimitDownload .modal-body p .btn-referral,
     top: 10px;
     z-index: 9999;
     right: 10px;
+  }
+  ul#menu-category-product-menu {
+    height: 80vh;
+    overflow-y: scroll;
+    flex-wrap: wrap;
+    flex-flow: column;
   }
 }
 /* stylelint-enable */
