@@ -34425,15 +34425,16 @@ header.bg-light.banner.navbar-banner-items.fixed-header {
 
   nav#menu_user {
     position: fixed;
-    top: 65px;
+    top: 0;
     right: 0;
     width: 100%;
-    z-index: 99;
+    z-index: 9999;
     background: #f9f9f9;
-    height: 80vh;
+    height: 75vh;
+    padding-top: 45px;
   }
 
-  /* line 47, resources/assets/styles/layouts/_mobile.scss */
+  /* line 48, resources/assets/styles/layouts/_mobile.scss */
 
   nav#menu_user ul.link-dropdown {
     list-style: none;
@@ -34449,13 +34450,13 @@ header.bg-light.banner.navbar-banner-items.fixed-header {
     padding-top: 0;
   }
 
-  /* line 55, resources/assets/styles/layouts/_mobile.scss */
+  /* line 56, resources/assets/styles/layouts/_mobile.scss */
 
   nav#menu_user ul.link-dropdown li.item-dropdown {
     margin: 10px 20px;
   }
 
-  /* line 58, resources/assets/styles/layouts/_mobile.scss */
+  /* line 59, resources/assets/styles/layouts/_mobile.scss */
 
   nav#menu_user ul.link-dropdown li.item-dropdown a {
     font-size: 14px;
@@ -34465,7 +34466,7 @@ header.bg-light.banner.navbar-banner-items.fixed-header {
     font-weight: 400;
   }
 
-  /* line 67, resources/assets/styles/layouts/_mobile.scss */
+  /* line 68, resources/assets/styles/layouts/_mobile.scss */
 
   nav#menu_user ul.link-dropdown .premast-social-icons {
     margin-top: auto;
@@ -34473,19 +34474,19 @@ header.bg-light.banner.navbar-banner-items.fixed-header {
     border-radius: 0;
   }
 
-  /* line 75, resources/assets/styles/layouts/_mobile.scss */
+  /* line 76, resources/assets/styles/layouts/_mobile.scss */
 
   div#panel {
     padding-top: 0;
   }
 
-  /* line 78, resources/assets/styles/layouts/_mobile.scss */
+  /* line 79, resources/assets/styles/layouts/_mobile.scss */
 
   body.single-product div#panel {
     padding-top: 0;
   }
 
-  /* line 83, resources/assets/styles/layouts/_mobile.scss */
+  /* line 84, resources/assets/styles/layouts/_mobile.scss */
 
   .slideout-menu {
     position: fixed;
@@ -34500,19 +34501,19 @@ header.bg-light.banner.navbar-banner-items.fixed-header {
     background: #3c4552;
   }
 
-  /* line 96, resources/assets/styles/layouts/_mobile.scss */
+  /* line 97, resources/assets/styles/layouts/_mobile.scss */
 
   .slideout-menu-left {
     left: 0;
   }
 
-  /* line 100, resources/assets/styles/layouts/_mobile.scss */
+  /* line 101, resources/assets/styles/layouts/_mobile.scss */
 
   .slideout-menu-right {
     right: 0;
   }
 
-  /* line 104, resources/assets/styles/layouts/_mobile.scss */
+  /* line 105, resources/assets/styles/layouts/_mobile.scss */
 
   .slideout-panel {
     position: relative;
@@ -34522,13 +34523,13 @@ header.bg-light.banner.navbar-banner-items.fixed-header {
     background: #fff;
   }
 
-  /* line 111, resources/assets/styles/layouts/_mobile.scss */
+  /* line 112, resources/assets/styles/layouts/_mobile.scss */
 
   .single-product .slideout-panel {
     background: #edf4f8;
   }
 
-  /* line 116, resources/assets/styles/layouts/_mobile.scss */
+  /* line 117, resources/assets/styles/layouts/_mobile.scss */
 
   .slideout-open,
   .slideout-open body,
@@ -34536,13 +34537,13 @@ header.bg-light.banner.navbar-banner-items.fixed-header {
     overflow: hidden;
   }
 
-  /* line 122, resources/assets/styles/layouts/_mobile.scss */
+  /* line 123, resources/assets/styles/layouts/_mobile.scss */
 
   .slideout-open .slideout-menu {
     display: block !important;
   }
 
-  /* line 126, resources/assets/styles/layouts/_mobile.scss */
+  /* line 127, resources/assets/styles/layouts/_mobile.scss */
 
   .toggle-menu {
     width: 50px;
@@ -34552,7 +34553,7 @@ header.bg-light.banner.navbar-banner-items.fixed-header {
     z-index: 1000;
   }
 
-  /* line 134, resources/assets/styles/layouts/_mobile.scss */
+  /* line 135, resources/assets/styles/layouts/_mobile.scss */
 
   .toggle-menu i {
     position: absolute;
@@ -34566,25 +34567,25 @@ header.bg-light.banner.navbar-banner-items.fixed-header {
     transition: all 0.3s;
   }
 
-  /* line 145, resources/assets/styles/layouts/_mobile.scss */
+  /* line 146, resources/assets/styles/layouts/_mobile.scss */
 
   .toggle-menu i:nth-child(1) {
     top: 16px;
   }
 
-  /* line 149, resources/assets/styles/layouts/_mobile.scss */
+  /* line 150, resources/assets/styles/layouts/_mobile.scss */
 
   .toggle-menu i:nth-child(2) {
     top: 24px;
   }
 
-  /* line 153, resources/assets/styles/layouts/_mobile.scss */
+  /* line 154, resources/assets/styles/layouts/_mobile.scss */
 
   .toggle-menu i:nth-child(3) {
     top: 32px;
   }
 
-  /* line 157, resources/assets/styles/layouts/_mobile.scss */
+  /* line 158, resources/assets/styles/layouts/_mobile.scss */
 
   .slideout-open .toggle-menu i:nth-child(1) {
     top: 25px;
@@ -34593,13 +34594,13 @@ header.bg-light.banner.navbar-banner-items.fixed-header {
        transform: rotateZ(45deg);
   }
 
-  /* line 163, resources/assets/styles/layouts/_mobile.scss */
+  /* line 164, resources/assets/styles/layouts/_mobile.scss */
 
   .slideout-open .toggle-menu i:nth-child(2) {
     background: transparent;
   }
 
-  /* line 167, resources/assets/styles/layouts/_mobile.scss */
+  /* line 168, resources/assets/styles/layouts/_mobile.scss */
 
   .slideout-open .toggle-menu i:nth-child(3) {
     top: 25px;
@@ -34608,20 +34609,20 @@ header.bg-light.banner.navbar-banner-items.fixed-header {
        transform: rotateZ(-45deg);
   }
 
-  /* line 173, resources/assets/styles/layouts/_mobile.scss */
+  /* line 174, resources/assets/styles/layouts/_mobile.scss */
 
   ul.pagination {
     padding: 0 !important;
   }
 
-  /* line 177, resources/assets/styles/layouts/_mobile.scss */
+  /* line 178, resources/assets/styles/layouts/_mobile.scss */
 
   .navbar {
     -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
   }
 
-  /* line 182, resources/assets/styles/layouts/_mobile.scss */
+  /* line 183, resources/assets/styles/layouts/_mobile.scss */
 
   header.banner .signup {
     white-space: nowrap;
@@ -34629,7 +34630,7 @@ header.bg-light.banner.navbar-banner-items.fixed-header {
   }
 }
 
-/* line 189, resources/assets/styles/layouts/_mobile.scss */
+/* line 190, resources/assets/styles/layouts/_mobile.scss */
 
 form#searchform.is-mobile-search {
   background: #3c4552;
@@ -34638,14 +34639,14 @@ form#searchform.is-mobile-search {
   height: 44px;
 }
 
-/* line 196, resources/assets/styles/layouts/_mobile.scss */
+/* line 197, resources/assets/styles/layouts/_mobile.scss */
 
 form#searchform.is-mobile-search input,
 form#searchform.is-mobile-search button {
   height: 44px;
 }
 
-/* line 201, resources/assets/styles/layouts/_mobile.scss */
+/* line 202, resources/assets/styles/layouts/_mobile.scss */
 
 #dropdownMenuCat {
   background: #3d4552;
@@ -34659,14 +34660,14 @@ form#searchform.is-mobile-search button {
   color: white;
 }
 
-/* line 211, resources/assets/styles/layouts/_mobile.scss */
+/* line 212, resources/assets/styles/layouts/_mobile.scss */
 
 #dropdownMenuCat img {
   margin-right: 10px;
   display: inline-block;
 }
 
-/* line 217, resources/assets/styles/layouts/_mobile.scss */
+/* line 218, resources/assets/styles/layouts/_mobile.scss */
 
 #dropdownMenuFilter {
   -webkit-box-sizing: border-box;
@@ -42382,6 +42383,15 @@ div#LimitDownload .modal-body p .btn-referral,
   .slideout-open .toggle-menu {
     position: fixed;
     top: 10px;
+  }
+
+  /* line 4122, resources/assets/styles/layouts/_woocommerce.scss */
+
+  .is-open-user .menu-toggle {
+    position: fixed;
+    top: 10px;
+    z-index: 9999;
+    right: 10px;
   }
 }
 

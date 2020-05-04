@@ -37,12 +37,13 @@
 
   nav#menu_user {
     position: fixed;
-    top: 65px;
+    top: 0;
     right: 0;
     width: 100%;
-    z-index: 99;
-    background: rgb(249, 249, 249);
-    height: 80vh;
+    z-index: 9999;
+    background: #f9f9f9;
+    height: 75vh;
+    padding-top: 45px;
 
     ul.link-dropdown {
       list-style: none;

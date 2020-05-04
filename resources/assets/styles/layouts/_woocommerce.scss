@@ -4119,5 +4119,11 @@ div#LimitDownload .modal-body p .btn-referral,
     position: fixed;
     top: 10px;
   }
+  .is-open-user .menu-toggle {
+    position: fixed;
+    top: 10px;
+    z-index: 9999;
+    right: 10px;
+  }
 }
 /* stylelint-enable */
