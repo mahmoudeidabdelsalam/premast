@@ -12,7 +12,7 @@
                     <div class="col-md-8">
                         <div id="navbar">
                             <?php if( get_field('logo_premast') ): ?>
-                        <img style=" margin-top: 39px; margin-bottom: -39px;padding-left:60px;" src="<?php the_field('logo_premast'); ?>" />
+                        <img style="padding-left:60px;" src="<?php the_field('logo_premast'); ?>" />
                             <?php endif; ?>
                             <nav></nav>
                             <?php
@@ -29,10 +29,10 @@
                 <div clas="row">
                     <div class="col-12">
                         <a href="">
-                            <img src="<?php the_field('logo_premast'); ?>" style="padding: 60px;" />
+                            <img src="<?php the_field('logo_premast'); ?>" style="padding: 40px;" />
                         </a>
                         <div class="row">
-                            <div class="col-md-6" style="padding: 60px;">
+                            <div class="col-md-6" style="padding: 40px;">
                                 <img src="<?php the_field('dashi_logo'); ?>" />
                             <h3 class="dashi-text">
                                 <?php the_field('f_heading'); ?>
@@ -263,7 +263,7 @@
                             </li>
                           <?php
                             endwhile;
-                          endif; ?>                            
+                          endif; ?>
                         </ul>
 
                         <div class="tab-content" id="myTabContent">
@@ -281,7 +281,7 @@
                             </div>
                           <?php
                             endwhile;
-                          endif; ?>                               
+                          endif; ?>
                         </div>
                     </div>
                 </div>
@@ -320,9 +320,9 @@
                   if( have_rows('mune_footer') ):
                     while ( have_rows('mune_footer') ) : the_row();
                   ?>
-                  <?php 
+                  <?php
                   $link = get_sub_field('link_mune_footer');
-                  if( $link ): 
+                  if( $link ):
                       $link_url = $link['url'];
                       $link_title = $link['title'];
                       $link_target = $link['target'] ? $link['target'] : '_self';
@@ -352,7 +352,7 @@
           </div>
         </section>
 
-        
+
         <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.3.0/dist/simpleParallax.js"></script>
 
         <script>
@@ -371,7 +371,7 @@
                 if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
                     document.getElementById("navbar").style.top = "0";
                 } else {
-                    document.getElementById("navbar").style.top = "-60px";
+                    document.getElementById("navbar").style.top = "-100px";
                 }
             }
             jQuery(function($) {

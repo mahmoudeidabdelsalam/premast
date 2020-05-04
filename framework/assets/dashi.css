@@ -7,6 +7,9 @@
   transition: top 0.3s;
   z-index: 1000;
   padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #navbar a {
@@ -112,6 +115,13 @@ a.btn-primary {
   height: 40px;
   border:none;
 }
+a.btn-primary:hover {
+background: linear-gradient(169.41deg, #10B151 -0.5%, #1ADB72 100%);
+border-radius: 30px;
+opacity: 1;
+}
+
+
 
 section {
   background-color: #000000;
