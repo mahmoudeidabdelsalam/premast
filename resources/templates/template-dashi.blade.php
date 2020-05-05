@@ -151,14 +151,14 @@
                     $dashboard_categories = get_field('dashboard_categories');
                     foreach ($dashboard_categories as  $value):
                     $slide_number = get_field('slide_colors', $value->ID );
-                    $content = wp_trim_words(get_the_content($value->ID), '4', ' ...');
+                    $title = wp_trim_words(get_the_title($value->ID), 3, '...');
                     ?>
                     <div class="col-md-2">
                       <div class="img-top-card">
                         <img src="<?= Utilities::global_thumbnails($value->ID,'full'); ?>">
                         <div class="overlay-bg" style="background-image: url(<?= Utilities::global_thumbnails($value->ID,'full'); ?>);"></div>
                       </div>
-                      <p class="models"><a class="text-white" href="<?= get_permalink($value->ID); ?>"><?= $content; ?></a></p>
+                      <p class="models"><a class="text-white" href="<?= get_permalink($value->ID); ?>"><?= $title; ?></a></p>
                       <p class="slidesnum"><?= $slide_number; ?></p>
                     </div>
                     <?php endforeach; ?>
