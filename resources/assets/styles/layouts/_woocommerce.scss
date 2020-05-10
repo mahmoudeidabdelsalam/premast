@@ -854,6 +854,7 @@ section.download-footer {
     bottom: 0;
     transition: all .5s;
     padding: 0;
+    z-index: 9999;
   }
 
   .media {
@@ -4009,7 +4010,22 @@ div#LimitDownload .modal-body p .btn-referral,
   }
   .checkout-custom-header {
     margin-top: 0 !important;
+    height: auto !important;
+    padding: 100px 0;
   }
+
+  .custom-share {
+    padding: 15px;
+  }
+
+  input#emailInput {
+    min-width: 250px;
+  }
+
+  div#copy {
+    white-space: nowrap;
+  }
+
   nav#menu_user .premast-social-icons {
     position: absolute;
     bottom: 0;

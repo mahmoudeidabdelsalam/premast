@@ -2,6 +2,7 @@ import AOS from 'aos/dist/aos';
 import WOW from '../../../../node_modules/wow.js/dist/wow';
 import Slideout from '../../../../node_modules/slideout/dist/slideout';
 import simpleParallax from '../../../../node_modules/simple-parallax-js/dist/simpleParallax';
+import ProgressBar from '../../../../node_modules/progressbar.js/dist/progressbar';
 
 export default {
   init() {
@@ -136,6 +137,24 @@ export default {
       }
     }
 
+    $('body').on('click', '#search_submit', function () {
+      // progressbar.js@1.0.0 version is used
+      // Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
+      var bar = new ProgressBar.Line('#ProgressBar', {
+        strokeWidth: 4,
+        easing: 'easeInOut',
+        duration: 4000,
+        color: '#2872fd',
+        trailColor: '#272f38',
+        trailWidth: 4,
+        svgStyle: { width: '100%', height: '100%' },
+      });
+      bar.animate(1.1);  // Number from 0.0 to 1.0
+    });
+
+
+
+    
     $('.button-close').click(function () {
       $('#search').toggleClass('active');
     });

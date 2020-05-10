@@ -42177,9 +42177,29 @@ div#LimitDownload .modal-body p .btn-referral,
 
   .checkout-custom-header {
     margin-top: 0 !important;
+    height: auto !important;
+    padding: 100px 0;
   }
 
-  /* line 4013, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4016, resources/assets/styles/layouts/_woocommerce.scss */
+
+  .custom-share {
+    padding: 15px;
+  }
+
+  /* line 4020, resources/assets/styles/layouts/_woocommerce.scss */
+
+  input#emailInput {
+    min-width: 250px;
+  }
+
+  /* line 4024, resources/assets/styles/layouts/_woocommerce.scss */
+
+  div#copy {
+    white-space: nowrap;
+  }
+
+  /* line 4028, resources/assets/styles/layouts/_woocommerce.scss */
 
   nav#menu_user .premast-social-icons {
     position: absolute;
@@ -42189,7 +42209,7 @@ div#LimitDownload .modal-body p .btn-referral,
     left: 0;
   }
 
-  /* line 4020, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4035, resources/assets/styles/layouts/_woocommerce.scss */
 
   nav#menu_user {
     display: -webkit-box;
@@ -42201,14 +42221,14 @@ div#LimitDownload .modal-body p .btn-referral,
             flex-flow: column;
   }
 
-  /* line 4024, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4039, resources/assets/styles/layouts/_woocommerce.scss */
 
   .cart-div {
     background: #D2E2FE;
     padding: 15px;
   }
 
-  /* line 4028, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4043, resources/assets/styles/layouts/_woocommerce.scss */
 
   span.cart-contents-count {
     width: 24px;
@@ -42228,25 +42248,25 @@ div#LimitDownload .modal-body p .btn-referral,
             align-items: center;
   }
 
-  /* line 4039, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4054, resources/assets/styles/layouts/_woocommerce.scss */
 
   nav#menu_user .link-item-mobile {
     padding: 15px;
   }
 
-  /* line 4042, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4057, resources/assets/styles/layouts/_woocommerce.scss */
 
   .signup {
     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
   }
 
-  /* line 4045, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4060, resources/assets/styles/layouts/_woocommerce.scss */
 
   header.banner .logos {
     max-width: 160px !important;
   }
 
-  /* line 4048, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4063, resources/assets/styles/layouts/_woocommerce.scss */
 
   #search.active input[type="submit"] {
     left: -245px;
@@ -42255,7 +42275,7 @@ div#LimitDownload .modal-body p .btn-referral,
     opacity: 0.6;
   }
 
-  /* line 4054, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4069, resources/assets/styles/layouts/_woocommerce.scss */
 
   .search-items-mobile {
     display: inline-block;
@@ -42263,19 +42283,19 @@ div#LimitDownload .modal-body p .btn-referral,
     position: relative;
   }
 
-  /* line 4059, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4074, resources/assets/styles/layouts/_woocommerce.scss */
 
   .search-items-mobile form#search {
     position: static;
   }
 
-  /* line 4062, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4077, resources/assets/styles/layouts/_woocommerce.scss */
 
   .button-pricing {
     z-index: 1;
   }
 
-  /* line 4065, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4080, resources/assets/styles/layouts/_woocommerce.scss */
 
   .button-pricing .button-green {
     margin: 0;
@@ -42283,14 +42303,14 @@ div#LimitDownload .modal-body p .btn-referral,
     padding: 10px 15px;
   }
 
-  /* line 4070, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4085, resources/assets/styles/layouts/_woocommerce.scss */
 
   .usermenu {
     width: 30px;
     text-align: right;
   }
 
-  /* line 4074, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4089, resources/assets/styles/layouts/_woocommerce.scss */
 
   nav#menu {
     z-index: 999;
@@ -42301,13 +42321,13 @@ div#LimitDownload .modal-body p .btn-referral,
     overflow: hidden;
   }
 
-  /* line 4082, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4097, resources/assets/styles/layouts/_woocommerce.scss */
 
   nav#menu li.item-menu {
     border-top: 1px solid rgba(0, 0, 0, 0.4);
   }
 
-  /* line 4085, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4100, resources/assets/styles/layouts/_woocommerce.scss */
 
   .navbar-item .radio + .link a:after {
     content: "+";
@@ -42317,25 +42337,25 @@ div#LimitDownload .modal-body p .btn-referral,
     color: #1E6DFB;
   }
 
-  /* line 4092, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4107, resources/assets/styles/layouts/_woocommerce.scss */
 
   .navbar-item .radio:checked + .link a:after {
     content: "-";
   }
 
-  /* line 4095, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4110, resources/assets/styles/layouts/_woocommerce.scss */
 
   footer.content-info .row {
     margin: 0;
   }
 
-  /* line 4098, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4113, resources/assets/styles/layouts/_woocommerce.scss */
 
   .navbar-brand {
     padding: 15px 30px;
   }
 
-  /* line 4101, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4116, resources/assets/styles/layouts/_woocommerce.scss */
 
   .more-informtion {
     padding: 15px 30px;
@@ -42345,7 +42365,7 @@ div#LimitDownload .modal-body p .btn-referral,
             flex-flow: column;
   }
 
-  /* line 4105, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4120, resources/assets/styles/layouts/_woocommerce.scss */
 
   ul#menu-footer-info {
     padding: 0;
@@ -42355,19 +42375,19 @@ div#LimitDownload .modal-body p .btn-referral,
             flex-flow: column;
   }
 
-  /* line 4109, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4124, resources/assets/styles/layouts/_woocommerce.scss */
 
   ul#menu-footer-info li {
     width: 100%;
   }
 
-  /* line 4112, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4127, resources/assets/styles/layouts/_woocommerce.scss */
 
   ul.copyright a {
     padding: 10px 0;
   }
 
-  /* line 4115, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4130, resources/assets/styles/layouts/_woocommerce.scss */
 
   section.copyright .col-md-4.text-left {
     -webkit-box-ordinal-group: 3;
@@ -42375,20 +42395,20 @@ div#LimitDownload .modal-body p .btn-referral,
             order: 2;
   }
 
-  /* line 4118, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4133, resources/assets/styles/layouts/_woocommerce.scss */
 
   section.copyright {
     padding: 20px 20px 40px;
   }
 
-  /* line 4121, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4136, resources/assets/styles/layouts/_woocommerce.scss */
 
   .slideout-open .toggle-menu {
     position: fixed;
     top: 10px;
   }
 
-  /* line 4125, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4140, resources/assets/styles/layouts/_woocommerce.scss */
 
   .is-open-user .menu-toggle {
     position: fixed;
@@ -42397,7 +42417,7 @@ div#LimitDownload .modal-body p .btn-referral,
     right: 10px;
   }
 
-  /* line 4131, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4146, resources/assets/styles/layouts/_woocommerce.scss */
 
   ul#menu-category-product-menu {
     height: 80vh;

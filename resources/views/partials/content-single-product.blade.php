@@ -86,6 +86,16 @@
                 global $product;
                 $product_id = $product->get_id();
 
+                $downloads     = WC()->customer->get_downloadable_products();
+                $has_downloads = (bool) $downloads;
+
+                $product_ids = [];
+                foreach ($downloads as $download) {
+                  $ids = $download['product_id'];
+                  $product_ids[] = $ids;
+                }
+
+
                 $in_cart = false;
                 
                 foreach( WC()->cart->get_cart() as $cart_item ) {
@@ -308,33 +318,36 @@
           </div>
           <div class="col-md-4 col-12 d-flex">
             <div class="bottom-summary col align-self-center">
-              @if ( !is_user_logged_in() && $price == 0)
-                <a class="login" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Login to Download Now', 'premast') }}</a>
+              @if(in_array($product_id, $product_ids))
+                <a class="click-downloads" href="#"><span class="price">{{ _e('Download Now', 'premast') }}</span></a>
               @else
-              <a class="click-downloads" href="#">
-                
-                @if($sale)
-                  {{ _e('buy Now for', 'premast') }}
-                  <span class="price">
-                    <del>
-                      <span class="woocommerce-Price-amount amount">{{ $price }}<span class="woocommerce-Price-currencySymbol">{!! $symbol !!}</span></span>
-                    </del> 
-                    <span>
-                      <span class="woocommerce-Price-amount amount">{{ $sale }}<span class="woocommerce-Price-currencySymbol">{!! $symbol !!}</span></span>
+                @if ( !is_user_logged_in() && $price == 0)
+                  <a class="login" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Login to Download Now', 'premast') }}</a>
+                @else
+                <a class="click-downloads" href="#">
+                  @if($sale)
+                    {{ _e('buy Now for', 'premast') }}
+                    <span class="price">
+                      <del>
+                        <span class="woocommerce-Price-amount amount">{{ $price }}<span class="woocommerce-Price-currencySymbol">{!! $symbol !!}</span></span>
+                      </del> 
+                      <span>
+                        <span class="woocommerce-Price-amount amount">{{ $sale }}<span class="woocommerce-Price-currencySymbol">{!! $symbol !!}</span></span>
+                      </span>
                     </span>
-                  </span>
-                @elseif($price)
-                  {{ _e('buy Now for', 'premast') }}
-                  <span class="price">
-                    <span>
-                      <span class="woocommerce-Price-amount amount">{{ $price }}<span class="woocommerce-Price-currencySymbol">{!! $symbol !!}</span></span>
-                    </span> 
-                  </span>
-                @else 
-                  <span class="price">{{ _e('Download Now', 'premast') }}</span>
+                  @elseif($price)
+                    {{ _e('buy Now for', 'premast') }}
+                    <span class="price">
+                      <span>
+                        <span class="woocommerce-Price-amount amount">{{ $price }}<span class="woocommerce-Price-currencySymbol">{!! $symbol !!}</span></span>
+                      </span> 
+                    </span>
+                  @else 
+                    <span class="price">{{ _e('Download Now', 'premast') }}</span>
+                  @endif
+                </a>
                 @endif
-              </a>
-              @endif
+              @endif 
             </div>
           </div>
         </div>
@@ -343,15 +356,15 @@
 
     <script type="text/javascript">
       jQuery(function($) {
-        <?php if($price): ?>
+
           $('.click-downloads').click(function () {
             $('.woocommerce div.product form.cart .button').click();
           });
-        <?php else: ?>
+
           $('.click-downloads').click(function () {
-            $('.download-product #somdn-form-submit-button').click();
+            $('button#somdn-form-submit-button').click();
           });
-        <?php endif; ?>
+
       });
     </script>
 
