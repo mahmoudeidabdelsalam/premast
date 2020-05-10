@@ -256,3 +256,21 @@ $time = get_the_time('Y-m-d')
   @endif
 
 @endif
+
+
+
+<div id="ProgressBar"></div>
+
+
+<style>
+  div#ProgressBar {
+    position: fixed;
+    top: -6px;
+    z-index: 999999999;
+    width: 100%;
+    height: 10px;
+  }
+  .admin-bar div#ProgressBar {
+    top: 24px;
+  }
+</style>
