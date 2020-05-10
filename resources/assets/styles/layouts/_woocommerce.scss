@@ -3900,7 +3900,40 @@ div#LimitDownload .modal-body p .btn-referral,
 
 @media (max-width: 579px) {
   section.banner-items {
-    margin-top: 0;
+    margin-top: 0 !important;
+    padding: 60px 120px 60px 0 !important;
+    height: auto !important;
+    min-height: 1px !important;
+  }
+
+  section.banner-items h1 {
+    font-weight: bold;
+    font-size: 18px !important;
+    line-height: 27px;
+    color: #282F39 !important;
+  }
+
+  .banner-items .font-weight-600 {
+    font-size: 18px !important;
+  }
+
+  .total-slide {
+    margin-bottom: 0 !important;
+    text-align: center;
+  }
+
+  section.banner-items p {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.04px;
+    opacity: 0.8;
+  }
+  
+  .banner-items .elementor-background-overlay-items {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30%;
   }
 
   header.banner,

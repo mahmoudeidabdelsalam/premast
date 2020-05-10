@@ -36,10 +36,7 @@
 
 
 @if ( wp_is_mobile() ) 
-  <form class="is-mobile-search" role="search" method="get" id="searchform" action="{{ home_url( $wp->request ) }}">
-    <button type="submit"><i class="fa fa-search"></i></button>
-    <input id="autoblogs" class="form-control w-100" type="search" value="@if($refine != '0') {!! $refine !!} @endif" name="refine" autocomplete="on" autocorrect="off" autocapitalize="on" spellcheck="false" placeholder="{{ _e('Search items', 'premast') }}" aria-label="Search">    
-  </form>
+
   <div class="col-12 d-flex">
     <div class="dropdown">
       <a class="btn-toggle dropdown-toggle" href="#" role="button" id="dropdownMenuCat" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -276,7 +273,7 @@
         @endphp
 
         @if (get_field('show_card_pricing', 'option'))
-          <div class="col-md-4 col-6 grid-item">
+          <div class="col-md-4 col-12 grid-item">
             <div class="card">
               <span class="custom-onsale">
                 {{ the_field('tag_card_pricing', 'option') }}
@@ -301,7 +298,7 @@
         @if($my_query->have_posts())
           @while($my_query->have_posts()) @php($my_query->the_post())
           @php ($sale = get_post_meta( get_the_ID(), '_sale_price', true))
-            <div class="col-md-4 col-6 grid-item">
+            <div class="col-md-4 col-12 grid-item">
               <div class="card">
                   @if($sale)
                     <span class="custom-onsale">
