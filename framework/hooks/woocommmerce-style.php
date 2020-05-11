@@ -166,16 +166,16 @@ function lit_woocommerce_confirm_password_checkout( $checkout ) {
 add_action( 'woocommerce_checkout_init', 'lit_woocommerce_confirm_password_checkout', 10, 1 );
 
 
-add_action( 'template_redirect', 'woo_custom_redirect_after_purchase' );
-function woo_custom_redirect_after_purchase() {
-  global $wp;
-  $like_download = get_field('thanks_page','option');
+// add_action( 'template_redirect', 'woo_custom_redirect_after_purchase' );
+// function woo_custom_redirect_after_purchase() {
+//   global $wp;
+//   $like_download = get_field('thanks_page','option');
   
-	if ( is_checkout() && !empty( $wp->query_vars['order-received'] ) ) {
-		wp_redirect( $like_download );
-		exit;
-	}
-}
+// 	if ( is_checkout() && !empty( $wp->query_vars['order-received'] ) ) {
+// 		wp_redirect( $like_download );
+// 		exit;
+// 	}
+// }
 
 
 if( ! function_exists('custom_ajax_add_to_cart_button') && class_exists('WooCommerce') ) {
