@@ -6,14 +6,16 @@
   $send = (isset($_POST['alert_name']))? $_POST['alert_name']:'';
   $passthrough = (isset($_POST['passthrough']))? $_POST['passthrough']:'';
   $subscription_plan_id = (isset($_POST['subscription_plan_id']))? $_POST['subscription_plan_id']:'';
+  
+  $cancel_url = (isset($_POST['cancel_url']))? $_POST['cancel_url']:'';
+  $update_url = (isset($_POST['update_url']))? $_POST['update_url']:'';
+
   global $current_user;
   wp_get_current_user();
-
 
   $subscription_plan_paddle_one   = get_field('subscription_plan_paddle_one', 'option');
   $subscription_plan_paddle_two   = get_field('subscription_plan_paddle_two', 'option');
   $subscription_plan_paddle_three = get_field('subscription_plan_paddle_three', 'option');
-
 
   $member_ship_plan_one   = get_field('member_ship_plan_one', 'option');
   $member_ship_plan_two   = get_field('member_ship_plan_two', 'option');
@@ -22,6 +24,9 @@
 
 @if ($send)
   @php 
+
+    update_user_meta( $user_id, 'cancel_url', $cancel_url );
+    update_user_meta( $user_id, 'update_url', $update_url );
 
     if ($subscription_plan_id == $subscription_plan_paddle_one) {
       $plan_id = $member_ship_plan_one;
@@ -156,7 +161,13 @@
 
     }
 
-    dd($user_membership_id);
+
+    $cancel_url = get_user_meta( $passthrough, 'cancel_url' , true );
+    $update_url = get_user_meta( $passthrough, 'update_url' , true );
+
+
+    dd($cancel_url, $update_url);
+
   @endphp
 @endif  
 
