@@ -162,8 +162,8 @@
     }
 
 
-    $cancel_url = get_user_meta( $passthrough, 'cancel_url' , true );
-    $update_url = get_user_meta( $passthrough, 'update_url' , true );
+    // $cancel_url = get_user_meta( $passthrough, 'cancel_url' , true );
+    // $update_url = get_user_meta( $passthrough, 'update_url' , true );
 
 
     dd($cancel_url, $update_url);
