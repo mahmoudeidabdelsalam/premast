@@ -100,6 +100,18 @@ $numberDays = intval($numberDays);
             </div>
 
             <p class="renewed-plan">{{ _e('To continue using our services, please note that your subscribtion needs to be renewed every', 'premast') }} {{($freq_name)? $freq_name:'year'}}</p>
+
+            @php 
+              $cancel_url_get = get_user_meta( $current_user->ID, 'cancel_url' , true );
+              $update_url_get = get_user_meta( $current_user->ID, 'update_url' , true );
+            @endphp
+
+            @if($cancel_url_get)
+              <p class="link-paddle">
+                <a href="{{ $cancel_url_get }}">cancel subscribe</a>
+                <a href="{{ $update_url_get }}">update subscribe</a>
+              </p>
+            @endif
           @endif
         </div>
       </div>

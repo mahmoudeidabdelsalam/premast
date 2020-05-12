@@ -25,8 +25,13 @@
 @if ($send)
   @php 
 
-    update_user_meta( $passthrough, 'cancel_url', $cancel_url );
-    update_user_meta( $passthrough, 'update_url', $update_url );
+    @if ($cancel_url)
+      update_user_meta( $passthrough, 'cancel_url', $cancel_url );
+    @endif
+    @if ($update_url)
+      update_user_meta( $passthrough, 'update_url', $update_url );
+    @endif
+
 
     if ($subscription_plan_id == $subscription_plan_paddle_one) {
       $plan_id = $member_ship_plan_one;
