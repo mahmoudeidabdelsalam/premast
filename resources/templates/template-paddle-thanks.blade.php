@@ -25,12 +25,14 @@
 @if ($send)
   @php 
 
-    @if ($cancel_url)
+    if($cancel_url) {
       update_user_meta( $passthrough, 'cancel_url', $cancel_url );
-    @endif
-    @if ($update_url)
+    }
+      
+    if ($update_url){
       update_user_meta( $passthrough, 'update_url', $update_url );
-    @endif
+    }
+      
 
 
     if ($subscription_plan_id == $subscription_plan_paddle_one) {
@@ -171,7 +173,7 @@
     $update_url_get = get_user_meta( $passthrough, 'update_url' , true );
 
 
-    dd($cancel_url_get, $update_url_get);
+    // dd($cancel_url_get, $update_url_get);
 
   @endphp
 @endif  
