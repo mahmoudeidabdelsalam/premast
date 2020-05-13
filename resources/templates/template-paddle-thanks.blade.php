@@ -100,7 +100,7 @@
           wp_update_post(array(
             'ID'    =>  $post->ID,
             'post_type' => 'wc_user_membership',
-            'post_status'   =>  array($wcm_status),
+            'post_status'   =>  $wcm_status,
           ));
 
           update_post_meta($post->ID, '_end_date', $next_bill_date);
