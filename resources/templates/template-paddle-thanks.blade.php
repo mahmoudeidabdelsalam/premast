@@ -181,8 +181,9 @@
     }
 
 
+    $user_subscription_id = get_post_meta( $passthrough, 'subscription_id', true )
 
-    dd($subscription_id);
+    dd($subscription_id, $user_subscription_id);
   @endphp
 @endif  
 
