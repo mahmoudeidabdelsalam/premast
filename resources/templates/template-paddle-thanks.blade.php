@@ -83,7 +83,7 @@
         'numberposts'   => 1,
         'meta_key' => 'subscription_id',
         'meta_value' => $subscription_id,
-        'author' => $passthrough
+        'post_author' => $passthrough
       );
       $updateds = get_posts($updated);
 
@@ -108,7 +108,7 @@
         'numberposts'   => 1,
         'meta_key' => 'subscription_id',
         'meta_value' => $subscription_id,
-        'author' => $passthrough
+        'post_author' => $passthrough
       );
       $updateds = get_posts($updated);
 
@@ -135,7 +135,7 @@
         'numberposts'   => 1,
         'meta_key' => 'subscription_id',
         'meta_value' => $subscription_id,
-        'author' => $passthrough
+        'post_author' => $passthrough
       );
       $updateds = get_posts($updated);
 
@@ -160,7 +160,7 @@
         'numberposts'   => 1,
         'meta_key' => 'subscription_id',
         'meta_value' => $subscription_id,
-        'author' => $passthrough
+        'post_author' => $passthrough
       );
       $updateds = get_posts($updated);
 
