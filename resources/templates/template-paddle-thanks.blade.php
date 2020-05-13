@@ -190,14 +190,17 @@
 
 @php 
 
-  $subscription = array(
-    'post_type' => 'wc_user_membership',
-    'numberposts'   => 1,
-    'author' => $current_user->ID
-  );
-  $subscriptions = get_posts($subscription);
 
-  foreach ($subscriptions as  $post) {
+    $posts = get_posts( array(
+        'post_type'     => 'wc_user_membership',
+        'post_status'   => array('wcm-active'),
+        'numberposts'   => -1,
+        'post_author' => $current_user->ID
+    ) );
+
+
+
+  foreach ($posts as  $post) {
     $user_subscription_id = get_post_meta( $post->ID, 'subscription_id', true );
 
     dd($user_subscription_id);
