@@ -10,6 +10,9 @@
   $subscription_id = (isset($_POST['subscription_id']))? $_POST['subscription_id']:'';
 
   $status = (isset($_POST['status']))? $_POST['status']:'';
+
+  
+
   if ($status == 'active') {
     $wcm_status == 'wcm-active';
   } elseif($status == 'past_due') {
@@ -17,6 +20,11 @@
   } elseif($status == 'deleted') {
     $wcm_status == 'wcm-cancelled';
   }
+
+
+  dd($status, $wcm_status);
+
+
 
   $cancel_url = (isset($_POST['cancel_url']))? $_POST['cancel_url']:'';
   $update_url = (isset($_POST['update_url']))? $_POST['update_url']:'';
