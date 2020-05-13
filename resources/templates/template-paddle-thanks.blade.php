@@ -14,15 +14,15 @@
   
 
   if ($status == 'active') {
-    $wcm_status == 'wcm-active';
+    $wcm_status = 'wcm-active';
   } elseif($status == 'past_due') {
-    $wcm_status == 'wcm-pending';
+    $wcm_status = 'wcm-pending';
   } elseif($status == 'deleted') {
-    $wcm_status == 'wcm-cancelled';
+    $wcm_status = 'wcm-cancelled';
   }
 
 
-  dd($status, $wcm_status);
+  // dd($status, $wcm_status);
 
 
 
