@@ -96,6 +96,11 @@
 
       foreach ($posts as  $post) {
         if($post->ID) {
+
+
+          dd($post->ID);
+
+
           wp_update_post(array(
             'ID'    =>  $post->ID,
             'post_type' => 'wc_user_membership',
