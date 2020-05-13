@@ -108,7 +108,7 @@
       }
 
 
-
+      dd($wcm_status);
 
     } elseif ($send == 'subscription_cancelled') {
 
