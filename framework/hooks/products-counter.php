@@ -33,7 +33,9 @@ function paddle_button( $atts ) {
     
     global $current_user;
     wp_get_current_user();
-    return '<a href="#" class="paddle_button" data-success="/thanks-subscription/" data-product="'.esc_attr($product).'" data-passthrough="'.$current_user->ID.'">'.esc_attr($text).'</a>';
+    $user_info = get_userdata($current_user->ID);
+
+    return '<a href="#" class="paddle_button" data-email="'.$user_info->user_email.'" data-success="/thanks-subscription/" data-product="'.esc_attr($product).'" data-passthrough="'.$current_user->ID.'">'.esc_attr($text).'</a>';
   }
 
 }
