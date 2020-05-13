@@ -77,27 +77,31 @@
       $next_bill_date = (isset($_POST['next_bill_date']))? $_POST['next_bill_date']:'';
 
 
-      $updated = array(
-        'post_type' => 'wc_user_membership',
-        'suppress_filters' => 0,
-        'numberposts'   => 1,
+      $posts = get_posts( array(
+        'post_type'     => 'wc_user_membership',
+        'post_status'   => array('wcm-active', 'wcm-cancelled', 'wcm-expired', 'wcm-pending'),
         'meta_key' => 'subscription_id',
         'meta_value' => $subscription_id,
         'post_author' => $passthrough
-      );
-      $updateds = get_posts($updated);
+      ));
 
-      if($updateds) {
-        foreach ($updateds as  $post) {
+
+
+      foreach ($posts as  $post) {
+        if($post->ID) {
           wp_update_post(array(
-            'ID'          =>  $post->ID,
-            'post_type'   => 'wc_user_membership',
-            'post_status' =>  $wcm_status,
+            'ID'    =>  $post->ID,
+            'post_type' => 'wc_user_membership',
+            'post_status'   =>  $wcm_status,
           ));
+
           update_post_meta($post->ID, '_end_date', $next_bill_date);
           do_action('wp_update_post', 'wp_update_post');
         }
       }
+
+
+
 
     } elseif ($send == 'subscription_cancelled') {
 
@@ -178,21 +182,6 @@
         }
       }
 
-    }
-
-
-
-
-    $posts = get_posts( array(
-        'post_type'     => 'wc_user_membership',
-        'post_status'   => array('wcm-active'),
-        'meta_key' => 'subscription_id',
-        'meta_value' => $subscription_id,
-        'post_author' => $passthrough
-    ) );
-
-    foreach ($posts as  $post) {
-      dd($post->ID);
     }
 
 
