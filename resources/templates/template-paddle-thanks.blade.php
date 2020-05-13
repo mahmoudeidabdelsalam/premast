@@ -198,7 +198,6 @@
 
 @section('content')
 
-
   <!-- Modal -->
   <div class="modal" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document" >
