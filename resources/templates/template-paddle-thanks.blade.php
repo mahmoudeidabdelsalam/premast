@@ -193,7 +193,7 @@
   $subscription = array(
     'post_type' => 'wc_user_membership',
     'numberposts'   => 1,
-    'author' => $$current_user->ID
+    'author' => $current_user->ID
   );
   $subscriptions = get_posts($subscription);
 
