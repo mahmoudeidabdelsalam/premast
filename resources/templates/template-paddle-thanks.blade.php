@@ -11,7 +11,6 @@
 
   $status = (isset($_POST['status']))? $_POST['status']:'';
 
-  
 
   if ($status == 'active') {
     $wcm_status = 'wcm-active';
@@ -20,10 +19,6 @@
   } elseif($status == 'deleted') {
     $wcm_status = 'wcm-cancelled';
   }
-
-
-  // dd($status, $wcm_status);
-
 
 
   $cancel_url = (isset($_POST['cancel_url']))? $_POST['cancel_url']:'';
@@ -111,78 +106,81 @@
 
     } elseif ($send == 'subscription_cancelled') {
 
-      $next_bill_date = (isset($_POST['cancellation_effective_date']))? $_POST['cancellation_effective_date']:'';
-
-      $updated = array(
-        'post_type' => 'wc_user_membership',
-        'numberposts'   => 1,
-        'meta_key' => 'subscription_id',
-        'meta_value' => $subscription_id,
-        'post_author' => $passthrough
-      );
-      $updateds = get_posts($updated);
-
-      if($updateds) {
-        foreach ($updateds as  $post) {
-          wp_update_post(array(
-            'plan_id' => $plan_id, 
-            'post_parent' => $plan_id,
-            'ID'          =>  $post->ID,
-            'post_type'   => 'wc_user_membership',
-            'post_status' =>  'wcm-cancelled',
-          ));
-          update_post_meta($post->ID, '_end_date', $next_bill_date);
-          do_action('wp_update_post', 'wp_update_post');
-        }
-      }
-
-    } elseif ($send == 'subscription_payment_succeeded') {
 
       $next_bill_date = (isset($_POST['next_bill_date']))? $_POST['next_bill_date']:'';
 
-      $updated = array(
-        'post_type' => 'wc_user_membership',
-        'numberposts'   => 1,
+      $posts = get_posts( array(
+        'post_type'     => 'wc_user_membership',
+        'post_status'   => array('wcm-active', 'wcm-cancelled', 'wcm-expired', 'wcm-pending'),
         'meta_key' => 'subscription_id',
         'meta_value' => $subscription_id,
         'post_author' => $passthrough
-      );
-      $updateds = get_posts($updated);
+      ));
 
-      if($updateds) {
-        foreach ($updateds as  $post) {
+      foreach ($posts as  $post) {
+        if($post->ID) {
+
           wp_update_post(array(
-            'ID'          =>  $post->ID,
-            'post_type'   => 'wc_user_membership',
-            'post_status' =>  'wcm-active',
+            'ID'    =>  $post->ID,
+            'post_type' => 'wc_user_membership',
+            'post_status'   =>  $wcm_status,
           ));
+
           update_post_meta($post->ID, '_end_date', $next_bill_date);
           do_action('wp_update_post', 'wp_update_post');
         }
       }
+
+
+    } elseif ($send == 'subscription_payment_succeeded') {
+
+
+      $next_bill_date = (isset($_POST['next_bill_date']))? $_POST['next_bill_date']:'';
+
+      $posts = get_posts( array(
+        'post_type'     => 'wc_user_membership',
+        'post_status'   => array('wcm-active', 'wcm-cancelled', 'wcm-expired', 'wcm-pending'),
+        'meta_key' => 'subscription_id',
+        'meta_value' => $subscription_id,
+        'post_author' => $passthrough
+      ));
+
+      foreach ($posts as  $post) {
+        if($post->ID) {
+
+          wp_update_post(array(
+            'ID'    =>  $post->ID,
+            'post_type' => 'wc_user_membership',
+            'post_status'   =>  $wcm_status,
+          ));
+
+          update_post_meta($post->ID, '_end_date', $next_bill_date);
+          do_action('wp_update_post', 'wp_update_post');
+        }
+      }
+
 
     } elseif ($send == 'subscription_payment_failed') {
 
       $next_bill_date = (isset($_POST['next_bill_date']))? $_POST['next_bill_date']:'';
 
-      $updated = array(
-        'post_type' => 'wc_user_membership',
-        'numberposts'   => 1,
+      $posts = get_posts( array(
+        'post_type'     => 'wc_user_membership',
+        'post_status'   => array('wcm-active', 'wcm-cancelled', 'wcm-expired', 'wcm-pending'),
         'meta_key' => 'subscription_id',
         'meta_value' => $subscription_id,
         'post_author' => $passthrough
-      );
-      $updateds = get_posts($updated);
+      ));
 
-      if($updateds) {
-        foreach ($updateds as  $post) {
+      foreach ($posts as  $post) {
+        if($post->ID) {
+
           wp_update_post(array(
-            'plan_id' => $plan_id, 
-            'post_parent' => $plan_id,
-            'ID'          =>  $post->ID,
-            'post_type'   => 'wc_user_membership',
-            'post_status' =>  'wcm-pending',
+            'ID'    =>  $post->ID,
+            'post_type' => 'wc_user_membership',
+            'post_status'   =>  $wcm_status,
           ));
+
           update_post_meta($post->ID, '_end_date', $next_bill_date);
           do_action('wp_update_post', 'wp_update_post');
         }
@@ -197,10 +195,6 @@
 @extends('layouts.app-dark')
 
 @section('content')
-
-
-
-
 
 
   <!-- Modal -->
