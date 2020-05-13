@@ -7,6 +7,17 @@
   $passthrough = (isset($_POST['passthrough']))? $_POST['passthrough']:'';
   $subscription_plan_id = (isset($_POST['subscription_plan_id']))? $_POST['subscription_plan_id']:'';
   
+  $subscription_id = (isset($_POST['subscription_id']))? $_POST['subscription_id']:'';
+
+  $status = (isset($_POST['status']))? $_POST['status']:'';
+  if ($status == 'active') {
+    $wcm_status == 'wcm-active';
+  } elseif($status == 'past_due') {
+    $wcm_status == 'wcm-pending';
+  } elseif($status == 'deleted') {
+    $wcm_status == 'wcm-cancelled';
+  }
+
   $cancel_url = (isset($_POST['cancel_url']))? $_POST['cancel_url']:'';
   $update_url = (isset($_POST['update_url']))? $_POST['update_url']:'';
 
@@ -28,12 +39,9 @@
     if($cancel_url) {
       update_user_meta( $passthrough, 'cancel_url', $cancel_url );
     }
-      
     if ($update_url){
       update_user_meta( $passthrough, 'update_url', $update_url );
     }
-      
-
 
     if ($subscription_plan_id == $subscription_plan_paddle_one) {
       $plan_id = $member_ship_plan_one;
@@ -56,18 +64,25 @@
         'post_type'      => 'wc_user_membership',
         'post_status'    => 'wcm-active',
       ) );
+
+
       $user_membership_id = wp_insert_post( $data, true );
       update_post_meta($user_membership_id, '_start_date', $event_time);
       update_post_meta($user_membership_id, '_end_date', $next_bill_date);
+      update_post_meta($user_membership_id, 'subscription_id', $subscription_id);
+
 
     } elseif ($send == 'subscription_updated') {
 
       $next_bill_date = (isset($_POST['next_bill_date']))? $_POST['next_bill_date']:'';
 
+
       $updated = array(
         'post_type' => 'wc_user_membership',
         'suppress_filters' => 0,
         'numberposts'   => 1,
+        'meta_key' => 'subscription_id',
+        'meta_value' => $subscription_id,
         'author' => $passthrough
       );
       $updateds = get_posts($updated);
@@ -75,11 +90,9 @@
       if($updateds) {
         foreach ($updateds as  $post) {
           wp_update_post(array(
-            'plan_id' => $plan_id, 
-            'post_parent' => $plan_id,
             'ID'          =>  $post->ID,
             'post_type'   => 'wc_user_membership',
-            'post_status' =>  'wcm-active',
+            'post_status' =>  $wcm_status,
           ));
           update_post_meta($post->ID, '_end_date', $next_bill_date);
           do_action('wp_update_post', 'wp_update_post');
@@ -92,9 +105,9 @@
 
       $updated = array(
         'post_type' => 'wc_user_membership',
-        'post_status'   => array('wcm-active'),
-        'suppress_filters' => 0,
         'numberposts'   => 1,
+        'meta_key' => 'subscription_id',
+        'meta_value' => $subscription_id,
         'author' => $passthrough
       );
       $updateds = get_posts($updated);
@@ -119,9 +132,9 @@
 
       $updated = array(
         'post_type' => 'wc_user_membership',
-        'suppress_filters' => 0,
-        'post_status'   => array('wcm-active', 'wcm-cancelled', 'wcm-expired', 'wcm-pending'),
         'numberposts'   => 1,
+        'meta_key' => 'subscription_id',
+        'meta_value' => $subscription_id,
         'author' => $passthrough
       );
       $updateds = get_posts($updated);
@@ -129,8 +142,6 @@
       if($updateds) {
         foreach ($updateds as  $post) {
           wp_update_post(array(
-            'plan_id' => $plan_id, 
-            'post_parent' => $plan_id,
             'ID'          =>  $post->ID,
             'post_type'   => 'wc_user_membership',
             'post_status' =>  'wcm-active',
@@ -146,8 +157,9 @@
 
       $updated = array(
         'post_type' => 'wc_user_membership',
-        'suppress_filters' => 0,
         'numberposts'   => 1,
+        'meta_key' => 'subscription_id',
+        'meta_value' => $subscription_id,
         'author' => $passthrough
       );
       $updateds = get_posts($updated);
@@ -169,11 +181,6 @@
     }
 
 
-    $cancel_url_get = get_user_meta( $passthrough, 'cancel_url' , true );
-    $update_url_get = get_user_meta( $passthrough, 'update_url' , true );
-
-
-    // dd($cancel_url_get, $update_url_get);
 
   @endphp
 @endif  
