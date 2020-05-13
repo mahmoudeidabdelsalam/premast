@@ -4,11 +4,11 @@
 
 @php 
   $send = (isset($_POST['alert_name']))? $_POST['alert_name']:'';
+ 
+ 
   $passthrough = (isset($_POST['passthrough']))? $_POST['passthrough']:'';
   $subscription_plan_id = (isset($_POST['subscription_plan_id']))? $_POST['subscription_plan_id']:'';
-  
   $subscription_id = (isset($_POST['subscription_id']))? $_POST['subscription_id']:'';
-
   $status = (isset($_POST['status']))? $_POST['status']:'';
 
 
@@ -82,12 +82,12 @@
 
       $posts = get_posts( array(
         'post_type'     => 'wc_user_membership',
-        'post_status'   => array('wcm-active', 'wcm-cancelled', 'wcm-expired', 'wcm-pending'),
         'meta_key' => 'subscription_id',
         'meta_value' => $subscription_id,
         'post_author' => $passthrough
       ));
 
+      dd($posts);
 
       foreach ($posts as  $post) {
         if($post->ID) {
