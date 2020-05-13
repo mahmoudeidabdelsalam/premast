@@ -89,8 +89,6 @@
       ));
 
 
-      dd($posts);
-
       foreach ($posts as  $post) {
         if($post->ID) {
 
