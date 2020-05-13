@@ -82,10 +82,12 @@
 
       $posts = get_posts( array(
         'post_type'     => 'wc_user_membership',
+        'post_status'   => array('wcm-active', 'wcm-cancelled', 'wcm-expired', 'wcm-pending'),
         'meta_key' => 'subscription_id',
         'meta_value' => $subscription_id,
         'post_author' => $passthrough
       ));
+
 
       dd($posts);
 
