@@ -180,16 +180,34 @@
 
     }
 
-
-    $user_subscription_id = get_post_meta( $passthrough, 'subscription_id', true );
-
-    dd($subscription_id, $user_subscription_id);
+    dd($subscription_id);
   @endphp
 @endif  
 
 @extends('layouts.app-dark')
 
 @section('content')
+
+
+@php 
+
+  $subscription = array(
+    'post_type' => 'wc_user_membership',
+    'numberposts'   => 1,
+    'author' => $$current_user->ID
+  );
+  $subscriptions = get_posts($subscription);
+
+  foreach ($subscriptions as  $post) {
+    $user_subscription_id = get_post_meta( $post->ID, 'subscription_id', true );
+
+    dd($user_subscription_id);
+  }
+
+@endphp
+
+
+
 
   <!-- Modal -->
   <div class="modal" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
