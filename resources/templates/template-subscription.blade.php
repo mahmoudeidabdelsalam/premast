@@ -109,7 +109,6 @@ $numberDays = intval($numberDays);
             @if($cancel_url_get)
               <p class="link-paddle">
                 <a class="button-green button-cancel" href="{{ $cancel_url_get }}">cancel subscribe</a>
-                <a class="button-green" href="{{ $update_url_get }}">update subscribe</a>
               </p>
             @endif
           @endif
