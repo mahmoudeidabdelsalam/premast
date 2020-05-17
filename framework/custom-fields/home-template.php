@@ -115,7 +115,7 @@ acf_add_local_field_group(array(
 				'class' => '',
 				'id' => '',
 			),
-			'taxonomy' => 'product_type',
+			'taxonomy' => 'product_tag',
 			'field_type' => 'multi_select',
 			'allow_null' => 0,
 			'add_term' => 1,
