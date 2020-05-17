@@ -151,10 +151,10 @@
       </div>
     </div>
     <?php 
-      $terms = get_field('select_category_products');
-      if( $terms ): 
+      $terms_products = get_field('select_category_products');
+      if( $terms_products ): 
       ?>
-      <?php foreach( $terms as $term ): ?>
+      <?php foreach( $terms_products as $term ): ?>
         <div class="container-fluid mt-5">
           <div class="row">
             <div class="col-md-6 col-12">
