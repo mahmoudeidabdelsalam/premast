@@ -3,6 +3,7 @@
 function related_posts() {
   global $post;
 
+  //TODO related cat after complate
   $tags = wp_get_post_terms( $post->ID, 'product_tag' );
   $categories = get_the_terms( $post->ID, 'product_cat' );
 

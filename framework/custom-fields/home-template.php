@@ -321,7 +321,10 @@ acf_add_local_field_group(array(
 			'load_terms' => 0,
 			'return_format' => 'object',
 			'multiple' => 0,
-		),
+    ),
+    
+
+
 		array(
 			'key' => 'field_5ec1b895d642a',
 			'label' => 'Free Items',
@@ -419,7 +422,109 @@ acf_add_local_field_group(array(
 			'min' => '',
 			'max' => '',
 			'return_format' => 'object',
+    ),
+    
+
+		array(
+			'key' => 'field_5ec1b8942342343243245d642a',
+			'label' => 'Blog',
+			'name' => '',
+			'type' => 'tab',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'placement' => 'top',
+			'endpoint' => 0,
 		),
+		array(
+			'key' => 'field_5ec1b89d23423423432423d642b',
+			'label' => 'Headline blog',
+			'name' => 'headline_blog_items',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
+		),
+		array(
+			'key' => 'field_5ec1b8a3d6rqwrqwrqwrqwr42c',
+			'label' => 'Sub Headline Blog',
+			'name' => 'sub_headline_blog_items',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
+		),
+		array(
+			'key' => 'field_5ec1b8acdwrqrqwrqwr642d',
+			'label' => 'link blog',
+			'name' => 'link_blog_items',
+			'type' => 'link',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'return_format' => 'array',
+		),
+		array(
+			'key' => 'field_5ec1b8b4drqsadwrqwrqwr642e',
+			'label' => 'blog Items',
+			'name' => 'blog_items',
+			'type' => 'relationship',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'post_type' => array(
+				0 => 'post',
+			),
+			'taxonomy' => '',
+			'filters' => array(
+				0 => 'search',
+				1 => 'post_type',
+				2 => 'taxonomy',
+			),
+			'elements' => array(
+				0 => 'featured_image',
+			),
+			'min' => '',
+			'max' => '',
+			'return_format' => 'object',
+    ),
+    
+
 	),
 	'location' => array(
 		array(

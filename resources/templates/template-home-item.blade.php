@@ -338,7 +338,79 @@
     </div>
   </section>
 
+  <section class="blog-items">
+    <div class="container pt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-12">
+          <div class="mid-headline">
+            <h1 class="headterm"><?= the_field('headline_blog_items'); ?></h1>
+            <h5 class="subhead"><?= the_field('sub_headline_blog_items'); ?></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="col-md-12 col-sm-12">
+        <div class="item-columns grid row m-0 container-ajax">
+        <?php 
+        $blog_ids = get_field('blog_items', false, false);
+        $blog_query = new WP_Query(array(
+          'post_type'      	=> 'post',
+          'posts_per_page'	=> 3,
+          'post__in'			=> $blog_ids,
+          'orderby'        	=> 'post__in',
+        ));
+        ?>
+        @if($blog_query->have_posts())
+          @while($blog_query->have_posts()) @php($blog_query->the_post())
+            <div class="item-blog col-md-4 col-sm-4 col-sx-6 col-12 grid-item pl-4 pr-4 post-ajax">
+              <div class="card p-0">
+                <div class="bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'medium')}}');border-radius: 9px;height: 208px; min-height: 208px;">
+                  <img src="{{ Utilities::global_thumbnails(get_the_ID(),'medium')}}" class="card-img-top" alt="{{ the_title() }}">
+                  <div class="card-overlay"><a class="the_permalink" href="{{ the_permalink() }}"></a></div>
+                </div>
+                <div class="card-body pt-2 pl-0 pr-0 pb-0">
+                  <p class="label mb-0">
+                    <time class="text-dark">{{ the_date('d M, Y') }}</time>
+                  </p>
+                  <a class="card-link" href="{{ the_permalink() }}">
+                    <h5 class="card-title">{{ the_title() }}</h5>
+                  </a>
+                  <p class="card-text">
+                    {!! wp_trim_words(get_the_content(get_the_ID()), 15, ' ...') !!}
+                  </p>
+                </div>
+              </div>              
+            </div>
+          @endwhile
+          @else
+            <div class="col-12">
+              {{ __('Sorry, no results were found.', 'sage') }}
+            </div>
+          @endif
+          @php (wp_reset_postdata())
+        </div>
+      </div>
+    </div>
+
+    <div class="button">
+      <?php 
+      $link = get_field('link_blog_items');
+      if( $link ): 
+          $link_url = $link['url'];
+          $link_title = $link['title'];
+          $link_target = $link['target'] ? $link['target'] : '_self';
+          ?>
+          <a class="btn btn-primary" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+      <?php endif; ?>
+    </div>
+  </section>
+
    <style>
+    section.blog-items {
+        border: 1px solid rgba(0, 0, 0, 0.08);
+    }     
     .heading {
         font-family: 'Roboto';
         font-style: normal;
@@ -558,6 +630,7 @@
     .search-items form input {
         background: transparent;
         border: none;
+        width: 90%;
     }
 
     .search-items form button {
@@ -610,6 +683,22 @@
 
     section.recent-items {
         padding-top: 80px;
+    }
+
+    @media (max-width: 575.98px) {
+      section.banner-home-template {
+        height: auto;
+        padding: 30px 15px;
+      }
+      section.banner-home-template img {
+        width: 100%;
+      }
+      .go {
+        padding: 0;
+      }
+      section.recent-items {
+        padding-top: 10px;
+      }      
     }
    </style>
 @endsection
