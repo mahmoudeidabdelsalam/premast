@@ -4184,4 +4184,340 @@ div#LimitDownload .modal-body p .btn-referral,
     flex-flow: column;
   }
 }
+
+.page-template-template-home-item {
+  section.blog-items {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .heading {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 47px;
+    text-transform: capitalize;
+    color: #282F39;
+  }
+
+  .sub-heading {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.04px;
+    color: #646464;
+  }
+
+  a.go {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.132987px;
+    text-transform: capitalize;
+    color: #1E6DFB;
+    padding-top: 60px;
+    padding-bottom: 30px;
+    float: right;
+  }
+
+  .card-title h6 {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: 0.151985px;
+    text-transform: capitalize;
+    color: #3F4A59;
+  }
+
+  img.card-img-top {
+    padding: 7px;
+  }
+
+  .items {
+    display: flex;
+  }
+
+  .rate:before {
+    content: "\f005";
+    font-family: "FontAwesome";
+    color: #ED8A19;
+    padding-right: 4px;
+
+  }
+
+  .download:before {
+    content: "\f01a";
+    font-family: "FontAwesome";
+    color: #1E6DFB;
+    padding-right: 4px;
+    padding-left: 13px;
+  }
+
+  .like:before {
+    content: "\f08a";
+    font-family: "FontAwesome";
+    color: #1E6DFB;
+    padding-right: 4px;
+    padding-left: 13px;
+
+  }
+
+  .intro {
+    padding-top: 90px;
+    padding-left: 21px;
+  }
+
+  a.go-link {
+    margin-top: 13rem;
+    float: right;
+    padding-right: 25px;
+  }
+
+  h3.headline {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 32px;
+    color: #1E6DFB;
+    margin-bottom: 20px;
+  }
+
+  h3.sec-headline {
+    margin-top: 120px;
+    margin-left: 25px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 32px;
+    color: #1E6DFB;
+  }
+
+  h1.headterm {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 47px;
+    text-align: center;
+    text-transform: capitalize;
+    color: #282F39;
+  }
+
+  h5.subhead {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.04px;
+    color: #646464;
+  }
+
+  .mid-headline {
+    margin: 32px;
+  }
+
+  .blog-items .button,
+  .popular-items .button {
+    text-align: center;
+    margin: 77px;
+  }
+
+  a.btn.btn-primary {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.04px;
+    text-transform: capitalize;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 90px;
+    padding-top: 8px
+  }
+
+  .btn-primary {
+    width: 237px;
+    height: 40px;
+    background: linear-gradient(170.33deg, #6B73FF -0.5%, #000DFF 100%);
+    border-color: transparent;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(170.33deg, #6B73FF -0.5%, #000DFF 100%);
+    opacity: 0.9;
+  }
+
+  section.banner-home-template {
+    height: 500px;
+    position: relative;
+    padding-top: 150px;
+  }
+
+  .overlay-banner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: top center;
+    top: 0;
+  }
+
+  section.banner-home-template h2 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 47px;
+    color: #FFFFFF;
+  }
+
+  section.banner-home-template p {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 36px;
+    color: #FFFFFF;
+  }
+
+  section.banner-home-template h2 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 47px;
+    color: #FFFFFF;
+  }
+
+  .search-items form {
+    background: #FFFFFF;
+    border: 1px solid rgba(30, 109, 251, 0.2);
+    box-sizing: border-box;
+    border-radius: 40px;
+    max-width: 500px;
+    padding: 5px 10px;
+  }
+
+  .search-items form input {
+    background: transparent;
+    border: none;
+    width: 90%;
+  }
+
+  .search-items form button {
+    background: transparent;
+    border: none;
+    float: right;
+    color: #1f6cfd;
+  }
+
+  .trand-now {
+    margin-top: 50px;
+  }
+
+  .trand-now h3 {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.132987px;
+    text-transform: capitalize;
+    color: #FFFFFF;
+  }
+
+  .trand-now ul {
+    padding: 0;
+  }
+
+  .trand-now ul a {
+    background: #90C1F9;
+    border-radius: 40px;
+    padding: 6px 20px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.132987px;
+    text-transform: capitalize;
+    color: #282F39;
+    margin: 18px 10px;
+    display: inline-block;
+  }
+
+  section.popular-items {
+    padding-top: 55px;
+  }
+
+  .items-categories {
+    height: auto;
+    min-height: 1px;
+  }
+
+  section.recent-items {
+    padding-top: 80px;
+  }
+
+  @media (max-width: 575.98px) {
+    section.banner-home-template {
+      height: auto;
+      padding: 30px 15px;
+    }
+
+    section.banner-home-template img {
+      width: 100%;
+    }
+
+    .go {
+      padding: 0;
+    }
+
+    section.recent-items {
+      padding-top: 10px;
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    section.banner-home-template {
+      height: auto;
+      padding: 30px 0px;
+    }
+
+    .trand-now ul a {
+      margin: 5px 2px;
+    }
+
+    .trand-now {
+      margin-bottom: 50px;
+    }
+
+    section.banner-home-template h2 {
+      font-size: 29px;
+    }
+
+    section.banner-home-template p {
+      font-size: 20px;
+      line-height: 30px;
+      font-weight: 300;
+    }
+
+    h1.heading {
+      font-size: 20px;
+    }
+
+    .blog-items .button,
+    .popular-items .button {
+      margin: 20px 0px 50px 0px;
+    }
+  }
+}
+
+
 /* stylelint-enable */

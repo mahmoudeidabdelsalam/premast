@@ -42475,6 +42475,439 @@ div#LimitDownload .modal-body p .btn-referral,
   }
 }
 
+/* line 4189, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item section.blog-items {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* line 4193, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item .heading {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 47px;
+  text-transform: capitalize;
+  color: #282F39;
+}
+
+/* line 4203, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item .sub-heading {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.04px;
+  color: #646464;
+}
+
+/* line 4213, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item a.go {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.132987px;
+  text-transform: capitalize;
+  color: #1E6DFB;
+  padding-top: 60px;
+  padding-bottom: 30px;
+  float: right;
+}
+
+/* line 4227, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item .card-title h6 {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  letter-spacing: 0.151985px;
+  text-transform: capitalize;
+  color: #3F4A59;
+}
+
+/* line 4238, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item img.card-img-top {
+  padding: 7px;
+}
+
+/* line 4242, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item .items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* line 4246, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item .rate:before {
+  content: "\F005";
+  font-family: "FontAwesome";
+  color: #ED8A19;
+  padding-right: 4px;
+}
+
+/* line 4254, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item .download:before {
+  content: "\F01A";
+  font-family: "FontAwesome";
+  color: #1E6DFB;
+  padding-right: 4px;
+  padding-left: 13px;
+}
+
+/* line 4262, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item .like:before {
+  content: "\F08A";
+  font-family: "FontAwesome";
+  color: #1E6DFB;
+  padding-right: 4px;
+  padding-left: 13px;
+}
+
+/* line 4271, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item .intro {
+  padding-top: 90px;
+  padding-left: 21px;
+}
+
+/* line 4276, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item a.go-link {
+  margin-top: 13rem;
+  float: right;
+  padding-right: 25px;
+}
+
+/* line 4282, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item h3.headline {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 32px;
+  color: #1E6DFB;
+  margin-bottom: 20px;
+}
+
+/* line 4292, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item h3.sec-headline {
+  margin-top: 120px;
+  margin-left: 25px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 32px;
+  color: #1E6DFB;
+}
+
+/* line 4303, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item h1.headterm {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 47px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #282F39;
+}
+
+/* line 4314, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item h5.subhead {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.04px;
+  color: #646464;
+}
+
+/* line 4325, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item .mid-headline {
+  margin: 32px;
+}
+
+/* line 4329, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item .blog-items .button,
+.page-template-template-home-item .popular-items .button {
+  text-align: center;
+  margin: 77px;
+}
+
+/* line 4335, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item a.btn.btn-primary,
+.page-template-template-home-item .search-form a.btn-primary.search-submit,
+.search-form .page-template-template-home-item a.btn-primary.search-submit {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.04px;
+  text-transform: capitalize;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 90px;
+  padding-top: 8px;
+}
+
+/* line 4350, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item .btn-primary {
+  width: 237px;
+  height: 40px;
+  background: -webkit-linear-gradient(279.67deg, #6B73FF -0.5%, #000DFF 100%);
+  background: -o-linear-gradient(279.67deg, #6B73FF -0.5%, #000DFF 100%);
+  background: linear-gradient(170.33deg, #6B73FF -0.5%, #000DFF 100%);
+  border-color: transparent;
+}
+
+/* line 4357, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item .btn-primary:hover {
+  background: -webkit-linear-gradient(279.67deg, #6B73FF -0.5%, #000DFF 100%);
+  background: -o-linear-gradient(279.67deg, #6B73FF -0.5%, #000DFF 100%);
+  background: linear-gradient(170.33deg, #6B73FF -0.5%, #000DFF 100%);
+  opacity: 0.9;
+}
+
+/* line 4362, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item section.banner-home-template {
+  height: 500px;
+  position: relative;
+  padding-top: 150px;
+}
+
+/* line 4368, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item .overlay-banner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: top center;
+  top: 0;
+}
+
+/* line 4377, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item section.banner-home-template h2 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 47px;
+  color: #FFFFFF;
+}
+
+/* line 4385, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item section.banner-home-template p {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 36px;
+  color: #FFFFFF;
+}
+
+/* line 4393, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item section.banner-home-template h2 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 47px;
+  color: #FFFFFF;
+}
+
+/* line 4401, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item .search-items form {
+  background: #FFFFFF;
+  border: 1px solid rgba(30, 109, 251, 0.2);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 40px;
+  max-width: 500px;
+  padding: 5px 10px;
+}
+
+/* line 4410, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item .search-items form input {
+  background: transparent;
+  border: none;
+  width: 90%;
+}
+
+/* line 4416, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item .search-items form button {
+  background: transparent;
+  border: none;
+  float: right;
+  color: #1f6cfd;
+}
+
+/* line 4423, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item .trand-now {
+  margin-top: 50px;
+}
+
+/* line 4427, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item .trand-now h3 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.132987px;
+  text-transform: capitalize;
+  color: #FFFFFF;
+}
+
+/* line 4436, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item .trand-now ul {
+  padding: 0;
+}
+
+/* line 4440, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item .trand-now ul a {
+  background: #90C1F9;
+  border-radius: 40px;
+  padding: 6px 20px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.132987px;
+  text-transform: capitalize;
+  color: #282F39;
+  margin: 18px 10px;
+  display: inline-block;
+}
+
+/* line 4455, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item section.popular-items {
+  padding-top: 55px;
+}
+
+/* line 4459, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item .items-categories {
+  height: auto;
+  min-height: 1px;
+}
+
+/* line 4464, resources/assets/styles/layouts/_woocommerce.scss */
+
+.page-template-template-home-item section.recent-items {
+  padding-top: 80px;
+}
+
+@media (max-width: 575.98px) {
+  /* line 4469, resources/assets/styles/layouts/_woocommerce.scss */
+
+  .page-template-template-home-item section.banner-home-template {
+    height: auto;
+    padding: 30px 15px;
+  }
+
+  /* line 4474, resources/assets/styles/layouts/_woocommerce.scss */
+
+  .page-template-template-home-item section.banner-home-template img {
+    width: 100%;
+  }
+
+  /* line 4478, resources/assets/styles/layouts/_woocommerce.scss */
+
+  .page-template-template-home-item .go {
+    padding: 0;
+  }
+
+  /* line 4482, resources/assets/styles/layouts/_woocommerce.scss */
+
+  .page-template-template-home-item section.recent-items {
+    padding-top: 10px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  /* line 4488, resources/assets/styles/layouts/_woocommerce.scss */
+
+  .page-template-template-home-item section.banner-home-template {
+    height: auto;
+    padding: 30px 0px;
+  }
+
+  /* line 4493, resources/assets/styles/layouts/_woocommerce.scss */
+
+  .page-template-template-home-item .trand-now ul a {
+    margin: 5px 2px;
+  }
+
+  /* line 4497, resources/assets/styles/layouts/_woocommerce.scss */
+
+  .page-template-template-home-item .trand-now {
+    margin-bottom: 50px;
+  }
+
+  /* line 4501, resources/assets/styles/layouts/_woocommerce.scss */
+
+  .page-template-template-home-item section.banner-home-template h2 {
+    font-size: 29px;
+  }
+
+  /* line 4505, resources/assets/styles/layouts/_woocommerce.scss */
+
+  .page-template-template-home-item section.banner-home-template p {
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 300;
+  }
+
+  /* line 4511, resources/assets/styles/layouts/_woocommerce.scss */
+
+  .page-template-template-home-item h1.heading {
+    font-size: 20px;
+  }
+
+  /* line 4515, resources/assets/styles/layouts/_woocommerce.scss */
+
+  .page-template-template-home-item .blog-items .button,
+  .page-template-template-home-item .popular-items .button {
+    margin: 20px 0px 50px 0px;
+  }
+}
+
 /* stylelint-enable */
 
 
