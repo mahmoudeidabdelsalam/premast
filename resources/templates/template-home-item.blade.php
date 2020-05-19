@@ -547,7 +547,8 @@
         margin: 32px;
     }
 
-    .button {
+    .blog-items .button, 
+    .popular-items .button {
         text-align: center;
         margin: 77px;
     }
@@ -699,6 +700,35 @@
       section.recent-items {
         padding-top: 10px;
       }      
+    }
+
+    @media (max-width: 575.98px){
+      section.banner-home-template {
+          height: auto;
+          padding: 30px 0px;
+      }
+      .trand-now ul a {
+          margin: 5px 2px;
+      }
+      .trand-now {
+          margin-bottom: 50px;
+      }
+      section.banner-home-template h2 {
+          font-size: 29px;
+      }
+      section.banner-home-template p {
+          font-size: 20px;
+          line-height: 30px;
+          font-weight: 300;
+      }
+      h1.heading {
+          font-size: 20px;
+      }
+
+      .blog-items .button, 
+      .popular-items .button {
+          margin: 20px 0px 50px 0px;
+      }
     }
    </style>
 @endsection
