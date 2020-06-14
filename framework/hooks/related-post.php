@@ -10,10 +10,10 @@ function related_posts() {
   
     $category_ids = [];
     foreach ( $categories as $category ) {
-      if ( $category->parent != 0 )  {
-        $category_ids[] = $category->term_id;
-      }
+      $category_ids[] = $category->term_id;
     }
+
+    // dd($category_ids);
     
     $tag_ids = [];
     foreach ( $tags as $tag) {
@@ -26,19 +26,18 @@ function related_posts() {
       'posts_per_page' => 8,
       'post__not_in'   => array($post->ID), 
       'tax_query'      => array(
-        'relation' => 'AND',
         array(
             'taxonomy' => 'product_cat',
             'field'    => 'term_id',
             'terms'    => $category_ids,
         ),
-        array(
-            'taxonomy' => 'product_tag',
-            'field'    => 'term_id',
-            'terms'    => $tag_ids,
-        ),
       ),
     );
+
+
+    $query = new \WP_Query( $related_args );
+
+    // dd($query);
 
   return new \WP_Query( $related_args );
 }

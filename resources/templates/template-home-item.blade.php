@@ -37,7 +37,19 @@
           </div>
         </div>
         <div class="col-md-5 col-12">
-          <img src="<?= the_field('image_banner_background_template'); ?>" alt="<?= the_field('headline_banner_template'); ?>">
+          <ul class="fader">
+          <?php
+          $counter = 0;
+            if( have_rows('banner_slider_show') ):
+              while ( have_rows('banner_slider_show') ) : the_row();
+              $counter++;
+          ?>
+            <li style="display:none;" data-id="<?= $counter; ?>"><img src="<?= the_sub_field('image_banner_background_template'); ?>" alt="<?= the_field('headline_banner_template'); ?>"></li>
+          <?php
+              endwhile;
+            endif;
+          ?>
+          </ul>
         </div>
       </div>
     </div>
@@ -405,6 +417,44 @@
     </div>
   </section>
 
+<script>
+  jQuery(function($) {
+    $(function() {
+      $('ul.fader li').hide();
+      $('ul.fader li').css('position', 'absolute');
+      $('ul.fader li').css('top', '0px');
+      $('ul.fader li').css('left', '0px');
+      var max = $('ul.fader li').length;
+      function showSlider() {
+        if(localStorage.slider) {                
+          $('.fader').find('li:nth('+localStorage.slider+')').fadeIn();
+          localStorage.slider = parseInt(localStorage.slider,10) + 1;
+          if(localStorage.slider >= max) localStorage.slider = 0;
+        } else{
+          $('.fader').find('li:nth(0)').fadeIn();
+          localStorage.slider = 1;
+        }
+      }
+      showSlider();
+    });
+  });
+</script>
 
+<style>
+  ul.fader {
+    width: 100%;
+    position: relative;
+    margin: 0;
+    list-style: none;
+  }
 
+  ul.fader li {
+    padding: 0px;
+    max-height: 300px;
+  }
+
+  ul.fader li img {
+    max-height: 300px;
+  }
+</style>
 @endsection
