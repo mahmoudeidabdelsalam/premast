@@ -196,6 +196,15 @@
 
 @section('content')
 
+@if($send == 'high_risk_transaction_created' || $send == 'high_risk_transaction_updated') 
+
+  <div class="checkout-custom-header">
+    <h1>{{ _e('The subscription is reviewed!', 'premast') }}</h1>
+    <p>After approval, the account will be activated, please try again soon</p>
+  </div>
+
+  @php dd('reviewed'); @endphp
+@else 
   <!-- Modal -->
   <div class="modal" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document" >
@@ -221,9 +230,11 @@
 
   <div class="checkout-custom-header">
     <h1>{{ _e('Thanks for your subscription!', 'premast') }}</h1>
-    @php ($like_download = get_field('download_page','option') . '?tabs=paid')
   </div>
 
+@endif
+
+  @php ($like_download = get_field('download_page','option') . '?tabs=paid')
   <section class="banner-share">
     <div class="container-fluid">
       <div class="row justify-content-center">

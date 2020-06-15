@@ -13,8 +13,6 @@ function related_posts() {
       $category_ids[] = $category->term_id;
     }
 
-    // dd($category_ids);
-    
     $tag_ids = [];
     foreach ( $tags as $tag) {
       $tag_ids[] = $tag->term_id;
