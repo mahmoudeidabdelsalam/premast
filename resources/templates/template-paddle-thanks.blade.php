@@ -203,7 +203,6 @@
     <p>After approval, the account will be activated, please try again soon</p>
   </div>
 
-  @php dd('reviewed'); @endphp
 @else 
   <!-- Modal -->
   <div class="modal" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
