@@ -5,7 +5,7 @@
 @extends('layouts.app-dark')
 @section('content')
 
-@php 
+@php
   global $current_user;
   wp_get_current_user();
 @endphp
@@ -24,7 +24,7 @@
             </form>
           </div>
           <div class="trand-now">
-            <?php 
+            <?php
             $terms = get_field('trending_now_template');
             if( $terms ): ?>
             <h3>TRENDING NOW</h3>
@@ -44,7 +44,9 @@
               while ( have_rows('banner_slider_show') ) : the_row();
               $counter++;
           ?>
-            <li style="display:none;" data-id="<?= $counter; ?>"><img src="<?= the_sub_field('image_banner_background_template'); ?>" alt="<?= the_field('headline_banner_template'); ?>"></li>
+            <li style="display:none;" data-id="<?= $counter; ?>">
+              <a href="<?= the_sub_field('link_banner_background_template') ?>"><img src="<?= the_sub_field('image_banner_background_template'); ?>" alt="<?= the_field('headline_banner_template'); ?>"></a>
+            </li>
           <?php
               endwhile;
             endif;
@@ -66,9 +68,9 @@
         </div>
         <div class="col-md-6 col-12">
           <div class="see-link">
-            <?php 
+            <?php
             $link = get_field('link_popular_items');
-            if( $link ): 
+            if( $link ):
                 $link_url = $link['url'];
                 $link_title = $link['title'];
                 $link_target = $link['target'] ? $link['target'] : '_self';
@@ -82,7 +84,7 @@
 
     <div class="container-fluid woocommerce">
       <div class="row item-columns container-ajax items-categories item-card grid grid-custom">
-        <?php 
+        <?php
         $ids = get_field('popular_items', false, false);
         $my_query = new WP_Query(array(
           'post_type'      	=> 'product',
@@ -106,8 +108,8 @@
                 </a>
                 <div class="review-and-download">
                   <div class="review">
-                    @if (get_option('woocommerce_enable_review_rating' ) == 'yes') 
-                      <?php 
+                    @if (get_option('woocommerce_enable_review_rating' ) == 'yes')
+                      <?php
                         global $product;
                         $rating_count = method_exists($product, 'get_rating_count')   ? $product->get_rating_count()   : 1;
                         $review_count = method_exists($product, 'get_review_count')   ? $product->get_review_count()   : 1;
@@ -120,7 +122,7 @@
                       @if ($rating_count > 0)
                         {!! wc_get_rating_html($average, $rating_count) !!}
                         <span class="icon-review icon-meta" itemprop="reviewCount">{{ $average }}</span>
-                      @else 
+                      @else
                         {!! wc_get_rating_html('1', '5') !!}
                         <span class="icon-review icon-meta" itemprop="reviewCount">{{ _e('0', 'premast') }}</span>
                       @endif
@@ -137,7 +139,7 @@
                   @endif
                 </div>
               </div>
-            </div>              
+            </div>
           </div>
         @endwhile
       @else
@@ -162,9 +164,9 @@
         </div>
       </div>
     </div>
-    <?php 
+    <?php
       $terms_products = get_field('select_category_products');
-      if( $terms_products ): 
+      if( $terms_products ):
       ?>
       <?php foreach( $terms_products as $term ): ?>
         <div class="container-fluid mt-5">
@@ -183,7 +185,7 @@
         </div>
         <div class="container-fluid woocommerce">
           <div class="row item-columns container-ajax items-categories item-card grid grid-custom">
-          <?php 
+          <?php
           $query = new WP_Query(array(
             'post_type'      	=> 'product',
             'posts_per_page'	=> 4,
@@ -211,8 +213,8 @@
                     </a>
                     <div class="review-and-download">
                       <div class="review">
-                        @if (get_option('woocommerce_enable_review_rating' ) == 'yes') 
-                          <?php 
+                        @if (get_option('woocommerce_enable_review_rating' ) == 'yes')
+                          <?php
                             global $product;
                             $rating_count = method_exists($product, 'get_rating_count')   ? $product->get_rating_count()   : 1;
                             $review_count = method_exists($product, 'get_review_count')   ? $product->get_review_count()   : 1;
@@ -225,7 +227,7 @@
                           @if ($rating_count > 0)
                             {!! wc_get_rating_html($average, $rating_count) !!}
                             <span class="icon-review icon-meta" itemprop="reviewCount">{{ $average }}</span>
-                          @else 
+                          @else
                             {!! wc_get_rating_html('1', '5') !!}
                             <span class="icon-review icon-meta" itemprop="reviewCount">{{ _e('0', 'premast') }}</span>
                           @endif
@@ -241,7 +243,7 @@
                       @endif
                     </div>
                   </div>
-                </div>              
+                </div>
               </div>
             @endwhile
           @else
@@ -269,7 +271,7 @@
 
     <div class="container-fluid woocommerce">
       <div class="row item-columns container-ajax items-categories item-card grid grid-custom">
-      <?php 
+      <?php
       $free = get_field('free_items', false, false);
       $free_query = new WP_Query(array(
         'post_type'      	=> 'product',
@@ -293,8 +295,8 @@
                 </a>
                 <div class="review-and-download">
                   <div class="review">
-                    @if (get_option('woocommerce_enable_review_rating' ) == 'yes') 
-                      <?php 
+                    @if (get_option('woocommerce_enable_review_rating' ) == 'yes')
+                      <?php
                         global $product;
                         $rating_count = method_exists($product, 'get_rating_count')   ? $product->get_rating_count()   : 1;
                         $review_count = method_exists($product, 'get_review_count')   ? $product->get_review_count()   : 1;
@@ -307,7 +309,7 @@
                       @if ($rating_count > 0)
                         {!! wc_get_rating_html($average, $rating_count) !!}
                         <span class="icon-review icon-meta" itemprop="reviewCount">{{ $average }}</span>
-                      @else 
+                      @else
                         {!! wc_get_rating_html('1', '5') !!}
                         <span class="icon-review icon-meta" itemprop="reviewCount">{{ _e('0', 'premast') }}</span>
                       @endif
@@ -324,7 +326,7 @@
                   @endif
                 </div>
               </div>
-            </div>              
+            </div>
           </div>
         @endwhile
       @else
@@ -336,9 +338,9 @@
       </div>
     </div>
     <div class="button">
-      <?php 
+      <?php
       $link = get_field('link_free_items');
-      if( $link ): 
+      if( $link ):
           $link_url = $link['url'];
           $link_title = $link['title'];
           $link_target = $link['target'] ? $link['target'] : '_self';
@@ -363,7 +365,7 @@
     <div class="container-fluid">
       <div class="col-md-12 col-sm-12">
         <div class="item-columns grid row m-0 container-ajax">
-        <?php 
+        <?php
         $blog_ids = get_field('blog_items', false, false);
         $blog_query = new WP_Query(array(
           'post_type'      	=> 'post',
@@ -391,7 +393,7 @@
                     {!! wp_trim_words(get_the_content(get_the_ID()), 15, ' ...') !!}
                   </p>
                 </div>
-              </div>              
+              </div>
             </div>
           @endwhile
           @else
@@ -405,9 +407,9 @@
     </div>
 
     <div class="button">
-      <?php 
+      <?php
       $link = get_field('link_blog_items');
-      if( $link ): 
+      if( $link ):
           $link_url = $link['url'];
           $link_title = $link['title'];
           $link_target = $link['target'] ? $link['target'] : '_self';
@@ -426,7 +428,7 @@
       $('ul.fader li').css('left', '0px');
       var max = $('ul.fader li').length;
       function showSlider() {
-        if(localStorage.slider) {                
+        if(localStorage.slider) {
           $('.fader').find('li:nth('+localStorage.slider+')').fadeIn();
           localStorage.slider = parseInt(localStorage.slider,10) + 1;
           if(localStorage.slider >= max) localStorage.slider = 0;
@@ -451,10 +453,25 @@
   ul.fader li {
     padding: 0px;
     max-height: 300px;
+    position: relative!important;
   }
 
   ul.fader li img {
     max-height: 300px;
   }
+  @media screen and (max-width: 600px) {
+    .page-template-template-home-item .go {
+    padding: 0 !important;
+    margin-top: -40px;
+      }
+      }
+      ul.fader li {
+    padding: 0px;
+    max-height: 300px;
+    position: relative;
+  }
+
+  }
+
 </style>
 @endsection
