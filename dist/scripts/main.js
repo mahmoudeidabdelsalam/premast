@@ -14581,8 +14581,6 @@ Router.prototype.loadEvents = function loadEvents () {
     }
 
     $('body').on('click', '#search_submit', function () {
-      // progressbar.js@1.0.0 version is used
-      // Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
       var bar = new __WEBPACK_IMPORTED_MODULE_4__node_modules_progressbar_js_dist_progressbar___default.a.Line('#ProgressBar', {
         strokeWidth: 4,
         easing: 'easeInOut',

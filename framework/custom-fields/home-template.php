@@ -147,6 +147,26 @@ acf_add_local_field_group(array(
 			'sub_fields' => array(
 
         array(
+          'key' => 'field_5ec213213dsad1231a7ccd25fd',
+          'label' => 'Link banner',
+          'name' => 'link_banner_background_template',
+          'type' => 'text',
+          'instructions' => '',
+          'required' => 0,
+          'conditional_logic' => 0,
+          'wrapper' => array(
+            'width' => '',
+            'class' => '',
+            'id' => '',
+          ),
+          'default_value' => '',
+          'placeholder' => '',
+          'prepend' => '',
+          'append' => '',
+          'maxlength' => '',
+        ),
+        
+        array(
           'key' => 'field_5ec1a83ad2600',
           'label' => 'Image banner background',
           'name' => 'image_banner_background_template',

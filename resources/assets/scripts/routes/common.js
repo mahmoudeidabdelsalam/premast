@@ -138,8 +138,6 @@ export default {
     }
 
     $('body').on('click', '#search_submit', function () {
-      // progressbar.js@1.0.0 version is used
-      // Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
       var bar = new ProgressBar.Line('#ProgressBar', {
         strokeWidth: 4,
         easing: 'easeInOut',
