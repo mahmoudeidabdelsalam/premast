@@ -9,6 +9,11 @@
   $array_ip = get_user_meta( $refer, 'follow_ip', true);
   $friends = get_user_meta( $refer, 'friends', true);
   $ip = get_the_user_ip();
+
+
+  $user_ip = get_user_meta( $refer, 'follow_ip' , true );
+
+
 @endphp
 
 @extends('layouts.app-dark')

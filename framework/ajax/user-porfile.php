@@ -194,7 +194,11 @@ function premast_memberships_create(){
   $refer_id = $_POST['refer'];
   $plan_id = get_field('plan_id', 'option');
 
-  if ($refer_id) {
+  $follow_ip = $_POST['follow_ip'];
+
+  $user_ip = get_user_meta( $refer_id, 'follow_ip' , true );
+
+  if ($refer_id && $follow_ip != $user_ip) {
     $data = apply_filters( 'wc_memberships_groups_import_membership_data', array(
       'plan_id' => $plan_id, 
       'post_parent' => $plan_id,

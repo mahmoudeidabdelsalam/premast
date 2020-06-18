@@ -10,6 +10,15 @@
   $send = (isset($_GET['send']))? $_GET['send']:'';
   global $current_user;
   wp_get_current_user();
+
+  $ip = get_the_user_ip();
+
+  $user_ip = get_user_meta( $current_user->ID, 'follow_ip' , true );
+
+  if(empty($user_ip)) {
+    update_user_meta( $current_user->ID, 'follow_ip', $ip );
+  }
+
 @endphp
 
 @if($send == 'true')
