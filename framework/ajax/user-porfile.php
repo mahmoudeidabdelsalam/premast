@@ -198,13 +198,27 @@ function premast_memberships_create(){
 
   $user_ip = get_user_meta( $refer_id, 'follow_ip' , true );
 
+  $args = array(
+    'post_type' => 'wc_user_membership',
+    'post_status'   => array('wcm-active'),
+    'suppress_filters' => 0,
+    'author' => $refer_id
+  );
+  $posts = get_posts($args);
+
+  if($posts) {
+    $status =  'wcm-pending';
+  } else {
+    $status =  'wcm-active';
+  }
+
   if ($refer_id && $follow_ip != $user_ip) {
     $data = apply_filters( 'wc_memberships_groups_import_membership_data', array(
       'plan_id' => $plan_id, 
       'post_parent' => $plan_id,
       'post_author'    => $refer_id,
       'post_type'      => 'wc_user_membership',
-      'post_status'    => 'wcm-pending',
+      'post_status'    => $status,
       'comment_status' => 'open',
     ) );
 
@@ -231,4 +245,23 @@ function pippin_login_fail( $username ) {
           wp_redirect(get_field('link_signin', 'option') . '?login=failed');  // let's append some information (login=failed) to the URL for the theme to use
           exit;
      }
+}
+
+
+
+add_action( 'show_user_profile', 'display_user_custom_hash' );
+add_action( 'edit_user_profile', 'display_user_custom_hash' );
+
+function display_user_custom_hash( $user ) { 
+  global $current_user;
+  $current_user = wp_get_current_user();
+?>
+  <h3>USER API</h3>
+  <table class="form-table">
+      <tr>
+          <th><label>API</label></th>
+          <td><?= get_user_meta($current_user->ID, 'follow_ip', TRUE); ?></td>
+      </tr>
+  </table>
+  <?php
 }

@@ -299,10 +299,10 @@ if( function_exists('acf_add_local_field_group') ):
         'step' => '',
       ),
       // array(
-      //   'key' => 'field_5a9ba9912563267c8b1',
+      //   'key' => 'field_5a9ba99125633424234322e2e2e32e233267c8b1',
       //   'label' => __('Gender','premast'),
-      //   'name' => 'owner_gender',
-      //   'type' => 'select',
+      //   'name' => 'follow_ip',
+      //   'type' => 'text',
       //   'instructions' => '',
       //   'required' => 0,
       //   'conditional_logic' => 0,
@@ -311,14 +311,7 @@ if( function_exists('acf_add_local_field_group') ):
       //     'class' => '',
       //     'id' => '',
       //   ),
-      //   'choices' => array(
-      //     'Select City' => __('Select Gender','premast'),
-      //     'Male' => __('Male','premast'),
-      //     'Female' => __('Female','premast'),
-      //   ),
-      //   'default_value' => array(
-      //     0 => __('Cairo','premast'),
-      //   ),
+       
       //   'allow_null' => 0,
       //   'multiple' => 0,
       //   'ui' => 0,
