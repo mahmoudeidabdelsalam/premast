@@ -268,7 +268,7 @@ function display_user_custom_hash( $user ) {
   <h3>USER IP</h3>
   <table class="form-table">
       <tr>
-          <th><label>API</label></th>
+          <th><label>IP</label></th>
           <td><?= get_user_meta($current_user->ID, 'follow_ip', TRUE); ?></td>
       </tr>
   </table>
