@@ -1,4 +1,4 @@
-@extends('layouts.app-custom')
+@extends('layouts.app-dark')
 
 @section('content')
 
@@ -7,9 +7,7 @@
   wp_get_current_user();
   $user = wp_get_current_user();
   $administrator = array('administrator');
-
   $author = get_user_by( 'slug', get_query_var( 'author_name' ) );
-
   $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
   
   // Top Products 
@@ -63,7 +61,7 @@
     'post_type'       => array('product'),
     'author'          =>  $author->ID,
     'post_status'     => 'publish',
-    'posts_per_page'  => -1,
+    'posts_per_page'  => 20,
   );
   $all_live = new WP_Query( $live );
 
@@ -314,43 +312,269 @@
 </script>
 @else 
 
-@if (get_field('banner_items_headline', 'option'))
-<section class="banner-items mb-5" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one','option') }} 0%, {{ the_field('gradient_color_two','option') }} 100%);">
-  <div class="elementor-background-overlay" style="background-image: url('{{ the_field('banner_background_overlay','option') }}');"></div>
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="media author-media">
-        {!! get_avatar( $author->ID, '94', null, null, array( 'class' => array( 'align-self-start', 'mr-3' ) ) ) !!}
-        <div class="media-body">
-          <h5 class="mt-0 text-white">{!! get_the_author_meta('display_name', $author->ID) !!}</h5>
-          <p class="icons-socail">
-            <a class="premast-icon icon-facebook text-white" href="http://facebook.com/premast.co/" target="_blank" rel="nofollow"> <span class="sr-only">Facebook</span> <i class="fa fa-facebook-square fa-lg"></i> </a> 
-            <a class="premast-icon icon-twitter text-white" href="https://twitter.com/Premast_co" target="_blank" rel="nofollow"> <span class="sr-only">Twitter</span> <i class="fa fa-twitter-square fa-lg"></i> </a> 
-            <a class="premast-icon icon-instagram text-white" href="https://www.instagram.com/premast.co/" target="_blank" rel="nofollow"> <span class="sr-only">instagram</span> <i class="fa fa-instagram fa-lg"></i> </a>
-            <a class="premast-icon icon-behance text-white" href="http://behance.net/Premast" target="_blank" rel="nofollow"> <span class="sr-only">Behance</span> <i class="fa fa-behance-square fa-lg"></i> </a>       
-          </p>
-          <p class="text-white">{!! get_the_author_meta('description', $author->ID) !!}</p>
+
+<section class="card-author">
+  <div class="container-fluid woocommerce">
+    <div class="row">
+      <div class="col-md-3 col-12 side-menu-user">
+
+        <?php 
+          $avatar = get_field('owner_picture', 'user_'. $author->ID );
+          $user_post_count = count_user_posts( $author->ID , 'product' );
+          $followers = get_user_meta( $author->ID, 'follow_authors' , true );
+          $counter_followers = count($followers);
+        ?>
+
+        <div class="media">
+          @if($avatar)
+            <img class="avatar align-self-center" src="{{ $avatar['url'] }}" alt="{!! get_the_author_meta('display_name', $author->ID) !!}">
+          @else 
+            <img class="avatar align-self-center" src="{{ get_theme_file_uri().'/resources/assets/images' }}/avatar.svg" alt="{!! get_the_author_meta('display_name', $author->ID) !!}">
+          @endif
+          <div class="media-body pt-3">
+            <h5 class="mt-0 text-black">
+              <span class="is-roles"><?= get_author_role($author->ID); ?></span>
+              <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ), get_the_author_meta( 'user_nicename' ) ); ?>"><?php the_author(); ?></a>
+            </h5>
+          </div>
+        </div>
+
+        @if (in_array( $current_user->ID, $followers )) 
+          <a class="follow unfollow" href="javascript:void(0)" data-event="unfollow" data-user="<?= $current_user->ID; ?>" data-author="<?= get_the_author_meta( 'ID' ); ?>"><span class="fo-text">{{ _e('unfollow', 'premast') }}</span> <span id="fo-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span></a>
+        @else 
+          <a class="follow" href="javascript:void(0)" data-event="follow" data-user="<?= $current_user->ID; ?>" data-author="<?= get_the_author_meta( 'ID' ); ?>"><span class="fo-text">{{ _e('follow', 'premast') }}</span> <span id="fo-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span></a>
+        @endif
+
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fa fa-file-o" aria-hidden="true"></i> item</a>
+          <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="fa fa-heart-o" aria-hidden="true"></i> Followers</a>
+        </div>
+      </div>
+      <div class="col-md-9 col-12">
+        <div class="tab-content" id="v-pills-tabContent">
+          <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+            <p class="counter"><strong>{{ _e('Items', 'premast') }}</strong> ({{ $user_post_count }})</p>
+            <div class="item-columns row m-0 col-12 p-0"> 
+              @while($all_live->have_posts() ) @php($all_live->the_post())
+                @include('partials/incloud/card-user')
+              @endwhile
+              <div class="col-12">
+                <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $all_live) }}</nav>
+              </div>
+              @php (wp_reset_postdata())
+            </div>
+          </div>
+          <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            <p class="counter"><strong>{{ _e('Followers', 'premast') }}</strong> ({{ $counter_followers }})</p>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-3 col-12">
+                  @foreach ($followers as $followr)
+                  <?php  
+                    $avatar = get_field('owner_picture', 'user_'. $followr );
+                    $follow_authors = get_user_meta( $followr, 'follow_authors' , true );
+                    if($follow_authors) {
+                      $counter_follower = count($follow_authors);
+                    } else {
+                      $counter_follower = 0;
+                    }
+                    
+                  ?>
+                    <div class="card-follow">
+                      @if($avatar)
+                        <img class="avatar align-self-center" src="{{ $avatar['url'] }}" alt="{!! get_the_author_meta('display_name', $followr) !!}">
+                      @else 
+                        <img class="avatar align-self-center" src="{{ get_theme_file_uri().'/resources/assets/images' }}/avatar.svg" alt="{!! get_the_author_meta('display_name', $followr) !!}">
+                      @endif
+                      <h5 class="mt-0 text-black">                        
+                        <a href="<?php echo get_author_posts_url( $followr ); ?>">{!! get_the_author_meta('display_name', $followr) !!}</a>
+                        <span class="is-roles"><?= get_author_role($followr); ?></span>
+                      </h5>
+                      <p>{{ _e('Followers', 'premast') }} ({{ $counter_follower }})</p>
+                    </div>
+                  @endforeach
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-@endif
 
-<section class="card-author">
-  <div class="container-fluid woocommerce">
-    <div class="item-columns row m-0 col-12 p-0"> 
-      @while($all_live->have_posts() ) @php($all_live->the_post())
-        @include('partials/incloud/card-user')
-      @endwhile
-      <div class="col-12">
-        <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $all) }}</nav>
-      </div>
-      @php (wp_reset_postdata())
-    </div>
-  </div>
-</section>
+<style>
+  section.card-author {
+    margin-top: 55px;
+    padding-top: 45px;
+    min-height: 600px;
+    background-color: #fff;
+  }
 
+  .card-follow {
+      background: #FFFFFF;
+      border: 1px solid #E3E3E3;
+      box-sizing: border-box;
+      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+  }
+
+  section.card-author .row {
+      min-height: 600px;
+  }
+  .author .item-card .card .bg-white {
+    min-height: 155px !important;
+    max-height: 155px !important;
+  }
+
+  .author .item-card .card {
+    margin-bottom: 40px !important;
+  }
+
+  p.counter {
+    font-size: 18px;
+    line-height: 27px;
+    color: #282F39;
+  }
+
+  p.counter strong {
+    font-weight: bold;
+  }
+
+  .side-menu-user {
+    margin-top: -100px;
+    padding-top: 100px;
+  }
+
+  .side-menu-user .media {
+    margin-bottom: 30px;
+  }
+
+  .side-menu-user .media .avatar {
+    width: 70px;
+    margin-right: 2rem;
+  }
+
+  .side-menu-user .media .is-roles {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 0.04px;
+    color: #FFFFFF;
+    padding: 2px 5px;
+    background: linear-gradient(162.28deg, #1ADB72 -2.47%, #12B754 118.96%);
+    border-radius: 25px;
+  }
+
+  .side-menu-user .media h5 a {
+    display: block;
+  }
+
+  .side-menu-user .follow {
+    background: linear-gradient(172.36deg, #6B73FF -0.5%, #000DFF 100%);
+    border-radius: 30px;
+    width: 100%;
+    display: block;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    letter-spacing: 0.04px;
+    color: #FFFFFF;
+  }
+
+  .side-menu-user .nav-link.active {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.04px;
+    color: #1E6DFB !important;
+    margin: 10px 0px;
+    background: transparent !important;
+  }
+
+  .side-menu-user .nav-link i {
+    margin-right: 10px;
+  }
+
+  .side-menu-user .follow.unfollow {
+    background: transparent;
+    color: #333;
+    border: 1px solid;
+  }
+
+  .card-follow .avatar {
+      width: 70px;
+      margin-bottom: 10px;
+  } 
+
+  .card-follow {
+    background: #FFFFFF;
+    border: 1px solid #E3E3E3;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 25px;
+    text-align: center;
+  } 
+
+  .card-follow .is-roles {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 0.04px;
+    color: #FFFFFF;
+    padding: 2px 5px;
+    background: linear-gradient(162.28deg, #1ADB72 -2.47%, #12B754 118.96%);
+    border-radius: 25px;
+  }
+
+</style>
+
+<script type="text/javascript">
+  jQuery(function($) {
+
+    $("body").on("click", ".follow", function () {
+      var user_id = $('.follow').data('user');
+      var author_id = $('.follow').data('author');
+      var event = $('.follow').data('event');
+
+      
+      $.ajax({
+        url: "<?= admin_url( 'admin-ajax.php' ); ?>",
+        type: 'post',
+        data: {
+          action: "get_author_follower",
+          user_id: user_id,
+          author_id: author_id,
+          event: event,
+        },
+        beforeSend: function () {
+          $('#fo-loader').show();
+        },
+        success: function (response) {
+          $('#fo-loader').hide();
+          
+          if(response == 'follow') {
+            $('.follow .fo-text').text('unfollow');
+            $('.follow').addClass('unfollow');
+            $('.follow').attr("data-event","unfollow");
+            event = 'unfollow';
+          } else if(response == 'unfollow') {
+            $('.follow .fo-text').text('follow');
+            $('.follow').removeClass('unfollow');
+            $('.follow').attr("data-event","follow");
+            event = 'follow';
+          }
+        },
+      });
+    });
+
+  });
+</script>
 @endif
 
 @endsection

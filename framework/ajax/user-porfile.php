@@ -224,6 +224,15 @@ function premast_memberships_create(){
 
     // create a new membership
     $user_membership_id = wp_insert_post( $data, true );
+
+    if($status = 'wcm-active') {
+      $start_date = date('Y-m-d H:i:s');
+      $end_date = date('Y-m-d H:i:s', strtotime('+1 months'));
+
+      update_post_meta($user_membership_id, '_end_date', $end_date);
+      update_post_meta($user_membership_id, '_start_date', $start_date);
+    }
+          
     $user_email = $_POST['user_email'];
     update_post_meta( $user_membership_id, 'email_referrals', $user_email );
     update_post_meta( $user_membership_id, 'email_referrals', $user_email );
@@ -265,3 +274,5 @@ function display_user_custom_hash( $user ) {
   </table>
   <?php
 }
+
+

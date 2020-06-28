@@ -1,10 +1,5 @@
 <div class="item-card col-md-3 col-sm-6 col-sx-6 col-12 grid-item pl-4 pr-4 post-ajax">
   <div class="card">
-      @if($sale)
-        <span class="custom-onsale">
-          {{ _e('on Sale', 'premast') }}
-        </span>
-      @endif
     <ul class="meta-buttons">
       <li class="likes-button">
         {!! get_simple_likes_button( get_the_ID() ) !!}
@@ -27,7 +22,7 @@
     </div>
     <div class="card-body pt-2 pl-0 pr-0 pb-0">
       <a class="card-link" href="{{ the_permalink() }}">
-        <h5 class="card-title font-weight-400">{{ wp_trim_words(get_the_title(), '4', ' ...') }}</h5>
+        <h5 class="card-title font-weight-400">{{ html_entity_decode(wp_trim_words(get_the_title(), '4', ' ...')) }}</h5>
       </a>
       <div class="review-and-download">
         <div class="review">

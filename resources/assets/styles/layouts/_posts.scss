@@ -71,7 +71,7 @@
 }
 
 .download-product {
-  border-top: solid 7px rgb(25, 122, 247) !important;
+  border-top: solid 10px rgb(25, 122, 247) !important;
   background-color: $brand-white;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
@@ -86,6 +86,7 @@
   p.price {
     font-size: 30px !important;
     color: rgb(25, 122, 247) !important;
+    font-weight: bold;
   }
 
   p.form-probelm {

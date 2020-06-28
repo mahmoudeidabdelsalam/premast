@@ -1421,7 +1421,27 @@ acf_add_local_field_group(array(
 				'id' => '',
 			),
 			'default_value' => '',
-		),
+    ),
+    array(
+			'key' => 'field_5dc732132132132134434340b3338b77',
+			'label' => 'Show Custom price',
+			'name' => 'show_custom_price',
+			'type' => 'true_false',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '50',
+				'class' => '',
+				'id' => '',
+			),
+			'message' => '',
+			'default_value' => 0,
+			'ui' => 1,
+			'ui_on_text' => 'Yes',
+			'ui_off_text' => 'No',
+    ),
+
 		array(
 			'key' => 'field_5db37d23b33d0',
 			'label' => 'images',
