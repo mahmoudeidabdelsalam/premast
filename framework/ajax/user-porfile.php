@@ -265,7 +265,7 @@ function display_user_custom_hash( $user ) {
   global $current_user;
   $current_user = wp_get_current_user();
 ?>
-  <h3>USER API</h3>
+  <h3>USER IP</h3>
   <table class="form-table">
       <tr>
           <th><label>API</label></th>
