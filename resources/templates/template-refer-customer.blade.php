@@ -15,7 +15,7 @@
 
   $user_ip = get_user_meta( $current_user->ID, 'follow_ip' , true );
 
-  var_dump($ip);
+  // var_dump($ip);
 
   if(empty($user_ip)) {
     update_user_meta( $current_user->ID, 'follow_ip', $ip );

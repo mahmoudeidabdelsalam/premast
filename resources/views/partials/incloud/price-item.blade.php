@@ -38,6 +38,14 @@
           </div>
         @endif
       </div>
+    @elseif($limit_membership)
+      <p class="price">{{ _e('Premium', 'premast') }}</p>
+      {!! get_simple_likes_button( get_the_ID() ) !!}
+      <div class="custom-summary">
+        @php  
+          do_action( 'woocommerce_single_product_summary' );
+        @endphp
+      </div>
     @else
       @if($price == 0) 
         <p class="price">{{ _e('Free Template', 'premast') }}</p>
@@ -48,6 +56,16 @@
               do_action( 'woocommerce_single_product_summary' );
             @endphp
           </div>
+        </div>
+      @else
+        <p class="price">{{ _e('Premium', 'premast') }}</p>
+        {!! get_simple_likes_button( get_the_ID() ) !!}
+        <div class="custom-summary">
+          @if(get_field('link_limit', 'option'))
+            <div class="bottom-summary col-12 mt-4 mb-4 w-100">
+              <a class="btn-limit" href="{{ get_field('link_limit', 'option') }}" id="somdn-form-submit-button">{{ _e('Upgrade to download', 'premast') }}</a>  
+            </div>
+          @endif
         </div>
       @endif
     @endif
