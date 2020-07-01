@@ -15,7 +15,7 @@
 
   $user_ip = get_user_meta( $current_user->ID, 'follow_ip' , true );
 
-  // var_dump($ip);
+  $hash_ip = wp_hash_password($ip);
 
   if(empty($user_ip)) {
     update_user_meta( $current_user->ID, 'follow_ip', $ip );
@@ -82,7 +82,11 @@
                 @php 
                   $form = get_field('forms_referral', 'option');
                   $inputs = get_all_form_fields($form['id']);
-                  $link = get_field('link_signup', 'option').'?refer='.$current_user->ID.'&token='.get_the_date('U').'';
+
+                  $ip = get_the_user_ip();
+                  $hash_ip = wp_hash_password($ip);
+
+                  $link = get_field('link_signup', 'option').'?refer='.$current_user->ID.'&token='.$hash_ip.'';
                 @endphp
 
                 <form class="form-inline" role="" method="post" id="gform_<?= $form['id']; ?>" action="<?= the_permalink(); ?>?send=gf_<?= $form['id']; ?>">
