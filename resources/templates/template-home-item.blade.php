@@ -441,6 +441,9 @@
 </script>
 
 <style>
+  .page-template-template-home-item section.popular-items {
+    margin: 30px;
+}
   ul.fader {
     width: 100%;
     position: relative;
@@ -458,6 +461,9 @@
     max-height: 300px;
   }
   @media screen and (max-width: 600px) {
+    .page-template-template-home-item section.popular-items {
+    margin:0;
+}
     .page-template-template-home-item .go {
     padding: 0 !important;
     margin-top: -40px;
@@ -468,6 +474,7 @@
     max-height: 300px;
     position: relative;
   }
+
 
   }
 
