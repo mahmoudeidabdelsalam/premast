@@ -276,9 +276,8 @@
   div#tab-description {
     font-size: 16px;
     font-weight: 400;
-    color: rgb(36, 37, 39) !important;
+    color: rgba(36, 37, 39, 0.8) !important;
     -webkit-font-smoothing: antialiased;
-    opacity: 0.8;
     line-height: 1.8;
   }
 }
