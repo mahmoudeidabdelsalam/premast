@@ -73,8 +73,12 @@
                 @if ($attachment_ids)
                 <ul id="imageGallery" class="cS-hidden">
                   @foreach( $attachment_ids as $attachment_id ) 
-                    <li data-thumb="{{ wp_get_attachment_url( $attachment_id ) }}" data-src="{{ wp_get_attachment_url( $attachment_id ) }}">
-                      <img src="{{ wp_get_attachment_url( $attachment_id )}}" alt="{{ the_title() }}">
+                    @php 
+                      $large = wp_get_attachment_image_url( $attachment_id, 'medium_large' );
+                      $thumb = wp_get_attachment_image_url( $attachment_id, 'thumbnail' );
+                    @endphp
+                    <li data-thumb="{{ $thumb }}" data-src="{{ wp_get_attachment_url( $attachment_id ) }}">
+                      <img src="{{ $large }}" alt="{{ the_title() }}">
                     </li>
                   @endforeach
                 </ul>

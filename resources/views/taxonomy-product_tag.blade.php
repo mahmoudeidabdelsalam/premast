@@ -57,7 +57,7 @@
 <div class="container-fiuld">
   <div class="row justify-content-center m-0">
     <div class="col-md-12 col-sm-12">
-      <div class="item-columns container-ajax items-categories item-card grid grid-custom row">
+      <div class="item-columns container-ajax item-card grid grid-custom row">
         @php
           if ($sort != '0') {
             // second query

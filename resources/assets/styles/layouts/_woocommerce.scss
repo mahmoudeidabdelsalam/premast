@@ -4520,5 +4520,27 @@ div#LimitDownload .modal-body p .btn-referral,
   }
 }
 
+.featureImage {
+  overflow: hidden;
+  background-size: cover;
+  border-radius: 4px;
+  display: block;
+  padding-top: 78.22%;
+  position: relative;
+  width: 100%;
+}
 
+.featureImage img {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  object-fit: cover;
+  -webkit-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
+  width: 100%;
+  will-change: transform;
+  will-change: auto;
+}
 /* stylelint-enable */
