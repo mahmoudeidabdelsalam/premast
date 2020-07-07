@@ -3512,7 +3512,7 @@ button[name='update_cart'] {
 }
 
 .grid .grid-item {
-  margin-bottom: 40px !important;
+  margin-bottom: 30px !important;
 }
 
 .item-card .card-overlay .card-link p {
@@ -4523,7 +4523,6 @@ div#LimitDownload .modal-body p .btn-referral,
 .featureImage {
   overflow: hidden;
   background-size: cover;
-  border-radius: 4px;
   display: block;
   padding-top: 78.22%;
   position: relative;
@@ -4542,5 +4541,9 @@ div#LimitDownload .modal-body p .btn-referral,
   width: 100%;
   will-change: transform;
   will-change: auto;
+}
+
+.grid .grid-item .review-and-download {
+  min-height: 22px;
 }
 /* stylelint-enable */

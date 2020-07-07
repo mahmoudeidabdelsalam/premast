@@ -41492,7 +41492,7 @@ button[name='update_cart'] {
 /* line 3514, resources/assets/styles/layouts/_woocommerce.scss */
 
 .grid .grid-item {
-  margin-bottom: 40px !important;
+  margin-bottom: 30px !important;
 }
 
 /* line 3518, resources/assets/styles/layouts/_woocommerce.scss */
@@ -42921,14 +42921,13 @@ div#LimitDownload .modal-body p .btn-referral,
 .featureImage {
   overflow: hidden;
   background-size: cover;
-  border-radius: 4px;
   display: block;
   padding-top: 78.22%;
   position: relative;
   width: 100%;
 }
 
-/* line 4533, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4532, resources/assets/styles/layouts/_woocommerce.scss */
 
 .featureImage img {
   height: 100%;
@@ -42944,6 +42943,12 @@ div#LimitDownload .modal-body p .btn-referral,
   width: 100%;
   will-change: transform;
   will-change: auto;
+}
+
+/* line 4546, resources/assets/styles/layouts/_woocommerce.scss */
+
+.grid .grid-item .review-and-download {
+  min-height: 22px;
 }
 
 /* stylelint-enable */
