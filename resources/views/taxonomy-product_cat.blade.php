@@ -192,7 +192,7 @@
         if ($sort != '0') {
             $second_ids = get_posts( array(
               'post_type' => 'product',
-              'posts_per_page' => 20,
+              'posts_per_page' => 19,
               'fields'         => 'ids',
               'paged' => $paged,
               'meta_key' => $meta_key,
@@ -206,14 +206,14 @@
                 )
               )
             ));
-            $per_page = 21 - count($second_ids);
+            $per_page = 20 - count($second_ids);
           } else {
             $second_ids = [];
-            $per_page = 20;
+            $per_page = 19;
           }
           $orders = array(
             'post_type' => 'product',
-            'posts_per_page' => 19,
+            'posts_per_page' => 18,
             'paged' => $paged,
             'meta_key' => $meta_key,
             'orderby' => $orderby,
