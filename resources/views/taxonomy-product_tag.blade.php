@@ -145,12 +145,12 @@
         @endphp
 
         @if (get_field('show_card_pricing', 'option'))
-          <div class="col-md-3 col-12 grid-item">
+          <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 col-12 grid-item">
             <div class="card">
               <span class="custom-onsale">
                 {{ the_field('tag_card_pricing', 'option') }}
               </span>
-              <div class="bg-white">
+              <div class="bg-featureImage featureImage">
                 <img src="{{ the_field('images_card_pricing', 'option') }}" class="card-img-top" alt="{{ the_field('heading_card_pricing', 'option') }}">
                 <div class="card-overlay"><a class="the_permalink" href="{{ the_field('lik_card_pricing', 'option') }}"></a></div>
               </div>
@@ -172,7 +172,7 @@
 
           @php ($sale = get_post_meta( get_the_ID(), '_sale_price', true))
             
-            <div class="col-md-3 col-12 grid-item">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 col-12 grid-item">
               <div class="card">
                   @if($sale)
                     <span class="custom-onsale">
@@ -195,15 +195,13 @@
                   @endif
                 </ul>
 
-                <div class="bg-white">
+                <div class="bg-featureImage featureImage">
                   <?php
                   $attachment_id = get_post_thumbnail_id(get_the_ID());
                   $img_src = wp_get_attachment_image_url( $attachment_id, 'medium' );
                   $img_srcset = wp_get_attachment_image_srcset( $attachment_id, 'medium' );
                   ?>
-
                   <img src="<?php echo esc_url( $img_src ); ?>" srcset="<?php echo esc_attr( $img_srcset ); ?>" sizes="<?php echo wp_get_attachment_image_sizes( $attachment_id, 'medium' ) ?>" class="card-img-top" alt="{{ the_title() }}">
-
                   <div class="card-overlay"><a class="the_permalink" href="{{ the_permalink() }}"></a></div>
                 </div>
                 <div class="card-body pt-2 pl-0 pr-0 pb-0">
