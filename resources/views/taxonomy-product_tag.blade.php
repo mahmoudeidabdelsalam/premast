@@ -201,7 +201,7 @@
                   $img_src = wp_get_attachment_image_url( $attachment_id, 'medium' );
                   $img_srcset = wp_get_attachment_image_srcset( $attachment_id, 'medium' );
                   ?>
-                  <img src="<?php echo esc_url( $img_src ); ?>" srcset="<?php echo esc_attr( $img_srcset ); ?>" sizes="<?php echo wp_get_attachment_image_sizes( $attachment_id, 'medium' ) ?>" class="card-img-top" alt="{{ the_title() }}">
+                  <img src="<?php echo esc_url( $img_src ); ?>" srcset="<?php echo esc_attr( $img_srcset ); ?>" sizes="300px, 100vw" class="card-img-top" alt="{{ the_title() }}">
                   <div class="card-overlay"><a class="the_permalink" href="{{ the_permalink() }}"></a></div>
                 </div>
                 <div class="card-body pt-2 pl-0 pr-0 pb-0">
