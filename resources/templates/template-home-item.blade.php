@@ -159,6 +159,110 @@
 
   </section>
 
+<?php
+  $authors = get_user_meta( $current_user->ID, 'following_user' , true );
+
+  $follow = array(
+    'post_type'       => array('product'),
+    'author'          =>  $authors,
+    'post_status'     => 'publish',
+    'posts_per_page'  => 4,
+  );
+  $follows = new WP_Query( $follow );
+?>
+
+@if($follows->have_posts() && $authors)
+
+  <section class="popular-items">
+    <div class="container-fluid mb-4">
+      <div class="row">
+        <div class="col-md-6 col-12">
+          <div class="content">
+          <h1 class="heading">{{ _e('Items from people you follow', 'premst') }}</h1>
+          <h5 class="sub-heading">{{ _e('You can check our different packages and pick a one that suits you and go premium. <br> We are always here to support!', 'premast') }}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid woocommerce">
+      <div class="row item-columns container-ajax items-categories item-card grid grid-custom">
+        
+      @if($follows->have_posts())
+        @while($follows->have_posts()) @php($follows->the_post())
+        @php ($sale = get_post_meta( get_the_ID(), '_sale_price', true))
+          <div class="col-md-3 col-12 grid-item">
+            <div class="card">
+              <div class="bg-white">
+                <?php
+                  $attachment_id = get_post_thumbnail_id(get_the_ID());
+                  $img_src = wp_get_attachment_image_url( $attachment_id, 'medium' );
+                  $img_srcset = wp_get_attachment_image_srcset( $attachment_id, 'medium' );
+                ?>
+
+                <img src="<?php echo esc_url( $img_src ); ?>" srcset="<?php echo esc_attr( $img_srcset ); ?>" sizes="<?php echo wp_get_attachment_image_sizes( $attachment_id, 'medium' ) ?>" class="card-img-top" alt="{{ the_title() }}">
+                <div class="card-overlay"><a class="the_permalink" href="{{ the_permalink() }}"></a></div>
+              </div>
+              <div class="card-body pt-2 pl-0 pr-0 pb-0">
+                <a class="card-link" href="{{ the_permalink() }}">
+                  <h5 class="card-title font-weight-400">{{ html_entity_decode(wp_trim_words(get_the_title(), '4', ' ...')) }}</h5>
+                </a>
+                <div class="review-and-download">
+                  <div class="review">
+                    @if (get_option('woocommerce_enable_review_rating' ) == 'yes')
+                      <?php
+                        global $product;
+                        $rating_count = method_exists($product, 'get_rating_count')   ? $product->get_rating_count()   : 1;
+                        $review_count = method_exists($product, 'get_review_count')   ? $product->get_review_count()   : 1;
+                        $average      = method_exists($product, 'get_average_rating') ? $product->get_average_rating() : 0;
+                        $counter_download = get_post_meta( get_the_ID(), 'counterdownload', true );
+                        $counter_view = get_post_meta( get_the_ID(), 'c95_post_views_count', true );
+                        $like = get_post_meta(get_the_ID(), '_post_like_count', true);
+                        $price = get_post_meta( get_the_ID(), '_regular_price', true);
+                      ?>
+                      @if ($rating_count > 0)
+                        {!! wc_get_rating_html($average, $rating_count) !!}
+                        <span class="icon-review icon-meta" itemprop="reviewCount">{{ $average }}</span>
+                      @else
+                        {!! wc_get_rating_html('1', '5') !!}
+                        <span class="icon-review icon-meta" itemprop="reviewCount">{{ _e('0', 'premast') }}</span>
+                      @endif
+                    @endif
+
+                    <span class="icon-download icon-meta"> <img class="img-meta" src="{{ get_theme_file_uri().'/dist/images/icon-download.svg' }}" alt="Download"> {{ ($counter_download)? $counter_download:'0' }}</span>
+                    @if(current_user_can( 'edit_post', get_the_ID() ) && (get_the_author_meta('ID') == $current_user->ID) || is_super_admin())
+                      <span class="icon-download icon-meta"> <img class="img-meta" src="{{ get_theme_file_uri().'/dist/images/icon-view.svg' }}" alt="Download"> {{ ($counter_view)? $counter_view:'0' }}</span>
+                    @endif
+                    <span class="icon-download icon-meta"> <img class="img-meta" src="{{ get_theme_file_uri().'/dist/images/like.png' }}" alt="like"> {{ ($like)? $like:'0' }}</span>
+                  </div>
+                  @if($price)
+                    <span class="premium"><i class="fa fa-star"></i></span>
+                  @endif
+                </div>
+              </div>
+            </div>
+          </div>
+        @endwhile
+      @else
+        <div class="col-12">
+          {{ __('Sorry, no results were found.', 'sage') }}
+        </div>
+      @endif
+      @php (wp_reset_postdata())
+      </div>
+    </div>
+
+  </section>
+
+@endif
+
+
+
+
+
+
+
+
   <section class="recent-items" style="background: #F9F9F9;">
     <div class="container-fluid">
       <div class="row">

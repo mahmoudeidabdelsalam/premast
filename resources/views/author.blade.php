@@ -277,10 +277,19 @@
             $avatar = get_field('owner_picture', 'user_'. $author->ID );
             $user_post_count = count_user_posts( $author->ID , 'product' );
             $followers = get_user_meta( $author->ID, 'follow_authors' , true );
-            $counter_followers = count($followers);
+            if ($followers) {
+              $counter_followers = count($followers);
+            } else {
+              $counter_followers = 0;
+            }
+            
   
             $following = get_user_meta( $author->ID, 'following_user' , true );
-            $counter_following = count($following);
+            if ($following) {
+              $counter_following = count($following);
+            } else {
+              $counter_following = 0;
+            }
           ?>
           <div class="media">
             @if($avatar)
@@ -288,13 +297,23 @@
             @else 
               <img class="avatar align-self-center" src="{{ get_theme_file_uri().'/resources/assets/images' }}/avatar.svg" alt="{!! get_the_author_meta('display_name', $author->ID) !!}">
             @endif
-            <div class="media-body pt-3">
+            <div class="media-body pt-3">         
               <h5 class="mt-0 text-black">
                 <span class="is-roles"><?= get_author_role($author->ID); ?></span>
                 <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ), get_the_author_meta( 'user_nicename' ) ); ?>"><?php the_author(); ?></a>
               </h5>
             </div>
           </div>
+
+          <div class="counter">
+            <li><?= $counter_followers; ?> Followers</li>
+            <li>|</li>
+            <li><?= $counter_following; ?> Following</li>
+          </div>
+
+          <span class="contents">
+            {{ _e('Premast is a store for premium high quality powerpoint presentations that fits all your business needs.', 'premast') }}
+          </span>
 
           @if (in_array( $current_user->ID, $followers )) 
             <a class="follow unfollow" href="javascript:void(0)" data-event="unfollow" data-user="<?= $current_user->ID; ?>" data-author="<?= get_the_author_meta( 'ID' ); ?>"><span class="fo-text">{{ _e('unfollow', 'premast') }}</span> <span id="fo-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span></a>
@@ -512,7 +531,24 @@
       background: linear-gradient(162.28deg, #1ADB72 -2.47%, #12B754 118.96%);
       border-radius: 25px;
     }
+    .counter {
+        display: flex;
+        list-style: none;
+    }
 
+    .counter li {
+        margin: 0 10px;
+    }
+
+    .side-menu-user span.contents {
+        font-style: normal;
+        font-weight: 500;
+        line-height: 16px;
+        letter-spacing: 0.04px;
+        color: #646464;
+        padding: 15px;
+        display: inline-block;
+    }
   </style>
 
   <script type="text/javascript">

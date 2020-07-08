@@ -91,7 +91,7 @@
 <div class="container-fiuld">
   <div class="row justify-content-center m-0">
     @if ( !wp_is_mobile() ) 
-      <div class="col-md-3 col-sm-12">
+      <div class="col-md-2 col-sm-12">
         <div class="by-filter">
           <div class="accordion" id="accordionExample">
             <div class="card">
@@ -186,7 +186,7 @@
       </div>
     @endif
 
-    <div class="col-md-9 col-sm-12 position-relative">
+    <div class="col-md-10 col-sm-12 position-relative">
       <div class="item-columns container-ajax item-card grid grid-custom row">
         @php
         if ($sort != '0') {
