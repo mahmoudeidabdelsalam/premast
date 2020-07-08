@@ -8,6 +8,8 @@ function author_follow() {
 
   $follow_authors = get_user_meta( $author_id, 'follow_authors' , true );
 
+  $following_user = get_user_meta( $user_id, 'following_user' , true );
+
   $event = $_POST["event"];
 
   if ($event == "follow") {
@@ -18,6 +20,17 @@ function author_follow() {
       }
     }
     array_push($followers, $user_id);
+
+
+    $followings = [];
+    if($following_user) {
+      foreach ($following_user as $following ) {
+        $followings[] = $following;
+      }
+    }
+    array_push($followings, $author_id);
+
+
   } elseif ($event == "unfollow") {
     $followers = [];
     if($follow_authors) {
@@ -27,9 +40,19 @@ function author_follow() {
         }
       }
     }
+
+    $followings = [];
+    if($following_user) {
+      foreach ($followings as $following ) {
+        if ($author_id != $following) {
+          $followings[] = $following;
+        }
+      }
+    }
   }
 
   update_user_meta( $author_id, 'follow_authors', $followers );
+  update_user_meta( $user_id, 'following_user', $followings );
 
   echo $event;
   
