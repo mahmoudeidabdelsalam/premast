@@ -18,11 +18,11 @@
                   <nav></nav>
                   <?php
                   $link = get_field('pricing_btn');
-                    if( $link ): 
+                    if( $link ):
                   ?>
                     <a style="box-shadow: none!important;" id="nav-btn" class="btn btn-danger " href="<?php echo esc_url( $link ); ?>">Purchase Now for <?php the_field('pricing_number'); ?></a>
-                  <?php 
-                    endif; 
+                  <?php
+                    endif;
                   ?>
               </div>
           </div>
@@ -238,13 +238,13 @@
                     </div>
                     <?php
                     endwhile;
-                  endif; 
+                  endif;
                 ?>
               </div>
             </div>
           </div>
         </div>
-      </div> 
+      </div>
     </section>
 
     <!-- bundle update section -->
@@ -268,7 +268,7 @@
                       </li>
                     <?php
                         endwhile;
-                      endif; 
+                      endif;
                     ?>
                   </ul>
                   <div class="tab-content" id="myTabContent">
@@ -286,7 +286,7 @@
                       </div>
                     <?php
                         endwhile;
-                      endif; 
+                      endif;
                     ?>
                   </div>
                 </div>
@@ -403,6 +403,10 @@
           });
       });
     </script>
-
+  <style>
+    .headline {
+        padding-bottom: 40px;
+    }
+  </style>
   @endwhile
 @endsection
