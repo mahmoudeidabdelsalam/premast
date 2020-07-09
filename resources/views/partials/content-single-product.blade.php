@@ -71,68 +71,19 @@
                   $attachment_ids = $product->get_gallery_image_ids();
                 @endphp                         
                 @if ($attachment_ids)
-                  <div class="loadGallery" id="loadGallery">
-                    <div class="timeline-item">
-                      <div class="animated-background">
-                        <div class="background-masker content-top"></div>
-                        <div class="background-masker content-one"></div>
-                        <div class="background-masker content-two"></div>
-                        <div class="background-masker content-three"></div>
-                        <div class="background-masker content-four"></div>
-                        <div class="background-masker content-five"></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <script>
-                    jQuery(function($) {
-                      $( window ).on( "load", function() {
-                        $.ajax({
-                          url: "<?= admin_url( 'admin-ajax.php' ); ?>",
-                          type: 'post',
-                          data: {
-                            action: "get_galleries_product",
-                            product_id: <?= $product_id; ?>
-                          },
-                          beforeSend: function () {
-
-                          },
-                          success: function (response) {
-                            $('#loadGallery').html(response);
-                            $('#imageGallery').lightSlider({
-                              gallery: true,
-                              item: 1,
-                              loop: true,
-                              thumbItem: 6,
-                              slideMargin: 0,
-                              enableDrag: false,
-                              currentPagerPosition: 'left',
-                              onSliderLoad: function (el) {
-                                $('.lightSlider').removeClass('cS-hidden');
-                                el.lightGallery({
-                                  selector: '#imageGallery .lslide',
-                                });
-                              },
-                              responsive: [{
-                                breakpoint: 480,
-                                settings: {
-                                  enableDrag: true,
-                                  controls: false,
-                                  thumbItem: 4,
-                                },
-                              }],
-                            });
-
-                            console.log(response);
-                            
-                          },
-                        });
-                       });
-                    });
-                  </script>
-
-
-
+                  <ul id="imageGallery" class="cS-hidden">
+                    @foreach( $attachment_ids as $attachment_id ) 
+                      <li data-thumb="{{ wp_get_attachment_url( $attachment_id ) }}" data-src="{{ wp_get_attachment_url( $attachment_id ) }}">
+                        <img src="{{ wp_get_attachment_url( $attachment_id )}}" alt="{{ the_title() }}">
+                      @php 
+                        $large = wp_get_attachment_image_url( $attachment_id, 'medium_large' );
+                        $thumb = wp_get_attachment_image_url( $attachment_id, 'thumbnail' );
+                      @endphp
+                      <li data-thumb="{{ $thumb }}" data-src="{{ wp_get_attachment_url( $attachment_id ) }}">
+                        <img src="{{ $large }}" alt="{{ the_title() }}">
+                      </li>
+                    @endforeach
+                  </ul>
                 @else 
                   <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}"> 
                 @endif
