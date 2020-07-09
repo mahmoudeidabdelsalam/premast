@@ -13,7 +13,7 @@ else:
 endif;
 
 @endphp
-<div class="item-card col-md-3 col-sm-4 col-sx-6 col-12 grid-item pl-4 pr-4">
+<div class="item-card col-md-3 col-sm-4 col-sx-6 col-12 grid-item pl-4 pr-4 mb-5">
   <div class="card">
     <div class="bg-white" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'full')}}');">
       <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">

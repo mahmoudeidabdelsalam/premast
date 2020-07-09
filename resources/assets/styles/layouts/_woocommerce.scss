@@ -322,6 +322,8 @@
 }
 
 .related {
+  background: rgb(249, 249, 249);
+
   .product_type_simple {
     display: none !important;
   }
@@ -818,12 +820,10 @@ div#reviews #respond form {
   h3 {
     font-style: normal;
     font-weight: normal;
-    font-size: 40px;
-    line-height: 123.19%;
-    letter-spacing: 0.151985px;
-    text-transform: capitalize;
-    color: rgb(61, 69, 82);
-    text-align: center;
+    font-size: 24px;
+    line-height: 32px;
+    color: #000000;
+    text-align: left;
   }
   
   .item-card {

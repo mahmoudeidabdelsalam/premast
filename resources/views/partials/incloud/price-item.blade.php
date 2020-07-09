@@ -28,7 +28,7 @@
   @endphp
 
   @if($price_custom)
-    @if ($limit && !$limit_membership && !$sale && !$price || $count_download == $limits_amount && !$sale && !$price) 
+    @if ($limit && !$limit_membership && !$sale && !$price || $count_download == $limits_amount && !$sale && !$price && $price != 0) 
       <p class="price">{{ _e('Premium', 'premast') }}</p>
       {!! get_simple_likes_button( get_the_ID() ) !!}
       <div class="custom-summary">
@@ -38,7 +38,7 @@
           </div>
         @endif
       </div>
-    @elseif($limit_membership)
+    @elseif($limit_membership && $price != 0)
       <p class="price">{{ _e('Premium', 'premast') }}</p>
       {!! get_simple_likes_button( get_the_ID() ) !!}
       <div class="custom-summary">

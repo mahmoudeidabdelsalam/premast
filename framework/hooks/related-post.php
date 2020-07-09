@@ -21,7 +21,7 @@ function related_posts() {
     $related_args = array(
       'post_type'      => array('product'),
       'post_status'    => 'publish',
-      'posts_per_page' => 8,
+      'posts_per_page' => 4,
       'post__not_in'   => array($post->ID), 
       'tax_query'      => array(
         array(
@@ -36,6 +36,26 @@ function related_posts() {
     $query = new \WP_Query( $related_args );
 
     // dd($query);
+
+  return new \WP_Query( $related_args );
+}
+
+
+function related_author() {
+  global $post;
+
+    $author = get_the_author_meta('ID');
+
+    $related_args = array(
+      'post_type'      => array('product'),
+      'post_status'    => 'publish',
+      'posts_per_page' => 4,
+      'author'         => $author,
+    );
+
+
+    $query = new \WP_Query( $related_args );
+
 
   return new \WP_Query( $related_args );
 }

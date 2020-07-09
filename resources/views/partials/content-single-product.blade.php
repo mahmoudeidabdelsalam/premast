@@ -62,7 +62,7 @@
 
           <div class="col-md-8 col-12">
             
-            <div class="row ml-0 mr-0 mb-5 content-single">
+            <div class="row mb-5">
               <div class="col-12">
                 @php
                   do_action( 'woocommerce_before_single_product_summary' );
@@ -71,17 +71,68 @@
                   $attachment_ids = $product->get_gallery_image_ids();
                 @endphp                         
                 @if ($attachment_ids)
-                <ul id="imageGallery" class="cS-hidden">
-                  @foreach( $attachment_ids as $attachment_id ) 
-                    @php 
-                      $large = wp_get_attachment_image_url( $attachment_id, 'medium_large' );
-                      $thumb = wp_get_attachment_image_url( $attachment_id, 'thumbnail' );
-                    @endphp
-                    <li data-thumb="{{ $thumb }}" data-src="{{ wp_get_attachment_url( $attachment_id ) }}">
-                      <img src="{{ $large }}" alt="{{ the_title() }}">
-                    </li>
-                  @endforeach
-                </ul>
+                  <div class="loadGallery" id="loadGallery">
+                    <div class="timeline-item">
+                      <div class="animated-background">
+                        <div class="background-masker content-top"></div>
+                        <div class="background-masker content-one"></div>
+                        <div class="background-masker content-two"></div>
+                        <div class="background-masker content-three"></div>
+                        <div class="background-masker content-four"></div>
+                        <div class="background-masker content-five"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <script>
+                    jQuery(function($) {
+                      $( window ).on( "load", function() {
+                        $.ajax({
+                          url: "<?= admin_url( 'admin-ajax.php' ); ?>",
+                          type: 'post',
+                          data: {
+                            action: "get_galleries_product",
+                            product_id: <?= $product_id; ?>
+                          },
+                          beforeSend: function () {
+
+                          },
+                          success: function (response) {
+                            $('#loadGallery').html(response);
+                            $('#imageGallery').lightSlider({
+                              gallery: true,
+                              item: 1,
+                              loop: true,
+                              thumbItem: 6,
+                              slideMargin: 0,
+                              enableDrag: false,
+                              currentPagerPosition: 'left',
+                              onSliderLoad: function (el) {
+                                $('.lightSlider').removeClass('cS-hidden');
+                                el.lightGallery({
+                                  selector: '#imageGallery .lslide',
+                                });
+                              },
+                              responsive: [{
+                                breakpoint: 480,
+                                settings: {
+                                  enableDrag: true,
+                                  controls: false,
+                                  thumbItem: 4,
+                                },
+                              }],
+                            });
+
+                            console.log(response);
+                            
+                          },
+                        });
+                       });
+                    });
+                  </script>
+
+
+
                 @else 
                   <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}"> 
                 @endif
@@ -177,10 +228,11 @@
 
     @php
       $related = related_posts();
+      $related_author = related_author();
     @endphp
 
-    @if($related->have_posts())
-      <section class="bg-white pt-5 related">
+    <section class="pb-5 pt-5 related">
+      @if($related->have_posts())
         <div class="container">
           <h3>{{ _e('related Items', 'premast') }}</h3>
           <div class="item-columns row m-0 col-12 p-0"> 
@@ -190,9 +242,20 @@
             @php (wp_reset_postdata())
           </div>
         </div>
-      </section>
-    @endif
-
+      @endif
+      @if($related_author->have_posts())
+        <div class="container">
+          <h3>{{ _e('More from the same author', 'premast') }}</h3>
+          <div class="item-columns row m-0 col-12 p-0"> 
+            @while($related_author->have_posts() ) @php($related_author->the_post())
+              @include('partials/incloud/card-user')
+            @endwhile
+            @php (wp_reset_postdata())
+          </div>
+        </div>
+      @endif
+    </section>
+   
     <section class="download-footer">
       <div class="container">
         <div class="row justify-content-center">
@@ -299,6 +362,84 @@
       .author-media h5 .unfollow {
         background-color: #ec0000;
       } 
+
+      .timeline-item {
+        background-color: #fff;
+        border: 1px solid rgb(227, 227, 227);
+        box-sizing: border-box;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 12px;
+        margin: 0 auto;
+        max-width: 100%;
+        min-height: 690px;
+        padding-top: 75px;
+      }
+
+      @keyframes placeHolderShimmer {
+        0%{ background-position: -468px 0; }
+        100%{ background-position: 468px 0; }
+      }
+
+      .animated-background {
+        animation-duration: 1.5s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-name: placeHolderShimmer;
+        background: #f6f7f8;
+        background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+        background-size: 800px 104px;
+        height: 690px;
+        position: relative;
+      }
+
+      .background-masker {
+        background: #fff;
+        position: absolute;
+      }
+
+      /* Every thing below this is just positioning */
+      .background-masker.content-top {
+        top: 85%;
+        left: 0;
+        right: 0;
+        height: 20px;
+      }
+
+      .background-masker.content-top {
+        height:20px;
+      }
+
+      .background-masker.content-one,
+      .background-masker.content-two,
+      .background-masker.content-three,
+      .background-masker.content-four,
+      .background-masker.content-five {
+        width: 4px;
+        height: 85px;
+        top: 88%;
+      }
+
+      .background-masker.content-one  {
+        left: 110px;
+      }
+
+      .background-masker.content-two {
+        left: 220px;
+      }
+
+      .background-masker.content-three {
+        left: 330px;
+      }
+
+      .background-masker.content-four {
+        left: 440px;
+      } 
+      
+      .background-masker.content-five {
+        left: 550px;
+      }      
     </style>
   @endwhile
 @endsection

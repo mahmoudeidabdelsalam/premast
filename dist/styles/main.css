@@ -29147,7 +29147,7 @@ body {
 /* line 7, resources/assets/styles/common/_global.scss */
 
 body.single-product {
-  background: #eff6fa;
+  background: white;
 }
 
 /* line 11, resources/assets/styles/common/_global.scss */
@@ -34900,11 +34900,11 @@ span.status.rejected {
 
 .single-product .summary section.widget {
   background-color: #fff;
-  border: 1px solid rgba(40, 47, 57, 0.06);
+  border: 1px solid #e3e3e3;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   padding: 15px;
   margin: 17px 0 0;
@@ -34921,21 +34921,24 @@ span.status.rejected {
 .download-product {
   border-top: solid 10px #197af7 !important;
   background-color: #fff;
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
+  border: 1px solid #e3e3e3;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
   margin-top: 0;
   padding: 30px;
 }
 
-/* line 81, resources/assets/styles/layouts/_posts.scss */
+/* line 83, resources/assets/styles/layouts/_posts.scss */
 
 .download-product h1,
 .download-product .product_meta {
   display: none;
 }
 
-/* line 86, resources/assets/styles/layouts/_posts.scss */
+/* line 88, resources/assets/styles/layouts/_posts.scss */
 
 .download-product p.price {
   font-size: 30px !important;
@@ -34943,7 +34946,7 @@ span.status.rejected {
   font-weight: bold;
 }
 
-/* line 92, resources/assets/styles/layouts/_posts.scss */
+/* line 94, resources/assets/styles/layouts/_posts.scss */
 
 .download-product p.form-probelm {
   font-weight: 300;
@@ -34956,7 +34959,7 @@ span.status.rejected {
   position: relative;
 }
 
-/* line 102, resources/assets/styles/layouts/_posts.scss */
+/* line 104, resources/assets/styles/layouts/_posts.scss */
 
 .download-product p.form-probelm .modal-forms {
   color: #1827ff !important;
@@ -34964,7 +34967,7 @@ span.status.rejected {
   cursor: pointer;
 }
 
-/* line 108, resources/assets/styles/layouts/_posts.scss */
+/* line 110, resources/assets/styles/layouts/_posts.scss */
 
 .download-product p.form-probelm::after {
   content: "";
@@ -34976,7 +34979,7 @@ span.status.rejected {
   top: -10px;
 }
 
-/* line 119, resources/assets/styles/layouts/_posts.scss */
+/* line 121, resources/assets/styles/layouts/_posts.scss */
 
 .download-product button#somdn-form-submit-button {
   min-width: 255px;
@@ -34994,7 +34997,7 @@ span.status.rejected {
   color: #fff;
 }
 
-/* line 132, resources/assets/styles/layouts/_posts.scss */
+/* line 134, resources/assets/styles/layouts/_posts.scss */
 
 .download-product .login {
   color: #fff;
@@ -35014,33 +35017,36 @@ span.status.rejected {
   font-weight: bold;
 }
 
-/* line 148, resources/assets/styles/layouts/_posts.scss */
+/* line 150, resources/assets/styles/layouts/_posts.scss */
 
 .download-product .somdn-download-count-wrap p {
   display: none !important;
 }
 
-/* line 153, resources/assets/styles/layouts/_posts.scss */
+/* line 155, resources/assets/styles/layouts/_posts.scss */
 
 .download-product .woocommerce-product-rating {
   display: none !important;
 }
 
-/* line 158, resources/assets/styles/layouts/_posts.scss */
+/* line 160, resources/assets/styles/layouts/_posts.scss */
 
 .box-counter {
   margin: 30px auto 0;
   background: #fff;
   display: inline-block;
   width: 100%;
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
   margin-top: 20px;
   padding: 30px 30px 10px;
+  border: 1px solid #e3e3e3;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
-/* line 170, resources/assets/styles/layouts/_posts.scss */
+/* line 174, resources/assets/styles/layouts/_posts.scss */
 
 .box-counter ul.list-unstyled .list-item strong,
 .box-counter ul.comment-list .list-item strong {
@@ -35048,21 +35054,21 @@ span.status.rejected {
   display: inline-block;
 }
 
-/* line 178, resources/assets/styles/layouts/_posts.scss */
+/* line 182, resources/assets/styles/layouts/_posts.scss */
 
 .downloader {
   border-bottom: 1px solid #d8d6d6;
   padding-bottom: 10px;
 }
 
-/* line 182, resources/assets/styles/layouts/_posts.scss */
+/* line 186, resources/assets/styles/layouts/_posts.scss */
 
 .downloader .star-rating {
   float: left !important;
   margin: 3px;
 }
 
-/* line 187, resources/assets/styles/layouts/_posts.scss */
+/* line 191, resources/assets/styles/layouts/_posts.scss */
 
 .downloader .rating-item,
 .downloader .downloader-item {
@@ -35074,7 +35080,7 @@ span.status.rejected {
           justify-content: space-between;
 }
 
-/* line 192, resources/assets/styles/layouts/_posts.scss */
+/* line 196, resources/assets/styles/layouts/_posts.scss */
 
 .downloader .rating-item span.counter-download,
 .downloader .downloader-item span.counter-download {
@@ -35092,7 +35098,7 @@ span.status.rejected {
   direction: rtl;
 }
 
-/* line 205, resources/assets/styles/layouts/_posts.scss */
+/* line 209, resources/assets/styles/layouts/_posts.scss */
 
 .sharing-posts {
   height: 60px;
@@ -35102,7 +35108,7 @@ span.status.rejected {
   margin-top: 10px;
 }
 
-/* line 213, resources/assets/styles/layouts/_posts.scss */
+/* line 217, resources/assets/styles/layouts/_posts.scss */
 
 .counters {
   width: 55px;
@@ -35115,7 +35121,7 @@ span.status.rejected {
   margin-top: 10px;
 }
 
-/* line 223, resources/assets/styles/layouts/_posts.scss */
+/* line 227, resources/assets/styles/layouts/_posts.scss */
 
 .counters small {
   font-size: 10px;
@@ -35126,7 +35132,7 @@ span.status.rejected {
   margin-top: 5px;
 }
 
-/* line 233, resources/assets/styles/layouts/_posts.scss */
+/* line 237, resources/assets/styles/layouts/_posts.scss */
 
 .social-sharer {
   display: -webkit-box;
@@ -35142,14 +35148,14 @@ span.status.rejected {
           justify-content: center;
 }
 
-/* line 240, resources/assets/styles/layouts/_posts.scss */
+/* line 244, resources/assets/styles/layouts/_posts.scss */
 
 .social-sharer li {
   font-size: 22px;
   margin-right: 8px !important;
 }
 
-/* line 244, resources/assets/styles/layouts/_posts.scss */
+/* line 248, resources/assets/styles/layouts/_posts.scss */
 
 .social-sharer li .counter,
 .social-sharer li .item-share {
@@ -35163,28 +35169,28 @@ span.status.rejected {
   padding-top: 2px;
 }
 
-/* line 255, resources/assets/styles/layouts/_posts.scss */
+/* line 259, resources/assets/styles/layouts/_posts.scss */
 
 .social-sharer li .counter.linkedin,
 .social-sharer li .item-share.linkedin {
   background-color: #007bb6;
 }
 
-/* line 259, resources/assets/styles/layouts/_posts.scss */
+/* line 263, resources/assets/styles/layouts/_posts.scss */
 
 .social-sharer li .counter.facebook,
 .social-sharer li .item-share.facebook {
   background-color: #475993;
 }
 
-/* line 263, resources/assets/styles/layouts/_posts.scss */
+/* line 267, resources/assets/styles/layouts/_posts.scss */
 
 .social-sharer li .counter.twitter,
 .social-sharer li .item-share.twitter {
   background-color: #65bbf2;
 }
 
-/* line 270, resources/assets/styles/layouts/_posts.scss */
+/* line 274, resources/assets/styles/layouts/_posts.scss */
 
 .embed-container {
   position: relative;
@@ -35196,7 +35202,7 @@ span.status.rejected {
   margin: 30px auto;
 }
 
-/* line 280, resources/assets/styles/layouts/_posts.scss */
+/* line 284, resources/assets/styles/layouts/_posts.scss */
 
 .embed-container iframe,
 .embed-container object,
@@ -35208,7 +35214,7 @@ span.status.rejected {
   height: 100%;
 }
 
-/* line 290, resources/assets/styles/layouts/_posts.scss */
+/* line 294, resources/assets/styles/layouts/_posts.scss */
 
 .ads-block {
   background: #fff;
@@ -35222,13 +35228,13 @@ span.status.rejected {
   margin: 17px 0 0;
 }
 
-/* line 299, resources/assets/styles/layouts/_posts.scss */
+/* line 303, resources/assets/styles/layouts/_posts.scss */
 
 .ads-block img {
   max-width: 100%;
 }
 
-/* line 304, resources/assets/styles/layouts/_posts.scss */
+/* line 308, resources/assets/styles/layouts/_posts.scss */
 
 .figure,
 .wp-caption,
@@ -35238,7 +35244,7 @@ span.status.rejected {
 
 /* stylelint-disable */
 
-/* line 311, resources/assets/styles/layouts/_posts.scss */
+/* line 315, resources/assets/styles/layouts/_posts.scss */
 
 .blog-contet h2,
 .blog-contet .h2,
@@ -35248,14 +35254,14 @@ span.status.rejected {
   line-height: 40px !important;
 }
 
-/* line 319, resources/assets/styles/layouts/_posts.scss */
+/* line 323, resources/assets/styles/layouts/_posts.scss */
 
 .blog-contet * strong {
   font-weight: 400 !important;
   color: black !important;
 }
 
-/* line 324, resources/assets/styles/layouts/_posts.scss */
+/* line 328, resources/assets/styles/layouts/_posts.scss */
 
 .blog-contet h3,
 .blog-contet .h3 {
@@ -35264,7 +35270,7 @@ span.status.rejected {
   line-height: 40px !important;
 }
 
-/* line 333, resources/assets/styles/layouts/_posts.scss */
+/* line 337, resources/assets/styles/layouts/_posts.scss */
 
 .blog-contet p {
   font-size: 17px !important;
@@ -35272,25 +35278,25 @@ span.status.rejected {
   line-height: 28px !important;
 }
 
-/* line 339, resources/assets/styles/layouts/_posts.scss */
+/* line 343, resources/assets/styles/layouts/_posts.scss */
 
 .blog-contet p strong {
   font-size: 17px;
 }
 
-/* line 343, resources/assets/styles/layouts/_posts.scss */
+/* line 347, resources/assets/styles/layouts/_posts.scss */
 
 .blog-contet a {
   color: #0c52ce;
 }
 
-/* line 347, resources/assets/styles/layouts/_posts.scss */
+/* line 351, resources/assets/styles/layouts/_posts.scss */
 
 .blog-contet li * {
   font-size: 16px !important;
 }
 
-/* line 351, resources/assets/styles/layouts/_posts.scss */
+/* line 355, resources/assets/styles/layouts/_posts.scss */
 
 .blog-contet ul li::before {
   content: "\2022";
@@ -35302,13 +35308,13 @@ span.status.rejected {
   font-size: 22px;
 }
 
-/* line 361, resources/assets/styles/layouts/_posts.scss */
+/* line 365, resources/assets/styles/layouts/_posts.scss */
 
 .blog-contet ul {
   list-style: none;
 }
 
-/* line 365, resources/assets/styles/layouts/_posts.scss */
+/* line 369, resources/assets/styles/layouts/_posts.scss */
 
 .blog-contet img {
   border-radius: 12px;
@@ -35318,7 +35324,7 @@ span.status.rejected {
   margin: 35px 0px 35px 0px !important;
 }
 
-/* line 373, resources/assets/styles/layouts/_posts.scss */
+/* line 377, resources/assets/styles/layouts/_posts.scss */
 
 .banner-custom img {
   max-width: 95%;
@@ -37132,17 +37138,18 @@ span.text-red {
 /* line 324, resources/assets/styles/layouts/_woocommerce.scss */
 
 .related {
+  background: #f9f9f9;
   /* stylelint-disable */
   /* stylelint-enable */
 }
 
-/* line 325, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 327, resources/assets/styles/layouts/_woocommerce.scss */
 
 .related .product_type_simple {
   display: none !important;
 }
 
-/* line 329, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 331, resources/assets/styles/layouts/_woocommerce.scss */
 
 .related h2 {
   font-size: 28px;
@@ -37155,7 +37162,7 @@ span.text-red {
   color: #3d4552;
 }
 
-/* line 340, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 342, resources/assets/styles/layouts/_woocommerce.scss */
 
 .related li.product {
   -webkit-transition: all 0.4s;
@@ -37163,7 +37170,7 @@ span.text-red {
   transition: all 0.4s;
 }
 
-/* line 343, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 345, resources/assets/styles/layouts/_woocommerce.scss */
 
 .related li.product .woocommerce-loop-product__title {
   width: calc(100% - 20px);
@@ -37187,14 +37194,14 @@ span.text-red {
   z-index: 99;
 }
 
-/* line 363, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 365, resources/assets/styles/layouts/_woocommerce.scss */
 
 .related li.product:hover h2.woocommerce-loop-product__title {
   bottom: 10px;
   opacity: 1;
 }
 
-/* line 368, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 370, resources/assets/styles/layouts/_woocommerce.scss */
 
 .related li.product:hover::after {
   content: "";
@@ -37212,13 +37219,13 @@ span.text-red {
   border-radius: 6px;
 }
 
-/* line 383, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 385, resources/assets/styles/layouts/_woocommerce.scss */
 
 .related li.product .price {
   display: none !important;
 }
 
-/* line 387, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 389, resources/assets/styles/layouts/_woocommerce.scss */
 
 .related li.product .woocommerce-LoopProduct-link {
   display: inline-block !important;
@@ -37239,32 +37246,32 @@ span.text-red {
   overflow: hidden;
 }
 
-/* line 401, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 403, resources/assets/styles/layouts/_woocommerce.scss */
 
 .related li.product img {
   margin: 0 !important;
 }
 
-/* line 405, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 407, resources/assets/styles/layouts/_woocommerce.scss */
 
 .related li.product .button.product_type_external {
   display: none !important;
 }
 
-/* line 411, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 413, resources/assets/styles/layouts/_woocommerce.scss */
 
 .authcomment {
   padding: 0 0 20px;
 }
 
-/* line 414, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 416, resources/assets/styles/layouts/_woocommerce.scss */
 
 .authcomment .avatar {
   border-radius: 100%;
   margin: 0 10px;
 }
 
-/* line 419, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 421, resources/assets/styles/layouts/_woocommerce.scss */
 
 .authcomment h5 {
   font-style: normal;
@@ -37276,7 +37283,7 @@ span.text-red {
   color: #1e6dfb;
 }
 
-/* line 429, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 431, resources/assets/styles/layouts/_woocommerce.scss */
 
 .authcomment time {
   font-weight: normal;
@@ -37287,7 +37294,7 @@ span.text-red {
   color: rgba(0, 0, 0, 0.4);
 }
 
-/* line 438, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 440, resources/assets/styles/layouts/_woocommerce.scss */
 
 .authcomment .media-body {
   background: #fff;
@@ -37297,7 +37304,7 @@ span.text-red {
   padding: 16px 16px 5px 16px;
 }
 
-/* line 447, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 449, resources/assets/styles/layouts/_woocommerce.scss */
 
 .nav-downloads .list-inline-item {
   font-weight: normal;
@@ -37308,7 +37315,7 @@ span.text-red {
   color: black;
 }
 
-/* line 455, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 457, resources/assets/styles/layouts/_woocommerce.scss */
 
 .nav-downloads .list-inline-item .nav-link,
 .nav-downloads .list-inline-item .banner .nav a,
@@ -37325,7 +37332,7 @@ span.text-red {
   border-radius: 5px;
 }
 
-/* line 466, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 468, resources/assets/styles/layouts/_woocommerce.scss */
 
 .nav-downloads .list-inline-item .nav-link.active,
 .nav-downloads .list-inline-item .banner .nav a.active,
@@ -37335,13 +37342,13 @@ span.text-red {
   color: #fff;
 }
 
-/* line 473, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 475, resources/assets/styles/layouts/_woocommerce.scss */
 
 .nav-downloads .list-inline-item.show-tabs {
   margin-left: 25px;
 }
 
-/* line 479, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 481, resources/assets/styles/layouts/_woocommerce.scss */
 
 button#dropdownMenuOffset {
   border: 1px solid rgba(0, 0, 0, 0.22);
@@ -37358,7 +37365,7 @@ button#dropdownMenuOffset {
   height: 30px;
 }
 
-/* line 494, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 496, resources/assets/styles/layouts/_woocommerce.scss */
 
 .short-description .text-description {
   font-style: normal;
@@ -37370,7 +37377,7 @@ button#dropdownMenuOffset {
 
 /* stylelint-disable */
 
-/* line 504, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 506, resources/assets/styles/layouts/_woocommerce.scss */
 
 .xoo-cp-success {
   font-size: 20px;
@@ -37381,7 +37388,7 @@ button#dropdownMenuOffset {
   font-weight: bold;
 }
 
-/* line 513, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 515, resources/assets/styles/layouts/_woocommerce.scss */
 
 .xoo-cp-container {
   background: #FFFFFF;
@@ -37394,7 +37401,7 @@ button#dropdownMenuOffset {
   padding-right: 0;
 }
 
-/* line 523, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 525, resources/assets/styles/layouts/_woocommerce.scss */
 
 .xoo-cp-container:after {
   content: "cart";
@@ -37409,7 +37416,7 @@ button#dropdownMenuOffset {
   left: 30px;
 }
 
-/* line 536, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 538, resources/assets/styles/layouts/_woocommerce.scss */
 
 .xoo-cp-ptotal {
   position: absolute;
@@ -37421,7 +37428,7 @@ button#dropdownMenuOffset {
   white-space: nowrap;
 }
 
-/* line 546, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 548, resources/assets/styles/layouts/_woocommerce.scss */
 
 .xoo-cp-container:before {
   content: "";
@@ -37433,13 +37440,13 @@ button#dropdownMenuOffset {
   left: 0;
 }
 
-/* line 556, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 558, resources/assets/styles/layouts/_woocommerce.scss */
 
 td.xoo-cp-pqty {
   display: none;
 }
 
-/* line 560, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 562, resources/assets/styles/layouts/_woocommerce.scss */
 
 table.xoo-cp-pdetails {
   background: #eff6fa;
@@ -37448,13 +37455,13 @@ table.xoo-cp-pdetails {
   padding: 15px;
 }
 
-/* line 567, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 569, resources/assets/styles/layouts/_woocommerce.scss */
 
 td.xoo-cp-pimg {
   width: 100px;
 }
 
-/* line 570, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 572, resources/assets/styles/layouts/_woocommerce.scss */
 
 td.xoo-cp-pimg img {
   border-radius: 5px;
@@ -37463,19 +37470,19 @@ td.xoo-cp-pimg img {
   max-width: 100px !important;
 }
 
-/* line 578, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 580, resources/assets/styles/layouts/_woocommerce.scss */
 
 span.xoo-cp-icon-check {
   display: none;
 }
 
-/* line 582, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 584, resources/assets/styles/layouts/_woocommerce.scss */
 
 .added_to_cart.wc-forward {
   display: none;
 }
 
-/* line 586, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 588, resources/assets/styles/layouts/_woocommerce.scss */
 
 table.xoo-cp-pdetails tr {
   display: -webkit-box !important;
@@ -37484,25 +37491,25 @@ table.xoo-cp-pdetails tr {
   position: relative;
 }
 
-/* line 591, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 593, resources/assets/styles/layouts/_woocommerce.scss */
 
 td.xoo-cp-pprice span {
   color: #1e6dfb;
 }
 
-/* line 596, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 598, resources/assets/styles/layouts/_woocommerce.scss */
 
 .custom-summary .price {
   display: none;
 }
 
-/* line 600, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 602, resources/assets/styles/layouts/_woocommerce.scss */
 
 .custom-summary .woocommerce-product-details__short-description {
   display: none;
 }
 
-/* line 605, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 607, resources/assets/styles/layouts/_woocommerce.scss */
 
 a.xoo-cp-btn-ch.xcp-btn {
   background: -webkit-linear-gradient(281.42deg, #6B73FF -0.5%, #000DFF 100%);
@@ -37520,14 +37527,14 @@ a.xoo-cp-btn-ch.xcp-btn {
   padding: 10px;
 }
 
-/* line 618, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 620, resources/assets/styles/layouts/_woocommerce.scss */
 
 .xcp-btn {
   display: block;
   margin: auto;
 }
 
-/* line 623, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 625, resources/assets/styles/layouts/_woocommerce.scss */
 
 a.xoo-cp-close.xcp-btn {
   font-size: 15px;
@@ -37541,13 +37548,13 @@ a.xoo-cp-close.xcp-btn {
   margin-bottom: 10px;
 }
 
-/* line 635, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 637, resources/assets/styles/layouts/_woocommerce.scss */
 
 td.xoo-cp-remove {
   display: none;
 }
 
-/* line 639, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 641, resources/assets/styles/layouts/_woocommerce.scss */
 
 td.xoo-cp-ptitle a {
   font-weight: bold;
@@ -37559,7 +37566,7 @@ td.xoo-cp-ptitle a {
   margin-left: 14px;
 }
 
-/* line 649, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 651, resources/assets/styles/layouts/_woocommerce.scss */
 
 td.xoo-cp-pprice {
   position: absolute;
@@ -37568,13 +37575,13 @@ td.xoo-cp-pprice {
   margin: 0;
 }
 
-/* line 656, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 658, resources/assets/styles/layouts/_woocommerce.scss */
 
 .secure-payment {
   margin-top: 27px;
 }
 
-/* line 659, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 661, resources/assets/styles/layouts/_woocommerce.scss */
 
 .secure-payment p {
   font-size: 12px;
@@ -37586,14 +37593,14 @@ td.xoo-cp-pprice {
   text-align: right;
 }
 
-/* line 670, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 672, resources/assets/styles/layouts/_woocommerce.scss */
 
 .bottun-edit {
   border: 1px solid #E8E8E8;
   border-radius: 20px;
 }
 
-/* line 675, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 677, resources/assets/styles/layouts/_woocommerce.scss */
 
 h3.woocommerce-Reviews-title {
   font-family: 'Roboto';
@@ -37606,13 +37613,13 @@ h3.woocommerce-Reviews-title {
   text-transform: lowercase !important;
 }
 
-/* line 686, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 688, resources/assets/styles/layouts/_woocommerce.scss */
 
 span#reply-title {
   display: none;
 }
 
-/* line 691, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 693, resources/assets/styles/layouts/_woocommerce.scss */
 
 #respond span#reply-title {
   display: block;
@@ -37620,14 +37627,14 @@ span#reply-title {
   font-size: 0;
 }
 
-/* line 696, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 698, resources/assets/styles/layouts/_woocommerce.scss */
 
 #respond span#reply-title small {
   font-size: 14px;
   margin: 10px;
 }
 
-/* line 704, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 706, resources/assets/styles/layouts/_woocommerce.scss */
 
 .woocommerce p.stars a {
   height: 29px !important;
@@ -37635,14 +37642,14 @@ span#reply-title {
   margin-top: 20px;
 }
 
-/* line 710, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 712, resources/assets/styles/layouts/_woocommerce.scss */
 
 .woocommerce p.stars a::before {
   color: rgba(61, 69, 82, 0.21);
   font-size: 29px;
 }
 
-/* line 715, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 717, resources/assets/styles/layouts/_woocommerce.scss */
 
 .woocommerce #review_form #respond .form-submit input#submit {
   background-color: #1e6dfb;
@@ -37650,20 +37657,20 @@ span#reply-title {
   float: right;
 }
 
-/* line 721, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 723, resources/assets/styles/layouts/_woocommerce.scss */
 
 div#reviews #review_form .avatar {
   border-radius: 100%;
   margin: 30px 0 0 0;
 }
 
-/* line 726, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 728, resources/assets/styles/layouts/_woocommerce.scss */
 
 div#reviews .avatar {
   border-radius: 100%;
 }
 
-/* line 730, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 732, resources/assets/styles/layouts/_woocommerce.scss */
 
 div#reviews #respond {
   display: -webkit-box;
@@ -37675,7 +37682,7 @@ div#reviews #respond {
   margin: 30px 0 30px;
 }
 
-/* line 736, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 738, resources/assets/styles/layouts/_woocommerce.scss */
 
 div#reviews #respond form {
   width: 100%;
@@ -37685,7 +37692,7 @@ div#reviews #respond form {
   margin: 0 0 0 10px !important;
 }
 
-/* line 742, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 744, resources/assets/styles/layouts/_woocommerce.scss */
 
 .comment-form-rating {
   display: -webkit-box;
@@ -37696,7 +37703,7 @@ div#reviews #respond form {
           align-items: center;
 }
 
-/* line 748, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 750, resources/assets/styles/layouts/_woocommerce.scss */
 
 .commentlist .avatar-comments {
   display: -webkit-box;
@@ -37711,13 +37718,13 @@ div#reviews #respond form {
   margin: 0 5% 0 15%;
 }
 
-/* line 754, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 756, resources/assets/styles/layouts/_woocommerce.scss */
 
 .commentlist .avatar-comments .avatar {
   width: 40px;
 }
 
-/* line 760, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 762, resources/assets/styles/layouts/_woocommerce.scss */
 
 .commentlist #respond input#submit {
   background-color: #12bf5b !important;
@@ -37726,7 +37733,7 @@ div#reviews #respond form {
   margin-bottom: 10px !important;
 }
 
-/* line 769, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 771, resources/assets/styles/layouts/_woocommerce.scss */
 
 .comment-form-rating span.rate-text {
   margin: 10px 0 0 10px;
@@ -37742,19 +37749,19 @@ div#reviews #respond form {
   opacity: 0.4;
 }
 
-/* line 783, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 785, resources/assets/styles/layouts/_woocommerce.scss */
 
 .lg-comments {
   display: none;
 }
 
-/* line 787, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 789, resources/assets/styles/layouts/_woocommerce.scss */
 
 .similar-comments {
   display: none;
 }
 
-/* line 791, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 793, resources/assets/styles/layouts/_woocommerce.scss */
 
 #loadMore,
 #loadMoreSimilar {
@@ -37777,7 +37784,7 @@ div#reviews #respond form {
   margin-left: 10%;
 }
 
-/* line 811, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 813, resources/assets/styles/layouts/_woocommerce.scss */
 
 #loadMoreSimilar {
   width: 25%;
@@ -37785,17 +37792,15 @@ div#reviews #respond form {
   display: block;
 }
 
-/* line 818, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 820, resources/assets/styles/layouts/_woocommerce.scss */
 
 .related h3 {
   font-style: normal;
   font-weight: normal;
-  font-size: 40px;
-  line-height: 123.19%;
-  letter-spacing: 0.151985px;
-  text-transform: capitalize;
-  color: #3d4552;
-  text-align: center;
+  font-size: 24px;
+  line-height: 32px;
+  color: #000000;
+  text-align: left;
 }
 
 /* line 829, resources/assets/styles/layouts/_woocommerce.scss */

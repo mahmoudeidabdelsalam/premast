@@ -56,7 +56,7 @@
     'post_type'       => array('product'),
     'author'          =>  $author->ID,
     'post_status'     => 'publish',
-    'posts_per_page'  => 20,
+    'posts_per_page'  => -1,
   );
   $all_live = new WP_Query( $live );
   // All rejected
@@ -66,6 +66,7 @@
     'post_status'     => 'rejected',
     'posts_per_page'  => -1,
   );
+
   $all_rejected = new WP_Query( $rejected );
   $dashboard   = isset($_GET['dashboard']) ? $_GET['dashboard'] : 'true';
   $items   = isset($_GET['items']) ? $_GET['items'] : 'false';
@@ -506,7 +507,7 @@
     }
 
     .card-follow .avatar {
-        width: 70px;
+        height: 70px;
         margin-bottom: 10px;
     } 
 
