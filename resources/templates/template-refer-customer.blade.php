@@ -68,10 +68,10 @@
             {!! wp_nav_menu(['theme_location' => 'user_navigation', 'container' => false, 'menu_class' => 'nav nav-pills flex-column flex-sm-row col-12', 'walker' => new NavWalker()]) !!}
           @endif
         </div>
-        <div class="col-md-7 col-12 pt-5 mt-5">
+        <div class="col-md-6 offset-md-1 col-12 pt-5 mt-5">
           <div class="row align-content-center justify-content-center">
             <div class="col-md-7 col-12">
-              <h3>{{ _e('Share the Experience, Invite friends', 'premast') }}</h3>
+              <h6>{{ _e('Share the Experience, Invite friends', 'premast') }}</h6>
               <h4 class="headline-linear">{{ _e('& Earn free monthly subscriptions', 'premast') }}</h4>
             </div>
             <div class="col-md-5 col-12 the-content">@php the_content() @endphp</div>
@@ -366,18 +366,25 @@
       letter-spacing: 0.04px;
       color: #282F39;
     }
+
     .table thead th i {
       font-size: 14px;
       line-height: 16px;
       color: #A6A6A6;
       cursor: help;
     }
+
     .the-content {
-    font-size: 16px;
-    line-height: 24px;
-    letter-spacing: 0.04px;
-    color: #000000;
-}
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0.04px;
+      color: #000000;
+    }
+
+    .nav-link {
+      font-size: 16px;
+      font-weight: normal;
+    }
   </style>
 @endif
 @endsection

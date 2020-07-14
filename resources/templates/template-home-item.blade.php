@@ -487,7 +487,7 @@
     </div>
 
     <div class="container-fluid">
-      <div class="col-md-12 col-sm-12">
+      <div class="col-md-12 col-sm-12 p-0">
         <div class="item-columns grid row m-0 container-ajax">
         <?php
         $blog_ids = get_field('blog_items', false, false);
@@ -568,40 +568,49 @@
 
 <style>
   .page-template-template-home-item section.popular-items {
-    margin: 30px;
-}
+      margin: 30px;
+  }
+
+  section.recent-items {
+    margin: 0 30px;
+  }
+
   ul.fader {
-    width: 100%;
-    position: relative;
-    margin: 0;
-    list-style: none;
+      width: 100%;
+      position: relative;
+      margin: 0;
+      list-style: none;
   }
 
   ul.fader li {
-    padding: 0px;
-    max-height: 300px;
-    position: relative!important;
+      padding: 0px;
+      max-height: 300px;
+      position: relative !important;
   }
 
   ul.fader li img {
-    max-height: 300px;
+      max-height: 300px;
   }
+
   @media screen and (max-width: 600px) {
-    .page-template-template-home-item section.popular-items {
-    margin:0;
-}
-    .page-template-template-home-item .go {
-    padding: 0 !important;
-    margin-top: -40px;
+      .page-template-template-home-item section.popular-items {
+          margin: 0;
       }
+
+      .page-template-template-home-item .go {
+          padding: 0 !important;
+          margin-top: -40px;
       }
-      ul.fader li {
-    padding: 0px;
-    max-height: 300px;
-    position: relative;
-  }
 
+    .grid .grid-item {
+      padding: 0 !important;
+    }
 
+    ul.fader li {
+      padding: 0px;
+      max-height: 300px;
+      position: relative;
+    }
   }
 
 </style>

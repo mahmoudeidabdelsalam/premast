@@ -289,12 +289,12 @@ section.block-models {
   padding: 90px 0 100px;
 }
 
-.col-action {
+.col-action .button-green {
   opacity: 0;
   transition: all 0.7s;
 }
 
-.fixed-header .col-action {
+.fixed-header .col-action .button-green {
   opacity: 1;
   transition: all 0.5s;
 }

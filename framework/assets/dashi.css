@@ -1,7 +1,7 @@
 #navbar {
   background-color: #000000;
   position: fixed;
-  top: -80px;
+  top: -90px;
   width: 100%;
   display: block;
   transition: top 0.3s;
@@ -63,6 +63,7 @@ header {
   background-size: cover;
   width: 100%;
   height: auto;
+  min-height: 700px;
 }
 
 h3.dashi-text {
