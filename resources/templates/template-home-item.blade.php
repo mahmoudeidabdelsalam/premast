@@ -594,7 +594,11 @@
 
   @media screen and (max-width: 600px) {
       .page-template-template-home-item section.popular-items {
-          margin: 0;
+          margin: 0 15px;
+      }
+
+      section.recent-items {
+        margin: 0 15px;
       }
 
       .page-template-template-home-item .go {
