@@ -44,7 +44,7 @@
             $link_title = $link['title'];
             $link_target = $link['target'] ? $link['target'] : '_self';
         ?>
-            <a class="button u-border-radius-30 u-btn u-btn-round u-button-style u-custom-font u-font-roboto u-gradient u-none u-text-white u-btn-1" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+            <a class="button u-border-radius-30 u-btn u-btn-round u-button-style u-custom-font u-font-roboto u-gradient u-none u-text-white u-btn-1 button-green" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
         <?php endif; ?>
             <p class="u-align-center u-custom-font u-heading-font u-text u-text-custom-color-1 u-text-default u-text-2" ><?php the_field('price_eargo'); ?><br></p>
       </div>
@@ -128,7 +128,7 @@
     <section class="u-align-left u-clearfix u-section-3" id="sec-b672" >
         <div class="container-fluid pt-5" style="background-color:#E9F3FF;">
             <div class="row">
-                <div class="col-md-1 col-12 margin-top-100">
+                <div class="col-md-1 pl-5 col-12 margin-top-100">
                   <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <?php
                     $counter = 0;
@@ -264,9 +264,9 @@
               if( have_rows('mune_footer') ):
                 while ( have_rows('mune_footer') ) : the_row();
               ?>
-              <?php 
+              <?php
               $link = get_sub_field('link_mune_footer');
-              if( $link ): 
+              if( $link ):
                   $link_url = $link['url'];
                   $link_title = $link['title'];
                   $link_target = $link['target'] ? $link['target'] : '_self';

@@ -7,13 +7,13 @@
   <link rel="stylesheet" href="<?= get_theme_file_uri() . '/framework/assets/dashi.css'; ?>">
 
   @while(have_posts()) @php the_post() @endphp
-    <header style= "background-image:linear-gradient(90deg, #000000 14.32%, rgba(0, 0, 0, 0.25) 123.61%), url('{{ the_field('background_mac') }}') ">
+    <header style= "background-image:url('{{ the_field('background_mac') }}') ">
       <div class="conatiner">
         <div id="navs" class="row">
           <div class="col-md-8">
               <div id="navbar">
                   <?php if( get_field('logo_premast') ): ?>
-                    <img style="padding-left:60px;" src="<?php the_field('logo_premast'); ?>" />
+                   <a href="<?= the_field('link_logo_premast'); ?>"> <img style="padding-left:60px;" src="<?php the_field('logo_premast'); ?>" /> </a>
                   <?php endif; ?>
                   <nav></nav>
                   <?php
@@ -31,7 +31,7 @@
       <div class="conatiner" style="width:100%;">
           <div clas="row">
               <div class="col-12">
-                  <a href="">
+                  <a href="<?= the_field('link_logo_premast'); ?>">
                       <img src="<?php the_field('logo_premast'); ?>" style="padding: 40px;" />
                   </a>
                   <div class="row">
@@ -159,7 +159,7 @@
                         <div class="overlay-bg" style="background-image: url(<?= Utilities::global_thumbnails($value->ID,'full'); ?>);"></div>
                       </div>
                       <p class="models"><a class="text-white" href="<?= get_permalink($value->ID); ?>"><?= $title; ?></a></p>
-                      <p class="slidesnum"><?= $slide_number; ?></p>
+                      <p class="slidesnum"><?= $slide_number; ?> slides </p>
                     </div>
                     <?php endforeach; ?>
                 </div>

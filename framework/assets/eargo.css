@@ -19,13 +19,21 @@
 
 .u-section-1 .u-btn-1 {
   border-style: none;
-  padding-top: 6px;
+  padding-top: 11px;
   padding-bottom: 8px;
   background-image: linear-gradient(180deg, #1adb72, #10b151);
   font-size: 1.125rem;
   display: block;
   margin: 30px 475px 0 489px
 }
+
+.u-section-1 .u-btn-1:hover {
+  background-image: linear-gradient(180deg, #1adb72, #10b151);
+  opacity: .3;
+
+}
+
+
 
 .u-section-1 .u-text-2 {
   font-size: 1.25rem;
@@ -1631,12 +1639,14 @@ section#sec-2d01 {
 
 .list-item-fields span {
   border: 1px solid #CDD7D6;
-  padding: 5px 10px;
+  padding: 5px 15px;
   margin: 10px 5px;
   display: inline-block;
   border-radius: 25px;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 24px;
+  font-weight: 500;
+  font-family: 'roboto' , sans-serif;
 }
 
 .items-list-icon {
@@ -1668,8 +1678,9 @@ section#sec-2d01 {
   margin: 25px 0;
 }
 p.heading-infographics {
+  font-family: 'Roboto';
   font-style: normal;
-  font-weight: 300;
+  font-weight: normal;
   font-size: 16px;
   line-height: 128.19%;
   letter-spacing: 0.02em;
