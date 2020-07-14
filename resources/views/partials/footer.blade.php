@@ -383,7 +383,7 @@ ul.copyright a {
                         $('#register-loader').hide();
                       },
                       error: function(results) {
-                        $('.register-message').html('plz try again later').show();
+                        $('.register-message').html('something wrong please enter a valid fields').show();
                         $('#register-loader').hide();
                       }
                     });

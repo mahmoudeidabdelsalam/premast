@@ -31301,7 +31301,7 @@ section.block-models {
 
 /* line 292, resources/assets/styles/layouts/_blocks.scss */
 
-.col-action {
+.col-action .button-green {
   opacity: 0;
   -webkit-transition: all 0.7s;
   -o-transition: all 0.7s;
@@ -31310,7 +31310,7 @@ section.block-models {
 
 /* line 297, resources/assets/styles/layouts/_blocks.scss */
 
-.fixed-header .col-action {
+.fixed-header .col-action .button-green {
   opacity: 1;
   -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;

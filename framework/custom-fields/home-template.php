@@ -573,3 +573,13 @@ acf_add_local_field_group(array(
 ));
 
 endif;
+
+
+add_filter( 'acf/fields/relationship/query','relationship_options_filter', 10, 3);
+
+function relationship_options_filter($options, $field, $the_post) {
+	
+	$options['post_status'] = array('publish');
+	
+	return $options;
+}
