@@ -258,12 +258,7 @@
 
 
 
-
-
-
-
-
-  <section class="recent-items" style="background: #F9F9F9;">
+  <section class="recent-items">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-6 col-12">
