@@ -485,12 +485,10 @@
       <div class="col-md-12 col-sm-12 p-0">
         <div class="item-columns grid row m-0 container-ajax">
         <?php
-        $blog_ids = get_field('blog_items', false, false);
+        // $blog_ids = get_field('blog_items', false, false);
         $blog_query = new WP_Query(array(
           'post_type'      	=> 'post',
           'posts_per_page'	=> 3,
-          'post__in'			=> $blog_ids,
-          'orderby'        	=> 'post__in',
         ));
         ?>
         @if($blog_query->have_posts())
