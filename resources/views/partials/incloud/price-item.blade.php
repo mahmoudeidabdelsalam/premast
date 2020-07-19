@@ -84,7 +84,7 @@
     </div>
     @php $form_id = get_field('froms_problem_with_download', 'option' );@endphp
     @if($form_id)
-      <p class="form-probelm">{{ _e('there is a problem with download', 'premast') }} <a class="modal-forms" data-toggle="modal" data-target="#ReportAProblem">{{ _e('click here', 'premast') }}</a></p>
+      <p class="form-probelm">{{ _e('there is a problem with download', 'premast') }} <a class="modal-forms" data-toggle="modal" data-target="#ReportAProblem">{{ _e('Report now', 'premast') }}</a></p>
       <!-- Modal -->
       <div class="modal fade" id="ReportAProblem" tabindex="-1" role="dialog" aria-labelledby="ReportAProblemTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -193,7 +193,7 @@
     @endif
     @php $form_id = get_field('froms_problem_with_download', 'option' );@endphp
     @if($form_id)
-      <p class="form-probelm">{{ _e('there is a problem with download', 'premast') }} <a class="modal-forms" data-toggle="modal" data-target="#ReportAProblem">{{ _e('click here', 'premast') }}</a></p>
+      <p class="form-probelm">{{ _e('there is a problem with download', 'premast') }} <a class="modal-forms" data-toggle="modal" data-target="#ReportAProblem">{{ _e('Report now', 'premast') }}</a></p>
       <!-- Modal -->
       <div class="modal fade" id="ReportAProblem" tabindex="-1" role="dialog" aria-labelledby="ReportAProblemTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
