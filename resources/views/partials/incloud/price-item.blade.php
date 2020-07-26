@@ -32,9 +32,9 @@
       <p class="price">{{ _e('Premium', 'premast') }}</p>
       {!! get_simple_likes_button( get_the_ID() ) !!}
       <div class="custom-summary">
-        @if(get_field('link_limit', 'option'))
+        @if(get_field('link_pricing', 'option'))
           <div class="bottom-summary col-12 mt-4 mb-4 w-100">
-            <a class="btn-limit" href="{{ get_field('link_limit', 'option') }}" id="somdn-form-submit-button">{{ _e('Upgrade to download', 'premast') }}</a>  
+            <a class="btn-limit" href="{{ get_field('link_pricing', 'option') }}" id="somdn-form-submit-button">{{ _e('Upgrade to download', 'premast') }}</a>  
           </div>
         @endif
       </div>
@@ -61,9 +61,9 @@
         <p class="price">{{ _e('Premium', 'premast') }}</p>
         {!! get_simple_likes_button( get_the_ID() ) !!}
         <div class="custom-summary">
-          @if(get_field('link_limit', 'option'))
+          @if(get_field('link_pricing', 'option'))
             <div class="bottom-summary col-12 mt-4 mb-4 w-100">
-              <a class="btn-limit" href="{{ get_field('link_limit', 'option') }}" id="somdn-form-submit-button">{{ _e('Upgrade to download', 'premast') }}</a>  
+              <a class="btn-limit" href="{{ get_field('link_pricing', 'option') }}" id="somdn-form-submit-button">{{ _e('Upgrade to download', 'premast') }}</a>  
             </div>
           @endif
         </div>
