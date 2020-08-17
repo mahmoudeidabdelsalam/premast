@@ -93,7 +93,7 @@ p.subtext {
 p.pricing {
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500!important;
   font-size: 24px;
   line-height: 125.74%;
   text-transform: capitalize;
@@ -130,7 +130,7 @@ section {
 p.text {
   font-family: 'Roboto', sans-serifs;
   font-style: normal;
-  font-weight: bold !important;
+  font-weight: 500 !important;
   font-size: 48px !important;
   line-height: 125.74%;
   color: #FFFFFF;
@@ -161,7 +161,7 @@ p.text {
 p.full {
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 48px;
   line-height: 125.74%;
   color: #FFFFFF;
@@ -196,7 +196,7 @@ section {
 .headline {
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 48px;
   line-height: 125.74%;
   text-align: center;
@@ -215,12 +215,13 @@ section {
 
 .category {
   padding-bottom: 60px;
+  padding-top:30px;
 }
 
 .c-text {
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 40px;
   line-height: 47px;
   text-align: center;
@@ -256,7 +257,7 @@ section {
 .slidesnum {
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 14px;
   line-height: 16px;
   text-transform: capitalize;
@@ -267,12 +268,13 @@ section {
 .custom-head {
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 40px;
   line-height: 125.74%;
   text-align: center;
   color: #FFFFFF;
 }
+
 
 .custom {
   padding-top: 90px;
@@ -305,6 +307,14 @@ section {
   color: #FFFFFF;
 
 
+
+}
+.vl {
+  border-left: 0.5px solid #FFFFFF;
+  height: 62px;
+  float: right;
+  margin-top: -49px;
+  margin-right: 12px;
 }
 
 .sub-test {

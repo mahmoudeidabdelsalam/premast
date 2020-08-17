@@ -1,4 +1,4 @@
-<?php 
+<?php
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
@@ -207,7 +207,22 @@ acf_add_local_field_group(array(
 				'id' => '',
 			),
 			'return_format' => 'url',
-		),
+        ),
+        array(
+            'key' => 'field_5e709dc0886d3',
+            'label' => 'ppt logo',
+            'name' => 'ppt_logo',
+            'type' => 'image',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'return_format' => 'url',
+        ),
 		array(
 			'key' => 'field_5e663618ae9b7',
 			'label' => 'second section',
@@ -520,6 +535,25 @@ acf_add_local_field_group(array(
 			'max_height' => '',
 			'max_size' => '',
 			'mime_types' => '',
+        ),
+        array(
+			'key' => 'field_5f3279c4d9da0',
+			'label' => 'icon title',
+			'name' => 'icon_title',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
 		),
 		array(
 			'key' => 'field_5e6e098a11a54',
@@ -544,6 +578,25 @@ acf_add_local_field_group(array(
 			'max_height' => '',
 			'max_size' => '',
 			'mime_types' => '',
+        ),
+        array(
+			'key' => 'field_5f3279c421d9da0',
+			'label' => 'chart title',
+			'name' => 'chart_title',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
 		),
 		array(
 			'key' => 'field_5e6e099911a55',
@@ -568,6 +621,25 @@ acf_add_local_field_group(array(
 			'max_height' => '',
 			'max_size' => '',
 			'mime_types' => '',
+        ),
+        array(
+			'key' => 'field_5f3279c451d9da0',
+			'label' => 'setting title',
+			'name' => 'setting_title',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
 		),
 		array(
 			'key' => 'field_5e6e09ab11a56',
@@ -592,6 +664,25 @@ acf_add_local_field_group(array(
 			'max_height' => '',
 			'max_size' => '',
 			'mime_types' => '',
+        ),
+        array(
+			'key' => 'field_5f3279c471d9da0',
+			'label' => 'color title',
+			'name' => 'color_title',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
 		),
 		array(
 			'key' => 'field_5e6e0ac58c096',
@@ -841,7 +932,23 @@ acf_add_local_field_group(array(
 			),
 			'return_format' => 'url',
     ),
-    
+    array(
+        'key' => 'field_5e709dc0826d3',
+        'label' => 'dot background',
+        'name' => 'dot_background',
+        'type' => 'image',
+        'instructions' => '',
+        'required' => 0,
+        'conditional_logic' => 0,
+        'wrapper' => array(
+            'width' => '',
+            'class' => '',
+            'id' => '',
+        ),
+        'return_format' => 'url',
+),
+
+
     array(
 			'key' => 'field_5e41241241241663618ae9b7',
 			'label' => 'Timelines section',
@@ -878,7 +985,7 @@ acf_add_local_field_group(array(
 			'append' => '',
 			'maxlength' => '',
     ),
-    
+
     array(
 			'key' => 'field_5e7094214124124124b8641b09',
 			'label' => 'Sub headline',
@@ -1053,7 +1160,7 @@ acf_add_local_field_group(array(
       'prepend' => '',
       'append' => '',
       'maxlength' => '',
-    ),    
+    ),
     array(
       'key' => 'field_5e1f1319a521414124fb63',
       'label' => 'Follow us',

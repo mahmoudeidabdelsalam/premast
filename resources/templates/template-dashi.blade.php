@@ -18,11 +18,17 @@
                   <nav></nav>
                   <?php
                   $link = get_field('pricing_btn');
-                    if( $link ): 
+                    if( $link ):
                   ?>
-                    <a style="box-shadow: none!important;" id="nav-btn" class="btn btn-danger " href="<?php echo esc_url( $link ); ?>">Purchase Now for <?php the_field('pricing_number'); ?></a>
-                  <?php 
-                    endif; 
+                   <div class="col" style="margin-left: 50.5rem;">
+                    <?php if( get_field('ppt_logo') ): ?>
+                    <img src="<?php the_field('ppt_logo'); ?>" />
+                  <?php endif; ?>
+                   </div>
+                   <a style="box-shadow: none!important;" id="nav-btn" class="btn btn-danger " href="<?php echo esc_url( $link ); ?>">Purchase Now for <?php the_field('pricing_number'); ?></a>
+
+                  <?php
+                    endif;
                   ?>
               </div>
           </div>
@@ -32,10 +38,10 @@
           <div clas="row">
               <div class="col-12">
                   <a href="">
-                      <img src="<?php the_field('logo_premast'); ?>" style="padding: 40px;" />
+                      <img src="<?php the_field('logo_premast'); ?>" style="padding: 70px;" />
                   </a>
                   <div class="row">
-                      <div class="col-md-6" style="padding: 40px;">
+                      <div class="col-md-6" style="padding: 70px;">
                           <img src="<?php the_field('dashi_logo'); ?>" />
                       <h3 class="dashi-text">
                           <?php the_field('f_heading'); ?>
@@ -71,12 +77,15 @@
                                 <div class="col-md-4">
                                     <div class="themes">
                                         <p data-count="35" class="counter-count counting">0</p>
+                                        <div class="vl"></div>
                                         <p class="themes-p">Color Theme</p>
+
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="icons">
                                         <p data-count="3000"class="counter-count counting">0</p>
+                                        <div class="vl"></div>
                                         <p class="icons-p">Vector Icons</p>
                                     </div>
                                 </div>
@@ -138,7 +147,7 @@
                 </div>
             </div>
             <!-- dashboard slide  -->
-            <div class="row justify-content-center">
+            <div class="row justify-content-center p-5">
                 <div class="category">
                     <p class="c-text">Dashboard Categories included</p>
                     <p class="c-sub">Track, analyze and display your data using Dashi bundle for magnificent results</p>
@@ -176,18 +185,22 @@
                     <p class="custom-sub"><?php the_field('cust_sub'); ?></p>
                 </div>
             </div>
-            <div class="row" style="padding-bottom:90px;">
+            <div class="row" style="padding-bottom:90px; text-align:center; align-items:center;">
                 <div class="col-md-3 ">
                     <img  src="<?php the_field('cust_icon'); ?>">
+                    <h5 class="icon_title"><?php the_field('icon_title'); ?></h5>
                 </div>
                 <div class="col-md-3 ">
                     <img  src="<?php the_field('cust_charts'); ?>">
+                    <h5 class="chart_title"><?php the_field('chart_title'); ?></h5>
                 </div>
                 <div id="cc" class="col-md-3 ">
                     <img src="<?php the_field('cust_setting'); ?>">
+                    <h5 class="setting_title"><?php the_field('setting_title'); ?></h5>
                 </div>
                 <div class="col-md-3 ">
                     <img src="<?php the_field('cust_colors'); ?>">
+                    <h5 class="color_title"><?php the_field('color_title'); ?></h5>
                 </div>
             </div>
         </div>
@@ -238,13 +251,13 @@
                     </div>
                     <?php
                     endwhile;
-                  endif; 
+                  endif;
                 ?>
               </div>
             </div>
           </div>
         </div>
-      </div> 
+      </div>
     </section>
 
     <!-- bundle update section -->
@@ -268,7 +281,7 @@
                       </li>
                     <?php
                         endwhile;
-                      endif; 
+                      endif;
                     ?>
                   </ul>
                   <div class="tab-content" id="myTabContent">
@@ -286,7 +299,7 @@
                       </div>
                     <?php
                         endwhile;
-                      endif; 
+                      endif;
                     ?>
                   </div>
                 </div>
@@ -296,7 +309,7 @@
 
     <!-- pricing section -->
     <section
-        style="background-repeat: no-repeat; align-items:center; background-color:#000000; background-image: url('bg.png'); background-size: contain; width:100%; ">
+        style="background-repeat: no-repeat; align-items:center; background:url('{{ the_field('dot_background') }}'); width:100%; ">
         <div class="container">
             <div class="row justify-content-center pt-5">
                 <div class="full-ac text-center">
@@ -403,6 +416,82 @@
           });
       });
     </script>
+
+    <style>
+        h5.icon_title {
+  color: #ffffff;
+  background-color: #1885EA;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-weight: 300;
+  font-family: 'Roboto';
+  line-height: 125%;
+  width: 68%;
+  margin-top: 40px;
+  margin-left: 50px;
+}
+h5.chart_title{
+  font-family:'Roboto' sans-serif;
+  color: #ffffff;
+  background-color: #1885EA;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 125%;
+  width: 68%;
+  margin-top: 40px;
+  margin-left: 45px;
+
+
+}
+h5.setting_title{
+   font-family:'Roboto'sans-serif;
+   color: #ffffff;
+  background-color: #1885EA;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 125%;
+  width: 68%;
+  margin-top: 46px;
+  margin-left: 44px;
+
+}
+
+h5.color_title {
+    font-family :'Robto' , sans-serif;
+  color: #ffffff;
+  background-color: #1885EA;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-weight: 300;
+  font-family: 'Roboto';
+  line-height: 125%;
+  width: 85%;
+  margin-top: 40px;
+  margin-left: 37px;
+
+
+}
+
+
+    </style>
 
   @endwhile
 @endsection

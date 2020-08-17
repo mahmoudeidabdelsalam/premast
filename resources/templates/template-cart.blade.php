@@ -5,7 +5,7 @@
 @extends('layouts.app-dark')
 
 @section('content')
-@php 
+@php
 
 /**
  * Cart Page
@@ -32,7 +32,7 @@ do_action( 'woocommerce_before_cart' );
     <div class="checkout-custom-header">
       @include('partials.page-header')
     </div>
-    <?php 
+    <?php
     $count = WC()->cart->cart_contents_count;
     if (  $count == 0 ): ?>
       <div class="container-fluid pt-5 pb-5 form-cart-woocommerce mt-5">
@@ -61,7 +61,7 @@ do_action( 'woocommerce_before_cart' );
                 <thead>
                   <tr>
                     <th class="product-name"><?php esc_html_e( 'item', 'woocommerce' ); ?></th>
-				            <th class="product-remove">&nbsp;</th>				            
+				            <th class="product-remove">&nbsp;</th>
                     <th class="product-price"><?php esc_html_e( 'Price', 'woocommerce' ); ?></th>
                     <th class="product-thumbnail">&nbsp;</th>
                   </tr>
@@ -160,7 +160,7 @@ do_action( 'woocommerce_before_cart' );
 
 
           <div class="col-12 bg-white box-cart">
-          
+
             <div class="cart_totals <?php echo ( WC()->customer->has_calculated_shipping() ) ? 'calculated_shipping' : ''; ?>">
               <?php do_action( 'woocommerce_before_cart_totals' ); ?>
               <table cellspacing="0" class="shop_table shop_table_responsive">
@@ -311,7 +311,7 @@ do_action( 'woocommerce_before_cart' );
 .wc-proceed-to-checkout {
     text-align: center;
 }
-@media (max-width: 579px) { 
+@media (max-width: 579px) {
   .container-fluid.pt-5.pb-5.form-cart-woocommerce.mt-5 {
       margin: 0 !important;
       padding: 20px 10px  !important;
@@ -337,6 +337,10 @@ do_action( 'woocommerce_before_cart' );
       padding-bottom: 0 !important;
       margin: 0;
   }
+
+}
+button.button {
+    width: 107px;
 }
 </style>
 
