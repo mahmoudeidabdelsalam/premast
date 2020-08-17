@@ -10,6 +10,17 @@
   $send = (isset($_GET['send']))? $_GET['send']:'';
   global $current_user;
   wp_get_current_user();
+
+  $ip = get_the_user_ip();
+
+  $user_ip = get_user_meta( $current_user->ID, 'follow_ip' , true );
+
+  $hash_ip = wp_hash_password($ip);
+
+  if(empty($user_ip)) {
+    update_user_meta( $current_user->ID, 'follow_ip', $ip );
+  }
+
 @endphp
 
 @if($send == 'true')
@@ -57,10 +68,10 @@
             {!! wp_nav_menu(['theme_location' => 'user_navigation', 'container' => false, 'menu_class' => 'nav nav-pills flex-column flex-sm-row col-12', 'walker' => new NavWalker()]) !!}
           @endif
         </div>
-        <div class="col-md-7 col-12 pt-5 mt-5">
+        <div class="col-md-6 offset-md-1 col-12 pt-5 mt-5">
           <div class="row align-content-center justify-content-center">
             <div class="col-md-7 col-12">
-              <h3>{{ _e('Share the Experience, Invite friends', 'premast') }}</h3>
+              <h6>{{ _e('Share the Experience, Invite friends', 'premast') }}</h6>
               <h4 class="headline-linear">{{ _e('& Earn free monthly subscriptions', 'premast') }}</h4>
             </div>
             <div class="col-md-5 col-12 the-content">@php the_content() @endphp</div>
@@ -71,7 +82,11 @@
                 @php
                   $form = get_field('forms_referral', 'option');
                   $inputs = get_all_form_fields($form['id']);
-                  $link = get_field('link_signup', 'option').'?refer='.$current_user->ID.'&token='.get_the_date('U').'';
+
+                  $ip = get_the_user_ip();
+                  $hash_ip = wp_hash_password($ip);
+
+                  $link = get_field('link_signup', 'option').'?refer='.$current_user->ID.'&token='.$hash_ip.'';
                 @endphp
 
                 <form class="form-inline" role="" method="post" id="gform_<?= $form['id']; ?>" action="<?= the_permalink(); ?>?send=gf_<?= $form['id']; ?>">
@@ -351,12 +366,14 @@
       letter-spacing: 0.04px;
       color: #282F39;
     }
+
     .table thead th i {
       font-size: 14px;
       line-height: 16px;
       color: #A6A6A6;
       cursor: help;
     }
+
     .the-content {
     font-size: 16px;
     line-height: 24px;

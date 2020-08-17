@@ -53,11 +53,21 @@
       </div>
     </div>
   </section>
+@else 
+  <section class="banner-items mb-5 mt-5" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one_tags','option') }} 0%, {{ the_field('gradient_color_two_tags','option') }} 100%);">
+    <div class="elementor-background-overlay" style="background-image: url('{{ the_field('images_tags','option') }}');"></div>
+    <div class="container">
+      <div class="row justify-content-center align-items-center text-center">
+        <h1 class="col-12" style="color:{{ the_field('font_color_tags','option') }}"><strong class="font-weight-600">{{ _e('Discover Best', 'premast') }} {{ single_tag_title() }} </strong> <span class="font-weight-300">{{ _e('templates', 'premast') }}</span></h1>
+        <p class="col-md-5 col-12 font-weight-300" style="color:{{ the_field('font_color_tags','option') }}">{{ _e('Download your preferred design from huge collection of professionally, creative designed', 'premast') }} {{ single_tag_title() }} {{ _e('templates for all your needs.', 'premast') }}</p>
+      </div>
+    </div>
+  </section>
 @endif
-<div class="container-fiuld">
+<div class="container-fiuld mt-5">
   <div class="row justify-content-center m-0">
     <div class="col-md-12 col-sm-12">
-      <div class="item-columns container-ajax items-categories item-card grid grid-custom row">
+      <div class="item-columns container-ajax item-card grid grid-custom row">
         @php
           if ($sort != '0') {
             // second query
@@ -145,12 +155,12 @@
         @endphp
 
         @if (get_field('show_card_pricing', 'option'))
-          <div class="col-md-3 col-12 grid-item">
+          <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 col-12 grid-item">
             <div class="card">
               <span class="custom-onsale">
                 {{ the_field('tag_card_pricing', 'option') }}
               </span>
-              <div class="bg-white">
+              <div class="bg-featureImage featureImage">
                 <img src="{{ the_field('images_card_pricing', 'option') }}" class="card-img-top" alt="{{ the_field('heading_card_pricing', 'option') }}">
                 <div class="card-overlay"><a class="the_permalink" href="{{ the_field('lik_card_pricing', 'option') }}"></a></div>
               </div>
@@ -172,7 +182,7 @@
 
           @php ($sale = get_post_meta( get_the_ID(), '_sale_price', true))
             
-            <div class="col-md-3 col-12 grid-item">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 col-12 grid-item">
               <div class="card">
                   @if($sale)
                     <span class="custom-onsale">
@@ -195,8 +205,13 @@
                   @endif
                 </ul>
 
-                <div class="bg-white">
-                  <img src="{{ Utilities::global_thumbnails(get_the_ID(),'medium')}}" class="card-img-top" alt="{{ the_title() }}">
+                <div class="bg-featureImage featureImage">
+                  <?php
+                  $attachment_id = get_post_thumbnail_id(get_the_ID());
+                  $img_src = wp_get_attachment_image_url( $attachment_id, 'medium' );
+                  $img_srcset = wp_get_attachment_image_srcset( $attachment_id, 'medium' );
+                  ?>
+                  <img src="<?php echo esc_url( $img_src ); ?>" srcset="<?php echo esc_attr( $img_srcset ); ?>" sizes="300px" class="card-img-top" alt="{{ the_title() }}">
                   <div class="card-overlay"><a class="the_permalink" href="{{ the_permalink() }}"></a></div>
                 </div>
                 <div class="card-body pt-2 pl-0 pr-0 pb-0">

@@ -350,7 +350,8 @@ $time = get_the_time('Y-m-d')
     top: -6px;
     z-index: 999999999;
     width: 100%;
-    height: 10px;
+    height: 14px;
+    overflow: hidden;
   }
   .admin-bar div#ProgressBar {
     top: 24px;

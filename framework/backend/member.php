@@ -37,6 +37,7 @@ function membership_add_pages() {
         <th>Referrals</th> 
         <th>Status</th>
         <th>Expires on</th>
+        <th>IP</th>
       </tr>
       <?php
         foreach ($posts as $post):
@@ -49,6 +50,7 @@ function membership_add_pages() {
           <td><?= get_post_meta($post->ID, 'email_referrals', TRUE); ?></td>
           <td><?= get_post_status($post->ID, 'post_status', TRUE); ?></td>
           <td><?= (get_post_meta( $post->ID, '_end_date', true ))? get_post_meta( $post->ID, '_end_date', true ):'-'; ?></td>
+          <td><?= get_user_meta($author->ID, 'follow_ip', TRUE); ?></td>
         </tr>
       <?php endforeach; ?>
     </table>

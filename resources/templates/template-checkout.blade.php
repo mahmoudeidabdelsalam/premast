@@ -68,7 +68,11 @@
             <?php
               $form = get_field('forms_referral', 'option');
               $inputs = get_all_form_fields($form['id']);
-              $link = get_field('link_signup', 'option').'?refer='.$current_user->ID.'&token='.get_the_date('U').'';
+
+              $ip = get_the_user_ip();
+              $hash_ip = wp_hash_password($ip);
+
+              $link = get_field('link_signup', 'option').'?refer='.$current_user->ID.'&token='.$hash_ip.'';
             ?>
 
             <form class="form-inline" role="" method="post" id="gform_<?= $form['id']; ?>" action="<?= the_permalink(); ?>?send='true'">

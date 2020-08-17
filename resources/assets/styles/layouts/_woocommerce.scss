@@ -32,6 +32,8 @@
 
   div.product {
     form.cart {
+      margin-bottom: 1em !important;
+
       .button {
         min-width: 255px;
         height: 40px;
@@ -274,9 +276,8 @@
   div#tab-description {
     font-size: 16px;
     font-weight: 400;
-    color: rgb(36, 37, 39) !important;
+    color: rgba(36, 37, 39, 0.8) !important;
     -webkit-font-smoothing: antialiased;
-    opacity: 0.8;
     line-height: 1.8;
   }
 }
@@ -321,6 +322,8 @@
 }
 
 .related {
+  background: rgb(249, 249, 249);
+
   .product_type_simple {
     display: none !important;
   }
@@ -817,12 +820,10 @@ div#reviews #respond form {
   h3 {
     font-style: normal;
     font-weight: normal;
-    font-size: 40px;
-    line-height: 123.19%;
-    letter-spacing: 0.151985px;
-    text-transform: capitalize;
-    color: rgb(61, 69, 82);
-    text-align: center;
+    font-size: 24px;
+    line-height: 32px;
+    color: #000000;
+    text-align: left;
   }
   
   .item-card {
@@ -3502,7 +3503,7 @@ button[name='update_cart'] {
   &.fixed {
     position: fixed !important;
     top: 0;
-    width: 23%;
+    width: 15%;
   }
 
   .card-body {
@@ -3511,7 +3512,7 @@ button[name='update_cart'] {
 }
 
 .grid .grid-item {
-  margin-bottom: 40px !important;
+  margin-bottom: 30px !important;
 }
 
 .item-card .card-overlay .card-link p {
@@ -3621,7 +3622,7 @@ h5.card-title.font-weight-400 {
   font-size: 14px !important;
   font-family: roboto;
   font-weight: 400 !important;
-  margin-bottom: 25px !important;
+  margin-bottom: 10px !important;
 }
 
 nav.woocommerce-MyAccount-navigation {
@@ -4519,5 +4520,30 @@ div#LimitDownload .modal-body p .btn-referral,
   }
 }
 
+.featureImage {
+  overflow: hidden;
+  background-size: cover;
+  display: block;
+  padding-top: 78.22%;
+  position: relative;
+  width: 100%;
+}
 
+.featureImage img {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  object-fit: cover;
+  -webkit-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
+  width: 100%;
+  will-change: transform;
+  will-change: auto;
+}
+
+.grid .grid-item .review-and-download {
+  min-height: 22px;
+}
 /* stylelint-enable */

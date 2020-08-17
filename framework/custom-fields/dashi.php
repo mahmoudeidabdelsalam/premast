@@ -68,6 +68,25 @@ acf_add_local_field_group(array(
 			'max_height' => '',
 			'max_size' => '',
 			'mime_types' => '',
+        ),
+        array(
+			'key' => 'field_5e66356qwe625e87',
+			'label' => 'link logo',
+			'name' => 'link_logo_premast',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
 		),
 		array(
 			'key' => 'field_5e6635198e322',
@@ -946,7 +965,7 @@ acf_add_local_field_group(array(
             'id' => '',
         ),
         'return_format' => 'url',
-),
+    ),
 
 
     array(

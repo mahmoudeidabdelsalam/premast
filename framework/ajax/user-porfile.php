@@ -194,18 +194,45 @@ function premast_memberships_create(){
   $refer_id = $_POST['refer'];
   $plan_id = get_field('plan_id', 'option');
 
-  if ($refer_id) {
+  $follow_ip = $_POST['follow_ip'];
+
+  $user_ip = get_user_meta( $refer_id, 'follow_ip' , true );
+
+  $args = array(
+    'post_type' => 'wc_user_membership',
+    'post_status'   => array('wcm-active'),
+    'suppress_filters' => 0,
+    'author' => $refer_id
+  );
+  $posts = get_posts($args);
+
+  if($posts) {
+    $status =  'wcm-pending';
+  } else {
+    $status =  'wcm-active';
+  }
+
+  if ($refer_id && $follow_ip != $user_ip) {
     $data = apply_filters( 'wc_memberships_groups_import_membership_data', array(
       'plan_id' => $plan_id, 
       'post_parent' => $plan_id,
       'post_author'    => $refer_id,
       'post_type'      => 'wc_user_membership',
-      'post_status'    => 'wcm-pending',
+      'post_status'    => $status,
       'comment_status' => 'open',
     ) );
 
     // create a new membership
     $user_membership_id = wp_insert_post( $data, true );
+
+    if($status = 'wcm-active') {
+      $start_date = date('Y-m-d H:i:s');
+      $end_date = date('Y-m-d H:i:s', strtotime('+1 months'));
+
+      update_post_meta($user_membership_id, '_end_date', $end_date);
+      update_post_meta($user_membership_id, '_start_date', $start_date);
+    }
+          
     $user_email = $_POST['user_email'];
     update_post_meta( $user_membership_id, 'email_referrals', $user_email );
     update_post_meta( $user_membership_id, 'email_referrals', $user_email );
@@ -228,3 +255,23 @@ function pippin_login_fail( $username ) {
           exit;
      }
 }
+
+
+
+add_action( 'show_user_profile', 'display_user_custom_hash' );
+add_action( 'edit_user_profile', 'display_user_custom_hash' );
+
+function display_user_custom_hash( $user) { 
+
+?>
+  <h3>USER IP</h3>
+  <table class="form-table">
+      <tr>
+          <th><label>IP</label></th>
+          <td><?= get_user_meta($user->ID, 'follow_ip', TRUE); ?></td>
+      </tr>
+  </table>
+  <?php
+}
+
+

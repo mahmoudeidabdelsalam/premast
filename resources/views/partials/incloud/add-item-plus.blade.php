@@ -176,7 +176,7 @@
             $('#results-items .new-item').append(results);
           },
           error: function(results) {
-            $('.register-message').html('plz try again later').show();
+            $('.register-message').html('something wrong please enter a valid fields').show();
             $('#add-loader').hide();
           }
         });

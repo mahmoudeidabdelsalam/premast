@@ -27,7 +27,7 @@
       <li class="item-dropdown"><a class="border-0" href="{{ home_url('/') }}/help-center/">{{ _e('Help Center', 'premast') }}</a></li>
       <li class="item-dropdown" class="border-0">{{ wp_loginout() }}</li>
     @else
-      <li class="item-dropdown"><a class="border-0" href="#">{{ _e('become a contributor', 'premast') }}</a></li>
+      <li class="item-dropdown"><a class="border-0" href="https://dash.premast.com/author_request">{{ _e('Become an Author', 'premast') }}</a></li>
       <li class="item-dropdown"><a class="border-0" href="{{ home_url('/') }}/faq">{{ _e('Help Center', 'premast') }}</a></li>
       <li class="item-dropdown" class="border-0">{{ wp_loginout() }}</li>
     @endif

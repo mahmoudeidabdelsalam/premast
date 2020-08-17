@@ -5,10 +5,16 @@
 
 @php 
   $refer   = isset($_GET['refer']) ? $_GET['refer'] : '';
+  $token   = isset($_GET['token']) ? $_GET['token'] : '';
+
   $credit = get_user_meta( $refer, 'ref_credit', true);
   $array_ip = get_user_meta( $refer, 'follow_ip', true);
   $friends = get_user_meta( $refer, 'friends', true);
   $ip = get_the_user_ip();
+
+  $user_ip = get_user_meta( $refer, 'follow_ip' , true );
+  $wp_hasher = new PasswordHash(8, TRUE);
+
 @endphp
 
 @extends('layouts.app-dark')
@@ -70,11 +76,14 @@
                     <input type="checkbox" id="Conditions"> <label class="d-inline-block mb-0 label-Conditions" for="Conditions">{{ _e('Accept our Terms&Conditions', 'premast') }}</label>
                   </p>
 
-                  @if($refer)
-                    <input hidden  id="ref" type="text" value="<?= $refer; ?>"  name="refer" readonly="readonly"/>
-                    <input hidden id="follow_ip" type="text" value="<?= $ip; ?>"  name="follow_ip" readonly="readonly"/>
+                  @if($wp_hasher->CheckPassword($ip, $token))
+                    <span class="check_ip">I registered from the same device</span>
+                  @else
+                    @if($refer)
+                      <input hidden  id="ref" type="text" value="<?= $refer; ?>"  name="refer" readonly="readonly"/>
+                      <input hidden id="follow_ip" type="text" value="<?= $ip; ?>"  name="follow_ip" readonly="readonly"/>
+                    @endif
                   @endif
-
                   <button type="submit" id="register-button" class="woocommerce-Button button m-auto d-block border-0" name="register" value="Register">{{ _e('sign up', 'premast') }}</button>
                   <span id="sl-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span>
                 </form> 
@@ -144,7 +153,7 @@
                           $('#gform_<?= $confierm["id"]; ?>' ).submit();
                         },
                         error: function(results) {
-                          $('.register-message').html('plz try again later').show();
+                          $('.register-message').html('something wrong please enter a valid fields').show();
                           $('#sl-loader').hide();
                         }
                       });
@@ -166,50 +175,135 @@
 @endsection
 
 <style>
-.modal-show {
-    background: #EFF6FA;
-    box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.269107);
-    border-radius: 14px;
-    padding: 60px 100px 20px !important;
-}
-.modal-show .login-username label, .modal-show .login-password label {
-    display: none !important;
-}
-.modal-show h5.modal-title {
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 23px;
-    text-align: center;
-    letter-spacing: 0.0438698px;
-    color: #3D4552;
-    mix-blend-mode: normal;
-    opacity: 0.82;
-    margin-bottom: 40px;
-    margin-top: 10px;
-}
-.modal-show  input[type="text"], input[type="password"] {
-    background: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    box-sizing: border-box;
-    border-radius: 8px !important;
-    height: 40px !important;
-}
-.modal-show .modal-body {
-    padding: 40px 0;
-}
-.modal-show  p.login-submit {
-    text-align: center;
-}
-.modal-show span.switch-to-lost {
-    position: absolute;
-    bottom: 146px;
-    width: auto !important;
-    right: 0;
-}
-section.section-template span.switch-link {
-  text-align: center !important;
-}
-.modal-show  p.woocommerce-form-row.form-row {
-    align-items: center;
-}
+  .modal-show {
+      background: #EFF6FA;
+      box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.269107);
+      border-radius: 14px;
+      padding: 60px 100px 20px !important;
+  }
+
+  .modal-show .login-username label,
+  .modal-show .login-password label {
+      display: none !important;
+  }
+
+  .modal-show h5.modal-title {
+      font-weight: normal;
+      font-size: 20px;
+      line-height: 23px;
+      text-align: center;
+      letter-spacing: 0.0438698px;
+      color: #3D4552;
+      mix-blend-mode: normal;
+      opacity: 0.82;
+      margin-bottom: 40px;
+      margin-top: 10px;
+  }
+
+  .modal-show input[type="text"],
+  input[type="password"] {
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      box-sizing: border-box;
+      border-radius: 8px !important;
+      height: 40px !important;
+  }
+
+  .modal-show .modal-body {
+      padding: 40px 0;
+  }
+
+  .modal-show p.login-submit {
+      text-align: center;
+  }
+
+  .modal-show span.switch-to-lost {
+      position: absolute;
+      bottom: 146px;
+      width: auto !important;
+      right: 0;
+  }
+
+  section.section-template span.switch-link {
+      text-align: center !important;
+  }
+
+  .modal-show p.woocommerce-form-row.form-row {
+      align-items: center;
+  }
+
+  p.register-message {
+      padding: 10px;
+      position: relative !important;
+      background-color: red;
+      border-radius: 4px;
+      color: #fff;
+      margin-top: 10px !important;
+  }
+
+  .modal-show {
+      background: #EFF6FA;
+      box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.269107);
+      border-radius: 14px;
+      padding: 60px 100px 20px !important;
+  }
+
+  .modal-show .login-username label,
+  .modal-show .login-password label {
+      display: none !important;
+  }
+
+  .modal-show h5.modal-title {
+      font-weight: normal;
+      font-size: 20px;
+      line-height: 23px;
+      text-align: center;
+      letter-spacing: 0.0438698px;
+      color: #3D4552;
+      mix-blend-mode: normal;
+      opacity: 0.82;
+      margin-bottom: 40px;
+      margin-top: 10px;
+  }
+
+  .modal-show input[type="text"],
+  input[type="password"] {
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      box-sizing: border-box;
+      border-radius: 8px !important;
+      height: 40px !important;
+  }
+
+  .modal-show .modal-body {
+      padding: 40px 0;
+  }
+
+  .modal-show p.login-submit {
+      text-align: center;
+  }
+
+  .modal-show span.switch-to-lost {
+      position: absolute;
+      bottom: 146px;
+      width: auto !important;
+      right: 0;
+  }
+
+  section.section-template span.switch-link {
+      text-align: center !important;
+  }
+
+  .modal-show p.woocommerce-form-row.form-row {
+      align-items: center;
+  }
+
+  span.check_ip {
+      background-color: #ff0c0c;
+      color: #fff;
+      padding: 10px 10px 9px;
+      width: 100%;
+      display: inline-block;
+      border-radius: 4px;
+  }
 </style>

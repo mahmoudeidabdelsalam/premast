@@ -147,6 +147,26 @@ acf_add_local_field_group(array(
 			'sub_fields' => array(
 
         array(
+          'key' => 'field_5ec213213dsad1231a7ccd25fd',
+          'label' => 'Link banner',
+          'name' => 'link_banner_background_template',
+          'type' => 'text',
+          'instructions' => '',
+          'required' => 0,
+          'conditional_logic' => 0,
+          'wrapper' => array(
+            'width' => '',
+            'class' => '',
+            'id' => '',
+          ),
+          'default_value' => '',
+          'placeholder' => '',
+          'prepend' => '',
+          'append' => '',
+          'maxlength' => '',
+        ),
+        
+        array(
           'key' => 'field_5ec1a83ad2600',
           'label' => 'Image banner background',
           'name' => 'image_banner_background_template',
@@ -521,35 +541,35 @@ acf_add_local_field_group(array(
 			),
 			'return_format' => 'array',
 		),
-		array(
-			'key' => 'field_5ec1b8b4drqsadwrqwrqwr642e',
-			'label' => 'blog Items',
-			'name' => 'blog_items',
-			'type' => 'relationship',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'post_type' => array(
-				0 => 'post',
-			),
-			'taxonomy' => '',
-			'filters' => array(
-				0 => 'search',
-				1 => 'post_type',
-				2 => 'taxonomy',
-			),
-			'elements' => array(
-				0 => 'featured_image',
-			),
-			'min' => '',
-			'max' => '',
-			'return_format' => 'object',
-    ),
+		// array(
+		// 	'key' => 'field_5ec1b8b4drqsadwrqwrqwr642e',
+		// 	'label' => 'blog Items',
+		// 	'name' => 'blog_items',
+		// 	'type' => 'relationship',
+		// 	'instructions' => '',
+		// 	'required' => 0,
+		// 	'conditional_logic' => 0,
+		// 	'wrapper' => array(
+		// 		'width' => '',
+		// 		'class' => '',
+		// 		'id' => '',
+		// 	),
+		// 	'post_type' => array(
+		// 		0 => 'post',
+		// 	),
+		// 	'taxonomy' => '',
+		// 	'filters' => array(
+		// 		0 => 'search',
+		// 		1 => 'post_type',
+		// 		2 => 'taxonomy',
+		// 	),
+		// 	'elements' => array(
+		// 		0 => 'featured_image',
+		// 	),
+		// 	'min' => '',
+		// 	'max' => '',
+		// 	'return_format' => 'object',
+    // ),
     
 
 	),
@@ -573,3 +593,13 @@ acf_add_local_field_group(array(
 ));
 
 endif;
+
+
+add_filter( 'acf/fields/relationship/query','relationship_options_filter', 10, 3);
+
+function relationship_options_filter($options, $field, $the_post) {
+	
+	$options['post_status'] = array('publish');
+	
+	return $options;
+}

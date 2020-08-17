@@ -91,7 +91,7 @@
 <div class="container-fiuld">
   <div class="row justify-content-center m-0">
     @if ( !wp_is_mobile() ) 
-      <div class="col-md-3 col-sm-12">
+      <div class="col-md-2 col-sm-12">
         <div class="by-filter">
           <div class="accordion" id="accordionExample">
             <div class="card">
@@ -186,13 +186,13 @@
       </div>
     @endif
 
-    <div class="col-md-9 col-sm-12 position-relative">
-      <div class="item-columns container-ajax items-categories item-card grid grid-custom row">
+    <div class="col-md-10 col-sm-12 position-relative">
+      <div class="item-columns container-ajax item-card grid grid-custom row">
         @php
         if ($sort != '0') {
             $second_ids = get_posts( array(
               'post_type' => 'product',
-              'posts_per_page' => 20,
+              'posts_per_page' => 19,
               'fields'         => 'ids',
               'paged' => $paged,
               'meta_key' => $meta_key,
@@ -206,14 +206,14 @@
                 )
               )
             ));
-            $per_page = 21 - count($second_ids);
+            $per_page = 20 - count($second_ids);
           } else {
             $second_ids = [];
-            $per_page = 20;
+            $per_page = 19;
           }
           $orders = array(
             'post_type' => 'product',
-            'posts_per_page' => 19,
+            'posts_per_page' => 18,
             'paged' => $paged,
             'meta_key' => $meta_key,
             'orderby' => $orderby,
@@ -273,12 +273,12 @@
         @endphp
 
         @if (get_field('show_card_pricing', 'option'))
-          <div class="col-md-4 col-12 grid-item">
+          <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 col-12 grid-item">
             <div class="card">
               <span class="custom-onsale">
                 {{ the_field('tag_card_pricing', 'option') }}
               </span>
-              <div class="bg-white">
+              <div class="bg-featureImage featureImage">
                 <img src="{{ the_field('images_card_pricing', 'option') }}" class="card-img-top" alt="{{ the_field('heading_card_pricing', 'option') }}">
                 <div class="card-overlay"><a class="the_permalink" href="{{ the_field('lik_card_pricing', 'option') }}"></a></div>
               </div>
@@ -298,7 +298,7 @@
         @if($my_query->have_posts())
           @while($my_query->have_posts()) @php($my_query->the_post())
           @php ($sale = get_post_meta( get_the_ID(), '_sale_price', true))
-            <div class="col-md-4 col-12 grid-item">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 col-12 grid-item">
               <div class="card">
                   @if($sale)
                     <span class="custom-onsale">
@@ -321,8 +321,13 @@
                   @endif
                 </ul>
 
-                <div class="bg-white">
-                  <img src="{{ Utilities::global_thumbnails(get_the_ID(),'medium')}}" class="card-img-top" alt="{{ the_title() }}">
+                <div class="bg-featureImage featureImage">
+                  <?php
+                  $attachment_id = get_post_thumbnail_id(get_the_ID());
+                  $img_src = wp_get_attachment_image_url( $attachment_id, 'medium' );
+                  $img_srcset = wp_get_attachment_image_srcset( $attachment_id, 'medium' );
+                  ?>
+                  <img src="<?php echo esc_url( $img_src ); ?>" srcset="<?php echo esc_attr( $img_srcset ); ?>" sizes="300px" class="card-img-top" alt="{{ the_title() }}">
                   <div class="card-overlay"><a class="the_permalink" href="{{ the_permalink() }}"></a></div>
                 </div>
                 <div class="card-body pt-2 pl-0 pr-0 pb-0">
