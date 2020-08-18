@@ -203,12 +203,19 @@ section {
   text-align: center;
   color: #FFFFFF;
 }
-
+/*
 .slides {
   width: 100%;
   height: auto;
   left: 0;
   bottom: 0;
+
+}
+*/
+.sheet-breakout {
+  width:100%;
+    left: 50%;
+    right: 50%;
 
 }
 
@@ -645,4 +652,28 @@ ul.footer-links li a {
 .img-top-card {
   position: relative;
   padding-bottom: 5px;
+}
+
+@-webkit-keyframes scroll-grid {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0)
+  }
+
+  100% {
+    -webkit-transform: translate3d(-2420px, 0, 0);
+    transform: translate3d(-2420px, 0, 0)
+  }
+}
+
+@keyframes scroll-grid {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0)
+  }
+
+  100% {
+    -webkit-transform: translate3d(-2420px, 0, 0);
+    transform: translate3d(-2420px, 0, 0)
+  }
 }

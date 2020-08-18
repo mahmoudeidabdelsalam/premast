@@ -514,7 +514,10 @@ acf_add_local_field_group(array(
 			'max_height' => '',
 			'max_size' => '',
 			'mime_types' => '',
-		),
+        ),
+
+
+
 		array(
 			'key' => 'field_5e6e0036aa206',
 			'label' => 'customize section',

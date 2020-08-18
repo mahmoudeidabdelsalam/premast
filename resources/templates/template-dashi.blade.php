@@ -142,9 +142,14 @@
                 <div class="headline">
                     <p>Save countless hours by <br> using these templates</p>
                 </div>
-                <div class="slides">
-                  <img style="width:130%;" class="ImageParallax" src="<?php the_field('slide_image'); ?>" />
+                <div class="sheet-breakout">
+                    <div class="slides-grid" style="overflow: hidden">
+                    <div class="slides" style="background-image:url('{{ the_field('slide_image') }}'); height:622px; width: 8000px; background-size:2300; background-repeat:repeat-x;background-position: center;  scroll-grid 180s linear infinite; -webkit-animation: scroll-grid 130s linear infinite;">
+                    </div>
+                    </div>
                 </div>
+
+
             </div>
             <!-- dashboard slide  -->
             <div class="row justify-content-center p-5">
@@ -174,10 +179,10 @@
                 </div>
             </div>
         </div>
-    </section>
+     </section>
 
-    <!-- customize sections  -->
-    <section style="background: #202020;">
+     <!-- customize sections  -->
+      <section style="background: #202020;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="custom">
@@ -489,9 +494,6 @@ h5.color_title {
 
 
 }
-.headline {
-        padding-bottom: 40px;
-    }
 
     </style>
 
