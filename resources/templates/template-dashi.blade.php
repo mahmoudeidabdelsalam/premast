@@ -144,7 +144,7 @@
                 </div>
                 <div class="sheet-breakout">
                     <div class="slides-grid" style="overflow: hidden">
-                    <div class="slides" style="background-image:url('{{ the_field('slide_image') }}'); height:622px; width: 8000px; background-size:2300; background-repeat:repeat-x;background-position: center;  scroll-grid 180s linear infinite; -webkit-animation: scroll-grid 130s linear infinite;">
+                    <div class="slides" style="background-image:url('{{ the_field('slide_image') }}'); height:622px; width: 8000px; background-size:2300; background-repeat:repeat-x;background-position: center left ;  box-shadow: 0 40px 84px #141518; scroll-grid 180s linear infinite; -webkit-animation: scroll-grid 130s linear infinite;">
                     </div>
                     </div>
                 </div>
