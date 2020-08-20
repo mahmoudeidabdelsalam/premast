@@ -314,7 +314,7 @@
           </div>
 
           <span class="contents">
-            <?php the_field('bio_author', 'user_'. $author->ID); ?>
+            <?= the_field('bio_author', 'user_'. $author->ID); ?>
           </span>
 
           @if ($followers && in_array( $current_user->ID, $followers )) 

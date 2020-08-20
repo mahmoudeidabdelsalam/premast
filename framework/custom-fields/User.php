@@ -257,7 +257,7 @@ if( function_exists('acf_add_local_field_group') ):
         'key' => 'field_5f3ee37cb2549',
         'label' => 'Write a Bio',
         'name' => 'bio_author',
-        'type' => 'wysiwyg',
+        'type' => 'textarea',
         'instructions' => '',
         'required' => 0,
         'conditional_logic' => 0,
