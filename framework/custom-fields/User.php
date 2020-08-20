@@ -254,6 +254,25 @@ if( function_exists('acf_add_local_field_group') ):
     'title' => 'More User Details',
     'fields' => array(
       array(
+        'key' => 'field_5f3ee37cb2549',
+        'label' => 'Write a Bio',
+        'name' => 'bio_author',
+        'type' => 'wysiwyg',
+        'instructions' => '',
+        'required' => 0,
+        'conditional_logic' => 0,
+        'wrapper' => array(
+          'width' => '',
+          'class' => '',
+          'id' => '',
+        ),
+        'default_value' => '',
+        'tabs' => 'all',
+        'toolbar' => 'full',
+        'media_upload' => 1,
+        'delay' => 0,
+      ),
+      array(
         'key' => 'field_5a632631202544365aa',
         'label' => __('Profile Picture','premast'),
         'name' => 'owner_picture',

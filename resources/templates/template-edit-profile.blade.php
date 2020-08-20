@@ -170,8 +170,9 @@
     .user-images .acf-image-uploader img {
         width: 100%;
     }
-
-    
+    .wp-media-buttons {
+      display: none;
+    }
   </style>
   @endif
 @endsection
