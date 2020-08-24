@@ -30,6 +30,9 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
   if ( !empty( $_POST['acf']['field_5a632631202544365aa'] ) )
   update_user_meta( $current_user->ID, 'owner_picture', esc_attr( $_POST['acf']['field_5a632631202544365aa'] ) );
 
+  if ( !empty( $_POST['acf']['field_5f3ee37cb2549'] ) )
+  update_user_meta( $current_user->ID, 'bio_author', esc_attr( $_POST['acf']['field_5f3ee37cb2549'] ) );
+
   if ( count($error) == 0 ) {
     //action hook for plugins and extra fields saving
     do_action('edit_user_profile_update', $current_user->ID);

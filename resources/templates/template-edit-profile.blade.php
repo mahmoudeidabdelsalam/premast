@@ -170,8 +170,22 @@
     .user-images .acf-image-uploader img {
         width: 100%;
     }
+    .wp-media-buttons {
+      display: none;
+    }
+    .acf-field textarea {
+    width: 100% !important;
+    border: 1px solid #e3e3e3;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 8px;
+    display: block;
+    padding: 10px;
+}
 
-    
+table {
+    width: 80%;
+}
   </style>
   @endif
 @endsection

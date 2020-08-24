@@ -276,6 +276,7 @@
         <div class="col-md-3 col-12 side-menu-user">
           <?php 
             $avatar = get_field('owner_picture', 'user_'. $author->ID );
+            $bio = get_field('bio_author', 'user_'. $author->ID );
             $user_post_count = count_user_posts( $author->ID , 'product' );
             $followers = get_user_meta( $author->ID, 'follow_authors' , true );
             if ($followers) {
@@ -313,10 +314,10 @@
           </div>
 
           <span class="contents">
-            {{ _e('Premast is a store for premium high quality powerpoint presentations that fits all your business needs.', 'premast') }}
+            <?= the_field('bio_author', 'user_'. $author->ID); ?>
           </span>
 
-          @if (in_array( $current_user->ID, $followers )) 
+          @if ($followers && in_array( $current_user->ID, $followers )) 
             <a class="follow unfollow" href="javascript:void(0)" data-event="unfollow" data-user="<?= $current_user->ID; ?>" data-author="<?= get_the_author_meta( 'ID' ); ?>"><span class="fo-text">{{ _e('unfollow', 'premast') }}</span> <span id="fo-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span></a>
           @else 
             <a class="follow" href="javascript:void(0)" data-event="follow" data-user="<?= $current_user->ID; ?>" data-author="<?= get_the_author_meta( 'ID' ); ?>"><span class="fo-text">{{ _e('follow', 'premast') }}</span> <span id="fo-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span></a>
@@ -418,6 +419,10 @@
         box-sizing: border-box;
         box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
+    }
+
+    .side-menu-user span.contents a {
+      color: #5061ff;
     }
 
     section.card-author .row {

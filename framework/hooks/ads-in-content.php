@@ -1,6 +1,8 @@
 <?php
 
 add_filter( 'the_content', 'tbn_ads_inside_content' );
+add_filter( 'acf_the_content', 'tbn_ads_inside_content' );
+
 function tbn_ads_inside_content( $content ) {
   if ( is_single() && in_the_loop() && is_main_query() ) {
     $link_ads = get_field('link_ads', 'option');
@@ -27,3 +29,8 @@ function tbn_ads_inside_content( $content ) {
 
   return $content;
 }
+
+function my_acf_add_local_field_groups() {
+    remove_filter('acf_the_content', 'wpautop' );
+}
+add_action('acf/init', 'my_acf_add_local_field_groups');
