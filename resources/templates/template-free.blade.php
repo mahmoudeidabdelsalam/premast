@@ -59,6 +59,8 @@
       $downloads     = WC()->customer->get_downloadable_products();
       $has_downloads = (bool) $downloads;
 
+      $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
+
       $product_ids = [];
       foreach ($downloads as $download) {
         $ids = $download['product_id'];
@@ -85,6 +87,7 @@
         'post_type' => 'product',
         'posts_per_page' => 20,
         'post__in' => $somdn_download_ids,
+        'paged' => $paged,
       );
 
       $loop = new WP_Query( $args );
