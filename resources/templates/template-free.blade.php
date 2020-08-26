@@ -94,12 +94,17 @@
           @while($loop->have_posts()) @php($loop->the_post())
             @include('partials/incloud/card')
           @endwhile  
-
-          <div class="col-12 pt-5 pb-5">
-            <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $loop) }}</nav>
-          </div>
         </div>
       </div>
+  </section>
+  <section class="page">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 pt-5 pb-5">
+          <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $loop) }}</nav>
+        </div>
+      </div>
+    </div>
   </section>
 
 <script>

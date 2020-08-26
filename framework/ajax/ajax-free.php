@@ -113,10 +113,6 @@ function get_free_terms() {
               <?= __('Sorry, no results were found.', 'sage'); ?>
           </div>
         <?php endif; ?>
-
-        <div class="col-12 pt-5 pb-5">
-          <nav aria-label="Page navigation example"><?= premast_base_pagination(array(), $loop); ?></nav>
-        </div>
       </div>
     </div>
   <?php 
