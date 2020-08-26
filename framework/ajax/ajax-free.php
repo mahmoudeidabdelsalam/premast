@@ -6,7 +6,7 @@ add_action('wp_ajax_nopriv_get_free_terms', 'get_free_terms');
 function get_free_terms() {
 
     $term = $_POST["term_id"];
-
+    $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
 
     if ( ! defined( 'ABSPATH' ) ) {
       exit;
@@ -40,6 +40,7 @@ function get_free_terms() {
       'post_type' => 'product',
       'posts_per_page' => 20,
       'post__in' => $somdn_download_ids,
+      'paged' => $paged,
       'tax_query' => array(
         array(
           'taxonomy' => 'product_cat',
