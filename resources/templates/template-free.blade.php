@@ -112,12 +112,8 @@
     });
 
     $("body").on("click", ".page-item a", function () {
-      // var term = $(".selectCat").value;
       var term = $( "select.selectCat option:checked" ).val();
       var page = $(this).data('page');
-
-      console.log(term);
-
 
       $.ajax({
         url: "<?php echo admin_url('admin-ajax.php'); ?>", // in backend you should pass the ajax url using this variable
@@ -129,6 +125,7 @@
         },
         beforeSend: function () {
           $('.loading').show();
+          $('html, body').animate({scrollTop:0}, 'slow');
         },
         success: function(data){
           $('#freeItems').html(data);
@@ -194,7 +191,6 @@
     .loading {
       width: 100%;
       position: relative;
-      margin-top: -20px;
     }
 
     .spinner {
