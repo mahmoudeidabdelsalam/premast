@@ -5,8 +5,8 @@ add_action('wp_ajax_nopriv_get_free_terms', 'get_free_terms');
 
 function get_free_terms() {
 
-    $term = $_POST["term_id"];
-    $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
+    $term_id = (isset($_POST['term_id']))? $_POST['term_id'] : 0;
+    $paged = (isset($_POST['paged']))? $_POST['paged'] : 1;
 
     $args = array(
       'post_type' => 'product',
@@ -20,14 +20,18 @@ function get_free_terms() {
           'type' => 'NUMERIC'
         )
       ),
-      'tax_query' => array(
+    );
+
+    if ($term_id != 0) {
+      $args['tax_query'] = array(
         array(
           'taxonomy' => 'product_cat',
-          'field' => 'term_id',
-          'terms' => $term
-        )
-      )
-    );
+          'field'    => 'term_id',
+          'terms'    => $term_id,
+        ),
+      );
+    }
+
 
     $loop = new WP_Query( $args );
     ?>
@@ -56,7 +60,7 @@ function get_free_terms() {
                 </div>
                 <div class="card-body pt-3 pl-1 pr-1">
                   <a class="card-link" href="<?= the_permalink(); ?>">
-                    <h5 class="card-title font-weight-400"><?= wp_trim_words(get_the_title(), '4', ' ...'); ?></h5>
+                    <h5 class="card-title font-weight-400"><?= html_entity_decode(wp_trim_words(get_the_title(), '4', ' ...')); ?></h5>
                   </a>
                   <div class="review-and-download">
                     <div class="review">
@@ -92,6 +96,10 @@ function get_free_terms() {
               <?= __('Sorry, no results were found.', 'sage'); ?>
           </div>
         <?php endif; ?>
+
+        <div class="col-12 pt-5 pb-5">
+            <nav aria-label="Page navigation example"><?= premast_ajax_pagination(array(), $loop); ?></nav>
+          </div>
       </div>
     </div>
   <?php 

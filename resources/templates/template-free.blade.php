@@ -5,7 +5,9 @@
 @extends('layouts.app-dark')
 
 @section('content')
-  
+  @while(have_posts()) @php the_post() @endphp
+
+
   <section id="banner" style="background:linear-gradient(141.33deg, #1FA2FF -4.21%, #274FDB 135.73%);">
     <div class="container">
       <div class="row align-items-center text-center justify-content-center">
@@ -54,11 +56,7 @@
 
   <section id="freeItems" class="woocommerce mt-5">
       <?php
-
-
       $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
-
-    
       $args = array(
         'post_type' => 'product',
         'posts_per_page' => 20,
@@ -72,7 +70,6 @@
             )
         )
       );
-
       $loop = new WP_Query( $args );
       ?>
       <div class="container-fluid">
@@ -80,23 +77,47 @@
           @while($loop->have_posts()) @php($loop->the_post())
             @include('partials/incloud/card')
           @endwhile  
+
+          <div class="col-12 pt-5 pb-5">
+            <nav aria-label="Page navigation example">{{ premast_ajax_pagination(array(), $loop) }}</nav>
+          </div>
         </div>
       </div>
   </section>
-  <section class="page">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12 pt-5 pb-5">
-          <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $loop) }}</nav>
-        </div>
-      </div>
-    </div>
-  </section>
+  
+
+
+
+
 
 <script>
   jQuery(function($) {
     $('.selectCat').on('change', function() {
       var term = this.value;
+      $.ajax({
+        url: "<?php echo admin_url('admin-ajax.php'); ?>", // in backend you should pass the ajax url using this variable
+        type: 'POST',
+        data: { 
+          action : 'get_free_terms', 
+          term_id: term,
+        },
+        beforeSend: function () {
+          $('.loading').show();
+        },
+        success: function(data){
+          $('#freeItems').html(data);
+          $('.loading').hide();
+        }
+      });
+    });
+
+    $("body").on("click", ".page-item a", function () {
+      // var term = $(".selectCat").value;
+      var term = $( "select.selectCat option:checked" ).val();
+      var page = $(this).data('page');
+
+      console.log(term);
+
 
       $.ajax({
         url: "<?php echo admin_url('admin-ajax.php'); ?>", // in backend you should pass the ajax url using this variable
@@ -104,6 +125,7 @@
         data: { 
           action : 'get_free_terms', 
           term_id: term,
+          paged: page
         },
         beforeSend: function () {
           $('.loading').show();
@@ -238,4 +260,5 @@
       }
     }
   </style>
+  @endwhile
 @endsection
