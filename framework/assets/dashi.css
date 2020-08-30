@@ -91,6 +91,7 @@ p.subtext {
   font-size: 16px;
   line-height: 125.74%;
   color: #FFFFFF;
+  margin-right: -42px;
 }
 
 p.pricing {

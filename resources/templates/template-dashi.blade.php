@@ -64,7 +64,7 @@ foreach ($downloads as $download) {
                           </h3>
 
 
-                        @if(is_user_logged_in() && in_array('1019750', $product_ids))
+                        @if(is_user_logged_in() && in_array('1013447', $product_ids))
                           <a style="box-shadow: none!important;" class="btn btn-primary" href="<?php echo esc_url( $link ); ?>">download now</a>
                         @else
                             <p class="subtext" style=" background-image: url(' {{ the_field ('line_img') }}')">
@@ -613,6 +613,11 @@ h5.color_title {
 .lSSlideWrapper {
     padding-bottom: 40px;
 }
+.icons_list {
+    margin-left: 90px;
+    margin-top: 20px;
+}
+
 </style>
 
   @endwhile
