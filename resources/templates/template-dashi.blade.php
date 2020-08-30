@@ -485,7 +485,7 @@ foreach ($downloads as $download) {
 
           $("#lightSlider").lightSlider({
             item: 5,
-          }); 
+          });
       });
     </script>
 
@@ -606,6 +606,13 @@ h5.color_title {
   width: 85%;
   margin-top: 40px;
   margin-left: 37px;
+}
+.lSAction a {
+    top: 90%;
+}
+
+.lSSlideWrapper {
+    padding-bottom: 40px;
 }
 </style>
 
