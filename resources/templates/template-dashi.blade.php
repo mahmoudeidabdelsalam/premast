@@ -256,10 +256,9 @@ foreach ($downloads as $download) {
                 </div>
                 <?php
                 $image = get_field('puls-sub');
-                // dd($image['url']);
                 ?>
                 <div>
-                    <img class="plus-logo" src="<?= $image['url']; ?>">
+                    <img class="plus-logo" src="<?= $image; ?>">
                     <h3 class="exclusive-text"><?php the_field('exclusive_text'); ?> </h3>
                 </div>
                 <?php
