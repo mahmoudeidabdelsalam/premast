@@ -56,7 +56,7 @@ function get_free_terms() {
                 </ul>
 
                 <div class="bg-thumbnail">
-                  <img src="<?= Utilities::global_thumbnails(get_the_ID(),'full'); ?>" class="card-img-top" alt="<?= the_title(); ?>">
+                  <img src="<?= Utilities::global_thumbnails(get_the_ID(),'medium'); ?>" class="card-img-top" alt="<?= the_title(); ?>">
                 </div>
                 <div class="card-body pt-3 pl-1 pr-1">
                   <a class="card-link" href="<?= the_permalink(); ?>">
