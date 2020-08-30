@@ -15,7 +15,7 @@
     </div>
     <div class="card-body pt-3 pl-1 pr-1">
       <a class="card-link" href="{{ the_permalink() }}">
-        <h5 class="card-title font-weight-400">{{ wp_trim_words(get_the_title(), '4', ' ...') }}</h5>
+        <h5 class="card-title font-weight-400">{{ html_entity_decode(wp_trim_words(get_the_title(), '4', ' ...')) }}</h5>
       </a>
       <div class="review-and-download">
         <div class="review">
