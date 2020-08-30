@@ -97,7 +97,7 @@ foreach ($downloads as $download) {
         <div class="container-fluid pt-5">
             <div class="row">
                 <div class="col-md-6">
-                    <img style="width:100%;height:617.43px;" class="simpleParallax" data-aos="fade-right" data-duration="1000"
+                    <img style="width:100%;height:617.43px;" data-aos="fade-right" data-duration="1000"
                         src="<?php the_field('sec_ani_img'); ?>" />
                 </div>
                 <div class="col-md-6">
