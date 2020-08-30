@@ -8,39 +8,18 @@ function get_free_terms() {
     $term = $_POST["term_id"];
     $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
 
-    if ( ! defined( 'ABSPATH' ) ) {
-      exit;
-    }
-    $downloads     = WC()->customer->get_downloadable_products();
-    $has_downloads = (bool) $downloads;
-
-    $product_ids = [];
-    foreach ($downloads as $download) {
-      $ids = $download['product_id'];
-      $product_ids[] = $ids;
-    }
-
-    $somdn_download_history = get_posts(
-      array(
-        'fields' => 'ids',
-        'posts_per_page' => -1,
-        'post_type' => 'somdn_tracked',
-      )
-    );
-
-    $somdn_download_ids = array();
-    foreach( $somdn_download_history as $somdn_history ) {
-      $somdn_product = get_post_meta( $somdn_history, 'somdn_product_id', true);
-      if ( ! in_array( $somdn_product, $somdn_download_ids ) ) {
-        $somdn_download_ids[] = $somdn_product;
-      }
-    }
-
     $args = array(
       'post_type' => 'product',
       'posts_per_page' => 20,
-      'post__in' => $somdn_download_ids,
       'paged' => $paged,
+      'meta_query' => array(
+        array(
+          'key' => '_price',
+          'value' => 0,
+          'compare' => '=',
+          'type' => 'NUMERIC'
+        )
+      ),
       'tax_query' => array(
         array(
           'taxonomy' => 'product_cat',
