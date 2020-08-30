@@ -189,27 +189,27 @@ foreach ($downloads as $download) {
                     <p class="c-sub">Track, analyze and display your data using Dashi bundle for magnificent results</p>
                 </div>
             </div>
-
-            <div class="row justify-content-center" style="padding-bottom: 90px;">
-                <div class="slider">
-                    <?php
-                    $dashboard_categories = get_field('dashboard_categories');
-                    foreach ($dashboard_categories as  $value):
-                    $slide_number = get_field('slide_colors', $value->ID );
-                    $title = wp_trim_words(get_the_title($value->ID), 3, '...');
-                    ?>
-                    <div class="col-md-2">
-                      <div class="img-top-card">
-                        <img src="<?= Utilities::global_thumbnails($value->ID,'full'); ?>">
-                        <div class="overlay-bg" style="background-image: url(<?= Utilities::global_thumbnails($value->ID,'full'); ?>);"></div>
-                      </div>
-                      <p class="models"><a class="text-white" href="<?= get_permalink($value->ID); ?>"><?= $title; ?></a></p>
-                      <p class="slidesnum"><?= $slide_number; ?> slides </p>
-                    </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
         </div>
+
+        <div class="container" style="padding-bottom: 90px;">
+          <div class="slider" id="lightSlider">
+              <?php
+              $dashboard_categories = get_field('dashboard_categories');
+              foreach ($dashboard_categories as  $value):
+              $slide_number = get_field('slide_colors', $value->ID );
+              $title = wp_trim_words(get_the_title($value->ID), 3, '...');
+              ?>
+              <div class="items">
+                <div class="img-top-card">
+                  <img src="<?= Utilities::global_thumbnails($value->ID,'full'); ?>">
+                  <div class="overlay-bg" style="background-image: url(<?= Utilities::global_thumbnails($value->ID,'full'); ?>);"></div>
+                </div>
+                <p class="models"><a class="text-white" href="<?= get_permalink($value->ID); ?>"><?= $title; ?></a></p>
+                <p class="slidesnum"><?= $slide_number; ?> slides </p>
+              </div>
+              <?php endforeach; ?>
+          </div>
+      </div>
      </section>
 
      <!-- customize sections  -->
@@ -482,6 +482,10 @@ foreach ($downloads as $download) {
                   });
               }
           });
+
+          $("#lightSlider").lightSlider({
+            item: 5,
+          }); 
       });
     </script>
 

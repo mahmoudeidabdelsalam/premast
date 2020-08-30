@@ -248,8 +248,35 @@ section {
   opacity: 0.8;
 }
 
-.slider {
-  display: contents;
+.lSAction a {
+  top: 85%;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #1885EA;
+  background: #1885EA;
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lSPrev:after {
+  content: "\f177";
+  display: inline-block;
+  font: normal normal normal 20px/1 FontAwesome !important;
+  color: #000;
+}
+
+.lSNext:after {
+  content: "\f178";
+  display: inline-block;
+  font: normal normal normal 20px/1 FontAwesome !important;
+  color: #000;
+}
+
+
+div#lightSlider .items {
+  padding: 15px;
 }
 
 .models {
