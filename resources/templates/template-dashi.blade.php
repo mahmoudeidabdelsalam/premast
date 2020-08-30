@@ -6,6 +6,22 @@
 @section('content')
   <link rel="stylesheet" href="<?= get_theme_file_uri() . '/framework/assets/dashi.css'; ?>">
 
+
+  <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+exit;
+}
+$downloads     = WC()->customer->get_downloadable_products();
+$has_downloads = (bool) $downloads;
+
+$product_ids = [];
+foreach ($downloads as $download) {
+    $ids = $download['product_id'];
+    $product_ids[] = $ids;
+}
+
+?>
   @while(have_posts()) @php the_post() @endphp
     <header style= "background-image:url('{{ the_field('background_mac') }}') ">
       <div class="conatiner">
@@ -46,15 +62,29 @@
                       <h3 class="dashi-text">
                           <?php the_field('f_heading'); ?>
                           </h3>
-                          <p class="subtext" style=" background-image: url(' {{ the_field ('line_img') }}')">
-                              <?php the_field('f_sub_heading'); ?>
-                          </p>
-                          <p class="pricing"><?php the_field('pricing_text'); ?></p>
-                          <?php
-                          $link = get_field('pricing_btn');
-                          if( $link ): ?>
-                          <a style="box-shadow: none!important;" class="btn btn-primary " href="<?php echo esc_url( $link ); ?>">Purchase Now </a>
-                              <?php endif; ?>
+
+
+                        @if(is_user_logged_in() && in_array('1019750', $product_ids))
+                          <a style="box-shadow: none!important;" class="btn btn-primary" href="<?php echo esc_url( $link ); ?>">download now</a>
+                        @else
+                            <p class="subtext" style=" background-image: url(' {{ the_field ('line_img') }}')">
+                                <?php the_field('f_sub_heading'); ?>
+                            </p>
+                            <p class="pricing"><?php the_field('pricing_text'); ?></p>
+                            <?php
+                            $link = get_field('pricing_btn');
+                            if( $link ): ?>
+                            <a style="box-shadow: none!important;" class="btn btn-primary " href="<?php echo esc_url( $link ); ?>">Purchase Now </a>
+                                <?php endif; ?>
+                        @endif
+
+
+
+                        <?php
+                        $link = get_field('download_demo');
+                        if( $link ): ?>
+                        <a style="box-shadow: none!important;" class="btn btn-outline-success " href="<?php echo esc_url( $link ); ?>">Download Demo </a>
+                        <?php endif; ?>
                       </div>
                   </div>
               </div>
@@ -62,14 +92,41 @@
       </div>
     </header>
 
-    <!-- container that contain animations and counter -->
-    <section >
-        <div class="conatiner">
+    <!-- the full access container -->
+    <section>
+        <div class="container-fluid pt-5">
             <div class="row">
-                <div col-md-8>
-                    <img class="img-fluid aos-init aos-animate" data-aos="fade-up" data-duration="1000" src="<?php the_field('ani_img'); ?>"/>
+                <div class="col-md-6">
+                    <img style="width:100%;height:617.43px;" class="simpleParallax" data-aos="fade-right" data-duration="1000"
+                        src="<?php the_field('sec_ani_img'); ?>" />
                 </div>
-                <div class="col-md-4 pt-5">
+                <div class="col-md-6">
+                    <div class="access">
+                        <p class="full"><?php the_field('sec_heading'); ?>
+                        </p>
+                        <p class="subline"><?php the_field('sec_sub_heading'); ?></p>
+                        <div class="badges">
+                            <div class="first">
+                                <img src="<?php the_field('light_badge'); ?>">
+                            </div>
+                            <div class="second">
+                                <img src="<?php the_field('update_badge'); ?>">
+                            </div>
+                            <div class="third">
+                                <img src="<?php the_field('support_badge'); ?>">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <section>
+    <!-- container that contain animations and counter -->
+        <div class="conatiner">
+            <div class="row p-5">
+                <div class="col-md-6">
                     <p class="text"><?php the_field('side_text'); ?></p>
                     <div class="counter">
                         <div class="container">
@@ -99,41 +156,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <img class="img-fluid aos-init aos-animate" data-aos="fade-left" data-duration="1000" src="<?php the_field('ani_img'); ?>"/>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- the full access container -->
-    <section>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="access">
-                        <p class="full"><?php the_field('sec_heading'); ?>
-                        </p>
-                        <p class="subline"><?php the_field('sec_sub_heading'); ?></p>
-                        <div class="badges">
-                            <div class="first">
-                                <img src="<?php the_field('light_badge'); ?>">
-                            </div>
-                            <div class="second">
-                                <img src="<?php the_field('update_badge'); ?>">
-                            </div>
-                            <div class="third">
-                                <img src="<?php the_field('support_badge'); ?>">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-7">
-                    <img style="width:100%;" class="simpleParallax" data-aos="fade-left" data-duration="1000"
-                        src="<?php the_field('sec_ani_img'); ?>" />
-                </div>
-            </div>
 
-        </div>
-        </div>
-    </section>
+
 
     <!-- image bar that should be animated  -->
     <section>
@@ -182,7 +213,7 @@
      </section>
 
      <!-- customize sections  -->
-      <section style="background: #202020;">
+      <section style="background:#202020;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="custom">
@@ -209,6 +240,38 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    {{-- new section --}}
+    <section  style="background-color:#171717;height: 565px;">
+     <div  class="container-fluid" class="new-section">
+        <div class="row">
+          <div class="col-md-6">
+            <img class="img-fluid aos-init aos-animate" id="image-preview" data-aos="fade-right" data-duration="1000" style="width:100%;" src="<?php the_field('image_preview'); ?>"/>
+            </div>
+
+            <div class="col-md-6 pt-5">
+                <div class="headline-section">
+                <h3 class="edit"><?php the_field('plus_header'); ?></h3>
+                </div>
+                <?php
+                $image = get_field('puls-sub');
+                // dd($image['url']);
+                ?>
+                <div>
+                    <img class="plus-logo" src="<?= $image['url']; ?>">
+                    <h3 class="exclusive-text"><?php the_field('exclusive_text'); ?> </h3>
+                </div>
+                <?php
+                $image = get_field('icon_list');
+                // dd($image['url']);
+                ?>
+                <div class="icons_list">
+                    <img src="<?php the_field('icon_list'); ?>">
+                </div>
+            </div>
+        </div>
+     </div>
     </section>
 
     <!-- carousel and testmonials  -->
@@ -266,7 +329,7 @@
     </section>
 
     <!-- bundle update section -->
-    <section style="background: linear-gradient(247.87deg, #00A3FF -15.32%, rgba(7, 62, 255, 0.8) 87.3%);">
+    <section style="background:linear-gradient(247.87deg, #00A3FF -15.32%, rgba(7, 62, 255, 0.8) 87.3%);">
         <div class="container">
             <div class="row justify-content-center pt-5">
                 <div class="bundels">
@@ -423,7 +486,55 @@
     </script>
 
     <style>
-        h5.icon_title {
+    a.btn.btn-outline-success {
+    font-family:'Roboto' , sans-serif
+    font-size: 16px;
+    font-weight: 400;
+    padding:10px 47px 10px 46px;
+    margin-left: 20px;
+    color: #ffffff;
+    background:transparent!important;
+ }
+     a.btn.btn-outline-success:hover {
+     background-color:linear-gradient(134.71deg, #1ADB72 -0.5%, #10B151 100%);
+     border-radius: 30px;
+     opacity: 1;
+      }
+
+        /* new section styles */
+       h3.exclusive-text{
+       font-family:'Roboto',sans-serif;
+       font-style: normal;
+       font-weight:300;
+       font-size: 24px;
+       line-height: 125.74%;
+       color: #FFFFFF;
+       padding-left: 99px;
+       padding-top: 40px;
+  }
+
+     #image-preview{
+     margin-left: -19px;
+     padding-top: 40px;
+     }
+     img.plus-logo {
+    padding-left: 100px;
+  }
+
+     h3.edit {
+       font-family:'Roboto',sans-serif;
+       font-style: normal;
+       font-weight: 700;
+       font-size: 40px;
+       line-height: 125.74%;
+       color: #FFFFFF;
+     }
+     .headline-section {
+    padding-top: 90px;
+    text-align: center;
+    align-items: center;
+    }
+  h5.icon_title {
   color: #ffffff;
   background-color: #1885EA;
   align-items: center;
@@ -491,25 +602,8 @@ h5.color_title {
   width: 85%;
   margin-top: 40px;
   margin-left: 37px;
-
-
 }
-
-    </style>
-    <script>
-      window.productHuntUpcoming = {
-        appId: 94791,
-        position: 'bottomLeft',
-      };
-
-      (function(doc, scr, src, a, b) {
-        a = doc.createElement(scr);
-        b = doc.getElementsByTagName(scr)[0];
-        a.async = true;
-        a.src = src;
-        b.parentNode.insertBefore(a, b);
-      })(document, 'script', 'https://assets.producthunt.com/assets/upwigloader.js');
-    </script>
+</style>
 
   @endwhile
 @endsection

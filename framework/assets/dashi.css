@@ -114,8 +114,7 @@ a.btn-primary {
   text-transform: capitalize;
   color: #FFFFFF;
   padding: 11px;
-  width: 197px;
-  height: 40px;
+  padding: 10px 47px 10px 46px;
   border:none;
 }
 a.btn-primary:hover {
