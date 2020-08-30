@@ -86,7 +86,7 @@
         <style>
             .side-menu-user ul li a {
                 font-weight:400;
-                
+
             }
 
         </style>

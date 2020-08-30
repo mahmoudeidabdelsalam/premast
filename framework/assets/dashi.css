@@ -91,6 +91,7 @@ p.subtext {
   font-size: 16px;
   line-height: 125.74%;
   color: #FFFFFF;
+  margin-right: -42px;
 }
 
 p.pricing {
@@ -114,8 +115,7 @@ a.btn-primary {
   text-transform: capitalize;
   color: #FFFFFF;
   padding: 11px;
-  width: 197px;
-  height: 40px;
+  padding: 10px 47px 10px 46px;
   border:none;
 }
 a.btn-primary:hover {
