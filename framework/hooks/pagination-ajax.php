@@ -39,7 +39,7 @@ function premast_ajax_pagination($args = array(), $query_object = 'wp_query') {
               foreach ($paginate_links as $link): 
                 $counter++;
               ?>
-                <li class="page-item <?= ($counter == $paged)? ' active':''; ?>"><a href="#" data-page="<?php echo $counter; ?>" class="page-numbers<?= ($counter == $paged)? ' current':''; ?>"><?php echo $counter; ?></a></li>
+                <li class="page-item <?= ($counter == $paged)? ' active':''; ?>"><a href="JavaScript:void(0);" data-page="<?php echo $counter; ?>" class="page-numbers<?= ($counter == $paged)? ' current':''; ?>"><?php echo $counter; ?></a></li>
             <?php endforeach; ?>
         </ul>
 
