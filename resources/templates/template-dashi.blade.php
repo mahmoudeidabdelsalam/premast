@@ -94,7 +94,7 @@ foreach ($downloads as $download) {
 
     <!-- the full access container -->
     <section>
-        <div class="container-fluid pt-5">
+        <div class="container-fluid pt-5 " style="padding-left:0!important;">
             <div class="row">
                 <div class="col-md-6">
                     <img style="width:100%;height:617.43px;" data-aos="fade-right" data-duration="1000"
