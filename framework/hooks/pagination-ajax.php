@@ -20,7 +20,7 @@ function premast_ajax_pagination($args = array(), $query_object = 'wp_query') {
     $current_page = max(1, get_query_var('paged'));
 
     $pages_count = $main_query->max_num_pages;
-    
+
     $default_args = array(
         'current' => $current_page,
         'total' => $pages_count,
@@ -39,7 +39,7 @@ function premast_ajax_pagination($args = array(), $query_object = 'wp_query') {
               foreach ($paginate_links as $link): 
                 $counter++;
               ?>
-                <li class="page-item"><a href="#" data-page="<?php echo $counter; ?>" class="page-numbers<?= ($counter == $paged)? ' current':''; ?>"><?php echo $counter; ?></a></li>
+                <li class="page-item <?= ($counter == $paged)? ' active':''; ?>"><a href="#" data-page="<?php echo $counter; ?>" class="page-numbers<?= ($counter == $paged)? ' current':''; ?>"><?php echo $counter; ?></a></li>
             <?php endforeach; ?>
         </ul>
 
