@@ -11,7 +11,9 @@
       </li>
     </ul>
     <div class="bg-thumbnail">
-      <img src="{{ Utilities::global_thumbnails(get_the_ID(),'medium')}}" class="card-img-top" alt="{{ the_title() }}">
+      <a href="{{ the_permalink() }}">
+        <img src="{{ Utilities::global_thumbnails(get_the_ID(),'medium')}}" class="card-img-top" alt="{{ the_title() }}">
+      </a>
     </div>
     <div class="card-body pt-3 pl-1 pr-1">
       <a class="card-link" href="{{ the_permalink() }}">
