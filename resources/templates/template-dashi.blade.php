@@ -78,12 +78,10 @@ foreach ($downloads as $download) {
                                 <?php endif; ?>
                         @endif
 
-
-
                         <?php
                         $link = get_field('download_demo');
-                        if( $link ): ?>
-                        <a style="box-shadow: none!important;" class="btn btn-outline-success " href="<?php echo esc_url( $link ); ?>">Download Demo </a>
+                        if( $link ):?>
+                        <a style="box-shadow: none!important;" class="btn btn-outline-success" href="<?php echo esc_url( $link ); ?>" download>Download Demo </a>
                         <?php endif; ?>
                       </div>
                   </div>
