@@ -532,8 +532,9 @@ foreach ($downloads as $download) {
      }
      .headline-section {
     padding-top: 90px;
-    text-align: center;
+    text-align: left;
     align-items: center;
+    padding-left: 100px;
     }
   h5.icon_title {
   color: #ffffff;
@@ -615,6 +616,11 @@ h5.color_title {
     margin-left: 90px;
     margin-top: 20px;
 }
+
+.themes-p, .icons-p, .characters-p {
+    font-size:16px;
+}
+
 
 </style>
 
