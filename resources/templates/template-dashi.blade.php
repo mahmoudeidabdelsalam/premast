@@ -212,7 +212,7 @@ foreach ($downloads as $download) {
     <!-- customize sections  -->
     <section style="background:#202020;">
       <div class="container">
-          <div class="row justify-content-center">
+          <div class="row justify-content-center customize-support">
               <div class="custom">
                   <p class="custom-head"><?php the_field('cust_headline'); ?></p>
                   <p class="custom-sub"><?php the_field('cust_sub'); ?></p>
@@ -502,6 +502,10 @@ foreach ($downloads as $download) {
       $('ul#myTab li.nav-item').on('click', function() {
         $('ul#myTab li').removeClass('active');
         $(this).addClass('active');
+        if($( "ul#myTab li:last-child" ).hasClass( "active" )) {
+          $('ul#myTab li:first-child').addClass('active');
+          $('ul#myTab li:last-child').removeClass('active');
+        }
       });
     });
   </script>
