@@ -716,13 +716,6 @@ html, body {
   overflow-x: hidden;
 }
 
-.logos {
-  width: 100%;
-  text-align: center;
-  display: inline-block;
-  padding: 20px;
-}
-
 .slides {
   height: 375px !important;
 }
@@ -735,8 +728,35 @@ p.c-text {
   padding:70px;
 }
 
+.logos {
+  width: 100%;
+  text-align: left;
+  display: inline-block;
+}
+
+.logos img {
+  padding: 70px;
+}
+
 /* mobile styles */
 @media (max-width: 600px) {
+  .slides {
+    height: 300px !important;
+    -webkit-animation: scroll-grid 6§0s linear infinite !important;
+    background-size: 1500px;
+  }
+
+  .logos {
+    width: 100%;
+    text-align: left;
+    display: inline-block;
+    padding: 20px;
+  }
+
+  .logos img {
+    padding: 20px;
+  }
+
   .dashi-head{
     padding:30px;
   }
