@@ -29,7 +29,7 @@ foreach ($downloads as $download) {
           <div class="col-md-8">
               <div id="navbar">
                   <?php if( get_field('logo_premast') ): ?>
-                   <a href="<?= the_field('link_logo_premast'); ?>"> <img style="padding-left:60px;" src="<?php the_field('logo_premast'); ?>" /> </a>
+                   <a class="logos" href="<?= the_field('link_logo_premast'); ?>"> <img style="padding-left:60px;" src="<?php the_field('logo_premast'); ?>" /> </a>
                   <?php endif; ?>
                   <nav></nav>
                   <?php
@@ -57,8 +57,8 @@ foreach ($downloads as $download) {
                       <img src="<?php the_field('logo_premast'); ?>" style="padding: 70px;" />
                   </a>
                   <div class="row">
-                      <div class="col-md-6" style="padding: 70px;">
-                          <img src="<?php the_field('dashi_logo'); ?>" />
+                      <div class="col-md-6" class="dashi-head">
+                          <img class="dashi-logo" src="<?php the_field('dashi_logo'); ?>" />
                       <h3 class="dashi-text">
                           <?php the_field('f_heading'); ?>
                           </h3>
@@ -95,7 +95,7 @@ foreach ($downloads as $download) {
         <div class="container-fluid pt-5 " style="padding-left:0!important;">
             <div class="row">
                 <div class="col-md-6">
-                    <img style="width:100%;height:617.43px;" data-aos="fade-right" data-duration="1000"
+                    <img class="first-ani" style="width:100%;" data-aos="fade-right" data-duration="1000"
                         src="<?php the_field('sec_ani_img'); ?>" />
                 </div>
                 <div class="col-md-6">
@@ -129,7 +129,7 @@ foreach ($downloads as $download) {
                     <div class="counter">
                         <div class="container">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4 col-4">
                                     <div class="themes">
                                         <p data-count="35" class="counter-count counting">0</p>
                                         <div class="vl"></div>
@@ -137,14 +137,14 @@ foreach ($downloads as $download) {
 
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 col-4">
                                     <div class="icons">
                                         <p data-count="3000"class="counter-count counting">0</p>
                                         <div class="vl"></div>
                                         <p class="icons-p">Vector Icons</p>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 col-4">
                                     <div class="characters">
                                         <p data-count="100" class="counter-count counting">0</p>
                                         <p class="characters-p">Vector Characters</p>
@@ -220,19 +220,19 @@ foreach ($downloads as $download) {
                 </div>
             </div>
             <div class="row" style="padding-bottom:90px; text-align:center; align-items:center;">
-                <div class="col-md-3 ">
+                <div class="col-md-3 col-6">
                     <img  src="<?php the_field('cust_icon'); ?>">
                     <h5 class="icon_title"><?php the_field('icon_title'); ?></h5>
                 </div>
-                <div class="col-md-3 ">
+                <div class="col-md-3 col-6">
                     <img  src="<?php the_field('cust_charts'); ?>">
                     <h5 class="chart_title"><?php the_field('chart_title'); ?></h5>
                 </div>
-                <div id="cc" class="col-md-3 ">
+                <div id="cc" class="col-md-3 col-6">
                     <img src="<?php the_field('cust_setting'); ?>">
                     <h5 class="setting_title"><?php the_field('setting_title'); ?></h5>
                 </div>
-                <div class="col-md-3 ">
+                <div class="col-md-3 col-6">
                     <img src="<?php the_field('cust_colors'); ?>">
                     <h5 class="color_title"><?php the_field('color_title'); ?></h5>
                 </div>
@@ -241,7 +241,7 @@ foreach ($downloads as $download) {
     </section>
 
     {{-- new section --}}
-    <section  style="background-color:#171717;height: 565px;">
+    <section class="section-new" style="background-color:#171717;">
      <div  class="container-fluid" class="new-section">
         <div class="row">
           <div class="col-md-6">
@@ -619,6 +619,12 @@ h5.color_title {
 
 .themes-p, .icons-p, .characters-p {
     font-size:16px;
+}
+section.section-new {
+  height: 565px;
+}
+img.aos-init.aos-animate {
+ height:617.43px;
 }
 
 
