@@ -759,7 +759,7 @@ p.c-text {
   }
 
   .logos img {
-    padding: 20px;
+    padding: 0;
   }
 
   .dashi-head {
@@ -845,9 +845,15 @@ p.c-text {
 
   .customize-support h5 {
     margin: 10px 0 !important;
-    width: 100%;
-    font-size: 14px;
+    width: 100% !important;
+    font-size: 14px !important;
     line-height: 23px;
+    padding: 10px !important;
+    border-radius: 4px;
+  }
+
+  .icons_list img {
+    max-width: 100%;
   }
 
   .headline-section {
