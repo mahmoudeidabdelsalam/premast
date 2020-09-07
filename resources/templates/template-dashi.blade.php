@@ -796,6 +796,9 @@ foreach ($downloads as $download) {
       white-space: nowrap;
       box-shadow: none;
     }
+    div#exampleModal .btn.btn-outline-success {
+      color: #333;
+    }
   </style>
 
 @endwhile
