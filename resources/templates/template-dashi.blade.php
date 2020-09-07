@@ -91,7 +91,7 @@ foreach ($downloads as $download) {
                           <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Sign up to get your free demo</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Get dashi Demo File For Free</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
