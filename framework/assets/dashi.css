@@ -899,10 +899,6 @@ p.c-text {
     text-decoration: none;
   }
 
-  div#accordionExample .card .card-header button:not(.collapsed) {
-    background-color: rgba(0, 0, 0, 0.12);
-  }
-
   ul.footer-menu {
     margin: 10px;
   }
