@@ -88,7 +88,7 @@ foreach ($downloads as $download) {
 
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
+                          <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                               <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Sign up to get your free demo</h5>
@@ -778,7 +778,7 @@ foreach ($downloads as $download) {
         font-style: normal;
         font-weight: normal;
         font-size: 16px;
-        color: #FFFFFF;
+        color: #22252a;
     }
 
     .gform_wrapper legend.gfield_label,
@@ -789,7 +789,7 @@ foreach ($downloads as $download) {
         font-size: 24px;
         line-height: 125.74%;
         text-transform: capitalize;
-        color: #FFFFFF;
+        color: #22252a;
     }
 
     .btn.btn-outline-success {
