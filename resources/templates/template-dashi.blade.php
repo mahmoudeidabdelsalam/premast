@@ -63,10 +63,6 @@ foreach ($downloads as $download) {
                         </h3>
 
 
-
-
-                      <div class="downloads">
-                        <div class="downloadDashi">
                           @if(is_user_logged_in() && in_array('1013447', $product_ids))
                             <a style="box-shadow: none!important;" class="btn btn-primary" href="<?php echo esc_url( $link ); ?>">download now</a>
                           @else
@@ -80,14 +76,38 @@ foreach ($downloads as $download) {
                               <a style="box-shadow: none!important;" class="btn btn-primary " href="<?php echo esc_url( $link ); ?>">Purchase Now </a>
                                   <?php endif; ?>
                           @endif
+
+
+
+                        
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
+                          Download Demo
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Sign up to get your free demo</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                               <?php
+                                $form_id = get_field('form_download_demo');
+                                if( $form_id ):
+                                ?>
+                                  <?= do_shortcode( '[gravityform id="'.$form_id['id'].'" name="" title="false" description="false" ajax="true" ]' ); ?>
+                                <?php endif; ?>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <?php
-                        $form_id = get_field('form_download_demo');
-                        if( $form_id ):
-                        ?>
-                          <?= do_shortcode( '[gravityform id="'.$form_id['id'].'" name="" title="false" description="false" ajax="true" ]' ); ?>
-                        <?php endif; ?>
-                      </div>
+
                     </div>
                 </div>
             </div>
@@ -774,6 +794,7 @@ foreach ($downloads as $download) {
 
     .btn.btn-outline-success {
       white-space: nowrap;
+      box-shadow: none;
     }
   </style>
 
