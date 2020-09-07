@@ -836,8 +836,8 @@ p.c-text {
   }
 
   h3.edit{
-    font-size:27px!important;
-    font-weight:600
+    font-size: 27px!important;
+    font-weight: 600 !important;
   }
   img.plus-logo {
     width: 70%!important;
@@ -845,10 +845,6 @@ p.c-text {
 
   p.counter-count.counting {
     font-size: 26px !important;
-  }
-
-  h3.edit {
-    font-size: 23px !important;
   }
 
   .customize-support h5 {
