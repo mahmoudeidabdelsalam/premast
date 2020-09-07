@@ -248,7 +248,7 @@ foreach ($downloads as $download) {
             <img class="img-fluid aos-init aos-animate" id="image-preview" data-aos="fade-right" data-duration="1000" style="width:100%;" src="<?php the_field('image_preview'); ?>"/>
             </div>
 
-            <div class="col-md-6 pt-5">
+            <div class="col-md-6 p-4">
                 <div class="headline-section">
                 <h3 class="edit"><?php the_field('plus_header'); ?></h3>
                 </div>
@@ -264,7 +264,7 @@ foreach ($downloads as $download) {
                 // dd($image['url']);
                 ?>
                 <div class="icons_list">
-                    <img src="<?php the_field('icon_list'); ?>">
+                    <img src="<?php the_field('icon_list'); ?>" style="width:95%;">
                 </div>
             </div>
         </div>
