@@ -63,25 +63,31 @@ foreach ($downloads as $download) {
                         </h3>
 
 
-                      @if(is_user_logged_in() && in_array('1013447', $product_ids))
-                        <a style="box-shadow: none!important;" class="btn btn-primary" href="<?php echo esc_url( $link ); ?>">download now</a>
-                      @else
-                          <p class="subtext">
-                              <?php the_field('f_sub_heading'); ?>
-                          </p>
-                          <p class="pricing"><?php the_field('pricing_text'); ?></p>
-                          <?php
-                          $link = get_field('pricing_btn');
-                          if( $link ): ?>
-                          <a style="box-shadow: none!important;" class="btn btn-primary " href="<?php echo esc_url( $link ); ?>">Purchase Now </a>
-                              <?php endif; ?>
-                      @endif
 
-                      <?php
-                      $link = get_field('download_demo');
-                      if( $link ):?>
-                      <a style="box-shadow: none!important;" class="btn btn-outline-success" href="<?php echo esc_url( $link ); ?>" download>Download Demo </a>
-                      <?php endif; ?>
+
+                      <div class="downloads">
+                        <div class="downloadDashi">
+                          @if(is_user_logged_in() && in_array('1013447', $product_ids))
+                            <a style="box-shadow: none!important;" class="btn btn-primary" href="<?php echo esc_url( $link ); ?>">download now</a>
+                          @else
+                              <p class="subtext">
+                                  <?php the_field('f_sub_heading'); ?>
+                              </p>
+                              <p class="pricing"><?php the_field('pricing_text'); ?></p>
+                              <?php
+                              $link = get_field('pricing_btn');
+                              if( $link ): ?>
+                              <a style="box-shadow: none!important;" class="btn btn-primary " href="<?php echo esc_url( $link ); ?>">Purchase Now </a>
+                                  <?php endif; ?>
+                          @endif
+                        </div>
+                        <?php
+                        $form_id = get_field('form_download_demo');
+                        if( $form_id ):
+                        ?>
+                          <?= do_shortcode( '[gravityform id="'.$form_id['id'].'" name="" title="false" description="false" ajax="true" ]' ); ?>
+                        <?php endif; ?>
+                      </div>
                     </div>
                 </div>
             </div>
@@ -715,6 +721,59 @@ foreach ($downloads as $download) {
       ul#myTab li.active + li {
           display: block;
       }
+    }
+    .downloads {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    .gform_wrapper .gform_footer .button-green {
+        background: linear-gradient(168.41deg, #1ADB72 -0.5%, #10B151 100%) !important;
+        box-shadow: none !important;
+        font-size: 21px !important;
+        font-weight: 300 !important;
+        margin: 15px 0 0 0 !important;
+    }
+
+    .gform_wrapper .gform_footer {
+        margin: 0 !important;
+        padding: 0 !important;
+        text-align: left !important;
+    }
+
+    .gform_wrapper ul.gform_fields li.gfield {
+        padding: 0 !important;
+    }
+
+    .gform_wrapper {
+        margin: 0 !important;
+    }
+
+    .gform_wrapper .field_description_below .gfield_description {
+        color: #fff;
+        background-repeat: no-repeat;
+        background-position: bottom;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        color: #FFFFFF;
+    }
+
+    .gform_wrapper legend.gfield_label,
+    .gform_wrapper .top_label .gfield_label {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 500 !important;
+        font-size: 24px;
+        line-height: 125.74%;
+        text-transform: capitalize;
+        color: #FFFFFF;
+    }
+
+    .btn.btn-outline-success {
+      white-space: nowrap;
     }
   </style>
 
