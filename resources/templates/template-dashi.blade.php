@@ -333,39 +333,80 @@ foreach ($downloads as $download) {
                   <p class="bd-sub"><?= the_field('timeline_subheadline'); ?></p>
               </div>
               <div class="col-12 timeline">
-                <ul class="nav nav-pills nav-fill" id="myTab" role="tablist">
-                  <?php
+
+                
+                @if(wp_is_mobile())
+                  <div class="accordion" id="accordionExample">
+                    <?php
                     $counter = -1;
                     if( have_rows('timelines') ):
                       while( have_rows('timelines') ): the_row();
                         $counter++;
-                  ?>
-                    <li class="nav-item <?= ($counter == 0)? 'active':''; ?>">
-                      <a class="nav-link <?= ($counter == 0)? 'active':''; ?>" id="home-tab<?= $counter; ?>" data-toggle="tab" href="#home<?= $counter; ?>" role="tab" aria-controls="home<?= $counter; ?>" aria-selected="true"><?= the_sub_field('headline_item'); ?> <span><?= the_sub_field('date_item'); ?></span></a>
-                    </li>
-                  <?php
-                      endwhile;
-                    endif;
-                  ?>
-                </ul>
-                <div class="tab-content" id="myTabContent">
-                  <?php
-                    $counter = -1;
-                    if( have_rows('timelines') ):
-                      while( have_rows('timelines') ): the_row();
-                      $counter++;
-                  ?>
-                    <div class="tab-pane fade <?= ($counter == 0)? 'show active':''; ?>" id="home<?= $counter; ?>" role="tabpanel" aria-labelledby="home-tab<?= $counter; ?>">
-                      <div class="col-md-6 col-12 col-content">
+                    ?>
+                      <div class="card">
+                        <div class="card-header" id="headingOne<?= $counter; ?>">
+                          <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne<?= $counter; ?>" aria-expanded="true" aria-controls="collapseOne<?= $counter; ?>">
+                              <?= the_sub_field('headline_item'); ?> <span><?= the_sub_field('date_item'); ?></span>
+                            </button>
+                          </h2>
+                        </div>
+                    
+                        <div id="collapseOne<?= $counter; ?>" class="collapse <?= ($counter == 0)? 'show':''; ?>" aria-labelledby="headingOne<?= $counter; ?>" data-parent="#accordionExample">
+                          <div class="card-body">
                           <h3><?= the_sub_field('headline_item_content'); ?></h3>
                           <p><?= the_sub_field('description_item_content'); ?></p>
+                          </div>
                         </div>
-                    </div>
-                  <?php
+                      </div>
+                    <?php
                       endwhile;
                     endif;
-                  ?>
-                </div>
+                    ?>
+                  </div>
+                @else
+                  <ul class="nav nav-pills nav-fill" id="myTab" role="tablist">
+                    <?php
+                      $counter = -1;
+                      if( have_rows('timelines') ):
+                        while( have_rows('timelines') ): the_row();
+                          $counter++;
+                    ?>
+                      <li class="nav-item <?= ($counter == 0)? 'active':''; ?>">
+                        <a class="nav-link <?= ($counter == 0)? 'active':''; ?>" id="home-tab<?= $counter; ?>" data-toggle="tab" href="#home<?= $counter; ?>" role="tab" aria-controls="home<?= $counter; ?>" aria-selected="true"><?= the_sub_field('headline_item'); ?> <span><?= the_sub_field('date_item'); ?></span></a>
+                      </li>
+                    <?php
+                        endwhile;
+                      endif;
+                    ?>
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <?php
+                      $counter = -1;
+                      if( have_rows('timelines') ):
+                        while( have_rows('timelines') ): the_row();
+                        $counter++;
+                    ?>
+                      <div class="tab-pane fade <?= ($counter == 0)? 'show active':''; ?>" id="home<?= $counter; ?>" role="tabpanel" aria-labelledby="home-tab<?= $counter; ?>">
+                        <div class="col-md-6 col-12 col-content">
+                            <h3><?= the_sub_field('headline_item_content'); ?></h3>
+                            <p><?= the_sub_field('description_item_content'); ?></p>
+                          </div>
+                      </div>
+                    <?php
+                        endwhile;
+                      endif;
+                    ?>
+                  </div>
+
+                @endif
+
+
+
+                
+
+
+
               </div>
           </div>
       </div>

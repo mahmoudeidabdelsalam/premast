@@ -853,4 +853,63 @@ p.c-text {
   .headline-section {
     padding-top: 0 !important;
   }
+  div#accordionExample .card {
+    background: transparent !important;
+    box-shadow: none !important;
+    margin-bottom: 5px;
+  }
+
+  div#accordionExample .card .card-header {
+    background: transparent !important;
+    border: none;
+  }
+
+  div#accordionExample {}
+
+  div#accordionExample .card-body {
+    color: #fff;
+  }
+
+  div#accordionExample .card .card-header button {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    text-transform: capitalize;
+    color: #FFFFFF;
+    padding-top: 20px;
+    background: transparent;
+    box-shadow: none;
+    padding: 5px;
+    border-radius: 0;
+  }
+
+
+  div#accordionExample .card .card-header button span {
+    float: right;
+    font-size: 12px;
+    font-weight: 100;
+    border-bottom: 1px solid #ccc;
+    display: inline-block;
+    width: 100%;
+  }
+
+  div#accordionExample .card .card-header button:hover,
+  div#accordionExample .card .card-header button.active {
+    text-decoration: none;
+  }
+
+  div#accordionExample .card .card-header button:not(.collapsed) {
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+
+  ul.footer-menu {
+    margin: 10px;
+  }
+  ul.footer-links {
+    white-space: nowrap;
+    margin: 0;
+    flex-flow: column;
+    width: 100%;
+  }
 }
