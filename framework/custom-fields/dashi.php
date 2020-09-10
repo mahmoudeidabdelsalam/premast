@@ -227,6 +227,25 @@ acf_add_local_field_group(array(
 			),
 			'return_format' => 'url',
         ),
+
+
+        array(
+          'key' => 'field_5f56380cbb361',
+          'label' => 'form download demo',
+          'name' => 'form_download_demo',
+          'type' => 'gravity_forms_field',
+          'instructions' => '',
+          'required' => 0,
+          'conditional_logic' => 0,
+          'wrapper' => array(
+            'width' => '',
+            'class' => '',
+            'id' => '',
+          ),
+          'allow_null' => 0,
+          'allow_multiple' => 0,
+        ),
+
         array(
             'key' => 'field_5e76642142141242141244bec66f7',
             'label' => 'download demo',
