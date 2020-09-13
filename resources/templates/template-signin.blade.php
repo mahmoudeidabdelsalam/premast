@@ -256,4 +256,32 @@ small#forgotpassword {
 .tab-switch.active {
     display: block;
 }
+input#user_pass {
+    width: 100%;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid #E3E3E3;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 10px;
+}
+input#user_login {
+    width: 100%;
+    height: 44px;
+    border: 1px solid #E3E3E3;
+    background: #ffffff;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 10px;
+    }
+    input#wp-submit {
+    background: linear-gradient(134.71deg, #6B73FF -0.5%, #000DFF 100%);border-radius: 30px;border: none;padding: 6px 97px 6px 97px;
+    color:#ffffff;
+    font-family: 'Roboto' , sans-serif;
+    }
+    input#wp-submit:hover {
+    background: linear-gradient(134.71deg, #000DFF 100%,#6B73FF -0.5%,);
+    opacity:0.095;
+    }
+
 </style>
