@@ -18,10 +18,6 @@
 @endif
 
 
-
-
-
-
 <div class="container-fluid">
     <div class="row justify-content-left">
       <div class="col-md-5 p-0">
@@ -58,7 +54,6 @@
             {{ wp_login_form($args) }}
 
             <a href="#" class="switch-link" data-tab="LostPassword">Lost your password?</a>
-
           </div>
 
           <div class="formLogin tab-switch" id="LostPassword">
@@ -82,7 +77,7 @@
             </form>
             <?php do_action( 'woocommerce_after_lost_password_form' ); ?>
 
-            <a href="#" class="switch-link" data-tab="LoginForm">Login</a>
+            <a href="#" class="switch-link" data-tab="LoginForm" style="display:none;">Login</a>
           </div>
         </div>
       </div>
@@ -115,7 +110,7 @@
 
 <style>
 .background-img {
-    height: 600px;
+    height: 100%;
     width: auto;
     background-repeat: no-repeat;
     background-size: cover;
@@ -207,7 +202,8 @@ small#forgotpassword {
 }
 
 .btn.btn-primary:hover {
-    background: linear-gradient(134.71deg, #000DFF -0.5%, #6B73FF 100%);
+    background: linear-gradient(134.71deg, #000DFF -0.5%, #6B73FF 100%)!important;
+    opacity: .65;
 }
 
 .btn.btn-outline-dark {
@@ -236,18 +232,10 @@ small#forgotpassword {
     font-size: 16px;
 }
 
-@media only screen and (max-width: 600px) {
-    a.btn.btn-outline-dark {
-        padding: 8px;
-        width: 100%;
-        margin: 15px 0px 0px 0px;
-    }
 
-    a.btn.btn-primary {
-        padding: 8px;
-        width: 100%;
-    }
-}
+
+
+
 
 .tab-switch {
   display: none;
@@ -283,5 +271,71 @@ input#user_login {
     background: linear-gradient(134.71deg, #000DFF 100%,#6B73FF -0.5%,);
     opacity:0.095;
     }
+    div#nsl-custom-login-form-1 {
+    position: absolute;
+    bottom: 28px;
+    right: 145px;
+   }
+
+   form#loginform {
+    position: relative;
+   }
+   a.switch-link {
+    right: 93px;
+    position: absolute;
+    bottom: 196px;
+    color: #1E6DFB;
+    opacity: 0.88;
+}
+   @media only screen and (max-width: 600px) {
+  a.btn.btn-outline-dark {
+        padding: 8px;
+        width: 100%;
+        margin: 15px 0px 0px 0px;
+    }
+
+    a.btn.btn-primary {
+        padding: 8px;
+        width: 100%;
+    }
+    div#nsl-custom-login-form-1 {
+      position: absolute;
+      bottom: -21px;
+      right: -40px;
+}
+a.switch-link {
+    right: 160px;
+    position: absolute;
+    bottom: 217px;
+    color: #1E6DFB;
+    opacity: 0.88;
+    font-size: 14px;
+    padding-bottom:9px;
+
+    }
+    p.login-remember {
+    padding-top: 17px;
+   }
+}
+button.woocommerce-Button.button {
+    background: linear-gradient(134.71deg, #6B73FF -0.5%, #000DFF 100%);
+    border-radius: 30px;
+    border: none;
+    width: width;
+    width: 100%;
+    heigth: 251px;
+    height: auto;
+    padding: 10px 0 10px 0;
+    color: #ffffff;
+    align-items: center;
+    text-align: center;
+}
+
+
+p.woocommerce-form-row.form-row {
+    padding-top: 14px;
+}
+
+
 
 </style>

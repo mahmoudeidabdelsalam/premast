@@ -34949,7 +34949,7 @@ span.status.rejected {
 .download-product p.price {
   font-size: 30px !important;
   color: #197af7 !important;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 /* line 94, resources/assets/styles/layouts/_posts.scss */
