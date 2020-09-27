@@ -1,4 +1,4 @@
-@php 
+@php
   $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
   $Name   = isset($_GET['refine']) ? $_GET['refine'] : '0';
   $sort   = isset($_GET['sort']) ? $_GET['sort'] : '0';
@@ -28,14 +28,14 @@
 
 @section('content')
 
-@php 
+@php
   global $current_user;
   wp_get_current_user();
   global $wp;
 @endphp
 
 
-@if ( wp_is_mobile() ) 
+@if ( wp_is_mobile() )
 
   <div class="col-12 d-flex">
     <div class="dropdown">
@@ -43,8 +43,8 @@
         <img src="{{ get_theme_file_uri().'/resources/assets/images' }}/categories.svg" alt=""> {{ _e('Categories', 'premast') }}
       </a>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuCat">
-        @if($taxonomy_query->parent) 
-          @php 
+        @if($taxonomy_query->parent)
+          @php
           $term_parent = get_term_parents_list( $taxonomy_query->parent, 'product_cat' );
             $term_link = get_term_link( $taxonomy_query );
           @endphp
@@ -55,7 +55,7 @@
             <a class="text-term  active " href="{{ $term_link }}">{{ $taxonomy_query->name }} <span class="count-term">{{ $taxonomy_query->count }}</span></a>
           </li>
         @else
-          @php 
+          @php
             $terms = get_terms( 'product_cat', array( 'parent' => $taxonomy_query->term_id, 'orderby' => 'slug', 'hide_empty' => false ) );
           @endphp
           @foreach ( $terms as $term )
@@ -90,7 +90,7 @@
 
 <div class="container-fiuld">
   <div class="row justify-content-center m-0">
-    @if ( !wp_is_mobile() ) 
+    @if ( !wp_is_mobile() )
       <div class="col-md-2 col-sm-12">
         <div class="by-filter">
           <div class="accordion" id="accordionExample">
@@ -136,8 +136,8 @@
               <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
                 <div class="card-body">
                 <ul class="list-unstyled mb-0">
-                  @if($taxonomy_query->parent) 
-                    @php 
+                  @if($taxonomy_query->parent)
+                    @php
                       $term_parent = get_term_parents_list( $taxonomy_query->parent, 'product_cat' );
                       $term_link = get_term_link( $taxonomy_query );
                       $termchildren = get_term_children( $taxonomy_query->term_id, 'product_cat' );
@@ -150,7 +150,7 @@
                     </li>
                     @if ($termchildren)
                       @foreach ($termchildren as $child)
-                      @php 
+                      @php
                       $term = get_term_by( 'id', $child, 'product_cat' );
                       @endphp
                         <li class="list-item">
@@ -162,7 +162,7 @@
                     <li class="list-item">
                       <a class="text-term active" href="#">{{ _e('All Categories', 'premast') }} <span class="count-term">{{ $taxonomy_query->count }}</span></a>
                     </li>
-                    @php 
+                    @php
                       $terms = get_terms( 'product_cat', array( 'parent' => $taxonomy_query->term_id, 'orderby' => 'slug', 'hide_empty' => false ) );
                     @endphp
                     @foreach ( $terms as $term )
@@ -248,7 +248,7 @@
               ),
             );
           }
-          
+
           if( $sort == 'featured') {
             $orders['tax_query'] = array(
               'relation' => 'AND',
@@ -266,7 +266,7 @@
           }
           $my_query = new \WP_Query( $args );
           if ($sort != '0') {
-            $more_query = new \WP_Query( $orders ); 
+            $more_query = new \WP_Query( $orders );
             $my_query->posts = array_merge( $more_query->posts, $my_query->posts);
             $my_query->post_count = count( $my_query->posts );
           }
@@ -336,8 +336,8 @@
                   </a>
                   <div class="review-and-download">
                     <div class="review">
-                      @if (get_option('woocommerce_enable_review_rating' ) == 'yes') 
-                        <?php 
+                      @if (get_option('woocommerce_enable_review_rating' ) == 'yes')
+                        <?php
                           global $product;
                           $rating_count = method_exists($product, 'get_rating_count')   ? $product->get_rating_count()   : 1;
                           $review_count = method_exists($product, 'get_review_count')   ? $product->get_review_count()   : 1;
@@ -350,7 +350,7 @@
                         @if ($rating_count > 0)
                           {!! wc_get_rating_html($average, $rating_count) !!}
                           <span class="icon-review icon-meta" itemprop="reviewCount">{{ $average }}</span>
-                        @else 
+                        @else
                           {!! wc_get_rating_html('1', '5') !!}
                           <span class="icon-review icon-meta" itemprop="reviewCount">{{ _e('0', 'premast') }}</span>
                         @endif
@@ -369,7 +369,7 @@
 
                   </div>
                 </div>
-              </div>              
+              </div>
             </div>
           @endwhile
 
@@ -381,14 +381,14 @@
         @php (wp_reset_postdata())
       </div>
 
-      
+
       <div class="col-12 pt-5 pb-5">
         @if ($sort != '0')
           <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $more_query) }}</nav>
-        @else 
+        @else
           <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $my_query) }}</nav>
         @endif
-        
+
       </div>
     </div>
   </div>

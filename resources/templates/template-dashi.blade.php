@@ -427,12 +427,6 @@ foreach ($downloads as $download) {
 
                 @endif
 
-
-
-
-
-
-
               </div>
           </div>
       </div>
@@ -726,6 +720,22 @@ foreach ($downloads as $download) {
     }
 
     @media (max-width: 576px) {
+        ul.footer-menu li, ul.footer-menu li a, ul.footer-links li, ul.footer-links li a
+    {
+     padding-bottom:35px;
+    }
+    ul.footer-menu li:nth-child(1) {
+    display: block;
+    width: 100%;
+    flex: 0 0 100%;
+    text-align: left;
+    padding: 0;
+    margin-bottom: 23px;
+    }
+    ul.footer-menu {
+    flex-wrap: wrap;
+     }
+
       ul#myTab li {
           display: none;
           flex: 0 0 50%;
@@ -816,9 +826,11 @@ foreach ($downloads as $download) {
       white-space: nowrap;
       box-shadow: none;
     }
+
     div#exampleModal .btn.btn-outline-success {
       color: #333;
     }
+
   </style>
 
 @endwhile

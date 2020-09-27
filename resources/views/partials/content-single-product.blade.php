@@ -13,7 +13,7 @@
     global $product;
     @endphp
 
-    @php 
+    @php
       global $current_user;
       wp_get_current_user();
       $limit = somdn_has_user_reached_limit(get_the_ID(), $current_user->ID);
@@ -49,7 +49,7 @@
       // dd($follow_authors);
     @endphp
 
-  
+
 
     <div id="product-{{ the_ID() }}" {!! wc_product_class() !!}>
       <div class="container custom-container mt-5 mb-5 pt-5">
@@ -61,19 +61,19 @@
           </div>
 
           <div class="col-md-8 col-12">
-            
+
             <div class="row mb-5">
               <div class="col-12">
                 @php
                   do_action( 'woocommerce_before_single_product_summary' );
                 @endphp
-                @php  
+                @php
                   $attachment_ids = $product->get_gallery_image_ids();
-                @endphp                         
+                @endphp
                 @if ($attachment_ids)
                   <ul id="imageGallery" class="cS-hidden">
-                    @foreach( $attachment_ids as $attachment_id ) 
-                      @php 
+                    @foreach( $attachment_ids as $attachment_id )
+                      @php
                         $large = wp_get_attachment_image_url( $attachment_id, 'medium_large' );
                         $thumb = wp_get_attachment_image_url( $attachment_id, 'thumbnail' );
                       @endphp
@@ -82,10 +82,10 @@
                       </li>
                     @endforeach
                   </ul>
-                @else 
-                  <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}"> 
+                @else
+                  <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="card-img-top" alt="{{ the_title() }}">
                 @endif
-                @if ( !wp_is_mobile() ) 
+                @if ( !wp_is_mobile() )
                   @if (get_field('slide_gallery'))
                     <div class="embed-container">
                       {{ the_field('slide_gallery') }}
@@ -99,11 +99,11 @@
                 @endif
               </div>
             </div>
-            @if ( !wp_is_mobile() ) 
+            @if ( !wp_is_mobile() )
               @include('partials/incloud/comments')
             @endif
           </div>
-          
+
           <div class="summary entry-summary col-md-4 col-12 sidebar-shop">
 
             @include('partials/incloud/price-item')
@@ -123,7 +123,7 @@
 
 
 
-            @if ( wp_is_mobile() ) 
+            @if ( wp_is_mobile() )
               @if (get_field('slide_gallery'))
                 <div class="embed-container">
                   {{ the_field('slide_gallery') }}
@@ -140,7 +140,7 @@
 
               <h3>{{ _e('published by', 'premast') }}</h3>
 
-              @php 
+              @php
                 $avatar = get_field('owner_picture', 'user_'. $author );
                 $user_post_count = count_user_posts( $author , 'product' );
               @endphp
@@ -149,16 +149,16 @@
                   <div class="avatar align-self-center mr-3">
                     <img src="{{ $avatar['url'] }}" alt="{!! get_the_author_meta('display_name', $author) !!}">
                   </div>
-                @else 
+                @else
                   {!! get_avatar( get_the_author_meta('ID', $author), '94', null, null, array( 'class' => array( 'align-self-start', 'mr-3' ) ) ) !!}
                 @endif
                 <div class="media-body pt-3">
                   <h5 class="mt-0 text-black">
                     <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ), get_the_author_meta( 'user_nicename' ) ); ?>"><?php the_author(); ?></a>
 
-                    @if (in_array( $current_user->ID, $followers )) 
+                    @if (in_array( $current_user->ID, $followers ))
                       <a class="follow unfollow" href="javascript:void(0)" data-event="unfollow" data-user="<?= $current_user->ID; ?>" data-author="<?= get_the_author_meta( 'ID' ); ?>"><span class="fo-text">{{ _e('unfollow', 'premast') }}</span> <span id="fo-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span></a>
-                    @else 
+                    @else
                       <a class="follow" href="javascript:void(0)" data-event="follow" data-user="<?= $current_user->ID; ?>" data-author="<?= get_the_author_meta( 'ID' ); ?>"><span class="fo-text">{{ _e('follow', 'premast') }}</span> <span id="fo-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span></a>
                     @endif
                   </h5>
@@ -167,7 +167,7 @@
               </div>
             </div>
 
-              @if ( wp_is_mobile() ) 
+              @if ( wp_is_mobile() )
                 @include('partials/incloud/comments')
               @endif
           </div>
@@ -184,7 +184,7 @@
       @if($related->have_posts())
         <div class="container">
           <h3>{{ _e('related Items', 'premast') }}</h3>
-          <div class="item-columns row m-0 col-12 p-0"> 
+          <div class="item-columns row m-0 col-12 p-0">
             @while($related->have_posts() ) @php($related->the_post())
               @include('partials/incloud/card-user')
             @endwhile
@@ -195,7 +195,7 @@
       @if($related_author->have_posts())
         <div class="container">
           <h3>{{ _e('More from the same author', 'premast') }}</h3>
-          <div class="item-columns row m-0 col-12 p-0"> 
+          <div class="item-columns row m-0 col-12 p-0">
             @while($related_author->have_posts() ) @php($related_author->the_post())
               @include('partials/incloud/card-user')
             @endwhile
@@ -204,13 +204,13 @@
         </div>
       @endif
     </section>
-   
+
     <section class="download-footer">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-8 col-12">
             <div class="media">
-              <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="align-self-center mr-3" alt="{{ the_title() }}"> 
+              <img src="{{ Utilities::global_thumbnails(get_the_ID(),'full')}}" class="align-self-center mr-3" alt="{{ the_title() }}">
               <div class="media-body pt-4">
                 <h5 class="mt-0">{{ the_title() }}</h5>
                 <p class="text-description">{!! $excerpt !!}</p>
@@ -231,7 +231,7 @@
                     <span class="price">
                       <del>
                         <span class="woocommerce-Price-amount amount">{{ $price }}<span class="woocommerce-Price-currencySymbol">{!! $symbol !!}</span></span>
-                      </del> 
+                      </del>
                       <span>
                         <span class="woocommerce-Price-amount amount">{{ $sale }}<span class="woocommerce-Price-currencySymbol">{!! $symbol !!}</span></span>
                       </span>
@@ -241,14 +241,14 @@
                     <span class="price">
                       <span>
                         <span class="woocommerce-Price-amount amount">{{ $price }}<span class="woocommerce-Price-currencySymbol">{!! $symbol !!}</span></span>
-                      </span> 
+                      </span>
                     </span>
-                  @else 
+                  @else
                     <span class="price">{{ _e('Download Now', 'premast') }}</span>
                   @endif
                 </a>
                 @endif
-              @endif 
+              @endif
             </div>
           </div>
         </div>
@@ -266,14 +266,14 @@
           $('button#somdn-form-submit-button').click();
         });
 
-    
+
 
         $("body").on("click", ".follow", function () {
           var user_id = $('.follow').data('user');
           var author_id = $('.follow').data('author');
           var event = $('.follow').data('event');
 
-          
+
           $.ajax({
             url: "<?= admin_url( 'admin-ajax.php' ); ?>",
             type: 'post',
@@ -288,7 +288,7 @@
             },
             success: function (response) {
               $('#fo-loader').hide();
-              
+
               if(response == 'follow') {
                 $('.follow .fo-text').text('unfollow');
                 $('.follow').addClass('unfollow');
@@ -310,7 +310,7 @@
     <style>
       .author-media h5 .unfollow {
         background-color: #ec0000;
-      } 
+      }
 
       .timeline-item {
         background-color: #fff;
@@ -384,11 +384,15 @@
 
       .background-masker.content-four {
         left: 440px;
-      } 
-      
+      }
+
       .background-masker.content-five {
         left: 550px;
-      }      
+      }
+      .download-product p.price {
+        font-weight:700;
+        font-family:'Roboto' , sans-serif;
+      }
     </style>
   @endwhile
 @endsection
