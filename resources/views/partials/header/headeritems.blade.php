@@ -115,9 +115,9 @@ $time = get_the_time('Y-m-d')
           <section class="banner-items" style="background: linear-gradient(105deg, {{ $color_one }} 0.7%, {{ $color_two }} 100%);">
             <div class="elementor-background-overlay-items" style="background-image: url('{{ $image }}');"></div>
             <div class="container-fluid">
-              <div class="row align-items-center text-left">
-                <h1 class="col-12 text-black"><span class="font-weight-600">{{ $heading }}</span></h1>
-                <p class="col-md-5 col-12 text-black font-weight-300">{{ $description }}</p>
+              <div class="row align-items-center text-center justify-content-center">
+                <h1 class="col-12 text-black">{{ $heading }}</h1>
+                <p class="col-md-8 col-12 text-black font-weight-300">{{ $description }}</p>
               </div>
             </div>
           </section>
@@ -136,9 +136,9 @@ $time = get_the_time('Y-m-d')
             <section class="banner-items" style="background: linear-gradient(105deg, {{ $color_one }} 0.7%, {{ $color_two }} 100%);">
               <div class="elementor-background-overlay-items" style="background-image: url('{{ $image }}');"></div>
               <div class="container-fluid">
-                <div class="row align-items-center text-left">
-                  <h1 class="col-12 text-black"><span class="font-weight-600">{{ $heading }}</span></h1>
-                  <p class="col-md-5 col-12 text-black font-weight-300">{{ $description }}</p>
+                <div class="row align-items-center text-center justify-content-center">
+                  <h1 class="col-12 text-black">{{ $heading }}</h1>
+                  <p class="col-md-8 col-12 text-black font-weight-300">{{ $description }}</p>
                 </div>
               </div>
             </section>
@@ -146,9 +146,9 @@ $time = get_the_time('Y-m-d')
             <section class="banner-items" style="background: linear-gradient(105deg, {{ the_field('gradient_color_one_cat','option') }} 0.7%, {{ the_field('gradient_color_two_cat','option') }} 100%);">
               <div class="elementor-background-overlay-items" style="background-image: url('{{ the_field('banner_background_overlay_cat','option') }}');"></div>
               <div class="container-fluid">
-                <div class="row align-items-center text-left">
+                <div class="row align-items-center text-center justify-content-center">
                   <h2 class="col-12 text-black"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{  ($calculation)? $calculation*$count:$count }}</strong> <span class="font-weight-300">{{ the_field('banner_items_headline','option') }}</span></h2>
-                  <p class="col-md-5 col-12 text-black font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
+                  <p class="col-md-8 col-12 text-black font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
                 </div>
               </div>
             </section>
@@ -159,18 +159,15 @@ $time = get_the_time('Y-m-d')
       <section class="banner-items" style="background: linear-gradient(105deg, {{ the_field('gradient_color_one_cat','option') }} 0.7%, {{ the_field('gradient_color_two_cat','option') }} 100%);">
         <div class="elementor-background-overlay-items" style="background-image: url('{{ the_field('banner_background_overlay_cat','option') }}');"></div>
         <div class="container-fluid">
-          <div class="row align-items-center text-left">
+          <div class="row align-items-center text-center justify-content-center">
             <h2 class="col-12 text-black"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{  ($calculation)? $calculation*$count:$count }}</strong> <span class="font-weight-300">{{ the_field('banner_items_headline','option') }}</span></h2>
-            <p class="col-md-5 col-12 text-black font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
+            <p class="col-md-8 col-12 text-black font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
           </div>
         </div>
       </section>
       @endif
     @endif
 
-    <div class="total-slide mb-5">
-      <strong class="font-weight-600">{{ ($calculation)? $calculation*$count:$count }}</strong> <span></span>{{ ($text_total)? $text_total:_e('total slides', 'premast') }}
-    </div>
   @endif
 
   <style>
@@ -279,9 +276,9 @@ $time = get_the_time('Y-m-d')
           <section class="banner-items" style="background: linear-gradient(105deg, {{ $color_one }} 0.7%, {{ $color_two }} 100%);">
             <div class="elementor-background-overlay-items" style="background-image: url('{{ $image }}');"></div>
             <div class="container-fluid">
-              <div class="row align-items-center text-left">
-                <h1 class="col-12 text-black"><span class="font-weight-600">{{ $heading }}</span></h1>
-                <p class="col-md-5 col-12 text-black font-weight-300">{{ $description }}</p>
+              <div class="row align-items-center text-center justify-content-center">
+                <h1 class="col-12 text-black">{{ $heading }}</h1>
+                <p class="col-md-8 col-12 text-black font-weight-300">{{ $description }}</p>
               </div>
             </div>
           </section>
@@ -300,9 +297,9 @@ $time = get_the_time('Y-m-d')
             <section class="banner-items" style="background: linear-gradient(105deg, {{ $color_one }} 0.7%, {{ $color_two }} 100%);">
               <div class="elementor-background-overlay-items" style="background-image: url('{{ $image }}');"></div>
               <div class="container-fluid">
-                <div class="row align-items-center text-left">
-                  <h1 class="col-12 text-black"><span class="font-weight-600">{{ $heading }}</span></h1>
-                  <p class="col-md-5 col-12 text-black font-weight-300">{{ $description }}</p>
+                <div class="row align-items-center text-center justify-content-center">
+                  <h1 class="col-12 text-black">{{ $heading }}</h1>
+                  <p class="col-md-8 col-12 text-black font-weight-300">{{ $description }}</p>
                 </div>
               </div>
             </section>
@@ -310,9 +307,9 @@ $time = get_the_time('Y-m-d')
             <section class="banner-items" style="background: linear-gradient(105deg, {{ the_field('gradient_color_one_cat','option') }} 0.7%, {{ the_field('gradient_color_two_cat','option') }} 100%);">
               <div class="elementor-background-overlay-items" style="background-image: url('{{ the_field('banner_background_overlay_cat','option') }}');"></div>
               <div class="container-fluid">
-                <div class="row align-items-center text-left">
+                <div class="row align-items-center text-center justify-content-center">
                   <h2 class="col-12 text-black"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{  ($calculation)? $calculation*$count:$count }}</strong> <span class="font-weight-300">{{ the_field('banner_items_headline','option') }}</span></h2>
-                  <p class="col-md-5 col-12 text-black font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
+                  <p class="col-md-8 col-12 text-black font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
                 </div>
               </div>
             </section>
@@ -323,18 +320,15 @@ $time = get_the_time('Y-m-d')
       <section class="banner-items" style="background: linear-gradient(105deg, {{ the_field('gradient_color_one_cat','option') }} 0.7%, {{ the_field('gradient_color_two_cat','option') }} 100%);">
         <div class="elementor-background-overlay-items" style="background-image: url('{{ the_field('banner_background_overlay_cat','option') }}');"></div>
         <div class="container-fluid">
-          <div class="row align-items-center text-left">
+          <div class="row align-items-center text-center justify-content-center">
             <h2 class="col-12 text-black"><strong class="font-weight-600">{{ _e('Discover', 'premast') }} +{{  ($calculation)? $calculation*$count:$count }}</strong> <span class="font-weight-300">{{ the_field('banner_items_headline','option') }}</span></h2>
-            <p class="col-md-5 col-12 text-black font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
+            <p class="col-md-8 col-12 text-black font-weight-300">{{ the_field('banner_items_sub_headline','option') }}</p>
           </div>
         </div>
       </section>
       @endif
     @endif
 
-    <div class="total-slide mb-5">
-      <strong class="font-weight-600">{{ ($calculation)? $calculation*$count:$count }}</strong> <span></span>{{ ($text_total)? $text_total:_e('total slides', 'premast') }}
-    </div>
   @endif
 
 @endif
