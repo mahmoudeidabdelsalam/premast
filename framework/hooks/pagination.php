@@ -89,7 +89,7 @@ function author_cpt_filter($query) {
     if ( !is_admin() && $query->is_main_query() ) {
       if ($query->is_author()) {
         $query->set('post_type', array('post', 'product'));
-        $query->set('post_per_page', 20);
+        $query->set('post_per_page', 19);
         $query->set('post_status', 'any');
       }
     }
