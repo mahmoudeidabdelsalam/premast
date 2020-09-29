@@ -1,4 +1,4 @@
-@php 
+@php
   $refine   = isset($_GET['refine']) ? $_GET['refine'] : '0';
   $sort   = isset($_GET['sort']) ? $_GET['sort'] : '0';
   $taxonomy_query = get_queried_object();
@@ -6,10 +6,10 @@
   wp_get_current_user();
 @endphp
 
-@if ( wp_is_mobile() ) 
+@if ( wp_is_mobile() )
   <nav id="menu">
     <hr>
-    @php 
+    @php
       $ids_to_exclude = array();
       $get_terms_to_exclude =  get_terms(
         array(
@@ -19,7 +19,7 @@
         )
       );
       if( !is_wp_error( $get_terms_to_exclude ) && count($get_terms_to_exclude) > 0){
-          $ids_to_exclude = $get_terms_to_exclude; 
+          $ids_to_exclude = $get_terms_to_exclude;
       }
       $product_terms = get_terms( 'product_cat', array(
           'hide_empty' =>  1,
@@ -28,8 +28,8 @@
       ) );
     @endphp
     <ul class="navbar-nav">
-      @foreach($product_terms as $product_term) 
-      @php 
+      @foreach($product_terms as $product_term)
+      @php
         $term_link = get_term_link( $product_term );
         if ( is_wp_error( $term_link ) ) {
             continue;
@@ -49,7 +49,7 @@
   <nav id="menu_user" style="display: none;">
     @include('partials/incloud/profile')
   </nav>
-  
+
   <header class="bg-light banner">
     <div class="container p-0">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -65,9 +65,9 @@
             <span class="sr-only"> {{ get_bloginfo('name') }} </span>
           </a>
         </h2>
-        @if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) 
-        @php 
-          $count = WC()->cart->cart_contents_count; 
+        @if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) )
+        @php
+          $count = WC()->cart->cart_contents_count;
         @endphp
           <a class="cart-contents" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
             @if ( $count > 0 )
@@ -76,12 +76,12 @@
           </a>
         @endif
         <div class="usermenu ml-4 mt-1">
-          @if( is_user_logged_in() ) 
+          @if( is_user_logged_in() )
             <a href="#" class="menu-toggle">
               <i class="fa fa-user-circle fa-lg text-white" aria-hidden="true"></i>
               <i class="fa fa-times fa-lg text-white" aria-hidden="true"></i>
             </a>
-          @else 
+          @else
             <a class="mt-2 signup btn-primary" href="#" data-toggle="modal" data-target="#SignupUser">{{ _e('Sign Up', 'premast') }}</a>
           @endif
         </div>
@@ -109,23 +109,23 @@
             {!! wp_nav_menu(['theme_location' => 'templates_navigation', 'container' => false, 'menu_class' => 'navbar-nav ml-auto', 'walker' => new NavWalker()]) !!}
           @endif
         </div>
-        <?php 
+        <?php
           if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
             $count = WC()->cart->cart_contents_count;
             ?>
               <a class="cart-contents" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
             <?php if ( $count > 0 ) { ?>
-              <span class="cart-contents-count"><?php echo esc_html( $count ); ?></span>    
+              <span class="cart-contents-count"><?php echo esc_html( $count ); ?></span>
             <?php } ?></a>
         <?php } ?>
-        @if( is_user_logged_in() ) 
+        @if( is_user_logged_in() )
           <div class="notification mx-4">
             <a href="#"><i class="fa premast-bell-" aria-hidden="true"></i> <span class="notification-counter"></span></a>
           </div>
         @endif
         <div class="half">
-          @if( is_user_logged_in() ) 
-            @php 
+          @if( is_user_logged_in() )
+            @php
               $limit_membership = wc_memberships_get_user_active_memberships($current_user->ID);
               $author = get_the_author_meta($current_user->ID);
               // dd($current_user->ID);
@@ -135,7 +135,7 @@
               <input type="checkbox" id="profile">
               @if($avatar)
                 <img class="avatar" src="{{ $avatar['url'] }}" alt="{!! get_the_author_meta('display_name', $current_user->ID) !!}">
-              @else 
+              @else
                 <img class="avatar" src="{{ get_theme_file_uri().'/resources/assets/images' }}/avatar.svg" alt="{!! get_the_author_meta('display_name', $current_user->ID) !!}">
               @endif
               {!! get_the_author_meta('display_name', $current_user->ID) !!}
@@ -145,7 +145,7 @@
               @endif
               @include('partials/incloud/profile')
             </label>
-          @else 
+          @else
             <a class="mx-2 signup text-primary" href="#" data-toggle="modal" data-target="#SignupUser">{{ _e('Sign Up', 'premast') }}</a>
             <a class="mx-2 login text-gray-dark" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Login', 'premast') }}</a>
           @endif
@@ -159,7 +159,7 @@
     <div class="container-fluid">
       <div class="row justify-content-center align-items-center m-0">
         <div class="col-md-6 col-sm-12 col-12 p-3 text-center">
-          @php 
+          @php
             $ids_to_exclude = array();
             $get_terms_to_exclude =  get_terms(
               array(
@@ -169,7 +169,7 @@
               )
             );
             if( !is_wp_error( $get_terms_to_exclude ) && count($get_terms_to_exclude) > 0){
-                $ids_to_exclude = $get_terms_to_exclude; 
+                $ids_to_exclude = $get_terms_to_exclude;
             }
             $product_terms = get_terms( 'product_cat', array(
                 'hide_empty' =>  1,
@@ -178,8 +178,8 @@
             ) );
           @endphp
           <ul class="list-inline m-0 product-term">
-            @foreach($product_terms as $product_term) 
-            @php 
+            @foreach($product_terms as $product_term)
+            @php
               $term_link = get_term_link( $product_term );
               if ( is_wp_error( $term_link ) ) {
                   continue;
@@ -194,6 +194,15 @@
       </div>
     </div>
   </section>
+
+  <style>
+    profile-dropdown .link-dropdown .item-dropdown a, .profile-dropdown .link-dropdown .item-dropdown .item-user {
+      font-family:'Roboto' , sans-serif;
+    }
+    .premast-social-icons {
+      background-color:#282F39;
+    }
+  </style>
   @endif
 
 @endif

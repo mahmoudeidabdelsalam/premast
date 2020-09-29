@@ -79,7 +79,7 @@ foreach ($downloads as $download) {
 
 
 
-                        
+
 
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal">
@@ -427,12 +427,6 @@ foreach ($downloads as $download) {
 
                 @endif
 
-
-
-
-
-
-
               </div>
           </div>
       </div>
@@ -726,6 +720,22 @@ foreach ($downloads as $download) {
     }
 
     @media (max-width: 576px) {
+        ul.footer-menu li, ul.footer-menu li a, ul.footer-links li, ul.footer-links li a
+    {
+     padding-bottom:35px;
+    }
+    ul.footer-menu li:nth-child(1) {
+    display: block;
+    width: 100%;
+    flex: 0 0 100%;
+    text-align: left;
+    padding: 0;
+    margin-bottom: 23px;
+    }
+    ul.footer-menu {
+    flex-wrap: wrap;
+     }
+
       ul#myTab li {
           display: none;
           flex: 0 0 50%;
@@ -740,6 +750,26 @@ foreach ($downloads as $download) {
 
       ul#myTab li.active + li {
           display: block;
+      }
+      .btn.btn-outline-success {
+        margin-left: 1px;
+        margin-top: 15px;
+      }
+      h5.color_title {
+          margin:35px 11px;
+          padding:3px;
+
+      }
+      h5.setting_title{
+          margin:35px;
+      }
+      h5.chart_title {
+          margin:34px 23px;
+          padding: 5px;
+          width:80%;
+      }
+      h5.icon_title{
+          margin: 35px;
       }
     }
     .downloads {
@@ -796,9 +826,11 @@ foreach ($downloads as $download) {
       white-space: nowrap;
       box-shadow: none;
     }
+
     div#exampleModal .btn.btn-outline-success {
       color: #333;
     }
+
   </style>
 
 @endwhile

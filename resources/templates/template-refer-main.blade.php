@@ -101,7 +101,7 @@
               @php
                 $form = get_field('forms_referral', 'option');
                 $inputs = get_all_form_fields($form['id']);
-                
+
                 $ip = get_the_user_ip();
                 $hash_ip = wp_hash_password($ip);
 
@@ -188,4 +188,10 @@
     }
   });
 </script>
+<style>
+.btn-primary {
+    margin-right:33px;
+
+    }
+</style>
 @endsection

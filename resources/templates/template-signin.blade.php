@@ -200,12 +200,10 @@ small#forgotpassword {
     border-color: none !important;
     margin-top: 15px;
 }
-
 .btn.btn-primary:hover {
     background: linear-gradient(134.71deg, #000DFF -0.5%, #6B73FF 100%)!important;
     opacity: .65;
 }
-
 .btn.btn-outline-dark {
     padding: 8px 60px 8px 60px;
     border-radius: 30px;
@@ -219,7 +217,6 @@ small#forgotpassword {
     text-transform: capitalize;
     color: #3F4A59;
 }
-
 .btn.btn-outline-dark:hover {
     color: #FFFFFF;
 }
@@ -231,11 +228,6 @@ small#forgotpassword {
     padding-right: 7px;
     font-size: 16px;
 }
-
-
-
-
-
 
 .tab-switch {
   display: none;
