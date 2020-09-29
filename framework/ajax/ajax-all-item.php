@@ -139,7 +139,7 @@ function get_sort_items() {
           
           <?php         
           while($my_query->have_posts()): $my_query->the_post(); ?>
-            <div class="item-card col-md-3 col-sm-4 col-sx-6 col-12">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 col-12 grid-item">
               <div class="card">
                 <ul class="meta-buttons">
                   <li class="likes-button">
