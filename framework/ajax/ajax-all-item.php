@@ -49,7 +49,7 @@ function get_sort_items() {
     if ($sort != '0') {
         $second_ids = get_posts(array(
             'post_type' => 'product',
-            'posts_per_page' => 19,
+            'posts_per_page' => 20,
             'fields' => 'ids',
             'paged' => $paged,
             'meta_key' => $meta_key,
@@ -66,11 +66,11 @@ function get_sort_items() {
         $per_page = 20 - count($second_ids);
     } else {
         $second_ids = [];
-        $per_page = 19;
+        $per_page = 20;
     }
     $orders = array(
         'post_type' => 'product',
-        'posts_per_page' => 18,
+        'posts_per_page' => 20,
         'paged' => $paged,
         'meta_key' => $meta_key,
         'orderby' => $orderby,
