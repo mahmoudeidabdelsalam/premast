@@ -46,7 +46,7 @@
 
 
       $followers = get_user_meta( $author, 'follow_authors' , true );
-      // dd($follow_authors);
+      // dd($followers);
     @endphp
 
 
@@ -156,10 +156,15 @@
                   <h5 class="mt-0 text-black">
                     <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ), get_the_author_meta( 'user_nicename' ) ); ?>"><?php the_author(); ?></a>
 
-                    @if (in_array( $current_user->ID, $followers ))
-                      <a class="follow unfollow" href="javascript:void(0)" data-event="unfollow" data-user="<?= $current_user->ID; ?>" data-author="<?= get_the_author_meta( 'ID' ); ?>"><span class="fo-text">{{ _e('unfollow', 'premast') }}</span> <span id="fo-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span></a>
+                    @if (is_user_logged_in())
+
+                      @if ($followers && in_array( $current_user->ID, $followers )) 
+                        <a class="follow unfollow" href="javascript:void(0)" data-event="unfollow" data-user="<?= $current_user->ID; ?>" data-author="<?= get_the_author_meta( 'ID' ); ?>"><span class="fo-text">{{ _e('unfollow', 'premast') }}</span> <span id="fo-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span></a>
+                      @else 
+                        <a class="follow" href="javascript:void(0)" data-event="follow" data-user="<?= $current_user->ID; ?>" data-author="<?= get_the_author_meta( 'ID' ); ?>"><span class="fo-text">{{ _e('follow', 'premast') }}</span> <span id="fo-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span></a>
+                      @endif
                     @else
-                      <a class="follow" href="javascript:void(0)" data-event="follow" data-user="<?= $current_user->ID; ?>" data-author="<?= get_the_author_meta( 'ID' ); ?>"><span class="fo-text">{{ _e('follow', 'premast') }}</span> <span id="fo-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span></a>
+                      <a class="login follow" href="#" data-toggle="modal" data-target="#LoginUser">Login for follow</a>
                     @endif
                   </h5>
                   <p>{{ _e('Total uploads:', 'premast') }} {{ $user_post_count }}</p>
@@ -184,22 +189,22 @@
       @if($related->have_posts())
         <div class="container">
           <h3>{{ _e('related Items', 'premast') }}</h3>
-          <div class="item-columns row m-0 col-12 p-0">
-            @while($related->have_posts() ) @php($related->the_post())
+          <div class="item-columns row m-0 col-12 p-0"> 
+            @while($related->have_posts() ) @php $related->the_post(); @endphp
               @include('partials/incloud/card-user')
             @endwhile
-            @php (wp_reset_postdata())
+            @php wp_reset_postdata(); @endphp
           </div>
         </div>
       @endif
       @if($related_author->have_posts())
         <div class="container">
           <h3>{{ _e('More from the same author', 'premast') }}</h3>
-          <div class="item-columns row m-0 col-12 p-0">
-            @while($related_author->have_posts() ) @php($related_author->the_post())
+          <div class="item-columns row m-0 col-12 p-0"> 
+            @while($related_author->have_posts() ) @php $related_author->the_post() @endphp
               @include('partials/incloud/card-user')
             @endwhile
-            @php (wp_reset_postdata())
+            @php wp_reset_postdata(); @endphp
           </div>
         </div>
       @endif
@@ -272,7 +277,6 @@
           var user_id = $('.follow').data('user');
           var author_id = $('.follow').data('author');
           var event = $('.follow').data('event');
-
 
           $.ajax({
             url: "<?= admin_url( 'admin-ajax.php' ); ?>",

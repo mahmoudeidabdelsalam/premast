@@ -43,12 +43,13 @@ function author_follow() {
 
     $followings = [];
     if($following_user) {
-      foreach ($followings as $following ) {
+      foreach ($following_user as $following ) {
         if ($author_id != $following) {
           $followings[] = $following;
         }
       }
     }
+
   }
 
   update_user_meta( $author_id, 'follow_authors', $followers );

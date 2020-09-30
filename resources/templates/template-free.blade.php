@@ -74,7 +74,7 @@
       ?>
       <div class="container-fluid">
         <div class="row">
-          @while($loop->have_posts()) @php($loop->the_post())
+          @while($loop->have_posts()) @php $loop->the_post(); @endphp
             @include('partials/incloud/card')
           @endwhile  
 
