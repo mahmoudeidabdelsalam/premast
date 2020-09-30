@@ -199,9 +199,7 @@
     profile-dropdown .link-dropdown .item-dropdown a, .profile-dropdown .link-dropdown .item-dropdown .item-user {
       font-family:'Roboto' , sans-serif;
     }
-    .premast-social-icons {
-      background-color:#282F39;
-    }
+    
   </style>
   @endif
 
