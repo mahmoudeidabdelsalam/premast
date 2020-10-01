@@ -184,7 +184,19 @@ function get_sort_items() {
 
                       <span class="icon-download icon-meta"> <img class="img-meta" src="<?= get_theme_file_uri().'/dist/images/icon-download.svg'; ?>" alt="Download"> <?= ($counter_download)? $counter_download:'0'; ?></span>
                       <span class="icon-download icon-meta"> <img class="img-meta" src="<?= get_theme_file_uri().'/dist/images/icon-view.svg'; ?>" alt="Download"> <?= ($counter_view)? $counter_view:'0'; ?></span>
+
+                    
+
+                      <span class="icon-download icon-meta"> 
+                        <img class="img-meta" src="<?= get_theme_file_uri().'/dist/images/like.png'; ?>" alt="like"> 
+                        <?= ($like)? $like:'0'; ?>
+                      </span>
+
                     </div>
+
+                    <?php if($price): ?>
+                        <span class="premium"><i class="fa fa-star"></i></span>
+                    <?php endif; ?>
                   </div>
                 </div>
               </div>              
