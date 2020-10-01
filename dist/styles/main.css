@@ -33050,7 +33050,7 @@ section.banner-items {
 .premast-social-icons {
   margin: 5px 0 0;
   padding: 8px 22px;
-  background-color: #2292eb;
+  background-color: #282f39;
   border-radius: 0 0 2px 2px;
   text-align: center;
   display: -webkit-box;
@@ -34949,7 +34949,7 @@ span.status.rejected {
 .download-product p.price {
   font-size: 30px !important;
   color: #197af7 !important;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 /* line 94, resources/assets/styles/layouts/_posts.scss */

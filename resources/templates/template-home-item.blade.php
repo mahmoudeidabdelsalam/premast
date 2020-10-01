@@ -14,7 +14,7 @@
     <div class="overlay-banner" style="background-image: url(<?= the_field('banner_background_image_template'); ?>)"></div>
     <div class="container-fluid">
       <div class="row align-content-center">
-        <div class="col-md-7 col-12">
+        <div class="col-md-7 col-12" style="padding-left:45px;"
           <h2 class="text-white"><?= the_field('headline_banner_template'); ?></h2>
           <p class="text-white"><?= the_field('sub_headline_banner_template'); ?></p>
           <div class="search-items">
@@ -187,7 +187,7 @@
 
     <div class="container-fluid woocommerce">
       <div class="row item-columns container-ajax items-categories item-card grid grid-custom">
-        
+
       @if($follows->have_posts())
         @while($follows->have_posts()) @php($follows->the_post())
         @php ($sale = get_post_meta( get_the_ID(), '_sale_price', true))
@@ -495,7 +495,7 @@
           @while($blog_query->have_posts()) @php($blog_query->the_post())
             <div class="item-blog col-md-4 col-sm-4 col-sx-6 col-12 grid-item pl-4 pr-4 post-ajax">
               <div class="card p-0">
-                <div class="bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'medium')}}');border-radius: 9px;height: 208px; min-height: 208px;">
+                <div class="bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'medium')}}');border-radius: 8px;height: 208px; min-height: 208px; width:370px;">
                   <img src="{{ Utilities::global_thumbnails(get_the_ID(),'medium')}}" class="card-img-top" alt="{{ the_title() }}">
                   <div class="card-overlay"><a class="the_permalink" href="{{ the_permalink() }}"></a></div>
                 </div>
@@ -583,12 +583,42 @@
 
   ul.fader li img {
       max-height: 300px;
+      width: 528px;
   }
+  ul.fader {
+    margin: -47px;
+
+}
+   ul.fader li img {
+    max-height: 300px;
+
+}
+
+.page-template-template-home-item .search-items form input {
+    background: transparent;
+    border: none;
+    width: 90%;
+    font-weight: 300;
+}
+.item-blog .card p.label time {
+    color:#646464;!important;
+}
+.item-blog .card p.card-text {
+    color:#646464;!important;
+    opacity: inherit;
+}
+.profile-dropdown .link-dropdown {
+    width:214px;
+}
 
   @media screen and (max-width: 600px) {
       .page-template-template-home-item section.popular-items {
           margin: 0 15px;
       }
+      ul.fader {
+    margin: 0;
+
+}
 
       section.recent-items {
         margin: 0 15px;
@@ -608,7 +638,27 @@
       max-height: 300px;
       position: relative;
     }
+
+
   }
+
+//   new edits
+main.main {
+    background: #ffff;
+}
+.page-template-template-home-item a.go {
+    padding-bottom:0px;
+    padding-top:99px;
+}
+.page-template-template-home-item section.recent-items {
+    padding-top:20px;
+    background:#F9F9F9;
+}
+.item-blog .card p.label time {
+    color:#646464;
+    font-weight:500;
+    opacity:inherit;
+}
 
 </style>
 @endsection

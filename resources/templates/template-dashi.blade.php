@@ -120,8 +120,7 @@ foreach ($downloads as $download) {
       <div class="container-fluid pt-5 " style="padding-left:0!important;">
           <div class="row">
               <div class="col-md-6">
-                  <img class="first-ani" style="width:100%;" data-aos="fade-right" data-duration="1000"
-                      src="<?php the_field('sec_ani_img'); ?>" />
+                  <img class="first-ani" style="width:100%;" src="<?php the_field('sec_ani_img'); ?>" />
               </div>
               <div class="col-md-6">
                   <div class="access">
@@ -180,7 +179,7 @@ foreach ($downloads as $download) {
                   </div>
               </div>
               <div class="col-md-6">
-                  <img class="img-fluid aos-init aos-animate" data-aos="fade-left" data-duration="1000" src="<?php the_field('ani_img'); ?>"/>
+                  <img class="img-fluid aos-init aos-animate" src="<?php the_field('ani_img'); ?>"/>
               </div>
           </div>
       </div>
@@ -270,7 +269,7 @@ foreach ($downloads as $download) {
     <div  class="container-fluid" class="new-section">
       <div class="row">
         <div class="col-md-6">
-          <img class="img-fluid aos-init aos-animate" id="image-preview" data-aos="fade-right" data-duration="1000" style="width:100%;" src="<?php the_field('image_preview'); ?>"/>
+          <img class="img-fluid aos-init aos-animate" id="image-preview" style="width:100%;" src="<?php the_field('image_preview'); ?>"/>
           </div>
 
           <div class="col-md-6 pt-5">
@@ -496,16 +495,8 @@ foreach ($downloads as $download) {
     </div>
   </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.3.0/dist/simpleParallax.js"></script>
 
   <script>
-    window.onscroll = function () {
-        scrollFunction()
-    };
-    var image = document.getElementsByClassName('ImageParallax');
-    new simpleParallax(image, {
-        orientation: 'left'
-    });
 
     function scrollFunction() {
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -553,7 +544,7 @@ foreach ($downloads as $download) {
             {
               breakpoint: 480,
               settings: {
-                item: 2,
+                item: 1,
                 slideMove: 1
               }
             }
@@ -829,6 +820,9 @@ foreach ($downloads as $download) {
 
     div#exampleModal .btn.btn-outline-success {
       color: #333;
+    }
+    .category {
+        padding-bottom:0;
     }
 
   </style>
