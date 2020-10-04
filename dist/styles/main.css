@@ -33763,6 +33763,21 @@ header.bg-light.banner.navbar-banner-items.fixed-header {
 
 .col-offer {
   position: relative;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  top: 0;
+}
+
+/* line 1078, resources/assets/styles/layouts/_header.scss */
+
+.col-offer.closeThis {
+  top: -500px;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  z-index: -333;
+  margin-top: -50px;
 }
 
 /* stylelint-enable */

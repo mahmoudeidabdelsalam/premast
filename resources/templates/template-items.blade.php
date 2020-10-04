@@ -2,36 +2,33 @@
   Template Name: Items landing
 --}}
 
-
-@extends('layouts.app-items')
+@extends('layouts.app-dark')
 
 @section('content')
 
 @php 
   global $current_user;
   wp_get_current_user();
-
   $counter = $loop_items->found_posts;
   $refine   = isset($_GET['refine']) ? $_GET['refine'] : '0';
 @endphp
 
+<section class="banner-items " style="background: linear-gradient(105deg, {{ the_field('gradient_color_one_cat','option') }} 0.7%, {{ the_field('gradient_color_two_cat','option') }} 100%);">
+  <div class="container-fluid">
+    <div class="row align-items-center text-center justify-content-center">
+      <h2 class="col-12 text-black"><strong class="font-weight-600">{{ _e('Results for', 'premast') }} "{{ $refine }}"</h2>
+      <p class="col-md-8 col-12 m-auto">{{ _e('You found', 'premast') }} {{ $counter }} {{ $refine }} {{ _e('templates, slides & graphics', 'premast') }}</p>
+    </div>
+  </div>
+</section>
+
 <div class="container-fiuld woocommerce">
   <div class="row justify-content-center m-0">
-
-    <div class="col-12 col-search">
-      <h4 class="results">{{ _e('Results for', 'premast') }} "{{ $refine }}"</h4>
-      <p>{{ _e('You found', 'premast') }} {{ $counter }} {{ $refine }} {{ _e('templates, slides & graphics', 'premast') }}</p>
-    </div>
-
     <div class="col-md-12 col-sm-12">
       <div class="item-columns container-ajax items-categories item-card grid grid-custom row" style="min-height:1px;">
-
         @if($loop_items->have_posts())
-          @while($loop_items->have_posts()) @php($loop_items->the_post())
-
-
-          @php ($sale = get_post_meta( get_the_ID(), '_sale_price', true))
-            
+          @while($loop_items->have_posts()) @php $loop_items->the_post() @endphp
+          @php $sale = get_post_meta( get_the_ID(), '_sale_price', true) @endphp
             <div class="col-md-3 col-12 grid-item">
               <div class="card">
                   @if($sale)
@@ -54,7 +51,6 @@
                     </li>
                   @endif
                 </ul>
-
                 <div class="bg-white" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'medium')}}');height:auto;min-height:180px;">
                   <img src="{{ Utilities::global_thumbnails(get_the_ID(),'medium')}}" class="card-img-top" alt="{{ the_title() }}">
                   <div class="card-overlay"><a class="the_permalink" href="{{ the_permalink() }}"></a></div>
@@ -84,38 +80,38 @@
                           <span class="icon-review icon-meta" itemprop="reviewCount">{{ _e('0', 'premast') }}</span>
                         @endif
                       @endif
-
                       <span class="icon-download icon-meta"> <img class="img-meta" src="{{ get_theme_file_uri().'/dist/images/icon-download.svg' }}" alt="Download"> {{ ($counter_download)? $counter_download:'0' }}</span>
                       @if(current_user_can( 'edit_post', get_the_ID() ) && (get_the_author_meta('ID') == $current_user->ID) || is_super_admin())
                         <span class="icon-download icon-meta"> <img class="img-meta" src="{{ get_theme_file_uri().'/dist/images/icon-view.svg' }}" alt="Download"> {{ ($counter_view)? $counter_view:'0' }}</span>
                       @endif
                       <span class="icon-download icon-meta"> <img class="img-meta" src="{{ get_theme_file_uri().'/dist/images/like.png' }}" alt="like"> {{ ($like)? $like:'0' }}</span>
                     </div>
-
                     @if($price)
                       <span class="premium"><i class="fa fa-star"></i></span>
                     @endif
-
                   </div>
                 </div>
               </div>              
             </div>
-
-
           @endwhile
-          @php (wp_reset_postdata())
+          @php wp_reset_postdata() @endphp
         @endif
       </div>
-
-    
-
       <div class="col-12 pt-5 pb-5">
         <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $loop_items) }}</nav>
       </div>
-
     </div>
-
   </div>
 </div>
+
+
+<style>
+  section.banner-items {
+    margin-top: 60px;
+    min-height: 1px !important;
+    padding: 50px 0;
+    margin-bottom: 50px;
+  }
+</style>
 
 @endsection

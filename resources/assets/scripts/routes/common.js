@@ -204,7 +204,7 @@ export default {
       // eslint-disable-next-line no-redeclare
       var today = yyyy + '-' + mm + '-' + dd;
       setCookie('the_last_view', today, 1000);
-      $('.col-offer').hide('slow');
+      $('.col-offer').addClass('closeThis');
     });
 
     // var $grid = $('.grid').imagesLoaded(function () {
