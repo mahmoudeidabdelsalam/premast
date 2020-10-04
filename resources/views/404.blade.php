@@ -23,7 +23,6 @@
 <style>
   .page-404 {
     background-image: url("{{ get_theme_file_uri().'/resources/assets/images/bg-404.svg' }}");
-    min-height: 800px;
     background-repeat: no-repeat;
     background-position: top center;
     padding: 15px;
