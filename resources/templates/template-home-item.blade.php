@@ -94,8 +94,8 @@
         ));
         ?>
       @if($my_query->have_posts())
-        @while($my_query->have_posts()) @php($my_query->the_post())
-        @php ($sale = get_post_meta( get_the_ID(), '_sale_price', true))
+        @while($my_query->have_posts()) @php $my_query->the_post() @endphp
+        @php $sale = get_post_meta( get_the_ID(), '_sale_price', true) @endphp
           <div class="col-md-3 col-12 grid-item">
             <div class="card">
               <div class="bg-white">
@@ -153,7 +153,7 @@
           {{ __('Sorry, no results were found.', 'sage') }}
         </div>
       @endif
-      @php (wp_reset_postdata())
+      @php wp_reset_postdata() @endphp
       </div>
     </div>
 
@@ -189,8 +189,8 @@
       <div class="row item-columns container-ajax items-categories item-card grid grid-custom">
 
       @if($follows->have_posts())
-        @while($follows->have_posts()) @php($follows->the_post())
-        @php ($sale = get_post_meta( get_the_ID(), '_sale_price', true))
+        @while($follows->have_posts()) @php $follows->the_post() @endphp
+        @php $sale = get_post_meta( get_the_ID(), '_sale_price', true) @endphp
           <div class="col-md-3 col-12 grid-item">
             <div class="card">
               <div class="bg-white">
@@ -248,7 +248,7 @@
           {{ __('Sorry, no results were found.', 'sage') }}
         </div>
       @endif
-      @php (wp_reset_postdata())
+      @php wp_reset_postdata() @endphp
       </div>
     </div>
 
@@ -304,8 +304,8 @@
           ));
           ?>
           @if($query->have_posts())
-            @while($query->have_posts()) @php($query->the_post())
-            @php ($sale = get_post_meta( get_the_ID(), '_sale_price', true))
+            @while($query->have_posts()) @php $query->the_post() @endphp
+            @php $sale = get_post_meta( get_the_ID(), '_sale_price', true) @endphp
               <div class="col-md-3 col-12 grid-item">
                 <div class="card">
                   <div class="bg-white">
@@ -363,7 +363,7 @@
               {{ __('Sorry, no results were found.', 'sage') }}
             </div>
           @endif
-          @php (wp_reset_postdata())
+          @php  wp_reset_postdata() @endphp
           </div>
         </div>
       <?php endforeach; ?>
@@ -393,8 +393,8 @@
       ));
       ?>
       @if($free_query->have_posts())
-        @while($free_query->have_posts()) @php($free_query->the_post())
-        @php ($sale = get_post_meta( get_the_ID(), '_sale_price', true))
+        @while($free_query->have_posts()) @php $free_query->the_post() @endphp
+        @php $sale = get_post_meta( get_the_ID(), '_sale_price', true) @endphp
           <div class="col-md-3 col-12 grid-item">
             <div class="card">
               <div class="bg-white">
@@ -453,7 +453,7 @@
           {{ __('Sorry, no results were found.', 'sage') }}
         </div>
       @endif
-      @php (wp_reset_postdata())
+      @php wp_reset_postdata() @endphp
       </div>
     </div>
     <div class="button">
@@ -492,7 +492,7 @@
         ));
         ?>
         @if($blog_query->have_posts())
-          @while($blog_query->have_posts()) @php($blog_query->the_post())
+          @while($blog_query->have_posts()) @php $blog_query->the_post() @endphp
             <div class="item-blog col-md-4 col-sm-4 col-sx-6 col-12 grid-item pl-4 pr-4 post-ajax">
               <div class="card p-0">
                 <div class="bg-images" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'medium')}}');border-radius: 8px;height: 208px; min-height: 208px; width:370px;">
@@ -518,7 +518,7 @@
               {{ __('Sorry, no results were found.', 'sage') }}
             </div>
           @endif
-          @php (wp_reset_postdata())
+          @php wp_reset_postdata() @endphp
         </div>
       </div>
     </div>

@@ -1071,5 +1071,14 @@ header.bg-light.banner {
 
   .col-offer {
     position: relative;
+    transition: all 0.5s;
+    top: 0;
+  }
+
+  .col-offer.closeThis {
+    top: -500px;
+    transition: all 0.5s;
+    z-index: -333;
+    margin-top: -50px;
   }
 /* stylelint-enable */

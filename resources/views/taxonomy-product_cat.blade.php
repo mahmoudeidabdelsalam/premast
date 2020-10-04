@@ -329,12 +329,12 @@
   .is-open div#FilterSide {
     left: 0;
     position: relative;
-    width: 25% !important;
+    width: 20% !important;
     opacity: 1;
   }
 
   .is-open div#FilterMain {
-    width: 75%;
+    width: 80%;
   }
 
   .is-open .SwitchButtons a svg {
@@ -559,8 +559,18 @@
 
 <script>
   jQuery(function($) {
+
+
+    var OpenSide = localStorage.getItem("OpenSide");
+
+    if(OpenSide && OpenSide === "yes") {
+      $('body').addClass('is-open');
+    }
+
     $('.SwitchButtons').click( function() {
       $('body').toggleClass('is-open');
+      var toggle = $('body').hasClass('is-open') ? 'yes' : 'no';
+      localStorage.setItem('OpenSide', toggle);
     });
 
     $('#exampleCheck1').on('change', function() {
