@@ -26,6 +26,7 @@
     min-height: 800px;
     background-repeat: no-repeat;
     background-position: top center;
+    padding: 15px;
   }
 
   header.banner-404 {
@@ -35,6 +36,7 @@
   img.img-404 {
     margin: auto;
     display: block;
+    max-width: 100%;
   }
 
   .page-404 p, .page-404 .btn {
