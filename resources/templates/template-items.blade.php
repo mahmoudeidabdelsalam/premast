@@ -95,6 +95,10 @@
             </div>
           @endwhile
           @php wp_reset_postdata() @endphp
+        @else 
+        <div class="col-12 col-md-6 m-auto pt-5 pb-5 text-center">
+          <div class="alert alert-danger" role="alert">{{ __('Sorry, no results were found.', 'sage') }}</div>
+        </div>
         @endif
       </div>
       <div class="col-12 pt-5 pb-5">
