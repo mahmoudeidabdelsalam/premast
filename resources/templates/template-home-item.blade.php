@@ -14,7 +14,7 @@
     <div class="overlay-banner" style="background-image: url(<?= the_field('banner_background_image_template'); ?>)"></div>
     <div class="container-fluid">
       <div class="row align-content-center">
-        <div class="col-md-7 col-12" style="padding-left:45px;"
+        <div class="col-md-7 col-12">
           <h2 class="text-white"><?= the_field('headline_banner_template'); ?></h2>
           <p class="text-white"><?= the_field('sub_headline_banner_template'); ?></p>
           <div class="search-items">
@@ -482,7 +482,7 @@
     </div>
 
     <div class="container-fluid">
-      <div class="col-md-12 col-sm-12 p-0">
+      <div class="col-md-12 col-sm-12 p-5">
         <div class="item-columns grid row m-0 container-ajax">
         <?php
         // $blog_ids = get_field('blog_items', false, false);
@@ -565,7 +565,7 @@
   }
 
   section.recent-items {
-    margin: 0 30px;
+    padding: 20px 30px;
   }
 
   ul.fader {
@@ -659,6 +659,20 @@ main.main {
     font-weight:500;
     opacity:inherit;
 }
+body.page-template-template-home-item {
+    background: #fff !important;
+}
+a.btn.btn-primary{
+    background:linear-gradient(134.71deg, #6B73FF -0.5%, #000DFF 100%);
+    border-radius: 30px;
+    box-shadow:none;
+}
+.page-template-template-home-item section.banner-home-template {
+  height:450px;
+ }
+i.fa.fa-angle-right {
+  padding-left:9px;
 
+}
 </style>
 @endsection
