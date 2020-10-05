@@ -674,5 +674,12 @@ i.fa.fa-angle-right {
   padding-left:9px;
 
 }
+.button-green {
+    font-family: 'Roboto' , sans-serif;
+    font-weight: 500;
+}
+.item-card .card {
+    padding:7px;
+}
 </style>
 @endsection
