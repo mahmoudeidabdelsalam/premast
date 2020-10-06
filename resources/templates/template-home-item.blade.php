@@ -178,8 +178,21 @@
       <div class="row">
         <div class="col-md-6 col-12">
           <div class="content">
-          <h1 class="heading">{{ _e('Items from people you follow', 'premst') }}</h1>
-          <h5 class="sub-heading">{{ _e('You can check our different packages and pick a one that suits you and go premium. <br> We are always here to support!', 'premast') }}</h5>
+            <h1 class="heading">{{ _e('Items from people you follow', 'premst') }}</h1>
+            <h5 class="sub-heading">{{ _e('You can check our different packages and pick a one that suits you and go premium. <br> We are always here to support!', 'premast') }}</h5>
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="see-link">
+            <?php
+            $link = get_field('link_follow_items');
+            if( $link ):
+                $link_url = $link['url'];
+                $link_title = $link['title'];
+                $link_target = $link['target'] ? $link['target'] : '_self';
+                ?>
+                <a class="go" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?> <i class="fa fa-angle-right"></i></a>
+            <?php endif; ?>
           </div>
         </div>
       </div>
@@ -565,7 +578,7 @@
   }
 
   section.recent-items {
-    padding: 20px 30px;
+      padding: 20px 30px;
   }
 
   ul.fader {
@@ -585,43 +598,51 @@
       max-height: 300px;
       width: 528px;
   }
+
   ul.fader {
-    margin: -47px;
+      margin: -47px;
 
-}
-   ul.fader li img {
-    max-height: 300px;
+  }
 
-}
+  ul.fader li img {
+      max-height: 300px;
 
-.page-template-template-home-item .search-items form input {
-    background: transparent;
-    border: none;
-    width: 90%;
-    font-weight: 300;
-}
-.item-blog .card p.label time {
-    color:#646464;!important;
-}
-.item-blog .card p.card-text {
-    color:#646464;!important;
-    opacity: inherit;
-}
-.profile-dropdown .link-dropdown {
-    width:214px;
-}
+  }
+
+  .page-template-template-home-item .search-items form input {
+      background: transparent;
+      border: none;
+      width: 90%;
+      font-weight: 300;
+  }
+
+  .item-blog .card p.label time {
+      color: #646464;
+       !important;
+  }
+
+  .item-blog .card p.card-text {
+      color: #646464;
+       !important;
+      opacity: inherit;
+  }
+
+  .profile-dropdown .link-dropdown {
+      width: 214px;
+  }
 
   @media screen and (max-width: 600px) {
       .page-template-template-home-item section.popular-items {
           margin: 0 15px;
       }
-      ul.fader {
-    margin: 0;
 
-}
+      ul.fader {
+          margin: 0;
+
+      }
 
       section.recent-items {
-        margin: 0 15px;
+          margin: 0 15px;
       }
 
       .page-template-template-home-item .go {
@@ -629,57 +650,66 @@
           margin-top: -40px;
       }
 
-    .grid .grid-item {
-      padding: 0 !important;
-    }
+      .grid .grid-item {
+          padding: 0 !important;
+      }
 
-    ul.fader li {
-      padding: 0px;
-      max-height: 300px;
-      position: relative;
-    }
+      ul.fader li {
+          padding: 0px;
+          max-height: 300px;
+          position: relative;
+      }
 
 
   }
 
-//   new edits
-main.main {
-    background: #ffff;
-}
-.page-template-template-home-item a.go {
-    padding-bottom:0px;
-    padding-top:99px;
-}
-.page-template-template-home-item section.recent-items {
-    padding-top:20px;
-    background:#F9F9F9;
-}
-.item-blog .card p.label time {
-    color:#646464;
-    font-weight:500;
-    opacity:inherit;
-}
-body.page-template-template-home-item {
-    background: #fff !important;
-}
-a.btn.btn-primary{
-    background:linear-gradient(134.71deg, #6B73FF -0.5%, #000DFF 100%);
-    border-radius: 30px;
-    box-shadow:none;
-}
-.page-template-template-home-item section.banner-home-template {
-  height:450px;
- }
-i.fa.fa-angle-right {
-  padding-left:9px;
+  //   new edits
+  main.main {
+      background: #ffff;
+  }
 
-}
-.button-green {
-    font-family: 'Roboto' , sans-serif;
-    font-weight: 500;
-}
-.item-card .card {
-    padding:7px;
-}
+  .page-template-template-home-item a.go {
+      padding-bottom: 0px;
+      padding-top: 99px;
+  }
+
+  .page-template-template-home-item section.recent-items {
+      padding-top: 20px;
+      background: #F9F9F9;
+  }
+
+  .item-blog .card p.label time {
+      color: #646464;
+      font-weight: 500;
+      opacity: inherit;
+  }
+
+  body.page-template-template-home-item {
+      background: #fff !important;
+  }
+
+  a.btn.btn-primary {
+      background: linear-gradient(134.71deg, #6B73FF -0.5%, #000DFF 100%);
+      border-radius: 30px;
+      box-shadow: none;
+  }
+
+  .page-template-template-home-item section.banner-home-template {
+      height: 450px;
+  }
+
+  i.fa.fa-angle-right {
+      padding-left: 9px;
+
+  }
+
+  .button-green {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+  }
+
+  .item-card .card {
+      padding: 7px;
+  }
 </style>
 @endsection
