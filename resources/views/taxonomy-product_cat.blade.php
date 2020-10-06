@@ -35,7 +35,7 @@
 
       @if (is_user_logged_in())
         <div class="form-group form-check authors">
-          <input type="checkbox" class="form-check-input" id="CheckFollow">
+          <input type="checkbox" class="form-check-input" id="CheckFollow" {{ ($follow)? 'checked':'' }}>
           <label class="form-check-label" for="CheckFollow">from authors you follow</label>
         </div>
       @endif
@@ -601,6 +601,35 @@
         }
       });
     });
+
+
+    <?php if($follow): ?>
+      var checked = true;
+      var arrayFromPHP = <?= json_encode($following) ?>;
+      if(checked === false) {
+        var sort = $('.sort').find('.active').data('sort');
+        console.log(sort);
+      }
+      $.ajax({
+        url: '<?php echo admin_url("admin-ajax.php"); ?>', // in backend you should pass the ajax url using this variable
+        type: 'POST',
+        data: { 
+          action : 'get_sort_items', 
+          checked: checked,
+          sort: sort,
+          term_id: '<?= $taxonomy_query->term_id; ?>',
+          following: arrayFromPHP
+        },
+        beforeSend: function () {
+          $('.loading').show();
+          // $('body').removeClass('is-open');
+        },
+        success: function(data){
+          $('#freeItems').html(data);
+          $('.loading').hide();
+        }
+      });
+    <?php endif; ?>
 
     $('body').on('click', '.page-item a', function () {
       var page = $(this).data('page');
