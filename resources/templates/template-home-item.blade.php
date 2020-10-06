@@ -715,5 +715,9 @@
   .grid .grid-item .card .card-body {
     margin: 0 -8px;
   }
+
+  .grid .item-card .card {
+    padding-bottom: 0;
+  }
 </style>
 @endsection
