@@ -26,6 +26,7 @@
 
   $following = get_user_meta( $current_user->ID, 'following_user' , true );
 
+  $follow = isset($_GET['follow']) ? $_GET['follow'] : false;
 @endphp
 <div class="container-fluid">
   <div class="row m-0">
@@ -34,8 +35,8 @@
 
       @if (is_user_logged_in())
         <div class="form-group form-check authors">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">from authors you follow</label>
+          <input type="checkbox" class="form-check-input" id="CheckFollow" {{ ($follow)? 'checked':'' }}>
+          <label class="form-check-label" for="CheckFollow">from authors you follow</label>
         </div>
       @endif
 
@@ -166,7 +167,8 @@
                     $img_src = wp_get_attachment_image_url( $attachment_id, 'medium' );
                     $img_srcset = wp_get_attachment_image_srcset( $attachment_id, 'medium' );
                   @endphp
-                  <img src="{{ esc_url($img_src) }}" srcset="{{ esc_attr( $img_srcset ) }}" sizes="300px" class="card-img-top" alt="{{ the_title() }}">
+                  {{-- <img src="{{ esc_url($img_src) }}" srcset="{{ esc_attr( $img_srcset ) }}" sizes="300px" class="card-img-top" alt="{{ the_title() }}"> --}}
+                  <img src="{{ esc_url($img_src) }}" class="card-img-top" alt="{{ the_title() }}">
                   <div class="card-overlay"><a class="the_permalink" href="{{ the_permalink() }}"></a></div>
                 </div>
 
@@ -557,10 +559,9 @@
   }
 </style>
 
+
 <script>
   jQuery(function($) {
-
-
     var OpenSide = localStorage.getItem("OpenSide");
 
     if(OpenSide && OpenSide === "yes") {
@@ -573,16 +574,13 @@
       localStorage.setItem('OpenSide', toggle);
     });
 
-    $('#exampleCheck1').on('change', function() {
-      var checked = $(this).is(':checked');
+    $('#CheckFollow').on('change', function() {
+      var checked = $('#CheckFollow').is(':checked');
       var arrayFromPHP = <?= json_encode($following) ?>;
-
-      
       if(checked === false) {
         var sort = $('.sort').find('.active').data('sort');
         console.log(sort);
       }
-
       $.ajax({
         url: '<?php echo admin_url("admin-ajax.php"); ?>', // in backend you should pass the ajax url using this variable
         type: 'POST',
@@ -605,12 +603,39 @@
     });
 
 
+    <?php if($follow): ?>
+      var checked = true;
+      var arrayFromPHP = <?= json_encode($following) ?>;
+      if(checked === false) {
+        var sort = $('.sort').find('.active').data('sort');
+        console.log(sort);
+      }
+      $.ajax({
+        url: '<?php echo admin_url("admin-ajax.php"); ?>', // in backend you should pass the ajax url using this variable
+        type: 'POST',
+        data: { 
+          action : 'get_sort_items', 
+          checked: checked,
+          sort: sort,
+          term_id: '<?= $taxonomy_query->term_id; ?>',
+          following: arrayFromPHP
+        },
+        beforeSend: function () {
+          $('.loading').show();
+          // $('body').removeClass('is-open');
+        },
+        success: function(data){
+          $('#freeItems').html(data);
+          $('.loading').hide();
+        }
+      });
+    <?php endif; ?>
 
     $('body').on('click', '.page-item a', function () {
       var page = $(this).data('page');
       var sort = $('.sort').find('.active').data('sort');;
 
-      var checked = $('#exampleCheck1').is(':checked');
+      var checked = $('#CheckFollow').is(':checked');
       var arrayFromPHP = <?= json_encode($following) ?>;
 
       $.ajax({
@@ -635,12 +660,11 @@
       });
     });
 
-
     $('body').on('click', '.sort a', function () {
       var sort = $(this).data('sort');
       var name = $(this).data('name');
 
-      $('#exampleCheck1').prop( 'checked', false );
+      $('#CheckFollow').prop( 'checked', false );
 
       $('.sort a').removeClass('active');
       $(this).addClass('active');
@@ -665,8 +689,8 @@
         }
       });
     });
-
   });
+
 </script>
 
 @endsection

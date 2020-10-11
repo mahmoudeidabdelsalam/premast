@@ -397,6 +397,10 @@
         font-weight:700;
         font-family:'Roboto' , sans-serif;
       }
+
+      .single .woocommerce-notices-wrapper {
+        display: none;
+      }
     </style>
   @endwhile
 @endsection

@@ -292,6 +292,21 @@ acf_add_local_field_group(array(
 				'id' => '',
 			),
 			'return_format' => 'array',
+    ),
+    array(
+			'key' => 'field_5ec1a887d123sad1232603',
+			'label' => 'link you Follow items',
+			'name' => 'link_follow_items',
+			'type' => 'link',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'return_format' => 'array',
 		),
 		array(
 			'key' => 'field_5ec1b394d22d2',
