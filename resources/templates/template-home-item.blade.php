@@ -681,5 +681,33 @@ i.fa.fa-angle-right {
 .item-card .card {
     padding:7px;
 }
+.item-card .card h5.card-title {
+    padding-top: 8px;
+}
+ .grid .grid-item .card .card-body {
+    margin: -7px -7px;
+}
+.page-template-template-home-item section.recent-items {
+    padding-top: 80px;
+}
+.page-template-template-home-item .trand-now {
+    margin-left: 30px;
+}
+.search-items {
+    margin: 21px;
+}
+p.text-white {
+    margin: 2px 0px 0px 28px;
+}
+h2.text-white {
+    margin: -39px 0px 0px 27px;
+}
+.page-template-template-home-item section.popular-items {
+    padding-top:10px;
+}
+.page-template-template-home-item .popular-items .button {
+    margin:30px
+}
+
 </style>
 @endsection
