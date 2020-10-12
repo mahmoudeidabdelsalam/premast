@@ -703,6 +703,7 @@
 
   }
 
+<<<<<<< HEAD
 //   new edits
 main.main {
     background: #ffff;
@@ -770,6 +771,7 @@ h2.text-white {
     margin:30px
 }
 
+=======
   .button-green {
       font-family: 'Roboto', sans-serif;
       font-weight: 500;
@@ -786,5 +788,6 @@ h2.text-white {
   .grid .item-card .card {
     padding-bottom: 0;
   }
+>>>>>>> cc19443997b7ad745691549ab1c7894a70d5daa3
 </style>
 @endsection

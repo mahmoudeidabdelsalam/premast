@@ -12,14 +12,14 @@
     <div class="container">
       <div class="row align-items-center text-center justify-content-center">
         <div class="col-md-8 col-sm-12 col-12 contentBanner">
-          <h2>{{ _e('Download 500+ free items', 'premast') }}</h2>
-          <p>{{ _e('We offer a wide range of free items to our premast users in every category.', 'premast') }}</p>
+          <h2>{{ _e('Best Free PowerPoint Templates Design for your Presentations)', 'premast') }}</h2>
+          <p>{{ _e('We offer a wide range of free items to our premast users in every category with a description within 400 charact.', 'premast') }}</p>
         </div>
       </div>
     </div>
 
     <select class="selectCat">
-      @php 
+      @php
         $ids_to_exclude = array();
         $get_terms_to_exclude =  get_terms(
           array(
@@ -29,16 +29,16 @@
           )
         );
         if( !is_wp_error( $get_terms_to_exclude ) && count($get_terms_to_exclude) > 0){
-            $ids_to_exclude = $get_terms_to_exclude; 
+            $ids_to_exclude = $get_terms_to_exclude;
         }
         $terms = get_terms( 'product_cat', array(
             'hide_empty' =>  1,
             'exclude' => $ids_to_exclude,
             'parent' =>0
         ));
-      @endphp  
+      @endphp
       <option value="0">all</option>
-      @foreach($terms as $term) 
+      @foreach($terms as $term)
         <option value="{{ $term->term_id }}">{{ $term->name }}</option>
       @endforeach
     </select>
@@ -76,7 +76,7 @@
         <div class="row">
           @while($loop->have_posts()) @php $loop->the_post(); @endphp
             @include('partials/incloud/card')
-          @endwhile  
+          @endwhile
 
           <div class="col-12 pt-5 pb-5">
             <nav aria-label="Page navigation example">{{ premast_ajax_pagination(array(), $loop) }}</nav>
@@ -84,9 +84,6 @@
         </div>
       </div>
   </section>
-  
-
-
 
 
 
@@ -97,8 +94,8 @@
       $.ajax({
         url: "<?php echo admin_url('admin-ajax.php'); ?>", // in backend you should pass the ajax url using this variable
         type: 'POST',
-        data: { 
-          action : 'get_free_terms', 
+        data: {
+          action : 'get_free_terms',
           term_id: term,
         },
         beforeSend: function () {
@@ -118,8 +115,8 @@
       $.ajax({
         url: "<?php echo admin_url('admin-ajax.php'); ?>", // in backend you should pass the ajax url using this variable
         type: 'POST',
-        data: { 
-          action : 'get_free_terms', 
+        data: {
+          action : 'get_free_terms',
           term_id: term,
           paged: page
         },
@@ -135,7 +132,7 @@
     });
   });
 </script>
-  
+
   <style>
     #banner .contentBanner {
       padding-top: 100px;
@@ -186,7 +183,7 @@
       height: 40px;
       min-width: 200px;
       margin: 0 15px -10px;
-    }  
+    }
 
     .loading {
       width: 100%;
