@@ -703,75 +703,6 @@
 
   }
 
-<<<<<<< HEAD
-//   new edits
-main.main {
-    background: #ffff;
-}
-.page-template-template-home-item a.go {
-    padding-bottom:0px;
-    padding-top:99px;
-}
-.page-template-template-home-item section.recent-items {
-    padding-top:20px;
-    background:#F9F9F9;
-}
-.item-blog .card p.label time {
-    color:#646464;
-    font-weight:500;
-    opacity:inherit;
-}
-body.page-template-template-home-item {
-    background: #fff !important;
-}
-a.btn.btn-primary{
-    background:linear-gradient(134.71deg, #6B73FF -0.5%, #000DFF 100%);
-    border-radius: 30px;
-    box-shadow:none;
-}
-.page-template-template-home-item section.banner-home-template {
-  height:450px;
- }
-i.fa.fa-angle-right {
-  padding-left:9px;
-
-}
-.button-green {
-    font-family: 'Roboto' , sans-serif;
-    font-weight: 500;
-}
-.item-card .card {
-    padding:7px;
-}
-.item-card .card h5.card-title {
-    padding-top: 8px;
-}
- .grid .grid-item .card .card-body {
-    margin: -7px -7px;
-}
-.page-template-template-home-item section.recent-items {
-    padding-top: 80px;
-}
-.page-template-template-home-item .trand-now {
-    margin-left: 30px;
-}
-.search-items {
-    margin: 21px;
-}
-p.text-white {
-    margin: 2px 0px 0px 28px;
-}
-h2.text-white {
-    margin: -39px 0px 0px 27px;
-}
-.page-template-template-home-item section.popular-items {
-    padding-top:10px;
-}
-.page-template-template-home-item .popular-items .button {
-    margin:30px
-}
-
-=======
   .button-green {
       font-family: 'Roboto', sans-serif;
       font-weight: 500;
@@ -781,13 +712,41 @@ h2.text-white {
       padding: 7px;
   }
 
-  .grid .grid-item .card .card-body {
-    margin: 0 -8px;
+  .item-card .card h5.card-title {
+      padding-top: 8px;
   }
 
-  .grid .item-card .card {
-    padding-bottom: 0;
+  .grid .grid-item .card .card-body {
+      margin: -7px -7px;
   }
->>>>>>> cc19443997b7ad745691549ab1c7894a70d5daa3
+
+  .page-template-template-home-item section.recent-items {
+      padding-top: 80px;
+  }
+
+  .page-template-template-home-item .trand-now {
+      margin-left: 30px;
+  }
+
+  .search-items {
+      margin: 21px;
+  }
+
+  p.text-white {
+      margin: 2px 0px 0px 28px;
+  }
+
+  h2.text-white {
+      margin: -39px 0px 0px 27px;
+  }
+
+  .page-template-template-home-item section.popular-items {
+      padding-top: 10px;
+  }
+
+  .page-template-template-home-item .popular-items .button {
+      margin: 30px
+  }
+
 </style>
 @endsection
