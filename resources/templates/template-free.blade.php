@@ -12,7 +12,7 @@
     <div class="container">
       <div class="row align-items-center text-center justify-content-center">
         <div class="col-md-8 col-sm-12 col-12 contentBanner">
-          <h2>{{ _e('Best Free PowerPoint Templates Design for your Presentations)', 'premast') }}</h2>
+          <h2>{{ _e('Best Free PowerPoint Templates Design for your Presentations', 'premast') }}</h2>
           <p>{{ _e('We offer a wide range of free items to our premast users in every category with a description within 400 charact.', 'premast') }}</p>
         </div>
       </div>
