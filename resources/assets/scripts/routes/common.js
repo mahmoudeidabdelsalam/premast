@@ -74,6 +74,7 @@ export default {
       currentPagerPosition: 'left',
       onSliderLoad: function (el) {
         $('.lightSlider').removeClass('cS-hidden');
+        $('.lSSlideOuter .lSPager.lSGallery li img').addClass('lazyload');
         el.lightGallery({
           selector: '#imageGallery .lslide',
         });
