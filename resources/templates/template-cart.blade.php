@@ -29,24 +29,67 @@ do_action( 'woocommerce_before_cart' );
 
 
   @while(have_posts()) @php the_post() @endphp
-    <div class="checkout-custom-header">
-      @include('partials.page-header')
-    </div>
     <?php
     $count = WC()->cart->cart_contents_count;
     if (  $count == 0 ): ?>
-      <div class="container-fluid pt-5 pb-5 form-cart-woocommerce mt-5">
+      <div class="container-fluid pt-5 pb-5 form-cart-woocommerce mt-5 empty-cart-woo">
         <div class="row justify-content-center">
-          <p class="return-to-shop">
-            <div class="col-12 text-center"><?php do_action( 'woocommerce_cart_is_empty' ); ?></div>
-            <a class="button wc-backward btn mt-5 text-white" href="{{ the_field('link_page_login','option') }}">
-              <?php esc_html_e( 'Return to shop', 'woocommerce' ); ?>
-            </a>
-          </p>
+          <div class="col-12">
+            <img src="{{ get_theme_file_uri().'/resources/assets/images/bag.svg' }}" alt="bag empty cart">
+            <h2>{{ _e('Your cart is missing items', 'premast') }}</h2>
+            <h5>{{ _e('How about you take another look around?', 'premast') }}</h5>
+            <p class="return-to-shop">
+              <a class="button wc-backward btn mt-5 text-white" href="{{ the_field('link_page_login','option') }}">
+                <?php esc_html_e( 'continue shopping', 'woocommerce' ); ?>
+              </a>
+            </p>
+          </div>
         </div>
       </div>
-    <?php else: ?>
 
+      <style>
+        .empty-cart-woo {
+            text-align: center;
+        }
+
+        .empty-cart-woo h2 {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 30px;
+            line-height: 36px;
+            text-align: center;
+            color: #282F39;
+            margin-top: 50px;
+            margin-bottom: 25px;
+        }
+
+        h5 {
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 24px;
+            text-align: center;
+            letter-spacing: 0.04px;
+            color: #646464;
+        }
+
+        p.return-to-shop .bitton {
+            margin: 0;
+        }
+
+        .return-to-shop .button {
+            margin: 30px 0 0 !important;
+            background: linear-gradient(134.71deg, #1ADB72 -0.5%, #10B151 100%);
+            border-radius: 30px;
+            box-shadow: none !important;
+            border: none !important;
+            padding: 10px 24px !important;
+        }
+
+      </style>
+    <?php else: ?>
+    <div class="checkout-custom-header">
+      @include('partials.page-header')
+    </div>
     <div class="container-fluid pt-5 pb-5 form-cart-woocommerce mt-5">
       <div class="row justify-content-center">
         <div class="col-md-7 col-12">
