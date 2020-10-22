@@ -748,5 +748,29 @@
       margin: 30px
   }
 
+  /* new edit mobile version */
+  @media screen and (max-width: 600px) {
+    .item-blog .card .bg-images {
+    width: 100% !important;
+    max-width: 100% !important;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 120px !important;
+    min-height: 1px !important;
+
+}
+.page-template-template-home-item section.banner-home-template {
+    height: auto !important;
+    padding: 90px 0 30px;
+}
+.page-template-template-home-item .go {
+    margin: 0 !important;
+}
+  }
+
+
+
+
+
 </style>
 @endsection

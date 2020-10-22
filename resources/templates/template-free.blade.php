@@ -85,8 +85,6 @@
       </div>
   </section>
 
-
-
 <script>
   jQuery(function($) {
     $('.selectCat').on('change', function() {
