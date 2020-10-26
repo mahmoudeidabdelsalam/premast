@@ -224,4 +224,7 @@
   .download-product .free button#somdn-form-submit-button {
     font-size: 0;
   }
+  .custom-summary .free button#somdn-form-submit-button:after {
+    display: block;
+  }
 </style>
