@@ -495,7 +495,7 @@
     </div>
 
     <div class="container-fluid">
-      <div class="col-md-12 col-sm-12 p-5">
+      <div class="col-md-12 col-sm-12 p-3">
         <div class="item-columns grid row m-0 container-ajax">
         <?php
         // $blog_ids = get_field('blog_items', false, false);
@@ -761,6 +761,21 @@
 .page-template-template-home-item .trand-now ul a  {
     margin: 10px 5px;
 }
+.page-template-template-home-item .go {
+    padding-top: 0 !important;
+    position: relative;
+    top: 20px;
+}
+form#itemsSearch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+form#itemsSearch button {
+    padding: 0;
+    top: 2px;
+    position: relative;
+}
   @media screen and (max-width: 600px) {
     .item-blog .card .bg-images {
     width: 100% !important;
@@ -784,6 +799,7 @@
     padding: 0;
     margin-left: -10px;
 }
+
 }
 
 /*
