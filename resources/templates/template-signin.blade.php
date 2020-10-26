@@ -261,11 +261,11 @@ input#user_login {
     }
     input#wp-submit:hover {
     background: linear-gradient(134.71deg, #000DFF 100%,#6B73FF -0.5%,);
-    opacity:0.095;
+    opacity:0.95;
     }
     div#nsl-custom-login-form-1 {
     position: absolute;
-    bottom: 28px;
+    bottom: -9px;
     right: 145px;
    }
 
@@ -275,7 +275,7 @@ input#user_login {
    a.switch-link {
     right: 93px;
     position: absolute;
-    bottom: 196px;
+    bottom: 170px;
     color: #1E6DFB;
     opacity: 0.88;
 }
@@ -292,17 +292,17 @@ input#user_login {
     }
     div#nsl-custom-login-form-1 {
       position: absolute;
-      bottom: -21px;
-      right: -40px;
+      bottom: -60px;
+      right: -23px;
 }
 a.switch-link {
-    right: 160px;
+    right: 92px;
     position: absolute;
-    bottom: 217px;
+    bottom: 190px;
     color: #1E6DFB;
     opacity: 0.88;
     font-size: 14px;
-    padding-bottom:9px;
+
 
     }
     p.login-remember {
