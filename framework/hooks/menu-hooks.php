@@ -212,7 +212,7 @@ class Nav_Item_Walker extends Walker_Nav_Menu {
       $checked = "";
       $parent_checked = "";
       $attributes = "";
-      $term_current2 = "";
+      $term_current = "";
 
       $attributes .= ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
       $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
