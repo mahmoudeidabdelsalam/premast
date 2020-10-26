@@ -12,7 +12,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
       wp_update_user( array( 'ID' => $current_user->ID, 'user_pass' => esc_attr( $_POST['pass1'] ) ) );
     } else {
       $error[] = __('The passwords you entered do not match.  Your password was not updated.', 'profile');
-    } 
+    }
   }
 
   if ( !empty( $_POST['first-name'] ) )
@@ -66,11 +66,11 @@ function wooc_extra_register_fields() {
  * @compatible    WooCommerce 3.6.2
  * @donate $9     https://businessbloomer.com/bloomer-armada/
  */
-  
+
 // THIS WILL CREATE A NEW SHORTCODE: [wc_reg_form_bbloomer]
-  
+
 add_shortcode( 'wc_reg_form_bbloomer', 'bbloomer_separate_registration_form' );
-    
+
 function bbloomer_separate_registration_form() {
 if ( is_admin() ) return;
 ob_start();
@@ -78,13 +78,13 @@ if ( is_user_logged_in() ) {
    wc_add_notice( sprintf( __( 'You are currently logged in. If you wish to register with a different account please <a href="%s">log out</a> first', 'bbloomer' ), wc_logout_url() ) );
    wc_print_notices();
 } else {
-     
+
 // NOTE: THE FOLLOWING <FORM> IS COPIED FROM woocommerce\templates\myaccount\form-login.php
 // IF WOOCOMMERCE RELEASES AN UPDATE TO THAT TEMPLATE, YOU MUST CHANGE THIS ACCORDINGLY
 ?>
-        
+
 <form method="post" class="woocommerce-form woocommerce-form-register register" action="#registra" <?php do_action( 'woocommerce_register_form_tag' ); ?>>
-  
+
   <?php do_action( 'woocommerce_register_form_start' ); ?>
 
   <?php if ( 'no' === get_option( 'woocommerce_registration_generate_username' ) ) : ?>
@@ -122,7 +122,7 @@ function register_user_front_end() {
 	  $last_name = stripcslashes($_POST['last_name']);
 	  $new_user_email = stripcslashes($_POST['user_email']);
     $new_user_password = $_POST['user_password'];
-    
+
     $refer_id = $_POST['refer'];
     $follow_ip = $_POST['follow_ip'];
 
@@ -217,7 +217,7 @@ function premast_memberships_create(){
 
   if ($refer_id && $follow_ip != $user_ip) {
     $data = apply_filters( 'wc_memberships_groups_import_membership_data', array(
-      'plan_id' => $plan_id, 
+      'plan_id' => $plan_id,
       'post_parent' => $plan_id,
       'post_author'    => $refer_id,
       'post_type'      => 'wc_user_membership',
@@ -235,7 +235,7 @@ function premast_memberships_create(){
       update_post_meta($user_membership_id, '_end_date', $end_date);
       update_post_meta($user_membership_id, '_start_date', $start_date);
     }
-          
+
     $user_email = $_POST['user_email'];
     update_post_meta( $user_membership_id, 'email_referrals', $user_email );
     update_post_meta( $user_membership_id, 'email_referrals', $user_email );
@@ -259,12 +259,24 @@ function pippin_login_fail( $username ) {
      }
 }
 
+    add_action( 'wp_authenticate', '_catch_empty_user', 1, 2 );
+    function _catch_empty_user( $username, $pwd ) {
+
+        // dd($username);
+
+        if ( empty( $username ) ) {
+            // wp_safe_redirect( $redirect);
+            wp_safe_redirect(get_field('link_signin', 'option') . '?login=failed');  // let's append some information (login=failed) to the URL for the theme to use
+            exit();
+        }
+    }
+
 
 
 add_action( 'show_user_profile', 'display_user_custom_hash' );
 add_action( 'edit_user_profile', 'display_user_custom_hash' );
 
-function display_user_custom_hash( $user) { 
+function display_user_custom_hash( $user) {
 
 ?>
   <h3>USER IP</h3>

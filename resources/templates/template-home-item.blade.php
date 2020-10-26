@@ -66,7 +66,7 @@
             <h5 class="sub-heading"><?= the_field('sub_headline_popular_items'); ?></h5>
           </div>
         </div>
-        <div class="col-md-6 col-12">
+        <div class="col-md-6 col-12 pb-1">
           <div class="see-link">
             <?php
             $link = get_field('link_popular_items');
@@ -182,7 +182,7 @@
             <h5 class="sub-heading">{{ _e('You can check our different packages and pick a one that suits you and go premium. <br> We are always here to support!', 'premast') }}</h5>
           </div>
         </div>
-        <div class="col-md-6 col-12">
+        <div class="col-md-6 col-12 pb-3">
           <div class="see-link">
             <?php
             $link = get_field('link_follow_items');
@@ -294,9 +294,9 @@
                 <h3 class="headline"><?php echo esc_html( $term->name ); ?></h3>
               </div>
             </div>
-            <div class="col-md-6 col-12">
+            <div class="col-md-6 col-12 pb-3">
               <div class="see-link">
-                <a class="go p-0" href="<?php echo esc_url( get_term_link( $term ) ); ?>">See all items <i class="fa fa-angle-right"></i></a>
+                <a class="go" href="<?php echo esc_url( get_term_link( $term ) ); ?>">See all items <i class="fa fa-angle-right"></i></a>
               </div>
             </div>
           </div>
@@ -495,7 +495,7 @@
     </div>
 
     <div class="container-fluid">
-      <div class="col-md-12 col-sm-12 p-5">
+      <div class="col-md-12 col-sm-12 p-3">
         <div class="item-columns grid row m-0 container-ajax">
         <?php
         // $blog_ids = get_field('blog_items', false, false);
@@ -749,6 +749,33 @@
   }
 
   /* new edit mobile version */
+  header.banner .logos {
+    max-width: 223px !important;
+}
+.page-template-template-home-item .search-items form {
+    padding: 5px 19px;
+}
+.page-template-template-home-item .trand-now ul {
+ margin-left: -10px;
+}
+.page-template-template-home-item .trand-now ul a  {
+    margin: 10px 5px;
+}
+.page-template-template-home-item .go {
+    padding-top: 0 !important;
+    position: relative;
+    top: 20px;
+}
+form#itemsSearch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+form#itemsSearch button {
+    padding: 0;
+    top: 2px;
+    position: relative;
+}
   @media screen and (max-width: 600px) {
     .item-blog .card .bg-images {
     width: 100% !important;
@@ -757,7 +784,6 @@
     background-repeat: no-repeat;
     height: 120px !important;
     min-height: 1px !important;
-
 }
 .page-template-template-home-item section.banner-home-template {
     height: auto !important;
@@ -766,11 +792,31 @@
 .page-template-template-home-item .go {
     margin: 0 !important;
 }
+  .page-template-template-home-item section.banner-home-template img {
+    margin-left:-24px;
   }
+  .bg-images.lazyloaded {
+    padding: 0;
+    margin-left: -10px;
+}
+
+}
+
+/*
+
+ul.meta-buttons li i {
+    font-size: 14px;
+    margin: 2px 4px;
+    position: relativ;
+    top: 1px;}
 
 
-
-
-
+    ul.meta-buttons li.likes-button:hover {
+    width: 65px;
+    -webkit-transition: width .2s ease;
+    -o-transition: width .2s ease;
+    transition: width .2s ease;
+}
+ */
 </style>
 @endsection

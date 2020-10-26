@@ -6,7 +6,7 @@
   <div class="container-fluid">
     <div class="col-12">
       <a href="javascript:void(0);">
-        {{ _e('Show Filters', 'premast') }} 
+        {{ _e('Show Filters', 'premast') }}
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M14 6H8V0H6V6H0V8H6V14H8V8H14V6Z" fill="black" />
         </svg>
@@ -138,7 +138,7 @@
           @while(have_posts()) @php the_post(); @endphp
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 col-12 grid-item">
               <div class="card">
-              
+
                 <ul class="meta-buttons">
                   <li class="likes-button">
                     {!! get_simple_likes_button( get_the_ID() ) !!}
@@ -159,7 +159,7 @@
                   </li>
                   @endif
                 </ul>
-        
+
 
                 <div class="bg-featureImage featureImage">
                   @php
@@ -181,7 +181,7 @@
                   <div class="review-and-download">
                     <div class="review">
                       @if (get_option('woocommerce_enable_review_rating' ) == 'yes')
-                        @php 
+                        @php
                           global $product;
                           $rating_count = method_exists($product, 'get_rating_count')   ? $product->get_rating_count()   : 1;
                           $review_count = method_exists($product, 'get_review_count')   ? $product->get_review_count()   : 1;
@@ -199,29 +199,29 @@
                           <span class="icon-review icon-meta" itemprop="reviewCount">{{ _e('0', 'premast') }}</span>
                         @endif
                       @endif
-        
-                      <span class="icon-download icon-meta"> 
-                        <img class="img-meta" src="{{ get_theme_file_uri().'/dist/images/icon-download.svg' }}" alt="Download"> 
+
+                      <span class="icon-download icon-meta">
+                        <img class="img-meta" src="{{ get_theme_file_uri().'/dist/images/icon-download.svg' }}" alt="Download">
                         {{ ($counter_download)? $counter_download:'0' }}
                       </span>
 
                       @if(current_user_can( 'edit_post', get_the_ID() ) && (get_the_author_meta('ID') == $current_user->ID) || is_super_admin())
-                        <span class="icon-download icon-meta"> 
+                        <span class="icon-download icon-meta">
                           <img class="img-meta" src="{{ get_theme_file_uri().'/dist/images/icon-view.svg' }}" alt="Download">
                           {{ ($counter_view)? $counter_view:'0' }}
                         </span>
                       @endif
-                      
-                      <span class="icon-download icon-meta"> 
-                        <img class="img-meta" src="{{ get_theme_file_uri().'/dist/images/like.png' }}" alt="like"> 
+
+                      <span class="icon-download icon-meta">
+                        <img class="img-meta" src="{{ get_theme_file_uri().'/dist/images/like.png' }}" alt="like">
                         {{ ($like)? $like:'0' }}
                       </span>
                     </div>
-        
+
                     @if($price)
                       <span class="premium"><i class="fa fa-star"></i></span>
                     @endif
-        
+
                   </div>
                 </div>
               </div>
@@ -232,7 +232,7 @@
             {{ __('Sorry, no results were found.', 'sage') }}
           </div>
         @endif
-        
+
         <div class="col-12 pt-5 pb-5">
           <nav aria-label="Page navigation example">{{ premast_base_pagination(array()) }}</nav>
         </div>
@@ -434,7 +434,7 @@
     line-height: 16px;
     text-transform: capitalize;
     color: #282F39;
-  }  
+  }
 
   li.term-parent a {
     font-weight: 900 !important;
@@ -442,12 +442,12 @@
 
   li.term-parent + li {
     padding-left: 5px;
-  }  
+  }
 
   span.count-term {
     display: none;
   }
-  
+
   .text-term.active {
     font-weight: 900 !important;
   }
@@ -490,7 +490,7 @@
     height: 100%;
     padding-top: 30px;
     border-radius: 8px;
-  }  
+  }
 
 
   .col-offer + .banner + .banner-items {
@@ -500,12 +500,12 @@
   @media (max-width: 579px) {
     section.banner-items {
       padding: 40px 15px !important;
-    }    
+    }
 
     .SwitchButtons, .SwitchButtons a {
       width: 100%;
-    }  
-  
+    }
+
     div#FilterSide {
       left: 0 !important;
       width: 100% !important;
@@ -584,8 +584,8 @@
       $.ajax({
         url: '<?php echo admin_url("admin-ajax.php"); ?>', // in backend you should pass the ajax url using this variable
         type: 'POST',
-        data: { 
-          action : 'get_sort_items', 
+        data: {
+          action : 'get_sort_items',
           checked: checked,
           sort: sort,
           term_id: '<?= $taxonomy_query->term_id; ?>',
@@ -613,8 +613,8 @@
       $.ajax({
         url: '<?php echo admin_url("admin-ajax.php"); ?>', // in backend you should pass the ajax url using this variable
         type: 'POST',
-        data: { 
-          action : 'get_sort_items', 
+        data: {
+          action : 'get_sort_items',
           checked: checked,
           sort: sort,
           term_id: '<?= $taxonomy_query->term_id; ?>',
@@ -641,7 +641,7 @@
       $.ajax({
         url: '<?php echo admin_url("admin-ajax.php"); ?>', // in backend you should pass the ajax url using this variable
         type: 'POST',
-        data: { 
+        data: {
           action : 'get_sort_items',
           sort: sort,
           paged: page,
@@ -674,8 +674,8 @@
       $.ajax({
         url: '<?php echo admin_url("admin-ajax.php"); ?>', // in backend you should pass the ajax url using this variable
         type: 'POST',
-        data: { 
-          action : 'get_sort_items', 
+        data: {
+          action : 'get_sort_items',
           sort: sort,
           paged: '<?= $paged; ?>',
           term_id: '<?= $taxonomy_query->term_id; ?>'
@@ -692,7 +692,51 @@
   });
 
 </script>
+<style>
 
+  ul.meta-buttons li i {
+    font-size: 14px;
+    margin: 2px 4px;
+    position: relativ;
+    top: 1px;
+    }
+
+
+    ul.meta-buttons li.likes-button:hover {
+    width: 65px;
+    -webkit-transition: width .2s ease;
+    -o-transition: width .2s ease;
+    transition: width .2s ease;
+    }
+    li.likes-button {
+      background: transparent;
+      opacity: 0;
+    }
+    .item-card .card:hover ul.meta-buttons li.likes-button {
+    display: block;
+    opacity: 1;
+    }
+    ul.meta-buttons {
+    right: 7px;
+   }
+   ul.meta-buttons li {
+     padding:3px;
+   }
+   @media screen and (max-width: 600px){
+    .item-card .card:hover ul.meta-buttons li.likes-button {
+      display:block;
+
+    }
+    li.likes-button {
+      background: #000;
+      opacity: 0;
+    }
+
+   }
+
+
+
+</style>
 @endsection
 
 

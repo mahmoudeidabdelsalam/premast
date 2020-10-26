@@ -70,7 +70,7 @@ $time = get_the_time('Y-m-d')
           <i></i>
         </a>
         <h2 class="logos mr-auto">
-          <a class="navbar-brand p-0 align-self-center col" href="{{ the_field('link_page_login','option') }}" title="{{ get_bloginfo('name') }}">
+          <a class="navbar-brand p-0 align-self-center" href="{{ the_field('link_page_login','option') }}" title="{{ get_bloginfo('name') }}">
             <img class="img-fluid" src="@if(get_field('templates_logo', 'option')) {{ the_field('templates_logo','option') }} @else {{ get_theme_file_uri().'/dist/images/premast-templates.png' }} @endif" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
             <span class="sr-only"> {{ get_bloginfo('name') }} </span>
           </a>
@@ -197,4 +197,7 @@ $time = get_the_time('Y-m-d')
   .admin-bar div#ProgressBar {
     top: 24px;
   }
+  header.banner .cart-contents {
+    margin-left: 8px !important;
+}
 </style>
