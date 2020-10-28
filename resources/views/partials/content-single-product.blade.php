@@ -133,7 +133,9 @@
                         @foreach( $attachment_ids as $attachment_id )
                           @php $large = wp_get_attachment_image_url( $attachment_id, 'medium_large' ); $counter++; @endphp
                           <div class="carousel-item @if($counter == 1) active @endif">
-                            <img src="<?= $large; ?>" class="d-block w-100 lazyload" alt="slide">
+                            <a href="{{ $link }}/?more=fullScreen">
+                              <img src="<?= $large; ?>" class="d-block w-100 lazyload" alt="slide">
+                            </a>
                           </div>
                         @endforeach
                       </div>
@@ -537,6 +539,15 @@
         li.showMoreImg {
           opacity: 1;
         } 
+        @media (max-width: 779px) {
+          .slide .carousel-indicators li {
+            display: none;
+          }
+
+          .slide .carousel-indicators li[data-slide-to="0"], .slide .carousel-indicators li[data-slide-to="1"], .slide .carousel-indicators li.showMoreImg {
+            display: block;
+          }
+        }
       </style>
     @endif    
   @endwhile

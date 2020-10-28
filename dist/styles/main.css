@@ -42484,9 +42484,10 @@ div#LimitDownload .modal-body p .btn-referral,
   .slideout-open .toggle-menu {
     position: fixed;
     top: 10px;
+    z-index: 99999;
   }
 
-  /* line 4175, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4176, resources/assets/styles/layouts/_woocommerce.scss */
 
   .is-open-user .menu-toggle {
     position: fixed;
@@ -42495,7 +42496,7 @@ div#LimitDownload .modal-body p .btn-referral,
     right: 10px;
   }
 
-  /* line 4181, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4182, resources/assets/styles/layouts/_woocommerce.scss */
 
   ul#menu-category-product-menu {
     height: 80vh;
@@ -42509,13 +42510,13 @@ div#LimitDownload .modal-body p .btn-referral,
   }
 }
 
-/* line 4190, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4191, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item section.blog-items {
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-/* line 4194, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4195, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item .heading {
   font-family: 'Roboto';
@@ -42527,7 +42528,7 @@ div#LimitDownload .modal-body p .btn-referral,
   color: #282F39;
 }
 
-/* line 4204, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4205, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item .sub-heading {
   font-family: 'Roboto';
@@ -42539,7 +42540,7 @@ div#LimitDownload .modal-body p .btn-referral,
   color: #646464;
 }
 
-/* line 4214, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4215, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item a.go {
   font-family: 'Roboto';
@@ -42555,7 +42556,7 @@ div#LimitDownload .modal-body p .btn-referral,
   float: right;
 }
 
-/* line 4228, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4229, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item .card-title h6 {
   font-family: 'Roboto';
@@ -42568,7 +42569,7 @@ div#LimitDownload .modal-body p .btn-referral,
   color: #3F4A59;
 }
 
-/* line 4239, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4240, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item .items {
   display: -webkit-box;
@@ -42576,7 +42577,7 @@ div#LimitDownload .modal-body p .btn-referral,
   display: flex;
 }
 
-/* line 4243, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4244, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item .rate:before {
   content: "\F005";
@@ -42585,7 +42586,7 @@ div#LimitDownload .modal-body p .btn-referral,
   padding-right: 4px;
 }
 
-/* line 4251, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4252, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item .download:before {
   content: "\F01A";
@@ -42595,7 +42596,7 @@ div#LimitDownload .modal-body p .btn-referral,
   padding-left: 13px;
 }
 
-/* line 4259, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4260, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item .like:before {
   content: "\F08A";
@@ -42605,14 +42606,14 @@ div#LimitDownload .modal-body p .btn-referral,
   padding-left: 13px;
 }
 
-/* line 4268, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4269, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item .intro {
   padding-top: 90px;
   padding-left: 21px;
 }
 
-/* line 4273, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4274, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item a.go-link {
   margin-top: 13rem;
@@ -42620,7 +42621,7 @@ div#LimitDownload .modal-body p .btn-referral,
   padding-right: 25px;
 }
 
-/* line 4279, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4280, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item h3.headline {
   font-family: 'Roboto';
@@ -42632,7 +42633,7 @@ div#LimitDownload .modal-body p .btn-referral,
   margin-bottom: 20px;
 }
 
-/* line 4289, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4290, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item h3.sec-headline {
   margin-top: 120px;
@@ -42645,7 +42646,7 @@ div#LimitDownload .modal-body p .btn-referral,
   color: #1E6DFB;
 }
 
-/* line 4300, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4301, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item h1.headterm {
   font-family: 'Roboto';
@@ -42658,7 +42659,7 @@ div#LimitDownload .modal-body p .btn-referral,
   color: #282F39;
 }
 
-/* line 4311, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4312, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item h5.subhead {
   font-family: 'Roboto';
@@ -42671,13 +42672,13 @@ div#LimitDownload .modal-body p .btn-referral,
   color: #646464;
 }
 
-/* line 4322, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4323, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item .mid-headline {
   margin: 32px;
 }
 
-/* line 4326, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4327, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item .blog-items .button,
 .page-template-template-home-item .popular-items .button {
@@ -42685,7 +42686,7 @@ div#LimitDownload .modal-body p .btn-referral,
   margin: 77px;
 }
 
-/* line 4332, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4333, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item a.btn.btn-primary,
 .page-template-template-home-item .search-form a.btn-primary.search-submit,
@@ -42704,7 +42705,7 @@ div#LimitDownload .modal-body p .btn-referral,
   padding-top: 8px;
 }
 
-/* line 4347, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4348, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item .btn-primary {
   width: 237px;
@@ -42715,7 +42716,7 @@ div#LimitDownload .modal-body p .btn-referral,
   border-color: transparent;
 }
 
-/* line 4354, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4355, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item .btn-primary:hover {
   background: -webkit-linear-gradient(279.67deg, #6B73FF -0.5%, #000DFF 100%);
@@ -42724,7 +42725,7 @@ div#LimitDownload .modal-body p .btn-referral,
   opacity: 0.9;
 }
 
-/* line 4359, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4360, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item section.banner-home-template {
   height: 500px;
@@ -42732,7 +42733,7 @@ div#LimitDownload .modal-body p .btn-referral,
   padding-top: 150px;
 }
 
-/* line 4365, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4366, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item .overlay-banner {
   position: absolute;
@@ -42743,7 +42744,7 @@ div#LimitDownload .modal-body p .btn-referral,
   top: 0;
 }
 
-/* line 4374, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4375, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item section.banner-home-template h2 {
   font-style: normal;
@@ -42753,7 +42754,7 @@ div#LimitDownload .modal-body p .btn-referral,
   color: #FFFFFF;
 }
 
-/* line 4382, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4383, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item section.banner-home-template p {
   font-style: normal;
@@ -42763,7 +42764,7 @@ div#LimitDownload .modal-body p .btn-referral,
   color: #FFFFFF;
 }
 
-/* line 4390, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4391, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item section.banner-home-template h2 {
   font-style: normal;
@@ -42773,7 +42774,7 @@ div#LimitDownload .modal-body p .btn-referral,
   color: #FFFFFF;
 }
 
-/* line 4398, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4399, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item .search-items form {
   background: #FFFFFF;
@@ -42785,7 +42786,7 @@ div#LimitDownload .modal-body p .btn-referral,
   padding: 5px 10px;
 }
 
-/* line 4407, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4408, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item .search-items form input {
   background: transparent;
@@ -42793,7 +42794,7 @@ div#LimitDownload .modal-body p .btn-referral,
   width: 90%;
 }
 
-/* line 4413, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4414, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item .search-items form button {
   background: transparent;
@@ -42802,13 +42803,13 @@ div#LimitDownload .modal-body p .btn-referral,
   color: #1f6cfd;
 }
 
-/* line 4420, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4421, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item .trand-now {
   margin-top: 50px;
 }
 
-/* line 4424, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4425, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item .trand-now h3 {
   font-weight: 500;
@@ -42819,13 +42820,13 @@ div#LimitDownload .modal-body p .btn-referral,
   color: #FFFFFF;
 }
 
-/* line 4433, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4434, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item .trand-now ul {
   padding: 0;
 }
 
-/* line 4437, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4438, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item .trand-now ul a {
   background: #90C1F9;
@@ -42842,46 +42843,46 @@ div#LimitDownload .modal-body p .btn-referral,
   display: inline-block;
 }
 
-/* line 4452, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4453, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item section.popular-items {
   padding-top: 55px;
 }
 
-/* line 4456, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4457, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item .items-categories {
   height: auto;
   min-height: 1px;
 }
 
-/* line 4461, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4462, resources/assets/styles/layouts/_woocommerce.scss */
 
 .page-template-template-home-item section.recent-items {
   padding-top: 80px;
 }
 
 @media (max-width: 575.98px) {
-  /* line 4466, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4467, resources/assets/styles/layouts/_woocommerce.scss */
 
   .page-template-template-home-item section.banner-home-template {
     height: auto;
     padding: 30px 15px;
   }
 
-  /* line 4471, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4472, resources/assets/styles/layouts/_woocommerce.scss */
 
   .page-template-template-home-item section.banner-home-template img {
     width: 100%;
   }
 
-  /* line 4475, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4476, resources/assets/styles/layouts/_woocommerce.scss */
 
   .page-template-template-home-item .go {
     padding: 0;
   }
 
-  /* line 4479, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4480, resources/assets/styles/layouts/_woocommerce.scss */
 
   .page-template-template-home-item section.recent-items {
     padding-top: 10px;
@@ -42889,32 +42890,32 @@ div#LimitDownload .modal-body p .btn-referral,
 }
 
 @media (max-width: 575.98px) {
-  /* line 4485, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4486, resources/assets/styles/layouts/_woocommerce.scss */
 
   .page-template-template-home-item section.banner-home-template {
     height: auto;
     padding: 30px 0px;
   }
 
-  /* line 4490, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4491, resources/assets/styles/layouts/_woocommerce.scss */
 
   .page-template-template-home-item .trand-now ul a {
     margin: 5px 2px;
   }
 
-  /* line 4494, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4495, resources/assets/styles/layouts/_woocommerce.scss */
 
   .page-template-template-home-item .trand-now {
     margin-bottom: 50px;
   }
 
-  /* line 4498, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4499, resources/assets/styles/layouts/_woocommerce.scss */
 
   .page-template-template-home-item section.banner-home-template h2 {
     font-size: 29px;
   }
 
-  /* line 4502, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4503, resources/assets/styles/layouts/_woocommerce.scss */
 
   .page-template-template-home-item section.banner-home-template p {
     font-size: 20px;
@@ -42922,13 +42923,13 @@ div#LimitDownload .modal-body p .btn-referral,
     font-weight: 300;
   }
 
-  /* line 4508, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4509, resources/assets/styles/layouts/_woocommerce.scss */
 
   .page-template-template-home-item h1.heading {
     font-size: 20px;
   }
 
-  /* line 4512, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 4513, resources/assets/styles/layouts/_woocommerce.scss */
 
   .page-template-template-home-item .blog-items .button,
   .page-template-template-home-item .popular-items .button {
@@ -42936,7 +42937,7 @@ div#LimitDownload .modal-body p .btn-referral,
   }
 }
 
-/* line 4519, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4520, resources/assets/styles/layouts/_woocommerce.scss */
 
 .featureImage {
   overflow: hidden;
@@ -42947,7 +42948,7 @@ div#LimitDownload .modal-body p .btn-referral,
   width: 100%;
 }
 
-/* line 4528, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4529, resources/assets/styles/layouts/_woocommerce.scss */
 
 .featureImage img {
   height: 100%;
@@ -42965,7 +42966,7 @@ div#LimitDownload .modal-body p .btn-referral,
   will-change: auto;
 }
 
-/* line 4542, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 4543, resources/assets/styles/layouts/_woocommerce.scss */
 
 .grid .grid-item .review-and-download {
   min-height: 22px;
