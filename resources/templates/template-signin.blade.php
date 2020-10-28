@@ -13,10 +13,16 @@
 
 @if ( !is_user_logged_in() )
 
-@if($login == 'failed')
-  <h5 class="alert alert-danger col-12">The username and password you entered did not match our records. Please double-check and try again.</h5>
-@endif
 
+
+
+<div class="container mt-md-5 pt-md-5">
+  <div class="row">
+    @if($login == 'failed')
+      <h5 class="alert alert-danger col-12 text-center">The username and password you entered did not match our records. Please double-check and try again.</h5>
+    @endif
+  </div>
+</div>
 
 <div class="container-fluid">
     <div class="row justify-content-left">
