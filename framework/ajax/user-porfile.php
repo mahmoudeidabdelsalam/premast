@@ -117,27 +117,30 @@ if ( is_user_logged_in() ) {
 
 add_action('wp_ajax_register_user_front_end', 'register_user_front_end', 0);
 add_action('wp_ajax_nopriv_register_user_front_end', 'register_user_front_end');
+
+
 function register_user_front_end() {
-    $first_name = stripcslashes($_POST['first_name']);
-	  $last_name = stripcslashes($_POST['last_name']);
-	  $new_user_email = stripcslashes($_POST['user_email']);
+
+    $fullname = stripcslashes($_POST['fullname']);
+	$new_user_email = stripcslashes($_POST['user_email']);
     $new_user_password = $_POST['user_password'];
 
     $refer_id = $_POST['refer'];
     $follow_ip = $_POST['follow_ip'];
 
-	  $user_nice_name = strtolower($_POST['user_email']);
+    $user_nice_name = strtolower($_POST['user_email']);
+
+
 	  $user_data = array(
-        'first_name'    => $first_name,
-        'last_name'     => $last_name,
-	      'user_login'    => $user_nice_name,
-	      'user_email'    => $new_user_email,
-	      'user_pass'     => $new_user_password,
-	      'user_nicename' => $user_nice_name,
-	      'display_name'  => $new_user_first_name,
-	      'role'          => 'subscriber'
-	  	);
-      $user_id = wp_insert_user($user_data);
+        'user_login'    => $user_nice_name,
+        'user_email'    => $new_user_email,
+        'user_pass'     => $new_user_password,
+        'user_nicename' => $user_nice_name,
+        'display_name'  => $fullname,
+        'role'          => 'subscriber'
+	 );
+
+     $user_id = wp_insert_user($user_data);
 
       update_user_meta( $user_id, 'billing_first_name',  $first_name);
       update_user_meta( $user_id, 'billing_last_name', $last_name );

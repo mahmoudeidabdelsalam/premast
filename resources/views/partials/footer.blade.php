@@ -222,7 +222,7 @@ ul.copyright a {
               <p class="text-white text-description">{{ _e('Download your preferred design from huge collection of professionally, creative designed powerpoint templates for all your needs.', 'premast') }}</p>
             </div>
           </div>
-          <div class="col-md-7 col-12">
+          <div class="col-md-7 col-12" style="background:#f9f9f9;">
             <div class="modal-header">
               <a class="navbar-brand" href="{{ home_url('/') }}" title="{{ get_bloginfo('name') }}">
                 <img class="img-fluid" src="@if(get_field('website_logo', 'option')) {{ the_field('website_logo','option') }} @else {{ get_theme_file_uri().'/dist/images/logo-en.png' }} @endif" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
@@ -238,7 +238,7 @@ ul.copyright a {
                 <div class="tab-pane fade show active" id="WP_login">
                   <span id="login-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span>
 
-                  @php 
+                  @php
                     $args = array(
                       'echo'           => true,
                       'remember'       => true,
@@ -252,11 +252,11 @@ ul.copyright a {
                       'label_log_in'   => __( 'Sign in' ),
                       'value_username' => '',
                       'value_remember' => false
-                    ); 
+                    );
                   @endphp
-                  
+
                   {{ wp_login_form($args) }}
-    
+
                   <span class="switch-link switch-to-lost position-relative" data-tab="lost_password" style=" bottom: 0; margin: 24px auto; display: block; text-align: center; width: 100%; right: 0; ">{{ _e('Lost your password?', 'premast') }}</span>
 
                 </div>
@@ -282,7 +282,7 @@ ul.copyright a {
                       <?php wp_nonce_field( 'lost_password', 'woocommerce-lost-password-nonce' ); ?>
                     </form>
                     <?php do_action( 'woocommerce_after_lost_password_form' ); ?>
-                    
+
                     <span class="switch-link switch-to-login" data-tab="WP_login">{{ _e('Sign in', 'premast') }}</span>
                 </div>
               </div>
@@ -306,14 +306,17 @@ ul.copyright a {
           <div class="col-md-5 col-12 row m-0 align-items-center"  style="background-image: linear-gradient(150deg, #56ecf2 0%, #4242e3 100%);">
             <div class="elementor-background-overlay" style="background-image: url('{{ the_field('header_section_image', 'option') }}');"></div>
             <div class="col-12 description">
-              <h4 class="text-white title-description">{{ _e('Welcome to premast', 'premast') }}</h4>
-              <p class="text-white text-description mb-3">{{ _e('Join us and enjoy with this benefits', 'premast') }}</p> 
-              <p class="text-white min-description">{{ _e('* Recieve a 20% off discount in your E-mail', 'premast') }}</p>
-              <p class="text-white min-description">{{ _e('* Downloads hunderds of powerpoint slides and graphics for free', 'premast') }}</p>
-              <p class="text-white min-description">{{ _e('* Discover amazing new products daily', 'premast') }}</p>
+              <div class="content-description">
+                <h4 class="text-white title-description">{{ _e('Welcome to premast', 'premast') }}</h4>
+                <p class="text-white text-description mb-3">{{ _e('Join us and enjoy with this benefits', 'premast') }}</p>
+                <p class="text-white min-description">{{ _e('* Recieve a 20% off discount in your E-mail', 'premast') }}</p>
+                <p class="text-white min-description">{{ _e('* Downloads hunderds of powerpoint slides and graphics for free', 'premast') }}</p>
+                <p class="text-white min-description">{{ _e('* Discover amazing new products daily', 'premast') }}</p>
+              </div>
+
             </div>
           </div>
-          <div class="col-md-7 col-12">
+          <div class="col-md-7 col-12 " style="background:#f9f9f9;!important">
             <div class="modal-header">
               <a class="navbar-brand" href="{{ home_url('/') }}" title="{{ get_bloginfo('name') }}">
                 <img class="img-fluid" src="@if(get_field('website_logo', 'option')) {{ the_field('website_logo','option') }} @else {{ get_theme_file_uri().'/dist/images/logo-en.png' }} @endif" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
@@ -323,61 +326,72 @@ ul.copyright a {
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
+              <div class="modal-footer">
+                {{ _e('You have an account?', 'premast') }} <a class="login" href="#" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#LoginUser">{{ _e('Sign in', 'premast') }}</a>
+              </div>
             </div>
             <div class="modal-body">
               <p class="register-message m-0" style="display:none"></p>
               <form action="#" method="POST" name="register-form" class="register-form register-user">
-                <p class="form-row form-row-first">
-                  <input class="form-control" type="text"  name="first_name" placeholder="First Name" id="firstname">
-                </p>
-                <p class="form-row form-row-last">
-                  <input type="text" name="last_name" placeholder="Last Name" id="lastname">
+                <p class="form">
+                  <label  class="star">Name</label>
+                  <input type="text" name="name" placeholder="" id="username">
                 </p>
                 <p>
-                  <input type="email" name="user_email" placeholder="Email" id="useremail">
+                  <label  class="star">Email</label>
+                  <input type="email" name="user_email" placeholder="" id="useremail">
                 </p>
                 <p>
-                  <input type="password" name="user_password" placeholder="Password" id="password">
+                  <label  class="star">Password</label>
+                  <input type="password" name="user_password" placeholder="" id="password">
                 </p>
                 <p>
-                  <input type="password" name="re-pwd" placeholder="Confirm Password" id="confirm_password">
+                  <label  class="star">Confirm Password</label>
+                  <input type="password" name="re-pwd" placeholder="" id="confirm_password">
                   <span id="message"></span>
-                </p>  
+                </p>
                 <p class="Conditions">
                   <input type="checkbox" id="Conditions"> <label class="d-inline-block mb-0 label-Conditions" for="Conditions">{{ _e('Accept our Terms&Conditions', 'premast') }}</label>
                 </p>
                 <button type="submit" id="register-button" class="woocommerce-Button button" name="register" value="Register">{{ _e('Register', 'premast') }}</button>
                 <span id="register-loader" style="display:none;"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></span>
-              </form> 
-              
+              </form>
+
 
               <script type="text/javascript">
                 jQuery(function($) {
                   $('#password, #confirm_password').on('keyup', function () {
                     if ($('#password').val() == $('#confirm_password').val()) {
                       $('#message').html('Matching').css('color', 'green');
-                    } else 
+                    } else
                       $('#message').html('Not Matching').css('color', 'red');
                   });
+
+
+
                   $('#register-button').on('click',function(e){
                     e.preventDefault();
-                    var firstname = $('#firstname').val();
+
+                    var fullname = $('#username').val();
                     var useremail = $('#useremail').val();
                     var password = $('#password').val();
-                    var lastname = $('#lastname').val();
+                    // var lastname = $('#lastname').val();
+
+
                     $.ajax({
                       type:"POST",
                       url:"<?php echo admin_url('admin-ajax.php'); ?>",
                       data: {
                         action: "register_user_front_end",
-                        first_name : firstname,
-                        last_name : lastname,
+                        fullname : fullname,
+                        // last_name : lastname,
                         user_email : useremail,
                         user_password : password
                       },
                       beforeSend: function(results) {
                         $('#register-loader').show();
-                      },                   
+                      },
+
                       success: function(results){
                         $('.register-message').html(results).show();
                         $('#register-loader').hide();
@@ -387,6 +401,9 @@ ul.copyright a {
                         $('#register-loader').hide();
                       }
                     });
+
+
+
                   });
 
                   $('#wp-submit').on('click',function(e){
@@ -401,9 +418,7 @@ ul.copyright a {
                 {!! do_shortcode( '[nextend_social_login provider="google"]' ) !!}
               </div>
             </div>
-            <div class="modal-footer">
-              {{ _e('You have an account?', 'premast') }} <a class="login" href="#" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#LoginUser">{{ _e('Sign in', 'premast') }}</a>
-            </div>
+
           </div>
         </div>
 
@@ -428,4 +443,118 @@ ul.copyright a {
 
     });
   </script>
+  <style>
+    div#LoginUser label, div#SignupUser label {
+    display: block;
+}
+label.star::after {
+    content: " *";
+}
+label.star{
+font-family:'Roboto';
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0.04px;
+color: #646464;
+}
+form.register-form.register-user {
+    width: 90%;
+    margin-left: 15px;
+}
+.content-description {
+    text-align: start;
+    padding: 5px;
+}
+p.text-white.text-description.mb-3{
+     margin:0;
+}
+p.text-white.min-description{
+  font-size : 16px;
+  line-height: 24px;
+  letter-spacing: 0.04px;
+}
+div#LoginUser .modal-footer, div#SignupUser .modal-footer {
+  margin:-25px;
+}
+div.nsl-container[data-align="left"] {
+    text-align: center;
+    align-items: center;
+
+}
+button#register-button {
+    border: none;
+}
+span.nsl-button-svg-container {
+    padding-left: 40px!important;
+}
+input#username , input#useremail , input#password , input#confirm_password{
+    border-radius: 8px!important;
+}
+button#register-button {
+
+    height: 40px!important;
+    box-shadow:none;
+    min-width: 285px!important;
+    box-shadow:none!important;
+}
+p.Conditions {
+    padding-bottom: 16px!important;
+}
+.modal-header {
+  margin-top:35px!important;
+  padding:0!important;
+
+
+}
+.modal-body {
+  padding:0!important;
+}
+.nsl-container.nsl-container-block {
+  margin-top:-23px;
+}
+div.nsl-container .nsl-container-buttons {
+    padding: 15px 0;
+}
+/* login popup */
+   input#wp-submit {
+    border:none!important;
+    min-width: 263px!important;
+    box-shadow:none!important;
+    height:40px!important;
+
+  }
+  #LoginUser p.text-white.text-description {
+    margin: 0;
+}
+
+@media screen and (max-width: 600px) {
+  div.nsl-container[data-align="left"] {
+    margin:0;
+  }
+  button#register-button {
+    min-width: 232px!important;
+  }
+  button#register-button {
+    min-width: 254px!important;
+  }
+  .galogin a {
+    max-width: 285px !important;
+    width: 100%;
+}
+
+div.nsl-container[data-align="left"] {
+    margin: 0 !important;
+}
+
+form.register-form.register-user {
+    width: 100%;
+    margin: 0;
+}
+
+
+}
+  </style>
+
 @endif
