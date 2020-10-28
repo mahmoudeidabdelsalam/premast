@@ -776,6 +776,16 @@ form#itemsSearch button {
     top: 2px;
     position: relative;
 }
+.see-link {
+    height: 100%;
+    display: flex;
+}
+
+.see-link .go {
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: 15px;
+}
   @media screen and (max-width: 600px) {
     .item-blog .card .bg-images {
     width: 100% !important;
