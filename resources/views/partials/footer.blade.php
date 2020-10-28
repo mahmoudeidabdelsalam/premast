@@ -433,6 +433,8 @@ ul.copyright a {
       $('input#user_pass').attr('placeholder', 'Password');
 
 
+      $('input#wp-submit').addClass('disabled');
+      
       $('input#user_login').blur(function() {
         if(!$(this).val() ) {
           $('input#wp-submit').addClass('disabled');
