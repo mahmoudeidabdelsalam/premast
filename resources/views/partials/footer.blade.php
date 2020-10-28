@@ -433,6 +433,11 @@ ul.copyright a {
       $('input#user_pass').attr('placeholder', 'Password');
 
 
+      $('.nsl-container-buttons a').each(function(){ 
+          var oldUrl = $(this).attr("href"); // Get current url
+          $(this).attr("href", oldUrl + '?login=true'); // Set herf value
+      });
+
       $('input#wp-submit').addClass('disabled');
 
       $('input#user_login').blur(function() {
