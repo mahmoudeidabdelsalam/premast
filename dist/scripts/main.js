@@ -14696,6 +14696,7 @@ Router.prototype.loadEvents = function loadEvents () {
         'menu': document.getElementById('menu'),
         'padding': 320,
         'tolerance': 70,
+        'touch': false,
       });
 
       // Toggle button

@@ -4171,6 +4171,7 @@ div#LimitDownload .modal-body p .btn-referral,
   .slideout-open .toggle-menu {
     position: fixed;
     top: 10px;
+    z-index: 99999;
   }
   .is-open-user .menu-toggle {
     position: fixed;
