@@ -432,6 +432,15 @@ ul.copyright a {
       $('input#user_login').attr('placeholder', 'Email');
       $('input#user_pass').attr('placeholder', 'Password');
 
+
+      $('input#user_login').blur(function() {
+        if(!$(this).val() ) {
+          $('input#wp-submit').addClass('disabled');
+        } else {
+          $('input#wp-submit').removeClass('disabled');
+        }
+      });
+
       // Tabs Custom
       $('.switch-link').click(function(){
         var tab_id = $(this).attr('data-tab');
@@ -443,118 +452,149 @@ ul.copyright a {
 
     });
   </script>
+
   <style>
-    div#LoginUser label, div#SignupUser label {
-    display: block;
-}
-label.star::after {
-    content: " *";
-}
-label.star{
-font-family:'Roboto';
-font-style: normal;
-font-weight: normal;
-font-size: 14px;
-line-height: 21px;
-letter-spacing: 0.04px;
-color: #646464;
-}
-form.register-form.register-user {
-    width: 90%;
-    margin-left: 15px;
-}
-.content-description {
-    text-align: start;
-    padding: 5px;
-}
-p.text-white.text-description.mb-3{
-     margin:0;
-}
-p.text-white.min-description{
-  font-size : 16px;
-  line-height: 24px;
-  letter-spacing: 0.04px;
-}
-div#LoginUser .modal-footer, div#SignupUser .modal-footer {
-  margin:-25px;
-}
-div.nsl-container[data-align="left"] {
-    text-align: center;
-    align-items: center;
+    div#LoginUser label,
+    div#SignupUser label {
+      display: block;
+    }
 
-}
-button#register-button {
-    border: none;
-}
-span.nsl-button-svg-container {
-    padding-left: 40px!important;
-}
-input#username , input#useremail , input#password , input#confirm_password{
-    border-radius: 8px!important;
-}
-button#register-button {
+    label.star::after {
+      content: " *";
+    }
 
-    height: 40px!important;
-    box-shadow:none;
-    min-width: 285px!important;
-    box-shadow:none!important;
-}
-p.Conditions {
-    padding-bottom: 16px!important;
-}
-.modal-header {
-  margin-top:35px!important;
-  padding:0!important;
+    label.star {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0.04px;
+      color: #646464;
+    }
 
+    form.register-form.register-user {
+      width: 90%;
+      margin-left: 15px;
+    }
 
-}
-.modal-body {
-  padding:0!important;
-}
-.nsl-container.nsl-container-block {
-  margin-top:-23px;
-}
-div.nsl-container .nsl-container-buttons {
-    padding: 15px 0;
-}
-/* login popup */
-   input#wp-submit {
-    border:none!important;
-    min-width: 263px!important;
-    box-shadow:none!important;
-    height:40px!important;
+    .content-description {
+      text-align: start;
+      padding: 5px;
+    }
 
-  }
-  #LoginUser p.text-white.text-description {
-    margin: 0;
-}
+    p.text-white.text-description.mb-3 {
+      margin: 0;
+    }
 
-@media screen and (max-width: 600px) {
-  div.nsl-container[data-align="left"] {
-    margin:0;
-  }
-  button#register-button {
-    min-width: 232px!important;
-  }
-  button#register-button {
-    min-width: 254px!important;
-  }
-  .galogin a {
-    max-width: 285px !important;
-    width: 100%;
-}
+    p.text-white.min-description {
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0.04px;
+    }
 
-div.nsl-container[data-align="left"] {
-    margin: 0 !important;
-}
+    div#LoginUser .modal-footer,
+    div#SignupUser .modal-footer {
+      margin: -25px;
+    }
 
-form.register-form.register-user {
-    width: 100%;
-    margin: 0;
-}
+    div.nsl-container[data-align="left"] {
+      text-align: center;
+      align-items: center;
+
+    }
+
+    button#register-button {
+      border: none;
+    }
+
+    span.nsl-button-svg-container {
+      padding-left: 40px !important;
+    }
+
+    input#username,
+    input#useremail,
+    input#password,
+    input#confirm_password {
+      border-radius: 8px !important;
+    }
+
+    button#register-button {
+
+      height: 40px !important;
+      box-shadow: none;
+      min-width: 285px !important;
+      box-shadow: none !important;
+    }
+
+    p.Conditions {
+      padding-bottom: 16px !important;
+    }
+
+    .modal-header {
+      margin-top: 35px !important;
+      padding: 0 !important;
 
 
-}
+    }
+
+    .modal-body {
+      padding: 0 !important;
+    }
+
+    .nsl-container.nsl-container-block {
+      margin-top: -23px;
+    }
+
+    div.nsl-container .nsl-container-buttons {
+      padding: 15px 0;
+    }
+
+    /* login popup */
+    input#wp-submit {
+      border: none !important;
+      min-width: 263px !important;
+      box-shadow: none !important;
+      height: 40px !important;
+
+    }
+
+    #LoginUser p.text-white.text-description {
+      margin: 0;
+    }
+
+    @media screen and (max-width: 600px) {
+      div.nsl-container[data-align="left"] {
+        margin: 0;
+      }
+
+      button#register-button {
+        min-width: 232px !important;
+      }
+
+      button#register-button {
+        min-width: 254px !important;
+      }
+
+      .galogin a {
+        max-width: 285px !important;
+        width: 100%;
+      }
+
+      div.nsl-container[data-align="left"] {
+        margin: 0 !important;
+      }
+
+      form.register-form.register-user {
+        width: 100%;
+        margin: 0;
+      }
+    }
+
+    input#wp-submit.disabled {
+      opacity: .5;
+      pointer-events: none;
+    }
   </style>
 
 @endif
