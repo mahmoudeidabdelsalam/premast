@@ -24,9 +24,9 @@ if ( ! comments_open() ) {
 	<?php if ( get_option( 'woocommerce_review_rating_verification_required' ) === 'no' || wc_customer_bought_product( '', get_current_user_id(), $product->get_id() ) ) : ?>
 		<div id="review_form_wrapper">
 			<div id="review_form">
-        
+
 				<?php
-        $commenter = wp_get_current_commenter(); 
+        $commenter = wp_get_current_commenter();
         global $current_user;
         wp_get_current_user();
 				$comment_form = array(
@@ -67,10 +67,10 @@ if ( ! comments_open() ) {
 	<?php endif; ?>
 
 
-  
+
 <?php
 global $post;
-$recent_comments = get_comments( array( 
+$recent_comments = get_comments( array(
     'status'      => 'approve', // we only want approved comments.
     'post_status' => 'publish', // limit to published comments.
     'post_id' => $post->ID,
@@ -79,18 +79,18 @@ $recent_comments = get_comments( array(
 ) );
 
 $counter_lg = get_comments( array(
-  'post_id' => $post->ID, 
+  'post_id' => $post->ID,
   'parent' => 0,
   'count' => true
 ));
 
 ?>
-<?php if($recent_comments) : ?>  
-    <?php 
+<?php if($recent_comments) : ?>
+    <?php
       foreach((array) $recent_comments as $comment) :
       $time = date_i18n('d M Y', strtotime($comment->comment_date));
       $rating = get_comment_meta($comment->comment_ID, 'rating', true);
-    ?>  
+    ?>
     <div class="commentlist lg-comments">
       <div id="comment-<?= $comment->comment_ID; ?>">
         <article id="div-comment-<?= $comment->comment_ID; ?>">
@@ -98,15 +98,15 @@ $counter_lg = get_comments( array(
             <?php echo get_avatar($comment->comment_author_email, 48); ?>
             <div class="media-body">
               <div class="d-flex mb-3">{!! wc_get_rating_html($rating, '5') !!}</div>
-              <?php if ($comment->comment_approved == '0') : ?>  
-                  <p>Your comment is awaiting approval</p>  
-              <?php endif; ?> 
+              <?php if ($comment->comment_approved == '0') : ?>
+                  <p>Your comment is awaiting approval</p>
+              <?php endif; ?>
               <h5 class="mt-0"><?= $comment->comment_author; ?> <time><small><?= $time ?></small></time></h5>
-              <p class="mb-3"><?= $comment->comment_content; ?></p>        
+              <p class="mb-3"><?= $comment->comment_content; ?></p>
                 <div class="d-flex">
                   {!! get_comment_likes_button( $comment->comment_ID ) !!}
                   <div class="reply">
-                    <?php 
+                    <?php
                     $max_depth = get_option('thread_comments_depth');
                     $default = array(
                         'add_below'  => 'comment',
@@ -126,26 +126,26 @@ $counter_lg = get_comments( array(
         </article>
       </div>
     </div>
-         
-    <?php 
+
+    <?php
     $childcomments = get_comments(array(
       'post_id'   => $post->ID,
       'status'    => 'approve',
       'order'     => 'DESC',
       'parent'    => $comment->comment_ID,
-    )); 
+    ));
     $counter_sm = get_comments( array(
-      'post_id' => $post->ID, 
+      'post_id' => $post->ID,
       'parent' => $comment->comment_ID,
       'count' => true
     ));
     ?>
-    <?php if($childcomments) : ?>  
-        <?php 
+    <?php if($childcomments) : ?>
+        <?php
           foreach((array) $childcomments as $comment) :
           $time = date_i18n('d M Y', strtotime($comment->comment_date));
           $rating = get_comment_meta($comment->comment_ID, 'rating', true);
-        ?>  
+        ?>
         <div class="commentlist ml-5 similar-comments">
           <div id="comment-<?= $comment->comment_ID; ?>">
             <article id="div-comment-<?= $comment->comment_ID; ?>">
@@ -153,26 +153,26 @@ $counter_lg = get_comments( array(
                 <?php echo get_avatar($comment->comment_author_email, 48); ?>
                 <div class="media-body">
                   <div class="d-flex mb-3">{!! wc_get_rating_html($rating, '5') !!}</div>
-                  <?php if ($comment->comment_approved == '0') : ?>  
-                      <p>Your comment is awaiting approval</p>  
-                  <?php endif; ?> 
+                  <?php if ($comment->comment_approved == '0') : ?>
+                      <p>Your comment is awaiting approval</p>
+                  <?php endif; ?>
                   <h5 class="mt-0"><?= $comment->comment_author; ?> <time><small><?= $time ?></small></time></h5>
-                  <p class="mb-3"><?= $comment->comment_content; ?></p>        
+                  <p class="mb-3"><?= $comment->comment_content; ?></p>
                   {!! get_comment_likes_button( $comment->comment_ID ) !!}
                 </div>
               </div>
             </article>
           </div>
         </div>
-                
-      <?php endforeach; ?>  
-    <?php endif; ?> 
+
+      <?php endforeach; ?>
+    <?php endif; ?>
     @if($counter_sm  >= 3)
       <a href="#" id="loadMoreSimilar" class="related-loadMore">{{ _e('See all comments', 'premast') }} <i class="fa fa-angle-down" aria-hidden="true"></i></a>
     @endif
 
-  <?php endforeach; ?>  
-<?php endif; ?> 
+  <?php endforeach; ?>
+<?php endif; ?>
 
   @if ($counter_lg >= 3)
     <a href="#" id="loadMore" class="related-loadMore">{{ _e('See all comments', 'premast') }} <i class="fa fa-angle-down" aria-hidden="true"></i></a>
@@ -356,7 +356,7 @@ $counter_lg = get_comments( array(
   .woocommerce #review_form #respond form {
     display: flex;
     flex-flow: wrap;
-  }  
+  }
 
   .woocommerce #review_form #respond .form-submit input#submit.active {
     background-color: #1e6cfb !important;
