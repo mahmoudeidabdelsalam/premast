@@ -167,15 +167,15 @@ $counter_lg = get_comments( array(
                 
       <?php endforeach; ?>  
     <?php endif; ?> 
-    @if($counter_sm  >= 2)
-      <a href="#" id="loadMoreSimilar" class="related-loadMore">{{ _e('load more', 'premast') }}</a>
+    @if($counter_sm  >= 3)
+      <a href="#" id="loadMoreSimilar" class="related-loadMore">{{ _e('See all comments', 'premast') }} <i class="fa fa-angle-down" aria-hidden="true"></i></a>
     @endif
 
   <?php endforeach; ?>  
 <?php endif; ?> 
 
-  @if ($counter_lg >= 2)
-    <a href="#" id="loadMore" class="related-loadMore">{{ _e('load more', 'premast') }}</a>
+  @if ($counter_lg >= 3)
+    <a href="#" id="loadMore" class="related-loadMore">{{ _e('See all comments', 'premast') }} <i class="fa fa-angle-down" aria-hidden="true"></i></a>
   @endif
 
 	<div class="clear"></div>
@@ -184,20 +184,24 @@ $counter_lg = get_comments( array(
 <script>
   jQuery(function($) {
     $(document).ready(function(){
-      $(".lg-comments").slice(0, 2).show();
+      $(".lg-comments").slice(0, 3).show();
       $("#loadMore").on("click", function(e){
         e.preventDefault();
-        $(".lg-comments:hidden").slice(0, 2).slideDown();
+        $(".lg-comments:hidden").slice(0, 3).slideDown();
         if($(".lg-comments:hidden").length == 0) {
           $("#loadMore").fadeOut("slow");
         }
       });
+
+      $( "textarea#comment" ).keyup(function() {
+        $("input#submit").addClass('active');
+      });
     });
     $(document).ready(function(){
-      $(".similar-comments").slice(0, 2).show();
+      $(".similar-comments").slice(0, 3).show();
       $("#loadMoreSimilar").on("click", function(e){
         e.preventDefault();
-        $(".similar-comments:hidden").slice(0, 2).slideDown();
+        $(".similar-comments:hidden").slice(0, 3).slideDown();
         if($(".similar-comments:hidden").length == 0) {
           $("#loadMoreSimilar").fadeOut("slow");
         }
@@ -205,3 +209,156 @@ $counter_lg = get_comments( array(
     });
   });
 </script>
+
+
+<style>
+  div#reviews {
+    border-top: 1px solid rgba(0, 0, 0, 0.25);
+  }
+
+  h3.woocommerce-Reviews-title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 27px;
+    color: #282F39;
+  }
+
+  .woocommerce p.stars a {
+    height: 18px !important;
+    width: 18px !important;
+    margin-top: 20px;
+  }
+
+  .woocommerce p.stars a::before {
+    color: #646464;
+    font-size: 18px;
+  }
+
+  .avatar-comments {
+    display: none !important;
+  }
+
+  div#reviews #respond form {
+    margin: 0 !important;
+  }
+
+  .woocommerce #reviews #comment {
+    height: 48px !important;
+  }
+
+  p.comment-notes {
+    display: none;
+  }
+
+  p.comment-form-author,
+  p.comment-form-email {
+    width: 47.5%;
+    float: left;
+    order: 1;
+  }
+
+  p.comment-form-author label,
+  p.comment-form-email label {
+    position: absolute;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.132987px;
+    color: #646464;
+    padding: 12px 20px;
+  }
+
+  p.comment-form-comment {
+    width: 100%;
+    order: 3;
+    background: #FFFFFF !important;
+    border: 1px solid #E3E3E3 !important;
+    box-sizing: border-box !important;
+    border-radius: 8px !important;
+  }
+
+  p.comment-form-cookies-consent {
+    order: 4;
+  }
+
+  p.form-submit {
+    order: 5;
+    width: 100%;
+  }
+
+  .comment-form-rating {
+    width: 100%;
+  }
+
+  p.comment-form-author input,
+  p.comment-form-email input {
+    background: #FFFFFF;
+    border: 1px solid #E3E3E3 !important;
+    box-sizing: border-box;
+    border-radius: 8px !important;
+    height: 40px !important;
+  }
+
+  p.comment-form-author {
+    margin-right: 5% !important;
+  }
+
+  p.comment-form-cookies-consent,
+  p.comment-form-cookies-consent label {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.04px;
+    color: #646464;
+    margin: 15px 0px;
+  }
+
+  #reviews .authcomment .media-body {
+    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+
+  .woocommerce #review_form #respond .form-submit input#submit {
+    width: 99px;
+    height: 40px;
+    background-color: #E8E8E8 !important;
+    border-radius: 30px;
+    float: left;
+  }
+
+  .woocommerce #review_form #respond p.form-submit {
+    margin-bottom: 75px !important;
+    margin-top: 20px;
+  }
+
+  #loadMore,
+  #loadMoreSimilar {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.132987px;
+    text-transform: capitalize;
+    color: #1E6DFB;
+    border-radius: 4px;
+    margin: 5px 0px;
+    border: none;
+    float: left;
+    width: auto;
+  }
+
+  .woocommerce #review_form #respond form {
+    display: flex;
+    flex-flow: wrap;
+  }  
+
+  .woocommerce #review_form #respond .form-submit input#submit.active {
+    background-color: #1e6cfb !important;
+  }
+</style>
