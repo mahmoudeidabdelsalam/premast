@@ -196,6 +196,14 @@ $counter_lg = get_comments( array(
       $( "textarea#comment" ).keyup(function() {
         $("input#submit").addClass('active');
       });
+
+      $( "input#author" ).keyup(function() {
+        $(".comment-form-author").addClass('active');
+      });
+
+      $( "input#email" ).keyup(function() {
+        $(".comment-form-email").addClass('active');
+      });
     });
     $(document).ready(function(){
       $(".similar-comments").slice(0, 3).show();
@@ -257,6 +265,7 @@ $counter_lg = get_comments( array(
     width: 47.5%;
     float: left;
     order: 1;
+    position: relative;
   }
 
   p.comment-form-author label,
@@ -267,6 +276,7 @@ $counter_lg = get_comments( array(
     letter-spacing: 0.132987px;
     color: #646464;
     padding: 12px 20px;
+    translate: all .3s;
   }
 
   p.comment-form-comment {
@@ -333,7 +343,7 @@ $counter_lg = get_comments( array(
   }
 
   .woocommerce #review_form #respond p.form-submit {
-    margin-bottom: 75px !important;
+    margin-bottom: 40px !important;
     margin-top: 20px;
   }
 
@@ -360,5 +370,16 @@ $counter_lg = get_comments( array(
 
   .woocommerce #review_form #respond .form-submit input#submit.active {
     background-color: #1e6cfb !important;
+  }
+
+  div#reviews .avatar {
+    display: none;
+  }
+
+  p.comment-form-author.active label, p.comment-form-email.active label {
+    top: -28px;
+    font-size: 8px;
+    left: -14px;
+    transition: all 1.3s;
   }
 </style>
