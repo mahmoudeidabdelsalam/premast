@@ -245,7 +245,7 @@ ul.copyright a {
                     $args = array(
                       'echo'           => true,
                       'remember'       => true,
-                      'redirect'       => ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '?login=true',
+                      'redirect'       => ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
                       'form_id'        => 'loginform',
                       'id_username'    => 'user_login',
                       'id_password'    => 'user_pass',
@@ -433,6 +433,11 @@ ul.copyright a {
       $('input#user_login').attr('placeholder', 'Email');
       $('input#user_pass').attr('placeholder', 'Password');
 
+
+      $('.nsl-container-buttons a').each(function(){ 
+          var oldUrl = $(this).attr("href"); // Get current url
+          $(this).attr("href", oldUrl + '?login=true'); // Set herf value
+      });
 
       $('input#wp-submit').addClass('disabled');
 

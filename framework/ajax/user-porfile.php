@@ -278,11 +278,3 @@ function display_user_custom_hash( $user) {
   </table>
   <?php
 }
-
-
-
-function admin_default_page() {
-  return ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '?login=true';
-}
-
-add_filter('login_redirect', 'admin_default_page');
