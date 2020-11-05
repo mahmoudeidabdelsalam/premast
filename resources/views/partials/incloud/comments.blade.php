@@ -377,9 +377,10 @@ $counter_lg = get_comments( array(
   }
 
   p.comment-form-author.active label, p.comment-form-email.active label {
-    top: -28px;
+    top: -15px;
     font-size: 8px;
-    left: -14px;
-    transition: all 1.3s;
+    left: 0;
+    transition: all .3s;
+    padding: 0;
   }
 </style>
