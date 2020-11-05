@@ -232,6 +232,9 @@ ul.copyright a {
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
+              <div class="modal-footer">
+                {{ _e('Dont have an account?', 'premast') }} <a class="signup" href="#" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#SignupUser">{{ _e('Sign Up', 'premast') }}</a>
+              </div>
             </div>
             <div class="modal-body">
               <div class="tab-content">
@@ -288,9 +291,7 @@ ul.copyright a {
               </div>
             </div>
 
-            <div class="modal-footer">
-              {{ _e('Dont have an account?', 'premast') }} <a class="signup" href="#" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#SignupUser">{{ _e('Sign Up', 'premast') }}</a>
-            </div>
+
           </div>
         </div>
       </div>
@@ -551,6 +552,12 @@ ul.copyright a {
     div.nsl-container .nsl-container-buttons {
       padding: 15px 0;
     }
+    input#username {
+    font-weight: 400!important;
+    }
+    input#useremail {
+    font-weight: 400!important;
+}
 
     /* login popup */
     input#wp-submit {
@@ -559,10 +566,24 @@ ul.copyright a {
       box-shadow: none !important;
       height: 40px !important;
 
+
     }
+    input#user_login {
+      font-weight: 400!important;
+      font-size:14px;
+    }
+
 
     #LoginUser p.text-white.text-description {
       margin: 0;
+    }
+    .modal-footer {
+      font-size:16px!important;
+    }
+    button#register-button:hover {
+      background:linear-gradient(165.74deg, #6b73ff -0.5%, #000dff 100%);
+      opacity:.95;
+
     }
 
     @media screen and (max-width: 600px) {

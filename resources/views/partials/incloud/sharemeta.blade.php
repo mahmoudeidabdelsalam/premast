@@ -12,7 +12,7 @@
 
     $slide_type = get_post_meta( $post->ID, 'slide_type', true );
     $slide_format = get_post_meta( $post->ID, 'slide_format', true );
-    
+
     global $product;
     $rating_count = method_exists($product, 'get_rating_count')   ? $product->get_rating_count()   : 1;
     $review_count = method_exists($product, 'get_review_count')   ? $product->get_review_count()   : 1;
@@ -26,13 +26,13 @@
   <div class="downloader">
     @if ($rating_count > 0)
       <div class="rating-item"> {!! wc_get_rating_html($average, $rating_count) !!} <span itemprop="reviewCount">{{ $review_count }} {{ _e('review', 'premast') }}</span></div>
-    @else 
+    @else
       {!! wc_get_rating_html('1', '5') !!}
       <div class="rating-item"><span itemprop="reviewCount">{{ _e('0 review', 'premast') }}</span></div>
     @endif
     <div class="downloader-item"><span class="counter-download"><strong>{{ empty($counter_download) ? 0 : $counter_download}}</strong> {{ _e('Download', 'premast') }}</span></div>
   </div>
-  
+
   <div class="information-slide">
     @if($slide_type)
       <p class="slide-info">{{ _e('Type', 'premast') }} <span>{{ $slide_type }}</span></p>
@@ -41,12 +41,12 @@
       <p class="slide-info">{{ _e('File Format', 'premast') }} <span>{{ $slide_format }}</span></p>
     @endif
 
-    @if ($tags) 
+    @if ($tags)
       <div class="tag-post">
       {{ _e('Tags', 'premast') }}
         <ul class="list-inline">
-          @foreach( $tags as $tag ) 
-            @php 
+          @foreach( $tags as $tag )
+            @php
               $term_link = get_term_link( $tag );
               if ( is_wp_error( $term_link ) ) {
                   continue;
@@ -62,19 +62,19 @@
     <ul class="list-inline social-sharer m-0 p-1 pull-left">
       <li class="list-inline-item">
         <span class="counters"> <number id="counter" class="namber-share">{{ empty($counter) ? 0 : $counter}}</number> <small>{{ _e('share', 'premast')}}</small></span>
-      </li>  
+      </li>
       <li class="list-inline-item">
         <a class="counter linkedin"  data-network="linkedin" data-url="{{ $permalink}}" data-title="{{ $title}}"   data-action="counter" data-event="counter" data-id="{{ get_the_ID()}}"  data-url="{{ get_the_permalink()}}" href="#"> <i class="fa fa-linkedin"></i></a>
       </li>
       <li class="list-inline-item">
-        <a class="counter twitter"   data-network="twitter"  data-url="{{ $permalink}}" data-title="{{ $title}}"   data-action="counter" data-event="counter" data-id="{{ get_the_ID()}}"  data-url="{{ get_the_permalink()}}" href="#"> <i class="fa fa-twitter"></i></a>      
+        <a class="counter twitter"   data-network="twitter"  data-url="{{ $permalink}}" data-title="{{ $title}}"   data-action="counter" data-event="counter" data-id="{{ get_the_ID()}}"  data-url="{{ get_the_permalink()}}" href="#"> <i class="fa fa-twitter"></i></a>
       </li>
       <li class="list-inline-item">
-        <a class="counter facebook"  data-network="facebook" data-url="{{ $permalink}}" data-title="{{ $title}}"   data-action="counter" data-event="counter" data-id="{{ get_the_ID()}}"  data-url="{{ get_the_permalink()}}" href="#"> <i class="fa fa-facebook"></i></a>      
+        <a class="counter facebook"  data-network="facebook" data-url="{{ $permalink}}" data-title="{{ $title}}"   data-action="counter" data-event="counter" data-id="{{ get_the_ID()}}"  data-url="{{ get_the_permalink()}}" href="#"> <i class="fa fa-facebook"></i></a>
       </li>
       <li class="list-inline-item hidden-sm-down">
         <a class="item-share" href="mailto:?subject={{ $title }}&body=I would like to share the attached article from the forum. {{ $permalink }}" target="_top"><i class="fa fa-envelope-o"></i></a>
-      </li> 
+      </li>
       <li class="list-inline-item hidden-sm-down">
         <a class="item-share" href="#" onclick="window.print()"><i class="fa fa-print"></i></a>
       </li>
@@ -110,7 +110,7 @@
 
 <script>
   jQuery(document).ready(function ($) {
-    var download = document.getElementById("somdn-form-submit-button"); 
+    var download = document.getElementById("somdn-form-submit-button");
     if (download) {
       download.setAttribute("data-id", "{{ get_the_ID()}}");
       download.setAttribute("data-action", "counterdownload");
