@@ -58,29 +58,6 @@
 
 
 
-    <!-- Shareing -->
-    <div class="sharing-posts">
-      <ul class="list-inline social-sharer m-0 p-1 pull-left">
-        <li class="list-inline-item">
-          <span class="counters"> <number id="counter" class="namber-share">{{ empty($counter) ? 0 : $counter}}</number> <small>{{ _e('share', 'premast')}}</small></span>
-        </li>
-        <li class="list-inline-item">
-          <a class="counter linkedin"  data-network="linkedin" data-url="{{ $permalink}}" data-title="{{ $title}}"   data-action="counter" data-event="counter" data-id="{{ get_the_ID()}}"  data-url="{{ get_the_permalink()}}" href="#"> <i class="fa fa-linkedin"></i></a>
-        </li>
-        <li class="list-inline-item">
-          <a class="counter twitter"   data-network="twitter"  data-url="{{ $permalink}}" data-title="{{ $title}}"   data-action="counter" data-event="counter" data-id="{{ get_the_ID()}}"  data-url="{{ get_the_permalink()}}" href="#"> <i class="fa fa-twitter"></i></a>
-        </li>
-        <li class="list-inline-item">
-          <a class="counter facebook"  data-network="facebook" data-url="{{ $permalink}}" data-title="{{ $title}}"   data-action="counter" data-event="counter" data-id="{{ get_the_ID()}}"  data-url="{{ get_the_permalink()}}" href="#"> <i class="fa fa-facebook"></i></a>
-        </li>
-        <li class="list-inline-item hidden-sm-down">
-          <a class="item-share" href="mailto:?subject={{ $title }}&body=I would like to share the attached article from the forum. {{ $permalink }}" target="_top"><i class="fa fa-envelope-o"></i></a>
-        </li>
-        <li class="list-inline-item hidden-sm-down">
-          <a class="item-share" href="#" onclick="window.print()"><i class="fa fa-print"></i></a>
-        </li>
-      </ul>
-    </div>
 
     @if($more == 'fullScreen')
       <div class="container mt-md-5 relative">
@@ -103,12 +80,34 @@
 
 
       <!-- Main Content -->
-      <div class="container mt-md-5 mb-5 p-5">
+      <div class="container mt-md-5 mb-5 p-md-5">
         <div class="row">
           <div class="col-md-12 col-12">
             <?php woocommerce_breadcrumb(); ?> / {{ the_title() }}
             <br>
             <h1 class="product-title">{{ the_title() }}</h1>
+
+                <!-- Shareing -->
+              <div class="sharing-posts">
+                <ul class="list-inline social-sharer m-0 p-1 pull-left">
+                  <li class="list-inline-item">
+                    <a class="counter linkedin"  data-network="linkedin" data-url="{{ $permalink}}" data-title="{{ $title}}"   data-action="counter" data-event="counter" data-id="{{ get_the_ID()}}"  data-url="{{ get_the_permalink()}}" href="#"> <i class="fa fa-linkedin"></i></a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a class="counter twitter"   data-network="twitter"  data-url="{{ $permalink}}" data-title="{{ $title}}"   data-action="counter" data-event="counter" data-id="{{ get_the_ID()}}"  data-url="{{ get_the_permalink()}}" href="#"> <i class="fa fa-twitter"></i></a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a class="counter facebook"  data-network="facebook" data-url="{{ $permalink}}" data-title="{{ $title}}"   data-action="counter" data-event="counter" data-id="{{ get_the_ID()}}"  data-url="{{ get_the_permalink()}}" href="#"> <i class="fa fa-facebook"></i></a>
+                  </li>
+                  <li class="list-inline-item hidden-sm-down">
+                    <a class="item-share" href="mailto:?subject={{ $title }}&body=I would like to share the attached article from the forum. {{ $permalink }}" target="_top"><i class="fa fa-envelope-o"></i></a>
+                  </li>
+                  <li class="list-inline-item hidden-sm-down">
+                    <a class="item-share" href="#" onclick="window.print()"><i class="fa fa-print"></i></a>
+                  </li>
+                </ul>
+              </div>
+
           </div>
 
           <!-- Gallery & Content -->
@@ -170,6 +169,14 @@
             <div class="product-infomation">
               <h3>{{ _e('Description', 'premast') }}</h3>
               <div id="tab-description"> @php the_content() @endphp</div>
+              <a class="moreless active" href="JavaScript:void(0)">Read more</a>
+
+              @if(get_field('main_features'))
+                <div class="MainFeatures mt-2">
+                  @php the_field('main_features') @endphp
+                </div>
+              @endif
+
             </div>
 
 
@@ -210,8 +217,6 @@
                 <a href="{{ the_field('ads_link') }}"><img src="{{ the_field('ads_image') }}" alt="{{ _e('Ads Block', 'premast') }}"></a>
               </div>
             @endif
-
-            @php dynamic_sidebar('sidebar-shop') @endphp
 
             <div class="box-author box-counter">
               <div class="downloader">
@@ -272,7 +277,42 @@
 
     @endif
   </div>
+  @php
+  $related = related_posts();
+@endphp
 
+@if($related->have_posts())
+  <section class="pt-5 related">
+    <div class="container">
+      <h3>{{ _e('related Items', 'premast') }}</h3>
+      <div class="item-columns row m-0 col-12 p-0">
+        @while($related->have_posts() ) @php($related->the_post())
+          @include('partials/incloud/card-user')
+        @endwhile
+        @php (wp_reset_postdata())
+      </div>
+    </div>
+  </section>
+@endif
+
+
+
+<script>
+  jQuery(function($) {
+    $(document).ready(function(){
+      $('.moreless').click(function() {
+        $('#tab-description').toggleClass('more');
+        if ($('.moreless').text() == "Read more") {
+          $(this).text("Read less");
+          $(this).removeClass('active');
+        } else {
+          $(this).text("Read more");
+          $(this).addClass('active');
+        }
+      });
+    });
+  });
+</script>
 
 
 
@@ -311,7 +351,7 @@
   .social-sharer {
     position: fixed;
     flex-flow: column;
-    left: 0;
+    left: 30px;
     width: auto;
 }
 
@@ -477,6 +517,102 @@ a.follow {
 span.counter-download {
     font-weight: 700;
 }
+div#tab-description {
+    height: 300px;
+    overflow: hidden;
+}
+.moreless {
+    display: block;
+    color: #3e78fb;
+}
+
+.MainFeatures {
+  margin-bottom: 40px;
+}
+
+div#tab-description.more {
+    height: auto;
+    transition: all 0.3s;
+}
+
+.moreless {
+    text-align: right;
+    position: relative;
+}
+
+.moreless.active::after {content: "";height: 50px;width: 100%;position: absolute;top: -54px;background: linear-gradient(180deg, #ffffffb3 -0.5%, #ffffff 100%);left: 0;}
+}
+.related {
+    background-color: #f9f9f9!important;
+}
+h1.product-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight:bold!important;
+  font-size:30px!important;
+
+}
+.MainFeatures.mt-2 {
+    border-top: 0.5px solid rgba(0, 0, 0, 0.25);
+    padding-top: 29px;
+}
+.MainFeatures.mt-2 ul {
+  margin-left:-6px;
+}
+::marker {
+  color: #A6A6A6!important;
+}
+.comment-form-rating {
+  margin-bottom:13px!important;
+}
+@media screen and (max-width: 600px) {
+  .social-sharer {
+    display: block;
+    position: relative;
+    width: 100%;
+    text-align: left;
+    left: 0;
+}
+  .tag-post .list-inline-item:not(:last-child) {
+    margin-top: 8px!important;
+}
+.star-rating {
+    width: 93%!important;
+}
+.download-product button#somdn-form-submit-button {
+    min-width:222px!important;
+  }
+  .social-sharer li .counter, .social-sharer li .item-share {
+    height: 30px;
+    width: 30px;
+    padding-top: 4px;
+
+  }
+  .social-sharer li {
+    font-size:14px
+  }
+  .social-sharer {
+    display: block;
+  }
+  .sharing-posts {
+    position: relative;
+}
+.single-product .product-title {
+  margin-bottom: 10px;
+}
+.moreless.active::after {
+    content: "";
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    top: -54px;
+    left: 0;
+}
+.single-product .slideout-panel {
+    background: #ffffff;
+}
+
+
+
 
 </style>
 

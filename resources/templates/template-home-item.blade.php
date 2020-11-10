@@ -794,6 +794,7 @@ form#itemsSearch button {
     background-repeat: no-repeat;
     height: 120px !important;
     min-height: 1px !important;
+
 }
 .page-template-template-home-item section.banner-home-template {
     height: auto !important;
@@ -809,6 +810,8 @@ form#itemsSearch button {
     padding: 0;
     margin-left: -10px;
 }
+
+
 
 }
 

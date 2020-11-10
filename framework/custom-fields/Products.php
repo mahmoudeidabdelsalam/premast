@@ -1,4 +1,4 @@
-<?php 
+<?php
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
@@ -39,22 +39,25 @@ acf_add_local_field_group(array(
 			'height' => '',
     ),
 
-		array(
-			'key' => 'field_5ccca58d1e19b',
-			'label' => 'Slide Gallery',
-			'name' => 'slide_gallery',
-			'type' => 'oembed',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'width' => '',
-			'height' => '',
-		),
+    array(
+        'key' => 'field_5fa40eb82ee11',
+        'label' => 'Main features',
+        'name' => 'main_features',
+        'type' => 'wysiwyg',
+        'instructions' => '',
+        'required' => 0,
+        'conditional_logic' => 0,
+        'wrapper' => array(
+            'width' => '',
+            'class' => '',
+            'id' => '',
+        ),
+        'default_value' => '',
+        'tabs' => 'all',
+        'toolbar' => 'full',
+        'media_upload' => 1,
+        'delay' => 0,
+    ),
 		array(
 			'key' => 'field_5ccca59b1e19c',
 			'label' => 'Unique Slides',
