@@ -1,26 +1,29 @@
 <!doctype html>
 <html {!! get_language_attributes() !!}>
-  @include('partials.head')
-  <body @php body_class() @endphp>
+@include('partials.head')
 
-    @if(get_field('body_scripts', 'option'))
+<body @php body_class() @endphp>
+
+   @if (get_field('body_scripts', 'option'))
       {{ the_field('body_scripts', 'option') }}
-    @endif
+   @endif
 
-    @php do_action('get_header') @endphp
-    <div class="wrap" role="document" id="panel">
+   @php do_action('get_header') @endphp
+   @include('partials.header.pmst-main')
+   <div class="wrap" role="document" id="panel">
       <div class="content">
-        <main class="main">
-          @yield('content')
-        </main>
-        @if (App\display_sidebar())
-          <aside class="sidebar">
-            @include('partials.sidebar')
-          </aside>
-        @endif
+         <main class="main">
+            @yield('content')
+         </main>
+         @if (App\display_sidebar())
+            <aside class="sidebar">
+               @include('partials.sidebar')
+            </aside>
+         @endif
       </div>
-    </div>
-    @php do_action('get_footer') @endphp
-    @php wp_footer() @endphp
-  </body>
+   </div>
+   @php do_action('get_footer') @endphp
+   @php wp_footer() @endphp
+</body>
+
 </html>

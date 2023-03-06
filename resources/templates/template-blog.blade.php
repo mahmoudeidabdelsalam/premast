@@ -2,7 +2,8 @@
   Template Name: Blogs
 --}}
 
-@extends('layouts.app')
+@extends('layouts.premast-main')
+
 
 @section('content')
 

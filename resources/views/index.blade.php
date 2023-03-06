@@ -1,28 +1,41 @@
 @extends('layouts.app')
 
+
+
+
+
+
+
+
+
+
+
+
 @section('content')
 
-@if ($welcome_home)
-<section class="welcome-home">
-  <div class="welcome background-center" style="background-image:url('{{$welcome_home['background']}}');">
-    <div class="background-overlay"></div>
-    <div class="container">
-      <div class="row align-items-center height-vh-80">
-        <div class="col-md-6 col-sm-12 wow bounceInUp"  data-wow-duration="1s" data-wow-delay=".5s">
-          <h3 class="text-large text-white">{{$welcome_home['headline']}}</h3>
-          <p class="text-white text-medium">{{$welcome_home['description']}}</p>
-          <a class="btn btn-green text-small" href="{{$welcome_home['link']}}">{{ _e('Get started', 'premast') }} <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
-        </div>
-        <div class="col-md-6 col-sm-12 wow bounceInUp"  data-wow-duration="1s" data-wow-delay="1s">
-          <img src="{{$welcome_home['image']}}" alt="{{ get_bloginfo('name') }}" title="{{ get_bloginfo('name') }}">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-@endif
-
-@php dynamic_sidebar('sidebar-home') @endphp
+    @if (is_archive())
+        <h1>index.blade.php</h1>
+    @endif
 
 
+
+
+
+    @if (
+        !function_exists('elementor_theme_do_location') ||
+            !elementor_theme_do_location('archive'))
+        @if (!have_posts())
+            <div class="alert alert-warning">
+                {{ __('Sorry, no results were found.', 'sage') }}
+            </div>
+            {!! get_search_form(false) !!}
+        @endif
+
+        @while (have_posts())
+            @php the_post() @endphp
+            @include('partials.content-' . get_post_type())
+        @endwhile
+
+        {!! get_the_posts_navigation() !!}
+    @endif
 @endsection

@@ -34,7 +34,7 @@ if (version_compare('4.7.0', get_bloginfo('version'), '>=')) {
  * Ensure dependencies are loaded
  */
 if (!class_exists('Roots\\Sage\\Container')) {
-    if (!file_exists($composer = __DIR__.'/../vendor/autoload.php')) {
+    if (!file_exists($composer = __DIR__ . '/../vendor/autoload.php')) {
         $sage_error(
             __('You must run <code>composer install</code> from the Sage directory.', 'sage'),
             __('Autoloader not found.', 'sage')
@@ -81,17 +81,17 @@ array_map(
 Container::getInstance()
     ->bindIf('config', function () {
         return new Config([
-            'assets' => require dirname(__DIR__).'/config/assets.php',
-            'theme' => require dirname(__DIR__).'/config/theme.php',
-            'view' => require dirname(__DIR__).'/config/view.php',
-            'framework' => require dirname(__DIR__).'/framework/index.php',
+            'assets' => require dirname(__DIR__) . '/config/assets.php',
+            'theme' => require dirname(__DIR__) . '/config/theme.php',
+            'view' => require dirname(__DIR__) . '/config/view.php',
+            'framework' => require dirname(__DIR__) . '/framework/index.php',
         ]);
     }, true);
 
 
-add_action( 'wp_enqueue_scripts', 'the_dramatist_enqueue_scripts' );
-add_filter( 'ajax_query_attachments_args', 'the_dramatist_filter_media' );
-add_shortcode( 'the_dramatist_front_upload', 'the_dramatist_front_upload' );
+add_action('wp_enqueue_scripts', 'the_dramatist_enqueue_scripts');
+add_filter('ajax_query_attachments_args', 'the_dramatist_filter_media');
+add_shortcode('the_dramatist_front_upload', 'the_dramatist_front_upload');
 
 
 /**
@@ -100,36 +100,48 @@ add_shortcode( 'the_dramatist_front_upload', 'the_dramatist_front_upload' );
 
 
 if (!is_singular('product')) {
-  function the_dramatist_enqueue_scripts() {
-      if (!is_tax('product_cat')) {
-        wp_enqueue_media();
-        wp_enqueue_script(
-            'some-script',
-            get_theme_file_uri() . '/framework/assets/media-uploader.js',
-            array( 'jquery' ),
-            null
-        );
+    function the_dramatist_enqueue_scripts()
+    {
+        if (!is_tax('product_cat')) {
+            wp_enqueue_media();
+            wp_enqueue_script(
+                'some-script',
+                get_theme_file_uri() . '/framework/assets/media-uploader.js',
+                array('jquery'),
+                null
+            );
+        }
     }
-  }
 }
 
 /**
  * This filter insures users only see their own media
  */
-function the_dramatist_filter_media( $query ) {
+function the_dramatist_filter_media($query)
+{
     // admins get to see everything
-    if ( ! current_user_can( 'manage_options' ) )
+    if (!current_user_can('manage_options'))
         $query['author'] = get_current_user_id();
     return $query;
 }
 
 
 
-function custom_rewrite_basic() {
-  add_rewrite_rule('product$', 'index.php?product=true', 'top');
-  add_rewrite_rule('product/page/?([0-9]{1,})/?$', 'index.php?product=true&paged=$matches[1]', 'top');
-  add_rewrite_rule('product/feed/(feed|rdf|rss|rss2|atom)/?$', 'index.php?product=true&feed=$matches[1]', 'top');
-  add_rewrite_rule('product/(feed|rdf|rss|rss2|atom)/?$', 'index.php?product=true&feed=$matches[1]', 'top');
+function custom_rewrite_basic()
+{
+    add_rewrite_rule('product$', 'index.php?product=true', 'top');
+    add_rewrite_rule('product/page/?([0-9]{1,})/?$', 'index.php?product=true&paged=$matches[1]', 'top');
+    add_rewrite_rule('product/feed/(feed|rdf|rss|rss2|atom)/?$', 'index.php?product=true&feed=$matches[1]', 'top');
+    add_rewrite_rule('product/(feed|rdf|rss|rss2|atom)/?$', 'index.php?product=true&feed=$matches[1]', 'top');
 }
 
 add_action('init', 'custom_rewrite_basic');
+
+// Registering all core locations for Elementor
+add_action('elementor/theme/register_locations', function ($elementor_theme_manager) {
+    $elementor_theme_manager->register_all_core_location();
+    $elementor_theme_manager->register_location('footer');
+    $elementor_theme_manager->register_location('header');
+    $elementor_theme_manager->register_location('single');
+    $elementor_theme_manager->register_location('archive');
+});
