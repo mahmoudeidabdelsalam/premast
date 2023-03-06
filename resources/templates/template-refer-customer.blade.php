@@ -6,10 +6,21 @@
 
 @section('content')
 
-@php 
+@php
   $send = (isset($_GET['send']))? $_GET['send']:'';
   global $current_user;
   wp_get_current_user();
+
+  $ip = get_the_user_ip();
+
+  $user_ip = get_user_meta( $current_user->ID, 'follow_ip' , true );
+
+  $hash_ip = wp_hash_password($ip);
+
+  if(empty($user_ip)) {
+    update_user_meta( $current_user->ID, 'follow_ip', $ip );
+  }
+
 @endphp
 
 @if($send == 'true')
@@ -57,10 +68,10 @@
             {!! wp_nav_menu(['theme_location' => 'user_navigation', 'container' => false, 'menu_class' => 'nav nav-pills flex-column flex-sm-row col-12', 'walker' => new NavWalker()]) !!}
           @endif
         </div>
-        <div class="col-md-7 col-12 pt-5 mt-5">
+        <div class="col-md-6 offset-md-1 col-12 pt-5 mt-5">
           <div class="row align-content-center justify-content-center">
             <div class="col-md-7 col-12">
-              <h3>{{ _e('Share the Experience, Invite friends', 'premast') }}</h3>
+              <h6>{{ _e('Share the Experience, Invite friends', 'premast') }}</h6>
               <h4 class="headline-linear">{{ _e('& Earn free monthly subscriptions', 'premast') }}</h4>
             </div>
             <div class="col-md-5 col-12 the-content">@php the_content() @endphp</div>
@@ -68,10 +79,14 @@
           <div class="row ml-0 mr-0 mt-5 mb-5 align-content-center justify-content-center">
             <div class="col-12 p-0">
               <div class="custom-share">
-                @php 
+                @php
                   $form = get_field('forms_referral', 'option');
                   $inputs = get_all_form_fields($form['id']);
-                  $link = get_field('link_signup', 'option').'?refer='.$current_user->ID.'&token='.get_the_date('U').'';
+
+                  $ip = get_the_user_ip();
+                  $hash_ip = wp_hash_password($ip);
+
+                  $link = get_field('link_signup', 'option').'?refer='.$current_user->ID.'&token='.$hash_ip.'';
                 @endphp
 
                 <form class="form-inline" role="" method="post" id="gform_<?= $form['id']; ?>" action="<?= the_permalink(); ?>?send=gf_<?= $form['id']; ?>">
@@ -95,20 +110,20 @@
                   <input type="hidden" class="gform_hidden" name="gform_source_page_number_<?= $form['id']; ?>" id="gform_source_page_number_<?= $form['id']; ?>" value="1">
                   <input type="hidden" name="gform_field_values" value="">
                 </form>
-               
+
                 <ul class="list-inline social-sharer">
                   <li class="head"><span>{{ _e('Share your link', 'premast') }}</span></li>
                   <li class="list-inline-item">
-                    <a class="item" data-network="linkedin" data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-linkedin"></i></a>
+                    <a class="item" data-user="<?= $current_user->ID; ?>" data-action="counter" data-event="counter" data-network="linkedin" data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-linkedin"></i></a>
                   </li>
                   <li class="list-inline-item">
-                    <a class="item" data-network="twitter"  data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-twitter"></i></a>      
+                    <a class="item" data-user="<?= $current_user->ID; ?>" data-action="counter" data-event="counter" data-network="twitter"  data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-twitter"></i></a>
                   </li>
                   <li class="list-inline-item">
-                    <a class="item" data-network="facebook" data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-facebook"></i></a>      
+                    <a class="item" data-user="<?= $current_user->ID; ?>" data-action="counter" data-event="counter" data-network="facebook" data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-facebook"></i></a>
                   </li>
                   <li class="list-inline-item">
-                    <a class="item" data-network="addtoany" data-url="{{ $link }}" data-title="{{ $link }}" href="#"> <i class="fa fa-ellipsis-v"></i></a>      
+                    <a class="item" data-user="<?= $current_user->ID; ?>" data-action="counter" data-event="counter" data-network="addtoany" data-url="{{ $link }}" data-title="{{ $link }}" href="#"> <i class="fa fa-ellipsis-v"></i></a>
                   </li>
                 </ul>
                 <div id="inviteCode" class="invite-page">
@@ -125,7 +140,7 @@
           </div>
 
 
-          @php 
+          @php
           $limit = get_field('limit_referral_gift', 'option');
           $token   = isset($_GET['token']) ? $_GET['token'] : '';
           $active   = isset($_GET['active']) ? $_GET['active'] : '';
@@ -144,7 +159,7 @@
             $start_date = date('Y-m-d H:i:s');
           @endphp
 
-          @if($login == $current_user->ID && $active == 'done' && $token) 
+          @if($login == $current_user->ID && $active == 'done' && $token)
             <h4>{{ _e('Check your progress', 'premast') }}</h4>
             <table class="table table-hover">
               <thead>
@@ -158,7 +173,7 @@
               <tbody>
               <?php
                 foreach ($posts as $post):
-                setup_postdata( $post ); 
+                setup_postdata( $post );
                 $author = get_user_by( 'ID', $post->post_author );
                 $author_display_name = $author->display_name;
                 $date_stamp = strtotime($post->post_date);
@@ -172,7 +187,7 @@
                   $label = '<a data-id="'.$post->ID.'" href="javascript:void(0)" class="activate-now text-blue" >Activate Now</a>';
                 elseif($status == 'wcm-expired'):
                   $label = '<span class="text-red">expired</span>';
-                else: 
+                else:
                   $label = '-';
                 endif;
 
@@ -192,9 +207,9 @@
                       $( window ).load(function() {
                         var active_id = $('.activate-now').data('id');
                         var status = $('td#' + active_id);
-                        
+
                         $.ajax({
-                          url:"<?= admin_url( 'admin-ajax.php' ); ?>",       
+                          url:"<?= admin_url( 'admin-ajax.php' ); ?>",
                           type:'POST',
                           data: {
                             action: 'get_active',
@@ -226,7 +241,7 @@
             <tbody>
             <?php
               foreach ($posts as $post):
-              setup_postdata( $post ); 
+              setup_postdata( $post );
               $author = get_user_by( 'ID', $post->post_author );
               $author_display_name = $author->display_name;
               $date_stamp = strtotime($post->post_date);
@@ -240,7 +255,7 @@
                 $label = '<a data-id="'.$post->ID.'" href="javascript:void(0)" class="activate-now text-blue" >Activate Now</a>';
               elseif($status == 'wcm-expired'):
                 $label = '<span class="text-red">expired</span>';
-              else: 
+              else:
                 $label = '-';
               endif;
             ?>
@@ -253,20 +268,20 @@
             <?php endforeach; ?>
             </tbody>
           </table>
-        @endif 
+        @endif
         </div>
-        
+
         <script>
           jQuery(function($) {
-            
+
             $('#copy').on('click', function(event) {
               console.log(event);
               copyToClipboard(event);
             });
-            
+
             function copyToClipboard(e) {
               var
-                t = e.target, 
+                t = e.target,
                 c = t.dataset.copytarget,
                 inp = (c ? document.querySelector(c) : null);
               console.log(inp);
@@ -288,9 +303,9 @@
             $('.activate-now').on('click', function () {
               var active_id = $(this).data('id');
               var status = $('td#' + active_id);
-              
+
               $.ajax({
-                url:"<?= admin_url( 'admin-ajax.php' ); ?>",       
+                url:"<?= admin_url( 'admin-ajax.php' ); ?>",
                 type:'POST',
                 data: {
                   action: 'get_active',
@@ -351,17 +366,22 @@
       letter-spacing: 0.04px;
       color: #282F39;
     }
+
     .table thead th i {
       font-size: 14px;
       line-height: 16px;
       color: #A6A6A6;
       cursor: help;
     }
+
     .the-content {
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 0.04px;
     color: #000000;
+}
+ul#menu-account-menu {
+    font-weight: 400;
 }
   </style>
 @endif

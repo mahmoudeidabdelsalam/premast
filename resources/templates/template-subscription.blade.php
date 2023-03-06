@@ -18,7 +18,7 @@
   </div>
 @else
 
-@php 
+@php
 global $current_user;
 wp_get_current_user();
 
@@ -40,6 +40,8 @@ $limit_membership = wc_memberships_get_user_active_memberships($current_user->ID
 if($limit_membership) {
   $plan_id = $limit_membership[0]->plan_id;
   $post_id = $limit_membership[0]->id;
+  $mo_name = $limit_membership[0]->get_end_date();
+
 } else {
   $plan_id = false;
   $post_id = false;
@@ -56,8 +58,12 @@ $args = array(
 $posts = get_post($post_id);
 
 $_end_date = get_post_meta( $posts->ID, '_end_date', true );
-$end_date = date_i18n('M d, Y', strtotime($_end_date));
-
+if($_end_date){
+  $end_date = date_i18n('M d, Y', strtotime($_end_date));
+}
+else{
+  $end_date = false;
+}
 $_start_date = get_post_meta( $posts->ID, '_start_date', true );
 $start_date = date_i18n('M d, Y', strtotime($_start_date));
 
@@ -89,17 +95,46 @@ $numberDays = intval($numberDays);
               </div>
               <div class="limit-information">
                 <h3>{{ _e('your downloads', 'premast') }}</h3>
-                <p><?php printf( _x( '<strong>%1s</strong>', 'premast' ),  somdn_get_user_downloads_count( $membership_user ) ); ?> / <span><?php printf( __( '<strong>%1s</strong>', 'premast' ), $limits_amount ); ?></span></p>
-                @php 
+                @if($limits_amount<1000)<p><?php printf( _x( '<strong>%1s</strong>', 'premast' ),  somdn_get_user_downloads_count( $membership_user ) ); ?> / <span><?php printf( __( '<strong>%1s</strong>', 'premast' ), $limits_amount ); ?></span></p>
+                @else<p>Unlimited</p>@endif
+
+
+                @php
                 $download_left = $limits_amount - somdn_get_user_downloads_count( $membership_user );
                 @endphp
+
+
+                @if($limits_amount<1000)
                 {{ _e('You’ve', 'premast') }} {{$download_left}} {{ _e('download left this, if you want more you can upgrade your plan', 'premast' )}} {{$freq_name}}
-                <a class="btn-limit" href="{{ get_field('link_limit', 'option') }}">{{ _e('upgrade your plan', 'premast') }}</a>  
-                <p class="red-limit"> {{ _e('Your subscription expires on') }} {{ $end_date }}</p>
+                <a class="btn-limit" href="{{ get_field('link_limit', 'option') }}">{{ _e('upgrade your plan', 'premast') }}</a>
+                @if ($end_date)<p class="red-limit"> {{_e('Your subscription expires on') }} {{ $end_date }}</p>
+                @else <p class="red-limit"> {{_e('Your subscription is Lifetime') }} </p>
+
+                @endif
+                @endif
+
+                <!--<p class="red-limit"><?php
+if ($end_date) {
+echo $end_date;
+}else {
+echo "Never";
+}
+                 ?></p>-->
               </div>
             </div>
 
-            <p class="renewed-plan">{{ _e('To continue using our services, please note that your subscribtion needs to be renewed every', 'premast') }} {{($freq_name)? $freq_name:'year'}}</p>
+            @if ($end_date) <p class="renewed-plan">{{ _e('To continue using our services, please note that your subscribtion needs to be renewed every', 'premast') }} {{($freq_name)? $freq_name:'year'}}</p>@endif
+
+            @php
+              $cancel_url_get = get_user_meta( $current_user->ID, 'cancel_url' , true );
+              $update_url_get = get_user_meta( $current_user->ID, 'update_url' , true );
+            @endphp
+
+            @if($cancel_url_get && $end_date)
+              <p class="link-paddle">
+                <a class="button-green button-cancel" href="{{ $cancel_url_get }}">cancel subscribe</a>
+              </p>
+            @endif
           @endif
         </div>
       </div>

@@ -63,6 +63,14 @@ function woo_custom_single_add_to_cart_text() {
     return __( 'Buy Now', 'woocommerce' );
 }
 
+
+ function avf_woocommerce_free_price_html( $price, $instance ) {
+     $price = '<span class="amount">TEXT HERE!</span>';
+     return $price;
+ };
+
+ add_filter( 'woocommerce_free_price_html', 'avf_woocommerce_free_price_html', 10, 2 );
+
 /**
  * Enables the Excerpt meta box in Page edit screen.
  */
@@ -166,16 +174,16 @@ function lit_woocommerce_confirm_password_checkout( $checkout ) {
 add_action( 'woocommerce_checkout_init', 'lit_woocommerce_confirm_password_checkout', 10, 1 );
 
 
-add_action( 'template_redirect', 'woo_custom_redirect_after_purchase' );
-function woo_custom_redirect_after_purchase() {
-  global $wp;
-  $like_download = get_field('thanks_page','option');
+// add_action( 'template_redirect', 'woo_custom_redirect_after_purchase' );
+// function woo_custom_redirect_after_purchase() {
+//   global $wp;
+//   $like_download = get_field('thanks_page','option');
   
-	if ( is_checkout() && !empty( $wp->query_vars['order-received'] ) ) {
-		wp_redirect( $like_download );
-		exit;
-	}
-}
+// 	if ( is_checkout() && !empty( $wp->query_vars['order-received'] ) ) {
+// 		wp_redirect( $like_download );
+// 		exit;
+// 	}
+// }
 
 
 if( ! function_exists('custom_ajax_add_to_cart_button') && class_exists('WooCommerce') ) {
@@ -290,4 +298,42 @@ function custom_remove_woo_checkout_fields( $fields ) {
     unset($fields['order']['order_comments']);
     
     return $fields;
+}
+
+// Determine the top-most parent of a term
+function get_term_top_most_parent( $term, $taxonomy ) {
+    // Start from the current term
+    $parent  = get_term( $term, $taxonomy );
+    // Climb up the hierarchy until we reach a term with parent = '0'
+    while ( $parent->parent != '0' ) {
+        $term_id = $parent->parent;
+        $parent  = get_term( $term_id, $taxonomy);
+    }
+    return $parent;
+}
+
+function get_top_parents( $taxonomy ) {
+    // get terms for current post
+    $terms = wp_get_object_terms( get_the_ID(), $taxonomy );
+    $top_parent_terms = array();
+
+    foreach ( $terms as $term ) {
+        //get top level parent
+        $top_parent = get_term_top_most_parent( $term, $taxonomy );
+        //check if you have it in your array to only add it once
+        if ( !in_array( $top_parent, $top_parent_terms ) ) {
+            $top_parent_terms[] = $top_parent;
+        }
+    }
+
+    // build output (the HTML is up to you)
+
+    // $output = [];
+    // foreach ( $top_parent_terms as $term ) {
+    //       //Add every term
+    //       $output[] = $term->term_id;
+    // }
+
+
+    return $top_parent_terms;
 }

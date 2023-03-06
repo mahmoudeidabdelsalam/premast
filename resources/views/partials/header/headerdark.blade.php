@@ -2,7 +2,7 @@
 @php
 $time = get_the_time('Y-m-d')
 @endphp
-  @if($time > $_COOKIE['the_last_view'])
+  @if($time > isset($_COOKIE['the_last_view']))
     <div class="col-offer" style="background-color:{{ the_field('head_background_color', 'option') }}">
       <div class="container">
         <div class="row justify-content-center align-content-center p-3">
@@ -14,6 +14,7 @@ $time = get_the_time('Y-m-d')
   @endif
 @endif
 
+
 @php
   $refine   = isset($_GET['refine']) ? $_GET['refine'] : '0';
   $sort   = isset($_GET['sort']) ? $_GET['sort'] : '0';
@@ -22,48 +23,44 @@ $time = get_the_time('Y-m-d')
   wp_get_current_user();
   global $wp;
 @endphp
-@if ( wp_is_mobile() ) 
+
+
+@if ( wp_is_mobile() )
   <nav id="menu">
-    <hr>
-    @php 
-      $ids_to_exclude = array();
-      $get_terms_to_exclude =  get_terms(
-        array(
-          'fields'  => 'ids',
-          'slug'    => array( 'plans' ),
-          'taxonomy' => 'product_cat',
-        )
-      );
-      if( !is_wp_error( $get_terms_to_exclude ) && count($get_terms_to_exclude) > 0){
-          $ids_to_exclude = $get_terms_to_exclude; 
-      }
-      $product_terms = get_terms( 'product_cat', array(
-          'hide_empty' =>  1,
-          'exclude' => $ids_to_exclude,
-          'parent' =>0
-      ) );
-    @endphp
-    <ul class="navbar-nav">
-      @foreach($product_terms as $product_term) 
-      @php 
-        $term_link = get_term_link( $product_term );
-        if ( is_wp_error( $term_link ) ) {
-            continue;
-        }
-      @endphp
-        <li class="list-inline-item">
-          <a class="text-term @if($product_term->term_id == $taxonomy_query->term_id) active @endif" href="{{ $term_link }}">{{ $product_term->name }}</a>
-        </li>
-      @endforeach
-    </ul>
-    <hr>
     @if (has_nav_menu('items_navigation'))
-      {!! wp_nav_menu(['theme_location' => 'items_navigation', 'container' => false, 'menu_class' => 'navbar-nav', 'walker' => new NavWalker()]) !!}
+      {!! wp_nav_menu(['theme_location' => 'items_navigation', 'container' => false, 'menu_class' => 'navbar-item navbar-nav ml-4 mr-auto', 'walker' => new Nav_Item_Walker()]) !!}
     @endif
   </nav>
   <nav id="menu_user" style="display: none;">
-    @include('partials/incloud/profile')
+    @if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) )
+    @php
+      $count = WC()->cart->cart_contents_count;
+    @endphp
+    <div class="cart-div">
+      <span>{{ _e('cart', 'premast') }}</span>
+       <a class="cart-contents" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
+        @if ( $count > 0 )
+        <span class="cart-contents-count"><?php echo esc_html( $count ); ?></span>
+        @endif
+      </a>
+    </div>
+    @endif
+    @if( is_user_logged_in() )
+      @include('partials/incloud/profile')
+    @else
+      <a class="login link-item-mobile" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Sign in to your account', 'premast') }}</a>
+      <a class="signup link-item-mobile" href="#" data-toggle="modal" data-target="#SignupUser">{{ _e('Sign Up', 'premast') }}</a>
+      <a class="link-item-mobile" href="{{ home_url('/') }}/contact-us/">{{ _e('Contact US', 'premast') }}</a>
+      <a class="link-item-mobile" href="{{ home_url('/') }}/faq">{{ _e('Help Center', 'premast') }}</a>
+      <div class="premast-social-icons">
+        <a class="premast-icon icon-facebook" href="http://facebook.com/premast.co/" target="_blank" rel="nofollow"> <span class="sr-only">Facebook</span> <i class="fa fa-facebook-square"></i> </a>
+        <a class="premast-icon icon-twitter" href="https://twitter.com/Premast_co" target="_blank" rel="nofollow"> <span class="sr-only">Twitter</span> <i class="fa fa-twitter-square"></i> </a>
+        <a class="premast-icon icon-instagram" href="https://www.instagram.com/premast.co/" target="_blank" rel="nofollow"> <span class="sr-only">instagram</span> <i class="fa fa-instagram"></i> </a>
+        <a class="premast-icon icon-behance" href="http://behance.net/Premast" target="_blank" rel="nofollow"> <span class="sr-only">Behance</span> <i class="fa fa-behance-square"></i> </a>
+      </div>
+    @endif
   </nav>
+
   <header class="banner">
     <div class="container p-0">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -73,37 +70,36 @@ $time = get_the_time('Y-m-d')
           <i></i>
         </a>
         <h2 class="logos mr-auto">
-          <a class="navbar-brand p-0 align-self-center col" href="{{ the_field('link_page_login','option') }}" title="{{ get_bloginfo('name') }}">
-            <img class="img-fluid" src="@if(get_field('website_logo_light', 'option')) {{ the_field('website_logo_light','option') }} @else {{ get_theme_file_uri().'/dist/images/premast-templates.png' }} @endif" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
+          <a class="navbar-brand p-0 align-self-center" href="{{ the_field('link_page_login','option') }}" title="{{ get_bloginfo('name') }}">
+            <img class="img-fluid" src="@if(get_field('templates_logo', 'option')) {{ the_field('templates_logo','option') }} @else {{ get_theme_file_uri().'/dist/images/premast-templates.png' }} @endif" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
             <span class="sr-only"> {{ get_bloginfo('name') }} </span>
           </a>
         </h2>
-        @if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) 
-        @php 
-          $count = WC()->cart->cart_contents_count; 
-        @endphp
-          <a class="cart-contents" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
-            @if ( $count > 0 )
-            <span class="cart-contents-count"><?php echo esc_html( $count ); ?></span>
-            @endif
-          </a>
+        @if(get_field('link_pricing', 'option'))
+          <div class="button-pricing">
+            <a class="button-green" href="{{ the_field('link_pricing', 'option') }}">{{ _e('pricing', 'premast') }}</a>
+          </div>
         @endif
-        <div class="usermenu ml-4 mt-1">
-          @if( is_user_logged_in() ) 
-            <a href="#" class="menu-toggle">
-              <i class="fa fa-user-circle fa-lg text-gray-dark" aria-hidden="true"></i>
-              <i class="fa fa-times fa-lg text-gray-dark" aria-hidden="true"></i>
-            </a>
-          @else 
-            <a class="mt-2 signup btn-primary" href="#" data-toggle="modal" data-target="#SignupUser">{{ _e('Sign Up', 'premast') }}</a>
-          @endif
+        <div class="search-items-mobile">
+          <form action="{{ bloginfo('url') }}/items" autocomplete="on" id="search">
+            <input id="autoblogs" class="search-inputs"  name="refine"  value="{{ get_search_query() }}" type="text" placeholder="{{ _e('type something','premast') }}" autocomplete="off" spellcheck="false" maxlength="100"">
+            <input id="search_submit" value="Rechercher" type="submit">
+            <i class="button-close"></i>
+          </form>
+        </div>
+        <div class="usermenu">
+          <a href="#" class="menu-toggle">
+            <i class="fa fa-user-circle fa-lg text-gray-dark" aria-hidden="true"></i>
+            <i class="fa fa-times fa-lg text-gray-dark" aria-hidden="true"></i>
+          </a>
         </div>
       </nav>
     </div>
   </header>
+
 @else
 
-@php 
+@php
   $taxonomy_query = get_queried_object();
 @endphp
   <header class="bg-light banner navbar-banner-items">
@@ -120,7 +116,7 @@ $time = get_the_time('Y-m-d')
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <h5 class="sr-only">{{ _e('Breadcrumb navigation', 'premast') }}</h5>
-          
+
           @if (has_nav_menu('items_navigation'))
             {!! wp_nav_menu(['theme_location' => 'items_navigation', 'container' => false, 'menu_class' => 'navbar-item navbar-nav ml-4 mr-auto', 'walker' => new Nav_Item_Walker()]) !!}
           @endif
@@ -137,9 +133,9 @@ $time = get_the_time('Y-m-d')
             <a class="button-green" href="{{ the_field('link_pricing', 'option') }}">{{ _e('pricing', 'premast') }}</a>
           </div>
         @endif
-        @if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) 
-        @php 
-          $count = WC()->cart->cart_contents_count; 
+        @if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) )
+        @php
+          $count = WC()->cart->cart_contents_count;
         @endphp
           <a class="cart-contents ml-4" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
             @if ( $count > 0 )
@@ -147,14 +143,14 @@ $time = get_the_time('Y-m-d')
             @endif
           </a>
         @endif
-        @if( is_user_logged_in() ) 
+        @if( is_user_logged_in() )
           <div class="notification mx-4">
             <a href="#"><i class="fa premast-bell-" aria-hidden="true"></i> <span class="notification-counter"></span></a>
           </div>
         @endif
         <div class="half">
-          @if( is_user_logged_in() ) 
-            @php 
+          @if( is_user_logged_in() )
+            @php
               $limit_membership = wc_memberships_get_user_active_memberships($current_user->ID);
               $author = get_the_author_meta($current_user->ID);
               // dd($current_user->ID);
@@ -164,7 +160,7 @@ $time = get_the_time('Y-m-d')
               <input type="checkbox" id="profile">
               @if($avatar)
                 <img class="avatar" src="{{ $avatar['url'] }}" alt="{!! get_the_author_meta('display_name', $current_user->ID) !!}">
-              @else 
+              @else
                 <img class="avatar" src="{{ get_theme_file_uri().'/resources/assets/images' }}/avatar.svg" alt="{!! get_the_author_meta('display_name', $current_user->ID) !!}">
               @endif
               {!! get_the_author_meta('display_name', $current_user->ID) !!}
@@ -174,7 +170,7 @@ $time = get_the_time('Y-m-d')
               @endif
               @include('partials/incloud/profile')
             </label>
-          @else 
+          @else
             <a class="mx-2 signup text-primary" href="#" data-toggle="modal" data-target="#SignupUser">{{ _e('Sign Up', 'premast') }}</a>
             <a class="mx-2 login text-gray-dark" href="#" data-toggle="modal" data-target="#LoginUser">{{ _e('Login', 'premast') }}</a>
           @endif
@@ -183,3 +179,25 @@ $time = get_the_time('Y-m-d')
     </div>
   </header>
 @endif
+
+
+
+<div id="ProgressBar"></div>
+
+
+<style>
+  div#ProgressBar {
+    position: fixed;
+    top: -6px;
+    z-index: 999999999;
+    width: 100%;
+    height: 14px;
+    overflow: hidden;
+  }
+  .admin-bar div#ProgressBar {
+    top: 24px;
+  }
+  header.banner .cart-contents {
+    margin-left: 8px !important;
+}
+</style>

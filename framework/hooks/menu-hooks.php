@@ -207,15 +207,20 @@ class Nav_Item_Walker extends Walker_Nav_Menu {
 	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
     $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
-    
     if($item->object == "custom")  {
+
+      $checked = "";
+      $parent_checked = "";
+      $attributes = "";
+      $term_current = "";
+
       $attributes .= ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
       $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
       $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
       $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
       $item_output = $args->before;
         $item_output .= '<li class="item-menu star">';
-        $item_output .= '<input id="'.$item->ID.'" class="radio" name="links" type="radio" '.$checked.' '.$parent_checked.'> <label class="link nav-link link-item" for="'.$item->ID.'"> <a href="#">';
+        $item_output .= '<input id="'.$item->ID.'" class="radio" name="links" type="radio" '.$checked.'> <label class="link nav-link link-item" for="'.$item->ID.'"> <a href="#">';
         $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
         $item_output .= '</a></label>';
         $item_output .= '<ul class="sub">';
@@ -241,7 +246,8 @@ class Nav_Item_Walker extends Walker_Nav_Menu {
       $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
     } else {
 
-      $child_term = get_term_children( $item->object_id, $item->object );
+      // $child_term = get_term_children( $item->object_id, $item->object );
+      $child_term = get_terms( $item->object, array( 'parent' => $item->object_id, 'hide_empty' => false ) );
       $class_names = $value = '';
       $classes = empty( $item->classes ) ? array() : (array) $item->classes;
       $classes[] = 'menu-item-' . $item->ID;
@@ -279,7 +285,7 @@ class Nav_Item_Walker extends Walker_Nav_Menu {
         $item_output .= '</a>';
         $item_output .= '</li>';
           foreach($child_term as $child):
-            $term = get_term_by( 'id', $child, $item->object );
+            $term = get_term_by( 'id', $child->term_id, $item->object );
             $term_current = ($term->term_id == $taxonomy_query->term_id)? "item-current":"";
             $term_link = get_term_link( $term );
             if ( is_wp_error( $term_link ) ) {

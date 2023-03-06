@@ -5,7 +5,7 @@ body {
   overflow-x: hidden;
 
   &.single-product {
-    background: rgb(239, 246, 250);
+    background: rgb(255, 255, 255);
   }
 
   &.author {
@@ -157,4 +157,8 @@ a {
     padding-right: 110px;
     padding-left: 110px;
   }
+}
+
+.background-img {
+  background-image: url("../images/bg-blocks.png");
 }

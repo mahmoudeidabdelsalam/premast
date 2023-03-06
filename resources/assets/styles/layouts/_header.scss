@@ -218,6 +218,7 @@ section.banner-items {
       color: rgb(61, 69, 82);
       font-weight: 500;
       margin-bottom: 14px;
+      min-height: 33px;
     }
 
     .card-body {
@@ -561,7 +562,7 @@ section.banner-items {
 .premast-social-icons {
   margin: 5px 0 0;
   padding: 8px 22px;
-  background-color: rgb(34, 146, 235);
+  background-color: rgb(40, 47, 57);
   border-radius: 0 0 2px 2px;
   text-align: center;
   display: flex;
@@ -929,7 +930,7 @@ header.banner .cart-contents {
 
     &:nth-child(5) {
       &::after {
-        content: "\f006";        
+        content: "\f006";
       }
     }
 
@@ -971,6 +972,7 @@ ul.list-editing:after {
 header.bg-light.banner {
   border-bottom: 1px solid #cccc;
   padding: 10px 0 5px;
+  z-index: 99999 !important;
 }
 
 .side-menu-user .headline {
@@ -1069,5 +1071,14 @@ header.bg-light.banner {
 
   .col-offer {
     position: relative;
+    transition: all 0.5s;
+    top: 0;
+  }
+
+  .col-offer.closeThis {
+    top: -500px;
+    transition: all 0.5s;
+    z-index: -333;
+    margin-top: -50px;
   }
 /* stylelint-enable */

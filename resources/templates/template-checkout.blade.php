@@ -13,6 +13,12 @@
   // var_dump($to_cart);
 
   if($to_cart) {
+    // empty user cart first 
+    WC()->cart->empty_cart();
+    // add product to cart
+    WC()->cart->add_to_cart($to_cart);
+    // go to checkout
+    
     wp_redirect( wc_get_checkout_url() );
     exit();
   }
@@ -28,7 +34,7 @@
   <div class="container mt-5 mb-5">
     <div class="row">
       <?php echo do_shortcode( '[woocommerce_checkout]' ); ?>
-    </div>            
+    </div>
   </div>
 @endwhile
 
@@ -49,18 +55,18 @@
     <div class="checkout-custom-header">
       @include('partials.page-header')
     </div>
-  
+
 
     <div class="container-fluid mt-5 mb-5">
       <div class="row">
-        
+
 
         <div class="col-md-7 col-12 billing-custom">
           <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
             <!-- Custom billing -->
             <div class="woocommerce-billing-custom">
               <div class="woocommerce-billing-fields">
-              
+
               <?php if ( ! is_user_logged_in()) : ?>
                 <?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
                   <h3><?php esc_html_e( 'Billing &amp; Shipping', 'woocommerce' ); ?> <span class="login-checkout"><?php _e('Already Have account', 'premast'); ?> <a class="mt-2 login text-primary" href="#" data-toggle="modal" data-target="#LoginUser">log in <i class="fa fa-angle-right"></i></a></span></h3>
@@ -70,17 +76,17 @@
               <?php else : ?>
                 <?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
                   <h3>
-                    <?php esc_html_e( 'Billing &amp; Shipping', 'woocommerce' ); ?> 
+                    <?php esc_html_e( 'Billing &amp; Shipping', 'woocommerce' ); ?>
                     <a class="btn-edit login-checkout" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                       <?php _e('edit billing details', 'premast'); ?>
-                    </a>  
+                    </a>
                   </h3>
                 <?php else : ?>
                   <h3>
                     <?php esc_html_e( 'Billing details', 'woocommerce' ); ?>
                     <a class="btn-edit login-checkout" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                       <?php _e('edit billing details', 'premast'); ?>
-                    </a>  
+                    </a>
                   </h3>
                 <?php endif; ?>
               <?php endif; ?>
@@ -138,8 +144,8 @@
                   <?php do_action( 'woocommerce_after_checkout_registration_form', $checkout ); ?>
                 </div>
               <?php endif; ?>
-            
-                
+
+
                 <?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
                 <div id="order_review" class="woocommerce-checkout-review-order mt-0">
                   <?php do_action( 'woocommerce_checkout_order_review' ); ?>
@@ -150,7 +156,7 @@
           </form>
         </div>
 
-        
+
 
         <div class="col-md-5">
             <?php
@@ -282,18 +288,18 @@
         </div>
       </div>
     </div>
- 
+
 
 
   <script type = "text/javascript">
     jQuery(function($) {
-      if($('#billing_first_name').val() === "" || $('#billing_last_name').val() === "" || $('#select2-billing_country-container').val() === "" || $('#billing_address_1').val() === "" || $('#billing_city').val() === "" || $('#billing_email').val() === "" || $('#account_password').val() === ""  ){ 
+      if($('#billing_first_name').val() === "" || $('#billing_last_name').val() === "" || $('#select2-billing_country-container').val() === "" || $('#billing_address_1').val() === "" || $('#billing_city').val() === "" || $('#billing_email').val() === "" || $('#account_password').val() === ""  ){
         $('.btn-next').addClass('hidden');
       } else {
         $('.btn-next').removeClass('hidden');
       }
-      $(".woocommerce-billing-custom .form-row input").blur(function() { 
-        if($(this).val() == ''){ 
+      $(".woocommerce-billing-custom .form-row input").blur(function() {
+        if($(this).val() == ''){
           $('.btn-next').addClass('hidden');
         } else {
           $('.btn-next').removeClass('hidden');
@@ -302,9 +308,10 @@
     });
   </script>
 
-  
+
 
   @endwhile
+
   <?php endif; ?>
 @endsection
 

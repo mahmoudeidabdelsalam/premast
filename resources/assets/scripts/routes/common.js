@@ -2,6 +2,7 @@ import AOS from 'aos/dist/aos';
 import WOW from '../../../../node_modules/wow.js/dist/wow';
 import Slideout from '../../../../node_modules/slideout/dist/slideout';
 import simpleParallax from '../../../../node_modules/simple-parallax-js/dist/simpleParallax';
+import ProgressBar from '../../../../node_modules/progressbar.js/dist/progressbar';
 
 export default {
   init() {
@@ -73,6 +74,7 @@ export default {
       currentPagerPosition: 'left',
       onSliderLoad: function (el) {
         $('.lightSlider').removeClass('cS-hidden');
+        $('.lSSlideOuter .lSPager.lSGallery li img').addClass('lazyload');
         el.lightGallery({
           selector: '#imageGallery .lslide',
         });
@@ -119,7 +121,7 @@ export default {
         var $window = $(window);
         var $sidebar = $('.by-filter');
         var $sidebarHeight = $sidebar.innerHeight();
-        var $footerOffsetTop = $('.content-info').offset().top - 200;
+        var $footerOffsetTop = $('.content-info').offset().top - 400;
         var $sidebarOffset = $sidebar.offset();
         $window.scroll(function () {
           if ($window.scrollTop() > $sidebarOffset.top) {
@@ -136,6 +138,22 @@ export default {
       }
     }
 
+    $('body').on('click', '#search_submit', function () {
+      var bar = new ProgressBar.Line('#ProgressBar', {
+        strokeWidth: 4,
+        easing: 'easeInOut',
+        duration: 4000,
+        color: '#2872fd',
+        trailColor: '#272f38',
+        trailWidth: 4,
+        svgStyle: { width: '100%', height: '100%' },
+      });
+      bar.animate(1.1);  // Number from 0.0 to 1.0
+    });
+
+
+
+    
     $('.button-close').click(function () {
       $('#search').toggleClass('active');
     });
@@ -187,7 +205,7 @@ export default {
       // eslint-disable-next-line no-redeclare
       var today = yyyy + '-' + mm + '-' + dd;
       setCookie('the_last_view', today, 1000);
-      $('.col-offer').hide('slow');
+      $('.col-offer').addClass('closeThis');
     });
 
     // var $grid = $('.grid').imagesLoaded(function () {
@@ -235,6 +253,7 @@ export default {
         'menu': document.getElementById('menu'),
         'padding': 320,
         'tolerance': 70,
+        'touch': false,
       });
 
       // Toggle button

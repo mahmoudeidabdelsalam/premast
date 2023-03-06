@@ -6,7 +6,7 @@
 @extends('layouts.app-dark')
 @section('content')
 
-@php 
+@php
   $send = (isset($_GET['send']))? $_GET['send']:'';
   global $current_user;
   wp_get_current_user();
@@ -43,7 +43,7 @@
         <h4 class="col-12">{{ the_field('tag_banner_hero_copy') }}</h4>
         <div class="col-12">
           <img class="img-fluid" data-aos="fade-up" data-aos-duration="1000" src="{{ the_field('image_banner_hero') }}" alt="{{ the_field('headline_banner_hero') }}">
-        </div>        
+        </div>
       </div>
     </div>
   </section>
@@ -55,11 +55,11 @@
           <img class="img-fluid" data-aos="fade-right" data-aos-duration="1000"" src="{{ the_field('icon_block_more_about') }}" alt="{{ the_field('headline_block_more_about') }}">
           <h3 class="the-headline-border">{{ the_field('headline_block_more_about') }}</h3>
           <div class="the-content">{{ the_field('content_block_more_about') }}</div>
-          @php 
+          @php
             $link = get_field('link_page_block_more_about');
           @endphp
           @if( $link )
-          @php 
+          @php
             $link_url = $link['url'];
             $link_title = $link['title'];
             $link_target = $link['target'] ? $link['target'] : '_self';
@@ -90,25 +90,29 @@
         <div class="col-12 col-md-6">
           <h3>{{ _e('Ready to share? ', 'premast') }}</h3>
           <p>{{ _e('Have up to 6 months free premium subscription by inviting your friends to sign up at Premast. For each friend you bring you will have a 1 month free premium subscription.', 'premast') }}</p>
-          @if( !is_user_logged_in() ) 
+          @if( !is_user_logged_in() )
             <div class="custom-login">
               <a class="mx-2 login" href="#" data-toggle="modal" data-target="#LoginUser">log in</a>
-              <a class="mx-2 signup btn-primary" href="#" data-toggle="modal" data-target="#SignupUser">create an account</a>            
+              <a class="mx-2 signup btn-primary" href="#" data-toggle="modal" data-target="#SignupUser">create an account</a>
             </div>
           @else
             <div class="custom-share">
               <h4>{{ _e('Invite through mail', 'premast') }}</h4>
-              @php 
+              @php
                 $form = get_field('forms_referral', 'option');
                 $inputs = get_all_form_fields($form['id']);
-                $link = get_field('link_signup', 'option').'?refer='.$current_user->ID.'&token='.get_the_date('U').'';
+
+                $ip = get_the_user_ip();
+                $hash_ip = wp_hash_password($ip);
+
+                $link = get_field('link_signup', 'option').'?refer='.$current_user->ID.'&token='.$hash_ip.'';
               @endphp
 
               <form class="form-inline" role="" method="post" id="gform_<?= $form['id']; ?>" action="<?= the_permalink(); ?>?send='true'">
                 <?php foreach ($inputs as $input): ?>
                   <?php if($input["type"] == "email"): ?>
                     <div class="form-group mb-2">
-                      <input type="email" name="input_<?= $input["id"]; ?>" class="form-control" id="emailInput" placeholder="write an email">
+                      <input type="text" name="input_<?= $input["id"]; ?>" class="form-control" id="emailInput" placeholder="write an email">
                     </div>
                   <?php elseif($input["type"] == "hidden"): ?>
                     <input type="text" name="input_<?= $input["id"]; ?>" class="form-control" hidden value="<?= $current_user->display_name; ?>">
@@ -126,19 +130,19 @@
                 <input type="hidden" name="gform_field_values" value="">
               </form>
 
-              <ul class="list-inline social-sharer">
+              <ul class="list-inline social-sharer customSocial m-0" >
                 <li class="head"><span>{{ _e('Share your link', 'premast') }}</span></li>
                 <li class="list-inline-item">
-                  <a class="item" data-network="linkedin" data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-linkedin"></i></a>
+                  <a class="item" data-user="<?= $current_user->ID; ?>" data-action="counter" data-event="counter" data-id="{{ get_the_ID()}}" data-network="linkedin" data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-linkedin"></i></a>
                 </li>
                 <li class="list-inline-item">
-                  <a class="item" data-network="twitter"  data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-twitter"></i></a>      
+                  <a class="item" data-user="<?= $current_user->ID; ?>" data-action="counter" data-event="counter" data-id="{{ get_the_ID()}}" data-network="twitter"  data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-twitter"></i></a>
                 </li>
                 <li class="list-inline-item">
-                  <a class="item" data-network="facebook" data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-facebook"></i></a>      
+                  <a class="item" data-user="<?= $current_user->ID; ?>" data-action="counter" data-event="counter" data-id="{{ get_the_ID()}}" data-network="facebook" data-url="{{ home_url('/') }}" data-title="{{ $link}}" href="#"> <i class="fa fa-facebook"></i></a>
                 </li>
                 <li class="list-inline-item">
-                  <a class="item" data-network="addtoany" data-url="{{ $link }}" data-title="{{ $link }}" href="#"> <i class="fa fa-ellipsis-v"></i></a>      
+                  <a class="item" data-user="<?= $current_user->ID; ?>" data-action="counter" data-event="counter" data-id="{{ get_the_ID()}}" data-network="addtoany" data-url="{{ $link }}" data-title="{{ $link }}" href="#"> <i class="fa fa-ellipsis-v"></i></a>
                 </li>
               </ul>
 
@@ -156,15 +160,15 @@
   </section>
 <script>
   jQuery(function($) {
-    
+
     $('#copy').on('click', function(event) {
       console.log(event);
       copyToClipboard(event);
     });
-    
+
     function copyToClipboard(e) {
       var
-        t = e.target, 
+        t = e.target,
         c = t.dataset.copytarget,
         inp = (c ? document.querySelector(c) : null);
       console.log(inp);
@@ -184,4 +188,10 @@
     }
   });
 </script>
+<style>
+.btn-primary {
+    margin-right:33px;
+
+    }
+</style>
 @endsection

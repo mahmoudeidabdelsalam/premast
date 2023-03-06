@@ -18,8 +18,10 @@
     }
   }
 
-  .fa-times {
-    display: none;
+  .usermenu {
+    .fa-times {
+      display: none;
+    }
   }
 
   .is-open-user {
@@ -37,12 +39,13 @@
 
   nav#menu_user {
     position: fixed;
-    top: 65px;
+    top: 0;
     right: 0;
     width: 100%;
-    z-index: 99;
-    background: rgb(40, 47, 57);
-    height: 80vh;
+    z-index: 9999;
+    background: #f9f9f9;
+    height: 75vh;
+    padding-top: 45px;
 
     ul.link-dropdown {
       list-style: none;
@@ -50,13 +53,17 @@
       display: flex;
       flex-flow: column;
       height: 100%;
-      padding-top: 20px;
+      padding-top: 0;
 
       li.item-dropdown {
         margin: 10px 20px;
 
         a {
-          color: rgb(255, 255, 255);
+          font-size: 14px;
+          line-height: 16px;
+          letter-spacing: 0.132987px;
+          color: rgb(40, 47, 57);
+          font-weight: 400;
         }
       }
 

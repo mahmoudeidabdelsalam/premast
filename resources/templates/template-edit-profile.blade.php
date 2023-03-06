@@ -34,7 +34,7 @@
             <input type="file" id="user-file">
           </form>
 
-          <?php 
+          <?php
             global $current_user;
             wp_get_current_user();
             $avatar = get_field('owner_picture', 'user_'. $current_user->ID );
@@ -61,8 +61,8 @@
           <?php
             $error = array();
             global $current_user, $wp_roles;
-            if ( have_posts() ) : while ( have_posts() ) : the_post(); 
-            if ( count($error) > 0 ) echo '<p class="error">' . implode("<br />", $error) . '</p>'; 
+            if ( have_posts() ) : while ( have_posts() ) : the_post();
+            if ( count($error) > 0 ) echo '<p class="error">' . implode("<br />", $error) . '</p>';
           ?>
             <form method="post" id="adduser" action="<?php the_permalink(); ?>">
               <div class="row">
@@ -103,8 +103,8 @@
                   </p>
                 </div>
               </div>
-            </form> 
-          <?php 
+            </form>
+          <?php
           endwhile;
           endif; ?>
         </div>
@@ -136,7 +136,7 @@
                 $('.loading').show();
               },
               success: function (data) {
-                var result = $.parseJSON(data);  
+                var result = $.parseJSON(data);
                 console.log(result.id);
                 console.log(result.src);
                 $('input[name="acf[field_5a632631202544365aa]"]').val(result.id);
@@ -155,7 +155,7 @@
     }
     .user-images [data-name="owner_picture"] {
       display: none !important;
-    }    
+    }
     .loading {
       position: absolute;
       top: 0;
@@ -166,10 +166,26 @@
       display: flex;
       justify-content: center;
       align-items: center;
-    }    
+    }
     .user-images .acf-image-uploader img {
         width: 100%;
-    }    
+    }
+    .wp-media-buttons {
+      display: none;
+    }
+    .acf-field textarea {
+    width: 100% !important;
+    border: 1px solid #e3e3e3;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 8px;
+    display: block;
+    padding: 10px;
+}
+
+table {
+    width: 80%;
+}
   </style>
   @endif
 @endsection

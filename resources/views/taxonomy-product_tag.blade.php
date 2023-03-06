@@ -1,269 +1,225 @@
-@php 
-  $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
-  $Name   = isset($_GET['refine']) ? $_GET['refine'] : '0';
-  $sort   = isset($_GET['sort']) ? $_GET['sort'] : '0';
-  
-  if ( $sort == 'date' ):
-    $orderby = 'date';
-    $order = 'DESC';
-    $meta_key = '';
-  elseif( $sort == 'view') :
-    $orderby = 'meta_value_num';
-    $order = 'DESC';
-    $meta_key = 'c95_post_views_count';
-  elseif ( $sort == 'download' ):
-    $orderby = 'meta_value_num';
-    $order = 'DESC';
-    $meta_key = 'counterdownload';
-  else :
-    $orderby = 'date';
-    $order = 'DESC';
-    $meta_key = '';
-  endif;
-  
-  $taxonomy_query = get_queried_object();
-
+@php
+   $paged = get_query_var('paged') ? absint(get_query_var('paged')) : 1;
+   $Name = isset($_GET['refine']) ? $_GET['refine'] : '0';
+   $sort = isset($_GET['sort']) ? $_GET['sort'] : '0';
+   $old = isset($_GET['old']) ? $_GET['old'] : false;
+   $test = isset($_GET['test']) ? $_GET['test'] : false;
+   
+   $taxonomy_query = get_queried_object();
 @endphp
+
 
 @extends('layouts.app-dark')
-
 @section('content')
+   @php
+      global $current_user;
+      wp_get_current_user();
+   @endphp
 
-@php 
-  global $current_user;
-  wp_get_current_user();
-@endphp
+   @if (!$old)
+      <script>
+         console.log('tag')
+         console.log('{{ $taxonomy_query->slug }}')
+      </script>
+      <pmst-items params='{ "tags": "{{ single_tag_title() }}",  "page":{{ $paged = get_query_var('paged') ? get_query_var('paged') : 1 }} , "per_page": 24 }'
+                  nonce='{{ wp_create_nonce('wp_rest') }}'
+                  headline="Templates related to {{ single_tag_title() }} tag"
+                  subHeadline='Download your preferred design from huge collection of professionally, creative designed templates for all your needs.'>
+      </pmst-items>
+   @endif
 
-@php 
-  $args = array(
-    'post_type' => 'product',
-  );
 
-  $loop = new WP_Query( $args );
-  $count = $loop->found_posts;
-@endphp
 
-@if (get_field('images_tags', 'option'))
-  <section class="banner-items mb-5 mt-5" style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one_tags','option') }} 0%, {{ the_field('gradient_color_two_tags','option') }} 100%);">
-    <div class="elementor-background-overlay" style="background-image: url('{{ the_field('images_tags','option') }}');"></div>
-    <div class="container">
-      <div class="row justify-content-center align-items-center text-center">
-        <h1 class="col-12" style="color:{{ the_field('font_color_tags','option') }}"><strong class="font-weight-600">{{ _e('Discover Best', 'premast') }} {{ single_tag_title() }} </strong> <span class="font-weight-300">{{ _e('templates', 'premast') }}</span></h1>
-        <p class="col-md-5 col-12 font-weight-300" style="color:{{ the_field('font_color_tags','option') }}">{{ _e('Download your preferred design from huge collection of professionally, creative designed', 'premast') }} {{ single_tag_title() }} {{ _e('templates for all your needs.', 'premast') }}</p>
-      </div>
-    </div>
-  </section>
-@endif
-<div class="container-fiuld">
-  <div class="row justify-content-center m-0">
-    <div class="col-md-12 col-sm-12">
-      <div class="item-columns container-ajax items-categories item-card grid grid-custom row">
-        @php
-          if ($sort != '0') {
-            // second query
-            $second_ids = get_posts( array(
-              'post_type' => 'product',
-              'posts_per_page' => 20,
-              'fields'         => 'ids',
-              'paged' => $paged,
-              'meta_key' => $meta_key,
-              'orderby' => $orderby,
-              'order' => $order,
-              'tax_query' => array(
-                array(
-                  'taxonomy' => 'product_tag',
-                  'field' => 'term_id',
-                  'terms' => $taxonomy_query->term_id
-                )
-              )
-            ));
-            $per_page = 20 - count($second_ids);
-          } else {
-            $second_ids = [];
-            $per_page = 20;
-          }
+   @if ($old)
+      @php
+         $nonce = wp_create_nonce('simple-likes-nonce'); // Security global $current_user; wp_get_current_user();
+         $current_user = wp_get_current_user();
+         
+         $my_query = new \WP_Query([
+             'post_type' => 'product',
+             'posts_per_page' => 19,
+             'paged' => $paged,
+             'tax_query' => $taxonomy_query,
+         ]);
+         while ($my_query->have_posts()):
+             $my_query->the_post();
+             $product = wc_get_product(get_the_ID());
+             $items_data[] = [
+                 'id' => get_the_ID(),
+                 'title' => str_replace('&amp;', '&', $product->get_name()),
+                 'slug' => $product->get_slug(),
+                 'link' => get_permalink(),
+                 'image' => [
+                     'thumbnail' => get_the_post_thumbnail_url(null, 'thumbnail'),
+                     'medium' => get_the_post_thumbnail_url(null, 'medium'),
+                     'large' => get_the_post_thumbnail_url(null, 'large'),
+                 ],
+                 'price' => get_post_meta(get_the_ID(), '_regular_price', true),
+                 'sale_price' => get_post_meta(get_the_ID(), '_sale_price', true),
+                 'rating' => get_post_meta(get_the_ID(), '_wc_average_rating', true),
+                 'downloads' => get_post_meta(get_the_ID(), 'somdn_dlcount', true),
+                 'likes' => get_post_meta(get_the_ID(), '_post_like_count', true),
+                 'categories' => get_the_terms(get_the_ID(), 'product_cat'),
+                 'tags' => get_the_terms(get_the_ID(), 'product_tag'),
+                 'isLiked' => already_liked(get_the_ID(), 0),
+                 'edit_permission' => $current_user->allcaps['edit_product'],
+                 'edit_link' => get_field('link_edit_item', 'option') . '?post_id' . get_the_ID(),
+                 'test' => get_queried_object(),
+             ];
+         endwhile;
+      @endphp
 
-          $orders = array(
-            'post_type' => 'product',
-            'posts_per_page' => 20,
-            'paged' => $paged,
-            'meta_key' => $meta_key,
-            'orderby' => $orderby,
-            'order' => $order,
-            'tax_query' => array(
-              array(
-                'taxonomy' => 'product_tag',
-                'field' => 'term_id',
-                'terms' => $taxonomy_query->term_id
-              )
-            )
-          );
-
-          $args = array(
-            'post_type' => 'product',
-            'posts_per_page' => $per_page,
-            'post__not_in' => $second_ids,
-            'paged' => $paged,
-            'tax_query' => array(
-              array(
-                'taxonomy' => 'product_tag',
-                'field' => 'term_id',
-                'terms' => $taxonomy_query->term_id
-              )
-            )
-          );
-
-          if($Name != '0') {
-            $args['s'] = $Name;
-          }
-          
-          if( $sort == 'featured') {
-            $orders['tax_query'] = array(
-              'relation' => 'AND',
-              array(
-                'taxonomy' => 'product_visibility',
-                'field'    => 'name',
-                'terms'    => 'featured',
-              ),
-              array(
-                'taxonomy' => 'product_tag',
-                'field' => 'term_id',
-                'terms' => $taxonomy_query->term_id
-              )
-            );
-          }
-
-          $my_query = new \WP_Query( $args );
-
-          if ($sort != '0') {
-            $more_query = new \WP_Query( $orders ); 
-            $my_query->posts = array_merge( $more_query->posts, $my_query->posts);
-
-            $my_query->post_count = count( $my_query->posts );
-          }
-    
-        @endphp
-
-        @if (get_field('show_card_pricing', 'option'))
-          <div class="col-md-3 col-12 grid-item">
-            <div class="card">
-              <span class="custom-onsale">
-                {{ the_field('tag_card_pricing', 'option') }}
-              </span>
-              <div class="bg-white" style="background-image:url('{{ the_field('images_card_pricing', 'option') }}');height:auto;min-height:180px;">
-                <img src="{{ the_field('images_card_pricing', 'option') }}" class="card-img-top" alt="{{ the_field('heading_card_pricing', 'option') }}">
-                <div class="card-overlay"><a class="the_permalink" href="{{ the_field('lik_card_pricing', 'option') }}"></a></div>
-              </div>
-              <div class="card-body pt-2 pl-0 pr-0 pb-0">
-                <a class="card-link" href="{{ the_field('lik_card_pricing', 'option') }}">
-                  <h5 class="card-title font-weight-400">{{ the_field('heading_card_pricing', 'option') }}</h5>
-                </a>
-                <div class="review-and-download">
-                  {{ the_field('description_card_pricing', 'option') }}
-                  <span class="premium"><i class="fa fa-star"></i></span>
-                </div>
-              </div>
+      @if (get_field('images_tags', 'option'))
+         <section class="banner-items mb-5 mt-5"
+                  style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one_tags', 'option') }} 0%, {{ the_field('gradient_color_two_tags', 'option') }} 100%);">
+            <div class="elementor-background-overlay"
+                 style="background-image: url('{{ the_field('images_tags', 'option') }}');"></div>
+            <div class="container">
+               <div class="row justify-content-center align-items-center text-center">
+                  <h1 class="col-12" style="color:{{ the_field('font_color_tags', 'option') }}"><strong
+                             class="font-weight-600">{{ _e('Discover Best', 'premast') }}
+                        {{ single_tag_title() }} </strong> <span
+                           class="font-weight-300">{{ _e('templates', 'premast') }}</span></h1>
+                  <p class="col-md-5 col-12 font-weight-300"
+                     style="color:{{ the_field('font_color_tags', 'option') }}">
+                     {{ _e('Download your preferred design from huge collection of professionally, creative designed', 'premast') }}
+                     {{ single_tag_title() }} {{ _e('templates for all your needs.', 'premast') }}
+                  </p>
+               </div>
             </div>
-          </div>
-        @endif
+         </section>
+      @else
+         <section class="banner-items mb-5 mt-5"
+                  style="background-image: linear-gradient(150deg, {{ the_field('gradient_color_one_tags', 'option') }} 0%, {{ the_field('gradient_color_two_tags', 'option') }} 100%);">
+            <div class="elementor-background-overlay"
+                 style="background-image: url('{{ the_field('images_tags', 'option') }}');"></div>
+            <div class="container">
+               <div class="row justify-content-center align-items-center text-center">
+                  <h1 class="col-12" style="color:{{ the_field('font_color_tags', 'option') }}">
+                     <strong class="font-weight-600">{{ _e('Discover Best', 'premast') }}
+                        {{ single_tag_title() }} </strong> <span
+                           class="font-weight-300">{{ _e('templates', 'premast') }}</span>
+                  </h1>
+                  <p class="col-md-5 col-12 font-weight-300"
+                     style="color:{{ the_field('font_color_tags', 'option') }}">
+                     {{ _e('Download your preferred design from huge collection of professionally, creative designed', 'premast') }}
+                     {{ single_tag_title() }} {{ _e('templates for all your needs.', 'premast') }}
+                  </p>
+               </div>
+            </div>
+         </section>
+      @endif
+      <div class="container-fiuld mt-5">
+         <div class="row justify-content-center m-0">
+            <div class="col-md-12 col-sm-12">
+               <div class="item-columns container-ajax item-card grid grid-custom row">
 
-        @if($my_query->have_posts())
-          @while($my_query->have_posts()) @php($my_query->the_post())
-
-          @php ($sale = get_post_meta( get_the_ID(), '_sale_price', true))
-            
-            <div class="col-md-3 col-12 grid-item">
-              <div class="card">
-                  @if($sale)
-                    <span class="custom-onsale">
-                      {{ _e('on Sale', 'premast') }}
-                    </span>
-                  @endif
-                <ul class="meta-buttons">
-                  <li class="likes-button">
-                    {!! get_simple_likes_button( get_the_ID() ) !!}
-                  </li>
-                  <li class="pinterest-share button-share">
-                    <a target="_blank" href="http://pinterest.com/pin/create/button/?url{{ the_permalink() }}=&media={{ Utilities::global_thumbnails(get_the_ID(),'medium')}}&description={{ get_the_title() }}" class="pin-it-button" count-layout="horizontal">
-                     <small>Pin it</small> <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                    </a>
-                  </li>
-                  @if(current_user_can( 'edit_post', get_the_ID() ) && (get_the_author_meta('ID') == $current_user->ID) || is_super_admin())
-                    <li class="edit-post button-share">
-                      <a class="post-edit-link" href="{{ the_field('link_edit_item', 'option') }}?post_id={{ the_ID() }}"><small>Edit</small> <i class="fa fa-pencil" aria-hidden="true"></a></i>
-                    </li>
-                  @endif
-                </ul>
-
-                <div class="bg-white" style="background-image:url('{{ Utilities::global_thumbnails(get_the_ID(),'medium')}}');height: auto; min-height: 1px;">
-                  <img src="{{ Utilities::global_thumbnails(get_the_ID(),'medium')}}" class="card-img-top" alt="{{ the_title() }}">
-                  <div class="card-overlay"><a class="the_permalink" href="{{ the_permalink() }}"></a></div>
-                </div>
-                <div class="card-body pt-2 pl-0 pr-0 pb-0">
-                  <a class="card-link" href="{{ the_permalink() }}">
-                    <h5 class="card-title font-weight-400">{{ html_entity_decode(wp_trim_words(get_the_title(), '4', ' ...')) }}</h5>
-                  </a>
-                  <div class="review-and-download">
-                    <div class="review">
-                      @if (get_option('woocommerce_enable_review_rating' ) == 'yes') 
-                        <?php 
-                          global $product;
-                          $rating_count = method_exists($product, 'get_rating_count')   ? $product->get_rating_count()   : 1;
-                          $review_count = method_exists($product, 'get_review_count')   ? $product->get_review_count()   : 1;
-                          $average      = method_exists($product, 'get_average_rating') ? $product->get_average_rating() : 0;
-                          $counter_download = get_post_meta( get_the_ID(), 'counterdownload', true );
-                          $counter_view = get_post_meta( get_the_ID(), 'c95_post_views_count', true );
-                          $like = get_post_meta(get_the_ID(), '_post_like_count', true);
-                          $price = get_post_meta( get_the_ID(), '_regular_price', true);
-                        ?>
-                        @if ($rating_count > 0)
-                          {!! wc_get_rating_html($average, $rating_count) !!}
-                          <span class="icon-review icon-meta" itemprop="reviewCount">{{ $average }}</span>
-                        @else 
-                          {!! wc_get_rating_html('1', '5') !!}
-                          <span class="icon-review icon-meta" itemprop="reviewCount">{{ _e('0', 'premast') }}</span>
+                  <div id="main">
+                     <div id="items_wrapper">
+                        @if (get_field('show_card_pricing', 'option'))
+                           <pmst-item-card image={{ the_field('images_card_pricing', 'option') }}
+                                           link={{ the_field('lik_card_pricing', 'option') }}
+                                           title='{{ get_field('heading_card_pricing', 'option') }}'>
+                           </pmst-item-card>
                         @endif
-                      @endif
-
-                      <span class="icon-download icon-meta"> <img class="img-meta" src="{{ get_theme_file_uri().'/dist/images/icon-download.svg' }}" alt="Download"> {{ ($counter_download)? $counter_download:'0' }}</span>
-                      @if(current_user_can( 'edit_post', get_the_ID() ) && (get_the_author_meta('ID') == $current_user->ID) || is_super_admin())
-                        <span class="icon-download icon-meta"> <img class="img-meta" src="{{ get_theme_file_uri().'/dist/images/icon-view.svg' }}" alt="Download"> {{ ($counter_view)? $counter_view:'0' }}</span>
-                      @endif
-                      <span class="icon-download icon-meta"> <img class="img-meta" src="{{ get_theme_file_uri().'/dist/images/like.png' }}" alt="like"> {{ ($like)? $like:'0' }}</span>
-                    </div>
-
-                    @if($price)
-                      <span class="premium"><i class="fa fa-star"></i></span>
-                    @endif
-
+                     </div>
                   </div>
-                </div>
-              </div>              
-            </div> 
-          @endwhile
+                  <script>
+                     let items = {!! json_encode($items_data) !!};
+                     console.log(items)
+                     let itemsWrapper = document.getElementById('items_wrapper');
+                     items.forEach(item => {
+                        let itemCard = document.createElement('pmst-item-card');
+                        itemCard.image = item.image.large;
+                        itemCard.title = item.title;
+                        itemCard.editPermission = item.edit_permission;
+                        itemCard.rating = item.rating
+                        itemCard.downloads = item.downloads
+                        itemCard.likes = item.likes
+                        itemCard.link = item.link
+                        itemCard.isLiked = item.isLiked
+                        // check if item is premium 
+                        if (+item.price === 0) {
+                           itemCard.premium = false
+                        } else {
+                           if (item.sale_price !== '') {
+                              console.log('sale is', item.sale_price) +
+                                 itemCard.sale_price === 0 ? itemCard.premium = false : itemCard.premium =
+                                 true
+                           } else {
+                              itemCard.premium = true
+                           }
+                        }
+                        itemCard.addEventListener('like', (e) => {
+                           jQuery.ajax({
+                              type: 'POST',
+                              url: "<?php echo admin_url('admin-ajax.php'); ?>",
+                              data: {
+                                 action: 'process_simple_like',
+                                 post_id: item.id,
+                                 is_comment: 0,
+                                 nonce: '<?php echo $nonce; ?>'
+                              },
+                              success: function(
+                                 data) {},
+                              error: function(
+                                 data) {}
+                           });
+                        })
+                        itemCard.addEventListener('edit', (e) => {
+                           window.location.href = item.edit_link;
+                        })
+                        itemsWrapper.appendChild(itemCard);
+                     })
+                     for (let i = 0; i < 4; i++) {
+                        let hiddenFlex = document.createElement('div');
+                        hiddenFlex.classList.add('hidden-flex');
+                        itemsWrapper.appendChild(hiddenFlex);
+                     }
+                  </script>
+                  @php(wp_reset_postdata())
+               </div>
 
-        @else
-          <div class="col-12">
-            {{ __('Sorry, no results were found.', 'sage') }}
-          </div>
-        @endif
-        @php (wp_reset_postdata())
 
+
+               <div class="col-12 pt-5 pb-5">
+                  <nav aria-label="Page navigation example">
+                     {{ premast_base_pagination([], $my_query) }}</nav>
+               </div>
+
+            </div>
+
+         </div>
       </div>
 
-      <div class="spinner">
-        <div class="cube1"></div>
-        <div class="cube2"></div>
-      </div>
+      <style>
+         pmst-item-card {
+            min-width: 200px;
+            width: 23%;
+            height: auto;
+            flex: 1 0 23%;
+         }
 
+         #items_wrapper {
+            margin-bottom: 30px !important;
+            max-height: fit-content;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 32px
+         }
 
-      <div class="col-12 pt-5 pb-5">
-        <nav aria-label="Page navigation example">{{ premast_base_pagination(array(), $my_query) }}</nav>
-      </div>
+         .hidden-flex {
+            width: 23%;
+            height: 0;
+            flex: 1 0 23%;
+         }
 
-    </div>
-
-  </div>
-</div>
+         #main {
+            width: 100%;
+            margin: 16px;
+         }
+      </style>
+   @endif
 
 @endsection

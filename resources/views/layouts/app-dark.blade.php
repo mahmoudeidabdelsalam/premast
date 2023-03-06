@@ -7,7 +7,8 @@
     @endif
 
     @php do_action('get_header') @endphp
-    @include('partials/header/headerdark')
+    {{-- @include('partials/header/headerdark') --}}
+    @include('partials.header.pmst-template')
     <div class="wrap" role="document" id="panel">
       <div class="content">
         <main class="main">

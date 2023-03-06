@@ -12,7 +12,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
       wp_update_user( array( 'ID' => $current_user->ID, 'user_pass' => esc_attr( $_POST['pass1'] ) ) );
     } else {
       $error[] = __('The passwords you entered do not match.  Your password was not updated.', 'profile');
-    } 
+    }
   }
 
   if ( !empty( $_POST['first-name'] ) )
@@ -29,6 +29,9 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
   update_user_meta( $current_user->ID, 'owner_phone', esc_attr( $_POST['acf']['field_5a9fb97bf63963d5'] ) );
   if ( !empty( $_POST['acf']['field_5a632631202544365aa'] ) )
   update_user_meta( $current_user->ID, 'owner_picture', esc_attr( $_POST['acf']['field_5a632631202544365aa'] ) );
+
+  if ( !empty( $_POST['acf']['field_5f3ee37cb2549'] ) )
+  update_user_meta( $current_user->ID, 'bio_author', esc_attr( $_POST['acf']['field_5f3ee37cb2549'] ) );
 
   if ( count($error) == 0 ) {
     //action hook for plugins and extra fields saving
@@ -63,11 +66,11 @@ function wooc_extra_register_fields() {
  * @compatible    WooCommerce 3.6.2
  * @donate $9     https://businessbloomer.com/bloomer-armada/
  */
-  
+
 // THIS WILL CREATE A NEW SHORTCODE: [wc_reg_form_bbloomer]
-  
+
 add_shortcode( 'wc_reg_form_bbloomer', 'bbloomer_separate_registration_form' );
-    
+
 function bbloomer_separate_registration_form() {
 if ( is_admin() ) return;
 ob_start();
@@ -75,13 +78,13 @@ if ( is_user_logged_in() ) {
    wc_add_notice( sprintf( __( 'You are currently logged in. If you wish to register with a different account please <a href="%s">log out</a> first', 'bbloomer' ), wc_logout_url() ) );
    wc_print_notices();
 } else {
-     
+
 // NOTE: THE FOLLOWING <FORM> IS COPIED FROM woocommerce\templates\myaccount\form-login.php
 // IF WOOCOMMERCE RELEASES AN UPDATE TO THAT TEMPLATE, YOU MUST CHANGE THIS ACCORDINGLY
 ?>
-        
+
 <form method="post" class="woocommerce-form woocommerce-form-register register" action="#registra" <?php do_action( 'woocommerce_register_form_tag' ); ?>>
-  
+
   <?php do_action( 'woocommerce_register_form_start' ); ?>
 
   <?php if ( 'no' === get_option( 'woocommerce_registration_generate_username' ) ) : ?>
@@ -114,32 +117,46 @@ if ( is_user_logged_in() ) {
 
 add_action('wp_ajax_register_user_front_end', 'register_user_front_end', 0);
 add_action('wp_ajax_nopriv_register_user_front_end', 'register_user_front_end');
+
+
 function register_user_front_end() {
-    $first_name = stripcslashes($_POST['first_name']);
-	  $last_name = stripcslashes($_POST['last_name']);
+
+    $fullname = stripcslashes($_POST['fullname']);
 	  $new_user_email = stripcslashes($_POST['user_email']);
     $new_user_password = $_POST['user_password'];
-    
+
     $refer_id = $_POST['refer'];
     $follow_ip = $_POST['follow_ip'];
 
-	  $user_nice_name = strtolower($_POST['user_email']);
+    $user_nice_name = strtolower($_POST['user_email']);
+
+
 	  $user_data = array(
-        'first_name'    => $first_name,
-        'last_name'     => $last_name,
-	      'user_login'    => $user_nice_name,
-	      'user_email'    => $new_user_email,
-	      'user_pass'     => $new_user_password,
-	      'user_nicename' => $user_nice_name,
-	      'display_name'  => $new_user_first_name,
-	      'role'          => 'subscriber'
-	  	);
-      $user_id = wp_insert_user($user_data);
+        'user_login'    => $user_nice_name,
+        'user_email'    => $new_user_email,
+        'user_pass'     => $new_user_password,
+        'user_nicename' => $user_nice_name,
+        'display_name'  => $fullname,
+        'role'          => 'subscriber'
+	 );
 
-      $link = get_field('link_page_referral', 'option').'?token='.$user_id.'&active=done&login='.$refer_id;
+     $user_id = wp_insert_user($user_data);
 
+      update_user_meta( $user_id, 'billing_first_name',  $first_name);
+      update_user_meta( $user_id, 'billing_last_name', $last_name );
+      update_user_meta( $user_id, 'billing_email', $new_user_email );
+
+      
 	  	if (!is_wp_error($user_id)) {
-        $output .= '<span class="user-created alert alert-success">we have Created an account for you.</span>';
+        // login user 
+        $creds = array();
+        $creds['user_login'] = $user_nice_name;
+        $creds['user_password'] = $new_user_password;
+        $creds['remember'] = true;
+        $user = wp_signon( $creds, false );
+        $link = get_field('link_page_referral', 'option').'?token='.$user_id.'&active=done&login='.$refer_id;
+        $link = get_field('link_page_referral', 'option').'?token='.$user_id.'&active=done';
+        $output = '<span class="user-created alert alert-success">Account Created Successfully.</span>';
         $output .= '<script>';
         $output .= 'jQuery(function(){';
         $output .= 'jQuery("#user_login").val("'.$user_nice_name.'");';
@@ -147,13 +164,13 @@ function register_user_front_end() {
         if($refer_id) {
           $output .= 'jQuery("#linkInput").val("'.$link.'");';
         } else {
-          $output .= 'jQuery(".login").click();';
+          // $output .= 'jQuery(".login").click();';
         }
         $output .=  '});';
         $output .='</script>';
-
         echo $output;
-	  	} else {
+	  	}
+  else {
 	    	if (isset($user_id->errors['empty_user_login'])) {
 	        $notice_key = '<span class="user-errors alert alert-danger">User Name and Email are mandatory</span>';
           echo $notice_key;
@@ -164,6 +181,7 @@ function register_user_front_end() {
         }
 	  	}
 	die;
+  echo '$user_id->get_error_message();';
 }
 
 
@@ -190,18 +208,45 @@ function premast_memberships_create(){
   $refer_id = $_POST['refer'];
   $plan_id = get_field('plan_id', 'option');
 
-  if ($refer_id) {
+  $follow_ip = $_POST['follow_ip'];
+
+  $user_ip = get_user_meta( $refer_id, 'follow_ip' , true );
+
+  $args = array(
+    'post_type' => 'wc_user_membership',
+    'post_status'   => array('wcm-active'),
+    'suppress_filters' => 0,
+    'author' => $refer_id
+  );
+  $posts = get_posts($args);
+
+  if($posts) {
+    $status =  'wcm-pending';
+  } else {
+    $status =  'wcm-active';
+  }
+
+  if ($refer_id && $follow_ip != $user_ip) {
     $data = apply_filters( 'wc_memberships_groups_import_membership_data', array(
-      'plan_id' => $plan_id, 
+      'plan_id' => $plan_id,
       'post_parent' => $plan_id,
       'post_author'    => $refer_id,
       'post_type'      => 'wc_user_membership',
-      'post_status'    => 'wcm-pending',
+      'post_status'    => $status,
       'comment_status' => 'open',
     ) );
 
     // create a new membership
     $user_membership_id = wp_insert_post( $data, true );
+
+    if($status = 'wcm-active') {
+      $start_date = date('Y-m-d H:i:s');
+      $end_date = date('Y-m-d H:i:s', strtotime('+1 months'));
+
+      update_post_meta($user_membership_id, '_end_date', $end_date);
+      update_post_meta($user_membership_id, '_start_date', $start_date);
+    }
+
     $user_email = $_POST['user_email'];
     update_post_meta( $user_membership_id, 'email_referrals', $user_email );
     update_post_meta( $user_membership_id, 'email_referrals', $user_email );
@@ -217,10 +262,27 @@ function premast_memberships_create(){
 
 add_action( 'wp_login_failed', 'pippin_login_fail' );  // hook failed login
 function pippin_login_fail( $username ) {
-     $referrer = $_SERVER['HTTP_REFERER'];  // where did the post submission come from?
-     // if there's a valid referrer, and it's not the default log-in screen
-     if ( !empty($referrer) && !strstr($referrer,'wp-login') && !strstr($referrer,'wp-admin') ) {
-          wp_redirect(get_field('link_signin', 'option') . '?login=failed');  // let's append some information (login=failed) to the URL for the theme to use
-          exit;
-     }
+  $referrer = $_SERVER['HTTP_REFERER'];  // where did the post submission come from?
+  // if there's a valid referrer, and it's not the default log-in screen
+  if ( !empty($referrer) && !strstr($referrer,'wp-login') && !strstr($referrer,'wp-admin') ) {
+    wp_redirect(get_field('link_signin', 'option') . '?login=failed');  // let's append some information (login=failed) to the URL for the theme to use
+    exit;
+  }
+}
+
+
+add_action( 'show_user_profile', 'display_user_custom_hash' );
+add_action( 'edit_user_profile', 'display_user_custom_hash' );
+
+function display_user_custom_hash( $user) {
+
+?>
+  <h3>USER IP</h3>
+  <table class="form-table">
+      <tr>
+          <th><label>IP</label></th>
+          <td><?= get_user_meta($user->ID, 'follow_ip', TRUE); ?></td>
+      </tr>
+  </table>
+  <?php
 }

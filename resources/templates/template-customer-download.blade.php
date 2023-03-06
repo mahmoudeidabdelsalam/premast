@@ -27,7 +27,7 @@
         }
         $downloads     = WC()->customer->get_downloadable_products();
         $has_downloads = (bool) $downloads;
-        
+
         $product_ids = [];
         foreach ($downloads as $download) {
           $ids = $download['product_id'];
@@ -79,10 +79,17 @@
         $loop_all = new WP_Query( $All );
         $loop_free = new WP_Query( $Free );
         $loop_paid = new WP_Query( $Paid );
-        
+
         ?>
 
         @if($all_ids)
+        <style>
+            .side-menu-user ul li a {
+                font-weight:400;
+
+            }
+
+        </style>
 
           <div class="container-fiuld woocommerce customer-download">
             <div class="row justify-content-center">
@@ -112,7 +119,7 @@
                       </li>
                     @endif
                   </ul>
-                  
+
                   @while(have_posts()) @php(the_post())
                     <div class="dropdown mr-1">
                       <button type="button" class="dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
@@ -154,7 +161,7 @@
                                   </div>
                                 </div>
                               </div>
-                            </div>              
+                            </div>
                           </div>
 
                           <script>
@@ -211,7 +218,7 @@
                                   </div>
                                 </div>
                               </div>
-                            </div>              
+                            </div>
                           </div>
 
                           <script>
@@ -238,7 +245,7 @@
                           </script>
                         @endwhile
                         @php (wp_reset_postdata())
-                      </div>                
+                      </div>
                     </div>
                   @endif
                   @if($has_downloads)
@@ -290,11 +297,11 @@
                                   </script>
                                 </div>
                               </div>
-                            </div>              
+                            </div>
                           </div>
                         @endwhile
                         @php (wp_reset_postdata())
-                      </div>                  
+                      </div>
                     </div>
                   @endif
                 </div>

@@ -1,4 +1,4 @@
-@if ( wp_is_mobile() ) 
+@if ( wp_is_mobile() )
 <nav id="menu">
   <hr>
   @if (has_nav_menu('templates_navigation'))
@@ -23,12 +23,11 @@
           </a>
         </h1>
       @else
-        <h2 class="logos">
           <a class="navbar-brand p-0 align-self-center col" href="{{ home_url('/') }}" title="{{ get_bloginfo('name') }}">
               <img class="img-fluid" src="@if(get_field('website_logo', 'option')) {{ the_field('website_logo','option') }} @else {{ get_theme_file_uri().'/dist/images/logo-en.png' }} @endif" alt="{{ get_bloginfo('name', 'display') }}" title="{{ get_bloginfo('name') }}"/>
               <span class="sr-only"> {{ get_bloginfo('name') }} </span>
           </a>
-        </h2>
+
       @endif
 
     </nav>

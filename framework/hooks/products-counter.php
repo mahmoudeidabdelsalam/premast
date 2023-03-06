@@ -1,4 +1,4 @@
-<?php 
+<?php
 add_shortcode( 'products-counter', 'products_counter' );
 function products_counter( $atts ) {
     $atts = shortcode_atts( [
@@ -16,6 +16,28 @@ function products_counter( $atts ) {
         return $cat->count;
     }
     return '';
+}
+
+
+// [paddle-button product="123123" text="Subscribe"]
+add_shortcode( 'paddle-button', 'paddle_button' );
+function paddle_button( $atts ) {
+  extract( shortcode_atts( array(
+  'product' => 'product',
+  'text' => 'text',
+  ), $atts ) );
+
+  if ( !is_user_logged_in() ) {
+    return '<a class="mx-2 login text-gray-dark" href="#" data-toggle="modal" data-target="#LoginUser">Login</a>';
+  } else {
+
+    global $current_user;
+    wp_get_current_user();
+    $user_info = get_userdata($current_user->ID);
+
+    return '<a href="#" class="paddle_button" data-email="'.$user_info->user_email.'" data-success="/thanks-subscription/" data-product="'.esc_attr($product).'" data-passthrough="'.$current_user->ID.'">'.esc_attr($text).'</a>';
+  }
+
 }
 
 
@@ -38,7 +60,7 @@ function show_number_of_downloads() {
     foreach ($posts as $post) {
       if(get_post_meta( $post, 'counterdownload', true )) {
         $counter[] = get_post_meta( $post, 'counterdownload', true );
-      }      
+      }
     }
 
 

@@ -37,6 +37,7 @@ function membership_add_pages() {
         <th>Referrals</th> 
         <th>Status</th>
         <th>Expires on</th>
+        <th>IP</th>
       </tr>
       <?php
         foreach ($posts as $post):
@@ -49,9 +50,46 @@ function membership_add_pages() {
           <td><?= get_post_meta($post->ID, 'email_referrals', TRUE); ?></td>
           <td><?= get_post_status($post->ID, 'post_status', TRUE); ?></td>
           <td><?= (get_post_meta( $post->ID, '_end_date', true ))? get_post_meta( $post->ID, '_end_date', true ):'-'; ?></td>
+          <td><?= get_user_meta($author->ID, 'follow_ip', TRUE); ?></td>
         </tr>
       <?php endforeach; ?>
     </table>
+
+
+
+
+
+
+    <h3>Member count share</h3>
+
+    <?php
+    $args = array(
+      'count_total'  => false,
+      'fields'       => 'all',
+    ); 
+    $users = get_users( $args );
+    ?>
+
+    <table style="width:100%">
+      <tr>
+        <th>User</th>
+        <th>count share link</th> 
+      </tr>
+      <?php
+        foreach ($users as $user):
+          $share_counter = get_user_meta( $user->ID, 'share_counter', true );
+          if ($share_counter):
+        ?>
+        <tr>
+          <td><?= $user->display_name; ?></td>
+          <td><?= $share_counter; ?></td>
+        </tr>
+      <?php 
+          endif;
+        endforeach; 
+      ?>
+    </table>
+
     <style>
         th {
           text-align: left;

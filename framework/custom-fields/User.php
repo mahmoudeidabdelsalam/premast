@@ -254,6 +254,25 @@ if( function_exists('acf_add_local_field_group') ):
     'title' => 'More User Details',
     'fields' => array(
       array(
+        'key' => 'field_5f3ee37cb2549',
+        'label' => 'Write a Bio',
+        'name' => 'bio_author',
+        'type' => 'textarea',
+        'instructions' => '',
+        'required' => 0,
+        'conditional_logic' => 0,
+        'wrapper' => array(
+          'width' => '',
+          'class' => '',
+          'id' => '',
+        ),
+        'default_value' => '',
+        'tabs' => 'all',
+        'toolbar' => 'full',
+        'media_upload' => 1,
+        'delay' => 0,
+      ),
+      array(
         'key' => 'field_5a632631202544365aa',
         'label' => __('Profile Picture','premast'),
         'name' => 'owner_picture',
@@ -299,10 +318,10 @@ if( function_exists('acf_add_local_field_group') ):
         'step' => '',
       ),
       // array(
-      //   'key' => 'field_5a9ba9912563267c8b1',
+      //   'key' => 'field_5a9ba99125633424234322e2e2e32e233267c8b1',
       //   'label' => __('Gender','premast'),
-      //   'name' => 'owner_gender',
-      //   'type' => 'select',
+      //   'name' => 'follow_ip',
+      //   'type' => 'text',
       //   'instructions' => '',
       //   'required' => 0,
       //   'conditional_logic' => 0,
@@ -311,14 +330,7 @@ if( function_exists('acf_add_local_field_group') ):
       //     'class' => '',
       //     'id' => '',
       //   ),
-      //   'choices' => array(
-      //     'Select City' => __('Select Gender','premast'),
-      //     'Male' => __('Male','premast'),
-      //     'Female' => __('Female','premast'),
-      //   ),
-      //   'default_value' => array(
-      //     0 => __('Cairo','premast'),
-      //   ),
+       
       //   'allow_null' => 0,
       //   'multiple' => 0,
       //   'ui' => 0,
