@@ -138,10 +138,10 @@ function custom_rewrite_basic()
 add_action('init', 'custom_rewrite_basic');
 
 // Registering all core locations for Elementor
-add_action('elementor/theme/register_locations', function ($elementor_theme_manager) {
-    $elementor_theme_manager->register_all_core_location();
-    $elementor_theme_manager->register_location('footer');
-    $elementor_theme_manager->register_location('header');
-    $elementor_theme_manager->register_location('single');
-    $elementor_theme_manager->register_location('archive');
-});
+// add_action('elementor/theme/register_locations', function ($elementor_theme_manager) {
+//     $elementor_theme_manager->register_all_core_location();
+//     $elementor_theme_manager->register_location('footer');
+//     $elementor_theme_manager->register_location('header');
+//     $elementor_theme_manager->register_location('single');
+//     $elementor_theme_manager->register_location('archive');
+// });
