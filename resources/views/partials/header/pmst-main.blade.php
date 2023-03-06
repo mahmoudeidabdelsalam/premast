@@ -1,121 +1,140 @@
-@if (
-    !function_exists('elementor_theme_do_location') ||
-        !elementor_theme_do_location('header'))
-    <div class="container-xxl">
-        <nav class="navbar navbar-expand-lg navbar-light bg-white">
-            <div class="container-fluid">
-                <span class="navbar-brand mb-0 h1">
-                    <a href="{{ home_url('/') }}">
-                        <img src="{{ get_field('website_logo', 'option') }}"
-                            alt="premast logo" class="img-fluid logo"
-                            width="100">
-                    </a>
-                </span>
-                <button class="navbar-toggler" type="button"
-                    data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    @if (has_nav_menu('primary_navigation'))
-                        {!! wp_nav_menu([
-                            'theme_location' => 'primary_navigation',
-                            'container' => false,
-                            'menu_class' => 'navbar-nav ms-auto pmst-nav',
-                            'walker' => new NavWalker(),
-                        ]) !!}
-                    @endif
-                </div>
-                {{-- Login buttons --}}
-                <div class="d-flex align-items-center gap-2 pmst-login">
-                    <a href="https://app.premast.com/login"
-                        class="btn btn-outline-secondary" target="_blank">
-                        {{-- icon --}}
-                        <i class="fa fa-user me-2"></i>
-                        Sign in</a>
-                    <a href="https://app.premast.com/login"
-                        class="btn btn-primary"
-                        target="_blank
-                ">Try for free</a>
-                </div>
-            </div>
-        </nav>
-    </div>
 
-    <style>
-        /* Bootstrap override */
-        /* --colors-- */
-        :root {
-            --primary: #1F6DFB;
-            --secondary: #D8DAE5;
-            --success: #198754;
-            --info: #0dcaf0;
-            --warning: #ffc107;
-            --danger: #dc3545;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --white: #fff;
-            --gray: #6c757d;
-            --gray-dark: #343a40;
-            --primary-rgb: 13, 110, 253;
-            --secondary-rgb: 108, 117, 125;
-            --success-rgb: 25, 135, 84;
-            --info-rgb: 13, 202, 240;
-            --warning-rgb: 255, 193, 7;
-            --danger-rgb: 220, 53, 69;
-            --light-rgb: 248, 249, 250;
+
+
+
+@php
+  $refine   = isset($_GET['refine']) ? $_GET['refine'] : '0';
+  $sort   = isset($_GET['sort']) ? $_GET['sort'] : '0';
+  $taxonomy_query = get_queried_object();
+  global $current_user;
+  wp_get_current_user();
+  global $wp;
+  $logout = esc_html(wp_logout_url('https://premast.com/templates/'));
+@endphp
+<pmst-main-header></pmst-main-header>
+
+
+<script>
+let data = {!! json_encode(pmst_get_header_data()) !!};
+let logout = {!! json_encode($logout, JSON_UNESCAPED_UNICODE) !!};
+logout = logout.replace(/&amp;/g, '&');
+  // get header element
+  let header = document.querySelector('pmst-header');
+  // set attributes
+  header.logo = data.logo;
+  header.userIsLogin = data.user_login
+  header.user = {
+                name: data.user_name,
+                avatar: data.user_avatar,
+                premium: data.premium
+            }
+  header.navList = data.nav;
+  header.userMenu = data.user_menu;
+  header.upgradeLink = data.upgrade_link
+  // listen to logout click 
+  header.addEventListener('logout', function(e) {
+    window.location.href = logout;
+  });
+  header.addEventListener('signin', function(e) {
+    login(e)
+  });
+  header.addEventListener('signup', function(e) {
+    signup(e)
+  });
+  header.addEventListener('google-signin', function(e){
+    console.log('Google')
+    let googleLink = document.createElement('a');
+    let currentUrl = window.location.href;
+    googleLink.href = `https://premast.com/wp/wp-login.php?loginSocial=google&redirect=${currentUrl}`;
+    console.log(googleLink)
+    // click on the link
+    googleLink.click();
+  });
+  header.addEventListener('search' , function(e){
+    let search = e.detail
+    console.log(search)
+    window.location.href = `https://premast.com/items/?refine=${search}`
+
+  }
+  );
+
+  function login(e){
+    console.log(e.detail);
+    // login user using AJAX
+    jQuery.ajax({
+      url: "<?php echo admin_url('admin-ajax.php'); ?>",
+      type: 'POST',
+      data: {
+        action: 'pmst_login',
+        email: e.detail.email,
+        password: e.detail.password
+      },
+      beforeSend: function () {
+        header.loading = true;
+      },
+      
+      success: function(response) {
+        json = JSON.parse(response);
+        console.log(json);
+        if (json.success) {
+          header.signinSuccess();
+          header.showSignin = false;
+          window.location.reload();
+        } else {
+          header.signinError(json.message);
         }
+      },
+      error: function(errorThrown) {
+        header.signinError('there is an error on website')
+        console.log(errorThrown);
+      }
 
-        /* spacer */
-        .me-2 {
-            margin-right: 0.5rem !important;
+    });
+  }
+
+  function signup(e){
+    console.log('signup')
+    jQuery.ajax({
+      url: "<?php echo admin_url('admin-ajax.php'); ?>",
+      type: 'POST',
+      data: {
+        action: 'pmst_signup',
+        email: e.detail.email,
+        password: e.detail.password,
+        name: e.detail.name
+      },
+      beforeSend: function () {
+        header.loading = true;
+      },
+      
+      success: function(response) {
+        json = JSON.parse(response);
+        console.log(json);
+        console.log(header)
+        if (json.success) {
+          header.signinSuccess();
+          header.showSignup = false;
+          window.location.reload();
+        } else {
+          header.signinError(json.message);
         }
+      },
+      error: function(errorThrown) {
+        header.signinError('there is an error on website')
+        console.log(errorThrown);
+      }
 
-        .gap-2 {
-            gap: 1rem;
-        }
+    });
 
 
-        /* Buttons */
-        .btn {
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: 400;
-            font-family: 'Poppins', sans-serif;
-        }
+  }
 
-        .btn-outline-secondary {
-            color: #696F8C;
-            border-color: #D8DAE5;
-        }
+  // make header sticky at the top of the page 
+  let y = header.getBoundingClientRect().top + window.scrollY;
 
-        .btn-outline-secondary:hover {
-            color: #696F8C !important;
-            background-color: #D8DAE5 !important;
-            border-color: #D8DAE5 !important;
-        }
+  header.style.cssText = `
+  position: sticky; 
+  top: ${y}px; 
+  z-index: 9999;`;
 
-        .btn-outline-secondary:focus {
-            box-shadow: unset !important;
-
-        }
-
-        .pmst-nav {
-            display: flex;
-            align-items: center;
-        }
-
-        .pmst-nav .nav-link {
-            color: #000;
-            font-size: 15px;
-            font-weight: 400;
-            padding: 0 10px;
-        }
-
-        .pmst-login .fa {
-            font-size: 12px;
-            font-weight: 400;
-        }
-    </style>
-@endif
+</script>
