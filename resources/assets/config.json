@@ -9,7 +9,7 @@
     ]
   },
   "publicPath": "/app/themes/premast",
-  "devUrl": "http://dev.premast.com",
+  "devUrl": "http://premast.local",
   "proxyUrl": "http://localhost:3000",
   "cacheBusting": "[name]_[hash:8]",
   "watch": [

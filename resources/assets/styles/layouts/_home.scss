@@ -1,3 +1,7 @@
+// disable stylelint
+/* stylelint-disable */
+
+
 .welcome {
   height: 80vh;
   position: relative;
@@ -235,6 +239,7 @@
         }
 
         .testimonials {
+
           &-name,
           &-position {
             font-size: 16px;
@@ -464,5 +469,5 @@
 }
 
 section.header {
-    background: antiquewhite;
+  background: antiquewhite;
 }
