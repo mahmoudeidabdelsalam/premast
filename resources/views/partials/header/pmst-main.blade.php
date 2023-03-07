@@ -30,12 +30,12 @@
                 {{-- Login buttons --}}
                 <div class="d-flex align-items-center gap-2 pmst-login">
                     <a href="https://app.premast.com/login"
-                        class="btn btn-outline-secondary" target="_blank">
+                        class="btn btn-outline-secondary mx-1" target="_blank">
                         {{-- icon --}}
                         <i class="fa fa-user me-2"></i>
                         Sign in</a>
                     <a href="https://app.premast.com/login"
-                        class="btn btn-primary"
+                        class="btn btn-primary mx-1"
                         target="_blank
                 ">Try for free</a>
                 </div>

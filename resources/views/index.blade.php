@@ -1,28 +1,32 @@
 @extends('layouts.app')
-
 @section('content')
+    @if (
+        !function_exists('elementor_theme_do_location') ||
+            !elementor_theme_do_location('archive'))
+        {{-- body container --}}
+        <div class="container-xxl py-5 px-2 px-md-5 px-sm-3 bg-white">
+            {{-- posts grid --}}
+            @if (!have_posts())
+                <div class="alert alert-warning">
+                    {{ __('Sorry, no results were found.', 'sage') }}
+                </div>
+                {!! get_search_form(false) !!}
+            @endif
 
-@if ($welcome_home)
-<section class="welcome-home">
-  <div class="welcome background-center" style="background-image:url('{{$welcome_home['background']}}');">
-    <div class="background-overlay"></div>
-    <div class="container">
-      <div class="row align-items-center height-vh-80">
-        <div class="col-md-6 col-sm-12 wow bounceInUp"  data-wow-duration="1s" data-wow-delay=".5s">
-          <h3 class="text-large text-white">{{$welcome_home['headline']}}</h3>
-          <p class="text-white text-medium">{{$welcome_home['description']}}</p>
-          <a class="btn btn-green text-small" href="{{$welcome_home['link']}}">{{ _e('Get started', 'premast') }} <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
+            {{-- posts grid --}}
+            <div class="row">
+                @while (have_posts())
+                    @php the_post() @endphp
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                        @include('partials.content-' . get_post_type())
+                    </div>
+                @endwhile
+            </div>
+
+            {{-- pagination --}}
+            <div class="d-flex justify-content-center">
+                {!! the_posts_pagination() !!}
+            </div>
         </div>
-        <div class="col-md-6 col-sm-12 wow bounceInUp"  data-wow-duration="1s" data-wow-delay="1s">
-          <img src="{{$welcome_home['image']}}" alt="{{ get_bloginfo('name') }}" title="{{ get_bloginfo('name') }}">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-@endif
-
-@php dynamic_sidebar('sidebar-home') @endphp
-
-
+    @endif
 @endsection
