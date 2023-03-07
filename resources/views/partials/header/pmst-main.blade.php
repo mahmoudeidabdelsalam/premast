@@ -1,8 +1,8 @@
 @if (
     !function_exists('elementor_theme_do_location') ||
         !elementor_theme_do_location('header'))
-    <div class="container-xxl py-2">
-        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container-xxl">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
             <div class="container-fluid">
                 <span class="navbar-brand mb-0 h1">
                     <a href="{{ home_url('/') }}">
