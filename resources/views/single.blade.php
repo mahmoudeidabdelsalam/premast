@@ -5,5 +5,5 @@
             !elementor_theme_do_location('single'))
         @include('partials.content-single-' . get_post_type())
     @endif
-    @include('partials/comments')
+    @include('partials.comments')
 @endsection
