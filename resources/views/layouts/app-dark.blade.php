@@ -22,7 +22,7 @@
       </div>
     </div>
     @php do_action('get_footer') @endphp
-    @include('partials.footer')
+    @include('partials.footer-premast-main')
     @php wp_footer() @endphp
   </body>
 </html>
